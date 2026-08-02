@@ -1,0 +1,333 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Technical Disclosure API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Technical Disclosure
+  description: Technical Disclosure APIs.
+paths:
+  /search/patent/patent-disclosure/download:
+    post:
+      operationId: ai32-3PatentDisclosureDownload
+      summary: AI32-3 Download technical disclosure document
+      description: This interface provides a download link to the Technical Submission document based on the Task ID of the generated Technical Submission.
+      tags:
+      - Technical Disclosure
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai32-3 download technical disclosure document response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI32-3PatentDisclosureDownloadResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/patent-disclosure/download
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI32-3PatentDisclosureDownloadRequest'
+  /search/patent/patent-disclosure/generate:
+    post:
+      operationId: ai32-2PatentDisclosureGenerate
+      summary: AI32-2 Generate technical disclosure task
+      description: Extract the information obtained in the technical interface based on the「AI32-1」highlights and have AI assist in writing a technical submission.
+      tags:
+      - Technical Disclosure
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai32-2 generate technical disclosure task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI32-2PatentDisclosureGenerateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/patent-disclosure/generate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI32-2PatentDisclosureGenerateRequest'
+  /search/patent/patent-disclosure/tech-means:
+    post:
+      operationId: ai32-1PatentDisclosureTechMeans
+      summary: AI32-1 Key content extraction
+      description: Based on the input of technical ideas or program information, the key elements such as technical means are extracted and used to provide input for the subsequent writing of technical submissions.
+      tags:
+      - Technical Disclosure
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai32-1 key content extraction response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeansResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/patent-disclosure/tech-means
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeansRequest'
+components:
+  schemas:
+    AI32-3PatentDisclosureDownload_DisclosureDownloadResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
+          description: Export Task ID
+        job_status:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Export Status (0: Pending export, 1: Exporting, 2: Export successful, 3: Report generation exception)'
+        download_url:
+          type: string
+          example: http://downloadurl
+          description: File download link (returned when export status is successful)
+    AI32-2PatentDisclosureGenerateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
+          description: Job ID
+        status:
+          type: integer
+          format: int32
+          example: 1
+          description: 'job state
+
+            1:running
+
+            2:success
+
+            3:fail'
+    AI32-2PatentDisclosureGenerateRequest:
+      type: object
+      properties:
+        application:
+          type: array
+          example:
+          - 车辆技术领域
+          description: application
+        background:
+          type: string
+          example: 现有技术中,机动车辆的车门通常需要人工操作才能打开和关闭,存在一定的不便。虽然部分车辆配备了电动车门,但仍需要驾驶员或乘员手动触发开关或按钮,无法实现自动化控制。此外,如果驾驶员或乘员忘记关闭车门,会影响车辆的安全性。\n\n为了解决上述问题,一些车辆配备了车门自动控制系统,能够根据无线设备的位置自动打开和关闭车门。但现有的自动控制系统存在一些不足,例如无法精准判断驾驶员或乘员的实际意图,可能在不恰当的时机打开或关闭车门,影响使用体验。\n\n因此,需要一种新型的车门自动控制系统,能够根据无线设备的位置精准判断驾驶员或乘员的意图,在合适的时机自动打开或关闭车门,提高车辆的便利性和安全性。该系统可以设置多个预定义区域,根据无线设备在不同区域的位置,控制车门的打开角度或关闭动作,避免不必要的操作,满足驾驶员或乘员的实际需求。
+          description: Prior art
+        embodiment:
+          type: string
+          example: 实施例一：\n本发明提供了一种车辆系统，包括车门、电动致动马达、检测器和车门控制器。车门可以是侧车门、后车门或剪刀车门等。电动致动马达被设计用于驱动车门的打开和关闭。检测器用于检测无线设备，该无线设备用于与车辆进行无线通信，无线设备可以是驾驶员或乘员携带的手机、智能手表或专用遥控器等。\n\n车门控制器用于控制电动致动马达的运行，实现车门的自动打开和关闭。该控制器设置有第一预定义区域和第二预定义区域，第一预定义区域不包括第二预定义区域，第二预定义区域靠近驾驶员侧，驾驶员必须经过该区域才能进入驾驶员座椅的区域。\n\n当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制器控制电动致动马达将车门打开至第一角度，例如15-25度，方便驾驶员或乘员接近车辆。如果检测器确定无线设备进入第二预定义区域，则控制器控制电动致动马达将车门完全打开，例如40-50度，驾驶员或乘员可以直接进入驾驶员座椅的区域。如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制器控制电动致动马达关闭车门。\n\n该系统还可以包括激光雷达和摄像头等设备，用于对车辆周围环境进行三维重建，准确检测车门周围可能影响车门开启的障碍物，控制器根据检测结果决定是否开启车门或调整车门的开启角度。\n\n实施例二：\n本发明的车辆系统还可以包括加速度传感器等设备，用于检测车辆所处的环境，如倾斜表面、水平表面或平坦表面，控制器根据检测结果调整车门的开启速度和制动力，防止车门打开过快或过大。\n\n该系统还可以采用红外激光器和红外摄像机等设备，用于检测车门周围是否有人或物体靠近，控制器根据检测结果决定是否开启车门或调整车门的开启角度。\n\n例如，当车辆停放在倾斜表面时，控制器可以减小车门的开启速度，并增大制动力，防止车门由于重力作用而打开过大。当检测到车门周围有人或物体靠近时，控制器可以暂停车门的开启动作，或者将车门的开启角度控制在较小的范围内，避免发生碰撞。\n\n实施例三：\n本发明的车辆系统中，无线设备可以是一种专用的遥控器，该遥控器包括用于与车辆通信的无线模块和用于发送控制指令的按钮。当驾驶员或乘员按下遥控器上的特定按钮时，遥控器向车辆发送对应的控制指令，控制器接收到该指令后控制电动致动马达执行相应的动作。\n\n例如，当驾驶员或乘员按下遥控器上的\"打开车门\"按钮时，遥控器向车辆发送打开车门的指令，控制器接收到该指令后控制电动致动马达将车门打开至第一角度或完全打开。当驾驶员或乘员按下遥控器上的\"关闭车门\"按钮时，遥控器向车辆发送关闭车门的指令，控制器接收到该指令后控制电动致动马达关闭车门。\n\n该遥控器还可以包括用于显示当前状态的显示屏，例如显示车门的当前开启角度、车门是否已完全关闭等信息，方便驾驶员或乘员了解系统的运行状态。
+          description: description of embodiments
+        language:
+          type: string
+          example: cn
+          description: 'Please select the language of the report template：cn or en
+
+            default：cn'
+        mechanism:
+          type: string
+          example: 包含以下组件：车辆的车门；电动致动马达，该马达被设计用于打开车门；检测器，该检测器用于检测无线设备，该无线设备用于与车辆进行通信；车门控制器，该控制器的功能如下：当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制电动致动马达将车门打开至第一角度；如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制电动致动马达关闭车门；其中，第一预定义区域不包括第二预定义区域，而第二预定义区域是靠近驾驶员侧的，驾驶员必须经过该区域才能进入驾驶员座椅的区域
+          description: Mechanism
+        others:
+          type: string
+          example: '现有技术中，车门的打开和关闭通常需要人工操作
+
+            现有技术中需要人工操作车门，存在一定的不便利性'
+          description: others
+        outcome:
+          type: string
+          example: 根据无线设备的位置自动控制车门的打开和关闭，提高了车门的智能化水平和用户体验
+          description: outcome
+        subject_improvement:
+          type: array
+          example:
+          - 一种车辆系统
+          description: Subject of improvement
+        tech_problem:
+          type: string
+          example: 现有技术中存在无法根据驾驶员或乘员的实际意图精准控制车门打开和关闭的问题。因此，本发明为了解决上述问题，提供了一种车辆系统，能够根据无线设备的位置精准判断驾驶员或乘员的意图，在合适的时机自动控制车门的打开角度和关闭动作，提高车辆的便利性和安全性。
+          description: Objectives of the invention
+        tech_solution:
+          type: string
+          example: 一种车辆系统，包含以下组件：车辆的车门；电动致动马达，该马达被设计用于打开车门；检测器，该检测器用于检测无线设备，该无线设备用于与车辆进行通信；车门控制器，该控制器的功能如下：当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制电动致动马达将车门打开至第一角度；如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制电动致动马达关闭车门；其中，第一预定义区域不包括第二预定义区域，而第二预定义区域是靠近驾驶员侧的，驾驶员必须经过该区域才能进入驾驶员座椅的区域。
+          description: 'Technical Ideas or Solutions
+
+            To ensure the completeness of the documentation, please include the input parameters extracted from [AI32-1] tech solution in this request as well.'
+      required:
+      - language
+      - mechanism
+      - tech_solution
+    AI32-1PatentDisclosureTechMeans_DisclosureTechMeansResponse:
+      type: object
+      properties:
+        others:
+          type: string
+          example: '现有技术中，车门的打开和关闭通常需要人工操作
+
+            现有技术中需要人工操作车门，存在一定的不便利性'
+          description: others
+        status:
+          type: string
+          example: 1
+          description: status  1:success  0:fail
+        outcome:
+          type: string
+          example: 根据无线设备的位置自动控制车门的打开和关闭，提高了车门的智能化水平和用户体验
+          description: outcome
+        mechanism:
+          type: string
+          example: 车辆技术领域
+          description: Mechanism
+        background:
+          type: string
+          example: 现有技术中,机动车辆的车门通常需要人工操作才能打开和关闭,存在一定的不便。虽然部分车辆配备了电动车门,但仍需要驾驶员或乘员手动触发开关或按钮,无法实现自动化控制。此外,如果驾驶员或乘员忘记关闭车门,会影响车辆的安全性。\n\n为了解决上述问题,一些车辆配备了车门自动控制系统,能够根据无线设备的位置自动打开和关闭车门。但现有的自动控制系统存在一些不足,例如无法精准判断驾驶员或乘员的实际意图,可能在不恰当的时机打开或关闭车门,影响使用体验。\n\n因此,需要一种新型的车门自动控制系统,能够根据无线设备的位置精准判断驾驶员或乘员的意图,在合适的时机自动打开或关闭车门,提高车辆的便利性和安全性。该系统可以设置多个预定义区域,根据无线设备在不同区域的位置,控制车门的打开角度或关闭动作,避免不必要的操作,满足驾驶员或乘员的实际需求。
+          description: Prior art
+        embodiment:
+          type: string
+          example: 实施例一：\n本发明提供了一种车辆系统，包括车门、电动致动马达、检测器和车门控制器。车门可以是侧车门、后车门或剪刀车门等。电动致动马达被设计用于驱动车门的打开和关闭。检测器用于检测无线设备，该无线设备用于与车辆进行无线通信，无线设备可以是驾驶员或乘员携带的手机、智能手表或专用遥控器等。\n\n车门控制器用于控制电动致动马达的运行，实现车门的自动打开和关闭。该控制器设置有第一预定义区域和第二预定义区域，第一预定义区域不包括第二预定义区域，第二预定义区域靠近驾驶员侧，驾驶员必须经过该区域才能进入驾驶员座椅的区域。\n\n当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制器控制电动致动马达将车门打开至第一角度，例如15-25度，方便驾驶员或乘员接近车辆。如果检测器确定无线设备进入第二预定义区域，则控制器控制电动致动马达将车门完全打开，例如40-50度，驾驶员或乘员可以直接进入驾驶员座椅的区域。如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制器控制电动致动马达关闭车门。\n\n该系统还可以包括激光雷达和摄像头等设备，用于对车辆周围环境进行三维重建，准确检测车门周围可能影响车门开启的障碍物，控制器根据检测结果决定是否开启车门或调整车门的开启角度。\n\n实施例二：\n本发明的车辆系统还可以包括加速度传感器等设备，用于检测车辆所处的环境，如倾斜表面、水平表面或平坦表面，控制器根据检测结果调整车门的开启速度和制动力，防止车门打开过快或过大。\n\n该系统还可以采用红外激光器和红外摄像机等设备，用于检测车门周围是否有人或物体靠近，控制器根据检测结果决定是否开启车门或调整车门的开启角度。\n\n例如，当车辆停放在倾斜表面时，控制器可以减小车门的开启速度，并增大制动力，防止车门由于重力作用而打开过大。当检测到车门周围有人或物体靠近时，控制器可以暂停车门的开启动作，或者将车门的开启角度控制在较小的范围内，避免发生碰撞。\n\n实施例三：\n本发明的车辆系统中，无线设备可以是一种专用的遥控器，该遥控器包括用于与车辆通信的无线模块和用于发送控制指令的按钮。当驾驶员或乘员按下遥控器上的特定按钮时，遥控器向车辆发送对应的控制指令，控制器接收到该指令后控制电动致动马达执行相应的动作。\n\n例如，当驾驶员或乘员按下遥控器上的\"打开车门\"按钮时，遥控器向车辆发送打开车门的指令，控制器接收到该指令后控制电动致动马达将车门打开至第一角度或完全打开。当驾驶员或乘员按下遥控器上的\"关闭车门\"按钮时，遥控器向车辆发送关闭车门的指令，控制器接收到该指令后控制电动致动马达关闭车门。\n\n该遥控器还可以包括用于显示当前状态的显示屏，例如显示车门的当前开启角度、车门是否已完全关闭等信息，方便驾驶员或乘员了解系统的运行状态。
+          description: description of embodiments
+        application:
+          type: array
+          example:
+          - 车辆技术领域
+          description: application
+        tech_problem:
+          type: string
+          example: 现有技术中存在无法根据驾驶员或乘员的实际意图精准控制车门打开和关闭的问题。因此，本发明为了解决上述问题，提供了一种车辆系统，能够根据无线设备的位置精准判断驾驶员或乘员的意图，在合适的时机自动控制车门的打开角度和关闭动作，提高车辆的便利性和安全性。
+          description: Objectives of the invention
+        unidentified:
+          type: string
+          example: 芽仔未识别到您输入内容的技术手段，为了获得更好的撰写效果，请您输入技术手段；
+          description: unidentified
+        subject_improvement:
+          type: array
+          example:
+          - 一种车辆系统
+          description: Subject of improvement
+    AI32-1PatentDisclosureTechMeansRequest:
+      type: object
+      properties:
+        tech_solution:
+          type: string
+          example: 一种车辆系统，包含以下组件：车辆的车门；电动致动马达，该马达被设计用于打开车门；检测器，该检测器用于检测无线设备，该无线设备用于与车辆进行通信；车门控制器，该控制器的功能如下：当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制电动致动马达将车门打开至第一角度；如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制电动致动马达关闭车门；其中，第一预定义区域不包括第二预定义区域，而第二预定义区域是靠近驾驶员侧的，驾驶员必须经过该区域才能进入驾驶员座椅的区域。
+          description: Please enter your technical ideas or solutions. It’s recommended to input more than 200 words, supporting both Chinese and English, with a maximum of 5000 words.
+      required:
+      - tech_solution
+    AI32-3PatentDisclosureDownloadResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-3PatentDisclosureDownload_DisclosureDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI32-1PatentDisclosureTechMeansResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeans_DisclosureTechMeansResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI32-3PatentDisclosureDownloadRequest:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
+          description: 'Job ID
+
+            You can obtain the corresponding ID through the [AI32-2] interface.'
+      required:
+      - job_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

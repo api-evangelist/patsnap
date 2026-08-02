@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source:
+- https://open.patsnap.com/devportal/api-reference
+- openapi/patsnap-openapi-original.json
+format: numeric-code
+envelope:
+  note: >-
+    Errors are returned as JSON with a platform/business status code plus a message.
+    OpenAPI response bodies for auth/not-found cases carry a plain description string
+    (not RFC 9457 application/problem+json).
+http_responses:
+  derived_from: openapi/patsnap-openapi-original.json
+  observed:
+  - status: 400
+    meaning: Bad Request - invalid or missing parameters
+  - status: 401
+    meaning: Unauthorized - missing or invalid API key / bearer token
+  - status: 403
+    meaning: Forbidden - key lacks access to the requested resource or endpoint
+  - status: 404
+    meaning: Not Found - resource or patent record does not exist
+  - status: 413
+    meaning: Payload Too Large
+  - status: 500
+    meaning: Internal Server Error
+  - status: 502
+    meaning: Bad Gateway
+  - status: 504
+    meaning: Gateway Timeout
+error_code_ranges:
+- range: 68300004-68300010
+  class: business
+  meaning: >-
+    Business-level errors - invalid parameters, API call failures, and access errors
+    specific to a data operation.
+- range: 67200000-67200101
+  class: platform
+  meaning: >-
+    Platform-level errors - rate/QPS limit exceeded, authentication failures, account
+    problems (quota/daily limit), and server status conditions.
+notes: >-
+  Exact per-code titles are enumerated in the live API reference error tables; ranges and
+  classes captured here from the reference. Not a payments API - no decline-code surface.

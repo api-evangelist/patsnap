@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: AI Translation
+  description: AI Translation APIs.
+paths:
+  /hiro_translation/translate:
+    post:
+      operationId: t010HiroTranslationTranslate
+      summary: T010 Translate Text
+      description: Translate source text from source language to target language and return a single JSON result.
+      tags:
+      - AI Translation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful t010 translate text response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T010HiroTranslationTranslateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/hiro_translation/translate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/T010HiroTranslationTranslateRequest'
+  /ai/translation:
+    post:
+      operationId: ai61AiTranslation
+      summary: AI61 AI Translation
+      description: The AI Translation API leverages advanced large language model (LLM) to deliver real-time multilingual translation services worldwide. It enables accurate and seamless conversion of source text into target languages. Developers can easily integrate the API to achieve efficient and precise text translation, fully catering to multilingual application scenarios and enhancing user experience and cross-language communication efficiency.
+      tags:
+      - AI Translation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai61 ai translation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI61AiTranslationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/translation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI61AiTranslationRequest'
+components:
+  schemas:
+    T010HiroTranslationTranslateRequest:
+      type: object
+      properties:
+        content:
+          type: string
+          example: 本发明公开了一种档案管理文件储存用分类标识装置。
+          description: Source text to translate. Must not be blank. Default max 65536 characters.
+        mode:
+          type: string
+          example: fast
+          description: 'Translation mode. Supports fast and stream, defaulting to fast. fast: concurrent segment-based translation that returns the complete JSON result in a single response, offering higher throughput but weaker cross-segment context consistency. stream: sliding-window sequential translation, returned segment by segment via SSE; later segments can leverage already-translated context within the window, maximizing consistency across the whole text.'
+        sourceLanguageCode:
+          type: string
+          example: zh
+          description: 'Source language code. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
+        targetLanguageCode:
+          type: string
+          example: en
+          description: 'Target language code; must differ from source. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
+      required:
+      - content
+      - sourceLanguageCode
+      - targetLanguageCode
+    AI61AiTranslationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI61AiTranslation_AiTranslationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI61AiTranslation_AiTranslationResponse:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.
+        target_lang:
+          type: string
+          example: EN
+          description: Target language.
+        translate_result:
+          type: string
+          example: Hello, world!
+          description: Translation result.
+    T010HiroTranslationTranslate_HiroTranslateResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          example: success
+          description: Execution status, always success
+        textTranslated:
+          type: string
+          example: The invention discloses a classified marking device for archive management file storage.
+          description: Full translated text
+        translatedCharacterCount:
+          type: integer
+          format: int32
+          example: 82
+          description: Character count of translated text
+      required:
+      - state
+      - textTranslated
+      - translatedCharacterCount
+    AI61AiTranslationRequest:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
+        target_lang:
+          type: string
+          example: EN
+          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
+        text:
+          type: string
+          example: 你好，世界！
+          description: The original text that needs to be translated.Cannot exceed 2000 characters
+      required:
+      - text
+    T010HiroTranslationTranslateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T010HiroTranslationTranslate_HiroTranslateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

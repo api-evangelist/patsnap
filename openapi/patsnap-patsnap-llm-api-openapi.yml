@@ -1,0 +1,421 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Patsnap LLM API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Patsnap LLM
+  description: Patsnap LLM APIs.
+paths:
+  /chat/cc-gpt-stream:
+    post:
+      operationId: ai07ChatCcGptStream
+      summary: AI07 Model(CC GPT)
+      description: '-'
+      tags:
+      - Patsnap LLM
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai07 model(cc gpt) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI07ChatCcGptStreamResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/chat/cc-gpt-stream
+      requestBody:
+        required: true
+        content:
+          text/event-stream:
+            schema:
+              $ref: '#/components/schemas/AI07ChatCcGptStreamRequest'
+  /chat/pat-gpt-stream:
+    post:
+      operationId: ai50ChatPatGptStream
+      summary: AI50 Patent Large Model(Pat GPT)
+      description: It supports inputting technical questions or questions related to patents. The Patent Large Model (Pat GPT) aims to intelligently retrieve, analyze, and mine data in response to the posed questions, providing relevant patent information, trend analysis, and technical evaluations.
+      tags:
+      - Patsnap LLM
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai50 patent large model(pat gpt) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI50ChatPatGptStreamResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/chat/pat-gpt-stream
+      requestBody:
+        required: true
+        content:
+          text/event-stream:
+            schema:
+              $ref: '#/components/schemas/AI50ChatPatGptStreamRequest'
+  /chat/pharm-gpt-stream:
+    post:
+      operationId: ai20ChatPharmGptStream
+      summary: AI20 Life Science Large Model
+      description: Hiro-LS API supports inquiries related to the pharmaceutical competitive landscape, clinical trials and evidence-based medicine, sequence/compound patents, as well as policies and regulartions issues. The biopharmaceutical large model (Hiro-LS) aims to perform intelligent retrieval, analysis, and data mining in response to these questions, providing continuously evolving biopharmaceutical information to create limitless opportunities for exploration in life sciences.
+      tags:
+      - Patsnap LLM
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai20 life science large model response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI20ChatPharmGptStreamResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/chat/pharm-gpt-stream
+      requestBody:
+        required: true
+        content:
+          text/event-stream:
+            schema:
+              $ref: '#/components/schemas/AI20ChatPharmGptStreamRequest'
+components:
+  schemas:
+    AI20ChatPharmGptStream_AiPharmGptResponse:
+      type: object
+      properties:
+        output:
+          $ref: '#/components/schemas/AI20ChatPharmGptStream_AiPharmGptOutPut'
+    AI07ChatCcGptStreamRequest:
+      type: object
+      properties:
+        prompt:
+          type: string
+          example: '<cn><|start_header_id|>user<|end_header_id|>\n\n角色：您是专利领域和专利新创性审查的专家，能够对输入的目标文本进行技术特征分解。\n\n输入内容：\n<**目标专利的权利要求**>：''1.一种用于光学装置的陶瓷基板结构，其特征在于，包括:\n一陶瓷基板，具有一第一表面、一第二表面及多个注胶孔，该第一表面包含多个凹杯成型区、多个固晶区及多个第一金属电路，该第二表面包含多个第二金属电路，各该注胶孔连通该第一表面及该第二表面，并具有位于该第一表面的一第一开口及位于该第二表面的一第二开口，且该第一开口设置在该凹杯成型区；\n一绝缘层，披覆在该第二表面上，且该绝缘层外露出该些第二金属电路及该第二开口；以及\n多个承载胶杯，以射出成型方式结合在该些凹杯成型区上，且各该承载胶杯连接该些第一金属电路并包围有一固晶区。\n2.如权利要求1所述的用于光学装置的陶瓷基板结构，其特征在于，该陶瓷基板更包括多个金属挡环，该些金属挡环成型在该第一表面，并分别位于各该凹杯成型区的周缘。\n3.如权利要求2所述的用于光学装置的陶瓷基板结构，其特征在于，该些金属挡环为电镀铜所构成。\n4.如权利要求1所述的用于光学装置的陶瓷基板结构，其特征在于，该绝缘层由防焊漆所构成。\n5.一种用于光学装置的陶瓷基板结构，其特征在于，包括:\n一陶瓷基板，具有一第一表面、一第二表面及一注胶孔，该第一表面包含一凹杯成型区、一固晶区及多个第一金属电路，该第二表面包含多个第二金属电路，该注胶孔连通该第一表面及该第二表面，并具有位于该第一表面的一第一开口及位于该第二表面的一第二开口，且该第一开口设置在该凹杯成型区；\n一绝缘层，披覆在该第二表面上，且该绝缘层外露出该些第二金属电路及该第二开口；以及\n一承载胶杯，以射出成型方式结合在该凹杯成型区上，且该承载胶杯连接该些第一金属电路并包围有该固晶区。\n6.如权利要求5所述的用于光学装置的陶瓷基板结构，其特征在于，该陶瓷基板更包括多个金属挡环，该些金属挡环成型在该第一表面，并分别位在各该凹杯成型区的周缘。\n7.如权利要求6所述的用于光学装置的陶瓷基板结构，其特征在于，该些金属挡环为电镀铜所构成。\n8.如权利要求5所述的用于光学装置的陶瓷基板结构，其特征在于，该绝缘层由防焊漆所构成。\n9.一种用于光学装置的陶瓷基板工艺，其特征在于，包括:\na)提供一陶瓷基板，具有一第一表面、一第二表面及连通该第一表面及该第二表面的一注胶孔；\nb)对该陶瓷基板进行激光、溅镀、形成金属线路、电镀铜、剥膜蚀刻工艺；\nc)对该第一表面进行防焊工艺；\nd)对该第二表面进行防焊工艺；以及\ne)对该陶瓷基板进行射出成型工艺，以在该第一表面成型有一塑料承杯。\n10.如权利要求9所述的用于光学装置的陶瓷基板工艺，其特征在于，该第一表面包含一凹杯成型区、一固晶区及多个第一金属电路，该b)步骤中的电镀铜工艺包含在该凹杯成型区的周缘成型多个金属挡环。\n11.如权利要求9所述的用于光学装置的陶瓷基板工艺，其特征在于，该注胶孔具有位于该第一表面的一第一开口及位于该第二表面的一第二开口，该第二表面包含多个第二金属电路，该d)步骤中的防焊工艺外露出该些金属电路及该第二开口。\n''\n\n任务说明：\n\n任务1：分析目标专利的权利要求，并进行技术特征分解\n    1. 分解逻辑：\n        a. 逐一分解每个权利要求中的技术特征。\n        b. 若技术方案中的多处内容彼此紧密联系、相互依存，通过协同作用共同解决同一技术问题、产生独立技术效果，则这些内容应当被分解为一个技术特征。\n        c. 技术特征可以包括：产品部件、部件之间的连接关系、方法步骤、步骤之间的关系、组成成分和比例及其相互作用等。技术特征可以是构成权利要求技术方案的组成要素，也可以是要素之间的相互关系。\n        d. 技术特征通常包含对部件和结构的性能/参数/用途/功能/制备方法/效果/逻辑/协同关系等方面的描述，该描述应当与部件/结构合为一整体特征，不可割裂为多个特征，如''''随着压帽旋进卡紧器，卡紧器的卡爪收缩咬紧在套管外表面，从而实现了牺牲阳极与套管的连接''''，如''''固定中心架(1),用于支撑待机械处理''''。\n        e. 权利要求撰写是会使用开放式/封闭式的措词，如：包括、由xx组成，主要由xx构成，组成为 等表述，其对权利要求的保护范围具备实际意义，故不得遗漏表征。\n        f. 严格确保每个权利要求的主题名称作为独立一个技术特征，如：一种xx的设备/方法。从属权利要求的主题名称通常是使用''权利要求X所述''或类似用语。\n    2. 分解限定\n        a. 严格确保目标专利权利要求的所有内容都有所分解，防止遗漏。目标专利的技术特征必须严格遵循权利要求中的描述，技术特征总和即构成权利要求。权利要求的保护范围是由权利要求记载的全部内容作为一个整体限定的。\n        b. 清楚地识别每个权利要求中技术特征之间的关系，技术特征的拆解必须遵循原文描述，不得增加与原文内容无关的序号和表述，不可随意改写。\n        c. 忽略权利要求中的“其特征是…”或类似用语。\n        d. 务必注意层级关系，冒号前的内容要给予保留，如【以下制备过程：】或【所述xx设备包括：】或【包含以下配比：】或【原材料构成：】或【comprising the steps of:】等类似用语，必须单独列出一个单元格。\n        e. 必须保留权利要求技术特征后面的括号和括号中的内容，不可缺失【所述xx】、【该xx】、【其xx】等名词前的类似代词。\n        f. 若权利要求原文有较清晰的结构，如通过换行、分号等手段，应尽量遵循原文结构。\n\n\n任务2：生成技术特征分解\n    1. 输出仅包含技术特征分解的结果。\n    2. 每个权利要求单独分解需独立在一个key下。\n    3. 语言与目标权利要求保持一致（例如，目标权利要求为英语，则技术特征分解列的语言为英语）。\n\n注意事项：\n    1、只输出任务2的技术特征分解结果；\n    2、输出为Markdown格式，包含两列，ID及claim_feature，多个权利要求间使用其编号区分开，如：###claim_1  ###claim_2\n    例如：\n###claim_1\n| ID | claim_feature |\n|------|------|\n| 1 | xx |\n| 2 | xx |\n| 3 | xx |\n| 4 | xx |\n| 5 | xx |\n| 6 | xx |\n<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n</cn>'
+          description: 'User question
+
+            Note: No more than 500 character.'
+        stream:
+          type: boolean
+          example: true
+          description: 'When the interface returns results, whether to require streaming response:
+
+            true: Represents needed
+
+            false: Represents not needed
+
+            Default value is true.'
+      required:
+      - prompt
+    AI07ChatCcGptStream_AiPatGptUsage:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          format: int32
+          example: 20
+          description: The length of the user's question after tokenization.
+        total_tokens:
+          type: integer
+          format: int32
+          example: 1520
+          description: The total length of tokens consumed after the model invocation is complete.
+        output_tokens:
+          type: integer
+          format: int32
+          example: 1500
+          description: The length of the text generated by the model after tokenization.
+    AI50ChatPatGptStream_AiPatGptReference:
+      type: object
+      properties:
+        text:
+          type: string
+          example: text
+          description: Introduction to reference materials
+        type:
+          type: string
+          example: patent
+          description: Types of reference materials include patent (专利), paper (文献), and website (网页).
+        value:
+          type: string
+          example: 72fbb693-366a-4e50-bcd4-56d699f6c316
+          description: 'Reference material associated ID,
+
+            1) When type is ''patent'', the value is ''patent_id''
+
+            2) When type is ''paper'', the value is ''paper_id''
+
+            3) When type is ''website'', the value is the ''url-link'''
+    AI50ChatPatGptStream_AiPatGptResponse:
+      type: object
+      properties:
+        output:
+          $ref: '#/components/schemas/AI50ChatPatGptStream_AiPatGptOutPut'
+        references:
+          type: array
+          example: 'Please check the form: AiPatGptReference'
+          description: Reference materials for model output results.
+          items:
+            $ref: '#/components/schemas/AI50ChatPatGptStream_AiPatGptReference'
+    AI07ChatCcGptStream_AiCcGptResponse:
+      type: object
+      properties:
+        output:
+          $ref: '#/components/schemas/AI07ChatCcGptStream_AiPatGptOutPut'
+    AI50ChatPatGptStream_AiPatGptUsage:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          format: int32
+          example: 20
+          description: The length of the user's question after tokenization.
+        total_tokens:
+          type: integer
+          format: int32
+          example: 1520
+          description: The total length of tokens consumed after the model invocation is complete.
+        output_tokens:
+          type: integer
+          format: int32
+          example: 1500
+          description: The length of the text generated by the model after tokenization.
+    AI20ChatPharmGptStreamResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI20ChatPharmGptStream_AiPharmGptResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI20ChatPharmGptStream_RefdocInfo:
+      type: object
+      properties:
+        link:
+          type: string
+          example: https://synapse.patsnap.com/drug/b7de1abb409c406788910307008b91ca
+          description: Hyperlink
+        text:
+          type: string
+          example: <cn>融术,手术历时1小时,取得成功。术后,患者发作性心悸的症状得以缓解。球囊冷冻消融,是通过导管传递液态氮氧化物至末端球囊,将液态氮氧化物转化为气态,使周围组织遇冷,从而达到消融效果。这部分气体会从回收真空腔返回。球囊冷冻消融通过组织遇冷导致细胞内形成晶体,使细胞膜破坏,细胞内的代谢及电活动不能正常进行。另外,通过对微血管的破环使局部血流灌注减少,同样可以使细胞死亡,发挥肺静脉隔离的作用,从而根治阵发性心房颤动。房颤的冷冻消融术相对于射频消融术来说,有其独特的优势所在:1) 可操作性较强,不需要复杂的三维建模和逐点消融,大大节省了手术时间。2) 疗效确切,成功率高,单次手术成功率可达到80-90%以上。3) 并发症少,尤其是食管瘘,心包填塞等并发症,较射频消融术大大降低,安全性高。4)</cn><us>Nedosiran</us>
+          description: Related text
+        type:
+          type: string
+          example: synapse
+          description: Text type
+        index:
+          type: integer
+          format: int32
+          example: 2
+          description: Corresponding index number, indicating the sequence number of the GPT-generated text for that reference
+        doc_id:
+          type: string
+          example: b7de1abb409c406788910307008b91ca
+          description: Citation ID
+        doc_type:
+          type: string
+          example: drug_dev_status
+          description: Literature type
+        post_date:
+          type: integer
+          format: int32
+          example: 20200522
+          description: Publication date of the literature
+        text_summary:
+          type: string
+          example: <cn>秦皇岛市第一医院心血管内科二病区成功完成我市首例房颤冷冻消融术</cn><us></us>
+          description: Summary of the related text
+    AI50ChatPatGptStream_AiPatGptOutPut:
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/AI50ChatPatGptStream_AiPatGptUsage'
+        status:
+          type: string
+          example: finished
+          description: 'Model Return Status
+
+            Note:
+
+            When status = "running", the system is outputting via SSE,
+
+            When status = "finished", the request has ended,
+
+            When status = "length", the generated content exceeds the model''s maximum length.'
+        content:
+          type: string
+          example: 根据公开号为CN109213437A的
+          description: Conversation result
+    AI20ChatPharmGptStream_AiPharmGptOutPut:
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/AI20ChatPharmGptStream_AiPatGptUsage'
+        status:
+          type: string
+          example: finished
+          description: 'Model Return Status
+
+            Note:
+
+            When status = "running", the system is outputting via SSE,
+
+            When status = "finished", the request has ended,
+
+            When status = "length", the generated content exceeds the model''s maximum length.'
+        content:
+          type: string
+          example: '<cn>冷冻消融球囊是一种用于医疗治疗的设备，主要应用于心脏手术中的消融程序，尤其是心律失常如心房颤动的治疗。这种设备通常包含一个可膨胀的球囊，球囊内部可以流通一种特殊的冷却介质，通过热传导的方式将低温传递给目标组织，从而实现组织的冷冻消融。\n冷冻消融球囊的技术和设计在不断进步，以下是一些相关的专利和文献，展示了不同方面的创新和改进：\n\n球囊材料和结构的改进：\n[3] 描述了一种用于血管内导管系统的冷冻球囊，由特定比例的聚氨酯和聚酰胺嵌段共聚物形成。这种材料配比使得球囊在较低压力下能实现较大的尺寸调节性，同时保持良好的机械性能。\n球囊尺寸和压力调节：\n[4] 提供了一种球囊尺寸可调的冷冻消融系统及方法，通过控制部件中的充气管路和球囊流量压力控制管路，实现对球囊尺寸和压力的精确调节，从而提高治疗的安全性和有效性。\n多叶球囊设计：\n[5] 揭示了一种用于冷冻消融的多叶球囊设计。这种设计包括多个独立的球囊瓣叶，可以通过独立的流体输送管腔进行膨胀，适用于更复杂的组织结构消融，如心脏的复杂形状。\n温度和压力控制：\n[7] 介绍了一种冷冻消融仪球囊内压力动态平衡系统，通过控制单元、数据采集单元和压力调节单元实现对球囊内压力的实时调节，确保消融过程中的温度和压力在理想的范围内。\n无创定位技术：\n[6] 公开了一种心房颤动消融冷冻球囊无创定位装置，通过电极阵列进行球囊定位，避免了使用有害射线，提高了手术的安全性和定位的准确性。\n接触压力评估：\n[8] 描述了一种评估冷冻球囊消融导管接触压力的方法。通过在消融过程中记录和比较球囊的压力测量值与预定压力阈值，确保球囊与目标组织的有效接触，从而提高消融效果。\n这些创新和改进使得冷冻消融球囊技术更加精细和安全，为患者提供了更好的治疗效果。</cn><us>siRNA drugs, or small interfering RNA drugs, are a class of medications that use RNA interference (RNAi) to silence specific genes. This silencing can prevent the production of disease-causing proteins or reduce their levels. The indications for siRNA drugs are diverse and have been developed for various diseases and conditions. Here are some examples of indications for siRNA drugs based on the information provided:\n\n1. **Primary Hyperoxaluria Type 1**: Drugs like Nedosiran and Lumasiran sodium are indicated for this rare genetic disorder characterized by the excessive production of a substance called oxalate, leading to kidney damage and other issues.\n\n2. **Thromboembolism and Kidney Failure, Chronic**: SR-059 is indicated for conditions related to blood clotting and chronic kidney failure.\n\n3. **Amyloidosis, Hereditary, Transthyretin-Related**: Vutrisiran Sodium and Patisiran sodium are used to treat a type of hereditary amyloidosis caused by transthyretin (TTR) protein aggregation.\n\n4. **Hyperlipoproteinemia Type II and Atherosclerosis**: Inclisiran sodium is indicated for managing high levels of certain types of cholesterol and atherosclerosis, a condition characterized by the buildup of fats, cholesterol, and other substances in and on the artery walls.\n\n5. **Atherosclerosis**: Several other drugs like Lepodisiran sodium, Olpasiran, Zerlasiran, and Kylo-11 are also indicated for atherosclerosis, which involves the narrowing or blockage of coronary arteries due to plaque buildup.\n\n6. **Hypertriglyceridemia and Dyslipidemias**: Plozasiran and BW-00112 are indicated for conditions related to high levels of triglycerides and abnormal lipid levels in the blood.\n\n7. **Dyslipidemias**: Several drugs such as Zodasiran, VSA-003, RP-910, and others are indicated for managing dyslipidemias, which involve abnormal levels of lipids (e.g., cholesterol, triglycerides) in the blood.\n\n8. **Hyperlipidemia, Familial Combined and Primary hypercholesterolemia**: SYH2053 and YKYY-015 are indicated for these conditions related to high levels of lipids in the blood.\n\n9. **Metabolic Diseases and Hypercholesterolemia**: JS401 is indicated for metabolic diseases and high cholesterol levels.\n\n10. **Hyperlipidemias**: RBD-5044 is indicated for managing high levels of lipids in the blood.\n\n11. **Diabetes Mellitus, Type 2**: ALN-KHK and ARO-INHBE are indicated for type 2 diabetes, a chronic condition characterized by high blood sugar levels.\n\n12. **Hyperlipoproteinemias**: Solbinsiran Sodium is indicated for this condition, which involves high levels of lipids in the blood.\n\nThese indications reflect the broad application of siRNA technology in targeting specific pathways involved in various diseases, offering a promising approach to disease treatment by directly silencing the genes responsible for disease-causing proteins.</us>'
+          description: Conversation result
+        references:
+          type: array
+          example: 'Please check the form: RefdocInfo'
+          description: 'Cited literature
+
+            Note: Only when status = "finished" will the request end and return the cited literature content, that is ref_doc,'
+          items:
+            $ref: '#/components/schemas/AI20ChatPharmGptStream_RefdocInfo'
+        session_id:
+          type: string
+          example: ebc4a867-9a75-4611-99b8-32e44706226e
+          description: Session ID, which is a unique identifier for a single or multiple rounds of dialogue
+    AI07ChatCcGptStream_AiPatGptOutPut:
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/AI07ChatCcGptStream_AiPatGptUsage'
+        status:
+          type: string
+          example: stop
+          description: 'Model Return Status
+
+            Note:
+
+            When status = "running", the system is outputting via SSE,
+
+            When status = "finished", the request has ended,
+
+            When status = "length", the generated content exceeds the model''s maximum length.'
+        content:
+          type: string
+          example: Conversation result
+          description: Conversation result
+    AI50ChatPatGptStreamRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          example: <cn>公开号为CN109213437A的专利，主要的发明点是什么？</cn><us>What is the technology method of the patent with publication number CN109213437A?</us>
+          description: 'User question
+
+            Note: No more than 30000 character.'
+        stream:
+          type: boolean
+          example: true
+          description: 'When the interface returns results, whether to require streaming response:
+
+            true: Represents needed
+
+            false: Represents not needed
+
+            Default value is true.'
+      required:
+      - query
+    AI20ChatPharmGptStream_AiPatGptUsage:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          format: int32
+          example: 23
+          description: The length of the user's question after tokenization.
+        total_tokens:
+          type: integer
+          format: int32
+          example: 320
+          description: The total length of tokens consumed after the model invocation is complete.
+        output_tokens:
+          type: integer
+          format: int32
+          example: 297
+          description: The length of the text generated by the model after tokenization.
+    AI07ChatCcGptStreamResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI07ChatCcGptStream_AiCcGptResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI20ChatPharmGptStreamRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          example: <cn>冷冻消融球囊</cn><us>What are the indications for siRNA drugs?</us>
+          description: 'User question
+
+            Note: No more than 16000 character.'
+        session_id:
+          type: string
+          example: 72fbb693-366a-4e50-bcd4-56d699f6c316
+          description: 'Session ID is a unique identifier used to identify a single conversation or a multi-turn dialogue.
+
+
+            Note: When multiple rounds of dialogue are required, this field is a mandatory parameter. The session_id from the previous round of dialogue and the query for the second round must be included as input parameters.'
+      required:
+      - query
+    AI50ChatPatGptStreamResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI50ChatPatGptStream_AiPatGptResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

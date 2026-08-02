@@ -1,0 +1,348 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Chemical SAR Extract API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Chemical SAR Extract
+  description: Chemical SAR Extract APIs.
+paths:
+  /eurekals/open/sar/file/extract:
+    post:
+      operationId: fileExtract
+      summary: Submit SAR Extraction Task
+      description: Supports patent PN number or PDF file upload. The system will automatically download and create a SAR extraction task
+      tags:
+      - Chemical SAR Extract
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful submit sar extraction task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileExtractResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/eurekals/open/sar/file/extract
+      parameters:
+      - name: language
+        in: query
+        required: true
+        description: Language, CN or EN
+        schema:
+          type: string
+          example: EN
+          description: Language, CN or EN
+      - name: pn
+        in: query
+        required: false
+        description: Patent PN number
+        schema:
+          type: string
+          example: US10392366B2
+          description: Patent PN number
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileExtractRequest'
+  /eurekals/open/sar/file/detail:
+    post:
+      operationId: fileDetail
+      summary: Get SAR File Detail
+      description: Query the status and result of a SAR extraction task. Returns details after all files are parsed
+      tags:
+      - Chemical SAR Extract
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get sar file detail response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileDetailResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/eurekals/open/sar/file/detail
+      requestBody:
+        required: true
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/FileDetailRequest'
+components:
+  schemas:
+    FileExtractResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileExtract_SarExtractBatchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    FileDetail_SarStructure:
+      type: object
+      properties:
+        mol:
+          type: string
+          example: "CC(=O)Oc1ccccc1C(=O)O\n  MJ201900                      \n\n  7  7  0  0  0  0  0  0  0  0999 V2000"
+          description: MOL format
+        smiles:
+          type: string
+          example: CC(=O)Oc1ccccc1C(=O)O
+          description: SMILES expression
+        inchy_key:
+          type: string
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: InChI Key
+    FileDetail_OpenFileDetailResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          example:
+          - fileId: abc123
+            status: SUCCESS
+            fileName: patent.pdf
+          description: File detail list
+          items:
+            $ref: '#/components/schemas/FileDetail_FileInfo'
+        status:
+          type: string
+          example: PROCESSING
+          description: 'Overall task status: PENDING / PROCESSING / SUCCESS / FAILED / NOT_FOUND'
+    FileExtract_SarExtractBatchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: PENDING
+          description: 'Task status: PENDING (processing) / FAILED (failed)'
+        task_id:
+          type: string
+          example: abc123xyz
+          description: Task ID , used to poll the extraction status
+    FileDetail_SarDosingRegimen:
+      type: object
+      properties:
+        route:
+          type: string
+          example: Oral
+          description: Route of administration
+        dosage:
+          type: string
+          example: 10 mg/kg
+          description: Dosage
+        duration:
+          type: string
+          example: 7 days
+          description: Duration
+        frequency:
+          type: string
+          example: Once daily
+          description: Frequency
+    FileDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileDetail_OpenFileDetailResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    FileDetail_BasicTargetName:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: T001
+          description: Target ID
+        display_name_cn:
+          type: string
+          example: 表皮生长因子受体
+          description: Display name (CN)
+        display_name_en:
+          type: string
+          example: EGFR
+          description: Display name (EN)
+    FileDetailRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: abc123xyz
+          description: Task ID returned by the /file/extract API
+      required:
+      - task_id
+    FileDetail_FileInfo:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - unit: nM
+            value: '10'
+            resultId: result_001
+            indicator: IC50
+          description: SAR extraction result list (only returned when status=SUCCESS)
+          items:
+            $ref: '#/components/schemas/FileDetail_ResultItem'
+        total:
+          type: integer
+          format: int32
+          example: 5
+          description: Total result count (only returned when status=SUCCESS)
+        status:
+          type: string
+          example: SUCCESS
+          description: 'File status: PENDING / PROCESSING / SUCCESS / FAILED'
+        file_id:
+          type: string
+          example: abc123xyz
+          description: File ID
+        file_name:
+          type: string
+          example: patent.pdf
+          description: File name
+    FileExtractRequest:
+      type: object
+      properties:
+        file:
+          type: file
+          example: document.pdf
+          description: PDF file to upload
+    FileDetail_ResultItem:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: nM
+          description: Unit
+        match:
+          type: boolean
+          example: true
+          description: Structure match
+        value:
+          type: string
+          example: 10
+          description: Value
+        source:
+          type: object
+          example:
+            x: 100
+            y: 200
+            page: 1
+            width: 300
+            height: 50
+          description: Source bbox info
+        target:
+          type: array
+          example:
+          - EGFR
+          - HER2
+          description: Standardized target
+        indicator:
+          type: string
+          example: IC50
+          description: Indicator
+        result_id:
+          type: string
+          example: result_123456
+          description: Result ID
+        structure:
+          $ref: '#/components/schemas/FileDetail_SarStructure'
+        other_name:
+          type: string
+          example: Compound A
+          description: Other name
+        value_source:
+          type: string
+          example: Literature
+          description: Value source
+        dosing_regimen:
+          $ref: '#/components/schemas/FileDetail_SarDosingRegimen'
+        substance_code:
+          type: object
+          example:
+            code: C001
+            name: Compound A
+          description: Substance code
+        protein_subtype:
+          type: string
+          example: EGFR-T790M
+          description: Protein subtype
+        experimental_method:
+          type: string
+          example: MTT assay
+          description: Experimental method
+        experimental_target:
+          type: string
+          example: EGFR
+          description: Experimental target
+        standardized_target:
+          type: array
+          example:
+          - targetId: T001
+            displayNameCn: 表皮生长因子受体
+            displayNameEn: EGFR
+          description: Standardized target
+          items:
+            $ref: '#/components/schemas/FileDetail_BasicTargetName'
+        experimental_purpose:
+          type: string
+          example: Cytotoxicity
+          description: Experimental purpose
+        experimental_subject:
+          type: string
+          example: Cell line
+          description: Experimental subject
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

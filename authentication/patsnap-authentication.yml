@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/patsnap-openapi-original.json
+docs: https://open.patsnap.com/devportal/guides/authentication
+summary:
+  types:
+  - http
+  scheme: bearer
+  notes: >-
+    Patsnap Open Platform (Eureka) uses API-Key authentication. Every request must carry a
+    valid API key (keys are prefixed `sk-`). The key is passed as an HTTP bearer token
+    (`Authorization: Bearer YOUR_API_KEY`, recommended) or, less securely, as an `apikey`
+    query parameter. There is no OAuth token endpoint, client_id/client_secret, or refresh
+    flow. The same key model authenticates the hosted MCP servers.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: 'Bearer sk-...'
+  alt_query_param: apikey
+  sources:
+  - openapi/patsnap-openapi-original.json

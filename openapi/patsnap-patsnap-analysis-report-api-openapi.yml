@@ -1,0 +1,1032 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Patsnap Analysis Report API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Patsnap Analysis Report
+  description: Patsnap Analysis Report APIs.
+paths:
+  /innovation/company-report/task/create-no-logo:
+    post:
+      operationId: r001TaskCreateNoLogo
+      summary: R001 Generate Enterprise Report Task (No logo version)
+      description: According to the enterprise name or unified social credit code, create the enterprise innovation capability report(No Logo), and obtain the report download job ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r001 generate enterprise report task (no logo version) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R001TaskCreateNoLogoResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company-report/task/create-no-logo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R001TaskCreateNoLogoRequest'
+  /innovation/company-report/task/create:
+    post:
+      operationId: r001TaskCreate
+      summary: R001 Generate Enterprise Report Task(Patsnap Logo)
+      description: According to the enterprise name or unified social credit code, create the enterprise innovation capability report(Patsnap Logo), and obtain the report download ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r001 generate enterprise report task(patsnap logo) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R001TaskCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company-report/task/create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R001TaskCreateRequest'
+  /patent-valuation-data/patent-report/task/create:
+    post:
+      operationId: r002TaskCreate
+      summary: R002 Generate patent value report task(Patsnap Logo)
+      description: According to the patent number or patent ID, create a patent value report (Patsnap Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r002 generate patent value report task(patsnap logo) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R002TaskCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/patent-report/task/create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R002TaskCreateRequest'
+  /patent-valuation-data/patent-report/job_id/status:
+    get:
+      operationId: r002JobIdStatus
+      summary: R002 Query and export patent value report
+      description: This interface provides patent value report downloading (query and export patent value reports according to the job_id returned in the [R002]Generate patent value report task).
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r002 query and export patent value report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R002JobIdStatusResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/patent-report/job_id/status
+      parameters:
+      - name: job_id
+        in: query
+        required: false
+        description: job_id
+        schema:
+          type: string
+          example: '1579434053399035904'
+          description: job_id
+  /innovation/company-report/job_id/status:
+    get:
+      operationId: r001JobIdStatus
+      summary: R001 Query and export enterprise report
+      description: This interface provides enterprise report downloading (query and export reports according to the job_id returned in the Generate Enterprise Report Task)
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r001 query and export enterprise report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R001JobIdStatusResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company-report/job_id/status
+      parameters:
+      - name: job_id
+        in: query
+        required: false
+        description: job_id
+        schema:
+          type: integer
+          format: int64
+          example: '1.579434053399036E+18'
+          description: job_id
+  /patent-valuation-data/pre_patent-evaluation-create:
+    post:
+      operationId: r003PatentValuationDataPrePatentEvaluationCreate
+      summary: R003 Create Pre-patent Evaluation Report Task
+      description: Input the technical description text of the patent to be applied for (more than 200 words recommended), create the task of pre-patent evaluation report generation, and return the job id of the report export; The report contains scores and detailed index results for the three dimensions of technological innovation, patentability and translation prospect of the technology solution.
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r003 create pre-patent evaluation report task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/pre_patent-evaluation-create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreateRequest'
+  /patent-valuation-data/pre_patent-evaluation-export:
+    get:
+      operationId: r003PatentValuationDataPrePatentEvaluationExport
+      summary: R003 Export Pre-patent Evaluation Report
+      description: Enter the patent evaluation content to obtain the patent evaluation report job ID
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r003 export pre-patent evaluation report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationExportResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/pre_patent-evaluation-export
+      parameters:
+      - name: job_id
+        in: query
+        required: false
+        description: job_id
+        schema:
+          type: string
+          example: 297e0d32-6c07-48c5-8de5-44efe052bfd1
+          description: job_id
+  /search/patent/idea-validation/job_id/status:
+    post:
+      operationId: r004-3JobIdStatus
+      summary: R004-3 Idea Validation - Export Report
+      description: This interface provides technical idea validation report downloading (query and export technical idea validation report according to the job_id returned in the [R004-1]Idea Validation - Create Report).
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r004-3 idea validation - export report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R004-3JobIdStatusResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/idea-validation/job_id/status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R004-3JobIdStatusRequest'
+  /search/patent/idea-validation/task/create:
+    post:
+      operationId: r004-1TaskCreate
+      summary: R004-1 Idea Validation - Create Report
+      description: "According to the technical approach or technical effect, create a technical idea validation report and obtain the report download job ID.\r\nThe technical idea validation report contains troubleshooting technical essentials, check scope, list of similar patents, comparison file(technical problems, technical approach, technical effect, comparison of similar features, core invention points, enhancement proposals), analysis results, technical monitoring suggestions."
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r004-1 idea validation - create report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R004-1TaskCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/idea-validation/task/create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R004-1TaskCreateRequest'
+  /search/patent/idea-validation/similar-patent-comparison:
+    post:
+      operationId: r004-2IdeaValidationSimilarPatentComparison
+      summary: R004-2 Idea Validation - Similar Patent
+      description: According to the job_id returned in the [R004-1], a list of similar patents can be obtained and compared through semantic search. A maximum of 20 similar patents will be returned, sorted by default from high to low similarity.
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r004-2 idea validation - similar patent response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparisonResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/patent/idea-validation/similar-patent-comparison
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparisonRequest'
+  /patent-valuation-data/patent-report/task/create-no-logo:
+    post:
+      operationId: r002TaskCreateNoLogo
+      summary: R002 Generate patent value report task(No logo)
+      description: According to the patent number or patent ID, create a patent value report (No Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>
+      tags:
+      - Patsnap Analysis Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful r002 generate patent value report task(no logo) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/R002TaskCreateNoLogoResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/patent-report/task/create-no-logo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/R002TaskCreateNoLogoRequest'
+components:
+  schemas:
+    R001JobIdStatus_CompanyReportExportResponse:
+      type: object
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: 1579434053399036000
+          description: export job id
+        queue_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of jobs in the queue
+        job_status:
+          type: integer
+          format: int32
+          example: 1
+          description: Export status (0:To be exported 1:Exporting. 2:Exporting successfully. 3:Report generation fails.)
+        download_url:
+          type: string
+          example: https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx
+          description: File download link (return if export status is successful)
+        abnormal_cause:
+          type: string
+          example: 由于服务器异常，正在修复中
+          description: Causes of Exceptions
+    R002JobIdStatus_PatentValueReportExportResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 1579434053399036000
+          description: export job id
+        queue_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of jobs in the queue
+        job_status:
+          type: integer
+          format: int32
+          example: 1
+          description: Export status (0:To be exported 1:Exporting. 2:Exporting successfully. 3:Report generation fails.)
+        download_url:
+          type: string
+          example: https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx
+          description: File download link (return if export status is successful)
+        abnormal_cause:
+          type: string
+          example: 由于服务器异常，正在修复中
+          description: Causes of Exceptions
+    R001TaskCreate_CompanyReportCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 1579434053399036000
+          description: export job id
+    R001TaskCreateNoLogoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R001TaskCreateNoLogo_CompanyReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-3JobIdStatusRequest:
+      type: object
+      properties:
+        file_format:
+          type: string
+          example: ppt
+          description: 'File format (supports ppt, word), default: ppt'
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: Query job_id, download technical idea validation report, single query.
+      required:
+      - job_id
+    R004-2IdeaValidationSimilarPatentComparisonRequest:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: Query job_id, download technical idea validation report, single query.
+      required:
+      - job_id
+    R001TaskCreateRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+        report_type:
+          type: string
+          example: word
+          description: Query the type of report returned by the enterprise, either word or pdf
+      required:
+      - report_type
+    R003PatentValuationDataPrePatentEvaluationExport_PatentPdfDownloadResponse:
+      type: object
+      properties:
+        report_url:
+          type: string
+          example: https://patsnap-imagediscovery.cdn.zhihuiya.com/uploadsearch/2024-01-05/1704422647215-19eb5c92a7b54713aa2a7f3184ab8301-application.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240105T024441Z&X-Amz-SignedHeaders=host&X-Amz-Expires=10800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240105%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=90bbe0c3954d6bc138916416a1cd0942c0d374dcbbe038621201ebce56a63747
+          description: Report download url
+        report_status:
+          type: string
+          example: SUCCESS
+          description: 'Report status：
+
+            SUCCESS:Exporting task succeeded
+
+            FAIL:The export task failed. Create the export task again
+
+            PENDING:The export task is in progress. Please try to obtain the download address later'
+    R004-3JobIdStatus_ReportJobStatusResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: export technical idea validation report task id
+        job_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export status (1: exporting, 2: export successful, 3: technical idea validation report generation exception).'
+        download_url:
+          type: string
+          example: https://stage-openapi-import.cdn.zhihuiya.com/disclosure_ppt/tech_idea_20241106164047.pptx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDRksnVzITRBhpjUAg2B6oQr56vb8VFtPj%26q-sign-time%3D1730882451%3B1731487251%26q-key-time%3D1730882451%3B1731487251%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D255706ccef17490c2f89da9090e1db796513dbe0
+          description: Technical idea validation report download link (returned when export status is successful).
+    R004-2IdeaValidationSimilarPatentComparisonResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R003PatentValuationDataPrePatentEvaluationExportResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationExport_PatentPdfDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-3JobIdStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R004-3JobIdStatus_ReportJobStatusResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-1TaskCreate_ReportJobCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: export technical idea validation report task id
+    R001TaskCreateNoLogo_CompanyReportCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 1579434053399036000
+          description: export job id
+    R002JobIdStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R002JobIdStatus_PatentValueReportExportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: b4bdae6b4a65432d91f25b5c52bdfd80
+          description: Job ID
+    R003PatentValuationDataPrePatentEvaluationCreate_BasicInfo:
+      type: object
+      properties:
+        key:
+          type: string
+          example: 检索报告编号
+          description: Index
+        value:
+          type: string
+          example: Report-20240527-1
+          description: value
+      required:
+      - key
+      - value
+    R002TaskCreateNoLogoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R002TaskCreateNoLogo_PatentValueReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R002TaskCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R002TaskCreate_PatentValueReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R002TaskCreateRequest:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
+          description: Query patent ID, single query
+        patent_number:
+          type: string
+          example: CN108977442B
+          description: Query patent publication number, single query
+        report_type:
+          type: string
+          example: word
+          description: Search for the type of patent value report, word or pdf
+      required:
+      - report_type
+    R001TaskCreateNoLogoRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+        report_type:
+          type: string
+          example: word
+          description: Query the type of report returned by the enterprise, either word or pdf
+      required:
+      - report_type
+    R002TaskCreateNoLogo_PatentValueReportCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 1579434053399036000
+          description: export job id
+    R001TaskCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R001TaskCreate_CompanyReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-2IdeaValidationSimilarPatentComparison_SimilarPatent:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN108001293B
+          description: Patent publication number
+        means:
+          type: array
+          example:
+          - sn: 39
+            passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+            section: description
+            sentence:
+            - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+          description: List of similar technical means
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
+        score:
+          type: number
+          format: float
+          example: 0.94976854
+          description: Similarity score
+        efficacy:
+          type: array
+          example:
+          - sn: 43
+            passage: 本发明所述的有益效果:本发明可以实现车辆的常规行驶、四轮转向、斜行、驻车行驶以及原地中心转向,转向模式丰富,实用性强
+            section: description
+            sentence:
+            - 这是常规车辆所无法实现的;通过车辆的原地中心转向和大转角四轮转向,
+            - 可以实现车辆更为灵活的变道超车、
+          description: List of similar technical efficacy
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
+        patent_id:
+          type: string
+          example: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: Patent ID
+    R003PatentValuationDataPrePatentEvaluationCreateRequest:
+      type: object
+      properties:
+        text:
+          type: string
+          example: The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.
+          description: Technical description text (more than 200 words recommended)
+        limit:
+          type: integer
+          format: int32
+          example: 50
+          description: Number of similar patents used for model calculation, 0< limit≤100, default is 50
+        tech_maturity_index:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Patent technology maturity:
+
+            1: Report level (the basic principle of the technology has been observed and reported, which is in the research stage of paper theory)
+
+            2: Solution level (propose problems and corresponding solutions based on the discovered principles)
+
+            3: Functional level (proof of concept completed through theoretical and experimental analysis of key functions or features)
+
+            4: Simulation level (completed the verification of components and experimental samples in the laboratory environment, and carried out the integration of basic components)
+
+            5: Initial sample level (completed the verification of components and samples under simulated application conditions)
+
+            6: Positive sample level (completed the verification of components and experimental samples under approximate application conditions)
+
+            7: Environment level (completed the demonstration of the technology in the real application environment)
+
+            8: Product level (completed the product finalization, with the ability of large-scale production)
+
+            9: System level (completed the validation of the technology''s products and other related product combinations)
+
+            10: Industrial level (the technology develops into an industry with mature supporting processes, components and products to implement the technology)'
+        report_name:
+          type: string
+          example: XX申请前评估报告
+          description: Report name
+        report_info:
+          type: array
+          example:
+          - key: 检索报告编号
+            value: Report-20240527-1
+          - key: 发起人
+            value: 张三
+          - key: 发起日
+            value: '20240527'
+          - key: 所属部门
+            value: 研发部
+          description: Report basic information (for report presentation)
+          items:
+            $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreate_BasicInfo'
+      required:
+      - text
+      - tech_maturity_index
+      - report_name
+    R004-2IdeaValidationSimilarPatentComparison_Docs:
+      type: object
+      properties:
+        similar_patent:
+          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_SimilarPatent'
+    R004-1TaskCreateRequest:
+      type: object
+      properties:
+        country:
+          type: array
+          example:
+          - CN
+          - US
+          - KR
+          description: Select the authority of the patent, the default query all databases, eg CN, US, KR.
+        legal_status:
+          type: array
+          example:
+          - 失效
+          - 有效
+          - 审中
+          - PCT指定期满
+          - PCT指定期内
+          - 未确认
+          description: Simple legal status, default select all, enumerated as follows:Inactive, Active, Pending, PCTdesignated stage, PCTdesignated stage expired, Undetermined
+        limit:
+          type: integer
+          format: int32
+          example: 5
+          description: Based on the novelty of the current technical solution, return up to 20 potentially similar patents to generate a search report, with the top 5 patents sorted by similarity selected by default.
+        tech_effect:
+          type: string
+          example: 实现了车辆的原地掉头
+          description: technical effects
+        tech_means:
+          type: string
+          example: 原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。
+          description: technical means
+      required:
+      - tech_means
+    R002TaskCreate_PatentValueReportCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 1579434053399036000
+          description: export job id
+    R004-2IdeaValidationSimilarPatentComparison_Label:
+      type: object
+      properties:
+        sn:
+          type: integer
+          format: int32
+          example: 39
+          description: 'Paragraph number of the relevant section. Note: ''0'' represents the paragraph number that is not marked.'
+        passage:
+          type: string
+          example: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器,并所述左转向电机控制器根据接收到的原地转向指令控制所述左前轮转向以及所述右转向电机控制器根据接收到的原地转向控制指令控制所述右前轮转向,且所述左前轮和所述右前轮的转动方向相反且使得所述左前轮和所述右前轮之间形成预设角度的'内八字',由所述转动电机控制向所述车辆控制器发送转向完成指令。
+          description: Similar passage content
+        section:
+          type: string
+          example: description
+          description: 'The source of the relevant section, including description and claim. Note: ''description'' refers to the relevant section sourced from the descriptions, ''claim'' refers to the relevant section sourced from the claims.'
+        sentence:
+          type: array
+          example:
+          - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器,并所述左转向电机控制器根据接收到的原地转向指令控制所述左前轮转向以及所述右转向电机控制器根据接收到的原地转向控制指令控制所述右前轮转向,且所述左前轮和所述右前轮的转动方向相反且使得所述左前轮和所述右前轮之间形成预设角度的'内八字',由所述转动电机控制向所述车辆控制器发送转向完成指令。
+          description: List of similar sentences
+    R002TaskCreateNoLogoRequest:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
+          description: Query patent ID, single query
+        patent_number:
+          type: string
+          example: CN108977442B
+          description: Query patent publication number, single query
+        report_type:
+          type: string
+          example: word
+          description: Search for the type of patent value report, word or pdf
+      required:
+      - report_type
+    R004-1TaskCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R004-1TaskCreate_ReportJobCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R003PatentValuationDataPrePatentEvaluationCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R001JobIdStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R001JobIdStatus_CompanyReportExportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse:
+      type: object
+      properties:
+        docs:
+          type: array
+          example:
+          - similar_patent:
+              pn: CN108001293B
+              means:
+              - sn: 39
+                passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+                section: description
+                sentence:
+                - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+              score: 0.94976854
+              efficacy: []
+              patent_id: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: List of similar patents
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Docs'
+        count:
+          type: integer
+          format: int32
+          example: 20
+          description: Return the total number of similar patents
+        job_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'status (1: running, 2: success, 3: failed).'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

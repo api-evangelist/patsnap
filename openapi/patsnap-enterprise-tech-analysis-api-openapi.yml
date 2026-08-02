@@ -1,0 +1,623 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Enterprise Tech Analysis API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Enterprise Tech Analysis
+  description: Enterprise Tech Analysis APIs.
+paths:
+  /company/industry-university-research:
+    post:
+      operationId: c114CompanyIndustryUniversityResearch
+      summary: C114 industry university research
+      description: This interface provides information on the number of industry-university-research cooperation instances for enterprises, the number of applicants for industry-university-research cooperation, and the patent counts of the top 10 industry-university-research cooperation applicants
+      tags:
+      - Enterprise Tech Analysis
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c114 industry university research response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C114CompanyIndustryUniversityResearchResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/industry-university-research
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C114CompanyIndustryUniversityResearchRequest'
+  /innovation/company/core_patent:
+    post:
+      operationId: c112CompanyCorePatent
+      summary: C112 Enterprise Core Patent Information
+      description: This interface provides the patent query of the enterprise's core patent (Top 10 patent value).
+      tags:
+      - Enterprise Tech Analysis
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c112 enterprise core patent information response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C112CompanyCorePatentResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company/core_patent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C112CompanyCorePatentRequest'
+  /company/industry-university-research-ipc:
+    post:
+      operationId: c115CompanyIndustryUniversityResearchIpc
+      summary: C115 industry university research R&D technology
+      description: This interface provides the top10 industry university research cooperation applicants of enterprises and the number of patents jointly developed by TOP10 IPC groups
+      tags:
+      - Enterprise Tech Analysis
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c115 industry university research r&d technology response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C115CompanyIndustryUniversityResearchIpcResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/industry-university-research-ipc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C115CompanyIndustryUniversityResearchIpcRequest'
+  /company/industry-university-research-region-distribution:
+    post:
+      operationId: c116CompanyIndustryUniversityResearchRegionDistribution
+      summary: C116 industry university research  region distribution
+      description: This interface provides enterprises with top10 industry university research cooperation applicants, as well as the number of patents jointly developed in top10 regions
+      tags:
+      - Enterprise Tech Analysis
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c116 industry university research  region distribution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C116CompanyIndustryUniversityResearchRegionDistributionResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/industry-university-research-region-distribution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C116CompanyIndustryUniversityResearchRegionDistributionRequest'
+components:
+  schemas:
+    C114CompanyIndustryUniversityResearch_IurDetailResponse:
+      type: object
+      properties:
+        iur_name:
+          type: string
+          example: 清华大学
+          description: Applicants for industry university research cooperation
+        iur_type:
+          type: string
+          example: 院校/研究所
+          description: Industry university research type
+        iur_name_count:
+          type: integer
+          format: int64
+          example: 625
+          description: The number of patent applications for industry university research cooperation
+    C112CompanyCorePatentRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: company name/
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: credit code
+        org_number:
+          type: string
+          example: 5513850T82
+          description: org_number
+    C114CompanyIndustryUniversityResearch_CompanyIndustryUniversityResponse:
+      type: object
+      properties:
+        iur_count:
+          type: integer
+          format: int64
+          example: 21367
+          description: Number of industry university research collaborations
+        iur_detail:
+          type: array
+          example: 'Please check the form: IurDetailResponse'
+          description: detail
+          items:
+            $ref: '#/components/schemas/C114CompanyIndustryUniversityResearch_IurDetailResponse'
+        org_number:
+          type: string
+          example: 69294823-X
+          description: organization number
+        credit_code:
+          type: string
+          example: 9131011269294823XQ
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 上海帆茂信息科技发展有限公司
+          description: company name
+        iur_app_count:
+          type: integer
+          format: int64
+          example: 587
+          description: Number of applicants for industry university research cooperation
+    C115CompanyIndustryUniversityResearchIpcRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C112CompanyCorePatent_PatentAbstract:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: language
+        text:
+          type: string
+          example: An augmented reality display system comprises a passable world model data comprises a set of map points corresponding to one or more objects of the real world. The augmented reality system also comprises......
+          description: text
+        data_format:
+          type: string
+          example: original
+          description: 'Original data: if there are several languages with original data, all will be returned'
+    C115CompanyIndustryUniversityResearchIpc_IpcDetail:
+      type: object
+      properties:
+        ipc_main_group:
+          type: string
+          example: H04N19
+          description: IPC main group
+        ipc_iur_name_count:
+          type: integer
+          format: int32
+          example: 147
+          description: The number of patent applications for industry university research cooperation
+    C114CompanyIndustryUniversityResearchRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C112CompanyCorePatentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C112CompanyCorePatent_CorePatentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C116CompanyIndustryUniversityResearchRegionDistribution_IurRegionDetail:
+      type: object
+      properties:
+        iur_name:
+          type: string
+          example: 清华大学
+          description: Applicants for industry university research cooperation
+        iur_type:
+          type: string
+          example: 院校/研究所
+          description: Industry university research type
+        region_detail:
+          type: array
+          example: 'Please check the form: RegionDetail'
+          description: The number of patent applications for industry university research cooperation
+          items:
+            $ref: '#/components/schemas/C116CompanyIndustryUniversityResearchRegionDistribution_RegionDetail'
+    C116CompanyIndustryUniversityResearchRegionDistribution_RegionDetail:
+      type: object
+      properties:
+        region:
+          type: string
+          example: CN
+          description: region
+        region_iur_name_count:
+          type: integer
+          format: int32
+          example: 147
+          description: The number of patent applications for industry university research cooperation
+    C112CompanyCorePatent_PatentReferenceResponse:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+          example: 20211221
+          description: 'dates: publication, applicaton, priority .etc<p>YYYYMMDD format</p>'
+        kind:
+          type: string
+          example: B2
+          description: kind code
+        year:
+          type: integer
+          format: int32
+          example: 2012
+          description: year
+        month:
+          type: integer
+          format: int32
+          example: 202112
+          description: year and month
+        country:
+          type: string
+          example: US
+          description: authority
+        doc_number:
+          type: string
+          example: '11205304'
+          description: doc number
+    C116CompanyIndustryUniversityResearchRegionDistributionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C116CompanyIndustryUniversityResearchRegionDistribution_CompanyIndustryUniversityRegionDistributionResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C116CompanyIndustryUniversityResearchRegionDistribution_CompanyIndustryUniversityRegionDistributionResponse:
+      type: object
+      properties:
+        iur_detail:
+          type: array
+          example: 'Please check the form: IurRegionDetail'
+          description: detail
+          items:
+            $ref: '#/components/schemas/C116CompanyIndustryUniversityResearchRegionDistribution_IurRegionDetail'
+        org_number:
+          type: string
+          example: 69294823-X
+          description: organization number
+        credit_code:
+          type: string
+          example: 9131011269294823XQ
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 上海帆茂信息科技发展有限公司
+          description: company name
+    C112CompanyCorePatent_PatentLegalStatus:
+      type: object
+      properties:
+        event_status:
+          type: array
+          example:
+          - Transfer
+          description: 'Event status:
+
+            <p>such as: Transfer,License,Pledge,Trust,Opposition,Re-examination,Customs,Litigation,Preservation,Invalid-procedure,Oral-procedure,Declassification,Double application</p>'
+        legal_status:
+          type: array
+          example:
+          - Examining
+          description: 'Legal status:<p>such as: Published,Examining,Granted,Double,Abandoned-Undetermined,Abandoned-Voluntarily,Abandoned-Deemed,Withdrawn-Undetermined,Withdrawn-Voluntarily,Withdrawn-Deemed,Rejected,Revoked,Expired,Non-Payment,Restoration,Ceased,P-Revoked,Discontinuation,PCT published,PCT entering(designated period),PCT entering(designated expiration),unentered</p>'
+        simple_legal_status:
+          type: array
+          example:
+          - Pending
+          description: 'Simple legal status:
+
+            <p>such as: Inactive,Active,Pending,Undetermined,PCT designated period,PCT designated expiration</p>'
+    C115CompanyIndustryUniversityResearchIpc_IurIpcDetail:
+      type: object
+      properties:
+        iur_name:
+          type: string
+          example: 清华大学
+          description: Applicants for industry university research cooperation
+        iur_type:
+          type: string
+          example: 院校/研究所
+          description: Industry university research type
+        ipc_detail:
+          type: array
+          example: 'Please check the form: IpcDetail'
+          description: The number of patent applications for industry university research cooperation
+          items:
+            $ref: '#/components/schemas/C115CompanyIndustryUniversityResearchIpc_IpcDetail'
+    C116CompanyIndustryUniversityResearchRegionDistributionRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C112CompanyCorePatent_CorePatentResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 582343213/58234321-3
+          description: organization code
+        core_patent:
+          type: array
+          example: 'Please check the form: CorePatentDetailResponse'
+          description: core patent
+          items:
+            $ref: '#/components/schemas/C112CompanyCorePatent_CorePatentDetailResponse'
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+    C112CompanyCorePatent_DatesOfPublicAvailability:
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          example: 2011
+          description: year
+        month:
+          type: integer
+          format: int32
+          example: 201101
+          description: year and month
+        printed_with_granted:
+          type: integer
+          format: int32
+          example: 20101022
+          description: Issue date
+    C115CompanyIndustryUniversityResearchIpcResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C115CompanyIndustryUniversityResearchIpc_CompanyIndustryUniversityIpcResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C112CompanyCorePatent_CorePatentDetailResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: 专利id
+          description: patent number
+        abstract:
+          type: array
+          example: PatentTitle
+          description: patent abstract
+          items:
+            $ref: '#/components/schemas/C112CompanyCorePatent_PatentAbstract'
+        patent_id:
+          type: string
+          example: 专利id
+          description: patent id
+        patent_type:
+          type: string
+          example: APPLICATION
+          description: patent type
+        patent_legal:
+          $ref: '#/components/schemas/C112CompanyCorePatent_PatentLegalStatus'
+        patent_value:
+          type: integer
+          format: int32
+          example: 43000
+          description: Patsnap patent valuation (USD)
+        patsnap_legal:
+          type: integer
+          format: int32
+          example: 71
+          description: Legal value
+        patsnap_market:
+          type: integer
+          format: int32
+          example: 18
+          description: Market value
+        invention_title:
+          type: array
+          example: 'Please check the form: PatentTitle'
+          description: invention title
+          items:
+            $ref: '#/components/schemas/C112CompanyCorePatent_PatentTitle'
+        patsnap_economy:
+          type: integer
+          format: int32
+          example: 23
+          description: Economic value
+        patsnap_strategic:
+          type: integer
+          format: int32
+          example: 71
+          description: Strategic value
+        patsnap_technology:
+          type: integer
+          format: int32
+          example: 28
+          description: Technology value
+        application_reference:
+          $ref: '#/components/schemas/C112CompanyCorePatent_PatentReferenceResponse'
+        publication_reference:
+          $ref: '#/components/schemas/C112CompanyCorePatent_PatentReferenceResponse'
+        dates_of_public_availability:
+          $ref: '#/components/schemas/C112CompanyCorePatent_DatesOfPublicAvailability'
+    C114CompanyIndustryUniversityResearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C114CompanyIndustryUniversityResearch_CompanyIndustryUniversityResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C112CompanyCorePatent_PatentTitle:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: language
+        text:
+          type: string
+          example: Systems and methods for rendering user interfaces for augmented or virtual reality
+          description: text
+        data_format:
+          type: string
+          example: original
+          description: 'Original data: if there are several languages with original data, all will be returned'
+    C115CompanyIndustryUniversityResearchIpc_CompanyIndustryUniversityIpcResponse:
+      type: object
+      properties:
+        iur_detail:
+          type: array
+          example: 'Please check the form: IurIpcDetail'
+          description: detail
+          items:
+            $ref: '#/components/schemas/C115CompanyIndustryUniversityResearchIpc_IurIpcDetail'
+        org_number:
+          type: string
+          example: 69294823-X
+          description: organization number
+        credit_code:
+          type: string
+          example: 9131011269294823XQ
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 上海帆茂信息科技发展有限公司
+          description: company name
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

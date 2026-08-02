@@ -1,0 +1,1570 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation TFFI Enterprise Evaluation (Level5) API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: TFFI Enterprise Evaluation (Level5)
+  description: TFFI Enterprise Evaluation (Level5) APIs.
+paths:
+  /innovation/estimate/company-index-warning:
+    post:
+      operationId: dp004EstimateCompanyIndexWarning
+      summary: DP004 scientific and technological company evaluation and indicators&risk warning
+      description: This interface provides the query of the evaluation model score , model indicator information and risk warning data of  innovation company
+      tags:
+      - TFFI Enterprise Evaluation (Level5)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful dp004 scientific and technological company evaluation and indicators&risk warning response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DP004EstimateCompanyIndexWarningResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/estimate/company-index-warning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DP004EstimateCompanyIndexWarningRequest'
+  /innovation/company_warning:
+    post:
+      operationId: dp003InnovationCompanyWarning
+      summary: DP003 scientific and technological company risk warning
+      description: This interface provides query of risk early warning data of scientific and technological innovation enterprises.
+      tags:
+      - TFFI Enterprise Evaluation (Level5)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful dp003 scientific and technological company risk warning response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DP003InnovationCompanyWarningResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company_warning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DP003InnovationCompanyWarningRequest'
+  /innovation/company_valuation_indicators:
+    post:
+      operationId: dp002InnovationCompanyValuationIndicators
+      summary: DP002 scientific and technological company indicators
+      description: This interface provides query on specific index data of the evaluation model of science and innovation enterprises.
+      tags:
+      - TFFI Enterprise Evaluation (Level5)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful dp002 scientific and technological company indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DP002InnovationCompanyValuationIndicatorsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company_valuation_indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DP002InnovationCompanyValuationIndicatorsRequest'
+  /innovation/company_valuation:
+    post:
+      operationId: dp001InnovationCompanyValuation
+      summary: DP001 scientific and technological company evaluation
+      description: This interface provides query on the comprehensive scoring information of the evaluation model of science and innovation enterprises.
+      tags:
+      - TFFI Enterprise Evaluation (Level5)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful dp001 scientific and technological company evaluation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DP001InnovationCompanyValuationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/company_valuation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DP001InnovationCompanyValuationRequest'
+  /innovation/estimate/company-index:
+    post:
+      operationId: dp005EstimateCompanyIndex
+      summary: DP005 scientific and technological company evaluation and indicators
+      description: This interface provides the query of the evaluation model score and model indicator information of  innovation company
+      tags:
+      - TFFI Enterprise Evaluation (Level5)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful dp005 scientific and technological company evaluation and indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DP005EstimateCompanyIndexResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/innovation/estimate/company-index
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DP005EstimateCompanyIndexRequest'
+components:
+  schemas:
+    DP003InnovationCompanyWarning_RiskIndicators:
+      type: object
+      properties:
+        pledge:
+          type: integer
+          format: int32
+          example: 1
+          description: 专利被质押数量
+        reexam:
+          type: integer
+          format: int32
+          example: 2
+          description: 专利被无效数量
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: 专利申请数量
+        rejected:
+          type: integer
+          format: int32
+          example: 5
+          description: 专利被驳回数量
+        transfer:
+          type: integer
+          format: int32
+          example: 3
+          description: 专利转让数量
+        active_invention_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: 有效的授权发明专利数量
+        litigation_defendant:
+          type: integer
+          format: int32
+          example: 192203821
+          description: 涉诉专利中被诉方的被诉讼专利数量
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 4
+          description: 授权的发明专利数量
+    DP004EstimateCompanyIndexWarningRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    DP004EstimateCompanyIndexWarning_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    DP003InnovationCompanyWarningResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DP003InnovationCompanyWarning_CompanyWarningResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    DP001InnovationCompanyValuation_CompanyValuationResponse:
+      type: object
+      properties:
+        seic:
+          type: array
+          example: 'Please check the form: Seic'
+          description: strategic emerging industry
+          items:
+            $ref: '#/components/schemas/DP001InnovationCompanyValuation_Seic'
+        label:
+          type: array
+          example: 'Please check the form: InnoLabel'
+          description: label
+          items:
+            $ref: '#/components/schemas/DP001InnovationCompanyValuation_InnoLabel'
+        score:
+          type: number
+          format: double
+          example: 80.20975
+          description: Scientific innovation score
+        publish:
+          type: array
+          example:
+          - A股
+          description: Public company label
+        bond_type:
+          type: string
+          example: 主板
+          description: Stock sector
+        org_number:
+          type: string
+          example: 192203821
+          description: Organization code
+        credit_code:
+          type: string
+          example: 914403001922038300
+          description: Unified social credit code
+        address_city:
+          type: string
+          example: 深圳市
+          description: City
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: Enterprise name
+        reg_location:
+          type: string
+          example: 深圳市龙岗区坂田华为总部办公楼
+          description: Registered Address
+        original_name:
+          type: array
+          example:
+          - 深圳市华为技术有限公司
+          - 华为技术有限公司
+          description: Used enterprise name
+        score_dimension:
+          $ref: '#/components/schemas/DP001InnovationCompanyValuation_ScoreDimension'
+        address_district:
+          type: string
+          example: 龙岗区
+          description: District
+        address_province:
+          type: string
+          example: 广东省
+          description: Province
+        company_org_type:
+          type: string
+          example: 有限责任公司（法人独资）
+          description: Enterprise type
+    DP005EstimateCompanyIndex_OriginalDetail:
+      type: object
+      properties:
+        rounds:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of financing rounds
+        publics:
+          type: array
+          example:
+          - A股
+          description: Is_public company
+        reg_num:
+          type: integer
+          format: int32
+          example: 3
+          description: Total number of software copyright registrations
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 4
+          description: Number of patent applications
+        duration:
+          type: number
+          format: double
+          example: 8.86575
+          description: Years since establishment time
+        avg3y_cnt:
+          type: number
+          format: double
+          example: 2
+          description: Average number of patent applications in recent three years
+        reg3y_avg:
+          type: number
+          format: double
+          example: 5
+          description: Average number of software copyright applications
+        value_avg:
+          type: number
+          format: double
+          example: 3400
+          description: Average value of patent value
+        value_sum:
+          type: integer
+          format: int64
+          example: 51000
+          description: Total patent value
+        tech_width:
+          type: number
+          format: double
+          example: 2
+          description: patented technology width
+        country_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of international patents involved
+        num_members:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of core teams
+        pct_apno_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Total PCT patents
+        ip_dependency:
+          type: number
+          format: double
+          example: 1
+          description: IP dependency
+        value_top5_avg:
+          type: number
+          format: double
+          example: 3460
+          description: Average value of five patents with the largest patent value
+        invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of invention patent applications
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.13043
+          description: Average number of patent cited
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of pending patents
+        most_recent_time:
+          type: number
+          format: double
+          example: 1
+          description: Years since the last financing
+        num_certificates:
+          type: integer
+          format: int32
+          example: 39
+          description: Number of qualification certificates
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: 0.25
+          description: software copyright registrations growth ratio
+        invention_stability:
+          type: number
+          format: double
+          example: 1
+          description: Stability of invention patent application
+        joint_applicant_cnt:
+          type: integer
+          format: int32
+          example: 10
+          description: Joint applicant
+        non_design_apno_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of non appearance patent applications
+        qualify_certificate:
+          type: array
+          example:
+          - 高新技术企业
+          description: Innovation qualification
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Patent self citation ratio
+        avg_funding_interval:
+          type: number
+          format: double
+          example: 2
+          description: Average financing interval
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.24118
+          description: Average technical quality
+        num_trademarks_total:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of trademarks
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Active inventor ratio
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 23
+          description: Total effective invention patents
+        joint_application_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of joint patent applications
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1000000
+          description: registered capital
+        external_licensing_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of patent licenses
+        money_q25_sum_weighted:
+          type: number
+          format: double
+          example: 1
+          description: Financing weighted amount
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Patent growth ratio
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 7
+          description: Patent life expectancy
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of effective invention patents
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 50000
+          description: Actually paid registered capital
+        most_cited_patents_value:
+          type: integer
+          format: int32
+          example: 195450
+          description: Patent value of the top 10 patents cited at most
+        total_patent_award_score:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of patents awarded
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int32
+          example: 6
+          description: Number of core patents cited
+        num_trademarks_registered:
+          type: integer
+          format: int32
+          example: 23
+          description: Number of registered trademarks
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 2.0e-05
+          description: Patent technology concentration
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 1
+          description: Current influence
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Proportion of core patents cited
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 2
+          description: Last financing amount
+    DP004EstimateCompanyIndexWarningResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_CompanyValuationIndicatorRiskResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    DP004EstimateCompanyIndexWarning_OriginalDetail:
+      type: object
+      properties:
+        rounds:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of financing rounds
+        publics:
+          type: array
+          example:
+          - A股
+          description: Is_public company
+        reg_num:
+          type: integer
+          format: int32
+          example: 3
+          description: Total number of software copyright registrations
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 4
+          description: Number of patent applications
+        duration:
+          type: number
+          format: double
+          example: 8.86575
+          description: Years since establishment time
+        avg3y_cnt:
+          type: number
+          format: double
+          example: 2
+          description: Average number of patent applications in recent three years
+        reg3y_avg:
+          type: number
+          format: double
+          example: 5
+          description: Average number of software copyright applications
+        value_avg:
+          type: number
+          format: double
+          example: 3400
+          description: Average value of patent value
+        value_sum:
+          type: integer
+          format: int64
+          example: 51000
+          description: Total patent value
+        tech_width:
+          type: number
+          format: double
+          example: 2
+          description: patented technology width
+        country_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of international patents involved
+        num_members:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of core teams
+        pct_apno_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Total PCT patents
+        ip_dependency:
+          type: number
+          format: double
+          example: 1
+          description: IP dependency
+        value_top5_avg:
+          type: number
+          format: double
+          example: 3460
+          description: Average value of five patents with the largest patent value
+        invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of invention patent applications
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.13043
+          description: Average number of patent cited
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of pending patents
+        most_recent_time:
+          type: number
+          format: double
+          example: 1
+          description: Years since the last financing
+        num_certificates:
+          type: integer
+          format: int32
+          example: 39
+          description: Number of qualification certificates
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: 0.25
+          description: software copyright registrations growth ratio
+        invention_stability:
+          type: number
+          format: double
+          example: 1
+          description: Stability of invention patent application
+        joint_applicant_cnt:
+          type: integer
+          format: int32
+          example: 10
+          description: Joint applicant
+        non_design_apno_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of non appearance patent applications
+        qualify_certificate:
+          type: array
+          example:
+          - 高新技术企业
+          description: Innovation qualification
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Patent self citation ratio
+        avg_funding_interval:
+          type: number
+          format: double
+          example: 2
+          description: Average financing interval
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.24118
+          description: Average technical quality
+        num_trademarks_total:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of trademarks
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Active inventor ratio
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 23
+          description: Total effective invention patents
+        joint_application_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of joint patent applications
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1000000
+          description: registered capital
+        external_licensing_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of patent licenses
+        money_q25_sum_weighted:
+          type: number
+          format: double
+          example: 1
+          description: Financing weighted amount
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Patent growth ratio
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 7
+          description: Patent life expectancy
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of effective invention patents
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 50000
+          description: Actually paid registered capital
+        most_cited_patents_value:
+          type: integer
+          format: int32
+          example: 195450
+          description: Patent value of the top 10 patents cited at most
+        total_patent_award_score:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of patents awarded
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int32
+          example: 6
+          description: Number of core patents cited
+        num_trademarks_registered:
+          type: integer
+          format: int32
+          example: 23
+          description: Number of registered trademarks
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 2.0e-05
+          description: Patent technology concentration
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 1
+          description: Current influence
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Proportion of core patents cited
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 2
+          description: Last financing amount
+    DP005EstimateCompanyIndex_Seic:
+      type: object
+      properties:
+        seic_lv1:
+          type: string
+          example: 新一代信息技术产业
+          description: Primary classification of strategic emerging industries
+        seic_lv1_code:
+          type: string
+          example: ZX01000000
+          description: First level code of strategic emerging industry
+    DP003InnovationCompanyWarningRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    DP005EstimateCompanyIndex_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    DP002InnovationCompanyValuationIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DP002InnovationCompanyValuationIndicators_CompanyIndicatorResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    DP005EstimateCompanyIndex_InnoLabel:
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          example: 2020
+          description: Selection year
+        status:
+          type: string
+          example: CANCEL
+          description: Status
+        qualification:
+          type: string
+          example: 高新技术企业
+          description: Enterprise qualification
+    DP001InnovationCompanyValuation_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    DP003InnovationCompanyWarning_CompanyWarningResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 192203821
+          description: 组织机构代码
+        credit_code:
+          type: string
+          example: 914403001922038300
+          description: 统一社会信用代码
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: 公司名称
+        risk_indicators:
+          $ref: '#/components/schemas/DP003InnovationCompanyWarning_RiskIndicators'
+    DP001InnovationCompanyValuationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DP001InnovationCompanyValuation_CompanyValuationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    DP004EstimateCompanyIndexWarning_Seic:
+      type: object
+      properties:
+        seic_lv1:
+          type: string
+          example: 新一代信息技术产业
+          description: Primary classification of strategic emerging industries
+        seic_lv1_code:
+          type: string
+          example: ZX01000000
+          description: First level code of strategic emerging industry
+    DP001InnovationCompanyValuation_InnoLabel:
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          example: 2020
+          description: Selection year
+        status:
+          type: string
+          example: CANCEL
+          description: Status
+        qualification:
+          type: string
+          example: 高新技术企业
+          description: Enterprise qualification
+    DP002InnovationCompanyValuationIndicators_OriginalDetail:
+      type: object
+      properties:
+        rounds:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of financing rounds
+        publics:
+          type: array
+          example:
+          - A股
+          description: Is_public company
+        reg_num:
+          type: integer
+          format: int32
+          example: 3
+          description: Total number of software copyright registrations
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 4
+          description: Number of patent applications
+        duration:
+          type: number
+          format: double
+          example: 8.86575
+          description: Years since establishment time
+        avg3y_cnt:
+          type: number
+          format: double
+          example: 2
+          description: Average number of patent applications in recent three years
+        reg3y_avg:
+          type: number
+          format: double
+          example: 5
+          description: Average number of software copyright applications
+        value_avg:
+          type: number
+          format: double
+          example: 3400
+          description: Average value of patent value
+        value_sum:
+          type: integer
+          format: int64
+          example: 51000
+          description: Total patent value
+        tech_width:
+          type: number
+          format: double
+          example: 2
+          description: patented technology width
+        country_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of international patents involved
+        num_members:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of core teams
+        pct_apno_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Total PCT patents
+        ip_dependency:
+          type: number
+          format: double
+          example: 1
+          description: IP dependency
+        value_top5_avg:
+          type: number
+          format: double
+          example: 3460
+          description: Average value of five patents with the largest patent value
+        invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of invention patent applications
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.13043
+          description: Average number of patent cited
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of pending patents
+        most_recent_time:
+          type: number
+          format: double
+          example: 1
+          description: Years since the last financing
+        num_certificates:
+          type: integer
+          format: int32
+          example: 39
+          description: Number of qualification certificates
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: 0.25
+          description: software copyright registrations growth ratio
+        invention_stability:
+          type: number
+          format: double
+          example: 1
+          description: Stability of invention patent application
+        joint_applicant_cnt:
+          type: integer
+          format: int32
+          example: 10
+          description: Joint applicant
+        non_design_apno_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of non appearance patent applications
+        qualify_certificate:
+          type: array
+          example:
+          - 高新技术企业
+          description: Innovation qualification
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Patent self citation ratio
+        avg_funding_interval:
+          type: number
+          format: double
+          example: 2
+          description: Average financing interval
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.24118
+          description: Average technical quality
+        num_trademarks_total:
+          type: integer
+          format: int32
+          example: 12
+          description: Number of trademarks
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Active inventor ratio
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 23
+          description: Total effective invention patents
+        joint_application_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of joint patent applications
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1000000
+          description: registered capital
+        external_licensing_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of patent licenses
+        money_q25_sum_weighted:
+          type: number
+          format: double
+          example: 1
+          description: Financing weighted amount
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Patent growth ratio
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 7
+          description: Patent life expectancy
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Proportion of effective invention patents
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 50000
+          description: Actually paid registered capital
+        most_cited_patents_value:
+          type: integer
+          format: int32
+          example: 195450
+          description: Patent value of the top 10 patents cited at most
+        total_patent_award_score:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of patents awarded
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int32
+          example: 6
+          description: Number of core patents cited
+        num_trademarks_registered:
+          type: integer
+          format: int32
+          example: 23
+          description: Number of registered trademarks
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 2.0e-05
+          description: Patent technology concentration
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 1
+          description: Current influence
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 2
+          description: Proportion of core patents cited
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 2
+          description: Last financing amount
+    DP001InnovationCompanyValuation_Seic:
+      type: object
+      properties:
+        seic_lv1:
+          type: string
+          example: 新一代信息技术产业
+          description: Primary classification of strategic emerging industries
+        seic_lv1_code:
+          type: string
+          example: ZX01000000
+          description: First level code of strategic emerging industry
+    DP005EstimateCompanyIndexRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    DP002InnovationCompanyValuationIndicatorsRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    DP005EstimateCompanyIndex_CompanyValuationIndicatorResponse:
+      type: object
+      properties:
+        seic:
+          type: array
+          example: 'Please check the form: Seic'
+          description: strategic emerging industry
+          items:
+            $ref: '#/components/schemas/DP005EstimateCompanyIndex_Seic'
+        label:
+          type: array
+          example: 'Please check the form: InnoLabel'
+          description: label
+          items:
+            $ref: '#/components/schemas/DP005EstimateCompanyIndex_InnoLabel'
+        score:
+          type: number
+          format: double
+          example: 80.20975
+          description: Scientific innovation score
+        publish:
+          type: array
+          example:
+          - A股
+          description: Public company label
+        bond_type:
+          type: string
+          example: 主板
+          description: Stock sector
+        org_number:
+          type: string
+          example: 192203821
+          description: Organization code
+        credit_code:
+          type: string
+          example: 914403001922038300
+          description: Unified social credit code
+        address_city:
+          type: string
+          example: 深圳市
+          description: City
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: Enterprise name
+        reg_location:
+          type: string
+          example: 深圳市龙岗区坂田华为总部办公楼
+          description: Registered Address
+        original_name:
+          type: array
+          example:
+          - 深圳市华为技术有限公司
+          - 华为技术有限公司
+          description: Used enterprise name
+        score_dimension:
+          $ref: '#/components/schemas/DP005EstimateCompanyIndex_ScoreDimension'
+        address_district:
+          type: string
+          example: 龙岗区
+          description: District
+        address_province:
+          type: string
+          example: 广东省
+          description: Province
+        company_org_type:
+          type: string
+          example: 有限责任公司（法人独资）
+          description: Enterprise type
+        indicators_original:
+          $ref: '#/components/schemas/DP005EstimateCompanyIndex_OriginalDetail'
+    DP001InnovationCompanyValuationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    DP002InnovationCompanyValuationIndicators_CompanyIndicatorResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 192203821
+          description: Organization code
+        credit_code:
+          type: string
+          example: 914403001922038300
+          description: Unified social credit code
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: Enterprise name
+        indicators_original:
+          $ref: '#/components/schemas/DP002InnovationCompanyValuationIndicators_OriginalDetail'
+    DP004EstimateCompanyIndexWarning_InnoLabel:
+      type: object
+      properties:
+        year:
+          type: integer
+          format: int32
+          example: 2020
+          description: Selection year
+        status:
+          type: string
+          example: CANCEL
+          description: Status
+        qualification:
+          type: string
+          example: 高新技术企业
+          description: Enterprise qualification
+    DP004EstimateCompanyIndexWarning_RiskIndicators:
+      type: object
+      properties:
+        pledge:
+          type: integer
+          format: int32
+          example: 1
+          description: 专利被质押数量
+        reexam:
+          type: integer
+          format: int32
+          example: 2
+          description: 专利被无效数量
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: 专利申请数量
+        rejected:
+          type: integer
+          format: int32
+          example: 5
+          description: 专利被驳回数量
+        transfer:
+          type: integer
+          format: int32
+          example: 3
+          description: 专利转让数量
+        active_invention_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: 有效的授权发明专利数量
+        litigation_defendant:
+          type: integer
+          format: int32
+          example: 192203821
+          description: 涉诉专利中被诉方的被诉讼专利数量
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 4
+          description: 授权的发明专利数量
+    DP005EstimateCompanyIndexResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DP005EstimateCompanyIndex_CompanyValuationIndicatorResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    DP004EstimateCompanyIndexWarning_CompanyValuationIndicatorRiskResponse:
+      type: object
+      properties:
+        seic:
+          type: array
+          example: 'Please check the form: Seic'
+          description: strategic emerging industry
+          items:
+            $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_Seic'
+        label:
+          type: array
+          example: 'Please check the form: InnoLabel'
+          description: label
+          items:
+            $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_InnoLabel'
+        score:
+          type: number
+          format: double
+          example: 80.20975
+          description: Scientific innovation score
+        publish:
+          type: array
+          example:
+          - A股
+          description: Public company label
+        bond_type:
+          type: string
+          example: 主板
+          description: Stock sector
+        org_number:
+          type: string
+          example: 192203821
+          description: Organization code
+        credit_code:
+          type: string
+          example: 914403001922038300
+          description: Unified social credit code
+        address_city:
+          type: string
+          example: 深圳市
+          description: City
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: Enterprise name
+        reg_location:
+          type: string
+          example: 深圳市龙岗区坂田华为总部办公楼
+          description: Registered Address
+        original_name:
+          type: array
+          example:
+          - 深圳市华为技术有限公司
+          - 华为技术有限公司
+          description: Used enterprise name
+        risk_indicators:
+          $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_RiskIndicators'
+        score_dimension:
+          $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_ScoreDimension'
+        address_district:
+          type: string
+          example: 龙岗区
+          description: District
+        address_province:
+          type: string
+          example: 广东省
+          description: Province
+        company_org_type:
+          type: string
+          example: 有限责任公司（法人独资）
+          description: Enterprise type
+        indicators_original:
+          $ref: '#/components/schemas/DP004EstimateCompanyIndexWarning_OriginalDetail'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

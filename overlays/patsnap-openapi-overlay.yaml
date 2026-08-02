@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Patsnap Open Platform API
+  version: 1.0.0
+extends: openapi/patsnap-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: patsnap
+    x-apievangelist-auth: api-key-bearer
+    x-apievangelist-base-url: https://connect.patsnap.com
+    x-apievangelist-notes: >-
+      Patsnap Open Platform (Eureka). 356 operations across 47 domains. API-key bearer auth
+      (sk- prefix). Long-running AI operations use task_id polling; LLM/chat endpoints stream
+      over SSE. Hosted MCP servers and 140+ Agent Skills complement the REST surface.
+- target: $.info
+  update:
+    x-apievangelist-compliance:
+    - SOC 2 Type 1
+    - ISO/IEC 27001
+    x-apievangelist-security-txt: https://patsnap.com/.well-known/security.txt

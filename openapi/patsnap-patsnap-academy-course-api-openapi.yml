@@ -1,0 +1,292 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Patsnap Academy Course API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Patsnap Academy Course
+  description: Patsnap Academy Course APIs.
+paths:
+  /academy/course-list:
+    get:
+      operationId: ac01AcademyCourseList
+      summary: AC01 Get Academy Course List
+      description: Get academy course lists by company ID.To find more information about the course
+      tags:
+      - Patsnap Academy Course
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ac01 get academy course list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AC01AcademyCourseListResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/academy/course-list
+      parameters:
+      - name: company_id
+        in: query
+        required: true
+        description: company ID
+        schema:
+          type: string
+          example: demo
+          description: company ID
+      - name: limit
+        in: query
+        required: true
+        description: course limit by every pages
+        schema:
+          type: integer
+          format: int32
+          example: '10'
+          description: course limit by every pages
+      - name: page
+        in: query
+        required: true
+        description: page number
+        schema:
+          type: integer
+          format: int32
+          example: '1'
+          description: page number
+  /academy/course-details:
+    get:
+      operationId: ac02AcademyCourseDetails
+      summary: AC02 Get Course Details
+      description: Get course details by course ID.
+      tags:
+      - Patsnap Academy Course
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ac02 get course details response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AC02AcademyCourseDetailsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/academy/course-details
+      parameters:
+      - name: company_id
+        in: query
+        required: true
+        description: company ID
+        schema:
+          type: string
+          example: demo
+          description: company ID
+      - name: course_id
+        in: query
+        required: true
+        description: course ID
+        schema:
+          type: string
+          example: '1202'
+          description: course ID
+  /academy/attach-download:
+    get:
+      operationId: ac03AcademyAttachDownload
+      summary: AC03 Get Courseware
+      description: Get courseware by courseware ID.
+      tags:
+      - Patsnap Academy Course
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ac03 get courseware response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AC03AcademyAttachDownloadResponse'
+        '400':
+          description: Bad request, Please check your request parameter.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/academy/attach-download
+      parameters:
+      - name: company_id
+        in: query
+        required: true
+        description: company ID
+        schema:
+          type: string
+          example: demo
+          description: company ID
+      - name: courseware_id
+        in: query
+        required: true
+        description: courseware ID
+        schema:
+          type: string
+          example: '2586'
+          description: courseware ID
+components:
+  schemas:
+    AC01AcademyCourseListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AC03AcademyAttachDownloadResponse:
+      type: object
+    AC02AcademyCourseDetails_ClassParts:
+      type: object
+      properties:
+        video_url:
+          type: string
+          example: https://video.x.zhihuiya.com/v1-m3u8-aq0/m3u8谈柏轩10.30课程_1540985469058978d8cf26be00697cab6921962c41c85.m3u8
+          description: lesson video URL
+        part_title:
+          type: string
+          example: 考前你必须知道的那些事
+          description: lesson title
+    AC02AcademyCourseDetails_Courseware:
+      type: object
+      properties:
+        attach_id:
+          type: string
+          example: 1726
+          description: courseware ID
+        attach_name:
+          type: string
+          example: 2018年考试贴士及相关法边缘知识点考前串讲
+          description: courseware name
+    AC01AcademyCourseList_CourseListInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+          description: course ID
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
+    AC02AcademyCourseDetailsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AC01AcademyCourseList_CourseListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Total number of courses purchased by the company
+        course_list_info:
+          type: array
+          example: 'Please check the form: CourseListInfo'
+          description: course information
+          items:
+            $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
+    AC02AcademyCourseDetails_CourseDetailsResponse:
+      type: object
+      properties:
+        attach:
+          type: array
+          example: 'Please check the form: Courseware'
+          description: course ware information
+          items:
+            $ref: '#/components/schemas/AC02AcademyCourseDetails_Courseware'
+        course_info:
+          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsInfo'
+        video_parts:
+          type: array
+          example: 'Please check the form: ClassParts'
+          description: class hour information
+          items:
+            $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
+    AC02AcademyCourseDetails_CourseDetailsInfo:
+      type: object
+      properties:
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
+        summary:
+          type: string
+          example: '有了专利思路之后，学习如何快速的撰
+
+
+            写技术交底书，建立和专利代理人沟通
+
+
+            的桥梁'
+          description: course description
+        class_hour:
+          type: integer
+          format: int32
+          example: 5
+          description: lesson
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

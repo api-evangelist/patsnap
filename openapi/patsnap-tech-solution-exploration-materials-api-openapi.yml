@@ -1,0 +1,1463 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Tech Solution Exploration(Materials) API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Tech Solution Exploration(Materials)
+  description: Tech Solution Exploration(Materials) APIs.
+paths:
+  /ai/material/find-solution/recommend:
+    post:
+      operationId: ai73-2FindSolutionRecommend
+      summary: AI73-2 Find Solutions (Materials)-Get Recommend Solution
+      description: Get recommended technical solutions by task ID.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-2 find solutions (materials)-get recommend solution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-2FindSolutionRecommendResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/recommend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-2FindSolutionRecommendRequest'
+  /ai/material/find-solution/confirm-recommend:
+    post:
+      operationId: ai73-3FindSolutionConfirmRecommend
+      summary: AI73-3 Find Solutions (Materials)-Confirm Recommend Solution
+      description: Confirm selected recommended solutions and start generating technical mind map.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-3 find solutions (materials)-confirm recommend solution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-3FindSolutionConfirmRecommendResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/confirm-recommend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-3FindSolutionConfirmRecommendRequest'
+  /ai/material/find-solution/submit:
+    post:
+      operationId: ai73-1FindSolutionSubmit
+      summary: AI73-1 Find Solutions (Materials)-Submit Task
+      description: Submit a material find solution task and return the task ID.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-1 find solutions (materials)-submit task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-1FindSolutionSubmitResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/submit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-1FindSolutionSubmitRequest'
+  /ai/material/find-solution/citation-reference-list:
+    post:
+      operationId: ai73-6FindSolutionCitationReferenceList
+      summary: AI73-6 Find Solutions (Materials)-Get Citation Reference List
+      description: Get citation reference list of mind map node with pagination support.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-6 find solutions (materials)-get citation reference list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-6FindSolutionCitationReferenceListResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/citation-reference-list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-6FindSolutionCitationReferenceListRequest'
+  /ai/material/find-solution/node-reference:
+    post:
+      operationId: ai73-7FindSolutionNodeReference
+      summary: AI73-7 Find Solutions (Materials)-Get Node Reference
+      description: Get reference information of mind map node, including technical principle, engineering reliability, expected challenges, etc.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-7 find solutions (materials)-get node reference response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-7FindSolutionNodeReferenceResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/node-reference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-7FindSolutionNodeReferenceRequest'
+  /ai/material/find-solution/thinking:
+    post:
+      operationId: ai73-4FindSolutionThinking
+      summary: AI73-4 Find Solutions (Materials)-Get Thinking Response
+      description: Get AI thinking process, including problem analysis, direction decomposition, literature search, etc.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-4 find solutions (materials)-get thinking response response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-4FindSolutionThinkingResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/thinking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-4FindSolutionThinkingRequest'
+  /ai/material/find-solution/implementation-response:
+    post:
+      operationId: ai73-9FindSolutionImplementationResponse
+      summary: AI73-9 Find Solutions (Materials)-Get Solution
+      description: Get generated implementation plan content.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-9 find solutions (materials)-get solution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-9FindSolutionImplementationResponseResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/implementation-response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-9FindSolutionImplementationResponseRequest'
+  /ai/material/find-solution/mind:
+    post:
+      operationId: ai73-5FindSolutionMind
+      summary: AI73-5 Find Solutions (Materials)-Get Mind Map
+      description: Get generated material technical mind map data.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-5 find solutions (materials)-get mind map response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-5FindSolutionMindResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/mind
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-5FindSolutionMindRequest'
+  /ai/material/find-solution/implementation:
+    post:
+      operationId: ai73-8FindSolutionImplementation
+      summary: AI73-8 Find Solutions (Materials)-Generate Solution
+      description: Generate detailed implementation plan for specified node.
+      tags:
+      - Tech Solution Exploration(Materials)
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai73-8 find solutions (materials)-generate solution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI73-8FindSolutionImplementationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/material/find-solution/implementation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI73-8FindSolutionImplementationRequest'
+components:
+  schemas:
+    AI73-5FindSolutionMind_EurekaMindCellReference:
+      type: object
+      properties:
+        cell:
+          type: string
+          example: 0f26fa4e9305ef86db199ba4d116f233
+          description: Unique identifier of the referenced node
+      required:
+      - cell
+    AI73-5FindSolutionMind_EurekaMindCell:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 0f26fa4e9305ef86db199ba4d116f233
+          description: Unique identifier of the node
+        data:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindCellData'
+        size:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindSize'
+        view:
+          type: string
+          example: vue-shape-view
+          description: View type, defining how the node is rendered
+        shape:
+          type: string
+          example: idea-node
+          description: Node shape type, such as idea-node, solution-node, default-edge, etc.
+        source:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindCellReference'
+        target:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindCellReference'
+        z_index:
+          type: integer
+          format: int32
+          example: 1000
+          description: Layer index of the node on the Z-axis
+        position:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindPosition'
+    AI73-4FindSolutionThinking_MaterialThinkingResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        board_id:
+          type: string
+          example: 51a9eba9cd984bc3b474550830dc832a
+          description: Mind map board ID
+        direction:
+          type: object
+          example:
+            data:
+              status: FINISH
+              stream_message:
+                ac21b332-b8e8-4222-97b1-f2f0288544f8:
+                  brief:
+                    name: Hierarchical Dispersion Control
+                    description: This direction addresses...
+                ac21b332-b8e8-4222-97b1-f2f0288544f8_details: Engineering polymer matrices...
+            status: true
+            error_code: 0
+          description: Technical direction information
+        references:
+          $ref: '#/components/schemas/AI73-4FindSolutionThinking_MindMaterialReferenceResponse'
+        problem_statement:
+          $ref: '#/components/schemas/AI73-4FindSolutionThinking_ProblemStatementResponse'
+    AI73-5FindSolutionMind_FindSolutionResultResponseV3:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        solution:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindData'
+    AI73-7FindSolutionNodeReference_MaterialNodeReferenceBO:
+      type: object
+      properties:
+        expected_challenge:
+          type: array
+          example:
+          - 成本方面,两亲性嵌段共聚物的合成工艺相对复杂,可能导致生产成本偏高<cite class="rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold" title="两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物"><a href="/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138" target="_blank">1</a></cite>。
+          description: List of expected challenges including potential technical difficulties and solution directions
+        technical_maturity:
+          type: array
+          example:
+          - 该技术已经过专利验证和实际应用,满足化妆品级原料标准<cite class="rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold" title="两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物"><a href="/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138" target="_blank">1</a></cite>。
+          description: List of technical maturity assessments including technology development stage and application maturity
+        technical_principle:
+          type: array
+          example:
+          - 该方案主要通过PDMS-PEG两亲性嵌段共聚物作为分散基质来改善ZnO的分散性和UV防护效果。其中疏水PDMS段与有机相相容,亲水PEG段通过氢键作用与ZnO表面-OH基团结合<cite class="rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold" title="两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物"><a href="/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138" target="_blank">1</a></cite>。
+          description: List of technical principles including basic principle descriptions and cited references
+        engineering_reliability:
+          type: array
+          example:
+          - 根据专利数据显示,该技术可实现<100nm、PDI<0.3的高固含(~20wt%)透明分散体<cite class="rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold" title="两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物"><a href="/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138" target="_blank">1</a></cite>。
+          description: List of engineering reliability descriptions including technical specifications and reliability verification data
+        industry_application_cases:
+          type: array
+          example:
+          - 欧莱雅公司利用类似的两亲性共聚物技术成功开发出稳定性更好的防晒产品,显著改善了UV防护效果<cite class="rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold" title="两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物"><a href="/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138" target="_blank">1</a></cite>。
+          description: List of industry application cases including actual application scenarios and enterprise examples
+    AI73-9FindSolutionImplementationResponse_MaterialImplementationResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        markdown_message:
+          type: string
+          example: '# 过渡金属掺杂ZnO纳米粒子防晒剂实施策略\n\n本实施策略采用系统性实验设计（DoE）方法，旨在开发具有增强UVA防护能力的过渡金属掺杂ZnO纳米粒子防晒剂。\n\n## 实验设计目标与框架\n\n### 主要目标\n- 开发Fe、Mn或Cu掺杂的ZnO纳米粒子，实现UVA吸收扩展\n- 优化合成工艺参数以获得最佳光学性能\n- 验证产品的光稳定性和安全性\n- 建立可扩展的生产工艺\n\n### 设计选择：筛选-优化组合设计\n采用两阶段实验设计：初期筛选设计识别关键因子，后期响应面优化设计确定最佳工艺条件。\n\n## Steps\n\n### **阶段一：筛选实验设计**\n\n#### 实验因子与水平设置\n\n| 因子 | 低水平(-1) | 高水平(+1) | 单位 |\n|------|------------|------------|------|\n| 掺杂剂类型 | Fe | Cu | - |\n| 掺杂浓度 | 0.5 | 5.0 | mol% |\n| 合成方法 | 溶胶-凝胶 | 水热法 | - |\n| 反应温度 | 60 | 180 | °C |\n| 反应时间 | 2 | 24 | 小时 |\n| pH值 | 8 | 10 | - |\n\n#### 响应变量定义\n\n| 响应变量 | 目标 | 测量方法 |\n|----------|------|----------|\n| UVA吸收系数 | 最大化 | UV-Vis光谱 |\n| 粒径 | 20-50 nm | TEM/DLS |\n| 带隙宽度 | 最小化 | Tauc图分析 |\n| 晶体结构纯度 | 最大化 | XRD分析 |\n\n### **阶段二：优化实验设计**\n\n基于筛选结果，采用Box-Behnken响应面设计优化关键参数：\n\n#### 关键工艺参数优化\n- **溶胶-凝胶路径**：锌醋酸二水合物(0.1M) + 掺杂剂盐类\n- **前驱体制备**：乙醇/水混合溶剂系统\n- **沉淀控制**：NaOH调节pH至最优值\n- **热处理**：350-450°C煅烧优化\n\n#### 表面改性验证\n使用3-三甲氧基硅烷基丙基甲基丙烯酸酯进行表面功能化，提高聚合物基质相容性。\n\n### **阶段三：全面表征与验证**\n\n#### 结构表征协议\n- **XRD分析**：确认晶体结构和相纯度\n- **TEM成像**：验证粒径分布和形貌\n- **XPS分析**：确定掺杂剂氧化态\n- **UV-Vis光谱**：量化带隙窄化效应\n\n#### 性能评估标准\n- **光学性能**：UVA区域吸收增强≥30%\n- **光稳定性**：连续UV照射100小时后性能保持≥90%\n- **分散稳定性**：Zeta电位绝对值≥30mV\n\n### **阶段四：配方开发与应用测试**\n\n#### 防晒配方集成\n- 纳米粒子浓度优化（5-25 wt%）\n- 载体系统相容性评估\n- 流变性能调节\n- SPF值标准化测试\n\n## Development Timeline\n\n### **第一周：快速探索研发阶段**\n\n#### 第1-2天：材料准备与基础合成\n- 采购高纯度前驱体材料（锌醋酸、过渡金属盐类）\n- 建立标准合成协议\n- 完成首批样品制备（3种掺杂剂×2种浓度）\n\n#### 第3-4天：初步表征分析\n- UV-Vis光谱快速筛选\n- XRD相结构初步验证\n- 粒径分布测定\n\n#### 第5-7天：工艺参数优化\n- 基于初步结果调整合成条件\n- 完成筛选实验设计的关键实验点\n- 数据分析与最优条件识别\n\n### **第2-4周：系统优化阶段**\n\n#### 第2周：响应面优化实验\n- 执行Box-Behnken设计的27个实验点\n- 全面表征分析（XRD、TEM、XPS、UV-Vis）\n- 统计分析与模型建立\n\n#### 第3周：表面改性与功能化\n- 硅烷偶联剂改性优化\n- 分散稳定性评估\n- 聚合物基质相容性测试\n\n#### 第4周：性能验证与标准化\n- 光稳定性长期测试启动\n- 防晒效果SPF测试\n- 安全性初步评估\n\n### **第2-6月：中试放大阶段**\n\n#### 第2月：工艺放大设计\n- 反应器设计与工艺参数调整\n- 批次一致性验证\n- 质量控制体系建立\n\n#### 第3-4月：产品配方开发\n- 多种载体系统测试\n- 配方稳定性研究\n- 用户体验优化\n\n#### 第5-6月：法规认证准备\n- 安全性毒理学评估\n- 环境影响评估\n- 产品注册文件准备\n\n### **第7-12月：商业化准备阶段**\n\n#### 产业化生产线建设\n- 生产设备采购与安装\n- 自动化控制系统集成\n- 员工培训与认证\n\n#### 市场推广与客户验证\n- 样品分发与客户反馈\n- 市场定位与定价策略\n- 供应链体系建立\n\n## Risks and Mitigation\n\n### **技术风险**\n\n#### 掺杂剂分布不均匀性\n**风险描述**：过渡金属离子在ZnO晶格中分布不均可能导致光学性能不一致\n**缓解措施**：\n- 采用共沉淀-水热联合工艺确保均匀混合\n- 延长反应时间至充分扩散\n- 引入超声辅助混合技术\n\n#### 二次相形成风险\n**风险描述**：掺杂浓度超过固溶度极限可能形成杂质相\n**缓解措施**：\n- 严格控制掺杂浓度≤5 mol%\n- 实时XRD监测相纯度\n- 建立掺杂浓度-相纯度关联数据库\n\n### **材料供应风险**\n\n#### 原材料价格波动\n**风险描述**：过渡金属盐类价格受市场供需影响较大\n**缓解措施**：\n- 建立多供应商采购体系\n- 签订长期供货合同锁定价格\n- 开发替代掺杂剂方案\n\n#### 高纯度材料获取困难\n**风险描述**：高纯度前驱体材料供应可能受限\n**缓解措施**：\n- 与材料供应商建立战略合作关系\n- 建立原材料库存缓冲\n- 开发内部提纯工艺作为备选\n\n### **法规合规风险**\n\n#### 新材料安全认证周期长\n**风险描述**：过渡金属掺杂纳米材料可能面临严格的安全评估要求\n**缓解措施**：\n- 提前启动毒理学和生态毒性研究\n- 与监管机构保持密切沟通\n- 参考现有ZnO防晒剂的安全数据库\n\n#### 环境法规变化影响\n**风险描述**：纳米材料环境法规日趋严格可能影响产品上市\n**缓解措施**：\n- 建立环境影响全生命周期评估\n- 开发生物降解性增强技术\n- 制定环境友好型生产工艺\n\n### **市场竞争风险**\n\n#### 技术路线被替代\n**风险描述**：其他UVA防护技术可能提供更优解决方案\n**缓解措施**：\n- 持续技术创新和专利布局\n- 建立差异化竞争优势\n- 拓展应用领域降低单一市场依赖\n\n#### 成本竞争压力\n**风险描述**：传统防晒剂成本优势可能限制市场渗透\n**缓解措施**：\n- 通过规模化生产降低成本\n- 强调产品附加值和性能优势\n- 开发高端细分市场应用\n\n### **理想成果定义**\n\n#### 技术指标达成\n- UVA吸收系数提升≥30%相比纯ZnO\n- 粒径控制在20-50nm范围内\n- 光稳定性保持≥95%（100小时UV照射后）\n- 批次间性能一致性变异系数≤5%\n\n#### 商业化成功标准\n- 产品通过所有法规认证要求\n- 建立年产能≥100吨的生产线\n- 获得≥3家主要客户的长期供货合同\n- 实现产品毛利率≥40%\n\n#### 可持续发展目标\n- 生产过程废料回收率≥90%\n- 产品全生命周期碳足迹低于传统防晒剂20%\n- 建立完善的产品回收处理体系\n`'
+          description: Markdown text
+    AI73-3FindSolutionConfirmRecommendResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-3FindSolutionConfirmRecommend_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-4FindSolutionThinking_PerformanceRequirement:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: nm
+          description: Unit
+        parameter:
+          type: string
+          example: UV Protection Range
+          description: Parameter name
+        tolerance:
+          type: string
+          example: ±5nm
+          description: Tolerance
+        target_value:
+          type: string
+          example: 290-400nm
+          description: Target value
+    AI73-6FindSolutionCitationReferenceListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-6FindSolutionCitationReferenceList_TechMindReferenceListResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-5FindSolutionMindRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI73-7FindSolutionNodeReferenceResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-7FindSolutionNodeReference_MaterialNodeReferenceBO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-3FindSolutionConfirmRecommend_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI73-5FindSolutionMind_EurekaMindSize:
+      type: object
+      properties:
+        width:
+          type: integer
+          format: int32
+          example: 300
+          description: Width of the node (pixels)
+        height:
+          type: integer
+          format: int32
+          example: 64
+          description: Height of the node (pixels)
+    AI73-4FindSolutionThinking_MindMaterialReferenceResponse:
+      type: object
+      properties:
+        references:
+          type: array
+          example:
+          - PBD: '2006-10-19'
+            TITLE: 两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途
+            CONTENT: 两亲共聚物通过使用亲水性和疏水性块来稳定紫外线筛分剂的分散体
+            ORG_INFO:
+            - id: ebd39282a7fcc0690cef4b3c5b4ede59
+              display_name: 欧莱雅股份有限公司
+              normalized_display_name: 欧莱雅
+            SOLUTION_ID: 172d02c0-aa4d-48f3-9c05-8bffeb0ee138
+            SOLUTION_TYPE: PATENT
+          description: Reference literature list
+          items:
+            $ref: '#/components/schemas/AI73-4FindSolutionThinking_VectorSearchResponseDTO'
+    AI73-1FindSolutionSubmitRequest:
+      type: object
+      properties:
+        input:
+          type: string
+          example: 如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？
+          description: Input problem description
+        lang:
+          type: string
+          example: cn
+          description: Language (cn/en)
+      required:
+      - input
+      - lang
+    AI73-5FindSolutionMind_EurekaMindData:
+      type: object
+      properties:
+        cells:
+          type: array
+          example:
+            type: MIND
+            cells:
+            - id: e5c1c262-5d1d-45a4-9f6a-d4b90514bf25
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 0f26fa4e9305ef86db199ba4d116f233
+              target:
+                cell: 4e2660fb9e04166b28b835c4d46c5bd1
+              z_index: 0
+            - id: 535c6080-37a8-4252-ba34-738d2d5d1716
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 4e2660fb9e04166b28b835c4d46c5bd1
+              target:
+                cell: 71121cc602c29ef51f1852fa1ed19492
+              z_index: 0
+            - id: 864b87cd-11db-46d4-8c17-4fd56218ca34
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 4e2660fb9e04166b28b835c4d46c5bd1
+              target:
+                cell: f13c9db921f402cc7efeb921397bd7c3
+              z_index: 0
+            - id: 58c6faf6-a00b-4afe-b28c-bac292d36b97
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 0f26fa4e9305ef86db199ba4d116f233
+              target:
+                cell: b72668368698fc1e332c74f62e31caa5
+              z_index: 0
+            - id: 7062f430-12f2-465c-9375-63bc7ef696a3
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: b72668368698fc1e332c74f62e31caa5
+              target:
+                cell: a8fdf0d8af4c634b71b19afcce4bd42a
+              z_index: 0
+            - id: e962c969-2f74-41a2-872b-3f6ed3bfd90d
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 0f26fa4e9305ef86db199ba4d116f233
+              target:
+                cell: 3e7c78a117853517f893b41e167e1c9d
+              z_index: 0
+            - id: 60b347e5-8cd1-4325-bcf4-acdcd6182046
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 3e7c78a117853517f893b41e167e1c9d
+              target:
+                cell: c0b732846225a57790f5b6f533eae3b1
+              z_index: 0
+            - id: e2186f9b-37e4-4828-8493-13a44a4c48b6
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 3e7c78a117853517f893b41e167e1c9d
+              target:
+                cell: 0277ee10684875e3bdceefe937fcad7d
+              z_index: 0
+            - id: 88382890-deed-4420-bbd8-c59bb9b1a9c5
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: b72668368698fc1e332c74f62e31caa5
+              target:
+                cell: 601ad6e604f36b1d3c3690ef512d21f1
+              z_index: 0
+            - id: 6123bb6d-18c1-4bd5-9e02-f87bdb84a4ad
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 4e2660fb9e04166b28b835c4d46c5bd1
+              target:
+                cell: 531f9a6c0c952368f1a530bac64c005b
+              z_index: 0
+            - id: 36ca5f7e-67d7-4726-90aa-c93e64623061
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: b72668368698fc1e332c74f62e31caa5
+              target:
+                cell: 9850956f70784395ed2a9b9450c5421d
+              z_index: 0
+            - id: 44b4d559-6d46-4520-b4a0-7c5722b57e68
+              attrs:
+                line:
+                  style:
+                    animation: ''
+              shape: default-edge
+              source:
+                cell: 3e7c78a117853517f893b41e167e1c9d
+              target:
+                cell: 7a465947259619d0314c588fc93b87c1
+              z_index: 0
+            - id: 0f26fa4e9305ef86db199ba4d116f233
+              data:
+                initd: true
+                order: '1'
+                status: success
+                sys_content: 如何在腹腔镜中安装模拟内脏力反馈的装置，使外科医生能够实时感知器械与内脏组织接触的力度（0.1-5N范围），同时满足微创手术的空间限制（5-12mm直径）、湿润环境适应性、低延迟要求（<10ms）和操作自然性？需要解决传感器微型化与高精度间的矛盾，以及在有限空间内实现力信息的采集、传输和反馈的技术挑战。
+                tech_version: '2'
+              size:
+                width: 300
+                height: 64
+              view: vue-shape-view
+              shape: idea-node
+              z_index: 1000
+              position:
+                x: 0
+                y: 132
+            title: 如何在腹腔镜中安装模拟内脏力反馈的装置，使外科医生能够实时感知器械与内脏组织接触的力度（0.1-5N范围），同时满足微创手术的空间限制（5-12mm直径）、湿润环境适应性、低延迟要求（<10ms）和操作自然性？需要解决传感器微型化与高精度间的矛盾，以及在有限空间内实现力信息的采集、传输和反馈的技术挑战。
+            tech_version: '2'
+          description: Mind map cell list, containing all nodes and connection line information
+          items:
+            $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindCell'
+        title:
+          type: string
+          example: 如何在腹腔镜中安装模拟内脏力反馈的装置
+          description: Mind map title, describing the problem or topic
+      required:
+      - cells
+      - title
+    AI73-4FindSolutionThinking_SuccessCriterion:
+      type: object
+      properties:
+        metric:
+          type: string
+          example: UVA Protection Factor
+          description: Metric
+        target:
+          type: string
+          example: Enhanced UVA protection compared to baseline ZnO formulation
+          description: Target
+        priority:
+          type: string
+          example: high
+          description: Priority
+        validation_method:
+          type: string
+          example: In vitro UV transmission spectroscopy and critical wavelength determination
+          description: Validation method
+    AI73-2FindSolutionRecommendRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI73-5FindSolutionMindResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-5FindSolutionMind_FindSolutionResultResponseV3'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-4FindSolutionThinkingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-4FindSolutionThinking_MaterialThinkingResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-4FindSolutionThinking_VectorSearchResponseDTO:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN101263125A
+          description: Patent number
+        apd:
+          type: string
+          example: '2006-10-18'
+          description: Application date
+        pbd:
+          type: string
+          example: '2006-10-19'
+          description: Publication date
+        link:
+          type: string
+          example: https://patents.google.com/patent/CN101263125A
+          description: Link
+        title:
+          type: string
+          example: 两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物
+          description: Title
+        authors:
+          type: object
+          example:
+          - id: author123
+            name: Zhang San
+            organization: Research Institute
+          description: Authors information
+        content:
+          type: string
+          example: 两亲共聚物通过使用亲水性和疏水性块来稳定紫外线筛分剂的分散体,以解决稀释诱导的不稳定性并保持有效的皮肤保护。
+          description: Content description
+        org_info:
+          type: object
+          example:
+          - id: ebd39282a7fcc0690cef4b3c5b4ede59
+            logo: https://images.crunchbase.com/image/upload/t_cb-default-original/v1403242711/t27lgufvhpzm3myfhsic.jpg
+            display_name: 欧莱雅股份有限公司
+            normalized_display_name: 欧莱雅
+          description: Organization information
+        project_id:
+          type: string
+          example: proj-12345
+          description: Project ID
+        solution_id:
+          type: string
+          example: 172d02c0-aa4d-48f3-9c05-8bffeb0ee138
+          description: Solution ID
+        project_name:
+          type: string
+          example: UV Protection Materials Research
+          description: Project name
+        solution_type:
+          type: string
+          example: PATENT
+          description: Solution type
+        solution_sub_type:
+          type: string
+          example: INVENTION
+          description: Solution sub type
+    AI73-8FindSolutionImplementationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-8FindSolutionImplementation_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-5FindSolutionMind_EurekaMindCellData:
+      type: object
+      properties:
+        initd:
+          type: boolean
+          example: true
+          description: Whether it has been initialized
+        order:
+          type: string
+          example: 1
+          description: Node sorting number, used to identify the level of the node in the mind map
+        status:
+          type: string
+          example: success
+          description: Node status, such as success indicating successful generation
+        node_id:
+          type: string
+          example: 4e2660fb9e04166b28b835c4d46c5bd1
+          description: Unique identifier of the node
+        route_id:
+          type: string
+          example: 4e2660fb9e04166b28b835c4d46c5bd1
+          description: Route identifier, associated with the parent node
+        reference:
+          type: array
+          example:
+          - PN: CN116026514A
+            APD: 29 Mar 2023
+            PBD: ''
+            TITLE: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
+            CONTENT: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
+            ORG_INFO:
+            - id: c2622ff840571e887a776e07b192ee06
+              logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
+              name: Wuhan University of Technology
+              site: www.whut.edu.cn
+              name_cn: 武汉理工大学
+              name_en: Wuhan University of Technology
+              website: http://www.whut.edu.cn
+              state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
+              entity_id: c2622ff840571e887a776e07b192ee06
+              country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+              state_name: Hubei Sheng
+              description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
+              entity_type: Education
+              country_name: China
+              display_name: Wuhan University of Technology
+              founded_date: 19480101
+              headquarters:
+                state: 湖北省
+                country: 中国
+                location: 湖北省武汉市洪山区珞狮路122号
+              normalized_name: WUHAN UNIV OF TECH
+              original_address:
+                state: 湖北省
+                country: 中国
+                location: 湖北省武汉市洪山区珞狮路122号
+              normalized_entity_type_en: Education
+            SOLUTION_ID: 83d60b08-83e9-4d17-9b57-955290e53b1e
+            SOLUTION_TYPE: PATENT
+          - PN: ''
+            APD: ''
+            PBD: '2019-08-12'
+            TITLE: Ultraminiature and Flexible Sensor Based on Interior Corner Flow for Direct Pressure Sensing in Biofluids
+            CONTENT: <jats:title>Abstract</jats:title><jats:p>Conventional pressure sensing devices are well developed for either indirect evaluation or internal measuring of fluid pressure over millimeter scale. Whereas, specialized pressure sensors that can directly work in various liquid environments at micrometer scale remain challenging and rarely explored, but are of great importance in many biomedical applications. Here, pressure sensor technology that utilizes capillary action to self‐assemble the pressure‐sensitive element is introduced. Sophisticated control of capillary flow, tunable sensitivity to liquid pressure in various mediums, and multiple transduction modes are realized in a polymer device, which is also flexible (thickness of 8 µm), ultraminiature (effective volume of 18 × 100 × 580 µm<jats:sup>3</jats:sup>), and transparent, enabling the sensor to work in some extreme situations, such as in narrow inner spaces (e.g., a microchannel of 220 µm in width and 100 µm in height), or on the surface of small objects (e.g., a 380 µm diameter needle). Potential applications of this sensor include disposables for in vivo and short‐term measurements.</jats:p>
+            ORG_INFO: []
+            SOLUTION_ID: fcebd80d-19ce-3b6c-9bc7-f2ee3a0be021
+            SOLUTION_TYPE: PAPER
+          description: Reference list, including related patents, papers and other reference materials
+          items:
+            $ref: '#/components/schemas/AI73-5FindSolutionMind_EurekaMindDataReference'
+        sys_title:
+          type: string
+          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
+          description: System-generated title
+        innovation:
+          type: integer
+          format: int32
+          example: 1
+          description: Innovation level, the higher the value, the higher the degree of innovation
+        route_name:
+          type: string
+          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
+          description: Route name, the title of the parent node
+        sys_content:
+          type: string
+          example: 基于<strong>压电薄膜传感技术</strong>，设计一种集成于腹腔镜前端的力反馈系统。采用PVDF压电薄膜传感器（厚度仅8μm，有效体积18×100×580μm³），通过电荷放大器将微弱力信号转化为电压信号，实现0.01N级别高精度力检测。传感器采用柔性印刷电路(FPC)技术制造，确保在湿润环境中稳定工作。信号经四阶Butterworth低通滤波器处理后，通过16位模数转换器数字化，实现<10ms的响应时间。系统在腹腔镜前端形成一个不超过2mm厚的感应层，能够精确检测0.01-5N范围内的接触力，并通过无线传输模块将力信息实时反馈至操作手柄，帮助医生精确感知组织接触力度，提高手术安全性。
+          description: System-generated content, including detailed description of technical solutions
+        improvements:
+          type: array
+          example:
+          - 本发明的力反馈机构能够更加直观、精准地模拟手术过程，提高训练者的训练效果，同时结构简单、操作便利，生产成本低。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="81e454d3-c795-4c81-8dae-d4a509fb8618" >1</mind-ref-tip>
+          - 仿真练习器械通过力反馈装置获取旋转角度和直线位移参数，克服机械结构限制，提高手术训练效果。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="be9143a0-ae7c-40ce-90ca-4bebcb861d29" >2</mind-ref-tip>
+          description: List of improvement suggestions, including improvement suggestions for the solution
+        tech_version:
+          type: string
+          example: 2
+          description: Technology version number
+        sys_sub_content:
+          type: string
+          example: 【核心矛盾】在腹腔镜有限空间内集成高精度力反馈系统，既要保证力反馈精度和实时性，又不能显著增加器械重量和体积
+          description: System sub-content, supplementary description of core contradictions and other information
+    AI73-5FindSolutionMind_EurekaMindPosition:
+      type: object
+      properties:
+        x:
+          type: integer
+          format: int32
+          example: 370
+          description: X coordinate of the node on the canvas
+        y:
+          type: integer
+          format: int32
+          example: 132
+          description: Y coordinate of the node on the canvas
+    AI73-2FindSolutionRecommend_FindSolutionRecommendResponseV3:
+      type: object
+      properties:
+        status:
+          type: string
+          example: RUNNING
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        recommend:
+          type: array
+          example:
+          - 二氧化钛复配
+          - 有机硅改性ZnO
+          - 微胶囊包埋技术
+          description: Recommended item
+        has_recommend:
+          type: boolean
+          example: false
+          description: Are there any recommended items
+    AI73-6FindSolutionCitationReferenceListRequest:
+      type: object
+      properties:
+        board_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Board ID
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Page Size
+        node_id:
+          type: string
+          example: node123456
+          description: Node ID
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page Number
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Task ID
+      required:
+      - board_id
+      - node_id
+      - task_id
+    AI73-3FindSolutionConfirmRecommendRequest:
+      type: object
+      properties:
+        recommend:
+          type: array
+          example:
+          - 成本增幅≤15%
+          - 安全性能不降低
+          - 产线兼容改造
+          description: Recommended item
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of find solution
+      required:
+      - task_id
+    AI73-9FindSolutionImplementationResponseRequest:
+      type: object
+      properties:
+        board_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Board ID
+        node_id:
+          type: string
+          example: node123456
+          description: Node ID
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Task ID
+      required:
+      - board_id
+      - node_id
+      - task_id
+    AI73-4FindSolutionThinkingRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI73-8FindSolutionImplementation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI73-4FindSolutionThinking_TechnicalConstraint:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Environmental Stability
+          description: Category
+        description:
+          type: string
+          example: Formulation must maintain chemical and physical stability under high temperature and high humidity conditions without degradation of UV protection efficacy
+          description: Description
+        impact_level:
+          type: string
+          example: high
+          description: Impact level
+    AI73-1FindSolutionSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-1FindSolutionSubmit_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-7FindSolutionNodeReferenceRequest:
+      type: object
+      properties:
+        board_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Board ID
+        node_id:
+          type: string
+          example: node123456
+          description: Node ID
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Task ID
+      required:
+      - board_id
+      - node_id
+      - task_id
+    AI73-6FindSolutionCitationReferenceList_TechMindReferenceListResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        limit:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of items per page
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: Total number of records
+        records:
+          type: array
+          example:
+          - PBD: '2017-03-09'
+            TITLE: 紫外线稳定和超疏水的木材表面
+            CONTENT: 使用二氧化钛或氧化锌纳米棒阵列和疏水性分子对木材进行原位处理
+            ORG_INFO:
+            - id: 945956249e10c1831d599c51540e5349
+              display_name: 瑞士蘇黎世聯邦理工學院
+            SOLUTION_ID: 1070a534-ef1e-443d-8d90-7305e543a6ff
+            SOLUTION_TYPE: PATENT
+          description: List of reference records
+          items:
+            $ref: '#/components/schemas/AI73-6FindSolutionCitationReferenceList_Map«string,object»'
+        has_next:
+          type: boolean
+          example: false
+          description: Whether there is a next page
+        has_previous:
+          type: boolean
+          example: false
+          description: Whether there is a previous page
+    AI73-4FindSolutionThinking_ProblemStatementResponse:
+      type: object
+      properties:
+        domain:
+          type: string
+          example: Materials Science - Cosmetic Formulation and UV Protection Materials
+          description: Domain
+        problem_title:
+          type: string
+          example: Enhanced ZnO Sunscreen UVA Protection Optimization
+          description: Problem title
+        success_criteria:
+          type: array
+          example:
+          - metric: UVA Protection Factor
+            target: Enhanced UVA protection compared to baseline ZnO formulation
+            priority: high
+            validation_method: In vitro UV transmission spectroscopy and critical wavelength determination
+          description: Success criteria list
+          items:
+            $ref: '#/components/schemas/AI73-4FindSolutionThinking_SuccessCriterion'
+        refined_statement:
+          type: string
+          example: Develop an optimized zinc oxide-based sunscreen formulation that enhances UVA protection effectiveness through strategic combination with organic UV filters while maintaining photochemical and thermal stability under high temperature and humidity conditions, and eliminating greasy residue formation on skin application.
+          description: Refined problem statement
+        background_context:
+          type: string
+          example: Zinc oxide (ZnO) is a widely used inorganic UV filter in sunscreens due to its broad-spectrum protection and photostability. However, current ZnO-based formulations face challenges in providing adequate UVA protection while maintaining stability under high temperature and humidity conditions.
+          description: Background context
+        technical_constraints:
+          type: array
+          example:
+          - category: Environmental Stability
+            description: Formulation must maintain chemical and physical stability under high temperature and high humidity conditions without degradation of UV protection efficacy
+            impact_level: high
+          description: Technical constraints list
+          items:
+            $ref: '#/components/schemas/AI73-4FindSolutionThinking_TechnicalConstraint'
+        performance_requirements:
+          type: array
+          example:
+          - unit: nm
+            parameter: UV Protection Range
+            tolerance: ±5nm
+            target_value: 290-400nm
+          description: Performance requirements list
+          items:
+            $ref: '#/components/schemas/AI73-4FindSolutionThinking_PerformanceRequirement'
+    AI73-5FindSolutionMind_OrgInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Organization ID
+        logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/b1/50/9d/b1509dfe5b2ac787dbe2d5e0753d6f00.png/0x0.png
+          description: Logo icon
+        name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Organization name
+        site:
+          type: string
+          example: www.qhhry.com
+          description: Site information
+        name_cn:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Chinese name
+        name_en:
+          type: string
+          example: Dnect
+          description: English name
+        website:
+          type: string
+          example: http://www.qhhry.com
+          description: Organization website
+        state_id:
+          type: string
+          example: 80cd8682-4344-3436-88b9-cfba03d34b78
+          description: State/Province ID
+        entity_id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Entity ID
+        country_id:
+          type: string
+          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+          description: Country ID
+        state_name:
+          type: string
+          example: 湖北省
+          description: State/Province name
+        entity_type:
+          type: string
+          example: Company
+          description: Entity type
+        country_name:
+          type: string
+          example: 中国
+          description: Country name
+        display_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Display name
+        founded_date:
+          type: integer
+          format: int32
+          example: 20160722
+          description: Founded date
+        normalized_id:
+          type: string
+          example: 8adef1df2dc299c10291a4a610a69068
+          description: Normalized ID
+        normalized_logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/c7/0c/34/c70c34f6c211298e8d563c49df7706f4.png/0x0.png
+          description: Normalized logo
+        normalized_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Normalized organization name
+        normalized_display_name:
+          type: string
+          example: Chang'an University
+          description: Normalized display name
+        normalized_entity_type_en:
+          type: string
+          example: Company
+          description: Normalized entity type in English
+    AI73-1FindSolutionSubmit_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI73-8FindSolutionImplementationRequest:
+      type: object
+      properties:
+        board_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Board ID
+        node_id:
+          type: string
+          example: node123456
+          description: Node ID
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: Task ID
+      required:
+      - board_id
+      - node_id
+      - task_id
+    AI73-9FindSolutionImplementationResponseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-9FindSolutionImplementationResponse_MaterialImplementationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-2FindSolutionRecommendResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI73-2FindSolutionRecommend_FindSolutionRecommendResponseV3'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI73-5FindSolutionMind_EurekaMindDataReference:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN116026514A
+          description: Patent number or publication number
+        apd:
+          type: string
+          example: 29 Mar 2023
+          description: Application date or applied date
+        pbd:
+          type: string
+          example: '2019-08-12'
+          description: Publication date or published date
+        title:
+          type: string
+          example: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
+          description: Solution title
+        content:
+          type: string
+          example: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
+          description: Detailed content description of the solution
+        org_info:
+          type: array
+          example:
+          - id: c2622ff840571e887a776e07b192ee06
+            logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
+            name: Wuhan University of Technology
+            site: www.whut.edu.cn
+            name_cn: 武汉理工大学
+            name_en: Wuhan University of Technology
+            website: http://www.whut.edu.cn
+            state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
+            entity_id: c2622ff840571e887a776e07b192ee06
+            country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+            state_name: Hubei Sheng
+            description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
+            entity_type: Education
+            country_name: China
+            display_name: Wuhan University of Technology
+            founded_date: 19480101
+            headquarters:
+              state: 湖北省
+              country: 中国
+              location: 湖北省武汉市洪山区珞狮路122号
+            normalized_name: WUHAN UNIV OF TECH
+            original_address:
+              state: 湖北省
+              country: 中国
+              location: 湖北省武汉市洪山区珞狮路122号
+            normalized_entity_type_en: Education
+          description: List of related organization information
+          items:
+            $ref: '#/components/schemas/AI73-5FindSolutionMind_OrgInfo'
+        solution_id:
+          type: string
+          example: 83d60b08-83e9-4d17-9b57-955290e53b1e
+          description: Unique identifier of the solution
+        solution_type:
+          type: string
+          example: PATENT
+          description: Solution type, such as PATENT or PAPER
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

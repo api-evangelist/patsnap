@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source:
+- https://open.patsnap.com/devportal/api-reference
+- https://open.patsnap.com/devportal/guides/authentication
+- openapi/patsnap-openapi-original.json
+authentication:
+  style: api-key-bearer
+  header: 'Authorization: Bearer sk-...'
+  alt: '?apikey=sk-...'
+  ref: authentication/patsnap-authentication.yml
+async:
+  pattern: task-id-polling
+  notes: >-
+    Long-running AI/analysis operations (novelty search, FTO, solution exploration, report
+    generation) return a task_id; the client polls a query/status endpoint until completion.
+streaming:
+  content_type: text/event-stream
+  notes: LLM/chat endpoints (cc-gpt, pat-gpt, pharm-gpt, bio-pharma Q&A) stream via SSE.
+pagination:
+  style: limit-offset
+  notes: >-
+    Search endpoints accept explicit limit/offset-style parameters; aggregate/faceted
+    analysis endpoints cap one-dimensional field analysis (e.g. limit 500).
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key header or documented idempotency contract found. Search and data-read
+    operations are naturally idempotent, but write/AI-generation operations use task_id
+    de-duplication rather than a client idempotency key.
+error_envelope:
+  ref: errors/patsnap-error-codes.yml
+  notes: JSON with numeric platform/business code + message; not RFC 9457 problem+json.
+rate_limiting:
+  qps: enforced per account
+  daily: per-account daily usage limits
+  ref: lifecycle/patsnap-lifecycle.yml
+versioning:
+  ref: lifecycle/patsnap-lifecycle.yml
+  style: per-operation path suffix (…/v3)

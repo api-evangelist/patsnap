@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of Patsnap hosts
+hosts:
+- host: https://patsnap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: patsnap-security.txt
+    format: rfc9116
+- host: https://open.patsnap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: serves the SPA shell (soft-200), not a genuine RFC 9116 document
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: SPA shell (soft-200), no genuine OIDC discovery document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: SPA shell (soft-200); platform uses API-key auth, no OAuth server
+  - path: /.well-known/api-catalog
+    status: 200
+    note: SPA shell (soft-200), no genuine RFC 9727 catalog
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: SPA shell (soft-200), no genuine plugin manifest
+- host: https://connect.patsnap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+notes: >-
+  The only genuine discovery document is the RFC 9116 security.txt served at the apex
+  patsnap.com domain (Contact mailto:security@patsnap.com). The open.patsnap.com developer
+  portal is a single-page app that returns its shell for arbitrary /.well-known/ paths, so
+  those 200s are soft matches, not real documents.

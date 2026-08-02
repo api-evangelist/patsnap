@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source:
+- openapi/patsnap-openapi-original.json
+- https://open.patsnap.com/
+standards:
+- id: oauth2
+  conforms: false
+  evidence: platform uses API-key bearer auth, no OAuth2 authorization server
+- id: oidc
+  conforms: false
+- id: bearer-token-auth
+  conforms: true
+  evidence: openapi securityScheme type http scheme bearer (API key)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error responses return plain description strings, not application/problem+json
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi/patsnap-openapi-original.json declares openapi 3.1.0
+- id: soc2-type1
+  conforms: true
+  evidence: Patsnap Open Platform advertises SOC 2 Type 1 certification
+- id: iso-27001
+  conforms: true
+  evidence: Patsnap Open Platform advertises ISO/IEC 27001 certification
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response REST endpoints across 356 operations
+- id: sse-streaming
+  conforms: true
+  evidence: LLM/chat endpoints use text/event-stream (Server-Sent Events)
+compliance:
+  programs:
+  - SOC 2 Type 1
+  - ISO/IEC 27001
+  data_policy: zero-training policy; hybrid/on-prem deployment for data sovereignty
+  source: https://open.patsnap.com/

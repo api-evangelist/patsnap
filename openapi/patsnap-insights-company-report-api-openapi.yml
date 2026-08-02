@@ -1,0 +1,747 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Insights Company Report API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Insights Company Report
+  description: Insights Company Report APIs.
+paths:
+  /landscape-api/jobs:
+    post:
+      operationId: landscapeApiJobs
+      summary: Submit a new Landscape job
+      description: Create a new Landscape analysis job to process patent collection.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful submit a new landscape job response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LandscapeApiJobsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs
+      requestBody:
+        required: true
+        content:
+          application/vnd.patsnap.v1.0.0+json,application/vnd.zhihuiya.v1.0.0+json:
+            schema:
+              $ref: '#/components/schemas/LandscapeApiJobsRequest'
+  /landscape-api/jobs/{job_id}/result:
+    get:
+      operationId: jobIdResult
+      summary: Get result of a Landscape job
+      description: Get result data of a Landscape analysis job by job ID.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get result of a landscape job response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobIdResultResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs/{job_id}/result
+      parameters:
+      - name: job_seq
+        in: query
+        required: false
+        description: Sequence number of current Landscape job
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Sequence number of current Landscape job
+      - name: label_num
+        in: query
+        required: false
+        description: Label number of each cluster
+        schema:
+          type: integer
+          format: int32
+          example: '5'
+          description: Label number of each cluster
+      - name: lang
+        in: query
+        required: false
+        description: Label language
+        schema:
+          type: string
+          example: EN
+          description: Label language
+  /landscape-api/jobs/{job_id}/status:
+    get:
+      operationId: jobIdStatus
+      summary: Get status of a job
+      description: Get current status of a Landscape job by job ID.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get status of a job response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobIdStatusResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs/{job_id}/status
+      parameters:
+      - name: job_seq
+        in: query
+        required: false
+        description: Sequence number of current Landscape job
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Sequence number of current Landscape job
+  /landscape-api/jobs/{job_id}/facets/{facet_type}:
+    get:
+      operationId: facetsFacetType
+      summary: Get all list of a specific facet type
+      description: Get all data lists for a specific facet type in a Landscape job.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get all list of a specific facet type response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacetsFacetTypeResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs/{job_id}/facets/{facet_type}
+      parameters:
+      - name: length
+        in: query
+        required: false
+        description: Patent number in current page
+        schema:
+          type: integer
+          format: int32
+          example: '20'
+          description: Patent number in current page
+      - name: start
+        in: query
+        required: false
+        description: Patent offset used for paging
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Patent offset used for paging
+  /landscape-api/jobs/{job_id}/patents:
+    get:
+      operationId: jobIdPatents
+      summary: Get all patents list of a job
+      description: Get all patent data within a Landscape job.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get all patents list of a job response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobIdPatentsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs/{job_id}/patents
+      parameters:
+      - name: all_legal
+        in: query
+        required: false
+        description: Whether to get legal info
+        schema:
+          type: boolean
+          example: 'false'
+          description: Whether to get legal info
+      - name: length
+        in: query
+        required: false
+        description: Patent number in current page
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Patent number in current page
+      - name: patent_value
+        in: query
+        required: false
+        description: Whether to get patent value
+        schema:
+          type: boolean
+          example: 'true'
+          description: Whether to get patent value
+      - name: start
+        in: query
+        required: false
+        description: Patent offset used for paging
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Patent offset used for paging
+  /landscape-api/jobs/{job_id}/facets/{facet_type}/detail:
+    get:
+      operationId: facetTypeDetail
+      summary: Get all patent list of specific Landscape facet
+      description: Get all patent list data for a specific facet name in a Landscape job.
+      tags:
+      - Insights Company Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful get all patent list of specific landscape facet response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacetTypeDetailResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/landscape-api/jobs/{job_id}/facets/{facet_type}/detail
+      parameters:
+      - name: filter_expired
+        in: query
+        required: false
+        description: Whether to filter expired patents
+        schema:
+          type: boolean
+          example: 'false'
+          description: Whether to filter expired patents
+      - name: length
+        in: query
+        required: false
+        description: Patent number in current page
+        schema:
+          type: integer
+          format: int32
+          example: '20'
+          description: Patent number in current page
+      - name: start
+        in: query
+        required: false
+        description: Patent offset used for paging
+        schema:
+          type: integer
+          format: int32
+          example: '0'
+          description: Patent offset used for paging
+components:
+  schemas:
+    JobIdPatentsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobIdPatents_PatentListBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    FacetTypeDetail_FacetDetail:
+      type: object
+      properties:
+        pn_map:
+          type: array
+          example:
+          - x: '10.5'
+            y: '15.2'
+            pn: US7654321B2
+            expired: false
+            patent_id: '12345678'
+          description: Patent list, contains patent information associated with this facet
+          items:
+            $ref: '#/components/schemas/FacetTypeDetail_Patent'
+        res_value:
+          type: string
+          example: IBM
+          description: Facet name, represents the name of the facet
+    FacetsFacetType_Facet:
+      type: object
+      properties:
+        name:
+          type: string
+          example: IBM
+          description: Name, short name of the facet
+        count:
+          type: integer
+          format: int32
+          example: 120
+          description: Count, number of documents matching this facet
+        group:
+          type: integer
+          format: int32
+          example: 1
+          description: Group, group number to which this facet belongs
+        full_name:
+          type: string
+          example: International Business Machines Corporation
+          description: Full name, complete name of the facet
+        cf_field_id:
+          type: string
+          example: custom_field_123
+          description: Custom field ID, identifier associated with a custom field
+        expired_count:
+          type: integer
+          format: int32
+          example: 25
+          description: Expired count, number of expired documents matching this facet
+    LandscapeApiJobs_MatchItem:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Advanced technologies for electric vehicle batteries
+          description: Description, detailed description of match item
+        digest_text:
+          type: string
+          example: Electric vehicle battery technology
+          description: Digest text, text digest of match item
+        title:
+          type: string
+          example: Electric vehicle battery technology
+          description: Title, title information of match item
+      required:
+      - title
+    JobIdResultResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          example: 123
+          description: response data
+        status:
+          type: boolean
+          example: true
+          description: response status
+    FacetsFacetType_FacetListBo:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start position for pagination
+        length:
+          type: integer
+          format: int32
+          example: 10
+          description: Length, the number of records for pagination
+        facet_list:
+          type: array
+          example:
+          - name: IBM
+            count: 120
+            group: 1
+            full_name: International Business Machines Corporation
+            expired_count: 25
+          - name: Google
+            count: 85
+            group: 1
+            full_name: Google LLC
+            expired_count: 15
+          description: Facet list, contains specific facet data
+          items:
+            $ref: '#/components/schemas/FacetsFacetType_Facet'
+        facet_type:
+          type: string
+          example: applicant
+          description: Facet type, specifies the type of facet
+    FacetTypeDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FacetTypeDetail_FacetDetailBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    FacetTypeDetail_FacetDetailBo:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start position for pagination
+        length:
+          type: integer
+          format: int32
+          example: 10
+          description: Length, the number of records for pagination
+        details:
+          type: array
+          example:
+          - pn_map:
+            - pn: US7654321B2
+              patent_id: '12345678'
+            res_value: IBM
+          - pn_map:
+            - pn: US8765432B2
+              patent_id: '87654321'
+            res_value: Google
+          description: Facet details list, contains specific facet detailed data
+          items:
+            $ref: '#/components/schemas/FacetTypeDetail_FacetDetail'
+        facet_type:
+          type: string
+          example: applicant
+          description: Facet type, specifies the type of facet
+    FacetsFacetTypeResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FacetsFacetType_FacetListBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    FacetTypeDetail_Patent:
+      type: object
+      properties:
+        x:
+          type: string
+          example: 10.5
+          description: X coordinate, X-axis position of the patent in visualization chart
+        y:
+          type: string
+          example: 15.2
+          description: Y coordinate, Y-axis position of the patent in visualization chart
+        pn:
+          type: string
+          example: US7654321B2
+          description: Patent number, unique identifier of the patent
+        sep:
+          type: boolean
+          example: false
+          description: Standard essential patent, indicates whether it is a standard essential patent
+        pbdt:
+          type: integer
+          format: int32
+          example: 20180315
+          description: Publication date, the publication date of the patent (numeric format)
+        expired:
+          type: boolean
+          example: false
+          description: Expired, indicates whether the patent has expired
+        license:
+          type: array
+          example:
+          - license-001
+          - license-002
+          description: License information, license related information of the patent
+        patent_id:
+          type: string
+          example: 12345678
+          description: Patent ID, unique identifier of the patent in the system
+        grid_index:
+          type: string
+          example: 25
+          description: Grid index, grid position of the patent in visualization chart
+        high_value:
+          type: boolean
+          example: true
+          description: High value, indicates whether the patent is of high value
+        litigation:
+          type: array
+          example:
+          - litigation-123
+          - litigation-456
+          description: Litigation information, litigation related information of the patent
+        has_license:
+          type: boolean
+          example: true
+          description: Has license, indicates whether the patent has license information
+        patent_value:
+          type: integer
+          format: int32
+          example: 85
+          description: Patent value, value rating of the patent
+        has_litigation:
+          type: boolean
+          example: false
+          description: Has litigation, indicates whether the patent has litigation information
+    LandscapeApiJobsResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          example: 123
+          description: response data
+        status:
+          type: boolean
+          example: true
+          description: response status
+    JobIdPatents_Patent:
+      type: object
+      properties:
+        x:
+          type: string
+          example: 10.5
+          description: X coordinate, X-axis position of the patent in visualization chart
+        y:
+          type: string
+          example: 15.2
+          description: Y coordinate, Y-axis position of the patent in visualization chart
+        pn:
+          type: string
+          example: US7654321B2
+          description: Patent number, unique identifier of the patent
+        sep:
+          type: boolean
+          example: false
+          description: Standard essential patent, indicates whether it is a standard essential patent
+        pbdt:
+          type: integer
+          format: int32
+          example: 20180315
+          description: Publication date, the publication date of the patent (numeric format)
+        expired:
+          type: boolean
+          example: false
+          description: Expired, indicates whether the patent has expired
+        license:
+          type: array
+          example:
+          - license-001
+          - license-002
+          description: License information, license related information of the patent
+        patent_id:
+          type: string
+          example: 12345678
+          description: Patent ID, unique identifier of the patent in the system
+        grid_index:
+          type: string
+          example: 25
+          description: Grid index, grid position of the patent in visualization chart
+        high_value:
+          type: boolean
+          example: true
+          description: High value, indicates whether the patent is of high value
+        litigation:
+          type: array
+          example:
+          - litigation-123
+          - litigation-456
+          description: Litigation information, litigation related information of the patent
+        has_license:
+          type: boolean
+          example: true
+          description: Has license, indicates whether the patent has license information
+        patent_value:
+          type: integer
+          format: int32
+          example: 85
+          description: Patent value, value rating of the patent
+        has_litigation:
+          type: boolean
+          example: false
+          description: Has litigation, indicates whether the patent has litigation information
+    LandscapeApiJobsRequest:
+      type: object
+      properties:
+        browser_uri:
+          type: string
+          example: https://example.com/search?q=electric+vehicle
+          description: Browser URI, original browser link of the request
+        dashboard_id:
+          type: string
+          example: dashboard123
+          description: Dashboard ID, associated dashboard identifier
+        description:
+          type: string
+          example: Analysis of electric vehicle technologies
+          description: Description, detailed description of the job
+        exclude_expired_patent:
+          type: boolean
+          example: false
+          description: Whether to exclude expired patents
+        expired_collapse:
+          type: boolean
+          example: true
+          description: Whether to filter expired patents
+        filter_query:
+          type: string
+          example: assignee:(Tesla)
+          description: Filter query, used to filter results
+        gid:
+          type: array
+          example:
+          - group1
+          - group2
+          description: Group ID list, identifies groups the user belongs to
+        job_id:
+          type: string
+          example: landscape_job_12345
+          description: Job ID, uniquely identifies the Landscape job
+        lang:
+          type: string
+          example: en
+          description: Language, specifies the language of results
+        match:
+          type: array
+          example:
+          - text: artificial intelligence
+            field: title
+            weight: 0.8
+          description: Match item list, used for text matching analysis
+          items:
+            $ref: '#/components/schemas/LandscapeApiJobs_MatchItem'
+        oq:
+          type: string
+          example: battery
+          description: Other query string, supplementary search condition
+        par_job_id:
+          type: string
+          example: job123
+          description: Parent job ID, associated parent job
+        q:
+          type: string
+          example: electric vehicle
+          description: Query string, main search condition
+        request_type:
+          type: string
+          example: som
+          description: Request type, specifies the processing type of Landscape job
+        rows:
+          type: integer
+          format: int32
+          example: 100
+          description: Rows, specifies the size of result set
+        stemming:
+          type: boolean
+          example: true
+          description: Whether to use stemming, affects text processing in search
+        time_slices:
+          type: string
+          example: year
+          description: Time slices, specifies how to divide the time range
+        time_start:
+          type: string
+          example: '2010-01-01'
+          description: Start time, starting point of time range for analysis
+        time_stop:
+          type: string
+          example: '2020-12-31'
+          description: End time, ending point of time range for analysis
+        time_type:
+          type: string
+          example: filing_date
+          description: Time type, specifies the type of time field to use
+        title:
+          type: string
+          example: Electric Vehicle Landscape Analysis
+          description: Title, the title description of the job
+        uid:
+          type: string
+          example: user123
+          description: User ID, identifies the requesting user
+      required:
+      - job_id
+      - q
+      - request_type
+      - uid
+    JobIdPatents_PatentListBo:
+      type: object
+      properties:
+        patents:
+          type: array
+          example:
+          - pn: US7654321B2
+            patent_id: '12345678'
+          - pn: US7123456B2
+            patent_id: '87654321'
+          description: Patents, list containing detailed patent information
+          items:
+            $ref: '#/components/schemas/JobIdPatents_Patent'
+        total_count:
+          type: integer
+          format: int32
+          example: 1250
+          description: Total count, the total number of patents
+    JobIdStatusResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+          description: Operation status, indicates whether the request is successful
+        error_code:
+          type: integer
+          format: int32
+          example: 400
+          description: Error code, error code when processing fails
+        job_status:
+          type: string
+          example: COMPLETED
+          description: Job status, indicates the processing status of the current job
+        error_message:
+          type: string
+          example: Invalid query parameters
+          description: Error message, detailed error description when processing fails
+      required:
+      - status
+      - job_status
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

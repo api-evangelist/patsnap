@@ -1,0 +1,3593 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Technology Key Report API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Technology Key Report
+  description: Technology Key Report APIs.
+paths:
+  /insights/patent-type-trend:
+    post:
+      operationId: a011InsightsPatentTypeTrend
+      summary: A011 Patent Type Trend Analysis
+      description: Analyze the application trend of different patent types (invention patents, utility models, design patents) within a specified time range.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a011 patent type trend analysis response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A011InsightsPatentTypeTrendResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/patent-type-trend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/A011InsightsPatentTypeTrendRequest'
+  /insights-company/most-cited-latest:
+    get:
+      operationId: a106InsightsCompanyMostCitedLatest
+      summary: A106 Company Most Cited Patents
+      description: Identify the records in this company's portfolio that have been cited most frequently by other records. These represent more referenced patents that have had their technology built by others. These patents are likely to be more valuable and may represent the more relevant technology to the industry. Returns at most Top 10 patent information.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a106 company most cited patents response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A106InsightsCompanyMostCitedLatestResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/most-cited-latest
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights-company/patent-trends:
+    get:
+      operationId: a104InsightsCompanyPatentTrends
+      summary: A104 Company Patent Application and Issued Trend
+      description: Analyze the annual application trend of the company. This chart shows the number of grants or issued patents resulting from applications filed in the same year, indicating the company's filing success rate over time. The most recent 20 years of application and issued data are returned.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a104 company patent application and issued trend response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A104InsightsCompanyPatentTrendsResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/patent-trends
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+  /insights-company/simple-legal-status:
+    get:
+      operationId: a109InsightsCompanySimpleLegalStatus
+      summary: A109 Company Patent Simple Legal Status
+      description: Simple legal status breakdown of the company's portfolio. This tells you the proportion of patents in the portfolio that are in effect, or no longer active, which you can then use to filter by.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a109 company patent simple legal status response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A109InsightsCompanySimpleLegalStatusResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/simple-legal-status
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+  /insights/portfolio-value:
+    get:
+      operationId: a010InsightsPortfolioValue
+      summary: A010 Portfolio Value Distribution
+      description: 'Assess the lucrativeness of a technology space based on the spread of estimated patent valuation, with lucrative technologies having a greater proportion of their patent simple families in the higher value buckets.Our valuation method has been developed and implemented by integrating external research published by academics and patent lawyers with our own internal research. We use an underlying set of 80+ different patent indicators (e.g. forward citations, family sizes, patent age, legal status etc.) to compute the valuation, which is adjusted based on the distributions of patent values traded in the past.
+
+        Design patents are not valued with this methodology.'
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a010 portfolio value distribution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A010InsightsPortfolioValueResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/portfolio-value
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights/applicant-ranking:
+    get:
+      operationId: a007InsightsApplicantRanking
+      summary: A007 Top Assignees
+      description: The top companies with the largest patent portfolios in the technology field. Understand who are the largest players and the competitive threats in the technology space. Returns up to the top 10 assignees.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a007 top assignees response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A007InsightsApplicantRankingResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/applicant-ranking
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights/most-asserted:
+    get:
+      operationId: a009InsightsMostAsserted
+      summary: A009 Most Litigated Patents
+      description: Identify the patents involved in the most number of litigation cases. This indicates litigation risk associated to patenting in a similar technology space. Returns the Top 10 patents by litigation count.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a009 most litigated patents response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A009InsightsMostAssertedResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/most-asserted
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights/wheel-of-innovation:
+    get:
+      operationId: a003InsightsWheelOfInnovation
+      summary: A003 Wheel of Innovation
+      description: A two-tiered view of the keywords and phrases found within records in the technology space. This can be used to influence subsequent patent searches by making you aware of the more common terms used in this technology space. It is also useful to identify terms that are commonly associated with other similar terms. The Circle Chart categorizes the most frequently occurring keywords of the most recent 5,000 publications in the technology field into a 2-tier hierarchy.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a003 wheel of innovation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A003InsightsWheelOfInnovationResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/wheel-of-innovation
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights-company/most-cited:
+    get:
+      operationId: a107InsightsCompanyMostCited
+      summary: A107 Most Citing Companies
+      description: Understand the top organisations that are citing this company's top 10 most cited patents. This is helpful to identify the organizations that are operating closest to the company and how they have utilised the technology. A deeper dive in to the patent records can reveal how the technology has potentially been built upon and how it has evolved or been used for alternative applications. From an alternative perspective, these organizations may represent potential licensees or pose a potential litigation threat.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a107 most citing companies response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A107InsightsCompanyMostCitedResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/most-cited
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights/priority-country:
+    get:
+      operationId: a004InsightsPriorityCountry
+      summary: A004 Top authorities of Origin
+      description: This shows the authorities in which the earliest application was filed to show the geographic source of the technology. This helps users assess the innovation capability of the authority and can either indicate where a majority of organizations are based, or which authorities company want to first capitalize in. At most, the Top 200 authorities are returned. Other is the sum of all authorities outside the Top 10.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a004 top authorities of origin response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A004InsightsPriorityCountryResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/priority-country
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights-company/patent-portfolio-overview:
+    get:
+      operationId: a105InsightsCompanyPatentPortfolioOverview
+      summary: A105 Company Patent Portfolio Overview
+      description: Understand the total number of applications, and how they're broken down into simple families, PCTs and active patents (applications and issued patents).
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a105 company patent portfolio overview response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A105InsightsCompanyPatentPortfolioOverviewResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/patent-portfolio-overview
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+  /insights/patent-trends:
+    get:
+      operationId: a001InsightsPatentTrends
+      summary: A001 Application and Issued Trend (keywords & ipc Search & Query Search)
+      description: Analyze the annual application trend of the technology. The results include the number of patent applications in the unit of application year, and the number & proportion of patents finally issued in the patents applied for that year. The most recent 20 years of application and issued data are returned.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a001 application and issued trend (keywords & ipc search & query search) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A001InsightsPatentTrendsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/patent-trends
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights-company/strategy-map:
+    get:
+      operationId: a102InsightsCompanyStrategyMap
+      summary: A102 Company Portfolio Strategy Radar Map
+      description: The Radar Map uses patent information as an indicator of portfolio strategy. The report compares various metrics of the portfolio to highlight the characteristics and the strengths. The algorithm for the Radar Map was developed in collaboration with the Entrepreneurship Centre, National University of Singapore.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a102 company portfolio strategy radar map response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A102InsightsCompanyStrategyMapResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/strategy-map
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights-company/acquisition-divestiture:
+    get:
+      operationId: a110InsightsCompanyAcquisitionDivestiture
+      summary: A110 Company Patent Transfer In or Transfer Out
+      description: Understand which organizations have most frequently transferred patent ownership to this company and which patents have been transferred.<p>Understand which organisations the company has most frequently transferred patent ownership to and which patents have been involved. This may indicate technology areas this company is no longer targeting or investing research and development resources towards.</p>
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a110 company patent transfer in or transfer out response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A110InsightsCompanyAcquisitionDivestitureResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/acquisition-divestiture
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights-company/word-cloud:
+    get:
+      operationId: a101InsightsCompanyWordCloud
+      summary: A101 Company Innovation Word Cloud
+      description: Understand the top keywords and phrases found in the latest 5000 publications in the company's portfolio.This is helpful to provide a snapshot view of the language used by the company in their filings. Returns up to the top 100 keywords.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a101 company innovation word cloud response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A101InsightsCompanyWordCloudResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/word-cloud
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights/inventor-ranking:
+    get:
+      operationId: a006InsightsInventorRanking
+      summary: A006 Top Inventors
+      description: The graph shows the top inventors in the technology field. This information is useful for evaluating the work of top performers in a specific technology field or for recruiting inventors. Returns up to the top 10 inventors.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a006 top inventors response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A006InsightsInventorRankingResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/inventor-ranking
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights/simple-legal-status:
+    get:
+      operationId: a008InsightsSimpleLegalStatus
+      summary: A008 Simple Legal Status
+      description: Simple legal status breakdown of the technology field. This tells you the proportion of patents in the technology space that are in effect, or no longer active, which you can then use to filter by.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a008 simple legal status response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A008InsightsSimpleLegalStatusResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/simple-legal-status
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights/word-cloud:
+    get:
+      operationId: a002InsightsWordCloud
+      summary: A002 Innovation Word Cloud （keywords & ipc Search）
+      description: A snapshot view of the keywords and phrases found within records in the technology space. This can be used to influence subsequent patent searches by making you aware of the more common terms used in this technology space.The Word Cloud displays the most frequently occurring keywords of the most recent 5,000 publications in the technology field. Returns up to the top 100 keywords.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a002 innovation word cloud （keywords & ipc search） response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A002InsightsWordCloudResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/word-cloud
+      parameters:
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights/most-cited:
+    get:
+      operationId: a005InsightsMostCited
+      summary: A005 Most Cited Patents
+      description: View the top records that have been cited most frequently by other records to understand which records are more prolific and have had their technology built upon by others. These patents are likely to be more influential and may represent the core, innovative technology of the organization it represents. Returns at most Top 10 patent information.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a005 most cited patents response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A005InsightsMostCitedResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/most-cited
+      parameters:
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+          Example: US OR EP'
+        schema:
+          type: string
+          example: CN
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.
+
+            Example: US OR EP'
+      - name: ipc
+        in: query
+        required: false
+        description: Patent IPC classification
+        schema:
+          type: string
+          example: B66B11
+          description: Patent IPC classification
+      - name: keywords
+        in: query
+        required: false
+        description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+        schema:
+          type: string
+          example: car
+          description: Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example "mobile phone AND (screen OR battery)".
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: query_text
+        in: query
+        required: false
+        description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+        schema:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc
+  /insights-company/largest-patent-family:
+    get:
+      operationId: a108InsightsCompanyLargestPatentFamily
+      summary: A108 Company Largest Invention Families
+      description: Identify the patent families in the company's portfolio that have the furthest reach of either global coverage, divisional counterparts, and continuations. Pinpoint the most successful inventions that have received a large amount of resources for increased level of coverage (either by expanding the technical coverage or geographical reach).Returns the top 20 patents by default.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a108 company largest invention families response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A108InsightsCompanyLargestPatentFamilyResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/largest-patent-family
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /insights-company/key-technology-overview:
+    get:
+      operationId: a103InsightsCompanyKeyTechnologyOverview
+      summary: A103 Company Key Technologies
+      description: This report is helpful for determining the organisations' top competencies and to understand which technology areas they have invested in. Assess whether the company is focusing on one broad technology or if they have a diverse portfolio across a number of different technologies. Returns up to the top 10 technology areas.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a103 company key technologies response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A103InsightsCompanyKeyTechnologyOverviewResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights-company/key-technology-overview
+      parameters:
+      - name: company_name
+        in: query
+        required: false
+        description: Query the name of a single enterprise
+        schema:
+          type: string
+          example: 华为技术有限公司
+          description: Query the name of a single enterprise
+      - name: org_number
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '192203821'
+          description: This field is not supported in the current version , please search by company name
+      - name: credit_code
+        in: query
+        required: false
+        description: This field is not supported in the current version , please search by company name
+        schema:
+          type: string
+          example: '914403001922038216'
+          description: This field is not supported in the current version , please search by company name
+      - name: apply_start_time
+        in: query
+        required: false
+        description: Patent apply date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent apply date from, format:yyyy
+      - name: apply_end_time
+        in: query
+        required: false
+        description: Patent apply date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent apply date to, format:yyyy
+      - name: public_start_time
+        in: query
+        required: false
+        description: Patent publication date from, format:yyyy
+        schema:
+          type: string
+          example: '2010'
+          description: Patent publication date from, format:yyyy
+      - name: public_end_time
+        in: query
+        required: false
+        description: Patent publication date to, format:yyyy
+        schema:
+          type: string
+          example: '2020'
+          description: Patent publication date to, format:yyyy
+      - name: simple_legal_status
+        in: query
+        required: false
+        description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+        schema:
+          type: string
+          example: 1 OR 2
+          description: Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>
+      - name: patent_type
+        in: query
+        required: false
+        description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+        schema:
+          type: string
+          example: A OR B
+          description: 'Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>'
+      - name: authority
+        in: query
+        required: false
+        description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+        schema:
+          type: string
+          example: CN OR EP
+          description: 'Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>'
+      - name: lang
+        in: query
+        required: true
+        description: Select the language , the default language is en, you can choose cn or en.
+        schema:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+  /search/company/technology-effect-Distribution:
+    post:
+      operationId: a201CompanyTechnologyEffectDistribution
+      summary: A201 Distribution of Technical Effects
+      description: 'This interface allows users to query the technological effects and focused research directions of a company by entering the company''s name. Includes: efficacy phrase, number of patents covered by efficacy phrase, number of patents/year'
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a201 distribution of technical effects response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A201CompanyTechnologyEffectDistributionResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/company/technology-effect-Distribution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/A201CompanyTechnologyEffectDistributionRequest'
+  /search/company/technology-field-word-cloud:
+    post:
+      operationId: a202CompanyTechnologyFieldWordCloud
+      summary: A202 Technology Field Word Cloud
+      description: Quickly understand the concentrated technologies and product R&D of the enterprise. The word cloud extracts the technical fields of all patents held by the enterprise as a patent owner, sorted by the number of patents covered in each technical field, returning the top 100 technical field terms at most.
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a202 technology field word cloud response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A202CompanyTechnologyFieldWordCloudResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/company/technology-field-word-cloud
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/A202CompanyTechnologyFieldWordCloudRequest'
+  /insights/technology-effect-Distribution:
+    post:
+      operationId: a012InsightsTechnologyEffectDistribution
+      summary: A012 Distribution of technical efficacy phrases
+      description: 'By inputting the search formula, query the technical effects of the search formula and the focused technical research directions. It includes: functional phrases, the number of patents covered by the functional phrases, and the number of patents per year (the year of patent application, the number of patents).'
+      tags:
+      - Technology Key Report
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful a012 distribution of technical efficacy phrases response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/A012InsightsTechnologyEffectDistributionResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/insights/technology-effect-Distribution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/A012InsightsTechnologyEffectDistributionRequest'
+components:
+  schemas:
+    A101InsightsCompanyWordCloudResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A101InsightsCompanyWordCloud_WordCloudResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A008InsightsSimpleLegalStatus_SimpleLegalStatusResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        simple_legal_status:
+          type: array
+          example:
+          - Pending
+          description: 'Simple legal status:
+
+            <p>such as: Active, Pending, Inactive, Undetermined, PCT designated period, PCT designated expiration</p>'
+    A010InsightsPortfolioValue_PortfolioValueResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 180
+          description: simple family numbers
+        patent_value:
+          type: string
+          example: $1-$30K
+          description: range
+    A110InsightsCompanyAcquisitionDivestiture_AcquisitionAndDivestitureResponse:
+      type: object
+      properties:
+        acquisition:
+          $ref: '#/components/schemas/A110InsightsCompanyAcquisitionDivestiture_AcquisitionTransfer'
+        divestiture:
+          $ref: '#/components/schemas/A110InsightsCompanyAcquisitionDivestiture_AcquisitionTransfer'
+    A201CompanyTechnologyEffectDistribution_NameCount:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 4115
+          description: number of patents covered by efficacy phrases
+        pbt_year:
+          type: integer
+          format: int32
+          example: 2015
+          description: patent application year
+    A107InsightsCompanyMostCitedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A107InsightsCompanyMostCited_MostCitedCompanyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A105InsightsCompanyPatentPortfolioOverview_PortfolioOverviewResponse:
+      type: object
+      properties:
+        pct_application:
+          type: integer
+          format: int32
+          example: 32
+          description: PCT Application(s)
+        total_application:
+          type: integer
+          format: int32
+          example: 1000
+          description: Total Application(s)
+        currently_active_patents:
+          type: integer
+          format: int32
+          example: 12
+          description: Current Active Patent(s)
+        multilateral_application:
+          type: integer
+          format: int32
+          example: 100
+          description: Multi-Authority application(s)
+    A012InsightsTechnologyEffectDistribution_TechEffectResponse:
+      type: object
+      properties:
+        tech_effect:
+          type: array
+          example: 'Please check the form: TechEffectCountResponse'
+          description: Statistics on the distribution of technical efficacy
+          items:
+            $ref: '#/components/schemas/A012InsightsTechnologyEffectDistribution_TechEffectCountResponse'
+    A001InsightsPatentTrends_PTItemData:
+      type: object
+      properties:
+        year:
+          type: string
+          example: 2024
+          description: year
+        total:
+          type: integer
+          format: int32
+          example: 100000
+          description: total
+        grant_num:
+          type: integer
+          format: int32
+          example: 900000
+          description: grant number
+        grant_rate:
+          type: number
+          format: float
+          example: 90
+          description: grant rate
+    A007InsightsApplicantRankingResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A007InsightsApplicantRanking_ApplicantRankingResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A105InsightsCompanyPatentPortfolioOverviewResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A105InsightsCompanyPatentPortfolioOverview_PortfolioOverviewResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A001InsightsPatentTrendsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A001InsightsPatentTrends_PatentTrendResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A106InsightsCompanyMostCitedLatest_MostCitedLatestResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US8410617B2
+          description: Patents
+        pbd:
+          type: string
+          example: 20150422
+          description: Publication Date
+        count:
+          type: integer
+          format: int32
+          example: 3
+          description: Cited by Count
+        title:
+          type: string
+          example: 一种可以通过语音控制家电的控制系统与方法
+          description: Title
+        assignees:
+          type: array
+          example:
+          - 科大讯飞股份有限公司
+          description: Std. Current Assignee
+        patent_id:
+          type: string
+          example: dd194043-93a3-467c-839c-b00d06273595
+          description: Patent ID
+    A108InsightsCompanyLargestPatentFamilyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A108InsightsCompanyLargestPatentFamily_LargestPatentFamilyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A104InsightsCompanyPatentTrends_CompanyPatentTrendResponse:
+      type: object
+      properties:
+        year:
+          type: string
+          example: 2010
+          description: Application Year
+        granted:
+          type: integer
+          format: int32
+          example: 10
+          description: Issued
+        percentage:
+          type: number
+          format: double
+          example: 0.1667
+          description: '%issued'
+        application:
+          type: integer
+          format: int32
+          example: Application
+          description: Application
+    A102InsightsCompanyStrategyMap_StrategyMapResponse:
+      type: object
+      properties:
+        assignee:
+          type: string
+          example: 上海微电子装备(集团)股份有限公司
+          description: Assignee
+        co_patenting:
+          type: number
+          format: double
+          example: 0.018
+          description: Co-patenting quantifies the degree to which an organization engages in external collaborations resulting in joint creation and ownership of IP.
+        patent_influence:
+          type: number
+          format: double
+          example: 0.009
+          description: Technology Impact Index (TII) is the share of an organization's patents in the pool of highly cited patents relative to its share in total patents. A highly cited patent is one which is among the top 10% most frequently cited in its cohort. A cohort is defined by year of grant and technology class.
+        current_relevance:
+          type: number
+          format: double
+          example: 0.111
+          description: Technology Cycle Time is an indicator of an organization's speed in turning leading edge technology into IP. It is defined as the median age of patents cited as prior art by the reference patent.
+        patent_complexity:
+          type: number
+          format: double
+          example: 0.018
+          description: Share of Complex Multi-Technology Patents is an original indicator to assess the extent of technological complexity in an organization's patent portfolio. A "complex" patent is one which is classified in multiple technological areas in its technology classification field.
+        scientific_content:
+          type: number
+          format: double
+          example: 0.018
+          description: Share of Science-based Patents is another measure of scientific content and is the share of patents with Bibliographic Citations Ratio (BCR) value higher than 50%.
+        internationalization:
+          type: number
+          format: double
+          example: 0.018
+          description: International Co-invention quantifies the degree to which an organization's inventors engage in collaborative R&D with inventors outside the home economy.
+        growth_in_patent_stock:
+          type: number
+          format: double
+          example: 0.22
+          description: Growth of portfolio is measured as average annual growth rate in an organization's patent stock.
+        technology_specialization:
+          type: number
+          format: double
+          example: 0.237
+          description: Technology Specialisation is measured using the Herfindahl Index which quantifies the degree to which a portfolio is specialised or concentrated in a small number of technology areas versus being distributed across a range of technologies.
+    A102InsightsCompanyStrategyMapResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A102InsightsCompanyStrategyMap_StrategyMapResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A012InsightsTechnologyEffectDistribution_TechEffectCountResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 提高准确性
+          description: benefit phrase
+        count:
+          type: integer
+          format: int32
+          example: 198
+          description: patent count
+        patent_count_year:
+          type: array
+          example: 'Please check the form: TechEffectPatentCountYear'
+          description: Annual statistics of the number of patents covered by functional phrases
+          items:
+            $ref: '#/components/schemas/A012InsightsTechnologyEffectDistribution_TechEffectPatentCountYear'
+    A011InsightsPatentTypeTrend_PatentTypeDimensions:
+      type: object
+      properties:
+        year:
+          type: array
+          example:
+          - '2006'
+          - '2007'
+          - '2008'
+          - '2009'
+          - '2010'
+          - '2011'
+          - '2012'
+          - '2013'
+          - '2014'
+          - '2015'
+          - '2016'
+          - '2017'
+          - '2018'
+          - '2019'
+          - '2020'
+          - '2021'
+          - '2022'
+          - '2023'
+          - '2024'
+          - '2025'
+          description: years
+        count:
+          type: array
+          example:
+          - '129'
+          - '190'
+          - '195'
+          - '186'
+          - '191'
+          - '186'
+          - '242'
+          - '302'
+          - '359'
+          - '404'
+          - '513'
+          - '550'
+          - '526'
+          - '501'
+          - '395'
+          - '250'
+          - '1'
+          - '0'
+          - '0'
+          - '0'
+          description: counts
+        patent_type:
+          type: array
+          example:
+          - AB
+          - U
+          - D
+          description: patent types
+    A001InsightsPatentTrends_PatentTrendResponse:
+      type: object
+      properties:
+        values:
+          type: array
+          example: []
+          description: values
+          items:
+            $ref: '#/components/schemas/A001InsightsPatentTrends_PTItemData'
+    A202CompanyTechnologyFieldWordCloud_TechFieldWord:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 轨道交通
+          description: Technology field
+        count:
+          type: integer
+          format: int32
+          example: 1053
+          description: number of patents
+    A012InsightsTechnologyEffectDistributionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A012InsightsTechnologyEffectDistribution_TechEffectResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A007InsightsApplicantRanking_ApplicantRankingResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 2918
+          description: patent counts
+        applicant:
+          type: string
+          example: QUALCOMM INC
+          description: assignee
+        percentage:
+          type: number
+          format: double
+          example: 0.1667
+          description: percentage
+    A110InsightsCompanyAcquisitionDivestiture_AcquisitionTransfer:
+      type: object
+      properties:
+        patent_total:
+          type: integer
+          format: int32
+          example: 25
+          description: Total number of patents transferred in or out
+        transfer_list:
+          type: array
+          example: 'Please check the form: Transfer'
+          description: Transferred in or out information
+          items:
+            $ref: '#/components/schemas/A110InsightsCompanyAcquisitionDivestiture_Transfer'
+    A202CompanyTechnologyFieldWordCloudRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 吉林大学
+          description: company name
+        lang:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+      required:
+      - company_name
+    A106InsightsCompanyMostCitedLatestResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A106InsightsCompanyMostCitedLatest_MostCitedLatestResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A201CompanyTechnologyEffectDistributionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A201CompanyTechnologyEffectDistribution_TechDistributionResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A202CompanyTechnologyFieldWordCloudResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A202CompanyTechnologyFieldWordCloud_TechWordCloudResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A012InsightsTechnologyEffectDistribution_TechEffectPatentCountYear:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 198
+          description: patent count
+        pbt_year:
+          type: integer
+          format: int32
+          example: 2024
+          description: patent application year
+    A104InsightsCompanyPatentTrendsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A104InsightsCompanyPatentTrends_CompanyPatentTrendResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A201CompanyTechnologyEffectDistribution_TechEffect:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 车轮
+          description: benefit phrase
+        count:
+          type: integer
+          format: int32
+          example: 4115
+          description: number of patents covered by efficacy phrases
+        patent_count_year:
+          type: array
+          example: 'Please check the form: NameCount'
+          description: number of patents per year
+          items:
+            $ref: '#/components/schemas/A201CompanyTechnologyEffectDistribution_NameCount'
+    A110InsightsCompanyAcquisitionDivestitureResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A110InsightsCompanyAcquisitionDivestiture_AcquisitionAndDivestitureResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A009InsightsMostAssertedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A009InsightsMostAsserted_MostAssertedResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A011InsightsPatentTypeTrendResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/A011InsightsPatentTypeTrend_PatentTypeTrendResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A108InsightsCompanyLargestPatentFamily_LargestPatentFamilyResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US8410617B2
+          description: Patents
+        pbd:
+          type: string
+          example: 20150422
+          description: Publication Date
+        count:
+          type: integer
+          format: int32
+          example: 18
+          description: Patsnap Family Size
+        title:
+          type: string
+          example: 一种可以通过语音控制家电的控制系统与方法
+          description: Patent Name
+        assignees:
+          type: array
+          example:
+          - 科大讯飞股份有限公司
+          description: Std. Current Assignee
+        patent_id:
+          type: string
+          example: dd194043-93a3-467c-839c-b00d06273595
+          description: Patent ID
+    A110InsightsCompanyAcquisitionDivestiture_Transfer:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of patents transferred in or out
+        applicant:
+          type: string
+          example: 上海微高精密机械工程有限公司
+          description: Applicants of patents transferred in or out
+    A006InsightsInventorRankingResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A006InsightsInventorRanking_InventorRankingResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A011InsightsPatentTypeTrend_TimeRange:
+      type: object
+      properties:
+        end_year:
+          type: string
+          example: 2020
+          description: end year
+        start_year:
+          type: string
+          example: 2015
+          description: start year
+      required:
+      - end_year
+      - start_year
+    A005InsightsMostCited_MostCitedResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 3
+          description: cited by count
+        title:
+          type: string
+          example: RFID applications
+          description: patent title
+        patent_id:
+          type: string
+          example: dd194043-93a3-467c-839c-b00d06273595
+          description: patent ID
+        patent_num:
+          type: string
+          example: US8410617B2
+          description: patents
+    A002InsightsWordCloud_WordCloudResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: electronic device
+          description: Key concepts
+        count:
+          type: integer
+          format: int32
+          example: 37
+          description: Patents
+    A002InsightsWordCloudResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A002InsightsWordCloud_WordCloudResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A103InsightsCompanyKeyTechnologyOverviewResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A103InsightsCompanyKeyTechnologyOverview_KeyTechnologyOverviewResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A012InsightsTechnologyEffectDistributionRequest:
+      type: object
+      properties:
+        collapse_by:
+          type: string
+          example: PBD
+          description: <p>"APD" means order according to application date;</p><p>"PBD" means order according to publication date;</p><p>"AUTHORITY" means order according to authority;</p><p>"SCORE" means order according to the relevance score</p>
+        collapse_order:
+          type: string
+          example: LATEST
+          description: When collapse_type="APNO", and collapse_by="APD" or "PBD", the collapse_order can be set as "OLDEST" or "LATEST", means keep the patent date of oldest or latest one
+        collapse_order_authority:
+          type: array
+          example:
+          - CN
+          - US
+          - EP
+          - JP
+          - KR
+          description: <p>Setting the patent collapse ordering rule that is valid only if collapse_by is AUTHORITY</p><p>Sets the order of patent collapse according to the input authorities priority list, valid only if collapse_by is AUTHORITY</p>
+        collapse_type:
+          type: string
+          example: DOCDB
+          description: <p>"ALL" or Null value means no collapse;</p><p>"APNO" means collapse according to application number;</p><p>"DOCDB" means collapse according to simple family;</p><p>"INPADOC" means collapse according to inpadoc family;</p><p>"EXTEND" means collapse according to patsnap family</p>
+        lang:
+          type: string
+          example: cn
+          description: Single-choice, available options include "cn" and "en", representing Chinese and English respectively. Please use lowercase letters. The default value is Chinese
+        query_text:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Analytics query, maximum length 1,500 characters
+        sort:
+          type: array
+          example:
+          - field: PBDT_YEARMONTHDAY
+            order: DESC
+          description: 'Field order, field can support: PBDT_YEARMONTHDAY, APD_YEARMONTHDAY, ISD,SCORE; order can support: desc, asc.'
+      required:
+      - query_text
+    A003InsightsWheelOfInnovation_WheelOfInnovationResponse:
+      type: object
+      properties:
+        topics_name:
+          type: string
+          example: readable storage medium
+          description: topics
+        topics_count:
+          type: integer
+          format: int32
+          example: 9
+          description: number of subject patents
+        subtopics_list:
+          type: array
+          example: 'Please check the form: Subtopics'
+          description: list of sub-topics
+          items:
+            $ref: '#/components/schemas/A003InsightsWheelOfInnovation_Subtopics'
+    A006InsightsInventorRanking_InventorRankingResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: GALA
+          description: application name
+        count:
+          type: integer
+          format: int32
+          example: 116
+          description: application counts
+    A011InsightsPatentTypeTrend_PatentTypeYearData:
+      type: object
+      properties:
+        d:
+          type: integer
+          format: int32
+          example: 100
+          description: design patent count
+        u:
+          type: integer
+          format: int32
+          example: 400
+          description: utility model count
+        ab:
+          type: integer
+          format: int32
+          example: 500
+          description: invention patent count
+        year:
+          type: string
+          example: 2021
+          description: year
+        count:
+          type: integer
+          format: int32
+          example: 1000
+          description: count
+        patents_percentage:
+          type: number
+          format: double
+          example: 0.8
+          description: patents percentage
+    A103InsightsCompanyKeyTechnologyOverview_KeyTechnologyOverviewResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 172
+          description: Patents
+        percentage:
+          type: number
+          format: double
+          example: 0.1543
+          description: Percentage
+        description:
+          type: string
+          example: 语音识别（G10L17/00优先）〔7，2013.01〕[2013.01]
+          description: IPC Definition
+        classification:
+          type: string
+          example: G10L15
+          description: IPC
+    A011InsightsPatentTypeTrendRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          example: IPC:(H04L29/06)
+          description: query search statement
+        time_range:
+          $ref: '#/components/schemas/A011InsightsPatentTypeTrend_TimeRange'
+      required:
+      - query
+      - time_range
+    A107InsightsCompanyMostCited_MostCitedCompanyResponse:
+      type: object
+      properties:
+        assignee:
+          type: string
+          example: 哈尔滨工业大学
+          description: Assignee
+        cited_count:
+          type: integer
+          format: int32
+          example: 322
+          description: Cited by count
+        patent_count:
+          type: integer
+          format: int32
+          example: 3993
+          description: Patents
+    A008InsightsSimpleLegalStatusResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A008InsightsSimpleLegalStatus_SimpleLegalStatusResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A011InsightsPatentTypeTrend_PatentTypeTrendResponse:
+      type: object
+      properties:
+        source:
+          type: array
+          example:
+          - D: 0
+            U: 3
+            AB: 126
+            year: '2006'
+            count: 129
+            patents_percentage: 0.9767
+          - D: 0
+            U: 1
+            AB: 189
+            year: '2007'
+            count: 190
+            patents_percentage: 0.9947
+          - D: 0
+            U: 1
+            AB: 194
+            year: '2008'
+            count: 195
+            patents_percentage: 0.9949
+          - D: 0
+            U: 4
+            AB: 182
+            year: '2009'
+            count: 186
+            patents_percentage: 0.9785
+          - D: 0
+            U: 10
+            AB: 181
+            year: '2010'
+            count: 191
+            patents_percentage: 0.9476
+          - D: 0
+            U: 14
+            AB: 172
+            year: '2011'
+            count: 186
+            patents_percentage: 0.9247
+          - D: 0
+            U: 7
+            AB: 235
+            year: '2012'
+            count: 242
+            patents_percentage: 0.9711
+          - D: 0
+            U: 13
+            AB: 289
+            year: '2013'
+            count: 302
+            patents_percentage: 0.957
+          - D: 0
+            U: 8
+            AB: 351
+            year: '2014'
+            count: 359
+            patents_percentage: 0.9777
+          - D: 0
+            U: 8
+            AB: 396
+            year: '2015'
+            count: 404
+            patents_percentage: 0.9802
+          - D: 0
+            U: 19
+            AB: 494
+            year: '2016'
+            count: 513
+            patents_percentage: 0.963
+          - D: 0
+            U: 16
+            AB: 534
+            year: '2017'
+            count: 550
+            patents_percentage: 0.9709
+          - D: 0
+            U: 15
+            AB: 511
+            year: '2018'
+            count: 526
+            patents_percentage: 0.9715
+          - D: 0
+            U: 13
+            AB: 488
+            year: '2019'
+            count: 501
+            patents_percentage: 0.9741
+          - D: 0
+            U: 17
+            AB: 378
+            year: '2020'
+            count: 395
+            patents_percentage: 0.957
+          - D: 0
+            U: 9
+            AB: 241
+            year: '2021'
+            count: 250
+            patents_percentage: 0.964
+          - D: 0
+            U: 0
+            AB: 1
+            year: '2022'
+            count: 1
+            patents_percentage: 1
+          - D: 0
+            U: 0
+            AB: 0
+            year: '2023'
+            count: 0
+            patents_percentage: 0
+          - D: 0
+            U: 0
+            AB: 0
+            year: '2024'
+            count: 0
+            patents_percentage: 0
+          - D: 0
+            U: 0
+            AB: 0
+            year: '2025'
+            count: 0
+            patents_percentage: 0
+          description: source data
+          items:
+            $ref: '#/components/schemas/A011InsightsPatentTypeTrend_PatentTypeYearData'
+        dimensions:
+          $ref: '#/components/schemas/A011InsightsPatentTypeTrend_PatentTypeDimensions'
+    A202CompanyTechnologyFieldWordCloud_TechWordCloudResponse:
+      type: object
+      properties:
+        tech_field_word:
+          type: array
+          example: []
+          description: tech filed cloud
+          items:
+            $ref: '#/components/schemas/A202CompanyTechnologyFieldWordCloud_TechFieldWord'
+    A109InsightsCompanySimpleLegalStatusResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A109InsightsCompanySimpleLegalStatus_SimpleLegalStatusResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A010InsightsPortfolioValueResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A010InsightsPortfolioValue_PortfolioValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A004InsightsPriorityCountryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A004InsightsPriorityCountry_PriorityCountryResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A101InsightsCompanyWordCloud_WordCloudResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: electronic device
+          description: Key concepts
+        count:
+          type: integer
+          format: int32
+          example: 37
+          description: Patents
+    A004InsightsPriorityCountry_PriorityCountryResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 1000
+          description: patent counts
+        country:
+          type: string
+          example: CN
+          description: Authority name
+        percentage:
+          type: number
+          format: double
+          example: 0.1667
+          description: percentage
+    A003InsightsWheelOfInnovationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A003InsightsWheelOfInnovation_WheelOfInnovationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A009InsightsMostAsserted_MostAssertedResponse:
+      type: object
+      properties:
+        year:
+          type: string
+          example: 2017
+          description: latest case filed
+        count:
+          type: integer
+          format: int32
+          example: 3
+          description: cases
+        title:
+          type: string
+          example: RFID applications
+          description: patent title
+        patent_id:
+          type: string
+          example: dd194043-93a3-467c-839c-b00d06273595
+          description: patent ID
+        patent_num:
+          type: string
+          example: US8410617B2
+          description: patents
+    A201CompanyTechnologyEffectDistribution_TechDistributionResponse:
+      type: object
+      properties:
+        tech_effect:
+          type: array
+          example: 'Please check the form: TechEffect'
+          description: tech_effect
+          items:
+            $ref: '#/components/schemas/A201CompanyTechnologyEffectDistribution_TechEffect'
+    A003InsightsWheelOfInnovation_Subtopics:
+      type: object
+      properties:
+        name:
+          type: string
+          example: wind turbine
+          description: subtopics
+        count:
+          type: integer
+          format: int32
+          example: 9
+          description: number of subtopics patents
+    A005InsightsMostCitedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/A005InsightsMostCited_MostCitedResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    A201CompanyTechnologyEffectDistributionRequest:
+      type: object
+      properties:
+        apply_end_time:
+          type: integer
+          format: int32
+          example: 2020
+          description: Patent apply date to, format:yyyy
+        apply_start_time:
+          type: integer
+          format: int32
+          example: 2010
+          description: Patent apply date from, format:yyyy
+        company_name:
+          type: string
+          example: 吉林大学
+          description: company name
+        lang:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+      required:
+      - apply_end_time
+      - apply_start_time
+      - company_name
+    A109InsightsCompanySimpleLegalStatus_SimpleLegalStatusResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 20
+          description: Patents
+        percentage:
+          type: number
+          format: double
+          example: 0.1777
+          description: Percentage
+        simple_legal_status:
+          type: string
+          example: 1
+          description: 'simple legal status.
+
+
+            0-Inactive
+
+
+            1-Active
+
+
+            2-Pending
+
+
+            999-Undetermined
+
+
+            220-PCT designated stage expired
+
+
+            221-PCT designated stage'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

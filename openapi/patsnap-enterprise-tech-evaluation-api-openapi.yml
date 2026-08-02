@@ -1,0 +1,2394 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Enterprise Tech Evaluation API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Enterprise Tech Evaluation
+  description: Enterprise Tech Evaluation APIs.
+paths:
+  /company/enterprise-patent-risk-warning-backtracking:
+    post:
+      operationId: c028CompanyEnterprisePatentRiskWarningBacktracking
+      summary: C028 backtracking of enterprise patent risk warning
+      description: 'This API provides patent risk warning data for historical retrospective versions of enterprises, including patent pledge litigation, transfer in/out, invalid rejection, etc.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>'
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c028 backtracking of enterprise patent risk warning response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C028CompanyEnterprisePatentRiskWarningBacktrackingResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/enterprise-patent-risk-warning-backtracking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C028CompanyEnterprisePatentRiskWarningBacktrackingRequest'
+  /company/enterprise-patent-risk-warning-trend:
+    post:
+      operationId: c029CompanyEnterprisePatentRiskWarningTrend
+      summary: C029 trend of enterprise patent risk warning
+      description: 'This API provides information on the changes in patent risk warning data for enterprises. The data update frequency is on the 1st and 16th of each month, including whether the latest patent pledge has been increased, whether the latest patent litigation has been increased, and so on.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>'
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c029 trend of enterprise patent risk warning response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C029CompanyEnterprisePatentRiskWarningTrendResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/enterprise-patent-risk-warning-trend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C029CompanyEnterprisePatentRiskWarningTrendRequest'
+  /company/enterprise-patent-risk-warning:
+    post:
+      operationId: c027CompanyEnterprisePatentRiskWarning
+      summary: C027 enterprise patent risk warning
+      description: 'This API provides enterprise patent risk warning data, including patent pledge litigation, transfer in/out, invalid rejection, etc.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>'
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c027 enterprise patent risk warning response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C027CompanyEnterprisePatentRiskWarningResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/enterprise-patent-risk-warning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C027CompanyEnterprisePatentRiskWarningRequest'
+  /company/technology-evaluation-indicators:
+    post:
+      operationId: c024CompanyTechnologyEvaluationIndicators
+      summary: C024 scientific and technological company evaluation and indicators
+      description: This interface provides the evaluation results and evaluation calculation index pool of the enterprise's scientific and technological innovation capability
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c024 scientific and technological company evaluation and indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C024CompanyTechnologyEvaluationIndicatorsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/technology-evaluation-indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C024CompanyTechnologyEvaluationIndicatorsRequest'
+  /company/technology-evaluation:
+    post:
+      operationId: c022CompanyTechnologyEvaluation
+      summary: C022 scientific and technological company evaluation
+      description: This interface provides the evaluation results of the enterprise's scientific and technological innovation capability
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c022 scientific and technological company evaluation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C022CompanyTechnologyEvaluationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/technology-evaluation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C022CompanyTechnologyEvaluationRequest'
+  /company/technology-indicators:
+    post:
+      operationId: c023CompanyTechnologyIndicators
+      summary: C023 scientific and technological company indicators
+      description: This interface provides the evaluation and calculation index pool of the enterprise's scientific and technological innovation capability
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c023 scientific and technological company indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C023CompanyTechnologyIndicatorsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/technology-indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C023CompanyTechnologyIndicatorsRequest'
+  /company/company-group-technology-evaluation-indicators:
+    post:
+      operationId: c025CompanyCompanyGroupTechnologyEvaluationIndicators
+      summary: C025 scientific and technological company group
+      description: This interface provides the evaluation results and evaluation calculation index pool of the technological innovation capability of the enterprise group after penetration
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c025 scientific and technological company group response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C025CompanyCompanyGroupTechnologyEvaluationIndicatorsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/company-group-technology-evaluation-indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C025CompanyCompanyGroupTechnologyEvaluationIndicatorsRequest'
+  /company/technology-evaluation-indicators-backtracking:
+    post:
+      operationId: c026CompanyTechnologyEvaluationIndicatorsBacktracking
+      summary: C026 backtracking of scientific and technological company
+      description: This interface provides the evaluation results and evaluation model indicators of the enterprise's historical technological innovation capability
+      tags:
+      - Enterprise Tech Evaluation
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful c026 backtracking of scientific and technological company response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/C026CompanyTechnologyEvaluationIndicatorsBacktrackingResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/company/technology-evaluation-indicators-backtracking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/C026CompanyTechnologyEvaluationIndicatorsBacktrackingRequest'
+components:
+  schemas:
+    C023CompanyTechnologyIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C023CompanyTechnologyIndicators_CompanyTechnologyIndicatorsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C029CompanyEnterprisePatentRiskWarningTrend_PatentEventCountGrowth:
+      type: object
+      properties:
+        pledge_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent pledging events
+        reexam_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent invalidation events
+        transfer_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent transfer events
+        transfer_out_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent transfer out events
+        litigation_defendant_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent events involving the respondent in the litigation patent
+        litigation_plaintiff_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patent events involving the respondent in the litigation patent
+    C027CompanyEnterprisePatentRiskWarningRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C025CompanyCompanyGroupTechnologyEvaluationIndicators_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    C026CompanyTechnologyEvaluationIndicatorsBacktracking_HistoryOriginalDetailResponse:
+      type: object
+      properties:
+        ic_num:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        rounds:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of financing rounds(The more rounds of financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        reg_num:
+          type: integer
+          format: int32
+          example: 37
+          description: Total number of software copyright registrations(The higher the total number of software copyright registrations, the stronger the company's R&D strength in the software industry, and it is in the leading position in the industry)
+        apno_cnt:
+          type: integer
+          format: int64
+          example: 435
+          description: Number of patent applications (The more patent applications, the larger the R&D scale of the company)
+        duration:
+          type: number
+          format: double
+          example: 10.266
+          description: Time of establishment(The year difference between the establishment date and the calculation date)
+        value_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Average patent value (USD)(The higher the average value of patent value, the more assets of the enterprise's overall patent)
+        value_sum:
+          type: number
+          format: double
+          example: 27200
+          description: Total patent value (USD)(The greater the total value of patents, the more assets of the enterprise's overall patents)
+        avg_3y_cnt:
+          type: number
+          format: double
+          example: 88.66
+          description: Average number of patent applications in recent three years(The average number of patent applications in the past three years is more, indicating that the company has invested more in recent research and development)
+        reg_3y_avg:
+          type: number
+          format: double
+          example: 3.66
+          description: Average number of soft book applications in recent 3 years(The higher the average application for soft books in the past three years, the stronger the company's recent research and development capacity)
+        reg_num_5y:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        tech_width:
+          type: number
+          format: double
+          example: 1.7026
+          description: Breadth of patented technology(Technology breadth refers to the IPC involved in the enterprise's patents in the core technology field. The more technology fields involved in the measurement of patents, the broader the enterprise's layout)
+        country_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Geographical distribution of patents(The geographical distribution of patents, that is, the receiving authority of patent applications, the higher the geographical distribution of patents, the higher the Longernationalization level of enterprises' business distribution in various countries/regions)
+        num_members:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of core teams(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        ip_dependency:
+          type: number
+          format: double
+          example: 0
+          description: IP dependency(IP dependency, that is, the proportion of patents licensed by the company. The greater the IP dependency, the more dependent the company's main products are on the core technologies of other companies.)
+        qualification:
+          type: array
+          example: 苏州市专精特新, 专精特新小巨人, 瞪羚企业, 江苏省小巨人, 江苏省企业技术中心, 高新技术企业, A股
+          description: Enterprise innovation qualification(The more types of enterprise innovation qualifications, the more recognition the enterprise obtains from the capital market or the country, the stronger the enterprise's consolidation strength)
+        value_top5_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Maximum 5 averages of patent value (USD)(The higher the maximum five average values of patent value, the higher the value of enterprise core patents)
+        invention_ratio:
+          type: number
+          format: double
+          example: 0.257
+          description: Proportion of invention patent applications(The invention patent is the highest gold content in patent applications. The higher the proportion of invention patent applications, the higher the technical level of the company's research and development.)
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.408
+          description: Average cited times(The more patents are cited on average, the stronger the recognition of enterprises in the industry, the stronger the overall technical influence in the industry)
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 0.1802
+          description: Patents under review(The proportion of pending patents, that is, the larger the proportion of pending patents, indicates that many patent offices of enterprises are in the status of pending, and enterprises are in the preliminary stage. In the short term, the company's patent licensing will show rapid growth)
+        most_recent_time:
+          type: number
+          format: double
+          example: 5.886
+          description: Time since the latest financing(The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The shorter the time of the latest financing, the shorter the time for the company to obtain capital market research, the lower the risk)
+        num_certificates:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of qualification certificates(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: -0.34
+          description: Soft copy growth rate(The higher the software growth rate, the faster the development of the company in the industry and the strong sustainability of research and development)
+        apno_cnt_valid_5y:
+          type: integer
+          format: int64
+          example: 403
+          description: Number of valid patent applications in the last five years(The more effective patent applications in the past five years, the more recent R&D investment of the company)
+        ipc_sub_class_cnt:
+          type: integer
+          format: int64
+          example: 57
+          description: Number of IPC sub-categories(The larger the number of IPC sub-categories, the broader the company's R&D direction)
+        patent_valid_ratio:
+          type: number
+          format: double
+          example: 0.9406
+          description: Patent efficiency(The higher the patent efficiency, the stronger the patent protection of the company, and the higher the R&D cost invested)
+        active_inventor_cnt:
+          type: integer
+          format: int64
+          example: 3
+          description: Number of active inventors(Active inventors are inventors who have applied for patents every year for five consecutive years. The more active inventors are, the more sustainable the enterprise has a stable R&D team.)
+        invention_stability:
+          type: number
+          format: double
+          example: 11.751595636338072
+          description: Stability of invention patent application (The stability of the invention patent application, that is, the variance of the invention patent application. The smaller the stability value of the invention patent application, the smaller the volatility of the company's R&D patent, the more stable the R&D output)
+        joint_applicant_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Join applicants(The more scientific research institutes or enterprises joinly applied for, the stronger the company's ability to produce, study and research)
+        non_design_apno_cnt:
+          type: integer
+          format: int64
+          example: 437
+          description: Number of non-design patent applications(Non-design patents, namely invention patents and utility model patents. The more non-appearance patents applied, the higher the quality of patents developed by the company)
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 0.02
+          description: Patent self-citation rate(Patent self-citation rate, that is, the company's subsequent patents cite its own patents, reflecting the continuity and stability of the company's research and development)
+        avg_funding_interval:
+          type: number
+          format: double
+          example: 2.114
+          description: Average financing Interval(The average financing Interval of the company can reflect the company's average financing ability and whether its development is stable. The shorter the average financing Longerval, the stronger the company's fund-raising ability)
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.266
+          description: Average technical quality(Average technical quality is the average score of technical value in the patent value of all patents of the company. The higher the average technical quality, the higher the company's technical level)
+        num_trademarks_total:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of trademarks(The more total number of trademark applications, the stronger the company's overall trademark R&D strength)
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 5
+          description: JActive inventor scale(The scale of active inventors, that is, the proportion of active inventors, the larger the scale, the better the stability of the company's research and development.)
+        granted_invention_cnt:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of effective invention patents(The larger the total number of effective invention patents, the higher the quality of patents developed by the company as a whole)
+        joint_application_cnt:
+          type: integer
+          format: int64
+          example: 6
+          description: Number of join patent applications(The more patents applied by scientific research institutes or enterprises joinly, the stronger the company's ability to produce, study and research)
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1.082
+          description: Registered capital(The subscribed amount of the registered company, the greater the registered capital, the greater the risk responsibility of the company)
+        external_licensing_cnt:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of valid patents for external licensing(The larger the number of valid patents for external licensing, the higher the recognition of the company in the industry and the greater the influence)
+        money_q25_sum_weighted:
+          type: number
+          format: double
+          example: 1.69
+          description: Weighted amount of financing(The higher the weighted amount of the company's financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        num_certificates_valid:
+          type: integer
+          format: int64
+          example: 4
+          description: Total number of valid qualification certificates(The more the total number of valid qualification certificates, the diversity of the company's main business and its competitiveness in the main business sectors)
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 1.301
+          description: Patent growth rate(The growth rate of patents, that is, the growth rate of enterprises' patents is counted in a period of three years. The higher the growth rate of patents, the higher the recent R&D investment of enterprises)
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 8.723
+          description: Expected life of patent (The expected life of the patent, that is, the estimated average expiry date of the patent, the longer the expected life of the patent, the longer the patent protection period, indicating the stronger the technological vitality of the company)
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 23
+          description: Proportion of effective invention patents(The higher the proportion of effective invention patents, the higher the quality of the company's R&D patents)
+        non_design_pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total PCT patents(PCT patents, that is, Longernational patent applications, do not include the appearance of The Hague. The more PCT patents, the stronger the company's Longernational awareness and Longernational foresight.)
+        num_trademarks_total_5y:
+          type: integer
+          format: int64
+          example: 19
+          description: Total number of trademarks in the past five years(The total number of trademark applications in the past five years is more, which means that the company has developed more trademarks in the near future)
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 81
+          description: Actual  capital(The amount actually paid by the company. The larger the paid-in capital, the stronger the company's financial strength)
+        most_cited_patents_value:
+          type: number
+          format: double
+          example: 10.8
+          description: Quality of the top 10 patents cited (USD)(The quality of the top 10 cited patents is the patent value of the cited patents, and the higher the patent influence of the enterprise is.)
+        standard_information_num:
+          type: integer
+          format: int64
+          example: 2
+          description: Number of participating standards(The more companies participate in the formulation of standards, it means that the company has influence in the industry or technical talents and products have certain authority in the industry)
+        total_patent_award_score:
+          type: integer
+          format: int64
+          example: 0
+          description: Patent Awards(The more patent awards, the higher the patent quality of the company)
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int64
+          example: 0.408
+          description: Number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        num_trademarks_registered:
+          type: integer
+          format: int64
+          example: 34
+          description: Registered trademarks(The more registered trademark applications, the stronger the company's overall trademark R&D strength)
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 1.7026
+          description: Concentration of patented technology(Compare the number of the company's key IPC patents with the number of global IPC patents in this field, and understand the global share of the company's main technology patents)
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 0.0182
+          description: Current influence(Current influence, that is, the proportion of the average cited times of the company's patents in the past five years to the average cited times of all the company's patents in the past one year. The higher the current influence, the higher the influence of the company's recently developed patents in the current industry)
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 10.8
+          description: Average number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited on average, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        granted_invention_cnt_pb_1y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of invention patents effectively authorized in recent 1 year(The more invention patents that have been effectively authorized in the past year, the more patents that the company has recently authorized, and the more recent research and development investment)
+        num_trademarks_registered_5y:
+          type: integer
+          format: int64
+          example: 13
+          description: Total number of registered trademarks in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        invention_cnt_validity_lower_5:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of invention patents with remaining valid period of less than 5 years (excluding 5 years)(The number of invention patents with a remaining validity period of less than 5 years is increasing, indicating that the company will face certain risks in the protection of its products in the future)
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 1.07E
+          description: Latest financing amount (The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The larger the latest financing, the higher the company's valuation)
+        country_standard_information_num:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of participants in the formulation of national standards(The more companies participate in the formulation of national standards, which means that the company has obtained the approval of the state and has certain authority)
+        invention_cnt_validity_higher_10:
+          type: integer
+          format: int64
+          example: 15
+          description: Number of invention patents with remaining valid period of more than 10 years(The number of invention patents with a remaining validity period of more than 10 years is increasing, indicating that the protection period of the company's invention patents is relatively long)
+        granted_invention_cnt_pb_original_2y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of valid invention patents originally applied for in recent 2 years(The number of effective invention patents originally applied for in the past two years is more, which means that the company's ability to independently research patents in the near future is stronger, and the sustainability of patent research and development is stronger)
+        invention_cnt_validity_higher_5_lower_10:
+          type: integer
+          format: int64
+          example: 8
+          description: Number of invention patents with remaining valid period of 5-10 years (The number of invention patents with the remaining valid period of 5-10 years is more, which means that the protection period of the company's invention patents is moderate)
+    C029CompanyEnterprisePatentRiskWarningTrendRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C028CompanyEnterprisePatentRiskWarningBacktrackingRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        date:
+          type: string
+          example: 20211231
+          description: Query Date (YYYYMMDD)
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+      required:
+      - date
+    C026CompanyTechnologyEvaluationIndicatorsBacktrackingRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        date:
+          type: string
+          example: 20211231
+          description: Query Date (YYYYMMDD)
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+      required:
+      - date
+    C024CompanyTechnologyEvaluationIndicators_CompanyTechEvalIndicatorsResponse:
+      type: object
+      properties:
+        score:
+          type: number
+          format: double
+          example: 86.5
+          description: scientific and technological innovation score
+        rating_v2:
+          type: string
+          example: AAA
+          description: scientific and technological innovation ratingRating division：AAA、AA、A、BBB、BB、B、CCC、CC、C
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        original_detail:
+          $ref: '#/components/schemas/C024CompanyTechnologyEvaluationIndicators_OriginalDetailResponse'
+        score_dimension:
+          $ref: '#/components/schemas/C024CompanyTechnologyEvaluationIndicators_ScoreDimension'
+    C029CompanyEnterprisePatentRiskWarningTrend_CompanyPatentRiskWarningTrendResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization number
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        patent_count_growth:
+          $ref: '#/components/schemas/C029CompanyEnterprisePatentRiskWarningTrend_PatentCountGrowth'
+        patent_event_count_growth:
+          $ref: '#/components/schemas/C029CompanyEnterprisePatentRiskWarningTrend_PatentEventCountGrowth'
+    C026CompanyTechnologyEvaluationIndicatorsBacktracking_CompanyTechEvalIndicatorsBacktrackingResponse:
+      type: object
+      properties:
+        date:
+          type: string
+          example: 20211231
+          description: date
+        score:
+          type: number
+          format: double
+          example: 86.5
+          description: scientific and technological innovation score
+        rating_v2:
+          type: string
+          example: AAA
+          description: scientific and technological innovation ratingRating division：AAA、AA、A、BBB、BB、B、CCC、CC、C
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        original_detail:
+          $ref: '#/components/schemas/C026CompanyTechnologyEvaluationIndicatorsBacktracking_HistoryOriginalDetailResponse'
+        score_dimension:
+          $ref: '#/components/schemas/C026CompanyTechnologyEvaluationIndicatorsBacktracking_ScoreDimension'
+    C022CompanyTechnologyEvaluationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C025CompanyCompanyGroupTechnologyEvaluationIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C025CompanyCompanyGroupTechnologyEvaluationIndicators_CompanyGroupTechEvalIndicatorsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C024CompanyTechnologyEvaluationIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C024CompanyTechnologyEvaluationIndicators_CompanyTechEvalIndicatorsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C027CompanyEnterprisePatentRiskWarning_PatentCount:
+      type: object
+      properties:
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 481
+          description: number of patent applications
+        rejected:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents rejected
+        patent_pledge:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents pledged
+        patent_reexam:
+          type: integer
+          format: int32
+          example: 0
+          description: number of invalid patents
+        patent_transfer:
+          type: integer
+          format: int32
+          example: 21
+          description: number of transferred patents
+        patent_transfer_out:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents transferred out
+        active_invention_cnt:
+          type: integer
+          format: int32
+          example: 25
+          description: number of valid authorized invention patents
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 25
+          description: number of authorized invention patents
+        patent_litigation_defendant:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents of the respondent in the litigation patent
+        patent_litigation_plaintiff:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents of the plaintiff in the litigation patent
+    C025CompanyCompanyGroupTechnologyEvaluationIndicators_OriginalDetailResponse:
+      type: object
+      properties:
+        ic_num:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        reg_num:
+          type: integer
+          format: int32
+          example: 37
+          description: Total number of software copyright registrations(The higher the total number of software copyright registrations, the stronger the company's R&D strength in the software industry, and it is in the leading position in the industry)
+        apno_cnt:
+          type: integer
+          format: int64
+          example: 435
+          description: Number of patent applications (The more patent applications, the larger the R&D scale of the company)
+        duration:
+          type: number
+          format: double
+          example: 10.266
+          description: Time of establishment(The year difference between the establishment date and the calculation date)
+        round_all:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of financing rounds(The more rounds of financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        value_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Average patent value (USD)(The higher the average value of patent value, the more assets of the enterprise's overall patent)
+        value_sum:
+          type: number
+          format: double
+          example: 27200
+          description: Total patent value (USD)(The greater the total value of patents, the more assets of the enterprise's overall patents)
+        avg_3y_cnt:
+          type: number
+          format: double
+          example: 88.66
+          description: Average number of patent applications in recent three years(The average number of patent applications in the past three years is more, indicating that the company has invested more in recent research and development)
+        reg_3y_avg:
+          type: number
+          format: double
+          example: 3.66
+          description: Average number of soft book applications in recent 3 years(The higher the average application for soft books in the past three years, the stronger the company's recent research and development capacity)
+        reg_num_5y:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        tech_width:
+          type: number
+          format: double
+          example: 1.7026
+          description: Breadth of patented technology(Technology breadth refers to the IPC involved in the enterprise's patents in the core technology field. The more technology fields involved in the measurement of patents, the broader the enterprise's layout)
+        country_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Geographical distribution of patents(The geographical distribution of patents, that is, the receiving authority of patent applications, the higher the geographical distribution of patents, the higher the Longernationalization level of enterprises' business distribution in various countries/regions)
+        num_members:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of core teams(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total number of Longernational applications (including Hague appearance) (PCT patents, that is, Longernational patent applications, include Hague appearance patents. The more PCT patents, the more Longernational awareness the company has and the stronger Longernational forward-looking.)
+        ip_dependency:
+          type: number
+          format: double
+          example: 0
+          description: IP dependency(IP dependency, that is, the proportion of patents licensed by the company. The greater the IP dependency, the more dependent the company's main products are on the core technologies of other companies.)
+        qualification:
+          type: array
+          example: 苏州市专精特新, 专精特新小巨人, 瞪羚企业, 江苏省小巨人, 江苏省企业技术中心, 高新技术企业, A股
+          description: Enterprise innovation qualification(The more types of enterprise innovation qualifications, the more recognition the enterprise obtains from the capital market or the country, the stronger the enterprise's consolidation strength)
+        value_top5_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Maximum 5 averages of patent value (USD)(The higher the maximum five average values of patent value, the higher the value of enterprise core patents)
+        invention_ratio:
+          type: number
+          format: double
+          example: 0.257
+          description: Proportion of invention patent applications(The invention patent is the highest gold content in patent applications. The higher the proportion of invention patent applications, the higher the technical level of the company's research and development.)
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.408
+          description: Average cited times(The more patents are cited on average, the stronger the recognition of enterprises in the industry, the stronger the overall technical influence in the industry)
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 0.1802
+          description: Patents under review(The proportion of pending patents, that is, the larger the proportion of pending patents, indicates that many patent offices of enterprises are in the status of pending, and enterprises are in the preliminary stage. In the short term, the company's patent licensing will show rapid growth)
+        most_recent_time:
+          type: number
+          format: double
+          example: 5.886
+          description: Time since the latest financing(The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The shorter the time of the latest financing, the shorter the time for the company to obtain capital market research, the lower the risk)
+        num_certificates:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of qualification certificates(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: -0.34
+          description: Soft copy growth rate(The higher the software growth rate, the faster the development of the company in the industry and the strong sustainability of research and development)
+        apno_cnt_valid_5y:
+          type: integer
+          format: int64
+          example: 403
+          description: Number of valid patent applications in the last five years(The more effective patent applications in the past five years, the more recent R&D investment of the company)
+        fin_money_sum_all:
+          type: number
+          format: double
+          example: 1.69
+          description: Weighted amount of financing(The higher the weighted amount of the company's financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        ipc_sub_class_cnt:
+          type: integer
+          format: int64
+          example: 57
+          description: Number of IPC sub-categories(The larger the number of IPC sub-categories, the broader the company's R&D direction)
+        patent_valid_ratio:
+          type: number
+          format: double
+          example: 0.9406
+          description: Patent efficiency(The higher the patent efficiency, the stronger the patent protection of the company, and the higher the R&D cost invested)
+        active_inventor_cnt:
+          type: integer
+          format: int64
+          example: 3
+          description: Number of active inventors(Active inventors are inventors who have applied for patents every year for five consecutive years. The more active inventors are, the more sustainable the enterprise has a stable R&D team.)
+        invention_stability:
+          type: number
+          format: double
+          example: 11.751595636338072
+          description: Stability of invention patent application (The stability of the invention patent application, that is, the variance of the invention patent application. The smaller the stability value of the invention patent application, the smaller the volatility of the company's R&D patent, the more stable the R&D output)
+        joint_applicant_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Join applicants(The more scientific research institutes or enterprises joinly applied for, the stronger the company's ability to produce, study and research)
+        non_design_apno_cnt:
+          type: integer
+          format: int64
+          example: 437
+          description: Number of non-design patent applications(Non-design patents, namely invention patents and utility model patents. The more non-appearance patents applied, the higher the quality of patents developed by the company)
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 0.02
+          description: Patent self-citation rate(Patent self-citation rate, that is, the company's subsequent patents cite its own patents, reflecting the continuity and stability of the company's research and development)
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.266
+          description: Average technical quality(Average technical quality is the average score of technical value in the patent value of all patents of the company. The higher the average technical quality, the higher the company's technical level)
+        num_trademarks_total:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of trademarks(The more total number of trademark applications, the stronger the company's overall trademark R&D strength)
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 5
+          description: JActive inventor scale(The scale of active inventors, that is, the proportion of active inventors, the larger the scale, the better the stability of the company's research and development.)
+        granted_invention_cnt:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of effective invention patents(The larger the total number of effective invention patents, the higher the quality of patents developed by the company as a whole)
+        joint_application_cnt:
+          type: integer
+          format: int64
+          example: 6
+          description: Number of join patent applications(The more patents applied by scientific research institutes or enterprises joinly, the stronger the company's ability to produce, study and research)
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1.082
+          description: Registered capital(The subscribed amount of the registered company, the greater the registered capital, the greater the risk responsibility of the company)
+        external_licensing_cnt:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of valid patents for external licensing(The larger the number of valid patents for external licensing, the higher the recognition of the company in the industry and the greater the influence)
+        num_certificates_valid:
+          type: integer
+          format: int64
+          example: 4
+          description: Total number of valid qualification certificates(The more the total number of valid qualification certificates, the diversity of the company's main business and its competitiveness in the main business sectors)
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 1.301
+          description: Patent growth rate(The growth rate of patents, that is, the growth rate of enterprises' patents is counted in a period of three years. The higher the growth rate of patents, the higher the recent R&D investment of enterprises)
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 8.723
+          description: Expected life of patent (The expected life of the patent, that is, the estimated average expiry date of the patent, the longer the expected life of the patent, the longer the patent protection period, indicating the stronger the technological vitality of the company)
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 23
+          description: Proportion of effective invention patents(The higher the proportion of effective invention patents, the higher the quality of the company's R&D patents)
+        non_design_pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total PCT patents(PCT patents, that is, Longernational patent applications, do not include the appearance of The Hague. The more PCT patents, the stronger the company's Longernational awareness and Longernational foresight.)
+        num_trademarks_total_5y:
+          type: integer
+          format: int64
+          example: 19
+          description: Total number of trademarks in the past five years(The total number of trademark applications in the past five years is more, which means that the company has developed more trademarks in the near future)
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 81
+          description: Actual  capital(The amount actually paid by the company. The larger the paid-in capital, the stronger the company's financial strength)
+        avg_funding_interval_all:
+          type: number
+          format: double
+          example: 2.114
+          description: Average financing Interval(The average financing Interval of the company can reflect the company's average financing ability and whether its development is stable. The shorter the average financing Longerval, the stronger the company's fund-raising ability)
+        most_cited_patents_value:
+          type: number
+          format: double
+          example: 10.8
+          description: Quality of the top 10 patents cited (USD)(The quality of the top 10 cited patents is the patent value of the cited patents, and the higher the patent influence of the enterprise is.)
+        standard_information_num:
+          type: integer
+          format: int64
+          example: 2
+          description: Number of participating standards(The more companies participate in the formulation of standards, it means that the company has influence in the industry or technical talents and products have certain authority in the industry)
+        total_patent_award_score:
+          type: integer
+          format: int64
+          example: 0
+          description: Patent Awards(The more patent awards, the higher the patent quality of the company)
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int64
+          example: 0.408
+          description: Number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        num_trademarks_registered:
+          type: integer
+          format: int64
+          example: 34
+          description: Registered trademarks(The more registered trademark applications, the stronger the company's overall trademark R&D strength)
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 1.7026
+          description: Concentration of patented technology(Compare the number of the company's key IPC patents with the number of global IPC patents in this field, and understand the global share of the company's main technology patents)
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 0.0182
+          description: Current influence(Current influence, that is, the proportion of the average cited times of the company's patents in the past five years to the average cited times of all the company's patents in the past one year. The higher the current influence, the higher the influence of the company's recently developed patents in the current industry)
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 10.8
+          description: Average number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited on average, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        granted_invention_cnt_pb_1y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of invention patents effectively authorized in recent 1 year(The more invention patents that have been effectively authorized in the past year, the more patents that the company has recently authorized, and the more recent research and development investment)
+        num_trademarks_registered_5y:
+          type: integer
+          format: int64
+          example: 13
+          description: Total number of registered trademarks in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        invention_cnt_validity_lower_5:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of invention patents with remaining valid period of less than 5 years (excluding 5 years)(The number of invention patents with a remaining validity period of less than 5 years is increasing, indicating that the company will face certain risks in the protection of its products in the future)
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 1.07E
+          description: Latest financing amount (The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The larger the latest financing, the higher the company's valuation)
+        country_standard_information_num:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of participants in the formulation of national standards(The more companies participate in the formulation of national standards, which means that the company has obtained the approval of the state and has certain authority)
+        invention_cnt_validity_higher_10:
+          type: integer
+          format: int64
+          example: 15
+          description: Number of invention patents with remaining valid period of more than 10 years(The number of invention patents with a remaining validity period of more than 10 years is increasing, indicating that the protection period of the company's invention patents is relatively long)
+        granted_invention_cnt_pb_original_2y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of valid invention patents originally applied for in recent 2 years(The number of effective invention patents originally applied for in the past two years is more, which means that the company's ability to independently research patents in the near future is stronger, and the sustainability of patent research and development is stronger)
+        invention_cnt_validity_higher_5_lower_10:
+          type: integer
+          format: int64
+          example: 8
+          description: Number of invention patents with remaining valid period of 5-10 years (The number of invention patents with the remaining valid period of 5-10 years is more, which means that the protection period of the company's invention patents is moderate)
+    C029CompanyEnterprisePatentRiskWarningTrendResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C029CompanyEnterprisePatentRiskWarningTrend_CompanyPatentRiskWarningTrendResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C024CompanyTechnologyEvaluationIndicators_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    C023CompanyTechnologyIndicators_OriginalDetailResponse:
+      type: object
+      properties:
+        ic_num:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        reg_num:
+          type: integer
+          format: int32
+          example: 37
+          description: Total number of software copyright registrations(The higher the total number of software copyright registrations, the stronger the company's R&D strength in the software industry, and it is in the leading position in the industry)
+        apno_cnt:
+          type: integer
+          format: int64
+          example: 435
+          description: Number of patent applications (The more patent applications, the larger the R&D scale of the company)
+        duration:
+          type: number
+          format: double
+          example: 10.266
+          description: Time of establishment(The year difference between the establishment date and the calculation date)
+        round_all:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of financing rounds(The more rounds of financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        value_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Average patent value (USD)(The higher the average value of patent value, the more assets of the enterprise's overall patent)
+        value_sum:
+          type: number
+          format: double
+          example: 27200
+          description: Total patent value (USD)(The greater the total value of patents, the more assets of the enterprise's overall patents)
+        avg_3y_cnt:
+          type: number
+          format: double
+          example: 88.66
+          description: Average number of patent applications in recent three years(The average number of patent applications in the past three years is more, indicating that the company has invested more in recent research and development)
+        reg_3y_avg:
+          type: number
+          format: double
+          example: 3.66
+          description: Average number of soft book applications in recent 3 years(The higher the average application for soft books in the past three years, the stronger the company's recent research and development capacity)
+        reg_num_5y:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        tech_width:
+          type: number
+          format: double
+          example: 1.7026
+          description: Breadth of patented technology(Technology breadth refers to the IPC involved in the enterprise's patents in the core technology field. The more technology fields involved in the measurement of patents, the broader the enterprise's layout)
+        country_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Geographical distribution of patents(The geographical distribution of patents, that is, the receiving authority of patent applications, the higher the geographical distribution of patents, the higher the Longernationalization level of enterprises' business distribution in various countries/regions)
+        num_members:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of core teams(The more members of the core team, the more stable the company's R&D team is)
+        pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total number of Longernational applications (including Hague appearance) (PCT patents, that is, Longernational patent applications, include Hague appearance patents. The more PCT patents, the more Longernational awareness the company has and the stronger Longernational forward-looking.)
+        ip_dependency:
+          type: number
+          format: double
+          example: 0
+          description: IP dependency(IP dependency, that is, the proportion of patents licensed by the company. The greater the IP dependency, the more dependent the company's main products are on the core technologies of other companies.)
+        qualification:
+          type: array
+          example: 苏州市专精特新, 专精特新小巨人, 瞪羚企业, 江苏省小巨人, 江苏省企业技术中心, 高新技术企业, A股
+          description: Enterprise innovation qualification(The more types of enterprise innovation qualifications, the more recognition the enterprise obtains from the capital market or the country, the stronger the enterprise's consolidation strength)
+        value_top5_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Maximum 5 averages of patent value (USD)(The higher the maximum five average values of patent value, the higher the value of enterprise core patents)
+        invention_ratio:
+          type: number
+          format: double
+          example: 0.257
+          description: Proportion of invention patent applications(The invention patent is the highest gold content in patent applications. The higher the proportion of invention patent applications, the higher the technical level of the company's research and development.)
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.408
+          description: Average cited times(The more patents are cited on average, the stronger the recognition of enterprises in the industry, the stronger the overall technical influence in the industry)
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 0.1802
+          description: Patents under review(The proportion of pending patents, that is, the larger the proportion of pending patents, indicates that many patent offices of enterprises are in the status of pending, and enterprises are in the preliminary stage. In the short term, the company's patent licensing will show rapid growth)
+        most_recent_time:
+          type: number
+          format: double
+          example: 5.886
+          description: Time since the latest financing(The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The shorter the time of the latest financing, the shorter the time for the company to obtain capital market research, the lower the risk)
+        num_certificates:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of qualification certificates(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: -0.34
+          description: Soft copy growth rate(The higher the software growth rate, the faster the development of the company in the industry and the strong sustainability of research and development)
+        apno_cnt_valid_5y:
+          type: integer
+          format: int64
+          example: 403
+          description: Number of valid patent applications in the last five years(The more effective patent applications in the past five years, the more recent R&D investment of the company)
+        fin_money_sum_all:
+          type: number
+          format: double
+          example: 1.69
+          description: Weighted amount of financing(The higher the weighted amount of the company's financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        ipc_sub_class_cnt:
+          type: integer
+          format: int64
+          example: 57
+          description: Number of IPC sub-categories(The larger the number of IPC sub-categories, the broader the company's R&D direction)
+        patent_valid_ratio:
+          type: number
+          format: double
+          example: 0.9406
+          description: Patent efficiency(The higher the patent efficiency, the stronger the patent protection of the company, and the higher the R&D cost invested)
+        active_inventor_cnt:
+          type: integer
+          format: int64
+          example: 3
+          description: Number of active inventors(Active inventors are inventors who have applied for patents every year for five consecutive years. The more active inventors are, the more sustainable the enterprise has a stable R&D team.)
+        invention_stability:
+          type: number
+          format: double
+          example: 11.751595636338072
+          description: Stability of invention patent application (The stability of the invention patent application, that is, the variance of the invention patent application. The smaller the stability value of the invention patent application, the smaller the volatility of the company's R&D patent, the more stable the R&D output)
+        joint_applicant_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Join applicants(The more scientific research institutes or enterprises joinly applied for, the stronger the company's ability to produce, study and research)
+        non_design_apno_cnt:
+          type: integer
+          format: int64
+          example: 437
+          description: Number of non-design patent applications(Non-design patents, namely invention patents and utility model patents. The more non-appearance patents applied, the higher the quality of patents developed by the company)
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 0.02
+          description: Patent self-citation rate(Patent self-citation rate, that is, the company's subsequent patents cite its own patents, reflecting the continuity and stability of the company's research and development)
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.266
+          description: Average technical quality(Average technical quality is the average score of technical value in the patent value of all patents of the company. The higher the average technical quality, the higher the company's technical level)
+        num_trademarks_total:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of trademarks(The more total number of trademark applications, the stronger the company's overall trademark R&D strength)
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 5
+          description: JActive inventor scale(The scale of active inventors, that is, the proportion of active inventors, the larger the scale, the better the stability of the company's research and development.)
+        granted_invention_cnt:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of effective invention patents(The larger the total number of effective invention patents, the higher the quality of patents developed by the company as a whole)
+        joint_application_cnt:
+          type: integer
+          format: int64
+          example: 6
+          description: Number of join patent applications(The more patents applied by scientific research institutes or enterprises joinly, the stronger the company's ability to produce, study and research)
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1.082
+          description: Registered capital(The subscribed amount of the registered company, the greater the registered capital, the greater the risk responsibility of the company)
+        external_licensing_cnt:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of valid patents for external licensing(The larger the number of valid patents for external licensing, the higher the recognition of the company in the industry and the greater the influence)
+        num_certificates_valid:
+          type: integer
+          format: int64
+          example: 4
+          description: Total number of valid qualification certificates(The more the total number of valid qualification certificates, the diversity of the company's main business and its competitiveness in the main business sectors)
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 1.301
+          description: Patent growth rate(The growth rate of patents, that is, the growth rate of enterprises' patents is counted in a period of three years. The higher the growth rate of patents, the higher the recent R&D investment of enterprises)
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 8.723
+          description: Expected life of patent (The expected life of the patent, that is, the estimated average expiry date of the patent, the longer the expected life of the patent, the longer the patent protection period, indicating the stronger the technological vitality of the company)
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 23
+          description: Proportion of effective invention patents(The higher the proportion of effective invention patents, the higher the quality of the company's R&D patents)
+        non_design_pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total PCT patents(PCT patents, that is, Longernational patent applications, do not include the appearance of The Hague. The more PCT patents, the stronger the company's Longernational awareness and Longernational foresight.)
+        num_trademarks_total_5y:
+          type: integer
+          format: int64
+          example: 19
+          description: Total number of trademarks in the past five years(The total number of trademark applications in the past five years is more, which means that the company has developed more trademarks in the near future)
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 81
+          description: Actual  capital(The amount actually paid by the company. The larger the paid-in capital, the stronger the company's financial strength)
+        avg_funding_interval_all:
+          type: number
+          format: double
+          example: 2.114
+          description: Average financing Interval(The average financing Interval of the company can reflect the company's average financing ability and whether its development is stable. The shorter the average financing Longerval, the stronger the company's fund-raising ability)
+        most_cited_patents_value:
+          type: number
+          format: double
+          example: 10.8
+          description: Quality of the top 10 patents cited (USD)(The quality of the top 10 cited patents is the patent value of the cited patents, and the higher the patent influence of the enterprise is.)
+        standard_information_num:
+          type: integer
+          format: int64
+          example: 2
+          description: Number of participating standards(The more companies participate in the formulation of standards, it means that the company has influence in the industry or technical talents and products have certain authority in the industry)
+        total_patent_award_score:
+          type: integer
+          format: int64
+          example: 0
+          description: Patent Awards(The more patent awards, the higher the patent quality of the company)
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int64
+          example: 0.408
+          description: Number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        num_trademarks_registered:
+          type: integer
+          format: int64
+          example: 34
+          description: Registered trademarks(The more registered trademark applications, the stronger the company's overall trademark R&D strength)
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 1.7026
+          description: Concentration of patented technology(Compare the number of the company's key IPC patents with the number of global IPC patents in this field, and understand the global share of the company's main technology patents)
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 0.0182
+          description: Current influence(Current influence, that is, the proportion of the average cited times of the company's patents in the past five years to the average cited times of all the company's patents in the past one year. The higher the current influence, the higher the influence of the company's recently developed patents in the current industry)
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 10.8
+          description: Average number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited on average, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        granted_invention_cnt_pb_1y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of invention patents effectively authorized in recent 1 year(The more invention patents that have been effectively authorized in the past year, the more patents that the company has recently authorized, and the more recent research and development investment)
+        num_trademarks_registered_5y:
+          type: integer
+          format: int64
+          example: 13
+          description: Total number of registered trademarks in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        invention_cnt_validity_lower_5:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of invention patents with remaining valid period of less than 5 years (excluding 5 years)(The number of invention patents with a remaining validity period of less than 5 years is increasing, indicating that the company will face certain risks in the protection of its products in the future)
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 1.07E
+          description: Latest financing amount (The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The larger the latest financing, the higher the company's valuation)
+        country_standard_information_num:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of participants in the formulation of national standards(The more companies participate in the formulation of national standards, which means that the company has obtained the approval of the state and has certain authority)
+        invention_cnt_validity_higher_10:
+          type: integer
+          format: int64
+          example: 15
+          description: Number of invention patents with remaining valid period of more than 10 years(The number of invention patents with a remaining validity period of more than 10 years is increasing, indicating that the protection period of the company's invention patents is relatively long)
+        granted_invention_cnt_pb_original_2y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of valid invention patents originally applied for in recent 2 years(The number of effective invention patents originally applied for in the past two years is more, which means that the company's ability to independently research patents in the near future is stronger, and the sustainability of patent research and development is stronger)
+        invention_cnt_validity_higher_5_lower_10:
+          type: integer
+          format: int64
+          example: 8
+          description: Number of invention patents with remaining valid period of 5-10 years (The number of invention patents with the remaining valid period of 5-10 years is more, which means that the protection period of the company's invention patents is moderate)
+    C028CompanyEnterprisePatentRiskWarningBacktrackingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C028CompanyEnterprisePatentRiskWarningBacktracking_CompanyPatentRiskWarningBacktrackingResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C028CompanyEnterprisePatentRiskWarningBacktracking_PatentEventCount:
+      type: object
+      properties:
+        pledge:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent pledging events
+        reexam:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent invalidation events
+        transfer:
+          type: integer
+          format: int32
+          example: 21
+          description: number of patent transfer events
+        transfer_out:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent transfer out events
+        litigation_defendant:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent events involving the respondent in the litigation patent
+        litigation_plaintiff:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent events involving the respondent in the litigation patent
+    C022CompanyTechnologyEvaluation_CompanyTechnologyEvaluationResponse:
+      type: object
+      properties:
+        score:
+          type: number
+          format: double
+          example: 86.5
+          description: scientific and technological innovation score
+        rating_v2:
+          type: string
+          example: AAA
+          description: scientific and technological innovation ratingRating division：AAA、AA、A、BBB、BB、B、CCC、CC、C
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        fundamental:
+          type: number
+          format: double
+          example: 5.05
+          description: company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 20.33
+          description: technical layout
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        tech_quality:
+          type: number
+          format: double
+          example: 27.1
+          description: technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 10.5
+          description: technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 34.4
+          description: r&d scale and stability
+    C023CompanyTechnologyIndicators_CompanyTechnologyIndicatorsResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        original_detail:
+          $ref: '#/components/schemas/C023CompanyTechnologyIndicators_OriginalDetailResponse'
+    C024CompanyTechnologyEvaluationIndicatorsRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C024CompanyTechnologyEvaluationIndicators_OriginalDetailResponse:
+      type: object
+      properties:
+        ic_num:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        reg_num:
+          type: integer
+          format: int32
+          example: 37
+          description: Total number of software copyright registrations(The higher the total number of software copyright registrations, the stronger the company's R&D strength in the software industry, and it is in the leading position in the industry)
+        apno_cnt:
+          type: integer
+          format: int64
+          example: 435
+          description: Number of patent applications (The more patent applications, the larger the R&D scale of the company)
+        duration:
+          type: number
+          format: double
+          example: 10.266
+          description: Time of establishment(The year difference between the establishment date and the calculation date)
+        round_all:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of financing rounds(The more rounds of financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        value_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Average patent value (USD)(The higher the average value of patent value, the more assets of the enterprise's overall patent)
+        value_sum:
+          type: number
+          format: double
+          example: 27200
+          description: Total patent value (USD)(The greater the total value of patents, the more assets of the enterprise's overall patents)
+        avg_3y_cnt:
+          type: number
+          format: double
+          example: 88.66
+          description: Average number of patent applications in recent three years(The average number of patent applications in the past three years is more, indicating that the company has invested more in recent research and development)
+        reg_3y_avg:
+          type: number
+          format: double
+          example: 3.66
+          description: Average number of soft book applications in recent 3 years(The higher the average application for soft books in the past three years, the stronger the company's recent research and development capacity)
+        reg_num_5y:
+          type: integer
+          format: int64
+          example: 37
+          description: Total number of soft books in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        tech_width:
+          type: number
+          format: double
+          example: 1.7026
+          description: Breadth of patented technology(Technology breadth refers to the IPC involved in the enterprise's patents in the core technology field. The more technology fields involved in the measurement of patents, the broader the enterprise's layout)
+        country_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Geographical distribution of patents(The geographical distribution of patents, that is, the receiving authority of patent applications, the higher the geographical distribution of patents, the higher the Longernationalization level of enterprises' business distribution in various countries/regions)
+        num_members:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of core teams(The more members of the core team, the more stable the company's R&D team is)
+        pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total number of Longernational applications (including Hague appearance) (PCT patents, that is, Longernational patent applications, include Hague appearance patents. The more PCT patents, the more Longernational awareness the company has and the stronger Longernational forward-looking.)
+        ip_dependency:
+          type: number
+          format: double
+          example: 0
+          description: IP dependency(IP dependency, that is, the proportion of patents licensed by the company. The greater the IP dependency, the more dependent the company's main products are on the core technologies of other companies.)
+        qualification:
+          type: array
+          example: 苏州市专精特新, 专精特新小巨人, 瞪羚企业, 江苏省小巨人, 江苏省企业技术中心, 高新技术企业, A股
+          description: Enterprise innovation qualification(The more types of enterprise innovation qualifications, the more recognition the enterprise obtains from the capital market or the country, the stronger the enterprise's consolidation strength)
+        value_top5_avg:
+          type: number
+          format: double
+          example: 27200
+          description: Maximum 5 averages of patent value (USD)(The higher the maximum five average values of patent value, the higher the value of enterprise core patents)
+        invention_ratio:
+          type: number
+          format: double
+          example: 0.257
+          description: Proportion of invention patent applications(The invention patent is the highest gold content in patent applications. The higher the proportion of invention patent applications, the higher the technical level of the company's research and development.)
+        avg_cited_by_cnt:
+          type: number
+          format: double
+          example: 0.408
+          description: Average cited times(The more patents are cited on average, the stronger the recognition of enterprises in the industry, the stronger the overall technical influence in the industry)
+        in_examing_ratio:
+          type: number
+          format: double
+          example: 0.1802
+          description: Patents under review(The proportion of pending patents, that is, the larger the proportion of pending patents, indicates that many patent offices of enterprises are in the status of pending, and enterprises are in the preliminary stage. In the short term, the company's patent licensing will show rapid growth)
+        most_recent_time:
+          type: number
+          format: double
+          example: 5.886
+          description: Time since the latest financing(The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The shorter the time of the latest financing, the shorter the time for the company to obtain capital market research, the lower the risk)
+        num_certificates:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of qualification certificates(The more total number of applications for qualification certificates indicates the diversity of the company's main businesses and its competitiveness in the main business sectors)
+        reg_growth_ratio:
+          type: number
+          format: double
+          example: -0.34
+          description: Soft copy growth rate(The higher the software growth rate, the faster the development of the company in the industry and the strong sustainability of research and development)
+        apno_cnt_valid_5y:
+          type: integer
+          format: int64
+          example: 403
+          description: Number of valid patent applications in the last five years(The more effective patent applications in the past five years, the more recent R&D investment of the company)
+        fin_money_sum_all:
+          type: number
+          format: double
+          example: 1.69
+          description: Weighted amount of financing(The higher the weighted amount of the company's financing, the stronger the company's ability to attract capital and the stronger the company's overall strength)
+        ipc_sub_class_cnt:
+          type: integer
+          format: int64
+          example: 57
+          description: Number of IPC sub-categories(The larger the number of IPC sub-categories, the broader the company's R&D direction)
+        patent_valid_ratio:
+          type: number
+          format: double
+          example: 0.9406
+          description: Patent efficiency(The higher the patent efficiency, the stronger the patent protection of the company, and the higher the R&D cost invested)
+        active_inventor_cnt:
+          type: integer
+          format: int64
+          example: 3
+          description: Number of active inventors(Active inventors are inventors who have applied for patents every year for five consecutive years. The more active inventors are, the more sustainable the enterprise has a stable R&D team.)
+        invention_stability:
+          type: number
+          format: double
+          example: 11.751595636338072
+          description: Stability of invention patent application (The stability of the invention patent application, that is, the variance of the invention patent application. The smaller the stability value of the invention patent application, the smaller the volatility of the company's R&D patent, the more stable the R&D output)
+        joint_applicant_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Join applicants(The more scientific research institutes or enterprises joinly applied for, the stronger the company's ability to produce, study and research)
+        non_design_apno_cnt:
+          type: integer
+          format: int64
+          example: 437
+          description: Number of non-design patent applications(Non-design patents, namely invention patents and utility model patents. The more non-appearance patents applied, the higher the quality of patents developed by the company)
+        self_cited_by_ratio:
+          type: number
+          format: double
+          example: 0.02
+          description: Patent self-citation rate(Patent self-citation rate, that is, the company's subsequent patents cite its own patents, reflecting the continuity and stability of the company's research and development)
+        avg_technology_score:
+          type: number
+          format: double
+          example: 0.266
+          description: Average technical quality(Average technical quality is the average score of technical value in the patent value of all patents of the company. The higher the average technical quality, the higher the company's technical level)
+        num_trademarks_total:
+          type: integer
+          format: int64
+          example: 4
+          description: Number of trademarks(The more total number of trademark applications, the stronger the company's overall trademark R&D strength)
+        active_inventor_ratio:
+          type: number
+          format: double
+          example: 5
+          description: JActive inventor scale(The scale of active inventors, that is, the proportion of active inventors, the larger the scale, the better the stability of the company's research and development.)
+        granted_invention_cnt:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of effective invention patents(The larger the total number of effective invention patents, the higher the quality of patents developed by the company as a whole)
+        joint_application_cnt:
+          type: integer
+          format: int64
+          example: 6
+          description: Number of join patent applications(The more patents applied by scientific research institutes or enterprises joinly, the stronger the company's ability to produce, study and research)
+        reg_capital_formatted:
+          type: number
+          format: double
+          example: 1.082
+          description: Registered capital(The subscribed amount of the registered company, the greater the registered capital, the greater the risk responsibility of the company)
+        external_licensing_cnt:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of valid patents for external licensing(The larger the number of valid patents for external licensing, the higher the recognition of the company in the industry and the greater the influence)
+        num_certificates_valid:
+          type: integer
+          format: int64
+          example: 4
+          description: Total number of valid qualification certificates(The more the total number of valid qualification certificates, the diversity of the company's main business and its competitiveness in the main business sectors)
+        patenting_growth_ratio:
+          type: number
+          format: double
+          example: 1.301
+          description: Patent growth rate(The growth rate of patents, that is, the growth rate of enterprises' patents is counted in a period of three years. The higher the growth rate of patents, the higher the recent R&D investment of enterprises)
+        avg_remaining_life_span:
+          type: number
+          format: double
+          example: 8.723
+          description: Expected life of patent (The expected life of the patent, that is, the estimated average expiry date of the patent, the longer the expected life of the patent, the longer the patent protection period, indicating the stronger the technological vitality of the company)
+        granted_invention_ratio:
+          type: number
+          format: double
+          example: 23
+          description: Proportion of effective invention patents(The higher the proportion of effective invention patents, the higher the quality of the company's R&D patents)
+        non_design_pct_apno_cnt:
+          type: integer
+          format: int64
+          example: 5
+          description: Total PCT patents(PCT patents, that is, Longernational patent applications, do not include the appearance of The Hague. The more PCT patents, the stronger the company's Longernational awareness and Longernational foresight.)
+        num_trademarks_total_5y:
+          type: integer
+          format: int64
+          example: 19
+          description: Total number of trademarks in the past five years(The total number of trademark applications in the past five years is more, which means that the company has developed more trademarks in the near future)
+        actual_capital_formatted:
+          type: number
+          format: double
+          example: 81
+          description: Actual  capital(The amount actually paid by the company. The larger the paid-in capital, the stronger the company's financial strength)
+        avg_funding_interval_all:
+          type: number
+          format: double
+          example: 2.114
+          description: Average financing Interval(The average financing Interval of the company can reflect the company's average financing ability and whether its development is stable. The shorter the average financing Longerval, the stronger the company's fund-raising ability)
+        most_cited_patents_value:
+          type: number
+          format: double
+          example: 10.8
+          description: Quality of the top 10 patents cited (USD)(The quality of the top 10 cited patents is the patent value of the cited patents, and the higher the patent influence of the enterprise is.)
+        standard_information_num:
+          type: integer
+          format: int64
+          example: 2
+          description: Number of participating standards(The more companies participate in the formulation of standards, it means that the company has influence in the industry or technical talents and products have certain authority in the industry)
+        total_patent_award_score:
+          type: integer
+          format: int64
+          example: 0
+          description: Patent Awards(The more patent awards, the higher the patent quality of the company)
+        core_patents_cited_by_cnt:
+          type: integer
+          format: int64
+          example: 0.408
+          description: Number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        num_trademarks_registered:
+          type: integer
+          format: int64
+          example: 34
+          description: Registered trademarks(The more registered trademark applications, the stronger the company's overall trademark R&D strength)
+        tech_global_concentration:
+          type: number
+          format: double
+          example: 1.7026
+          description: Concentration of patented technology(Compare the number of the company's key IPC patents with the number of global IPC patents in this field, and understand the global share of the company's main technology patents)
+        top5_current_impact_index:
+          type: number
+          format: double
+          example: 0.0182
+          description: Current influence(Current influence, that is, the proportion of the average cited times of the company's patents in the past five years to the average cited times of all the company's patents in the past one year. The higher the current influence, the higher the influence of the company's recently developed patents in the current industry)
+        core_patents_cited_by_ratio:
+          type: number
+          format: double
+          example: 10.8
+          description: Average number of core patents cited(Core patents refer to the top 10 patents of enterprise patent value. The more core patents are cited on average, the stronger the core technology of the enterprise is recognized by the industry and the stronger the influence of the core technology.)
+        granted_invention_cnt_pb_1y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of invention patents effectively authorized in recent 1 year(The more invention patents that have been effectively authorized in the past year, the more patents that the company has recently authorized, and the more recent research and development investment)
+        num_trademarks_registered_5y:
+          type: integer
+          format: int64
+          example: 13
+          description: Total number of registered trademarks in the past five years(The total number of software applications in the past five years is more, which means that the company has more recent research and development in the software field and has strong recent research and development capability)
+        invention_cnt_validity_lower_5:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of invention patents with remaining valid period of less than 5 years (excluding 5 years)(The number of invention patents with a remaining validity period of less than 5 years is increasing, indicating that the company will face certain risks in the protection of its products in the future)
+        most_recent_money_q25_formatted:
+          type: number
+          format: double
+          example: 1.07E
+          description: Latest financing amount (The time since the company's latest financing can reflect the company's current ability to attract capital and reflect the company's current strength. The larger the latest financing, the higher the company's valuation)
+        country_standard_information_num:
+          type: integer
+          format: int64
+          example: 0
+          description: Number of participants in the formulation of national standards(The more companies participate in the formulation of national standards, which means that the company has obtained the approval of the state and has certain authority)
+        invention_cnt_validity_higher_10:
+          type: integer
+          format: int64
+          example: 15
+          description: Number of invention patents with remaining valid period of more than 10 years(The number of invention patents with a remaining validity period of more than 10 years is increasing, indicating that the protection period of the company's invention patents is relatively long)
+        granted_invention_cnt_pb_original_2y:
+          type: integer
+          format: int64
+          example: 23
+          description: Total number of valid invention patents originally applied for in recent 2 years(The number of effective invention patents originally applied for in the past two years is more, which means that the company's ability to independently research patents in the near future is stronger, and the sustainability of patent research and development is stronger)
+        invention_cnt_validity_higher_5_lower_10:
+          type: integer
+          format: int64
+          example: 8
+          description: Number of invention patents with remaining valid period of 5-10 years (The number of invention patents with the remaining valid period of 5-10 years is more, which means that the protection period of the company's invention patents is moderate)
+    C027CompanyEnterprisePatentRiskWarning_PatentEventCount:
+      type: object
+      properties:
+        pledge:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent pledging events
+        reexam:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent invalidation events
+        transfer:
+          type: integer
+          format: int32
+          example: 21
+          description: number of patent transfer events
+        transfer_out:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent transfer out events
+        litigation_defendant:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent events involving the respondent in the litigation patent
+        litigation_plaintiff:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patent events involving the respondent in the litigation patent
+    C026CompanyTechnologyEvaluationIndicatorsBacktracking_ScoreDimension:
+      type: object
+      properties:
+        fundamental:
+          type: number
+          format: double
+          example: 2.1
+          description: Company competitiveness
+        tech_layout:
+          type: number
+          format: double
+          example: 1.1
+          description: Technical layout
+        tech_quality:
+          type: number
+          format: double
+          example: 5.264
+          description: Technical quality
+        tech_influence:
+          type: number
+          format: double
+          example: 0.3
+          description: Technical influence
+        rd_scale_and_stability:
+          type: number
+          format: double
+          example: 4.7
+          description: R & D scale and stability
+    C025CompanyCompanyGroupTechnologyEvaluationIndicators_CompanyGroupTechEvalIndicatorsResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        score_group:
+          type: number
+          format: double
+          example: 86.5
+          description: scientific and technological innovation score
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        rating_v2_group:
+          type: string
+          example: AAA
+          description: scientific and technological innovation ratingRating division：AAA、AA、A、BBB、BB、B、CCC、CC、C
+        original_detail_group:
+          $ref: '#/components/schemas/C025CompanyCompanyGroupTechnologyEvaluationIndicators_OriginalDetailResponse'
+        score_dimension_group:
+          $ref: '#/components/schemas/C025CompanyCompanyGroupTechnologyEvaluationIndicators_ScoreDimension'
+    C023CompanyTechnologyIndicatorsRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C025CompanyCompanyGroupTechnologyEvaluationIndicatorsRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C026CompanyTechnologyEvaluationIndicatorsBacktrackingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C026CompanyTechnologyEvaluationIndicatorsBacktracking_CompanyTechEvalIndicatorsBacktrackingResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C022CompanyTechnologyEvaluationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C022CompanyTechnologyEvaluation_CompanyTechnologyEvaluationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C027CompanyEnterprisePatentRiskWarningResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C027CompanyEnterprisePatentRiskWarning_CompanyPatentRiskWarningResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C028CompanyEnterprisePatentRiskWarningBacktracking_PatentCount:
+      type: object
+      properties:
+        apno_cnt:
+          type: integer
+          format: int32
+          example: 481
+          description: number of patent applications
+        rejected:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents rejected
+        patent_pledge:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents pledged
+        patent_reexam:
+          type: integer
+          format: int32
+          example: 0
+          description: number of invalid patents
+        patent_transfer:
+          type: integer
+          format: int32
+          example: 21
+          description: number of transferred patents
+        patent_transfer_out:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents transferred out
+        active_invention_cnt:
+          type: integer
+          format: int32
+          example: 25
+          description: number of valid authorized invention patents
+        granted_invention_cnt:
+          type: integer
+          format: int32
+          example: 25
+          description: number of authorized invention patents
+        patent_litigation_defendant:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents of the respondent in the litigation patent
+        patent_litigation_plaintiff:
+          type: integer
+          format: int32
+          example: 0
+          description: number of patents of the plaintiff in the litigation patent
+    C027CompanyEnterprisePatentRiskWarning_CompanyPatentRiskWarningResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization number
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        patent_count:
+          $ref: '#/components/schemas/C027CompanyEnterprisePatentRiskWarning_PatentCount'
+        patent_event_count:
+          $ref: '#/components/schemas/C027CompanyEnterprisePatentRiskWarning_PatentEventCount'
+    C029CompanyEnterprisePatentRiskWarningTrend_PatentCountGrowth:
+      type: object
+      properties:
+        apno_cnt_growth:
+          type: integer
+          format: int32
+          example: 14
+          description: growth in the number of patent applications
+        rejected_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patents rejected
+        patent_pledge_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patents pledged
+        patent_reexam_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of invalid patents
+        patent_transfer_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of transferred patents
+        patent_transfer_out_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patents transferred out
+        active_invention_cnt_growth:
+          type: integer
+          format: int32
+          example: 1
+          description: growth in the number of valid authorized invention patents
+        granted_invention_cnt_growth:
+          type: integer
+          format: int32
+          example: 1
+          description: growth in the number of authorized invention patents
+        patent_litigation_defendant_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patents of the respondent in the litigation patent
+        patent_litigation_plaintiff_growth:
+          type: integer
+          format: int32
+          example: 0
+          description: growth in the number of patents of the plaintiff in the litigation patent
+    C028CompanyEnterprisePatentRiskWarningBacktracking_CompanyPatentRiskWarningBacktrackingResponse:
+      type: object
+      properties:
+        date:
+          type: string
+          example: 20221216
+          description: date
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization number
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        patent_count:
+          $ref: '#/components/schemas/C028CompanyEnterprisePatentRiskWarningBacktracking_PatentCount'
+        patent_event_count:
+          $ref: '#/components/schemas/C028CompanyEnterprisePatentRiskWarningBacktracking_PatentEventCount'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,1631 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Drug Mining Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Drug Mining Data
+  description: Drug Mining Data APIs.
+paths:
+  /synapse/news:
+    get:
+      operationId: b031SynapseNews
+      summary: B031 Medical News
+      description: Obtain news about title, content, publish date etc.
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b031 medical news response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B031SynapseNewsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/news
+      parameters:
+      - name: news_id
+        in: query
+        required: true
+        description: News ID, obtain this through the [B045] medical news search interface
+        schema:
+          type: string
+          example: f57e970e-8f97-39b7-a6be-51846e92bee1
+          description: News ID, obtain this through the [B045] medical news search interface
+  /synapse/drug-deal:
+    get:
+      operationId: b039SynapseDrugDeal
+      summary: B039 Drug deal information
+      description: Obtain drug deal information about partner, principle, deal time, drug etc.
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b039 drug deal information response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B039SynapseDrugDealResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/drug-deal
+      parameters:
+      - name: deal_id
+        in: query
+        required: true
+        description: Drug Deal ID, obtain this through the [B045] drug deal search interface
+        schema:
+          type: string
+          example: 284929245a22a8a9e2ed5ee82ae52250
+          description: Drug Deal ID, obtain this through the [B045] drug deal search interface
+  /synapse/patent/detail:
+    get:
+      operationId: b028PatentDetail
+      summary: B028 Patented drug and patent type
+      description: Obtain patented drug and patent type through patent
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b028 patented drug and patent type response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B028PatentDetailResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/patent/detail
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: Patent ID, obtain this through drug core patent search interface or drug related patent search
+        schema:
+          type: string
+          example: f00a5247-0886-4ec4-aeae-572b32fe633a
+          description: Patent ID, obtain this through drug core patent search interface or drug related patent search
+  /synapse/translational/medicine/detail:
+    get:
+      operationId: b070MedicineDetail
+      summary: B070 Translational medicine detail
+      description: Obtain translational medicine details through translational medicine id
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b070 translational medicine detail response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B070MedicineDetailResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/translational/medicine/detail
+      parameters:
+      - name: translational_medicine_id
+        in: query
+        required: false
+        description: Translational medicine id, obtain this through translational medicine search interface
+        schema:
+          type: string
+          example: eda470b5-773b-346d-b6df-7b5daae53505
+          description: Translational medicine id, obtain this through translational medicine search interface
+  /synapse/paper/detail:
+    get:
+      operationId: b030PaperDetail
+      summary: B030 Medical Literature
+      description: Obtain Literature about title, journal, publication date etc.
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b030 medical literature response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B030PaperDetailResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/paper/detail
+      parameters:
+      - name: paper_id
+        in: query
+        required: true
+        description: Drug ID, obtain this through the paper search interface
+        schema:
+          type: string
+          example: c61f84d1-b6b6-35d8-b178-94faa296df56
+          description: Drug ID, obtain this through the paper search interface
+  /synapse/bio/affinity/search:
+    get:
+      operationId: b066AffinitySearch
+      summary: B066 Affinity Search
+      description: Search affinity details between antibody and antigen through affinity ID, including antibody sequence, antigen information, detection method, test conditions, etc.
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b066 affinity search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B066AffinitySearchResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/bio/affinity/search
+      parameters:
+      - name: affinity_id
+        in: query
+        required: true
+        description: Affinity search ID
+        schema:
+          type: string
+          example: n14778540229713683257531356477449681766
+          description: Affinity search ID
+      - name: page
+        in: query
+        required: false
+        description: Page number (must be >=1)
+        schema:
+          type: integer
+          format: int32
+          example: '1'
+          description: Page number (must be >=1)
+      - name: rows
+        in: query
+        required: false
+        description: Rows per page (must be >=1 and <=10)
+        schema:
+          type: integer
+          format: int32
+          example: '10'
+          description: Rows per page (must be >=1 and <=10)
+  /synapse/bio/antibody/search:
+    get:
+      operationId: b065AntibodySearch
+      summary: B065 Antigen-Antibody Pairing Search
+      description: Search related antibody sequence information through antigen name, including antigen sequence, antibody heavy/light chain sequences, UniProt ID, source, etc.
+      tags:
+      - Drug Mining Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b065 antigen-antibody pairing search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B065AntibodySearchResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/bio/antibody/search
+      parameters:
+      - name: antigen_name
+        in: query
+        required: true
+        description: Antigen name
+        schema:
+          type: string
+          example: TRBV6-2
+          description: Antigen name
+      - name: page
+        in: query
+        required: false
+        description: Page number (must be >=1)
+        schema:
+          type: integer
+          format: int32
+          example: '1'
+          description: Page number (must be >=1)
+      - name: rows
+        in: query
+        required: false
+        description: Rows per page (must be >=1 and <=10)
+        schema:
+          type: integer
+          format: int32
+          example: '10'
+          description: Rows per page (must be >=1 and <=10)
+components:
+  schemas:
+    B028PatentDetail_PatentDrugDto:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        drug_type:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Small molecule drug
+            - lang: CN
+              name: 小分子化药
+            normalized_id: 1151dbc710f64a85923dc05d4a5a0ba9
+          description: Drug Type
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonDictionary'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+    B028PatentDetail_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B066AffinitySearch_AffinityDetail:
+      type: object
+      properties:
+        ph:
+          type: string
+          example: 7.4
+          description: pH value
+        unit:
+          type: string
+          example: 1/Ms
+          description: Standardized unit
+        index:
+          type: string
+          example: Kd
+          description: Index
+        value:
+          type: string
+          example: 198000
+          description: Standardized value
+        method:
+          type: string
+          example: SPR
+          description: Detection method
+        ori_unit:
+          type: string
+          example: M^-1s^-1
+          description: Original unit
+        ori_value:
+          type: string
+          example: 198000
+          description: Original value
+        temperature:
+          type: string
+          example: room temperature
+          description: Temperature
+    B070MedicineDetail_TranslationalMedicineDataDetailResponse:
+      type: object
+      properties:
+        author:
+          type: array
+          example: 'Please check the form: MedicineDataDetailAuthor'
+          description: Author
+          items:
+            $ref: '#/components/schemas/B070MedicineDetail_MedicineDataDetailAuthor'
+        pubmed_url:
+          type: array
+          example:
+          - https://pubmed.ncbi.nlm.nih.gov/12345678/
+          description: PubMed URL
+        source_url:
+          type: array
+          example:
+          - https://example.com/source/123456
+          description: Source URL
+        abstract_text:
+          type: array
+          example: This study investigates novel biomarkers for cancer research...
+          description: Abstract
+          items:
+            $ref: '#/components/schemas/B070MedicineDetail_CommonText'
+        author_institution:
+          type: array
+          example: 'Please check the form: MedicineDataDetailInstitution'
+          description: Author Institution
+          items:
+            $ref: '#/components/schemas/B070MedicineDetail_MedicineDataDetailInstitution'
+        translational_medicine_title:
+          type: array
+          example: 'Please check the form: CommonName'
+          description: Title
+          items:
+            $ref: '#/components/schemas/B070MedicineDetail_CommonName'
+    B039SynapseDrugDeal_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B065AntibodySearch_AntibodyUniport:
+      type: object
+      properties:
+        uniprot_id:
+          type: string
+          example: P15391
+          description: Antigen uniprot ID
+        uniprot_id_seq:
+          type: string
+          example: MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS
+          description: Antigen uniprot ID sequence
+    B028PatentDetail_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B031SynapseNews_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonName'
+    B030PaperDetail_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonName'
+    B031SynapseNews_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonName'
+    B070MedicineDetail_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B039SynapseDrugDeal_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B070MedicineDetail_MedicineDataDetailAuthor:
+      type: object
+      properties:
+        ordinal:
+          type: integer
+          format: int64
+          example: 1
+          description: Ordinal
+        superscript:
+          type: array
+          example:
+          - 1
+          - 2
+          description: Superscript
+        original_name:
+          type: string
+          example: John Smith
+          description: Original Name
+    B065AntibodySearch_AntibodyDetail:
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/B065AntibodySearch_AntibodyPatentInfo'
+        affinity_id:
+          type: string
+          example: n14778540229713683257531356477449681766
+          description: Affinity search ID
+        antigen_name:
+          type: string
+          example: CD19
+          description: Antigen name
+        antibody_name:
+          type: array
+          example:
+          - Rituximab
+          description: Antibody name list
+        antigen_species:
+          type: string
+          example: Human
+          description: Antigen species
+        antigen_uniport:
+          type: array
+          example: 'Please check the form: AntibodyUniport'
+          description: Antigen UniProt list
+          items:
+            $ref: '#/components/schemas/B065AntibodySearch_AntibodyUniport'
+        antigen_sequence:
+          type: string
+          example: MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS
+          description: Antigen sequence
+        antibody_sequence:
+          $ref: '#/components/schemas/B065AntibodySearch_AntibodySequenceInfo'
+    B028PatentDetail_PatentDto:
+      type: object
+      properties:
+        apno:
+          type: string
+          example: CN200680056438.5
+          description: Patent publication Number
+        drug:
+          type: array
+          example: Please check the form:PatentDrugDto
+          description: Drug
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentDrugDto'
+        title:
+          type: array
+          example: Please check the form:TextDto
+          description: Title
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_TextDto'
+        target:
+          type: array
+          example: Please check the form:CommonTarget
+          description: Target
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonTarget'
+        disease:
+          type: array
+          example: Please check the form:CommonDisease
+          description: Disease
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonDisease'
+        core_drug:
+          type: array
+          example: Please check the form:PatentDrugDto
+          description: Patented Core Drug
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentDrugDto'
+        patent_id:
+          type: string
+          example: f00a5247-0886-4ec4-aeae-572b32fe633a
+          description: patent id
+        patent_tech_type:
+          type: array
+          example: Please check the form:CommonDictionary
+          description: Patent Technology Type
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonDictionary'
+        core_recommend_drug:
+          type: array
+          example: Please check the form:PatentDrugDto
+          description: Patented Core Recommend Drug
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentDrugDto'
+        cde_drug_patent_types:
+          type: array
+          example: Please check the form:PatentTypeDto
+          description: CDE Patent Type
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentTypeDto'
+        fda_drug_patent_types:
+          type: array
+          example: Please check the form:PatentTypeDto
+          description: FDA Patent Type
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentTypeDto'
+        phs_drug_patent_types:
+          type: array
+          example: Please check the form:PatentTypeDto
+          description: Synapse Patent Type
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_PatentTypeDto'
+    B070MedicineDetail_CommonText:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        text:
+          type: string
+          example: This study investigates novel biomarkers for cancer research...
+          description: text
+    B039SynapseDrugDeal_MoneyItem:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: million dollar
+          description: 'Drug Deal Value Unit, Enum: million dollar. If the value is Undisclosed, return null.'
+        value:
+          type: string
+          example: 5000
+          description: Drug Deal Value, if not disclosed, then return "Undisclosed"
+    B030PaperDetail_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonName'
+    B031SynapseNews_GetNewsResponseDto:
+      type: object
+      properties:
+        drug:
+          type: array
+          example:
+          - drug_id: e82b83b42eba4e5ea3f26f8e06081a5a
+            display_name:
+            - lang: EN
+              name: Ranibizumab (Genentech)
+            - lang: CN
+              name: 雷珠单抗
+          description: Drug, Referencing "CommonDrug"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonDrug'
+        tags:
+          type: array
+          example:
+          - Careers
+          - Resume
+          - BioSpace
+          - advice
+          description: News Tags
+        title:
+          type: string
+          example: Roche to reintroduce Susvimo in the US for people with neovascular age-related macular degeneration (nAMD)
+          description: News title
+        author:
+          type: array
+          example:
+          - Thomas  Fink
+          description: Author
+        target:
+          type: array
+          example:
+          - target_id: 1c2067e5ab054a8995f73efcfcf56207
+            short_name:
+            - lang: EN
+              name: VEGF
+            display_name:
+            - lang: EN
+              name: Vascular endothelial growth factor
+            - lang: CN
+              name: 血管内皮生长因子
+          description: Target, Referencing "CommonTarget"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonTarget'
+        channel:
+          type: array
+          example:
+          - company information
+          description: News Channel
+        content:
+          type: string
+          example: The FDA has approved updates to Susvimo, which will be available to US retina specialists and patients with nAMD in the coming weeks\nSusvimo offers the first alternative to regular eye injections that are standard of care for nAMD, which impacts 20 million people worldwide and can cause blindness if left untreated
+          description: News content
+        disease:
+          type: array
+          example:
+          - disease_id: 06a9082fe1ec4c97bea31d888b9cfdce
+            display_name:
+            - lang: EN
+              name: Uveitic Macular Edema
+            - lang: CN
+              name: 葡萄膜炎黄斑水肿
+          description: Disease, Referencing "CommonDisease"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonDisease'
+        news_id:
+          type: string
+          example: f57e970e-8f97-39b7-a6be-51846e92bee1
+          description: News ID
+        post_time:
+          type: integer
+          format: int64
+          example: 1720600697798
+          description: Post Time
+        source_url:
+          type: string
+          example: https://www.biospace.com/article/releases/cerevel-therapeutics-announces-publication-in-the-lancet-of-emraclidine-data-from-phase-1b-clinical-trial-in-people-living-with-schizophrenia/
+          description: News Link
+        organization:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Roche Holding AG
+            - lang: CN
+              name: 罗氏
+            organization_id: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization, Referencing "CommonOrganization"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonOrganization'
+    B030PaperDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B030PaperDetail_GetPaperResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B028PatentDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B028PatentDetail_PatentDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B039SynapseDrugDeal_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+    B028PatentDetail_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+    B065AntibodySearch_AntibodySequenceInfo:
+      type: object
+      properties:
+        antibody_heavy_chain:
+          type: string
+          example: EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARDYRYDYWGQGTLVTVSS
+          description: Antibody heavy chain sequence
+        antibody_light_chain:
+          type: string
+          example: DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK
+          description: Antibody light chain sequence
+        heavy_chain_sequence_number:
+          type: integer
+          format: int64
+          example: 123456789
+          description: Heavy chain sequence number
+        light_chain_sequence_number:
+          type: integer
+          format: int64
+          example: 987654321
+          description: Light chain sequence number
+    B070MedicineDetail_MedicineDataDetailInstitution:
+      type: object
+      properties:
+        ordinal:
+          type: integer
+          format: int64
+          example: 1
+          description: Ordinal
+        original_name:
+          type: string
+          example: Harvard Medical School
+          description: Original Name
+    B066AffinitySearch_AntibodyPatentInfo:
+      type: object
+      properties:
+        source_type:
+          type: string
+          example: patent
+          description: Data source type
+        antibody_patent_id:
+          type: string
+          example: AB_12345678
+          description: Antibody patent ID
+        antibody_patent_number:
+          type: string
+          example: CN302052315S
+          description: patent number
+        heavy_chain_sequence_id:
+          type: string
+          example: HC_12345678
+          description: PatSnap internal heavy chain sequence ID
+        light_chain_sequence_id:
+          type: string
+          example: LC_12345678
+          description: PatSnap internal light chain sequence ID
+    B028PatentDetail_TextDto:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: language
+        text:
+          type: string
+          example: Antibody and checkpoint inhibitor combination therapy
+          description: text
+    B066AffinitySearch_AntibodyUniport:
+      type: object
+      properties:
+        uniprot_id:
+          type: string
+          example: P15391
+          description: Antigen uniprot ID
+        uniprot_id_seq:
+          type: string
+          example: MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS
+          description: Antigen uniprot ID sequence
+    B028PatentDetail_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+    B065AntibodySearch_AntibodyPatentInfo:
+      type: object
+      properties:
+        source_type:
+          type: string
+          example: patent
+          description: Data source type
+        antibody_patent_id:
+          type: string
+          example: AB_12345678
+          description: Antibody patent ID
+        antibody_patent_number:
+          type: string
+          example: CN302052315S
+          description: patent number
+        heavy_chain_sequence_id:
+          type: string
+          example: HC_12345678
+          description: PatSnap internal heavy chain sequence ID
+        light_chain_sequence_id:
+          type: string
+          example: LC_12345678
+          description: PatSnap internal light chain sequence ID
+    B031SynapseNews_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B039SynapseDrugDeal_GetDrugDealResponseDto:
+      type: object
+      properties:
+        drug:
+          type: array
+          example:
+          - drug_id: 81364d1ace044fdc8af8f60026eb2c7b
+            display_name:
+            - lang: EN
+              name: Ciltacabtagene autoleucel
+            - lang: CN
+              name: 西达基奥仑赛
+          description: Drug, Referencing "CommonDrug"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonDrug'
+        target:
+          type: array
+          example:
+          - target_id: e49efee164e537c2a4ba9cec109e0adb
+            short_name:
+            - lang: EN
+              name: BCMA
+            display_name:
+            - lang: EN
+              name: B-cell maturation protein
+            - lang: CN
+              name: B细胞成熟蛋白
+          description: Target, Referencing "CommonTarget"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonTarget'
+        deal_id:
+          type: string
+          example: 284929245a22a8a9e2ed5ee82ae52250
+          description: Drug Deal ID
+        partner:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Janssen Biotech, Inc.
+            - lang: CN
+              name: 森托克奧素生物技術產品有限合夥事業
+            organization_id: ee3f62ab873c539d75e06f49cc09d7fc
+          description: Partner Organization, Referencing "CommonOrganization"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonOrganization'
+        deal_time:
+          type: integer
+          format: int64
+          example: 1513814400000
+          description: Drug Deal Time
+        deal_type:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: License
+            - lang: CN
+              name: 许可
+            normalized_id: c6bb6fa84d924b0cabd8f5dd2af17708
+          description: Deal Type, Referencing "CommonDictionary"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonDictionary'
+        drug_type:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Autologous CAR-T
+            - lang: CN
+              name: 自体CAR-T
+            normalized_id: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Drug Type, Referencing "CommonDictionary"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonDictionary'
+        principle:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Legend Biotech USA, Inc.
+            organization_id: 336e7d3b6f91616c632bc60c40a434de
+          - display_name:
+            - lang: EN
+              name: Nanjing Legend Biotech Co., Ltd.
+            - lang: CN
+              name: 南京传奇生物科技有限公司
+            organization_id: a22fd154855c015ed283545df379f0de
+          description: Principal Organization, Referencing "CommonOrganization"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonOrganization'
+        deal_title:
+          type: string
+          example: Janssen Enters Worldwide Collaboration and License Agreement with Chinese Company Legend Biotech to Develop Investigational CAR-T Anti-Cancer Therapy
+          description: Drug Deal Title
+        source_url:
+          type: string
+          example: https://pipelinereview.com/index.php/2017122266940/More-News/Janssen-Enters-Worldwide-Collaboration-and-License-Agreement-with-Chinese-Company-Legend-Biotech-to-Develop-Investigational-CAR-T-Anti-Cancer-Therapy.html
+          description: News link
+        deal_status:
+          $ref: '#/components/schemas/B039SynapseDrugDeal_CommonDictionary'
+        deal_total_value:
+          $ref: '#/components/schemas/B039SynapseDrugDeal_MoneyItem'
+        territory_excluded:
+          type: array
+          example:
+          - country_id: 676de5ba-893a-36bb-8683-c93306aaf769
+            alpha2_code: JP
+            display_name:
+            - lang: EN
+              name: Japan
+            - lang: CN
+              name: 日本
+          description: Country/Location(Exclude), Referencing "CommonCountry"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonCountry'
+        territory_included:
+          type: array
+          example:
+          - country_id: 4cc6684d-f7b4-392b-9dec-6fce3264fac8
+            display_name:
+            - lang: EN
+              name: Global
+            - lang: CN
+              name: 全球
+          description: Country/Location(Include), Referencing "CommonCountry"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonCountry'
+        deal_upfront_payment:
+          $ref: '#/components/schemas/B039SynapseDrugDeal_MoneyItem'
+        deal_milestone_payment:
+          $ref: '#/components/schemas/B039SynapseDrugDeal_MoneyItem'
+    B039SynapseDrugDeal_CommonCountry:
+      type: object
+      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+    B066AffinitySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B066AffinitySearch_AffinityResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B039SynapseDrugDeal_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B031SynapseNews_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B066AffinitySearch_AffinityResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        rows:
+          type: integer
+          format: int32
+          example: 10
+          description: Rows per page
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total
+        source:
+          $ref: '#/components/schemas/B066AffinitySearch_AntibodyPatentInfo'
+        antigen_name:
+          type: string
+          example: CD19
+          description: Antigen name
+        antibody_name:
+          type: array
+          example:
+          - Rituximab
+          description: Antibody name
+        antigen_species:
+          type: string
+          example: Human
+          description: Antigen species
+        antigen_uniport:
+          type: array
+          example: 'Please check the form: AntibodyUniport'
+          description: Antigen UniProt list
+          items:
+            $ref: '#/components/schemas/B066AffinitySearch_AntibodyUniport'
+        affinity_details:
+          type: array
+          example: 'Please check the form: AffinityDetail'
+          description: Affinity list
+          items:
+            $ref: '#/components/schemas/B066AffinitySearch_AffinityDetail'
+        antibody_sequence:
+          $ref: '#/components/schemas/B066AffinitySearch_AntibodySequenceInfo'
+    B030PaperDetail_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B030PaperDetail_PaperAbstractDto:
+      type: object
+      properties:
+        abst:
+          type: string
+          example: PD-1 and PD-L1 can be involved in tumor escape, and little is known about the role of these molecules in oral tumors or pre-malignant lesions. In the present study, we investigated the expression of PD-1 and PD-L1 in the blood and lesion samples of patients with actinic cheilitis (AC) and oral squamous cell carcinoma (OSCC). Our results showed that lymphocytes from peripheral blood and tissue samples exhibited high expression of PD-1 in both groups analyzed. Patients with AC presented higher percentage as well as the absolute numbers of CD4+PD-1+ and CD8+PD-1+ lymphocytes in peripheral blood mononuclear cells (PBMC) than healthy individuals, while patients with OSCC presented an increased frequency of CD8+PD1+ in PBMC when compared with controls. On the other hand, increased frequency of CD4+ and CD8+ T cells expressing PD-1(+) accumulate in samples from OSCC, and the expression of PD-L1 was intense in OSCC and moderate in AC lesion sites. Lower levels of IFN-γ and higher levels of TGF-β were detected in OSCC samples. Our data demonstrate that PD-1 and PD-L1 molecules are present in blood and samples of AC and OSCC patients. Further studies are required to understand the significance of PD-1 and PD-L1 in oral tumors microenvironment.
+          description: Abstract
+        lang:
+          type: string
+          example: EN
+          description: Language
+    B066AffinitySearch_AntibodySequenceInfo:
+      type: object
+      properties:
+        antibody_heavy_chain:
+          type: string
+          example: EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARDYRYDYWGQGTLVTVSS
+          description: Antibody heavy chain sequence
+        antibody_light_chain:
+          type: string
+          example: DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK
+          description: Antibody light chain sequence
+        heavy_chain_sequence_number:
+          type: integer
+          format: int64
+          example: 123456789
+          description: Heavy chain sequence number
+        light_chain_sequence_number:
+          type: integer
+          format: int64
+          example: 987654321
+          description: Light chain sequence number
+    B028PatentDetail_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonName'
+    B030PaperDetail_GetPaperResponseDto:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1007/s00262-011-1007-5
+          description: DOI
+        drug:
+          type: array
+          example:
+          - drug_id: bf776b0ad6b8481e8bf5e048fa7c2b8e
+            display_name:
+            - lang: EN
+              name: HW-CX04
+          description: Journal
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonDrug'
+        author:
+          type: array
+          example:
+          - Karen Angélica Cavassani
+          - Maria Renata Sales Nogueira Costa
+          - Thaís Helena Gasparoto
+          description: Author
+        source:
+          type: array
+          example:
+          - CROSSREF
+          - PUBMED
+          - CAS
+          - MAG
+          description: Source
+        target:
+          type: array
+          example:
+          - target_id: 06c7ab146b884a3aa890cfd1a4a0e168
+            short_name:
+            - lang: EN
+              name: PDL1
+            display_name:
+            - lang: EN
+              name: Programmed death-ligand 1
+            - lang: CN
+              name: 程序性死亡配体1
+          description: Target
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonTarget'
+        disease:
+          type: array
+          example:
+          - disease_id: 62eaee6d9ee44410b8aca59dfc7408e9
+            display_name:
+            - lang: EN
+              name: Neoplasms
+            - lang: CN
+              name: 肿瘤
+          description: Disease
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonDisease'
+        journal:
+          type: string
+          example: Cancer Immunology, Immunotherapy
+          description: Journal
+        paper_id:
+          type: string
+          example: c61f84d1-b6b6-35d8-b178-94faa296df56
+          description: Paper ID
+        epub_date:
+          type: string
+          example: 20110327
+          description: Epub
+        paper_title:
+          type: array
+          example:
+          - lang: EN
+            title: Enhanced programmed death 1 (PD-1) and PD-1 ligand (PD-L1) expression in patients with actinic cheilitis and oral squamous cell carcinoma
+          description: Title
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_PaperTitleDto'
+        organization:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: University of California San Diego
+            - lang: CN
+              name: 加利福尼亚大学圣迭戈分校
+            organization_id: 56440a5c579d138c19fbf0ae12547495
+          description: Organization
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonOrganization'
+        paper_abstract:
+          type: array
+          example:
+          - abst: PD-1 and PD-L1 can be involved in tumor escape, and little is known about the role of these molecules in oral tumors or pre-malignant lesions. In the present study, we investigated the expression of PD-1 and PD-L1 in the blood and lesion samples of patients with actinic cheilitis (AC) and oral squamous cell carcinoma (OSCC). Our results showed that lymphocytes from peripheral blood and tissue samples exhibited high expression of PD-1 in both groups analyzed. Patients with AC presented higher percentage as well as the absolute numbers of CD4+PD-1+ and CD8+PD-1+ lymphocytes in peripheral blood mononuclear cells (PBMC) than healthy individuals, while patients with OSCC presented an increased frequency of CD8+PD1+ in PBMC when compared with controls. On the other hand, increased frequency of CD4+ and CD8+ T cells expressing PD-1(+) accumulate in samples from OSCC, and the expression of PD-L1 was intense in OSCC and moderate in AC lesion sites. Lower levels of IFN-γ and higher levels of TGF-β were detected in OSCC samples. Our data demonstrate that PD-1 and PD-L1 molecules are present in blood and samples of AC and OSCC patients. Further studies are required to understand the significance of PD-1 and PD-L1 in oral tumors microenvironment.
+            lang: EN
+          description: Abstract
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_PaperAbstractDto'
+        publication_date:
+          type: string
+          example: 20110701
+          description: Publication Date
+    B028PatentDetail_PatentTypeDto:
+      type: object
+      properties:
+        patent_type:
+          $ref: '#/components/schemas/B028PatentDetail_CommonDictionary'
+        exclusivity_code:
+          type: string
+          example: NPP
+          description: Orange Book Exclusivity Code
+        patent_type_drug:
+          type: array
+          example:
+          - drug_id: 567c4038545f44fb99efc9ff81d9eba2
+            display_name:
+            - lang: EN
+              name: CNA-3103
+          description: Patented drug
+          items:
+            $ref: '#/components/schemas/B028PatentDetail_CommonDrug'
+    B065AntibodySearch_AntibodyResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        rows:
+          type: integer
+          format: int32
+          example: 10
+          description: Rows per page
+        items:
+          type: array
+          example: 'Please check the form: AntibodyDetail'
+          description: Result items
+          items:
+            $ref: '#/components/schemas/B065AntibodySearch_AntibodyDetail'
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total
+    B031SynapseNewsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B031SynapseNews_GetNewsResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B030PaperDetail_PaperTitleDto:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Paper Title Language
+        title:
+          type: string
+          example: 'Adding PD-1/PD-L1 Inhibitors to Chemotherapy for the First-Line Treatment of Extensive Stage Small Cell Lung Cancer (SCLC): A Meta-Analysis of Randomized Trials'
+          description: Paper Title
+    B065AntibodySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B065AntibodySearch_AntibodyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B031SynapseNews_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B031SynapseNews_CommonName'
+    B030PaperDetail_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B070MedicineDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B070MedicineDetail_TranslationalMedicineDataDetailResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B030PaperDetail_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B030PaperDetail_CommonName'
+    B039SynapseDrugDeal_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B039SynapseDrugDeal_CommonName'
+    B039SynapseDrugDealResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B039SynapseDrugDeal_GetDrugDealResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

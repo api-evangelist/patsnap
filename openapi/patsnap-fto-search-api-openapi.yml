@@ -1,0 +1,1704 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation FTO Search API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: FTO Search
+  description: FTO Search APIs.
+paths:
+  /ai/fto/submit:
+    post:
+      operationId: ai66-1FtoSubmit
+      summary: AI66-1 FTO Search - Create Task
+      description: Submit technical solution content to initiate an FTO search task. The system will analyze the input technical solution and generate a task ID for subsequent steps.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-1 fto search - create task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-1FtoSubmitResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/submit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-1FtoSubmitRequest'
+  /ai/fto/feature/extract:
+    post:
+      operationId: ai66-2FeatureExtract
+      summary: AI66-2 FTO Search - Extract Technical Features
+      description: Extract technical features based on the task_id.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-2 fto search - extract technical features response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-2FeatureExtractResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/feature/extract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-2FeatureExtractRequest'
+  /ai/fto/feature/confirm:
+    post:
+      operationId: ai66-3FeatureConfirm
+      summary: AI66-3 FTO Search - Confirm Technical Features
+      description: After the user modifies or adds/reduces technical features from [AI66-2], submit the confirmation to proceed with subsequent retrieval.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-3 fto search - confirm technical features response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-3FeatureConfirmResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/feature/confirm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-3FeatureConfirmRequest'
+  /ai/fto/search/agent:
+    post:
+      operationId: ai66-4SearchAgent
+      summary: AI66-4 FTO Search - Start FTO Search
+      description: Based on the technical features confirmed in [AI66-3], start the FTO search agent to perform patent search.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-4 fto search - start fto search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-4SearchAgentResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/search/agent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-4SearchAgentRequest'
+  /ai/fto/report/create:
+    post:
+      operationId: ai66-6ReportCreate
+      summary: AI66-6 FTO Search - Create Report
+      description: After the user modifies or adds/reduces the search results from [AI66-5], submit the confirmation and create a complete FTO search report, including all analysis results. Additionally, if the user needs to manually add comparison documents or patents, the output parameters of the [AI66-8] FTO Search - Add Comparison Document or Patent  interface can be used as the corresponding part of the input parameters in this interface.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-6 fto search - create report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-6ReportCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/report/create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-6ReportCreateRequest'
+  /ai/fto/report/get:
+    post:
+      operationId: ai66-7ReportGet
+      summary: AI66-7 FTO Search - Download Report
+      description: Obtain the download link for the generated FTO search report based on the task_id.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-7 fto search - download report response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-7ReportGetResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/report/get
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-7ReportGetRequest'
+  /ai/fto/feature/comparison:
+    post:
+      operationId: ai66-8FeatureComparison
+      summary: AI66-8 FTO Search - Add Comparison Document or Patent
+      description: For cases where the user needs to manually add comparison documents or patents, the output parameters of this interface can be used as the corresponding part of the input parameters in [AI66-6] FTO Search - Create Report.
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-8 fto search - add comparison document or patent response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-8FeatureComparisonResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/feature/comparison
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-8FeatureComparisonRequest'
+  /ai/fto/search/agent/result:
+    post:
+      operationId: ai66-5AgentResult
+      summary: AI66-5 FTO Search - Obtain FTO Search Results
+      description: Obtain the search results of the FTO search agent based on the task_id confirmed in [AI66-4].
+      tags:
+      - FTO Search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai66-5 fto search - obtain fto search results response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI66-5AgentResultResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/fto/search/agent/result
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI66-5AgentResultRequest'
+components:
+  schemas:
+    AI66-6ReportCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-6ReportCreate_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-5AgentResultRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI66-8FeatureComparison_FeatureComparisonFinalResFeature:
+      type: object
+      properties:
+        score:
+          type: integer
+          format: int32
+          example: 85
+          description: Score
+        public_score:
+          type: integer
+          format: int32
+          example: 90
+          description: Disclosure score
+        tech_feature:
+          type: string
+          example: 人工智能算法
+          description: Technical feature
+        comparison_feature:
+          type: string
+          example: 机器学习算法
+          description: Comparison feature
+    AI66-5AgentResult_FeatureKeywordItemWord:
+      type: object
+      properties:
+        synonym:
+          type: array
+          example:
+          - 执行
+          - 运作
+          - 活动
+          description: List of synonyms for the feature word
+        translation:
+          type: string
+          example: Operation
+          description: English translation of the feature word
+        tech_feature:
+          type: string
+          example: 运行
+          description: Extracted technical feature word (finest granularity)
+        synonym_score:
+          type: array
+          example:
+          - 95
+          - 90
+          - 85
+          description: List of relevance scores for synonyms, corresponding one-to-one with the synonym list
+      required:
+      - tech_feature
+    AI66-5AgentResult_AiSearchFinalResultFeatureV2:
+      type: object
+      properties:
+        type:
+          type: string
+          example: equivalent
+          description: Feature comparison type label
+        score:
+          type: integer
+          format: int32
+          example: 100
+          description: Similarity score between tech feature and comparison feature (0-100)
+        similar:
+          type: boolean
+          example: true
+          description: Whether similar
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (Claim 1, Claim 2, Claim 3, etc.)
+        claim_type:
+          type: string
+          example: independent
+          description: 'Claim type (independent: independent claim, dependent: dependent claim)'
+        public_score:
+          type: number
+          format: float
+          example: 0
+          description: Public disclosure score of the feature
+        tech_feature:
+          type: string
+          example: 一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度
+          description: Technical feature (from input text)
+        original_type:
+          type: string
+          example: equivalent
+          description: Original feature comparison type label
+        type_for_user:
+          type: string
+          example: equivalent
+          description: User-modified feature comparison type label
+        original_score:
+          type: integer
+          format: int32
+          example: 100
+          description: Original similarity score
+        score_for_user:
+          type: integer
+          format: int32
+          example: 95
+          description: User-modified similarity score
+        compare_feature:
+          type: string
+          example: 除霜运行时，获取室外风速，检测室外盘管温度
+          description: Compare feature (backup field)
+        comparison_feature:
+          type: string
+          example: 除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度
+          description: Feature found in comparison document
+      required:
+      - score
+      - tech_feature
+    AI66-8FeatureComparisonResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-8FeatureComparison_FeatureComparisonResponseDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-3FeatureConfirmRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 8b814751-8264-45df-a157-2da6273b07f9
+          description: Task ID to identify a specific AI search task
+        tech_features:
+          type: array
+          example:
+          - core: true
+            score: 100
+            reason: 包含主题，描述了发明的核心内容。
+            keywords:
+            - 空调器
+            - 除霜控制方法
+            user_add: false
+            is_select: true
+            tech_feature: 空调器及其除霜控制方法
+          - core: false
+            score: 70
+            reason: 结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。
+            keywords:
+            - 除霜运行
+            - 室外风速
+            - 室外盘管温度
+            user_add: false
+            is_select: true
+            tech_feature: 除霜运行时，获取室外风速，检测室外盘管温度
+          - core: false
+            score: 80
+            reason: 根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。
+            keywords:
+            - 室外风速等级
+            - 除霜退出温度
+            user_add: false
+            is_select: true
+            tech_feature: 获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）
+          description: List of technical features confirmed by user, including feature description, keywords, score, selection status and other information
+          items:
+            $ref: '#/components/schemas/AI66-3FeatureConfirm_AiSearchAgentFeature'
+      required:
+      - task_id
+      - tech_features
+    AI66-3FeatureConfirm_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI66-5AgentResult_AiSearchProcessDictItem:
+      type: object
+      properties:
+        cost:
+          type: number
+          format: float
+          example: 108
+          description: Execution time cost for this round of search (seconds)
+        status:
+          type: string
+          example: success
+          description: 'Execution status of this round of search (success: successful, failed: failed, running: in progress)'
+        strategy:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItemStrategy'
+        find_patent_num:
+          type: integer
+          format: int32
+          example: 7
+          description: Number of potentially similar patents found in this round of search
+        comparison_result:
+          type: array
+          example:
+          - score: 91
+            patent_id: 3f7db6aa-2263-41d5-bddb-671301f215a7
+            public_score: 1
+            feature_match_num: 10
+          description: List of detailed information for potentially similar patents found in this round of search
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessComparisonResult'
+        comparison_patent_num:
+          type: integer
+          format: int32
+          example: 7
+          description: Total number of patents compared in this round of search
+      required:
+      - cost
+      - status
+      - strategy
+      - find_patent_num
+      - comparison_patent_num
+    AI66-5AgentResult_AiSearchProcessComparisonResult:
+      type: object
+      properties:
+        score:
+          type: integer
+          format: int32
+          example: 91
+          description: Overall similarity score between patent and input technical solution (0-100)
+        patent_id:
+          type: string
+          example: 3f7db6aa-2263-41d5-bddb-671301f215a7
+          description: Patent unique identifier
+        public_score:
+          type: number
+          format: float
+          example: 1
+          description: Patent disclosure score indicating the degree of patent information disclosure
+        find_patent_num:
+          type: string
+          example: 7
+          description: Number of potentially similar patents found in this round of search (string format)
+        feature_match_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of features matching the input technical solution
+      required:
+      - score
+      - patent_id
+      - public_score
+      - feature_match_num
+    AI66-6ReportCreate_AiSearchFinalResultV2:
+      type: object
+      properties:
+        claim_equivalent_info:
+          type: array
+          example:
+          - claim_num: 1
+            infringement: true
+          - claim_num: 2
+            infringement: true
+          - claim_num: 3
+            infringement: true
+          - claim_num: 4
+            infringement: true
+          - claim_num: 5
+            infringement: true
+          - claim_num: 6
+            infringement: true
+          - claim_num: 7
+            infringement: true
+          - claim_num: 8
+            infringement: true
+          - claim_num: 9
+            infringement: true
+          - claim_num: 10
+            infringement: true
+          description: List of claim equivalence information including infringement judgment for each claim
+          items:
+            $ref: '#/components/schemas/AI66-6ReportCreate_ClaimEquivalentItem'
+        claims:
+          type: array
+          example:
+          - claim_num: 1
+            claim_text: '1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 '
+          - claim_num: 2
+            claim_text: '2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 '
+          - claim_num: 6
+            claim_text: '6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 '
+          description: List of original claim texts including complete claim content
+          items:
+            $ref: '#/components/schemas/AI66-6ReportCreate_FeatureComparisonFinalResClaim'
+        comparative_literature_type:
+          type: string
+          example: A
+          description: 'Type of comparative literature (A: most relevant prior art)'
+        comparison_conclusion:
+          type: object
+          example:
+            en: ''
+            zh: '通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：
+
+
+              专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。
+
+
+              综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。'
+          description: Comparison conclusion including analysis conclusions in Chinese and English versions
+        dependent_claim_num:
+          type: integer
+          format: int32
+          example: 8
+          description: Total number of dependent claims
+        document:
+          type: string
+          example: 一种空调器的除霜控制方法
+          description: Patent document abstract or key content
+        equivalent_dependent_claim_num:
+          type: integer
+          format: int32
+          example: 8
+          description: Number of equivalent dependent claims
+        equivalent_independent_claim_num:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of equivalent independent claims
+        feature_match_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of matched technical features
+        features:
+          type: array
+          example:
+          - score: 100
+            reason: ''
+            similar: true
+            claim_num: 1
+            claim_type: independent
+            public_score: 0
+            tech_feature: 一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。
+            original_score: 100
+            original_reason: ''
+            comparison_feature: 除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。
+          description: List of technical feature comparisons including detailed comparison information for each feature
+          items:
+            $ref: '#/components/schemas/AI66-6ReportCreate_AiSearchFinalResultFeatureV2'
+        independent_claim_num:
+          type: integer
+          format: int32
+          example: 2
+          description: Total number of independent claims
+        lang:
+          type: string
+          example: CN
+          description: Patent language
+        most_similar:
+          type: boolean
+          example: false
+          description: Whether it is the most similar patent
+        patent_id:
+          type: string
+          example: 3f7db6aa-2263-41d5-bddb-671301f215a7
+          description: Unique patent identifier
+        public_score:
+          type: number
+          format: float
+          example: 1
+          description: Disclosure score indicating the degree of patent disclosure
+        risk_level:
+          type: string
+          example: High
+          description: 'Risk level (High: high risk, Medium: medium risk, Low: low risk)'
+        selected:
+          type: boolean
+          example: true
+          description: Whether selected for analysis
+        user_added:
+          type: boolean
+          example: false
+          description: Whether the patent was manually added by the user
+      required:
+      - comparison_conclusion
+      - feature_match_num
+      - features
+      - patent_id
+      - public_score
+    AI66-5AgentResult_AiSearchProcessDict:
+      type: object
+      properties:
+        ipc_cpc_search:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        semantic_search:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        relevant_tracking_search:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        block_progressive_search_1:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        block_progressive_search_2:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        block_progressive_search_3:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+        block_progressive_search_4:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItem'
+    AI66-3FeatureConfirmResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-3FeatureConfirm_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-2FeatureExtract_AiSearchAgentFeature:
+      type: object
+      properties:
+        core:
+          type: boolean
+          example: true
+          description: Whether it is a core field
+        score:
+          type: integer
+          format: int32
+          example: 80
+          description: score
+        reason:
+          type: string
+          example: 包含主题，描述了发明的核心内容。
+          description: reason
+        keywords:
+          type: array
+          example:
+          - 人形机器人
+          - 腿部动力结构
+          description: List of keywords
+        user_add:
+          type: boolean
+          example: true
+          description: Whether to add for the user
+        is_select:
+          type: boolean
+          example: true
+          description: Check or not
+        tech_feature:
+          type: string
+          example: 人形机器人的腿部动力结构
+          description: Extracted feature words
+      required:
+      - core
+      - score
+      - reason
+      - keywords
+      - user_add
+      - is_select
+      - tech_feature
+    AI66-7ReportGet_FtoSearchDownloadResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of the technical survey report
+        report_url:
+          type: string
+          example: http://downloadurl
+          description: Report file download link (returned when export status is successful)
+    AI66-5AgentResultResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchAgentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-5AgentResult_AiSearchAgentResponse:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: Language used for search
+        text:
+          type: string
+          example: 空调器及其除霜控制方法
+          description: Input content used when operation type is expansion, abbreviation, or polishing
+        cc_num:
+          type: integer
+          format: int32
+          example: 100
+          description: Number to control algorithm interface token consumption for cost control
+        cc_pids:
+          type: array
+          example:
+          - 3f7db6aa-2263-41d5-bddb-671301f215a7
+          - f1f3c8e0-306f-4370-b5ec-9f11c0082e42
+          description: List of patent IDs involved in feature comparison
+        task_id:
+          type: string
+          example: 9f10932dc8ad173d120adf9a75ad67b5
+          description: Unique task identifier
+        is_async:
+          type: boolean
+          example: true
+          description: Whether it is an asynchronous request, consistent with the async parameter in the request
+        task_cost:
+          type: number
+          format: float
+          example: 366.9
+          description: Total task execution time in seconds
+        update_ts:
+          type: string
+          example: '2025-10-23 15:44:31.924'
+          description: Timestamp of the last result update
+        task_status:
+          type: string
+          example: success
+          description: Current task execution status(running,success)
+        cc_threshold:
+          type: number
+          format: float
+          example: 60
+          description: Threshold for feature comparison, above this threshold are confirmed features, below are pending confirmation
+        excute_times:
+          type: integer
+          format: int32
+          example: 7
+          description: Number of search executions performed
+        final_result:
+          type: array
+          example:
+          - lang: CN
+            features:
+            - score: 100
+              similar: true
+              public_score: 0
+              tech_feature: 一种空调器的除霜控制方法
+              comparison_feature: 除霜运行时，获取室外风速，检测室外盘管温度
+            selected: true
+            patent_id: 3f7db6aa-2263-41d5-bddb-671301f215a7
+            risk_level: High
+            user_added: false
+            most_similar: false
+            public_score: 1
+            feature_match_num: 10
+            comparative_literature_type: A
+          description: List of comparison information for potentially related patents found, sorted by public score, including patent details, feature comparison, risk assessment and other information
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_AiSearchFinalResultV2'
+        operate_type:
+          type: string
+          example: generate
+          description: Operation type to identify the current operation being performed
+        process_dict:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDict'
+        find_patent_num:
+          type: integer
+          format: int32
+          example: 13
+          description: Number of potentially similar patents found
+        feature_keywords:
+          type: array
+          example:
+          - words: []
+            synonym:
+            - 空调
+            - 冷暖设备
+            - 制冷设备
+            translation: Air Conditioner
+            tech_feature: 空调器
+            synonym_score:
+            - 100
+            - 95
+            - 90
+          description: List of technical feature keywords including feature words, translations, synonyms and other information
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_AiSearchFeatureKeyword'
+        total_comparison_patent_num:
+          type: integer
+          format: int32
+          example: 13
+          description: Total number of patents compared
+      required:
+      - task_id
+      - is_async
+      - task_cost
+      - update_ts
+      - task_status
+      - cc_threshold
+      - excute_times
+      - final_result
+      - find_patent_num
+      - total_comparison_patent_num
+    AI66-4SearchAgentRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI66-6ReportCreate_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI66-1FtoSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-1FtoSubmit_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-5AgentResult_AiSearchProcessDictItemStrategy:
+      type: object
+      properties:
+        type:
+          type: string
+          example: semantic_search
+          description: Search strategy type identifier
+        query:
+          type: string
+          example: SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597
+          description: Actual search query statement executed
+        try_nth:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of attempts for this search strategy (which attempt)
+        parameters:
+          $ref: '#/components/schemas/AI66-5AgentResult_AiSearchProcessDictItemStrategyParameter'
+        description_en:
+          type: string
+          example: Semantic search of the input technical solution
+          description: English description of the search strategy
+        description_zh:
+          type: string
+          example: 通过语义检索输入的技术方案
+          description: Chinese description of the search strategy
+      required:
+      - type
+    AI66-5AgentResult_AiSearchFinalResultV2:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: Patent language
+        claims:
+          type: array
+          example:
+          - claim_num: 1
+            claim_text: '1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 '
+          - claim_num: 2
+            claim_text: '2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 '
+          - claim_num: 6
+            claim_text: '6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 '
+          description: List of original claim texts including complete claim content
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_FeatureComparisonFinalResClaim'
+        document:
+          type: string
+          example: 一种空调器的除霜控制方法
+          description: Patent document abstract or key content
+        features:
+          type: array
+          example:
+          - score: 100
+            reason: ''
+            similar: true
+            claim_num: 1
+            claim_type: independent
+            public_score: 0
+            tech_feature: 一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。
+            original_score: 100
+            original_reason: ''
+            comparison_feature: 除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。
+          description: List of technical feature comparisons including detailed comparison information for each feature
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_AiSearchFinalResultFeatureV2'
+        selected:
+          type: boolean
+          example: true
+          description: Whether selected for analysis
+        patent_id:
+          type: string
+          example: 3f7db6aa-2263-41d5-bddb-671301f215a7
+          description: Unique patent identifier
+        risk_level:
+          type: string
+          example: High
+          description: 'Risk level (High: high risk, Medium: medium risk, Low: low risk)'
+        user_added:
+          type: boolean
+          example: false
+          description: Whether the patent was manually added by the user
+        most_similar:
+          type: boolean
+          example: false
+          description: Whether it is the most similar patent
+        public_score:
+          type: number
+          format: float
+          example: 1
+          description: Disclosure score indicating the degree of patent disclosure
+        feature_match_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of matched technical features
+        dependent_claim_num:
+          type: integer
+          format: int32
+          example: 8
+          description: Total number of dependent claims
+        claim_equivalent_info:
+          type: array
+          example:
+          - claim_num: 1
+            infringement: true
+          - claim_num: 2
+            infringement: true
+          - claim_num: 3
+            infringement: true
+          - claim_num: 4
+            infringement: true
+          - claim_num: 5
+            infringement: true
+          - claim_num: 6
+            infringement: true
+          - claim_num: 7
+            infringement: true
+          - claim_num: 8
+            infringement: true
+          - claim_num: 9
+            infringement: true
+          - claim_num: 10
+            infringement: true
+          description: List of claim equivalence information including infringement judgment for each claim
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_ClaimEquivalentItem'
+        comparison_conclusion:
+          type: object
+          example:
+            en: ''
+            zh: '通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：
+
+
+              专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。
+
+
+              综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。'
+          description: Comparison conclusion including analysis conclusions in Chinese and English versions
+        independent_claim_num:
+          type: integer
+          format: int32
+          example: 2
+          description: Total number of independent claims
+        comparative_literature_type:
+          type: string
+          example: A
+          description: 'Type of comparative literature (A: most relevant prior art)'
+        equivalent_dependent_claim_num:
+          type: integer
+          format: int32
+          example: 8
+          description: Number of equivalent dependent claims
+        equivalent_independent_claim_num:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of equivalent independent claims
+      required:
+      - features
+      - patent_id
+      - public_score
+      - feature_match_num
+    AI66-6ReportCreate_ClaimEquivalentItem:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (Claim 1, Claim 2, Claim 3, etc.)
+        infringement:
+          type: boolean
+          example: true
+          description: Whether it constitutes infringement
+      required:
+      - claim_num
+      - infringement
+    AI66-7ReportGetRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI66-6ReportCreateRequest:
+      type: object
+      properties:
+        final_res:
+          type: array
+          example:
+          - features:
+            - score: 100
+              similar: true
+              tech_feature: 一种空调器的除霜控制方法
+              comparison_feature: 除霜运行时，获取室外风速，检测室外盘管温度
+            selected: true
+            patent_id: 3f7db6aa-2263-41d5-bddb-671301f215a7
+            risk_level: High
+            public_score: 1
+            feature_match_num: 10
+          description: 'List of final patent comparison results selected by user for report generation. Note: The number of selected patents must be between 1 and 5'
+          items:
+            $ref: '#/components/schemas/AI66-6ReportCreate_AiSearchFinalResultV2'
+        task_id:
+          type: string
+          example: 8b814751-8264-45df-a157-2da6273b07f9
+          description: FTO search task ID to identify a specific search task
+        title:
+          type: string
+          example: 空调器除霜控制方法防侵权分析报告
+          description: FTO search report title
+      required:
+      - final_res
+      - task_id
+      - title
+    AI66-7ReportGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-7ReportGet_FtoSearchDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-1FtoSubmit_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI66-8FeatureComparison_FeatureComparisonResponseDTO:
+      type: object
+      properties:
+        final_res:
+          type: array
+          example:
+          - lang: zh
+            claims:
+            - claim_num: 1
+              claim_text: 一种数据处理方法，其特征在于...
+            document: 一种基于人工智能的数据处理方法
+            features:
+            - score: 85
+              public_score: 90
+              tech_feature: 人工智能算法
+              comparison_feature: 机器学习算法
+            patent_id: CN123456789A
+            public_score: 87.5
+          description: Final results
+          items:
+            $ref: '#/components/schemas/AI66-8FeatureComparison_FeatureComparisonFinalResItem'
+        threshold:
+          type: integer
+          format: int32
+          example: 75
+          description: Threshold
+    AI66-2FeatureExtract_FeatureExactionResponseDTO:
+      type: object
+      properties:
+        text:
+          type: string
+          example: 空调器及其除霜控制方法\n技术领域\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\n背景技术\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\n技术问题\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\n技术方案\n本发明提供一种空调器的除霜控制方法，包括：\n除霜运行时，获取室外风速，检测室外盘管温度。\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。
+          description: User input technical description text
+        features:
+          type: array
+          example:
+          - core: true
+            score: 100
+            reason: 包含主题，描述了发明的核心内容。
+            keywords:
+            - 空调器
+            - 除霜控制方法
+            user_add: false
+            is_select: true
+            tech_feature: 空调器及其除霜控制方法
+          - core: false
+            score: 70
+            reason: 结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。
+            keywords:
+            - 除霜运行
+            - 室外风速
+            - 室外盘管温度
+            user_add: false
+            is_select: true
+            tech_feature: 除霜运行时，获取室外风速，检测室外盘管温度
+          description: List of technical features extracted from technical description, including feature description, keywords, score, selection status and other information
+          items:
+            $ref: '#/components/schemas/AI66-2FeatureExtract_AiSearchAgentFeature'
+        threshold:
+          type: integer
+          format: int32
+          example: 60
+          description: Technical feature score threshold for filtering important technical features
+      required:
+      - text
+      - features
+      - threshold
+    AI66-4SearchAgentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-4SearchAgent_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-2FeatureExtractRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI66-2FeatureExtractResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI66-2FeatureExtract_FeatureExactionResponseDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI66-5AgentResult_AiSearchFeatureKeyword:
+      type: object
+      properties:
+        words:
+          type: array
+          example:
+          - synonym:
+            - 化霜
+            - 融霜
+            - 去霜
+            translation: Defrost
+            tech_feature: 除霜
+            synonym_score:
+            - 95
+            - 90
+            - 85
+          description: List of detailed word segmentation information for the feature word
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_FeatureKeywordItem'
+        synonym:
+          type: array
+          example:
+          - 空调
+          - 冷暖设备
+          - 制冷设备
+          description: List of synonyms for the feature word
+        translation:
+          type: string
+          example: Air Conditioner
+          description: English translation of the feature word
+        tech_feature:
+          type: string
+          example: 空调器
+          description: Extracted technical feature word
+        synonym_score:
+          type: array
+          example:
+          - 100
+          - 95
+          - 90
+          description: List of relevance scores for synonyms, corresponding one-to-one with the synonym list
+      required:
+      - tech_feature
+    AI66-8FeatureComparisonRequest:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN118289111A
+          description: Patent PN number
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - pn
+      - task_id
+    AI66-5AgentResult_FeatureKeywordItem:
+      type: object
+      properties:
+        words:
+          type: array
+          example:
+          - synonym:
+            - 执行
+            - 运作
+            - 活动
+            translation: Operation
+            tech_feature: 运行
+            synonym_score:
+            - 95
+            - 90
+            - 85
+          description: List of deeper sub-feature words for further refinement of the feature word
+          items:
+            $ref: '#/components/schemas/AI66-5AgentResult_FeatureKeywordItemWord'
+        synonym:
+          type: array
+          example:
+          - 化霜
+          - 融霜
+          - 去霜
+          description: List of synonyms for the feature word
+        translation:
+          type: string
+          example: Defrost
+          description: English translation of the feature word
+        tech_feature:
+          type: string
+          example: 除霜
+          description: Extracted technical feature word
+        synonym_score:
+          type: array
+          example:
+          - 95
+          - 90
+          - 85
+          description: List of relevance scores for synonyms, corresponding one-to-one with the synonym list
+      required:
+      - tech_feature
+    AI66-6ReportCreate_FeatureComparisonFinalResClaim:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_text:
+          type: string
+          example: 一种数据处理方法，其特征在于：包括数据采集步骤、数据预处理步骤和数据分析步骤。
+          description: Claim original text
+    AI66-6ReportCreate_AiSearchFinalResultFeatureV2:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (Claim 1, Claim 2, Claim 3, etc.)
+        claim_type:
+          type: string
+          example: independent
+          description: 'Claim type (independent: independent claim, dependent: dependent claim)'
+        compare_feature:
+          type: string
+          example: 除霜运行时，获取室外风速，检测室外盘管温度
+          description: Compare feature (backup field)
+        comparison_feature:
+          type: string
+          example: 除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度
+          description: Feature found in comparison document
+        original_score:
+          type: integer
+          format: int32
+          example: 100
+          description: Original similarity score
+        original_type:
+          type: string
+          example: equivalent
+          description: Original feature comparison type label
+        public_score:
+          type: number
+          format: float
+          example: 0
+          description: Public disclosure score of the feature
+        score:
+          type: integer
+          format: int32
+          example: 100
+          description: Similarity score between tech feature and comparison feature (0-100)
+        score_for_user:
+          type: integer
+          format: int32
+          example: 95
+          description: User-modified similarity score
+        similar:
+          type: boolean
+          example: true
+          description: Whether similar
+        tech_feature:
+          type: string
+          example: 一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度
+          description: Technical feature (from input text)
+        type:
+          type: string
+          example: equivalent
+          description: Feature comparison type label
+        type_for_user:
+          type: string
+          example: equivalent
+          description: User-modified feature comparison type label
+      required:
+      - score
+      - tech_feature
+    AI66-4SearchAgent_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI66-8FeatureComparison_FeatureComparisonFinalResClaim:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_text:
+          type: string
+          example: 一种数据处理方法，其特征在于：包括数据采集步骤、数据预处理步骤和数据分析步骤。
+          description: Claim original text
+    AI66-3FeatureConfirm_AiSearchAgentFeature:
+      type: object
+      properties:
+        core:
+          type: boolean
+          example: true
+          description: Whether it is a core field
+        is_select:
+          type: boolean
+          example: true
+          description: Check or not
+        keywords:
+          type: array
+          example:
+          - 人形机器人
+          - 腿部动力结构
+          description: List of keywords
+        reason:
+          type: string
+          example: 包含主题，描述了发明的核心内容。
+          description: reason
+        score:
+          type: integer
+          format: int32
+          example: 80
+          description: score
+        tech_feature:
+          type: string
+          example: 人形机器人的腿部动力结构
+          description: Extracted feature words
+        user_add:
+          type: boolean
+          example: true
+          description: Whether to add for the user
+      required:
+      - core
+      - is_select
+      - keywords
+      - reason
+      - score
+      - tech_feature
+      - user_add
+    AI66-5AgentResult_ClaimEquivalentItem:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (Claim 1, Claim 2, Claim 3, etc.)
+        infringement:
+          type: boolean
+          example: true
+          description: Whether it constitutes infringement
+      required:
+      - claim_num
+      - infringement
+    AI66-5AgentResult_AiSearchProcessDictItemStrategyParameter:
+      type: object
+      properties:
+        cpc:
+          type: array
+          example:
+          - F24F11/62
+          - F25D21/06
+          description: Cooperative Patent Classification (CPC) codes list for classification search
+        ipc:
+          type: array
+          example:
+          - F24F
+          - F25D
+          description: International Patent Classification (IPC) codes list for classification search
+        features:
+          type: array
+          example:
+          - 空调器
+          - 除霜控制方法
+          - 室外风速
+          - 盘管温度
+          description: List of technical feature keywords used for search
+    AI66-5AgentResult_FeatureComparisonFinalResClaim:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_text:
+          type: string
+          example: 一种数据处理方法，其特征在于：包括数据采集步骤、数据预处理步骤和数据分析步骤。
+          description: Claim original text
+    AI66-8FeatureComparison_FeatureComparisonFinalResItem:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: zh
+          description: Language
+        claims:
+          type: array
+          example:
+          - claim_num: 1
+            claim_text: 一种数据处理方法，其特征在于...
+          description: Claims original text list
+          items:
+            $ref: '#/components/schemas/AI66-8FeatureComparison_FeatureComparisonFinalResClaim'
+        document:
+          type: string
+          example: 一种基于人工智能的数据处理方法
+          description: Document
+        features:
+          type: array
+          example:
+          - score: 85
+            public_score: 90
+            tech_feature: 人工智能算法
+            comparison_feature: 机器学习算法
+          description: Feature list
+          items:
+            $ref: '#/components/schemas/AI66-8FeatureComparison_FeatureComparisonFinalResFeature'
+        patent_id:
+          type: string
+          example: CN123456789A
+          description: Patent ID
+        public_score:
+          type: number
+          format: float
+          example: 87.5
+          description: Disclosure score
+    AI66-1FtoSubmitRequest:
+      type: object
+      properties:
+        apd_end:
+          type: string
+          example: 20241231
+          description: 'Application date end time, format: YYYYMMDD'
+        apd_start:
+          type: string
+          example: 20200101
+          description: 'Application date start time, format: YYYYMMDD'
+        country:
+          type: array
+          example:
+          - CN
+          - US
+          - EP
+          description: Patent office list to limit the scope of patent offices for search
+        exclude_company:
+          type: array
+          example:
+          - Apple Inc
+          - Samsung Electronics
+          description: List of companies to exclude, patents from these companies will be excluded from search results
+        include_company:
+          type: array
+          example:
+          - Huawei Technologies
+          - Xiaomi Corp
+          description: List of companies to include, patents from these companies will be prioritized in search results
+        input:
+          type: string
+          example: 空调器及其除霜控制方法\n技术领域\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\n背景技术\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\n技术问题\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\n技术方案\n本发明提供一种空调器的除霜控制方法，包括：\n除霜运行时，获取室外风速，检测室外盘管温度。\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\n本发明还提供一种空调器，包括：\n风速获取模块\n室外盘管温度检测模块\n控制模块（根据风速等级和盘管温度控制除霜启停）\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\n有益效果\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\n最佳实施方式\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\n实施例\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。
+          description: User input technical description or product description
+        lang:
+          type: string
+          example: cn
+          description: Language type (cn, en)
+        legal_status:
+          type: array
+          example:
+          - 1
+          - 2
+          description: Legal status list to filter patents with specific legal status (0-Invalid,1-Valid, 2-Under examination)
+      required:
+      - input
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

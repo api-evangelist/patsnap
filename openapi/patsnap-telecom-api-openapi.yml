@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Telecom API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Telecom
+  description: Telecom APIs.
+paths:
+  /open_api/task/aicc:
+    post:
+      operationId: t001TaskAicc
+      summary: T001 AI-powered Standard Essential Patent (SEP) Analysis
+      description: '<p>Input a patent number to automatically complete TS recommendation, section recall, and Claim Chart (CC) comparison, receiving SEP determination results via Server-Sent Events.</p><p>Each SSE event is a <code>data:</code> line containing a JSON object. Events fall into two categories:</p><ul><li><b>PROCESSING</b> — heartbeat/progress update, no business payload</li><li><b>FINISH</b> — final result with <code>content</code> populated (SEP determination conclusion)</li></ul><p><b>Flow when ts is provided</b> (skip TS recommendation): <code>INIT</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p><p><b>Flow when ts is omitted</b> (auto-recommend TS): <code>INIT</code> → <code>RECOMMEND_TS</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p>'
+      tags:
+      - Telecom
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful t001 ai-powered standard essential patent (sep) analysis response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T001TaskAiccResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/open_api/task/aicc
+      parameters:
+      - name: x-site-lang
+        in: header
+        required: false
+        description: Response language for AI-generated text (explanation, reason, etc.)
+        schema:
+          type: string
+          example: EN
+          description: Response language for AI-generated text (explanation, reason, etc.)
+      requestBody:
+        required: true
+        content:
+          text/event-stream:
+            schema:
+              $ref: '#/components/schemas/T001TaskAiccRequest'
+components:
+  schemas:
+    T001TaskAicc_ClaimFeatureMapping:
+      type: object
+      properties:
+        mappings:
+          type: array
+          example:
+          - reason:
+            - Both involve a requesting entity initiating communication with a responding entity.
+            ts_code: TS 38.300
+            version: v19.1.0
+            ts_content:
+            - The SL UE can support inter-UE coordination (IUC) in Mode 2.
+            ts_section:
+            - 16.9.8
+            entity_mapping:
+              requesting device: UE
+              responding device: peer UE
+          description: List of TS section mappings for this claim feature
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_TsMapping'
+        claim_feature:
+          type: string
+          example: transmitting, by a requesting device, at least one resource request to a responding device,
+          description: A single feature/element extracted from the claim
+    T001TaskAicc_SseData:
+      type: object
+      properties:
+        step:
+          type: string
+          example: CC_COMPARE
+          description: Current pipeline step. RECOMMEND_TS only appears when ts is not provided in the request. Present on step-transition events; absent on heartbeat events.
+        status:
+          type: string
+          example: PROCESSING
+          description: PROCESSING = in progress (no content); FINISH = final result (content populated)
+        content:
+          $ref: '#/components/schemas/T001TaskAicc_CcCompareContent'
+        task_id:
+          type: string
+          example: e0a90f0b-461e-4d51-abd9-e62ad65310e1
+          description: Task ID, consistent across all events in the stream
+      required:
+      - status
+      - task_id
+    T001TaskAicc_CcResult:
+      type: object
+      properties:
+        is_sep:
+          type: string
+          example: 部分必要
+          description: SEP determination result. Localized string, e.g. 'yes'/'no'/'uncertain' (EN) or '必要'/'非必要'/'部分必要' (CN).
+        explanation:
+          type: string
+          example: 该权利要求涉及基于请求的无线资源协调机制，与3GPP标准中关于侧行链路（Sidelink）交互式UE协调（IUC）的功能存在对应关系。然而，标准主要描述为资源选择辅助信息（首选/非首选资源），而非明确的信道预留请求及响应流程，判定为部分必要。
+          description: AI-generated explanation of the SEP determination
+        all_mappings:
+          type: array
+          example:
+          - mappings:
+            - reason:
+              - Claim feature describes transmitting a request; standard describes IUC triggered by an explicit request from a peer UE.
+              ts_code: TS 38.300
+              version: v19.1.0
+              ts_content:
+              - The SL UE can support inter-UE coordination (IUC) in Mode 2.
+              ts_section:
+              - 16.9.8
+              entity_mapping:
+                resource request: explicit request
+                requesting device: UE
+            claim_feature: transmitting, by a requesting device, at least one resource request to a responding device,
+          description: Claim feature-level mapping breakdown
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_ClaimFeatureMapping'
+    T001TaskAiccRequest:
+      type: object
+      properties:
+        patent_number:
+          type: string
+          example: US8767570B2
+          description: Patent publication number
+        ts:
+          type: array
+          example:
+          - ts_number: '38.300'
+          description: Optional TS list. If provided, skips the auto-recommend step.
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_TsInput'
+      required:
+      - patent_number
+    T001TaskAiccResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T001TaskAicc_SseData'
+        status:
+          type: boolean
+          example: true
+          description: true = success, false = error
+        error_code:
+          type: integer
+          example: 0
+          description: Error code, 0 = no error
+      required:
+      - data
+      - status
+      - error_code
+    T001TaskAicc_CcCompareContent:
+      type: object
+      properties:
+        compare_results:
+          type: array
+          example:
+          - pid: be561264-14b0-4978-ad3b-e2c961d1d687
+            claim: '1. A method comprising: transmitting, by a requesting device, at least one resource request...'
+            success: true
+            cc_result:
+              is_sep: 部分必要
+              explanation: 该权利要求与3GPP标准中IUC功能存在对应关系，判定为部分必要。
+              all_mappings: []
+          description: List of comparison results per TS
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_CompareResult'
+    T001TaskAicc_CompareResult:
+      type: object
+      properties:
+        pid:
+          type: string
+          example: be561264-14b0-4978-ad3b-e2c961d1d687
+          description: Internal patent ID
+        claim:
+          type: string
+          example: '1. A method comprising:
+
+            transmitting, by a requesting device, at least one resource request to a responding device, the resource request being transmitted on a first radio channel; and
+
+            detecting, by the requesting device, a resource response on the first radio channel from the responding device after the resource request.'
+          description: Full text of the patent claim being compared
+        error:
+          type: string
+          example: External service timeout
+          description: Error message when success=false
+        success:
+          type: boolean
+          example: true
+          description: Whether CC comparison succeeded for this TS
+        cc_result:
+          $ref: '#/components/schemas/T001TaskAicc_CcResult'
+    T001TaskAicc_TsMapping:
+      type: object
+      properties:
+        reason:
+          type: array
+          example:
+          - Claim feature describes transmitting a request to another device; standard describes IUC information triggered by an explicit request from a peer UE.
+          - Both involve a requesting entity initiating communication with a responding entity regarding resource status.
+          description: AI-generated reasoning for the mapping
+        ts_code:
+          type: string
+          example: TS 38.300
+          description: Technical standard code
+        version:
+          type: string
+          example: v19.1.0
+          description: Technical standard version
+        ts_content:
+          type: array
+          example:
+          - The SL UE can support inter-UE coordination (IUC) in Mode 2, whereby a UE sends information about resources to a peer UE, which the peer UE then uses for resource (re)selection.
+          - In scheme 1, the transmission of IUC information from a UE can be triggered by a condition at this UE, or by an explicit request from a peer UE.
+          description: Relevant TS text excerpts
+        ts_section:
+          type: array
+          example:
+          - 16.9.8
+          description: TS section numbers that map to this claim feature
+        entity_mapping:
+          type: object
+          example:
+            resource request: explicit request
+            requesting device: UE
+            responding device: peer UE
+          description: Claim term → TS term correspondence
+    T001TaskAicc_TsInput:
+      type: object
+      properties:
+        ts_number:
+          type: string
+          example: '38.300'
+          description: Technical standard number
+        version:
+          type: string
+          example: 17.3.0
+          description: Optional specific version. If omitted, the latest version is used.
+      required:
+      - ts_number
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

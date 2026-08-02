@@ -1,0 +1,2149 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Drug Visual Analysis  API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: 'Drug Visual Analysis '
+  description: Drug Visual Analysis  APIs.
+paths:
+  /synapse/bull-eyes-plot:
+    post:
+      operationId: b057SynapseBullEyesPlot
+      summary: B057 Bull eyes plot
+      description: Obtain bull eyes plot
+      tags:
+      - 'Drug Visual Analysis '
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b057 bull eyes plot response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B057SynapseBullEyesPlotResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/bull-eyes-plot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B057SynapseBullEyesPlotRequest'
+  /synapse/alert/drug_search/create:
+    post:
+      operationId: b064-1DrugSearchCreate
+      summary: B064-1 Create drug monitoring
+      description: Drug monitoring
+      tags:
+      - 'Drug Visual Analysis '
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b064-1 create drug monitoring response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B064-1DrugSearchCreateResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/alert/drug_search/create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B064-1DrugSearchCreateRequest'
+  /synapse/alert/drug_search/edit:
+    post:
+      operationId: b064-2DrugSearchEdit
+      summary: B064-2 Edit drug monitoring
+      description: Edit drug monitoring
+      tags:
+      - 'Drug Visual Analysis '
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b064-2 edit drug monitoring response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B064-2DrugSearchEditResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/alert/drug_search/edit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B064-2DrugSearchEditRequest'
+  /synapse/drug/milestone:
+    post:
+      operationId: b074DrugMilestone
+      summary: B074 Drug milestone
+      description: Obtain drug milestone, including milestone, event, disease, country, organization, etc.
+      tags:
+      - 'Drug Visual Analysis '
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b074 drug milestone response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B074DrugMilestoneResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/drug/milestone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B074DrugMilestoneRequest'
+  /synapse/alert/drug_search/query:
+    post:
+      operationId: b064-3DrugSearchQuery
+      summary: B064-3 Query drug monitoring
+      description: Query drug monitoring
+      tags:
+      - 'Drug Visual Analysis '
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b064-3 query drug monitoring response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B064-3DrugSearchQueryResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/alert/drug_search/query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B064-3DrugSearchQueryRequest'
+components:
+  schemas:
+    B064-3DrugSearchQuery_SpecialReviewEntity:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: fast_track
+          description: Dictionary ID
+        display_name_cn:
+          type: string
+          example: 快速通道
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Fast Track
+          description: English display name
+    B064-3DrugSearchQuery_JournalEntity:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: nature_medicine
+          description: Dictionary ID
+        display_name_cn:
+          type: string
+          example: 自然医学
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Nature Medicine
+          description: English display name
+    B064-3DrugSearchQuery_AlertDataResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 0
+          description: 'Status code: 0 (Normal), 2 (The data remains unchanged)'
+        alert_time:
+          type: string
+          example: 20250101
+          description: Alert Time
+        alert_event_data:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_AlertEventResp'
+        total_update_event_count:
+          type: integer
+          format: int32
+          example: 5
+          description: Total update event count
+    B064-2DrugSearchEdit_DrugSearchRequestDto:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        drug:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchDrugConditionValue'
+        target:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchTargetConditionValue'
+        disease:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchDiseaseConditionValue'
+        organization:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchOrganizationConditionValue'
+        mechanism_action:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchMechanismActionConditionValue'
+        drug_type:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchDrugTypeConditionValue'
+        global_highest_dev_status:
+          type: array
+          example:
+          - Approved
+          description: 'Drug Highest Phase. The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        exist_deal:
+          type: boolean
+          example: true
+          description: Whether Drug Deal Exist
+        dev_status:
+          type: array
+          example:
+          - Approved
+          description: 'Phase(By Indication). The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        country:
+          type: array
+          example:
+          - US
+          - EU
+          description: 'Phase(By Indication). The value is an enum with the following values: US, EU, JP, CN, Other'
+        organization_type:
+          type: array
+          example:
+          - Company
+          description: 'Organization Type. The value is an enum with the following values: Company, University_Institution, Other'
+        employee_number:
+          type: array
+          example:
+          - GREATER_THAN_500
+          description: 'Employee Number. The value is an enum with the following values: LESS_THAN_10, BETWEEN_10_AND_100, BETWEEN_100_AND_500, GREATER_THAN_500'
+        start_up:
+          type: boolean
+          example: false
+          description: Whether Start-Up Organization
+        sort:
+          type: array
+          example:
+          - sort_field: DRUG_TYPE_SORT
+            sort_order: desc
+          - sort_field: GLOBAL_HIGHEST_DEV_STATUS_RANK
+            sort_order: desc
+          - sort_field: FIRST_APPROVED_DATE
+            sort_order: desc
+          description: 'Field order, field can support: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE; order can support:desc, asc (default desc)'
+          items:
+            $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchSortDto'
+    B074DrugMilestoneRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10.limit up to 100.
+        drug_id:
+          type: string
+          example: 69fdd1486c554a3d86a8c38c60bf6e3b
+          description: Drug ID
+        sort_order:
+          type: string
+          example: desc
+          description: Sort by event time, sort order, support:desc,asc
+        milestone:
+          type: array
+          example:
+          - 773127276f7a4b229f3932d9487c57a9
+          - 273b0df9aad347fd8d36ebd8ae0c1cbd
+          - 8b32a9b6c03f4bafb8ee22dfcd589943
+          description: Milestone ID
+        event_id:
+          type: array
+          example:
+          - 7b79728539354f189772a4eab9cc9fff
+          - f835774c48404593b64ef05369eb8eba
+          - 78c45f1d523646808032edcff807ca59
+          description: 事件ID
+        disease_id:
+          type: array
+          example:
+          - 7af6661c23e8485d9f1dad6a94914fe3
+          description: Disease ID
+        country_id:
+          type: array
+          example:
+          - 0dc5d896-7408-3c87-84c0-22e3d9b784be
+          description: Country/Region
+        organization_id:
+          type: array
+          example:
+          - 16e33268b7ffba870d1f7a78de820ed5
+          description: Organization ID
+        event_start_time:
+          type: integer
+          format: int64
+          example: 20150101
+          description: Event start time
+        event_end_time:
+          type: integer
+          format: int64
+          example: 20251231
+          description: Event end time
+      required:
+      - drug_id
+    B057SynapseBullEyesPlot_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B057SynapseBullEyesPlot_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+    B064-3DrugSearchQuery_NewsAlert:
+      type: object
+      properties:
+        tag:
+          type: array
+          example:
+          - FDA
+          - Cancer
+          - Approval
+          description: Tag list
+        url:
+          type: string
+          example: https://www.fda.gov/news/123456
+          description: URL
+        title:
+          type: string
+          example: FDA Approves New Cancer Drug
+          description: News title
+        news_id:
+          type: string
+          example: news_123456
+          description: News ID
+        event_time_cn:
+          type: string
+          example: 2024年1月15日
+          description: Event time Chinese
+        event_time_en:
+          type: string
+          example: January 15, 2024
+          description: Event time English
+        event_type_cn:
+          type: string
+          example: 新闻发布
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: News Published
+          description: Event type English
+    B074DrugMilestoneResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B074DrugMilestone_DrugMilestoneResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B064-3DrugSearchQuery_DrugAlert:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: c9f0bcdf2ea7454e902b124a025bf025
+          description: Drug ID
+        drug_type:
+          type: array
+          example:
+          - 1151dbc710f64a85923dc05d4a5a0ba9
+          description: Drug type ID list
+        target_id:
+          type: array
+          example:
+          - 3d2eb481e4e6308c91f65fde3b04d000
+          description: Target ID list
+        drug_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugEntity'
+        drug_type_view:
+          type: array
+          example:
+          - dictId: 1151dbc710f64a85923dc05d4a5a0ba9
+            displayNameCn: 小分子药物
+            displayNameEn: Small Molecule
+          description: Drug type details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugTypeEntity'
+        target_id_view:
+          type: array
+          example:
+          - targetId: 3d2eb481e4e6308c91f65fde3b04d000
+            displayNameCn: KRAS G12D
+            displayNameEn: KRAS G12D
+          description: Target details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_TargetEntity'
+        global_highest_dev_status:
+          type: string
+          example: b2ca28b01c34419db0365bad2f8dd09e
+          description: Global highest development status
+        active_org_master_entity_id:
+          type: array
+          example:
+          - ca22cc385c771846b24b6df608005a9a
+          description: Active organization master entity ID list
+        global_highest_dev_status_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DevStatusEntity'
+        active_org_master_entity_id_view:
+          type: array
+          example:
+          - entityId: ca22cc385c771846b24b6df608005a9a
+            displayNameCn: 华东师范大学
+            displayNameEn: East China Normal University
+          description: Active organization details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_OrganizationEntity'
+    B064-2DrugSearchEdit_Frequency:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Date setting, when type is WEEKLY: 1-7 (Monday to Sunday); when type is MONTHLY: 1-29 (day of the month); when type is DAILY: this field is invalid'
+        type:
+          type: string
+          example: WEEKLY
+          description: 'Frequency type, supports: DAILY (Daily), WEEKLY (Weekly), MONTHLY (Monthly)'
+      required:
+      - type
+    B064-2DrugSearchEdit_DrugSearchDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B064-2DrugSearchEdit_Event:
+      type: object
+      properties:
+        name:
+          type: string
+          example: drug_dev_status
+          description: Event name, supports:<p>query_result (Query Result) - Monitor changes in search results</p><p>drug_dev_status (Drug Development Status) - Monitor changes in drug development phases</p><p>special_approval (Special Approval) - Monitor special approval events</p><p>clinical_trial (Clinical Trial) - Monitor clinical trial related events</p><p>drug_deal (Drug Deal) - Monitor drug deal events</p><p>patent (Patent) - Monitor patent related events</p><p>paper (Paper) - Monitor paper publication events</p><p>translational_medicine (Translational Medicine) - Monitor translational medicine events</p><p>news (News) - Monitor news events</p>
+        sub_event:
+          type: array
+          example:
+          - DISCOVERY
+          - PRECLINICAL
+          - PHASE_1
+          description: 'Sub-event list, different options for different event types:<p>query_result (Query Result): [QUERY_RESULT (Query Result Change)]</p><p>drug_dev_status (Drug Development Status): [DISCOVERY (Drug Discovery), PRECLINICAL (Preclinical), IND (Investigational New Drug), IND_APPROVAL (IND Approval), EARLY_PHASE_1 (Early Phase 1), PHASE_1 (Phase 1), PHASE_1_2 (Phase 1/2), PHASE_2 (Phase 2), PHASE_2_3 (Phase 2/3), PHASE_3 (Phase 3), NDA_BLA (New Drug Application/Biologics License Application), APPROVED (Approved), DISCONTINUED (Discontinued), WITHDRAWN (Withdrawn), SUSPENDED (Suspended)]</p><p>special_approval (Special Approval): [SPECIAL_APPROVAL (Special Approval Event)]</p><p>clinical_trial (Clinical Trial): [CLINICAL_TRIAL_FIRST_POSTED (Clinical Trial First Posted), CLINICAL_TRIAL_CLINICAL_PROGRESS (Clinical Trial Progress), CLINICAL_TRIAL_RESULT_PUBLISHED (Clinical Trial Result Published)]</p><p>drug_deal (Drug Deal): [ACTIVE (Active), TERMINATED (Terminated), COMPLETED (Completed)]</p><p>patent (Patent): [PATENT_PUBLISHED (Patent Published), PATENT_GRANTED (Patent Granted), PATENT_EXPIRE_WITHIN_FIVE_YEARS (Patent Expire Within 5 Years), PATENT_EXPIRE_WITHIN_THREE_YEARS (Patent Expire Within 3 Years), PATENT_EXTENSION (Patent Extension)]</p><p>paper (Paper): [PAPER (Paper Published)]</p><p>translational_medicine (Translational Medicine): [TRANSLATIONAL_MEDICINE (Translational Medicine Event)]</p><p>news (News): [NEWS (News Event)]</p>'
+      required:
+      - name
+      - sub_event
+    B064-1DrugSearchCreate_DrugSearchRequestDto:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        drug:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchDrugConditionValue'
+        target:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchTargetConditionValue'
+        disease:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchDiseaseConditionValue'
+        organization:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchOrganizationConditionValue'
+        mechanism_action:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchMechanismActionConditionValue'
+        drug_type:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchDrugTypeConditionValue'
+        global_highest_dev_status:
+          type: array
+          example:
+          - Approved
+          description: 'Drug Highest Phase. The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        exist_deal:
+          type: boolean
+          example: true
+          description: Whether Drug Deal Exist
+        dev_status:
+          type: array
+          example:
+          - Approved
+          description: 'Phase(By Indication). The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        country:
+          type: array
+          example:
+          - US
+          - EU
+          description: 'Phase(By Indication). The value is an enum with the following values: US, EU, JP, CN, Other'
+        organization_type:
+          type: array
+          example:
+          - Company
+          description: 'Organization Type. The value is an enum with the following values: Company, University_Institution, Other'
+        employee_number:
+          type: array
+          example:
+          - GREATER_THAN_500
+          description: 'Employee Number. The value is an enum with the following values: LESS_THAN_10, BETWEEN_10_AND_100, BETWEEN_100_AND_500, GREATER_THAN_500'
+        start_up:
+          type: boolean
+          example: false
+          description: Whether Start-Up Organization
+        sort:
+          type: array
+          example:
+          - sort_field: DRUG_TYPE_SORT
+            sort_order: desc
+          - sort_field: GLOBAL_HIGHEST_DEV_STATUS_RANK
+            sort_order: desc
+          - sort_field: FIRST_APPROVED_DATE
+            sort_order: desc
+          description: 'Field order, field can support: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE; order can support:desc, asc (default desc)'
+          items:
+            $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchSortDto'
+    B074DrugMilestone_CommonEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 11acf267a4fc42f392751e023482aac3
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: CTNNB1 Mutation
+          description: Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+    B074DrugMilestone_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+    B064-1DrugSearchCreate_DrugSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B064-3DrugSearchQuery_SpecialApprovalAlert:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: uuid_123456789
+          description: Unique identifier
+        country:
+          type: string
+          example: US
+          description: Country
+        drug_id:
+          type: string
+          example: drug_123456
+          description: Drug ID
+        drug_type:
+          type: array
+          example:
+          - small_molecule
+          description: Drug type ID list
+        target_id:
+          type: string
+          example: target_001
+          description: Target ID
+        disease_id:
+          type: string
+          example: disease_001
+          description: Disease ID
+        data_source:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DataSource'
+        country_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_RegionEntity'
+        drug_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugEntity'
+        event_type_cn:
+          type: string
+          example: 特殊审批
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Special Approval
+          description: Event type English
+        drug_type_view:
+          type: array
+          example:
+          - dictId: small_molecule
+            displayNameCn: 小分子药物
+            displayNameEn: Small Molecule
+          description: Drug type details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugTypeEntity'
+        special_review:
+          type: string
+          example: fast_track
+          description: Special review
+        target_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_TargetEntity'
+        disease_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DiseaseEntity'
+        organization_id:
+          type: string
+          example: org_001
+          description: Organization ID
+        special_review_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_SpecialReviewEntity'
+        organization_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_OrganizationEntity'
+    B064-1DrugSearchCreate_AlertResponse:
+      type: object
+      properties:
+        alert_id:
+          type: string
+          example: 561a206a-25c5-4883-be9a-b48eb55edba2
+          description: Alert ID
+    B064-1DrugSearchCreate_DrugSearchDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B057SynapseBullEyesPlot_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+    B064-1DrugSearchCreate_DrugSearchOrganizationConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+    B074DrugMilestone_DrugMilestoneResponseDetail:
+      type: object
+      properties:
+        date:
+          type: string
+          example: '2025-09-09'
+          description: Date
+        event:
+          type: array
+          example: 'Please check the form: CommonEntity'
+          description: Event
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonEntity'
+        country:
+          type: array
+          example: 'Please check the form: CommonCountry'
+          description: Country/Location
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonCountry'
+        disease:
+          type: array
+          example: 'Please check the form: CommonDisease'
+          description: Disease
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonDisease'
+        description:
+          type: array
+          example: 'Please check the form: CommonName'
+          description: Description
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+        event_status:
+          $ref: '#/components/schemas/B074DrugMilestone_CommonEntity'
+        organization:
+          type: array
+          example: 'Please check the form: CommonOrganization'
+          description: Organization
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonOrganization'
+        milestone_tag:
+          type: array
+          example: 'Please check the form: CommonName'
+          description: Milestone Tag
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+    B064-3DrugSearchQuery_OrganizationEntity:
+      type: object
+      properties:
+        entity_id:
+          type: string
+          example: ca22cc385c771846b24b6df608005a9a
+          description: Entity ID
+        display_name_cn:
+          type: string
+          example: 华东师范大学
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: East China Normal University
+          description: English display name
+    B064-3DrugSearchQuery_PatentAlert:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US10123456B2
+          description: Patent number
+        title_cn:
+          type: string
+          example: 一种新型抗癌药物化合物
+          description: Patent title Chinese
+        title_en:
+          type: string
+          example: Novel Anti-cancer Drug Compound
+          description: Patent title English
+        patent_id:
+          type: string
+          example: patent_123456
+          description: Patent ID
+        event_time_cn:
+          type: string
+          example: 2024年1月15日
+          description: Event time Chinese
+        event_time_en:
+          type: string
+          example: January 15, 2024
+          description: Event time English
+        event_type_cn:
+          type: string
+          example: 专利授权
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Patent Granted
+          description: Event type English
+        expire_date_cn:
+          type: string
+          example: 2030年12月31日
+          description: Expire date Chinese
+        expire_date_en:
+          type: string
+          example: December 31, 2030
+          description: Expire date English
+    B064-3DrugSearchQuery_DrugTypeEntity:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: e24259c0e9fe439b8b8fb5985182a517
+          description: Dictionary ID
+        display_name_cn:
+          type: string
+          example: mRNA疫苗
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: mRNA vaccine
+          description: English display name
+    B064-3DrugSearchQuery_AlertEventResp:
+      type: object
+      properties:
+        news:
+          type: array
+          example:
+          - url: https://www.fda.gov/news/123456
+            title: FDA Approves New Cancer Drug
+            newsId: news_123456
+          description: News event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_NewsAlert'
+        paper:
+          type: array
+          example:
+          - title: Efficacy of Novel Drug X in Phase II Clinical Trial
+            journal: Nature Medicine
+            paperId: paper_123456
+          description: Paper event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_PaperAlert'
+        patent:
+          type: array
+          example:
+          - pn: US10123456B2
+            titleCn: 一种新型抗癌药物化合物
+            titleEn: Novel Anti-cancer Drug Compound
+            patentId: patent_123456
+          description: Patent event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_PatentAlert'
+        news_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          - id3
+          description: News event ID list
+        drug_deal:
+          type: array
+          example:
+          - url: https://example.com/deal/123456
+            dealId: deal_123456
+            dealTitle: Pfizer Acquires Company X for $2B
+          description: Drug deal event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugDealAlert'
+        paper_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          description: Paper event ID list
+        drug_added:
+          type: array
+          example:
+          - drugId: drug_002
+            drugIdView:
+              drugId: drug_002
+              displayNameCn: 伊马替尼
+              displayNameEn: Imatinib
+          description: Drug added details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugAlert'
+        event_size:
+          type: integer
+          format: int64
+          example: 25
+          description: Event size
+        news_count:
+          type: integer
+          format: int64
+          example: 3
+          description: News event count
+        patent_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          - id3
+          - id4
+          description: Patent event ID list
+        paper_count:
+          type: integer
+          format: int64
+          example: 2
+          description: Paper event count
+        drug_missing:
+          type: array
+          example:
+          - drugId: drug_001
+            drugIdView:
+              drugId: drug_001
+              displayNameCn: 阿司匹林
+              displayNameEn: Aspirin
+          description: Drug missing details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugAlert'
+        patent_count:
+          type: integer
+          format: int64
+          example: 4
+          description: Patent event count
+        result_count:
+          type: integer
+          format: int64
+          example: 10
+          description: Result count
+        drug_deal_ids:
+          type: array
+          example:
+          - id1
+          description: Drug deal event ID list
+        clinical_trial:
+          type: array
+          example:
+          - title: Phase II Study of Drug X in Cancer Patients
+            registerNumber: NCT12345678
+            clinicalTrialId: ct_123456
+          description: Clinical trial event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_ClinicalTrialAlert'
+        drug_added_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          description: Drug added ID list
+        drug_deal_count:
+          type: integer
+          format: int64
+          example: 1
+          description: Drug deal event count
+        drug_dev_status:
+          type: array
+          example:
+          - drugId: drug_123456
+            devStatus: phase_ii
+            eventTypeCn: 临床试验进展
+            eventTypeEn: Clinical Trial Progress
+          description: Drug development status event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DevStatusAlert'
+        drug_missing_ids:
+          type: array
+          example:
+          - id1
+          description: Drug missing ID list
+        special_approval:
+          type: array
+          example:
+          - uuid: uuid_123456789
+            drugId: drug_123456
+            eventTypeCn: 特殊审批
+            eventTypeEn: Special Approval
+            specialReview: fast_track
+          description: Special approval event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_SpecialApprovalAlert'
+        clinical_trial_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          description: Clinical trial event ID list
+        result_added_count:
+          type: integer
+          format: int64
+          example: 5
+          description: Result added count
+        drug_dev_status_ids:
+          type: array
+          example:
+          - id1
+          - id2
+          - id3
+          description: Drug development status event ID list
+        clinical_trial_count:
+          type: integer
+          format: int64
+          example: 2
+          description: Clinical trial event count
+        result_missing_count:
+          type: integer
+          format: int64
+          example: 2
+          description: Result missing count
+        special_approval_ids:
+          type: array
+          example:
+          - id1
+          description: Special approval event ID list
+        drug_dev_status_count:
+          type: integer
+          format: int64
+          example: 3
+          description: Drug development status event count
+        special_approval_count:
+          type: integer
+          format: int64
+          example: 1
+          description: Special approval event count
+        translational_medicine:
+          type: array
+          example:
+          - title: Novel Biomarker Discovery in Cancer Research
+            sourceUrl: https://example.com/source/123456
+            translationalMedicineId: tm_123456
+          description: Translational medicine event details
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_TranslationalMedicineAlert'
+        clinical_trial_result_ids:
+          type: array
+          example:
+          - id1
+          description: Clinical trial result event ID list
+        translational_medicine_ids:
+          type: array
+          example:
+          - id1
+          description: Translational medicine event ID list
+        translational_medicine_count:
+          type: integer
+          format: int64
+          example: 1
+          description: Translational medicine event count
+    B064-3DrugSearchQuery_DevStatusAlert:
+      type: object
+      properties:
+        country:
+          type: string
+          example: US
+          description: Country
+        drug_id:
+          type: string
+          example: drug_123456
+          description: Drug ID
+        drug_type:
+          type: array
+          example:
+          - small_molecule
+          description: Drug type ID list
+        target_id:
+          type: string
+          example: target_001
+          description: Target ID
+        dev_status:
+          type: string
+          example: phase_ii
+          description: Development status
+        disease_id:
+          type: string
+          example: disease_001
+          description: Disease ID
+        data_source:
+          type: array
+          example:
+          - name: FDA
+            displayNameCn: 美国食品药品监督管理局
+            displayNameEn: Food and Drug Administration
+          description: Data source list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DataSource'
+        country_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_RegionEntity'
+        drug_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugEntity'
+        event_type_cn:
+          type: string
+          example: 临床试验进展
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Clinical Trial Progress
+          description: Event type English
+        drug_type_view:
+          type: array
+          example:
+          - dictId: small_molecule
+            displayNameCn: 小分子药物
+            displayNameEn: Small Molecule
+          description: Drug type details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_DrugTypeEntity'
+        target_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_TargetEntity'
+        disease_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DiseaseEntity'
+        organization_id:
+          type: string
+          example: org_001
+          description: Organization ID
+        organization_id_view:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_OrganizationEntity'
+    B057SynapseBullEyesPlot_CommonConditionValue3:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 11ef8a9e8bf5ca80213a1183511cded3
+          description: Value List
+    B074DrugMilestone_DrugMilestoneResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: 'Please check the form: DrugMilestoneResponseDetail'
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_DrugMilestoneResponseDetail'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 1
+          description: Total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B074DrugMilestone_CommonCountry:
+      type: object
+      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+    B064-2DrugSearchEdit_DrugSearchOrganizationConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+    B057SynapseBullEyesPlot_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B064-1DrugSearchCreate_Frequency:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Date setting, when type is WEEKLY: 1-7 (Monday to Sunday); when type is MONTHLY: 1-29 (day of the month); when type is DAILY: this field is invalid'
+        type:
+          type: string
+          example: WEEKLY
+          description: 'Frequency type, supports: DAILY (Daily), WEEKLY (Weekly), MONTHLY (Monthly)'
+      required:
+      - type
+    B057SynapseBullEyesPlot_CommonConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example: []
+          description: Value List
+    B064-3DrugSearchQuery_PaperAlert:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://www.nature.com/articles/nm12345
+          description: URL
+        title:
+          type: string
+          example: Efficacy of Novel Drug X in Phase II Clinical Trial
+          description: Paper title
+        journal:
+          type: string
+          example: Nature Medicine
+          description: Journal
+        paper_id:
+          type: string
+          example: paper_123456
+          description: Paper ID
+        event_time_cn:
+          type: string
+          example: 2024年1月15日
+          description: Event time Chinese
+        event_time_en:
+          type: string
+          example: January 15, 2024
+          description: Event time English
+        event_type_cn:
+          type: string
+          example: 论文发表
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Paper Published
+          description: Event type English
+    B074DrugMilestone_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B074DrugMilestone_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B064-3DrugSearchQuery_TargetEntity:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 2127d2d1ce6736a8be550cf37f0c1c63
+          description: Target ID
+        display_name_cn:
+          type: string
+          example: 细胞程序性死亡-1
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Programmed cell death protein 1
+          description: English display name
+    B064-3DrugSearchQuery_TranslationalMedicineAlert:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Novel Biomarker Discovery in Cancer Research
+          description: Title
+        journal_id:
+          type: array
+          example:
+          - journal_001
+          - journal_002
+          description: Journal ID list
+        source_url:
+          type: string
+          example: https://example.com/source/123456
+          description: Source URL
+        event_time_cn:
+          type: string
+          example: 2024年1月15日
+          description: Event time Chinese
+        event_time_en:
+          type: string
+          example: January 15, 2024
+          description: Event time English
+        journal_id_view:
+          type: array
+          example:
+          - dictId: nature_medicine
+            displayNameCn: 自然医学
+            displayNameEn: Nature Medicine
+          - dictId: science
+            displayNameCn: 科学
+            displayNameEn: Science
+          description: Journal details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_JournalEntity'
+        translational_medicine_id:
+          type: string
+          example: tm_123456
+          description: Translational medicine ID
+    B057SynapseBullEyesPlotResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_GetBullEyesPlotResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B074DrugMilestone_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B064-3DrugSearchQuery_ClinicalResultRegisterNumber:
+      type: object
+      properties:
+        register_number:
+          type: string
+          example: NCT12345678
+          description: Register number
+        clinical_trial_id:
+          type: string
+          example: ct_123456
+          description: Clinical trial ID
+    B064-1DrugSearchCreateRequest:
+      type: object
+      properties:
+        events:
+          type: array
+          example:
+          - name: query_result
+            subEvent:
+            - QUERY_RESULT
+          - name: drug_dev_status
+            subEvent:
+            - DISCOVERY
+            - PRECLINICAL
+            - PHASE_1
+            - APPROVED
+          - name: clinical_trial
+            subEvent:
+            - CLINICAL_TRIAL_FIRST_POSTED
+            - CLINICAL_TRIAL_RESULT_PUBLISHED
+          - name: patent
+            subEvent:
+            - PATENT_PUBLISHED
+            - PATENT_GRANTED
+          description: Event subscription list
+          items:
+            $ref: '#/components/schemas/B064-1DrugSearchCreate_Event'
+        frequency:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_Frequency'
+        lang:
+          type: string
+          example: CN
+          description: 'Language setting, supports: CN (Chinese), EN (English)'
+        query:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_DrugSearchRequestDto'
+        title:
+          type: string
+          example: 我的药物预警
+          description: Alert title
+      required:
+      - events
+      - frequency
+      - lang
+      - query
+      - title
+    B057SynapseBullEyesPlot_BullEyesPlotDataDto:
+      type: object
+      properties:
+        drug:
+          type: array
+          example:
+          - drug_id: 07bf6b38be634718897783feeabef441
+            drug_type:
+              display_name:
+              - lang: EN
+                name: Biological products
+              - lang: CN
+                name: 生物药
+              normalized_id: 06bc75afc2f44364a9663730fa37c37a
+            display_name:
+            - lang: EN
+              name: VRON-0200
+          - drug_id: e4cbc3790c5d4f299e8cd765585033ad
+            drug_type:
+              display_name:
+              - lang: EN
+                name: Biological products
+              - lang: CN
+                name: 生物药
+              normalized_id: 06bc75afc2f44364a9663730fa37c37a
+            display_name:
+            - lang: EN
+              name: Anti-EGFR/IL-13R alpha 2 CAR-T cell therapy(Tmunity Therapeutics/University of Pennsylvania)
+          description: Dev information
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_BullEyesPlotDrugDataDto'
+        un_know:
+          type: array
+          example:
+          - e4cbc3790c5d4f299e8cd765585033ad
+          description: Related Drug ID without drug type
+        stat_info:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_BullEyesStatInfoDto'
+        dev_status:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonDictionary'
+        related_drug_id:
+          type: array
+          example:
+          - 07bf6b38be634718897783feeabef441
+          description: Related Drug ID
+    B057SynapseBullEyesPlot_BullEyesPlotDrugDataDto:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        drug_type:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonDictionary'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+    B064-1DrugSearchCreate_DrugSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 3beea980d93a4cc0abc864e27514601c
+          description: Value List
+    B064-2DrugSearchEditRequest:
+      type: object
+      properties:
+        alert_id:
+          type: string
+          example: 7b594e7d-34e1-43e6-9674-6ef8c242b721
+          description: Alert ID
+        events:
+          type: array
+          example:
+          - name: query_result
+            subEvent:
+            - QUERY_RESULT
+          - name: drug_dev_status
+            subEvent:
+            - DISCOVERY
+            - PRECLINICAL
+            - PHASE_1
+            - APPROVED
+          - name: clinical_trial
+            subEvent:
+            - CLINICAL_TRIAL_FIRST_POSTED
+            - CLINICAL_TRIAL_RESULT_PUBLISHED
+          - name: patent
+            subEvent:
+            - PATENT_PUBLISHED
+            - PATENT_GRANTED
+          description: Event subscription list
+          items:
+            $ref: '#/components/schemas/B064-2DrugSearchEdit_Event'
+        frequency:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_Frequency'
+        lang:
+          type: string
+          example: CN
+          description: 'Language setting, supports: CN (Chinese), EN (English)'
+        query:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_DrugSearchRequestDto'
+        title:
+          type: string
+          example: 我的药物预警
+          description: Alert title
+      required:
+      - alert_id
+      - events
+      - frequency
+      - lang
+      - query
+      - title
+    B064-3DrugSearchQuery_DataSource:
+      type: object
+      properties:
+        source_url:
+          type: string
+          example: http://example.com
+          description: Source Url
+    B057SynapseBullEyesPlot_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B057SynapseBullEyesPlot_GetBullEyesPlotResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:BullEyesPlotDto
+          description: result items
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_BullEyesPlotDto'
+        dimension:
+          type: string
+          example: ORGANIZATION
+          description: dimension
+    B057SynapseBullEyesPlotRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: 'Limit, default 10. The value is an enum with the following values: 10, 20, 30'
+        dimension:
+          type: string
+          example: ORGANIZATION
+          description: 'dimension. The value is an enum with the following values: ORGANIZATION, TARGET, DISEASE, DRUG_TYPE, REGION'
+        roll_up:
+          type: boolean
+          example: true
+          description: 'Perform roll-up on analysis results only for the dimension ''ORGANIZATION'' (default: true).'
+        drug:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue2'
+        drug_type:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue'
+        target:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue'
+        mechanism_action:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue'
+        disease:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue'
+        organization:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonConditionValue3'
+        global_highest_dev_status:
+          type: array
+          example: []
+          description: 'Drug Highest Phase. The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        exist_deal:
+          type: boolean
+          example: true
+          description: Whether Drug Deal Exist
+        dev_status:
+          type: array
+          example: []
+          description: 'Phase(By Indication). The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        country:
+          type: array
+          example:
+          - US
+          - EU
+          description: 'Phase(By Indication). The value is an enum with the following values: US, EU, JP, CN, Other'
+        organization_type:
+          type: array
+          example:
+          - Company
+          description: 'Organization Type. The value is an enum with the following values: Company, University_Institution, Other'
+        employee_number:
+          type: array
+          example:
+          - GREATER_THAN_500
+          description: 'Employee Number. The value is an enum with the following values: LESS_THAN_10, BETWEEN_10_AND_100, BETWEEN_100_AND_500, GREATER_THAN_500'
+        start_up:
+          type: boolean
+          example: false
+          description: Whether Start-Up Organization
+      required:
+      - limit
+      - dimension
+    B064-3DrugSearchQuery_DrugDealAlert:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://example.com/deal/123456
+          description: URL
+        deal_id:
+          type: string
+          example: deal_123456
+          description: Deal ID
+        deal_title:
+          type: string
+          example: Pfizer Acquires Company X for $2B
+          description: Deal title
+        deal_value_cn:
+          type: string
+          example: 20亿美元
+          description: Deal value Chinese
+        deal_value_en:
+          type: string
+          example: $2 billion
+          description: Deal value English
+        event_type_cn:
+          type: string
+          example: 药物交易
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Drug Deal
+          description: Event type English
+        upfront_payment_cn:
+          type: string
+          example: 5亿美元
+          description: Upfront payment Chinese
+        upfront_payment_en:
+          type: string
+          example: $500 million
+          description: Upfront payment English
+        milestone_payment_cn:
+          type: string
+          example: 15亿美元
+          description: Milestone payment Chinese
+        milestone_payment_en:
+          type: string
+          example: $1.5 billion
+          description: Milestone payment English
+    B064-3DrugSearchQuery_ClinicalTrialAlert:
+      type: object
+      properties:
+        phase:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_DevStatusEntity'
+        title:
+          type: string
+          example: Phase II Study of Drug X in Cancer Patients
+          description: Trial title
+        event_type_cn:
+          type: string
+          example: 临床试验
+          description: Event type Chinese
+        event_type_en:
+          type: string
+          example: Clinical Trial
+          description: Event type English
+        register_number:
+          type: string
+          example: NCT12345678
+          description: Register number
+        clinical_trial_id:
+          type: string
+          example: ct_123456
+          description: Clinical trial ID
+        clinical_result_id:
+          type: string
+          example: result_123456
+          description: Clinical result ID
+        org_master_entity_id:
+          type: array
+          example:
+          - org_001
+          - org_002
+          description: Organization master entity ID list
+        org_master_entity_id_view:
+          type: array
+          example:
+          - entityId: org_001
+            displayNameCn: 辉瑞制药
+            displayNameEn: Pfizer Inc.
+          - entityId: org_002
+            displayNameCn: 罗氏制药
+            displayNameEn: Roche
+          description: Organization details list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_OrganizationEntity'
+        clinical_result_register_number:
+          type: array
+          example:
+          - registerNumber: NCT12345678
+            clinicalTrialId: ct_123456
+          - registerNumber: NCT87654321
+            clinicalTrialId: ct_789012
+          description: Clinical result register number list
+          items:
+            $ref: '#/components/schemas/B064-3DrugSearchQuery_ClinicalResultRegisterNumber'
+    B064-3DrugSearchQuery_RegionEntity:
+      type: object
+      properties:
+        region_id:
+          type: string
+          example: US
+          description: Region ID
+        display_name_cn:
+          type: string
+          example: 美国
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: United States
+          description: English display name
+    B057SynapseBullEyesPlot_BullEyesPlotDto:
+      type: object
+      properties:
+        data:
+          type: array
+          example: Please check the form:BullEyesPlotDto
+          description: Bull eyes result items
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_BullEyesPlotDataDto'
+        target:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonTarget'
+        country:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonCountry'
+        disease:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonDisease'
+        drug_type:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonDictionary'
+        organization:
+          $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonOrganization'
+    B057SynapseBullEyesPlot_CommonCountry:
+      type: object
+      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonName'
+    B064-1DrugSearchCreate_DrugSearchMechanismActionConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 4dd338b149b3ecd0ee860e1fb379b44f
+          description: Value List
+    B064-1DrugSearchCreate_Event:
+      type: object
+      properties:
+        name:
+          type: string
+          example: drug_dev_status
+          description: Event name, supports:<p>query_result (Query Result) - Monitor changes in search results</p><p>drug_dev_status (Drug Development Status) - Monitor changes in drug development phases</p><p>special_approval (Special Approval) - Monitor special approval events</p><p>clinical_trial (Clinical Trial) - Monitor clinical trial related events</p><p>drug_deal (Drug Deal) - Monitor drug deal events</p><p>patent (Patent) - Monitor patent related events</p><p>paper (Paper) - Monitor paper publication events</p><p>translational_medicine (Translational Medicine) - Monitor translational medicine events</p><p>news (News) - Monitor news events</p>
+        sub_event:
+          type: array
+          example:
+          - DISCOVERY
+          - PRECLINICAL
+          - PHASE_1
+          description: 'Sub-event list, different options for different event types:<p>query_result (Query Result): [QUERY_RESULT (Query Result Change)]</p><p>drug_dev_status (Drug Development Status): [DISCOVERY (Drug Discovery), PRECLINICAL (Preclinical), IND (Investigational New Drug), IND_APPROVAL (IND Approval), EARLY_PHASE_1 (Early Phase 1), PHASE_1 (Phase 1), PHASE_1_2 (Phase 1/2), PHASE_2 (Phase 2), PHASE_2_3 (Phase 2/3), PHASE_3 (Phase 3), NDA_BLA (New Drug Application/Biologics License Application), APPROVED (Approved), DISCONTINUED (Discontinued), WITHDRAWN (Withdrawn), SUSPENDED (Suspended)]</p><p>special_approval (Special Approval): [SPECIAL_APPROVAL (Special Approval Event)]</p><p>clinical_trial (Clinical Trial): [CLINICAL_TRIAL_FIRST_POSTED (Clinical Trial First Posted), CLINICAL_TRIAL_CLINICAL_PROGRESS (Clinical Trial Progress), CLINICAL_TRIAL_RESULT_PUBLISHED (Clinical Trial Result Published)]</p><p>drug_deal (Drug Deal): [ACTIVE (Active), TERMINATED (Terminated), COMPLETED (Completed)]</p><p>patent (Patent): [PATENT_PUBLISHED (Patent Published), PATENT_GRANTED (Patent Granted), PATENT_EXPIRE_WITHIN_FIVE_YEARS (Patent Expire Within 5 Years), PATENT_EXPIRE_WITHIN_THREE_YEARS (Patent Expire Within 3 Years), PATENT_EXTENSION (Patent Extension)]</p><p>paper (Paper): [PAPER (Paper Published)]</p><p>translational_medicine (Translational Medicine): [TRANSLATIONAL_MEDICINE (Translational Medicine Event)]</p><p>news (News): [NEWS (News Event)]</p>'
+      required:
+      - name
+      - sub_event
+    B064-3DrugSearchQuery_DrugEntity:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: a79be26d13cd488ca4d9cfa2234990a8
+          description: Drug ID
+        display_name_cn:
+          type: string
+          example: 瑞拉利单抗
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Relatlimab
+          description: English display name
+    B057SynapseBullEyesPlot_CommonConditionValue2:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 2838b95ade834c96b17ac8bcd2b68c27
+          description: Value List
+    B064-2DrugSearchEdit_DrugSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
+    B064-3DrugSearchQuery_DevStatusEntity:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: b2ca28b01c34419db0365bad2f8dd09e
+          description: Dictionary ID
+        display_name_cn:
+          type: string
+          example: 临床前
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Preclinical
+          description: English display name
+    B064-1DrugSearchCreate_DrugSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: DRUG_TYPE_SORT
+          description: 'sort field, enum values: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B064-1DrugSearchCreate_DrugSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
+    B064-2DrugSearchEdit_DrugSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 3beea980d93a4cc0abc864e27514601c
+          description: Value List
+    B064-3DrugSearchQuery_DiseaseEntity:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: f7ea24f0370d421480503e720310bf86
+          description: Disease ID
+        display_name_cn:
+          type: string
+          example: 食管癌
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Esophageal Carcinoma
+          description: English display name
+    B064-1DrugSearchCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B064-1DrugSearchCreate_AlertResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B057SynapseBullEyesPlot_BullEyesStatInfoDto:
+      type: object
+      properties:
+        drug_type:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Biological products
+            - lang: CN
+              name: 生物药
+            normalized_id: 06bc75afc2f44364a9663730fa37c37a
+          description: Drug Type, Referencing "CommonDictionary"
+          items:
+            $ref: '#/components/schemas/B057SynapseBullEyesPlot_CommonDictionary'
+    B064-2DrugSearchEditResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B064-2DrugSearchEdit_AlertResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B064-2DrugSearchEdit_DrugSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: DRUG_TYPE_SORT
+          description: 'sort field, enum values: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B064-3DrugSearchQueryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B064-3DrugSearchQuery_AlertDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B064-2DrugSearchEdit_AlertResponse:
+      type: object
+      properties:
+        alert_id:
+          type: string
+          example: 561a206a-25c5-4883-be9a-b48eb55edba2
+          description: Alert ID
+    B064-2DrugSearchEdit_DrugSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B064-2DrugSearchEdit_DrugSearchMechanismActionConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 4dd338b149b3ecd0ee860e1fb379b44f
+          description: Value List
+    B064-3DrugSearchQueryRequest:
+      type: object
+      properties:
+        alert_id:
+          type: string
+          example: 7b594e7d-34e1-43e6-9674-6ef8c242b721
+          description: Alert ID, obtained through create alert interface
+      required:
+      - alert_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

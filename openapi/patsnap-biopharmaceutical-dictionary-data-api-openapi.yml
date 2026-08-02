@@ -1,0 +1,1405 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Biopharmaceutical Dictionary Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Biopharmaceutical Dictionary Data
+  description: Biopharmaceutical Dictionary Data APIs.
+paths:
+  /synapse/disease/therapeutic-area:
+    post:
+      operationId: b058DiseaseTherapeuticArea
+      summary: B058 Therapeutic area
+      description: Obtain therapeutic area about id, name etc.
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b058 therapeutic area response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B058DiseaseTherapeuticAreaResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/disease/therapeutic-area
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B058DiseaseTherapeuticAreaRequest'
+  /synapse/drug-type/autocomplete:
+    post:
+      operationId: b049DrugTypeAutocomplete
+      summary: B049 Drug type ID search
+      description: Input the drug type name and get the drug type ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b049 drug type id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B049DrugTypeAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/drug-type/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B049DrugTypeAutocompleteRequest'
+  /synapse/disease/autocomplete:
+    post:
+      operationId: b050DiseaseAutocomplete
+      summary: B050 Disease ID search
+      description: Input the disease name and get the disease ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b050 disease id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B050DiseaseAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/disease/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B050DiseaseAutocompleteRequest'
+  /synapse/target/autocomplete:
+    post:
+      operationId: b051TargetAutocomplete
+      summary: B051 Target ID search
+      description: Input the target name and get the target ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b051 target id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B051TargetAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/target/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B051TargetAutocompleteRequest'
+  /synapse/organization/autocomplete:
+    post:
+      operationId: b052OrganizationAutocomplete
+      summary: B052 Organization ID search
+      description: Input the organization name and get the organization ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b052 organization id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B052OrganizationAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/organization/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B052OrganizationAutocompleteRequest'
+  /synapse/mechanism-action/autocomplete:
+    post:
+      operationId: b054MechanismActionAutocomplete
+      summary: B054 Mechanism action ID search
+      description: Input the mechanism action name and get the mechanism action ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b054 mechanism action id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B054MechanismActionAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/mechanism-action/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B054MechanismActionAutocompleteRequest'
+  /synapse/outcome/autocomplete:
+    post:
+      operationId: b055OutcomeAutocomplete
+      summary: B055 Outcome ID search
+      description: Input the outcome name and get the outcome ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b055 outcome id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B055OutcomeAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/outcome/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B055OutcomeAutocompleteRequest'
+  /synapse/drug/autocomplete:
+    post:
+      operationId: b053DrugAutocomplete
+      summary: B053 Drug ID search
+      description: Input the drug name and get the drug ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b053 drug id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B053DrugAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/drug/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B053DrugAutocompleteRequest'
+  /synapse/dictionary/search:
+    post:
+      operationId: b056DictionarySearch
+      summary: B056 Dictionary query
+      description: Obtain dictionary ID through entering keywords or selecting the dictionary type
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b056 dictionary query response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B056DictionarySearchResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/dictionary/search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B056DictionarySearchRequest'
+  /synapse/patent/technology/autocomplete:
+    post:
+      operationId: b056-1TechnologyAutocomplete
+      summary: B056-1 Patent technology ID search
+      description: Input the patent technology name and get the patent technology ID
+      tags:
+      - Biopharmaceutical Dictionary Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful b056-1 patent technology id search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B056-1TechnologyAutocompleteResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/synapse/patent/technology/autocomplete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B056-1TechnologyAutocompleteRequest'
+components:
+  schemas:
+    B056DictionarySearch_DictionaryAutocompleteResponseDto:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: Dictionary ID
+        display_name:
+          type: array
+          example: 双特异性抗体
+          description: Dictionary Name
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_CommonName'
+    B058DiseaseTherapeuticArea_AutocompleteSimplifiedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 234aad67e4bc46b3906543b77e393606
+          description: Disease ID
+        is_leaf:
+          type: boolean
+          example: false
+          description: Whether it is a leaf node
+        children:
+          type: array
+          example:
+          - id: 65d2878e07824acdaf098de941e76904
+            is_leaf: false
+            children:
+            - id: 662d0668c7a143d38afd508651fe1eb7
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 诺沃克药物引起的急性胃肠炎
+              display_name_en: Acute Gastroenteropathy Due to Norwalk Agent
+            - id: 5577c2a48212423c8a3185fa02bdb045
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 消化不良
+              display_name_en: Dyspepsia
+            - id: dec9aafa3ad34e72b57eee14e8fc8543
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 食管疾病
+              display_name_en: Esophageal Diseases
+            - id: 46459d882f034d4d83c474df34d51c98
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠炎
+              display_name_en: Gastroenteritis
+            - id: 7fa6ee7ec7304cf4b82283c73d929376
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠炭疽
+              display_name_en: Gastrointestinal Anthrax
+            - id: 671ab6ba312540fe9c747d226ab33f6b
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 消化道出血
+              display_name_en: Gastrointestinal Hemorrhage
+            - id: 4398305897014fa5a94f82513b4d1139
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠道肿瘤
+              display_name_en: Gastrointestinal Neoplasms
+            - id: 27961d82a89b4dd1850590e62790f799
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠功能紊乱
+              display_name_en: Gastrointestinal dysfunction
+            - id: 3439232919a2428f8f818132a0b9421d
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠道感染
+              display_name_en: Gastrointestinal infection
+            - id: cf2c105c325f44f5bcd18f91c6cc00c1
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠动力障碍
+              display_name_en: Gastrointestinal motility disorder
+            - id: 7e1abff74d054266aef9d60e923e0e48
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠粘膜疾病
+              display_name_en: Gastrointestinal mucosal disorder
+            - id: cb05c51b403e48cd87e1a73c9a7b2f77
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠道息肉
+              display_name_en: Gastrointestinal polyps
+            - id: e0d363f875d244d09de54ee9af5fdf60
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠道溃疡
+              display_name_en: Gastrointestinal ulcer
+            - id: f2add70bf0fc41ea98e6f704ca3eb1ee
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 腹疝
+              display_name_en: Hernia, Ventral
+            - id: e081a5d34fa3494d98da975f2ca711d8
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 多食症
+              display_name_en: Hyperphagia
+            - id: ac5ea2be7bb745458261c3bbb740ee4c
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 肠道疾病
+              display_name_en: Intestinal Diseases
+            - id: 5a8363bf582841928678948433c15e92
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 反刍综合征
+              display_name_en: Rumination Syndrome
+            - id: 913390d040544d43acbcea835d84c567
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃病
+              display_name_en: Stomach Diseases
+            - id: 7e88952676d2469ebcc5fe8be397c124
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 口臭
+              display_name_en: Stomatodysodia
+            - id: a378a52dab74430585a26212f076a4af
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 胃肠结核
+              display_name_en: Tuberculosis, Gastrointestinal
+            - id: 6e16353607c34fc0be91ef522bdcb916
+              is_leaf: false
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 肠溃疡
+              display_name_en: Ulceration of intestine
+            - id: 9dafa0891e1b43c8a654eb1deab14172
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 上消化道出血
+              display_name_en: Upper gastrointestinal hemorrhage
+            - id: 500f7913efdd4cf4a8d5cf79bf08ef38
+              is_leaf: true
+              parent_id:
+              - 65d2878e07824acdaf098de941e76904
+              display_name_cn: 内脏下垂
+              display_name_en: Visceral Prolapse
+            parent_id:
+            - 234aad67e4bc46b3906543b77e393606
+            display_name_cn: 胃肠道疾病
+            display_name_en: Gastrointestinal Diseases
+          description: Child node list
+        parent_id:
+          type: array
+          example:
+          - 383538ad75a24989bb2f546dabbf21a3
+          description: Parent node ID list
+        display_name_cn:
+          type: string
+          example: 消化系统疾病
+          description: Chinese display name
+        display_name_en:
+          type: string
+          example: Digestive System Disorders
+          description: English display name
+    B051TargetAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B051TargetAutocomplete_TargetAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 3beea980d93a4cc0abc864e27514601c
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Non-squamous non-small cell lung cancer
+          - lang: CN
+            name: 非鳞状非小细胞肺癌
+          description: Name
+          items:
+            $ref: '#/components/schemas/B050DiseaseAutocomplete_CommonName'
+    B058DiseaseTherapeuticAreaRequest:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 5577c2a48212423c8a3185fa02bdb045
+          description: Disease ID
+      required:
+      - disease_id
+    B051TargetAutocomplete_TargetAutocompleteResponseDto:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 928facc8122849baa0dc00759cff0380
+          description: ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: PD-1
+          description: Short Name
+          items:
+            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Programmed cell death protein 1
+          - lang: CN
+            name: 细胞程序性死亡-1
+          description: Target Name
+          items:
+            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
+    B056DictionarySearch_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B049DrugTypeAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B054MechanismActionAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B049DrugTypeAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limits
+        prefix:
+          type: string
+          example: 双特异性抗体
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto:
+      type: object
+      properties:
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: PD-1 inhibitors
+          - lang: CN
+            name: PD-1抑制剂
+          description: Mechanism Action Short Name
+          items:
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Programmed cell death protein 1 inhibitors
+          - lang: CN
+            name: 细胞程序性死亡-1抑制剂
+          description: Mechanism Action Name
+          items:
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
+        mechanism_action_id:
+          type: string
+          example: 4dd338b149b3ecd0ee860e1fb379b44f
+          description: ID
+    B055OutcomeAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limits
+        prefix:
+          type: string
+          example: OS
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto:
+      type: object
+      properties:
+        outcome_id:
+          type: string
+          example: b5929508886148bd899ab4def0451571
+          description: ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: OS
+          description: Short Name
+          items:
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Overall survival
+          - lang: CN
+            name: 总生存期
+          description: name
+          items:
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
+    B058DiseaseTherapeuticAreaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B058DiseaseTherapeuticArea_TreeSearchSimplifiedResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056-1TechnologyAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056-1TechnologyAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B050DiseaseAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B054MechanismActionAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B052OrganizationAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B054MechanismActionAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: PD-1 inhibitors
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B053DrugAutocomplete_DrugAutocompleteResponseDto:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: 2838b95ade834c96b17ac8bcd2b68c27
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Adalimumab
+          - lang: CN
+            name: 阿达木单抗
+          description: Name
+          items:
+            $ref: '#/components/schemas/B053DrugAutocomplete_CommonName'
+    B050DiseaseAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B058DiseaseTherapeuticArea_TreeSearchSimplifiedResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - id: 234aad67e4bc46b3906543b77e393606
+            is_leaf: false
+            children:
+            - id: 65d2878e07824acdaf098de941e76904
+              is_leaf: false
+              children:
+              - id: 662d0668c7a143d38afd508651fe1eb7
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 诺沃克药物引起的急性胃肠炎
+                display_name_en: Acute Gastroenteropathy Due to Norwalk Agent
+              - id: 5577c2a48212423c8a3185fa02bdb045
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 消化不良
+                display_name_en: Dyspepsia
+              - id: dec9aafa3ad34e72b57eee14e8fc8543
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 食管疾病
+                display_name_en: Esophageal Diseases
+              - id: 46459d882f034d4d83c474df34d51c98
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠炎
+                display_name_en: Gastroenteritis
+              - id: 7fa6ee7ec7304cf4b82283c73d929376
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠炭疽
+                display_name_en: Gastrointestinal Anthrax
+              - id: 671ab6ba312540fe9c747d226ab33f6b
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 消化道出血
+                display_name_en: Gastrointestinal Hemorrhage
+              - id: 4398305897014fa5a94f82513b4d1139
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠道肿瘤
+                display_name_en: Gastrointestinal Neoplasms
+              - id: 27961d82a89b4dd1850590e62790f799
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠功能紊乱
+                display_name_en: Gastrointestinal dysfunction
+              - id: 3439232919a2428f8f818132a0b9421d
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠道感染
+                display_name_en: Gastrointestinal infection
+              - id: cf2c105c325f44f5bcd18f91c6cc00c1
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠动力障碍
+                display_name_en: Gastrointestinal motility disorder
+              - id: 7e1abff74d054266aef9d60e923e0e48
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠粘膜疾病
+                display_name_en: Gastrointestinal mucosal disorder
+              - id: cb05c51b403e48cd87e1a73c9a7b2f77
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠道息肉
+                display_name_en: Gastrointestinal polyps
+              - id: e0d363f875d244d09de54ee9af5fdf60
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠道溃疡
+                display_name_en: Gastrointestinal ulcer
+              - id: f2add70bf0fc41ea98e6f704ca3eb1ee
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 腹疝
+                display_name_en: Hernia, Ventral
+              - id: e081a5d34fa3494d98da975f2ca711d8
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 多食症
+                display_name_en: Hyperphagia
+              - id: ac5ea2be7bb745458261c3bbb740ee4c
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 肠道疾病
+                display_name_en: Intestinal Diseases
+              - id: 5a8363bf582841928678948433c15e92
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 反刍综合征
+                display_name_en: Rumination Syndrome
+              - id: 913390d040544d43acbcea835d84c567
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃病
+                display_name_en: Stomach Diseases
+              - id: 7e88952676d2469ebcc5fe8be397c124
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 口臭
+                display_name_en: Stomatodysodia
+              - id: a378a52dab74430585a26212f076a4af
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 胃肠结核
+                display_name_en: Tuberculosis, Gastrointestinal
+              - id: 6e16353607c34fc0be91ef522bdcb916
+                is_leaf: false
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 肠溃疡
+                display_name_en: Ulceration of intestine
+              - id: 9dafa0891e1b43c8a654eb1deab14172
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 上消化道出血
+                display_name_en: Upper gastrointestinal hemorrhage
+              - id: 500f7913efdd4cf4a8d5cf79bf08ef38
+                is_leaf: true
+                parent_id:
+                - 65d2878e07824acdaf098de941e76904
+                display_name_cn: 内脏下垂
+                display_name_en: Visceral Prolapse
+              parent_id:
+              - 234aad67e4bc46b3906543b77e393606
+              display_name_cn: 胃肠道疾病
+              display_name_en: Gastrointestinal Diseases
+            parent_id:
+            - 383538ad75a24989bb2f546dabbf21a3
+            display_name_cn: 消化系统疾病
+            display_name_en: Digestive System Disorders
+          description: Disease tree node list
+          items:
+            $ref: '#/components/schemas/B058DiseaseTherapeuticArea_AutocompleteSimplifiedResponse'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Data limit count
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Data offset
+    B056DictionarySearch_DictionaryTreeSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - id: 8666aad5477e4272b56b94ca1183781d
+            name: 药物发现
+          description: Dictionary List
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_DictionaryAutocompleteResponseDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limits
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Dictionary total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B055OutcomeAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056DictionarySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B056DictionarySearch_DictionaryTreeSearchResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056DictionarySearchRequest:
+      type: object
+      properties:
+        dict_type:
+          type: string
+          example: PATENT_TECHNOLOGY
+          description: Dictionary type, fields support:PATENT_TECHNOLOGY：patent_technology; AUTHORITY_COUNTRY：patent_country; HOT_CONFERENCE：ct_result_meeting.
+        id:
+          type: string
+          example: acb92aec02da415d9b5b593529add328
+          description: Dictionary ID
+        keyword:
+          type: string
+          example: CAR-X细胞疗法
+          description: keywords
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limits
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+        parent_id:
+          type: string
+          example: 57fb4219e73247fcb69dec21b582a716
+          description: Parent Dictionary ID
+        search_tree:
+          type: boolean
+          example: false
+          description: Is Tree Search
+        sort:
+          type: array
+          example:
+          - sort_field: NAME_EN_SORT
+            sort_order: desc
+          description: Sort
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_SortItemDto'
+    B049DrugTypeAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Bispecific antibody
+          - lang: CN
+            name: 双特异性抗体
+          description: name
+          items:
+            $ref: '#/components/schemas/B049DrugTypeAutocomplete_CommonName'
+        drug_type_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: ID
+    B052OrganizationAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B051TargetAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: KRAS G12C
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B055OutcomeAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Pfizer Inc.
+          - lang: CN
+            name: 辉瑞大药厂股份有限公司
+          description: Name
+          items:
+            $ref: '#/components/schemas/B052OrganizationAutocomplete_CommonName'
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: ID
+    B053DrugAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B050DiseaseAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: 非小细胞肺癌
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B052OrganizationAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: 安进
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B053DrugAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B053DrugAutocomplete_DrugAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Bispecific antibody
+          - lang: CN
+            name: 双特异性抗体
+          description: name
+          items:
+            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_CommonName'
+        drug_type_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: ID
+    B056-1TechnologyAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limits
+        prefix:
+          type: string
+          example: 生长因子
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B056DictionarySearch_SortItemDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: NAME_EN_SORT
+          description: sort field
+        sort_order:
+          type: string
+          example: desc
+          description: ASC、DESC
+    B053DrugAutocompleteRequest:
+      type: object
+      properties:
+        prefix:
+          type: string
+          example: 索托拉西布
+          description: keywords
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+      required:
+      - prefix
+      - limit
+    B051TargetAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

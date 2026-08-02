@@ -1,0 +1,765 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Literature Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Literature Data
+  description: Literature Data APIs.
+paths:
+  /literature/author-affiliation:
+    post:
+      operationId: l011LiteratureAuthorAffiliation
+      summary: L011 Literature Author and Affiliation
+      description: Receive literature author and affiliation by paper_id or doi.
+      tags:
+      - Literature Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful l011 literature author and affiliation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/L011LiteratureAuthorAffiliationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/literature/author-affiliation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/L011LiteratureAuthorAffiliationRequest'
+  /literature/bibliography:
+    post:
+      operationId: l010LiteratureBibliography
+      summary: L010 Literature Bibliographic Information
+      description: Receive literature bibliography data by paper_id or doi.
+      tags:
+      - Literature Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful l010 literature bibliographic information response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/L010LiteratureBibliographyResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/literature/bibliography
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/L010LiteratureBibliographyRequest'
+  /literature/citation:
+    post:
+      operationId: l012LiteratureCitation
+      summary: L012 Literature Citation
+      description: Receive literature citation data by paper_id or doi.
+      tags:
+      - Literature Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful l012 literature citation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/L012LiteratureCitationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/literature/citation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/L012LiteratureCitationRequest'
+  /literature/journal:
+    post:
+      operationId: l014LiteratureJournal
+      summary: L014 Journal
+      description: Receive literature citation data by paper_id or doi.
+      tags:
+      - Literature Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful l014 journal response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/L014LiteratureJournalResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/literature/journal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/L014LiteratureJournalRequest'
+  /search/literature/query-search:
+    post:
+      operationId: l001LiteratureQuerySearch
+      summary: L001 Literature Search
+      description: Search and query our global literature database by entering the title, abstract, author, and other details of the literature.
+      tags:
+      - Literature Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful l001 literature search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/L001LiteratureQuerySearchResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/search/literature/query-search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/L001LiteratureQuerySearchRequest'
+components:
+  schemas:
+    L001LiteratureQuerySearch_LiteratureSearch:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.3390/jpm13121685
+          description: DOI
+        title:
+          type: array
+          example:
+          - Variability in Provider Assessment of Sepsis and Potential of Host Response Technology to Address this Dilemma—Results of an Online Delphi Study
+          description: Title
+        author:
+          type: array
+          example:
+          - Kraus, Chadd K
+          - O'Neal, Hollis R
+          - Ledeboer, Nathan A
+          - Rice, Todd W
+          - Self, Wesley H
+          description: Author
+        paper_id:
+          type: string
+          example: 938ad823-46f7-485b-959d-610a767e5a6e
+          description: Paper ID
+    L012LiteratureCitation_LiteratureReference:
+      type: object
+      properties:
+        paper_id:
+          type: string
+          example: 4590883d-3d89-35ef-b662-cd820dc1427c
+          description: Paper ID
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: Sequence
+        citation_text:
+          type: string
+          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
+          description: Citation Text
+    L011LiteratureAuthorAffiliationRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
+    L012LiteratureCitation_LiteratureNPCitation:
+      type: object
+      properties:
+        paper_id:
+          type: string
+          example: 4b656503-a352-4815-93ba-76a7cb967d25
+          description: Paper ID
+        citation_text:
+          type: string
+          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
+          description: Citation Text
+    L012LiteratureCitationRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
+    L010LiteratureBibliography_BibliographyResponse:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI
+        type:
+          type: string
+          example: Journal
+          description: Type
+        issue:
+          type: string
+          example: 18
+          description: Issue
+        title:
+          type: array
+          example: 'Please check the form: LiteratureTitle'
+          description: Title
+          items:
+            $ref: '#/components/schemas/L010LiteratureBibliography_LiteratureTitle'
+        author:
+          type: array
+          example:
+          - Ruppelt, Dominik
+          - Ackermann, Elena L M
+          - Robinson, Tom
+          - Steinem, Claudia
+          description: Author
+        volume:
+          type: string
+          example: 123
+          description: Volume
+        abstract:
+          type: array
+          example: 'Please check the form: LiteratureAbstract'
+          description: Abstract
+          items:
+            $ref: '#/components/schemas/L010LiteratureBibliography_LiteratureAbstract'
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46
+          description: Paper ID
+        pagination:
+          type: string
+          example: 3267-3274
+          description: Pagination
+        publication:
+          type: string
+          example: Biophysical Journal
+          description: Publication
+        publication_date:
+          type: integer
+          format: int32
+          example: 20240901
+          description: Publication Date
+        publication_year:
+          type: string
+          example: 2024
+          description: Publication Year
+        publish_institution:
+          type: string
+          example: Elsevier BV
+          description: Publish Institution
+    L001LiteratureQuerySearch_SearchLiteratureResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: LiteratureBaseResponse
+          description: result
+          items:
+            $ref: '#/components/schemas/L001LiteratureQuerySearch_LiteratureSearch'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 7113
+          description: Total search result count
+    L001LiteratureQuerySearchRequest:
+      type: object
+      properties:
+        date_time:
+          type: string
+          example: '[1714521600000 TO 1748011043000]'
+          description: Publication timestamp range
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,00
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 10000
+        query_text:
+          type: string
+          example: title:(car) and author:("haiyang") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]
+          description: "You can search and query our global literature repository by entering document titles, abstracts, authors, and other metadata.\r\nMaximum Search Text Length: 800 characters.\r\n\r\nSupport logic connector AND/OR\r\n\r\nSupported Search Fields:\r\n\r\ntitle: Document title\r\nabstract: Document abstract\r\nauthor: Author name\r\ndate_time: Publication timestamp range\r\npublication: Journal name\r\nauthor Parameters need to be enclosed in double quotation marks"
+        text:
+          type: string
+          example: Journal of Personalized Medicine
+          description: The text input for literature search.
+        type:
+          type: string
+          example: publication
+          description: "Supported text types for literature include：\r\n\r\ntitle: (literature title)\r\nabstract：(literature abstract)\r\nauthor：(literature author)\r\npublication：(literature publication)\r\ntitle/abstract：(literature title or abstract)\r\nall：(the above fields)"
+    L010LiteratureBibliographyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L010LiteratureBibliography_BibliographyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L011LiteratureAuthorAffiliationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_AuthorAffiliationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L010LiteratureBibliography_LiteratureTitle:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        text:
+          type: string
+          example: Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device
+          description: Text
+    L011LiteratureAuthorAffiliation_AuthorAffiliationResponse:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1039/d3nr04740g
+          description: DOI
+        paper_id:
+          type: string
+          example: 8be86941-0455-4ca4-921b-61e1c01d6393
+          description: Paper ID
+        author_data:
+          type: array
+          example: 'Please check the form: LiteratureAuthor'
+          description: Author Data
+          items:
+            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_LiteratureAuthor'
+    L011LiteratureAuthorAffiliation_LiteratureAuthor:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Bihannic, Isabelle
+          description: Full Name
+        orcid:
+          type: string
+          example: 0000-0001-9780-2509
+          description: ORCID
+        surname:
+          type: string
+          example: Bihannic
+          description: Surname
+        sequence:
+          type: integer
+          format: int32
+          example: 6
+          description: Sequence
+        co_authors:
+          type: array
+          example:
+          - Beaussart, Audrey
+          - Sohm, Bénédicte
+          - Caillet, Céline
+          description: Co-Authors
+        first_name:
+          type: string
+          example: Isabelle
+          description: Surname
+        published_list:
+          type: array
+          example:
+          - Hoppe, Sandrine,Farge, Laurent,Tournilhac, François,et al.Deformation mechanisms in PBT at elevated temperatures.Mater Today Commun.2023 Aug;36:106774.doi:10.1016/j.mtcomm.2023.106774.
+          - Duval, Jérôme F.L.,Bihannic, Isabelle,Razafitianamaharavo, Angelina,et al.New insights into the effects of growth phase and enzymatic treatment on the cell-wall properties of Chlorella vulgaris microalgae.Algal Res.2023 Jan;69:102955.doi:10.1016/j.algal.2022.102955.
+          description: Published List
+        affiliation_name:
+          type: string
+          example: Université de Lorraine, CNRS, LIEC, F-54000 Nancy, France. nicolas.lesniewska@univ-lorraine.fr.
+          description: Affiliation Name
+        affiliation_type:
+          type: string
+          example: Education
+          description: Affiliation Type
+        affiliation_rorid:
+          type: string
+          example: https://ror.org/04vfs2w97
+          description: Affiliation RORID
+        affiliation_country:
+          type: string
+          example: France
+          description: Affiliation Country
+    L001LiteratureQuerySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/L001LiteratureQuerySearch_SearchLiteratureResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L014LiteratureJournalRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
+    L010LiteratureBibliographyRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
+    L012LiteratureCitation_CitationResponse:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.3390/s20030734
+          description: DOI
+        paper_id:
+          type: string
+          example: 1f0f61d1-0d76-3a29-a677-7f0cf7a332f7,00001b6d-2cfa-411a-ab41-8a05fd675d46
+          description: Paper ID
+        reference_no:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of References
+        np_citation_no:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of Non-patent Citations
+        reference_data:
+          type: array
+          example: 'Please check the form: LiteratureReference'
+          description: Reference Data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureReference'
+        np_citation_data:
+          type: array
+          example: 'Please check the form: LiteratureNPCitation'
+          description: Non-patent Citation data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureNPCitation'
+        patent_citation_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of Patent Citations
+        patent_citation_data:
+          type: array
+          example: 'Please check the form: LiteraturePatentCitation'
+          description: Patent Citation Data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteraturePatentCitation'
+    L012LiteratureCitationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_CitationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L012LiteratureCitation_LiteraturePatentCitation:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN112833870A
+          description: Patent Number
+        apdt:
+          type: integer
+          format: int32
+          example: 20201230
+          description: Application Date
+        apno:
+          type: string
+          example: CN202011610975.8
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20201230
+          description: Publication Date
+        title:
+          type: string
+          example: 核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法
+          description: Title
+        inventor:
+          type: array
+          example:
+          - 张燚
+          - 汪之国
+          - 李佳佳
+          description: Inventor
+        patent_id:
+          type: string
+          example: fd509ad5-7da1-464f-9b32-2858be00f2e9
+          description: Patent ID
+        current_assignee:
+          type: array
+          example:
+          - 中国人民解放军国防科技大学
+          description: Current Assignee
+        original_assignee:
+          type: array
+          example:
+          - 中国人民解放军国防科技大学
+          description: Original Assignee
+    L010LiteratureBibliography_LiteratureAbstract:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        text:
+          type: string
+          example: Proton transport across lipid membranes is one of the most fundamental reactions that make up living organisms. In vitro, however, the study of proton transport reactions can be very challenging due to limitations imposed by proton concentrations, compartment size, and unstirred layers as well as buffer exchange and buffer capacity. In this study, we have developed a proton permeation assay based on the microfluidic trapping of giant vesicles enclosing the pH-sensitive dye pyranine to address some of these challenges. Time-resolved fluorescence imaging upon a rapid pH shift enabled us to investigate the facilitated H<sup>+</sup> permeation mediated by either a channel or a carrier. Specifically, we compared the proton transport rates as a function of different proton gradients of the channel gramicidin D and the proton carrier carbonyl cyanide-m-chlorophenyl hydrazone. Our results demonstrate the efficacy of the assay in monitoring proton transport reactions and distinguishing between a channel-like and a carrier-like mechanism. This groundbreaking result enabled us to elucidate the enigmatic mode of the proton permeation mechanism of the recently discovered natural fibupeptide lugdunin.
+          description: Text
+    L014LiteratureJournalResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L014LiteratureJournal_JournalResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L014LiteratureJournal_JournalResponse:
+      type: object
+      properties:
+        cn:
+          type: string
+          example: 11-4537/X
+          description: CN
+        doi:
+          type: string
+          example: 10.3390/antibiotics10040379
+          description: DOI
+        issn:
+          type: string
+          example: 2079-6382
+          description: ISSN
+        lang:
+          type: string
+          example: 中文
+          description: Language
+        eissn:
+          type: string
+          example: 2079-6382
+          description: eISSN
+        address:
+          type: string
+          example: 北京市海淀区中关村南大街5号
+          description: Address
+        contact:
+          type: string
+          example: 13910795630
+          description: Contact
+        country:
+          type: string
+          example: 瑞士
+          description: Country or Region
+        website:
+          type: string
+          example: https://www.mdpi.com/journal/antibiotics
+          description: Website
+        paper_id:
+          type: string
+          example: 00d3b12d-1141-3a4a-a0e1-91cbb9c53d0b
+          description: Paper ID
+        frequency:
+          type: string
+          example: 双月刊
+          description: Frequency of publication
+        organizer:
+          type: string
+          example: 北京理工大学
+          description: Organizer
+        publisher:
+          type: string
+          example: MDPI AG
+          description: Publisher
+        postal_code:
+          type: string
+          example: 100081
+          description: Postal Code
+        journal_name:
+          type: string
+          example: Antibiotics-Basel
+          description: Journal Name
+        subject_area:
+          type: string
+          example: 药理学
+          description: Subject Area
+        supervising_agency:
+          type: string
+          example: 中国兵器工业集团公司
+          description: Competent Authority
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/patsnap-openapi-original.json
+note: >-
+  Packaged Agent Skills grounded in verified Patsnap Open Platform operationIds. Patsnap also
+  publishes 140+ first-party Agent Skills in its Skills Hub
+  (https://open.patsnap.com/marketplace/skill-hub) for LangChain/AutoGen/function-calling.
+skills:
+- file: patsnap-patent-search-and-details.md
+  name: Search patents and retrieve bibliography and legal status
+  api: openapi/patsnap-openapi-original.json
+  operations: [p001PatentQuerySearchCount, p002PatentQuerySearch, p012BasicPatentDataBibliography, p013BasicPatentDataLegalStatus]
+- file: patsnap-company-patent-portfolio.md
+  name: Analyze a company's patent portfolio
+  api: openapi/patsnap-openapi-original.json
+  operations: [p004PatentCompanySearch, p011BasicPatentDataSimpleBibliography, p014BasicPatentDataPatentFamily]
+- file: patsnap-semantic-prior-art-search.md
+  name: Run a semantic prior-art / similarity search
+  api: openapi/patsnap-openapi-original.json
+  operations: [p008PatentSemanticSearch, p007PatentSimilarSearch, p018BasicPatentDataClaimData]

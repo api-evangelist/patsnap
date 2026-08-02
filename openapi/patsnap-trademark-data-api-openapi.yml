@@ -1,0 +1,625 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Trademark Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Trademark Data
+  description: Trademark Data APIs.
+paths:
+  /trademark/image-search:
+    post:
+      operationId: t002TrademarkImageSearch
+      summary: T002 Trademark Image Search
+      description: Search for similar trademarks using Base64 encoded trademark image.
+      tags:
+      - Trademark Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful t002 trademark image search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T002TrademarkImageSearchResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/trademark/image-search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/T002TrademarkImageSearchRequest'
+  /trademark/search:
+    post:
+      operationId: t001TrademarkSearch
+      summary: T001 Trademark Field Search
+      description: Trademark search can be conducted by entering a combination of multiple fields such as trademark name, applicant, application date, and number, with basic trademark information returned.
+      tags:
+      - Trademark Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful t001 trademark field search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T001TrademarkSearchResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/trademark/search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/T001TrademarkSearchRequest'
+  /trademark/data/detail:
+    get:
+      operationId: t010DataDetail
+      summary: T010 Trademark Detail
+      description: Receive trademark detail information by application number and country code.
+      tags:
+      - Trademark Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful t010 trademark detail response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T010DataDetailResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/trademark/data/detail
+      parameters:
+      - name: app_num
+        in: query
+        required: false
+        description: Trademark application number
+        schema:
+          type: string
+          example: 019217925
+          description: Trademark application number
+      - name: ipoffice
+        in: query
+        required: false
+        description: country code
+        schema:
+          type: string
+          example: EU
+          description: country code
+components:
+  schemas:
+    T010DataDetail_ApplicantResponse:
+      type: object
+      properties:
+        city:
+          type: string
+          example: El Segundo
+          description: City
+        name:
+          type: string
+          example: PowerDMS, Inc.
+          description: Applicant Name
+        state:
+          type: string
+          example: DE
+          description: State
+        postal_code:
+          type: string
+          example: 90245
+          description: Postal Code
+        internal_address:
+          type: string
+          example: 2120 Park Place, Suite 100
+          description: Address
+    T002TrademarkImageSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T002TrademarkImageSearch_TrademarkImageSearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    T010DataDetail_TrademarkDetailResponse:
+      type: object
+      properties:
+        apdt:
+          type: string
+          example: 20240101
+          description: Application Date
+        pbdt:
+          type: string
+          example: 20240910
+          description: Publication Date
+        images:
+          type: array
+          example:
+          - https://open.patsnap.com/trademark/image.jpg
+          description: Trademark Image URLs
+        status:
+          type: string
+          example: Live/Pending
+          description: Legal Status
+        app_num:
+          type: string
+          example: 98337947
+          description: Application Number
+        reg_num:
+          type: string
+          example: '0000000'
+          description: Register Number
+        ipoffice:
+          type: string
+          example: US
+          description: IP Office (country code)
+        assignees:
+          type: array
+          example: 'Please check the form: AssigneeResponse'
+          description: Assignee Information
+          items:
+            $ref: '#/components/schemas/T010DataDetail_AssigneeResponse'
+        applicants:
+          type: array
+          example: 'Please check the form: ApplicantResponse'
+          description: Applicants Information
+          items:
+            $ref: '#/components/schemas/T010DataDetail_ApplicantResponse'
+        status_date:
+          type: string
+          example: 20241105
+          description: Status Update Date
+        mark_drawing:
+          type: string
+          example: Standard character mark
+          description: Mark drawing
+        offical_page:
+          type: string
+          example: https://tsdr.uspto.gov/#caseNumber=98337947
+          description: Official Page
+        location_date:
+          type: string
+          example: 20241105
+          description: Location Date
+        correspondents:
+          type: array
+          example: 'Please check the form: AgentResponse'
+          description: Correspondents Information
+          items:
+            $ref: '#/components/schemas/T010DataDetail_AgentResponse'
+        classifications:
+          type: array
+          example: 'Please check the form: ClassificationResponse'
+          description: Trademark Classifications
+          items:
+            $ref: '#/components/schemas/T010DataDetail_ClassificationResponse'
+        current_location:
+          type: string
+          example: INTENT TO USE SECTION
+          description: Current Location
+        mark_identification:
+          type: string
+          example: POWERVITALS
+          description: Trademark Name
+    T001TrademarkSearch_TrademarkHitResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: US_87706058
+          description: ID
+        'no':
+          type: integer
+          format: int32
+          example: 1
+          description: No.
+        apdt:
+          type: string
+          example: 20171203
+          description: 'Application Date (format: yyyyMMdd)'
+        mark:
+          type: string
+          example: APPLE
+          description: Trademark Name
+        agent:
+          type: string
+          example: Michael R. Friscia
+          description: Agent
+        image:
+          type: string
+          example: https://open.patsnap.com/trademark/image.jpg
+          description: Image
+        score:
+          type: number
+          format: double
+          example: 1
+          description: Score
+        status:
+          type: string
+          example: Dead/Abandoned
+          description: Legal Status
+        app_num:
+          type: string
+          example: 87706058
+          description: Application Number
+        ipoffice:
+          type: string
+          example: US
+          description: IP Offices(country codes)
+        applicant:
+          type: array
+          example:
+          - Apple Pear Apple Corp.
+          description: Applicants
+        nice_code:
+          type: array
+          example:
+          - '025'
+          description: Nice Code
+        offical_page:
+          type: string
+          example: https://tsdr.uspto.gov/#caseNumber=87706058&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch
+          description: Offical Page
+    T010DataDetail_AgentResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Andrew Dallmann
+          description: Agent Name
+        internal_address:
+          type: string
+          example: Laguna Hills, CA 92653
+          description: Address
+        attorney_docket_number:
+          type: string
+          example: 1087.003.006
+          description: Attorney Docket Number
+    T001TrademarkSearchRequest:
+      type: object
+      properties:
+        apdt:
+          type: string
+          example: 20170101:20171231
+          description: 'Application date, supporting a single date or date range (format: yyyyMMdd)'
+        app_num:
+          type: string
+          example: 87706058
+          description: Application number
+        applicant:
+          type: string
+          example: SAPPLE
+          description: Applicant Name
+        ipoffice:
+          type: string
+          example: US,CA,AU,EU
+          description: Intellectual Property Offices (country codes) supports multiple values separated by commas; includes data for US (United States), CA (Canada), AU (Australia), and EU (European Union). Leaving it blank searches all country data.
+        mark:
+          type: string
+          example: apple
+          description: Trademark name
+        mode:
+          type: string
+          example: smart
+          description: "Query modes support 'smart' and 'exact', with corresponding parameters 'smart' and 'exact'; the default mode is 'smart'.\r\n\r\nsmart: Allows word segmentation, order changes and partial matching, ignores case for intelligent matching, and sorts by similarity score.\r\nexact: No word segmentation, case-sensitive, for precise matching."
+        nice_code:
+          type: string
+          example: '025'
+          description: International Nice Classification codes support multiple values, separated by commas.
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number, default is 1.
+        reg_num:
+          type: string
+          example: 12345678
+          description: Register Number
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of records displayed per page, with a default value of 10 and a maximum of 100.
+        sort:
+          type: string
+          example: appDate desc
+          description: Sort field < space >[desc/asc]
+        us_code:
+          type: string
+          example: '022'
+          description: US Classification codes support multiple values, separated by commas.
+        vienna_code:
+          type: string
+          example: '025'
+          description: Vienna Classification codes support multiple values, separated by commas.
+    T010DataDetail_ClassificationResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: 009
+          description: Classification Code
+        class_kind:
+          type: string
+          example: Nice
+          description: Classification Type
+        status_code:
+          type: string
+          example: 6
+          description: Status Code
+        status_date:
+          type: string
+          example: '2023-12-31'
+          description: Status Update Date
+    T002TrademarkImageSearchRequest:
+      type: object
+      properties:
+        image_base64:
+          type: string
+          example: data:image/jpeg;base64,/9j/4AAQSk...
+          description: Base64 encoded string of trademark image (required), supports JPG, PNG formats, max 4MB
+        ipoffice:
+          type: string
+          example: US,EU,CA
+          description: Intellectual Property Offices (country codes) supports multiple values separated by commas; includes data for US (United States), CA (Canada), AU (Australia), and EU (European Union). Leaving it blank searches all country data.
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number, default is 1
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of records displayed per page, with a default value of 10 and a maximum of 100
+      required:
+      - image_base64
+    T002TrademarkImageSearch_TrademarkImageSearchResponse:
+      type: object
+      properties:
+        hits:
+          type: array
+          example: []
+          description: Search hits
+          items:
+            $ref: '#/components/schemas/T002TrademarkImageSearch_TrademarkImageHitResponse'
+        page_size:
+          type: integer
+          format: int32
+          example: 2
+          description: Page size
+        total_hits:
+          type: integer
+          format: int32
+          example: 2
+          description: Total hits
+        total_pages:
+          type: integer
+          format: int32
+          example: 1
+          description: Total pages
+        current_page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page
+    T001TrademarkSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T001TrademarkSearch_TrademarkSearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    T001TrademarkSearch_TrademarkSearchResponse:
+      type: object
+      properties:
+        hits:
+          type: array
+          example: 'Please check the form: TrademarkHitResponse'
+          description: hit trademark data
+          items:
+            $ref: '#/components/schemas/T001TrademarkSearch_TrademarkHitResponse'
+        page_size:
+          type: integer
+          format: int32
+          example: 2
+          description: pageSize
+        total_hits:
+          type: integer
+          format: int32
+          example: 5887
+          description: total hits count
+        total_pages:
+          type: integer
+          format: int32
+          example: 2944
+          description: total pages count
+        current_page:
+          type: integer
+          format: int32
+          example: 1
+          description: current page
+    T002TrademarkImageSearch_TrademarkImageHitResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: US_88781482
+          description: Unique ID of the record
+        'no':
+          type: integer
+          format: int32
+          example: 1
+          description: Record number
+        image:
+          type: string
+          example: http://tm.tiancaiceo.cn/US/2020/02/04/88781482/88781482.jpg
+          description: Trademark image URL
+        score:
+          type: number
+          format: double
+          example: 0.9956
+          description: Similarity score
+        app_num:
+          type: string
+          example: 88781482
+          description: Application number
+        ipoffice:
+          type: string
+          example: US
+          description: IP Office (country code)
+        nice_code:
+          type: array
+          example:
+          - '042'
+          description: Nice Classification codes
+        offical_page:
+          type: string
+          example: https://tsdr.uspto.gov/#caseNumber=88781482
+          description: Official page URL
+    T010DataDetail_AssigneeResponse:
+      type: object
+      properties:
+        city:
+          type: string
+          example: N. HOLLYWOOD
+          description: City
+        state:
+          type: string
+          example: CALIFORNIA
+          description: State
+        address1:
+          type: string
+          example: 13151 SHERMAN WAY, UNIT F
+          description: Address 1
+        address2:
+          type: string
+          example: C/O BAKER BOYSDISTRIBUTION
+          description: Address 2
+        postcode:
+          type: string
+          example: 91605
+          description: Postal Code
+        nationality:
+          type: string
+          example: CALIFORNIA
+          description: Nationality
+        country_code:
+          type: string
+          example: '-'
+          description: Country Code
+        country_name:
+          type: string
+          example: '-'
+          description: Country
+        dba_statement:
+          type: string
+          example: '-'
+          description: The current name used by the assignee, with appropriate initial abbreviations (dba, aka, ta) preceding it.
+        state_organized:
+          type: string
+          example: '-'
+          description: State of Organization
+        entity_statement:
+          type: string
+          example: '-'
+          description: Entity Statement
+        legal_entity_text:
+          type: string
+          example: LIMITED LIABILITY COMPANY
+          description: Legal Entity Status
+        formerly_statement:
+          type: string
+          example: '-'
+          description: Assignee Formerly Name
+        composed_of_statement:
+          type: string
+          example: '-'
+          description: Composed of Statement
+        legal_entity_type_code:
+          type: string
+          example: '-'
+          description: Legal Entity Type Code
+        person_organization_name:
+          type: string
+          example: SHAKE JUNT LLC
+          description: Assignee Name
+    T010DataDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T010DataDetail_TrademarkDetailResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

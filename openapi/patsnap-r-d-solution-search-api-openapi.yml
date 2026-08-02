@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation R&D solution search API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: R&D solution search
+  description: R&D solution search APIs.
+paths:
+  /method-services/solution-search:
+    post:
+      operationId: methodServicesSolutionSearch
+      summary: Solution Search
+      description: Search related cases from the solution library based on the user question.
+      tags:
+      - R&D solution search
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful solution search response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodServicesSolutionSearchResponse'
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/method-services/solution-search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MethodServicesSolutionSearchRequest'
+components:
+  schemas:
+    MethodServicesSolutionSearchRequest:
+      type: object
+      properties:
+        user_question:
+          type: string
+          example: <cn>蒸箱烹饪过程中冷凝水因表面张力难以流入排水孔，如何提高排水效率并避免堵塞？</cn><us>How to improve drainage efficiency?</us>
+          description: User question describing the technical problem to solve
+        limit:
+          type: integer
+          example: '5'
+          description: Max number of cases returned, default 20, max 100
+      required:
+      - user_question
+    MethodServicesSolutionSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MethodServicesSolutionSearch_SolutionSearchResult'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    MethodServicesSolutionSearch_SolutionSearchResult:
+      type: object
+      properties:
+        cases:
+          type: array
+          example: <cn>[{"case_id":"84ad176f-9403-40fb-bf26-819f8573c266","problem_summary":"在蒸箱烹饪过程中，冷凝水由于水的表面张力作用难以流入排水孔。","effect_summary":"有效解决了冷凝水积聚和细菌滋生问题。","innovation_summary":"设计了一种排水组件，包括板体和至少一个引流板。","triz_technical_contradiction":[],"triz_svop":[],"triz_scientific_effects":[]}]</cn><us>[{"case_id":"84ad176f-9403-40fb-bf26-819f8573c266","problem_summary":"...","effect_summary":"...","innovation_summary":"...","triz_technical_contradiction":[],"triz_svop":[],"triz_scientific_effects":[]}]</us>
+          description: Case list
+          items:
+            $ref: '#/components/schemas/MethodServicesSolutionSearch_SolutionCaseModel'
+        total:
+          type: integer
+          example: '1'
+          description: Total number of cases
+    MethodServicesSolutionSearch_SolutionCaseModel:
+      type: object
+      properties:
+        case_id:
+          type: string
+          example: 84ad176f-9403-40fb-bf26-819f8573c266
+          description: Case Id
+        triz_svop:
+          type: array
+          example: <cn>[{"P":[{"standard":"表面积","raw":"接触面积"}],"S":{"instance":"引流板","hypernym":"导流部件"},"V":{"standard":"去除","raw":"减少接触面积"},"O":{"instance":"冷凝水与板体的接触面积","hypernym":"接触界面"}}]</cn><us>[{"P":[{"standard":"area","raw":"contact area"}],"S":{"instance":"guide plate","hypernym":"diversion part"},"V":{"standard":"remove","raw":"reduce contact area"},"O":{"instance":"contact area","hypernym":"interface"}}]</us>
+          description: Triz Svop
+        effect_summary:
+          type: string
+          example: <cn>有效解决了冷凝水积聚和细菌滋生问题。</cn><us>Effectively solves condensate accumulation.</us>
+          description: Effect Summary
+        problem_summary:
+          type: string
+          example: <cn>在蒸箱烹饪过程中，冷凝水由于水的表面张力作用难以流入排水孔。</cn><us>Condensate is hard to drain due to surface tension.</us>
+          description: Problem Summary
+        innovation_summary:
+          type: string
+          example: <cn>设计了一种排水组件，包括板体和至少一个引流板。</cn><us>A drainage component with a guide plate.</us>
+          description: Innovation Summary
+        triz_scientific_effects:
+          type: array
+          example: <cn>[{"scientific_effects":[{"how_to_solve":"由于水的张力作用，冷凝水会覆盖在排水孔上方而难以流入排水孔","oxford_scientific_effect":"表面张力","scientific_effect":"表面张力"}],"oxford_function":"移动液体","function":"引流板减少冷凝水与板体的接触面积，破坏水的表面张力作用"}]</cn><us>[{"scientific_effects":[{"how_to_solve":"...","oxford_scientific_effect":"surface tension","scientific_effect":"surface tension"}],"oxford_function":"move liquid","function":"..."}]</us>
+          description: Triz Scientific Effects
+        triz_technical_contradiction:
+          type: array
+          example: <cn>[{"contradiction_statement":"如果设置孔径较小的排水孔以避免食物残渣堵塞，那么排水通道的可靠性得到改善，但是冷凝水会覆盖在排水孔上方而难以流入","invention_principles_applied":[{"how_to_solve":"在排水孔处设置引流板作为中介物","principle_id":"24","principle_name":"中介物"}],"improving_feature":{"specific_parameter":"排水通道防堵塞可靠性","parameter_name":"可靠性","parameter_id":"27"},"worsening_feature":{"specific_parameter":"冷凝水排水效率","parameter_name":"生产率","parameter_id":"39"}}]</cn><us>[{"contradiction_statement":"...","invention_principles_applied":[{"how_to_solve":"...","principle_id":"24","principle_name":"intermediary"}]}]</us>
+          description: Triz Technical Contradiction
+      required:
+      - case_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

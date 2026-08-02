@@ -1,0 +1,1372 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Patent Valuation Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Patent Valuation Data
+  description: Patent Valuation Data APIs.
+paths:
+  /patent-valuation-data/economic_indicators:
+    get:
+      operationId: p040PatentValuationDataEconomicIndicators
+      summary: P040 Economic Indicators
+      description: Receive patent economic valuation score data by patent_id or patent_number. This includes the patent increment ratio of IPC class and IPC main group in the last 5 years, and the family stability trend.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p040 economic indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P040PatentValuationDataEconomicIndicatorsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/economic_indicators
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: c3efa1e6-a2c3-4502-b5e7-97fcf570cfd3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US5012236A
+          description: patent_number
+  /patent-valuation-data/legal_indicators:
+    get:
+      operationId: p037PatentValuationDataLegalIndicators
+      summary: P037 Legal Indicators
+      description: Receive patent legal valuation score data by patent_id or patent_number. This includes litigation Authority, litigation count, re-examination or invalidation activity, legal status, patent age, remaining life of the patent, and pending time.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p037 legal indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P037PatentValuationDataLegalIndicatorsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/legal_indicators
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: c3efa1e6-a2c3-4502-b5e7-97fcf570cfd3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US5012236A
+          description: patent_number
+  /patent-valuation-data/market_indicators:
+    get:
+      operationId: p038PatentValuationDataMarketIndicators
+      summary: P038 Market Indicators
+      description: Receive patent market valuation score data by patent_id or patent_number. This includes patent type, family size, family authority count, patent cites count, examiner cites count, and reference cites count.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p038 market indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P038PatentValuationDataMarketIndicatorsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/market_indicators
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: c3efa1e6-a2c3-4502-b5e7-97fcf570cfd3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US5012236A
+          description: patent_number
+  /patent-valuation-data/patent_valuation:
+    get:
+      operationId: p035PatentValuationDataPatentValuation
+      summary: P035 Patent Valuation
+      description: Receive patent valuation data by patent_id or patent_number. The coverage of patent valuation is global invention patents and utility model patents whose legal status is pending/active (except WO patents). Patent valuation are updated quarterly. This includes patent valuation (US dollar unit), technology value score, strategic value score, market value score, economic value score, and legal value score (scores are out of 100).
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p035 patent valuation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P035PatentValuationDataPatentValuationResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/patent_valuation
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: 92ccf76a-a718-47e9-8cd6-6c5c9df19ae3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: JP6012277B2
+          description: patent_number
+  /patent-valuation-data/patent_ability:
+    post:
+      operationId: p051PatentValuationDataPatentAbility
+      summary: P051 Pre-patent Evaluation - Patentability
+      description: Receive technology patentability indicators by similar patents list. there include the number of multi-claim patents, the number of patent with re-examination/invalidation, the average validity duration and the granted ratio
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p051 pre-patent evaluation - patentability response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P051PatentValuationDataPatentAbilityResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/patent_ability
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P051PatentValuationDataPatentAbilityRequest'
+  /patent-valuation-data/strategic_indicators:
+    get:
+      operationId: p039PatentValuationDataStrategicIndicators
+      summary: P039 Strategic Indicators
+      description: Receive patent strategic valuation score by patent_id or patent_number. This includes original applicant count, current assignee count, current company assignee ratio, assignee market sales, assignee market competition, assignee market share, inventor count, transfer count, pledge count, and license count.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p039 strategic indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P039PatentValuationDataStrategicIndicatorsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/strategic_indicators
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: c3efa1e6-a2c3-4502-b5e7-97fcf570cfd3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US5012236A
+          description: patent_number
+  /patent-valuation-data/technology_indicators:
+    get:
+      operationId: p036PatentValuationDataTechnologyIndicators
+      summary: P036 Technology Indicators
+      description: Receive patent technology valuation score data by patent_id or patent_number. This includes cited-by count, self citation count, examiner citation categories, claim count, independent claim count, PDF page count, IPC classification count, IPC section count, and IPC main group count.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p036 technology indicators response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P036PatentValuationDataTechnologyIndicatorsResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/technology_indicators
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: c3efa1e6-a2c3-4502-b5e7-97fcf570cfd3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US5012236A
+          description: patent_number
+  /patent-valuation-data/operation_situation:
+    post:
+      operationId: p053PatentValuationDataOperationSituation
+      summary: P053 Pre-patent Evaluation - Operation Situation
+      description: Receive technology operation situation indicators by similar patents list. there include the number of operated patents, inactive patents and invalid patents and multiple country coverage.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p053 pre-patent evaluation - operation situation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P053PatentValuationDataOperationSituationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/operation_situation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P053PatentValuationDataOperationSituationRequest'
+  /patent-valuation-data/tech_innovation:
+    post:
+      operationId: p050PatentValuationDataTechInnovation
+      summary: P050 Pre-patent Evaluation - Technological Innovation
+      description: Receive technical innovation indicators by similar patents list. there include the number of highly similar patents and the number of highly cited patents in the same family.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p050 pre-patent evaluation - technological innovation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P050PatentValuationDataTechInnovationResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/tech_innovation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P050PatentValuationDataTechInnovationRequest'
+  /patent-valuation-data/market_prospect:
+    post:
+      operationId: p052PatentValuationDataMarketProspect
+      summary: P052 Pre-patent Evaluation - Market Prospect
+      description: Receive technology market prospect indicators by similar patents list. there include the highest patent value、industry development、tech application width and the number of original assignee.
+      tags:
+      - Patent Valuation Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p052 pre-patent evaluation - market prospect response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P052PatentValuationDataMarketProspectResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/patent-valuation-data/market_prospect
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P052PatentValuationDataMarketProspectRequest'
+components:
+  schemas:
+    P052PatentValuationDataMarketProspect_TechPatentInfo:
+      type: object
+      properties:
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+      required:
+      - patent_id
+      - pn
+    P039PatentValuationDataStrategicIndicators_PatentStrategicValueResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_strategic_value:
+          $ref: '#/components/schemas/P039PatentValuationDataStrategicIndicators_StrategicValue'
+    P037PatentValuationDataLegalIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P037PatentValuationDataLegalIndicators_PatentLegalValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P035PatentValuationDataPatentValuation_PatentValuationResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_patent_valuation:
+          $ref: '#/components/schemas/P035PatentValuationDataPatentValuation_PatsnapPatentValuationData'
+    P052PatentValuationDataMarketProspect_PatentInfoMarket:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        value:
+          type: integer
+          format: int32
+          example: 43000
+          description: patent valuation
+        ipc_cnt:
+          type: integer
+          format: int32
+          example: 5
+          description: patent IPC count
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        original_assignee_cnt:
+          type: integer
+          format: int32
+          example: 1
+          description: patent original assignee count
+      required:
+      - pn
+      - patent_id
+    P053PatentValuationDataOperationSituation_TechPatentInfo:
+      type: object
+      properties:
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+      required:
+      - patent_id
+      - pn
+    P039PatentValuationDataStrategicIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P039PatentValuationDataStrategicIndicators_PatentStrategicValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P051PatentValuationDataPatentAbilityRequest:
+      type: object
+      properties:
+        patent_info:
+          type: array
+          example:
+          - pn: CN113556455A
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            relevancy: 74%
+          - pn: CN111634234A
+            patent_id: 0e70c3f3-644d-4f65-abad-ad5630911dde
+            relevancy: 73%
+          description: <p>List of similar patent information, up to 100 similar patents are supported for indicator calculation.</p><p>Note:</p><p>    1. patent_id and pn must have one, if both exist, the patent patent_id will be used first</p><p>    2. patent_id or pn must be the patent ID and publication number in Patsnap database</p>
+          items:
+            $ref: '#/components/schemas/P051PatentValuationDataPatentAbility_TechPatentInfo'
+        claim_cnt_threshold:
+          type: integer
+          format: int32
+          example: 10
+          description: claims count threshold, for multiple_claims_patent_count (default 10)
+      required:
+      - patent_info
+    P052PatentValuationDataMarketProspect_PatentMarketResponse:
+      type: object
+      properties:
+        indicators:
+          $ref: '#/components/schemas/P052PatentValuationDataMarketProspect_IndicatorsMarket'
+        patent_info:
+          type: array
+          example: 'Please check the form: Patent_info'
+          description: Patent information
+          items:
+            $ref: '#/components/schemas/P052PatentValuationDataMarketProspect_PatentInfoMarket'
+    P050PatentValuationDataTechInnovation_TechInnovationIndicators:
+      type: object
+      properties:
+        invention_ratio:
+          type: number
+          format: double
+          example: 0.8
+          description: Proportion of invention patents in similar patents
+        high_simple_family_cited_by:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents whose number of simple family cited by reached the threshold
+        high_similarity_patent_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents whose relevancy reached the relevancy thresholdt
+      required:
+      - invention_ratio
+      - high_simple_family_cited_by
+      - high_similarity_patent_count
+    P050PatentValuationDataTechInnovationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P050PatentValuationDataTechInnovation_PatentTechInnovationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P036PatentValuationDataTechnologyIndicators_PatentTechnologyValueResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_technology_value:
+          $ref: '#/components/schemas/P036PatentValuationDataTechnologyIndicators_TechnologyValue'
+    P038PatentValuationDataMarketIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P038PatentValuationDataMarketIndicators_PatentMarketValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P039PatentValuationDataStrategicIndicators_StrategicValue:
+      type: object
+      properties:
+        pledge_no:
+          type: integer
+          format: int32
+          example: 4
+          description: Pledge count
+        license_no:
+          type: integer
+          format: int32
+          example: 1
+          description: License count
+        inventor_no:
+          type: integer
+          format: int32
+          example: 5
+          description: Inventor count
+        transfer_no:
+          type: integer
+          format: int32
+          example: 2
+          description: Transfer count
+        market_share:
+          type: number
+          format: double
+          example: 2.05
+          description: Assignee market share
+        market_sales_usd:
+          type: number
+          format: double
+          example: 3874.66
+          description: Assignee market sales
+        market_competition:
+          type: number
+          format: double
+          example: 85849.5
+          description: Assignee market competition
+        current_assignee_no:
+          type: number
+          format: double
+          example: 1
+          description: Current assignee count
+        original_applicant_no:
+          type: number
+          format: double
+          example: 2
+          description: Original applicant count
+        current_company_assignee_ratio:
+          type: number
+          format: double
+          example: 1
+          description: Current company assignee ratio
+    P053PatentValuationDataOperationSituationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P053PatentValuationDataOperationSituation_PatentOperationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P040PatentValuationDataEconomicIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P040PatentValuationDataEconomicIndicators_PatentEconomyValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P040PatentValuationDataEconomicIndicators_EconomyValue:
+      type: object
+      properties:
+        ipc_class_5y_incr:
+          type: number
+          format: double
+          example: 0.6249
+          description: Patent increment ratio of IPC class in last 5 years
+        family_trend_stability:
+          type: number
+          format: double
+          example: 0.22
+          description: Family stability trend
+        ipc_main_group_5y_incr:
+          type: number
+          format: double
+          example: 0.467
+          description: Patent increment ratio of IPC main-group in last 5 years
+    P050PatentValuationDataTechInnovation_PatentTechInnovationResponse:
+      type: object
+      properties:
+        indicators:
+          $ref: '#/components/schemas/P050PatentValuationDataTechInnovation_TechInnovationIndicators'
+        patent_info:
+          type: array
+          example:
+          - pn: US11205304B2
+            patent_id: 718ead9c-4f3c-4674-8f5a-24e126827269
+            relevancy: 99%
+            patent_type: USB
+            cited_by_cnt: 5
+          - pn: CN113556455A
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            relevancy: 80%
+            patent_type: CNA
+            cited_by_cnt: 3
+          description: Patent information
+      required:
+      - patent_info
+    P053PatentValuationDataOperationSituationRequest:
+      type: object
+      properties:
+        family_threshold:
+          type: integer
+          format: int32
+          example: 2
+          description: simple family countries coverage threshold, for multiple_country_coverage (default 2)
+        patent_info:
+          type: array
+          example:
+          - pn: CN113556455A
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            relevancy: 74%
+          - pn: CN111634234A
+            patent_id: 0e70c3f3-644d-4f65-abad-ad5630911dde
+            relevancy: 73%
+          description: <p>List of similar patent information, up to 100 similar patents are supported for indicator calculation.</p><p>Note:</p><p>1. patent_id and pn must have one, if both exist, the patent patent_id will be used first</p><p>2. patent_id or pn must be the patent ID and publication number in Patsnap database</p>
+          items:
+            $ref: '#/components/schemas/P053PatentValuationDataOperationSituation_TechPatentInfo'
+      required:
+      - patent_info
+    P038PatentValuationDataMarketIndicators_PatentMarketValueResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_market_value:
+          $ref: '#/components/schemas/P038PatentValuationDataMarketIndicators_MarketValue'
+    P035PatentValuationDataPatentValuation_PatsnapPatentValuationData:
+      type: object
+      properties:
+        patent_value:
+          type: integer
+          format: int32
+          example: 43000
+          description: Patsnap patent valuation (USD)
+        patsnap_legal:
+          type: integer
+          format: int32
+          example: 71
+          description: Legal value
+        patsnap_market:
+          type: integer
+          format: int32
+          example: 18
+          description: Market value
+        patsnap_economy:
+          type: integer
+          format: int32
+          example: 23
+          description: Economic value
+        patsnap_strategic:
+          type: integer
+          format: int32
+          example: 71
+          description: Strategic value
+        patsnap_technology:
+          type: integer
+          format: int32
+          example: 28
+          description: Technology value
+    P051PatentValuationDataPatentAbility_TechPatentInfo:
+      type: object
+      properties:
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+      required:
+      - patent_id
+      - pn
+    P040PatentValuationDataEconomicIndicators_PatentEconomyValueResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_economy_value:
+          $ref: '#/components/schemas/P040PatentValuationDataEconomicIndicators_EconomyValue'
+    P053PatentValuationDataOperationSituation_PatentInfoOperation:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        is_invalid:
+          type: integer
+          format: int32
+          example: 1
+          description: Whether the patent has Invalid-procedure
+        is_inactive:
+          type: integer
+          format: int32
+          example: 1
+          description: Whether the patent expires because of non-payment
+        is_operated:
+          type: integer
+          format: int32
+          example: 1
+          description: Whether the patent is transfered, licensed, or pledged
+        country_cover_cnt:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of countries covered by the simple family
+      required:
+      - pn
+      - patent_id
+    P053PatentValuationDataOperationSituation_IndicatorsOperation:
+      type: object
+      properties:
+        invalid_patent_count:
+          type: integer
+          format: int32
+          example: 5
+          description: Number of similar patents with invalid events
+        inactive_patent_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents invalidated because of non-payment
+        operated_patent_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents with transfer, license, or pledge events
+        multiple_country_coverage:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents with simple family covering multiple countries
+    P036PatentValuationDataTechnologyIndicators_TechnologyValue:
+      type: object
+      properties:
+        has_sep:
+          type: integer
+          format: int32
+          example: 1
+          description: Whether there is a SEP patent in the simple family
+        award_no:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of award in the simple family
+        claim_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Count of claim
+        cited_by_no:
+          type: integer
+          format: int32
+          example: 33
+          description: Count of cited-by patents
+        ipc_scopes_no:
+          type: integer
+          format: int32
+          example: 3
+          description: Count of different IPC classification
+        self_cites_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Count of self-citation patents
+        tech_scope_no:
+          type: integer
+          format: int32
+          example: 4
+          description: Technology Scope Count
+        pdf_total_page:
+          type: integer
+          format: int32
+          example: 17
+          description: Total pages of PDF
+        avg_sipo_ipc_tct:
+          type: number
+          format: double
+          example: 4121.829537
+          description: Technology Cycle Time
+        avg_generality_index:
+          type: number
+          format: double
+          example: 0.40625
+          description: Technology Generality Index
+        independent_claim_no:
+          type: integer
+          format: int32
+          example: 4
+          description: Count of independent claim
+        ipc_section_scopes_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Count of different IPC section
+        ipc_main_group_scopes_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Count of different IPC main group
+        examiner_citation_category:
+          type: array
+          example:
+          - A
+          - Y
+          description: Examiner citation categories
+    P052PatentValuationDataMarketProspectRequest:
+      type: object
+      properties:
+        ipc_cnt_threshold:
+          type: integer
+          format: int32
+          example: 5
+          description: IPC count threshold, for tech_application_width (default 5)
+        year_threshold:
+          type: integer
+          format: int32
+          example: 3
+          description: application year calculation scope, for industry_development (default 3)
+        patent_info:
+          type: array
+          example:
+          - pn: CN113556455A
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            relevancy: 74%
+          - pn: CN111634234A
+            patent_id: 0e70c3f3-644d-4f65-abad-ad5630911dde
+            relevancy: 73%
+          description: <p>List of similar patent information, up to 100 similar patents are supported for indicator calculation.</p><p>Note:</p><p>1. patent_id and pn must have one, if both exist, the patent patent_id will be used first</p><p>2. patent_id or pn must be the patent ID and publication number in Patsnap database</p>
+          items:
+            $ref: '#/components/schemas/P052PatentValuationDataMarketProspect_TechPatentInfo'
+      required:
+      - patent_info
+    P053PatentValuationDataOperationSituation_PatentOperationResponse:
+      type: object
+      properties:
+        indicators:
+          $ref: '#/components/schemas/P053PatentValuationDataOperationSituation_IndicatorsOperation'
+        patent_info:
+          type: array
+          example: 'Please check the form: Patent_info'
+          description: Patent information
+          items:
+            $ref: '#/components/schemas/P053PatentValuationDataOperationSituation_PatentInfoOperation'
+    P051PatentValuationDataPatentAbility_IndicatorAbility:
+      type: object
+      properties:
+        granted_ratio:
+          type: number
+          format: double
+          example: 0.65
+          description: Granted ratio of similar patents
+        patent_reexam_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents with reexamination events
+        avg_validity_duration:
+          type: number
+          format: double
+          example: 5.1
+          description: Average validity duration of similar patents
+        multiple_claims_patent_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents whose number of claims reached the threshold
+      required:
+      - granted_ratio
+      - patent_reexam_count
+      - avg_validity_duration
+      - multiple_claims_patent_count
+    P036PatentValuationDataTechnologyIndicatorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P036PatentValuationDataTechnologyIndicators_PatentTechnologyValueResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P038PatentValuationDataMarketIndicators_MarketValue:
+      type: object
+      properties:
+        cites_no:
+          type: integer
+          format: int32
+          example: 5
+          description: Patent cites count
+        family_size:
+          type: integer
+          format: int32
+          example: 2
+          description: Family size
+        patent_type:
+          type: string
+          example: PATENT
+          description: Patent type:<p>APPLICATION,PATENT,UTILITY,DESIGN</p>
+        reference_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Reference cites count
+        examiner_cites_no:
+          type: integer
+          format: int32
+          example: 3
+          description: Patent examiner cites count
+        family_covered_country_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Family covered authority count
+    P052PatentValuationDataMarketProspectResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P052PatentValuationDataMarketProspect_PatentMarketResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P052PatentValuationDataMarketProspect_IndicatorsMarket:
+      type: object
+      properties:
+        highest_patent_value:
+          type: integer
+          format: int32
+          example: 43000
+          description: Highest patent value of similar patents
+        industry_development:
+          type: array
+          example:
+          - 5
+          - 7
+          - 8
+          description: Number of patents filed in recent N years under the highest frequency IPC (N is the input parameter)
+        tech_application_width:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of similar patents whose number of IPC reached the threshold
+        original_assignee_count:
+          type: integer
+          format: int32
+          example: 30
+          description: The number of original assignees for similar patents
+    P037PatentValuationDataLegalIndicators_LegalValue:
+      type: object
+      properties:
+        granted_no:
+          type: integer
+          format: int32
+          example: 3
+          description: Family granted patent count
+        legal_status:
+          type: string
+          example: Expired
+          description: Patent legal status:<p>Published, Examining, Granted, Abandoned, Withdrawn, Expired, Non-Payment, Ceased</p>
+        litigation_no:
+          type: integer
+          format: int32
+          example: 2
+          description: Litigation count
+        patent_age_day:
+          type: integer
+          format: int32
+          example: 1923
+          description: Patent age
+        invalid_fail_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of invalid failures
+        grant_waiting_day:
+          type: integer
+          format: int32
+          example: 704
+          description: Patent pending time
+        has_reexam_invalid:
+          type: string
+          example: 'TRUE'
+          description: Whether has re-examination or invalidation activity
+        invalid_success_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of invalid successes
+        litigation_country:
+          type: array
+          example:
+          - US
+          description: Litigation Authority
+        in_application_ratio:
+          type: number
+          format: double
+          example: 0.75
+          description: Ratio of patents at the application stage in the simple family
+        remaining_time_ratio:
+          type: number
+          format: double
+          example: 0.74
+          description: Patent remaining time ratio
+        avg_originality_index:
+          type: number
+          format: double
+          example: 0.41
+          description: Tech Original Index
+    P050PatentValuationDataTechInnovationRequest:
+      type: object
+      properties:
+        patent_info:
+          type: array
+          example:
+          - pn: CN113556455A
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            relevancy: 74%
+          - pn: CN111634234A
+            patent_id: 0e70c3f3-644d-4f65-abad-ad5630911dde
+            relevancy: 73%
+          description: <p>List of similar patent information, up to 100 similar patents are supported for indicator calculation.</p><p>Note:</p><p>    1. patent_id and pn must have one, if both exist, the patent patent_id will be used first</p><p>    2. patent_id or pn must be the patent ID and publication number in Patsnap database</p>
+          items:
+            $ref: '#/components/schemas/P050PatentValuationDataTechInnovation_TechPatentInfo'
+        relevancy_threshold:
+          type: integer
+          format: int32
+          example: 95
+          description: relevancy threshold, for the high_similarity_patent_count (default 95)
+        cited_by_threshold:
+          type: integer
+          format: int32
+          example: 10
+          description: cited_by count threshold, for high_simple_family_cited_by(default 10)
+      required:
+      - patent_info
+    P051PatentValuationDataPatentAbility_PatentAbilityResponse:
+      type: object
+      properties:
+        indicators:
+          $ref: '#/components/schemas/P051PatentValuationDataPatentAbility_IndicatorAbility'
+        patent_info:
+          type: array
+          example:
+          - pn: US11205304B2
+            reexam: 1
+            claim_cnt: 10
+            patent_id: 718ead9c-4f3c-4674-8f5a-24e126827269
+            is_granted: 1
+            validity_duration: 5.1
+          - pn: CN113556455A
+            reexam: 0
+            claim_cnt: 5
+            patent_id: d827b76d-3a0e-40a5-b63d-b8a47eb8d0f6
+            is_granted: 1
+            validity_duration: 2.2
+          description: Patent information
+      required:
+      - patent_info
+    P035PatentValuationDataPatentValuationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P035PatentValuationDataPatentValuation_PatentValuationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P050PatentValuationDataTechInnovation_TechPatentInfo:
+      type: object
+      properties:
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+      required:
+      - patent_id
+      - pn
+    P051PatentValuationDataPatentAbilityResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P051PatentValuationDataPatentAbility_PatentAbilityResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P037PatentValuationDataLegalIndicators_PatentLegalValueResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_legal_value:
+          $ref: '#/components/schemas/P037PatentValuationDataLegalIndicators_LegalValue'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

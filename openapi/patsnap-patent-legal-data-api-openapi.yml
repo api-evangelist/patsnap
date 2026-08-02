@@ -1,0 +1,1871 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Patent Legal Data API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Patent Legal Data
+  description: Patent Legal Data APIs.
+paths:
+  /advanced-patent-data/sep-data:
+    get:
+      operationId: p033AdvancedPatentDataSepData
+      summary: P033 Standard Essential Patent (SEP)
+      description: Receive SEP (Standard Essential Patent) data by patent_id or patent_number. This includes data source, standard ID, version, declaration date, title, and projects.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p033 standard essential patent (sep) response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P033AdvancedPatentDataSepDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/sep-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: 7ff9d60e-2d02-4390-903b-c9e517ff3c3a
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: EP3499756A1
+          description: patent_number
+  /advanced-patent-data/customs-data:
+    get:
+      operationId: p031AdvancedPatentDataCustomsData
+      summary: P031 Customs record
+      description: Receive customs data by patent_id or patent_number. This includes record number, record status, start date, end date, approval/opinion, product, and contact.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p031 customs record response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P031AdvancedPatentDataCustomsDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/customs-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: 9ffcdcd7-e6f1-4e22-9c93-e3c3eafe0cad
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: JP4627367B2
+          description: patent_number
+  /advanced-patent-data/status-of-unified-patent-court:
+    get:
+      operationId: p046AdvancedPatentDataStatusOfUnifiedPatentCourt
+      summary: P046 Status of Unified Patent Court
+      description: Receive Status of Unified Patent Court data by patent_id or patent_number.This data includes Opt-out not registered,Opt-out registered,,Withdrawal after opt-out,Positive decision after unitary effect request. For more details please view the full list of fields in the developer document.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p046 status of unified patent court response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P046AdvancedPatentDataStatusOfUnifiedPatentCourtResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/status-of-unified-patent-court
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: e377acae-0f6b-4663-99aa-6cdf2bce7ed5
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: EP4267532A1
+          description: patent_number
+  /advanced-patent-data/legal-data:
+    get:
+      operationId: p026AdvancedPatentDataLegalData
+      summary: P026 Legal Information
+      description: Receive detailed legal data by patent_id or patent_number. Detailed legal data includes INPADOC legal data (PRS code, PRS code description, PRS date, Ref. Authority code) and official legal data (date, event number, event code, legal status)
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p026 legal information response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P026AdvancedPatentDataLegalDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/legal-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: f29d14f9-a9b3-4df5-8fff-e0d04abe0c1e
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: BR112020016218A2
+          description: patent_number
+  /advanced-patent-data/pledge-data:
+    get:
+      operationId: p030AdvancedPatentDataPledgeData
+      summary: P030 Pledge
+      description: Receive pledge data by patent_id or patent_number. This includes pledge contract number, effective date, pledgee, pledger, and pledge type.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p030 pledge response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P030AdvancedPatentDataPledgeDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/pledge-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: a6a372dc-2b2c-476b-b1e4-78fab3dce33a
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US11379121B2
+          description: patent_number
+  /fee/get_fee:
+    post:
+      operationId: p047FeeGetFee
+      summary: P047 Receive Patent Fee Data
+      description: Receiving patent fee data by ticket_id
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p047 receive patent fee data response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P047FeeGetFeeResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/fee/get_fee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P047FeeGetFeeRequest'
+  /advanced-patent-data/award-data:
+    get:
+      operationId: p032AdvancedPatentDataAwardData
+      summary: P032 Award
+      description: Receive award data by patent_id or patent_number. This includes award name, level, session, referrer, and type.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p032 award response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P032AdvancedPatentDataAwardDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/award-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: 233e60d4-b483-4c38-8fd7-c344d6fd44f3
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: EP2170021B1
+          description: patent_number
+  /advanced-patent-data/license-data:
+    get:
+      operationId: p028AdvancedPatentDataLicenseData
+      summary: P028 License
+      description: Receive license data by patent_id or patent_number. This includes license contract number, licensor, licensee, license type, and license effective date.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p028 license response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P028AdvancedPatentDataLicenseDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/license-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: d4c53e0c-fb6e-4ff9-998b-0e473d988809
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US10874334B1
+          description: patent_number
+  /advanced-patent-data/transfer-data:
+    get:
+      operationId: p029AdvancedPatentDataTransferData
+      summary: P029 Transfer
+      description: Receive transfer data by patent_id or patent_number. This includes the transfer before assignee, transfer after assignee, and the effective date.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p029 transfer response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P029AdvancedPatentDataTransferDataResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/transfer-data
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: f9ae4fb6-7132-4e99-b8e2-39de8917b4d9
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: US10763777B2
+          description: patent_number
+  /high-value-data/litigation:
+    get:
+      operationId: p034HighValueDataLitigation
+      summary: P034 Litigation
+      description: Receive litigation data by patent_id or patent_number. This includes litigation title, case number, filing date, verdict date, court, case region, plaintiff, defendant, chief judge and judge.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p034 litigation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P034HighValueDataLitigationResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/high-value-data/litigation
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: 20863318-e1b4-4eb7-b021-4ea3fc11c078,0f39bff1-f09e-4d82-adf4-d284c2dfa5a2
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: CN1394453A
+          description: patent_number
+  /fee/apno_input:
+    post:
+      operationId: p047FeeApnoInput
+      summary: P047 Create Patent Fee Task
+      description: Support input multiple patent application number, create patent fee acquisition task, return ticket_id. Based on this ticket_id, the patent fee data can be obtained from the "[P047]Receive Patent Fee Data" API
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p047 create patent fee task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P047FeeApnoInputResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/fee/apno_input
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P047FeeApnoInputRequest'
+  /advanced-patent-data/overseas-patent-documents:
+    post:
+      operationId: p048AdvancedPatentDataOverseasPatentDocuments
+      summary: P048 Overseas Patent Examination Documents
+      description: Query the examination file information of overseas patents by entering patent_id or patent_number. This interface does not support querying Chinese patents temporarily
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p048 overseas patent examination documents response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P048AdvancedPatentDataOverseasPatentDocumentsResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/overseas-patent-documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P048AdvancedPatentDataOverseasPatentDocumentsRequest'
+  /advanced-patent-data/re-examination-and-invalidation:
+    get:
+      operationId: p027AdvancedPatentDataReExaminationAndInvalidation
+      summary: P027 Re-examination and Invalidation
+      description: Receive re-examination and invalidation data by patent_id or patent_number. This includes re-examination applicant, invalidation applicant, case type, decision number, decision date, and legal ground.
+      tags:
+      - Patent Legal Data
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful p027 re-examination and invalidation response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P027AdvancedPatentDataReExaminationAndInvalidationResponse'
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/advanced-patent-data/re-examination-and-invalidation
+      parameters:
+      - name: patent_id
+        in: query
+        required: false
+        description: patent_id
+        schema:
+          type: string
+          example: acc632c2-ce53-4055-bac6-df3050c3ade4
+          description: patent_id
+      - name: patent_number
+        in: query
+        required: false
+        description: patent_number
+        schema:
+          type: string
+          example: EP2138001A1
+          description: patent_number
+components:
+  schemas:
+    P031AdvancedPatentDataCustomsData_PatentCustomsDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_customs_record_data:
+          type: array
+          example: 'Please check the form: PatentCustomsRecordData'
+          description: customs data
+          items:
+            $ref: '#/components/schemas/P031AdvancedPatentDataCustomsData_PatentCustomsRecordData'
+    P026AdvancedPatentDataLegalData_PatsnapLegalData:
+      type: object
+      properties:
+        inpadoc_legal_data:
+          type: array
+          example: 'Please check the form: InpadocLegalData'
+          description: inpadoc Legal Data
+          items:
+            $ref: '#/components/schemas/P026AdvancedPatentDataLegalData_InpadocLegalData'
+        official_legal_data:
+          type: array
+          example: 'Please check the form: OfficialLegalData'
+          description: official Legal Data
+          items:
+            $ref: '#/components/schemas/P026AdvancedPatentDataLegalData_OfficialLegalData'
+    P026AdvancedPatentDataLegalDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P026AdvancedPatentDataLegalData_PatentLegalDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P047FeeGetFee_Patent_maintenance_fee_cnModel:
+      type: object
+      properties:
+        apno:
+          type: string
+          example: CN201680038597.6
+          description: application number
+        chongh:
+          type: array
+          example: 'Please check the form: Fee_chonghField'
+          description: chonghong information
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_Fee_chonghField'
+        refund:
+          type: array
+          example: 'Please check the form: RefundField'
+          description: Refund Information
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_RefundField'
+        paid_fee:
+          type: array
+          example: 'Please check the form: Paid_feeField'
+          description: Information of Paid Fee
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_Paid_feeField'
+        update_ts:
+          type: integer
+          format: int64
+          example: 1695093322836
+          description: update time
+        fee_to_pay:
+          type: array
+          example: 'Please check the form: Fee_to_payField'
+          description: Information of Fee to pay
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_Fee_to_payField'
+        legal_status:
+          type: string
+          example: 等年费滞纳金
+          description: legal status
+        overdue_fine:
+          type: array
+          example: 'Please check the form: Overdue_fineField'
+          description: overdue fine information
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_Overdue_fineField'
+        receipt_information:
+          type: array
+          example: 'Please check the form: ReceiptInfo'
+          description: Receipt dispath information
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_ReceiptInfo'
+        patent_maintenance_fee_cn_id:
+          type: string
+          example: 82c5ad4f-2f59-11ed-b2e9-e454e89e8034
+          description: fee id
+    P026AdvancedPatentDataLegalData_PatentLegalDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_legal_data:
+          $ref: '#/components/schemas/P026AdvancedPatentDataLegalData_PatsnapLegalData'
+    P029AdvancedPatentDataTransferData_PersonBaseDoc:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: EMC IP HOLDING COMPANY LLC
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+    P028AdvancedPatentDataLicenseData_PatentLicenseData:
+      type: object
+      properties:
+        country:
+          type: string
+          example: US
+          description: Authority code
+        licensees:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: licensees
+          items:
+            $ref: '#/components/schemas/P028AdvancedPatentDataLicenseData_PersonBaseDoc'
+        licensors:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: licensors
+          items:
+            $ref: '#/components/schemas/P028AdvancedPatentDataLicenseData_PersonBaseDoc'
+        license_type:
+          type: array
+          example:
+          - Exclusive
+          description: License type
+        contract_type:
+          type: string
+          example: 生效
+          description: contract type
+        effective_date:
+          type: integer
+          format: int64
+          example: 20100915
+          description: License effective date
+        contract_number:
+          type: string
+          example: '2010370000340'
+          description: License contract number, only some jurisdictions have this field, such as CN
+    P047FeeApnoInputResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P047FeeApnoInput_TicketResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P034HighValueDataLitigationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P034HighValueDataLitigation_LitigationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P047FeeGetFee_FeeOutputInfos:
+      type: object
+      properties:
+        apno:
+          type: string
+          example: CN201610244038.2
+          description: application number
+        data:
+          $ref: '#/components/schemas/P047FeeGetFee_Patent_maintenance_fee_cnModel'
+        apno_status:
+          type: string
+          example: 成功
+          description: 'sync status:
+
+
+            Success
+
+            No fee fata
+
+            Data is synchronizing, please try again later
+
+            Error application number'
+    P028AdvancedPatentDataLicenseData_PatentLicenseDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US10874334B1
+          description: patent number
+        patent_id:
+          type: string
+          example: d4c53e0c-fb6e-4ff9-998b-0e473d988809
+          description: patent id
+        patent_license_data:
+          type: array
+          example: 'Please check the form: PatentLicenseData'
+          description: patent license data
+          items:
+            $ref: '#/components/schemas/P028AdvancedPatentDataLicenseData_PatentLicenseData'
+    P031AdvancedPatentDataCustomsData_PatentCustomsRecordData:
+      type: object
+      properties:
+        contact:
+          type: string
+          example: 原田雅章知財事務所
+          description: Contact
+        country:
+          type: string
+          example: JP
+          description: Authority code
+        product:
+          type: string
+          example: 電荷制御剤
+          description: product
+        end_date:
+          type: integer
+          format: int64
+          example: 20201119
+          description: Record end date
+        start_date:
+          type: integer
+          format: int64
+          example: 20150902
+          description: Record start date
+        record_number:
+          type: string
+          example: P4627367-20150902-20201119
+          description: Record number
+        record_status:
+          type: string
+          example: 生效
+          description: Record status
+        approval_opinion:
+          type: string
+          example: 已审批、核准
+          description: Approval opinion
+    P029AdvancedPatentDataTransferData_PersonBaseDocTransfer:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: EMC IP HOLDING COMPANY LLC
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+        effective_date_us:
+          type: integer
+          format: int64
+          example: 20200323
+          description: Transfer effective date of US
+    P027AdvancedPatentDataReExaminationAndInvalidation_PatentReexamInvalidResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        lang:
+          type: string
+          example: CN
+          description: lang
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_reexam_invalid_data:
+          type: array
+          example: 'Please check the form: PatentReexamInvalidData'
+          description: patent re-examination and invalidation
+          items:
+            $ref: '#/components/schemas/P027AdvancedPatentDataReExaminationAndInvalidation_PatentReexamInvalidData'
+    P047FeeGetFee_ReceiptInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          example: 发明专利年费滞纳金
+          description: Type of Receipt
+        payer:
+          type: string
+          example: TCL集团股份有限公司技术中心
+          description: name of payer
+        amount:
+          type: number
+          format: double
+          example: 100
+          description: amout of fee
+        mailed:
+          type: string
+          example: 是
+          description: is mailed
+        pay_date:
+          type: integer
+          format: int64
+          example: 20191127
+          description: Date of Fee
+        issue_date:
+          type: integer
+          format: int64
+          example: 20191127
+          description: Date of issue
+        remit_date:
+          type: integer
+          format: int64
+          example: 20191127
+          description: date of remit
+        refund_date:
+          type: integer
+          format: int64
+          example: 20191127
+          description: date of refund
+        receipt_title:
+          type: string
+          example: 收据抬头
+          description: title of receipt
+        receipt_number:
+          type: string
+          example: 1910295808
+          description: receipt number
+        mailing_address:
+          type: string
+          example: XXX@mail.com
+          description: address
+        tracking_number:
+          type: string
+          example: 5012312312312
+          description: number of track
+    P047FeeGetFee_Overdue_fineField:
+      type: object
+      properties:
+        sum:
+          type: number
+          format: double
+          example: 5000
+          description: Sum
+        end_date:
+          type: integer
+          format: int64
+          example: 20230410
+          description: End Date of Payment
+        start_date:
+          type: integer
+          format: int64
+          example: 20221111
+          description: Start Date of Payment
+        late_payment_fee:
+          type: number
+          format: double
+          example: 1000
+          description: Amount of late payment fee payable
+        annual_fee_amount:
+          type: number
+          format: double
+          example: 4000
+          description: Current annual fee amount
+    P030AdvancedPatentDataPledgeData_PatentPledgeData:
+      type: object
+      properties:
+        country:
+          type: string
+          example: US
+          description: Authority code
+        pledgees:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: pledgees
+          items:
+            $ref: '#/components/schemas/P030AdvancedPatentDataPledgeData_PersonBaseDoc'
+        pledgors:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: pledgors
+          items:
+            $ref: '#/components/schemas/P030AdvancedPatentDataPledgeData_PersonBaseDocPledge'
+        reel_frame:
+          type: string
+          example: 060332/0740
+          description: Pledge contract number
+        pledge_type:
+          type: string
+          example: RELEASE OF SECURITY INTEREST IN PATENTS PREVIOUSLY RECORDED AT REEL/FRAME (054475/0434)
+          description: Pledge type
+        effective_date:
+          type: integer
+          format: int64
+          example: 20220610
+          description: Pledge effective date
+    P047FeeGetFeeRequest:
+      type: object
+      properties:
+        ticket:
+          type: string
+          example: 3fafc688-4977-4194-aa5d-880dacd3ba8b
+          description: Enter the ticket
+      required:
+      - ticket
+    P029AdvancedPatentDataTransferDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P029AdvancedPatentDataTransferData_PatentTransferDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P027AdvancedPatentDataReExaminationAndInvalidation_Applicant:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Roku, Inc.
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+    P027AdvancedPatentDataReExaminationAndInvalidationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P027AdvancedPatentDataReExaminationAndInvalidation_PatentReexamInvalidResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P030AdvancedPatentDataPledgeData_PersonBaseDoc:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: EMC IP HOLDING COMPANY LLC
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+    P047FeeGetFeeResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P047FeeGetFee_FeeAsyncInfosOuputResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P030AdvancedPatentDataPledgeDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P030AdvancedPatentDataPledgeData_PatentPledgeDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P048AdvancedPatentDataOverseasPatentDocumentsRequest:
+      type: object
+      properties:
+        apno:
+          type: string
+          example: US14/706838
+          description: application number
+        date_from:
+          type: integer
+          format: int32
+          example: 20250101
+          description: File Send/Receive Date Start Time
+        date_to:
+          type: integer
+          format: int32
+          example: 20250101
+          description: File Send/Receive Date End Time
+        doc_code:
+          type: string
+          example: CTNF,IDS
+          description: File Type(s), supports multiple file types, separated by commas
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Return total file count
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_number:
+          type: string
+          example: US11205304B2
+          description: patent number
+    P030AdvancedPatentDataPledgeData_PatentPledgeDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_pledge_data:
+          type: array
+          example: 'Please check the form: PatentPledgeData'
+          description: pledge data
+          items:
+            $ref: '#/components/schemas/P030AdvancedPatentDataPledgeData_PatentPledgeData'
+    P028AdvancedPatentDataLicenseData_PersonBaseDoc:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: EMC IP HOLDING COMPANY LLC
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+    P034HighValueDataLitigation_LitigationPersonBaseDoc:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: language
+        name:
+          type: string
+          example: 中华人民共和国国家知识产权局
+          description: 'names: plaintiff, defendant, chief_judge, judge'
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+    P046AdvancedPatentDataStatusOfUnifiedPatentCourt_StatusOfUnifiedPatentCourtResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        upc:
+          type: string
+          example: Opt-out not registered
+          description: 'Status of unified patent court，
+
+            such as：Opt-out not registered,Opt-out registered,Positive decision after unitary effect request,Withdrawal after opt-out.'
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        opt_out_reg_date:
+          type: integer
+          format: int64
+          example: 20230517
+          description: Date of registration of the opt-out
+        opt_out_withdraw_date:
+          type: integer
+          format: int64
+          example: 20210401
+          description: Date of withdrawal of the opt-out
+    P028AdvancedPatentDataLicenseDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P028AdvancedPatentDataLicenseData_PatentLicenseDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P047FeeGetFee_RefundField:
+      type: object
+      properties:
+        payee:
+          type: string
+          example: TCL集团股份有限公司
+          description: Payee
+        fee_type:
+          type: string
+          example: 发明专利申请审查费
+          description: Type of Fee
+        refund_date:
+          type: integer
+          format: int64
+          example: 20150813
+          description: Date of Refund
+        receipt_code:
+          type: string
+          example: 100010220
+          description: Receipt code
+        refund_amount:
+          type: number
+          format: double
+          example: 2500
+          description: Refund Amount
+        receipt_number:
+          type: string
+          example: 33130256
+          description: Receipt Number
+    P026AdvancedPatentDataLegalData_OfficialLegalData:
+      type: object
+      properties:
+        event_vol:
+          type: string
+          example: '2605'
+          description: Volume number
+        event_code:
+          type: string
+          example: 1.3
+          description: Event code
+        event_date:
+          type: integer
+          format: int32
+          example: 20201208
+          description: Event date
+        event_desc:
+          type: string
+          example: Notificação - Fase Nacional - PCT
+          description: Legal status added information
+        event_others:
+          type: string
+          example: 法律状态其他信息
+          description: Legal status others information (this field only for CN jurisdictions)
+        event_legal_status:
+          type: string
+          example: 专利权的终止
+          description: Legal status (this field only for CN jurisdictions)
+    P047FeeApnoInput_TicketResponse:
+      type: object
+      properties:
+        ticket:
+          type: string
+          example: 3fafc688-4977-4194-aa5d-880dacd3ba8b
+          description: user ticket
+    P033AdvancedPatentDataSepData_PatsnapSepData:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 5G; NR; Overall description; Stage-2 (3GPP TS 38.300 version 15.2.0 Release 15)
+          description: Title
+        version:
+          type: string
+          example: 15.2.0
+          description: Standard version
+        projects:
+          type: array
+          example:
+          - 3GPP
+          - 3GPP-radio
+          - 3GPP-Release-15
+          description: Projects
+        sep_source:
+          type: string
+          example: ETSI
+          description: Standard data source
+        standard_id:
+          type: string
+          example: TS 138 300
+          description: Standard id
+        declaration_date:
+          type: integer
+          format: int32
+          example: 20180925
+          description: Declaration date
+    P034HighValueDataLitigation_LitigationResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN1394453A
+          description: patent number
+        patent_id:
+          type: string
+          example: 20863318-e1b4-4eb7-b021-4ea3fc11c078
+          description: patent id
+        patent_litigation_data:
+          type: array
+          example: 'Please check the form: PatentLitigation'
+          description: litigation data
+          items:
+            $ref: '#/components/schemas/P034HighValueDataLitigation_PatentLitigation'
+    P047FeeGetFee_FeeAsyncInfosOuputResponse:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: list size
+        ticket:
+          type: string
+          example: 3fafc688-4977-4194-aa5d-880dacd3ba8b
+          description: user ticket
+        fee_infos_list:
+          type: array
+          example: 'Please check the form: FeeOutputInfos'
+          description: application details
+          items:
+            $ref: '#/components/schemas/P047FeeGetFee_FeeOutputInfos'
+    P031AdvancedPatentDataCustomsDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P031AdvancedPatentDataCustomsData_PatentCustomsDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P047FeeGetFee_Fee_to_payField:
+      type: object
+      properties:
+        fee_type:
+          type: string
+          example: 恢复权利请求费
+          description: Type of fee
+        payment_amount:
+          type: number
+          format: double
+          example: 1000
+          description: Payment Amount
+        payment_status:
+          type: string
+          example: 未缴
+          description: Payment status
+        payment_dateline:
+          type: integer
+          format: int64
+          example: 20230731
+          description: Deadline of Payment
+    P030AdvancedPatentDataPledgeData_PersonBaseDocPledge:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: EMC IP HOLDING COMPANY LLC
+          description: name
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: sequence
+        effective_date_us:
+          type: integer
+          format: int64
+          example: 20181029
+          description: Pledge effective date of US
+    P047FeeGetFee_Fee_chonghField:
+      type: object
+      properties:
+        fee_type:
+          type: string
+          example: 冲红前： 发明专利申请费;冲红后： 发明专利申请费
+          description: Type of Payment
+        chong_date:
+          type: integer
+          format: int64
+          example: 20210525
+          description: chonghong date
+        paid_amount:
+          type: string
+          example: 冲红前： 900;冲红后： 0
+          description: Paid Amount
+        receipt_code:
+          type: string
+          example: 冲红前： 100010220;冲红后： --
+          description: Receipt code
+        receipt_number:
+          type: string
+          example: 冲红前： 0000088346;冲红后：--
+          description: Receipt Number
+    P027AdvancedPatentDataReExaminationAndInvalidation_PatentReexamInvalidData:
+      type: object
+      properties:
+        country:
+          type: string
+          example: EP
+          description: Authority code
+        applicant:
+          type: array
+          example: 'Please check the form: Applicant'
+          description: applicant
+          items:
+            $ref: '#/components/schemas/P027AdvancedPatentDataReExaminationAndInvalidation_Applicant'
+        case_type:
+          type: string
+          example: appeal
+          description: Case type:<p>FS - reexamination，WX - invalidation，KS - oral proceedings，appeal，EPR，IPRex，SE，判定，訂正無効の審，異議の決，拒絶査定不服の審，訂正の審，請求書却下の決定，補正却下の決，無効の審，補正却下不服の審 .etc</p>
+        legal_ground:
+          type: array
+          example:
+          - European Patent Convention Art 56
+          description: Legal ground
+        decision_date:
+          type: integer
+          format: int64
+          example: 20190905
+          description: Decision date
+        decision_number:
+          type: string
+          example: T2051/15
+          description: Decision number
+    P029AdvancedPatentDataTransferData_PatentTransferDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_transfer_data:
+          type: array
+          example: 'Please check the form: PatentTransferData'
+          description: transfer data
+          items:
+            $ref: '#/components/schemas/P029AdvancedPatentDataTransferData_PatentTransferData'
+    P047FeeApnoInputRequest:
+      type: object
+      properties:
+        apnos:
+          type: array
+          example:
+          - CN201610244038.2
+          - CN201810835441.1
+          description: Please enter the type of application numbers to be synchronized
+      required:
+      - apnos
+    P032AdvancedPatentDataAwardDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P032AdvancedPatentDataAwardData_PatentAwardDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P032AdvancedPatentDataAwardData_PatentAwardDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patent_award_data:
+          type: array
+          example: 'Please check the form: PatentAwardData'
+          description: award data
+          items:
+            $ref: '#/components/schemas/P032AdvancedPatentDataAwardData_PatentAwardData'
+    P048AdvancedPatentDataOverseasPatentDocuments_OverseasPatentExamineDocResponse:
+      type: object
+      properties:
+        apno:
+          type: string
+          example: US14/706838
+          description: application number
+        doc_count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of review  documents
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        doc_detail:
+          type: array
+          example: 'Please check the form: ExamineDocDetail'
+          description: review  documents lists
+          items:
+            $ref: '#/components/schemas/P048AdvancedPatentDataOverseasPatentDocuments_ExamineDocDetail'
+        patent_number:
+          type: string
+          example: US11205304B2
+          description: patent number
+        doc_detail_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of review  documents lists
+    P048AdvancedPatentDataOverseasPatentDocumentsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P048AdvancedPatentDataOverseasPatentDocuments_OverseasPatentExamineDocResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P033AdvancedPatentDataSepDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P033AdvancedPatentDataSepData_PatentSepDataResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P048AdvancedPatentDataOverseasPatentDocuments_ExamineDocDetail:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+          example: 20180831
+          description: Document Send/Receive Date
+        path:
+          type: string
+          example: https://open.patsnap.com/pdf/watermark/US/A1/20/05/02/62/86/8/808dd980/US_20050262868_A1.pdf?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1729564854%3B1729568454%26q-key-time%3D1729564854%3B1729568454%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3De55460f27058958901d4c0887f4875a9c697044a&response-expires=Tue%2C%2022%20Oct%202024%2003%3A40%3A54%20GMT
+          description: document download path
+        doc_code:
+          type: string
+          example: CTNF
+          description: document code
+        description:
+          type: string
+          example: Non-Final Rejection
+          description: document description
+        page_number:
+          type: integer
+          format: int32
+          example: 17
+          description: document page
+    P034HighValueDataLitigation_PatentLitigation:
+      type: object
+      properties:
+        court:
+          type: string
+          example: 北京知识产权法院
+          description: court
+        judge:
+          type: array
+          example: 'Please check the form: LitigationPersonBaseDoc'
+          description: judge
+          items:
+            $ref: '#/components/schemas/P034HighValueDataLitigation_LitigationPersonBaseDoc'
+        title:
+          type: string
+          example: 西斯威尔国际有限公司与国家知识产权局一审行政判决书
+          description: title
+        country:
+          type: string
+          example: CN
+          description: Authority code
+        defendant:
+          type: array
+          example: 'Please check the form: LitigationPersonBaseDoc'
+          description: defendant
+          items:
+            $ref: '#/components/schemas/P034HighValueDataLitigation_LitigationPersonBaseDoc'
+        plaintiff:
+          type: array
+          example: 'Please check the form: LitigationPersonBaseDoc'
+          description: plaintiff
+          items:
+            $ref: '#/components/schemas/P034HighValueDataLitigation_LitigationPersonBaseDoc'
+        case_number:
+          type: string
+          example: (2017)京73行初8028号
+          description: case number
+        case_region:
+          type: string
+          example: 北京市
+          description: case region
+        chief_judge:
+          $ref: '#/components/schemas/P034HighValueDataLitigation_LitigationPersonBaseDoc'
+        filing_date:
+          type: integer
+          format: int32
+          example: 20171020
+          description: filing date
+        verdict_date:
+          type: integer
+          format: int32
+          example: 20200805
+          description: verdict date
+    P033AdvancedPatentDataSepData_PatentSepDataResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        patsnap_sep_data:
+          type: array
+          example: 'Please check the form: PatsnapSepData'
+          description: sep data
+          items:
+            $ref: '#/components/schemas/P033AdvancedPatentDataSepData_PatsnapSepData'
+    P047FeeGetFee_Paid_feeField:
+      type: object
+      properties:
+        payer:
+          type: string
+          example: 深圳中一专利商标事务所
+          description: Payer
+        fee_type:
+          type: string
+          example: 发明专利登记印刷费
+          description: Type of Payment
+        paid_amount:
+          type: number
+          format: double
+          example: 250
+          description: Paid Amount
+        payment_date:
+          type: integer
+          format: int64
+          example: 20150813
+          description: Date of Payment
+        receipt_code:
+          type: string
+          example: 44296705
+          description: Receipt code
+        receipt_number:
+          type: string
+          example: 44296705
+          description: Receipt Number
+    P026AdvancedPatentDataLegalData_InpadocLegalData:
+      type: object
+      properties:
+        event_code:
+          type: string
+          example: B350
+          description: PRS legal status code
+        event_date:
+          type: integer
+          format: int32
+          example: 20211207
+          description: PRS legal status date
+        event_desc:
+          type: string
+          example: ATUALIZACAO DE INFORMACOES NO PORTAL [CODIGO 15.35 RPI]
+          description: PRS legal status code description
+        ref_country_code:
+          type: string
+          example: BR
+          description: Ref. Authority code
+    P032AdvancedPatentDataAwardData_PatentAwardData:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Popular
+          description: Award type
+        award_name:
+          type: string
+          example: European Inventor Award
+          description: Award name, including CN patent awards of several provinces/cities and European Inventor Award
+        award_level:
+          type: string
+          example: 优秀奖
+          description: Award level, only CN jurisdiction have this field
+        award_session:
+          type: string
+          example: 2018
+          description: Award session
+        award_referrer:
+          type: string
+          example: 大连市知识产权局
+          description: Award referrer, only CN jurisdiction have this field
+    P029AdvancedPatentDataTransferData_PatentTransferData:
+      type: object
+      properties:
+        country:
+          type: string
+          example: US
+          description: Authority code
+        transferees:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: transferees
+          items:
+            $ref: '#/components/schemas/P029AdvancedPatentDataTransferData_PersonBaseDoc'
+        transferers:
+          type: array
+          example: 'Please check the form: PersonBaseDoc'
+          description: transferers
+          items:
+            $ref: '#/components/schemas/P029AdvancedPatentDataTransferData_PersonBaseDocTransfer'
+        effective_date:
+          type: integer
+          format: int64
+          example: 20111020
+          description: Transfer effective date
+    P046AdvancedPatentDataStatusOfUnifiedPatentCourtResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P046AdvancedPatentDataStatusOfUnifiedPatentCourt_StatusOfUnifiedPatentCourtResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

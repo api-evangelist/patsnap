@@ -1,0 +1,72 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/patsnap-openapi-original.json
+summary: >-
+  Entity-relationship sketch derived from the primary domains of the Patsnap Open Platform
+  OpenAPI (356 operations, 47 tag domains, 1829 schemas). The core graph centres on the
+  Patent entity, joined by identifier (patent_id / publication number) to bibliographic,
+  legal, citation, family, valuation and monitoring data, alongside parallel Company/Assignee,
+  Drug/Life-sciences, Literature and Chemical domains.
+entities:
+- name: Patent
+  key: patent_id / publication number (PN)
+  domains: [Patent Data Search, Patent Basic Data, Patent Mining Data, Patent Legal Data]
+  relationships:
+  - type: has_one
+    target: Bibliography
+    via: patent_id
+  - type: has_one
+    target: LegalStatus
+    via: patent_id
+  - type: has_many
+    target: Claim
+    via: patent_id
+  - type: has_many
+    target: Citation
+    via: patent_id (backward/forward)
+  - type: belongs_to
+    target: PatentFamily
+    via: family_id
+  - type: belongs_to
+    target: Company
+    via: assignee
+  - type: has_one
+    target: Valuation
+    via: patent_id
+- name: PatentFamily
+  relationships:
+  - type: has_many
+    target: Patent
+    via: family_id
+- name: Company
+  key: company_id / assignee
+  domains: [Enterprise Basic Data, Enterprise IP Data, Enterprise Tech Analysis, Enterprise Persona Data]
+  relationships:
+  - type: has_many
+    target: Patent
+    via: assignee
+- name: Drug
+  key: drug_id
+  domains: [Drug Basic Data, Drug Clinical Trial Data, Drug Mining Data, Chemical and Bio Data]
+  relationships:
+  - type: has_many
+    target: ClinicalTrial
+    via: drug_id
+  - type: has_many
+    target: Patent
+    via: drug-patent linkage
+- name: ClinicalTrial
+  domains: [Drug Clinical Trial Data]
+  relationships:
+  - type: belongs_to
+    target: Drug
+    via: drug_id
+- name: Literature
+  key: literature_id
+  domains: [Literature Data]
+- name: ChemicalStructure
+  domains: [Chemical and Bio Data, Chemical SAR Extract]
+notes: >-
+  Light hand-derivation of the marquee domain entities; the full 1829-schema graph includes
+  many request/response envelopes not modelled here. id-prefix conventions live in the object
+  reference under the API reference docs.

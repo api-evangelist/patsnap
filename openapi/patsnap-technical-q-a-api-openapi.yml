@@ -1,0 +1,530 @@
+openapi: 3.1.0
+info:
+  title: Patsnap Open Platform AI Translation Technical Q&A API
+  version: 1.0.0
+  description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
+servers:
+- url: https://connect.patsnap.com
+  description: Patsnap Open Platform API gateway
+tags:
+- name: Technical Q&A
+  description: Technical Q&A APIs.
+paths:
+  /ai/technical-qa/submit:
+    post:
+      operationId: ai36-1TechnicalQaSubmit
+      summary: AI36-1 Technical Q&A - Submit Task
+      description: Submit AI Q&A task based on technical question. The system will automatically perform question analysis, knowledge retrieval and answer generation. Task is executed asynchronously, returns task_id for subsequent polling to get results.
+      tags:
+      - Technical Q&A
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai36-1 technical q&a - submit task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI36-1TechnicalQaSubmitResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/technical-qa/submit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI36-1TechnicalQaSubmitRequest'
+  /ai/technical-qa/report:
+    post:
+      operationId: ai36-2TechnicalQaReport
+      summary: AI36-2 Technical Q&A - Query Task
+      description: 'Based on the task_id returned by [AI36-1] submit task API, poll to get the execution result of technical Q&A task. Returns: task status, question analysis results, references and complete answer content.'
+      tags:
+      - Technical Q&A
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful ai36-2 technical q&a - query task response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AI36-2TechnicalQaReportResponse'
+        '201':
+          description: Created.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not Found.
+      externalDocs:
+        description: API Reference documentation
+        url: https://open.patsnap.com/devportal/api-reference/ai/technical-qa/report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AI36-2TechnicalQaReportRequest'
+components:
+  schemas:
+    AI36-2TechnicalQaReport_TechnicalQaResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          description: Unique task identifier
+        split_query:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_ValidationSplitQueryDTO'
+        task_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task Status (1: running, 2: success, 3: failed)'
+        message_response:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_SeekStreamMessageResponseDTO'
+      required:
+      - task_id
+      - task_status
+    AI36-2TechnicalQaReport_OrgInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Organization ID
+        logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/b1/50/9d/b1509dfe5b2ac787dbe2d5e0753d6f00.png/0x0.png
+          description: Logo icon
+        name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Organization name
+        site:
+          type: string
+          example: www.qhhry.com
+          description: Site information
+        name_cn:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Chinese name
+        name_en:
+          type: string
+          example: Dnect
+          description: English name
+        website:
+          type: string
+          example: http://www.qhhry.com
+          description: Organization website
+        state_id:
+          type: string
+          example: 80cd8682-4344-3436-88b9-cfba03d34b78
+          description: State/Province ID
+        entity_id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Entity ID
+        country_id:
+          type: string
+          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+          description: Country ID
+        state_name:
+          type: string
+          example: 湖北省
+          description: State/Province name
+        entity_type:
+          type: string
+          example: Company
+          description: Entity type
+        country_name:
+          type: string
+          example: 中国
+          description: Country name
+        display_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Display name
+        founded_date:
+          type: integer
+          format: int32
+          example: 20160722
+          description: Founded date
+        normalized_id:
+          type: string
+          example: 8adef1df2dc299c10291a4a610a69068
+          description: Normalized ID
+        normalized_logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/c7/0c/34/c70c34f6c211298e8d563c49df7706f4.png/0x0.png
+          description: Normalized logo
+        normalized_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Normalized organization name
+        normalized_display_name:
+          type: string
+          example: Chang'an University
+          description: Normalized display name
+        normalized_entity_type_en:
+          type: string
+          example: Company
+          description: Normalized entity type in English
+    AI36-1TechnicalQaSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI36-1TechnicalQaSubmit_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI36-2TechnicalQaReport_PaperAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+          example: author_123456
+          description: Author ID
+        name:
+          type: string
+          example: 张三
+          description: Author name
+    AI36-2TechnicalQaReport_SeekReferenceResponseDTO:
+      type: object
+      properties:
+        apd:
+          type: string
+          example: '2020-11-09'
+          description: Application date of the patent
+        pbd:
+          type: string
+          example: '2024-03-01'
+          description: Publication date of the patent or paper
+        link:
+          type: string
+          example: https://eureka.zhihuiya.com/view/#/fullText'figures/?patentId=a8935c31-bf83-461d-bc05-2fd7a110c80e
+          description: Link URL pointing to the detailed page of the patent or paper
+        title:
+          type: string
+          example: 用于命名实体识别的改进BERT训练模型及命名实体识别方法
+          description: Title of the patent or paper
+        authors:
+          type: array
+          example:
+          - id: author_123456
+            name: 张三
+          - id: author_789012
+            name: 李四
+          description: List of authors containing author information of the paper or patent
+          items:
+            $ref: '#/components/schemas/AI36-2TechnicalQaReport_PaperAuthor'
+        content:
+          type: string
+          example: 通过在BERT模型中增加强化位置编码层和分类层，增强位置编码信息，解决了BERT模型中位置编码信息弱化导致的实体标签预测错误问题，提高了命名实体识别的准确性和召回率。
+          description: Content summary containing main technical description
+        org_info:
+          type: array
+          example:
+          - id: 37e3e5a882bc2bfd36fbc3754171e311
+            logo: https://filecdn.shuidi.cn/img/upload/images_logo/b1/50/9d/b1509dfe5b2ac787dbe2d5e0753d6f00.png/0x0.png
+            name: 武汉数博科技有限责任公司
+            site: www.qhhry.com
+            name_cn: 武汉数博科技有限责任公司
+            name_en: Dnect
+            website: http://www.qhhry.com
+            entity_id: 37e3e5a882bc2bfd36fbc3754171e311
+            country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+            state_name: 湖北省
+            entity_type: Company
+            country_name: 中国
+            display_name: 武汉数博科技有限责任公司
+            founded_date: 20160722
+            normalized_name: 武汉数博科技有限责任公司
+            normalized_entity_type_en: Company
+          description: Organization information list containing detailed info about applicant or author affiliations
+          items:
+            $ref: '#/components/schemas/AI36-2TechnicalQaReport_OrgInfo'
+        pdf_image:
+          type: array
+          example:
+          - labels:
+            - '1'
+            image_id: HDA0002768365640000011
+            extracted: false
+            patent_id: a8935c31-bf83-461d-bc05-2fd7a110c80e
+            image_from: official
+            image_type: drawing
+            is_extracted: false
+            storage_path: https://data-fulltext-image.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+            official_size: 1000x886
+            fig_title_code: '1'
+            source_image_type: drawing
+            fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+          description: List of PDF images containing image information from the document
+          items:
+            $ref: '#/components/schemas/AI36-2TechnicalQaReport_PdfImage'
+        project_id:
+          type: string
+          example: proj_12345
+          description: Project ID, identifier of the associated project
+        solution_id:
+          type: string
+          example: a8935c31-bf83-461d-bc05-2fd7a110c80e
+          description: Unique solution identifier for identifying patents or papers
+        project_name:
+          type: string
+          example: BERT优化研究项目
+          description: Project name of the associated project
+        solution_type:
+          type: string
+          example: PATENT
+          description: Solution type (PATENT/PAPER/WEBSITE)
+        pdf_image_count:
+          type: integer
+          format: int32
+          example: 6
+          description: Count of PDF images, total number of images in the document
+        solution_sub_type:
+          type: string
+          example: Utility Patent
+          description: Solution sub-type providing more detailed classification
+    AI36-1TechnicalQaSubmitRequest:
+      type: object
+      properties:
+        input:
+          type: string
+          example: 如何提升多语言专利文献的语义相似度计算准确率
+          description: Technical question input
+        lang:
+          type: string
+          example: cn
+          description: Report language, cn for Chinese, en for English
+        model:
+          type: string
+          example: seekgpt-thinking
+          description: AI model to use(seekgpt-thinking/o3-mini/summary-gpt)
+        rag_source:
+          type: array
+          example:
+          - patent
+          - paper
+          - website
+          description: RAG data source list(patent/paper/website)
+        summary_check:
+          type: boolean
+          example: true
+          description: Whether to perform summary check
+      required:
+      - input
+      - lang
+    AI36-2TechnicalQaReportResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_TechnicalQaResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI36-2TechnicalQaReport_ValidationSplitQueryDTO:
+      type: object
+      properties:
+        query:
+          type: array
+          example:
+          - BERT模型在专利文献命名实体识别中的应用
+          - 专利文献命名实体识别的特点和挑战
+          - BERT模型用于命名实体识别的优化方法和改进策略
+          description: List of split query statements extracted from the original question
+        concept:
+          type: array
+          example:
+          - 专利文献
+          - 命名实体识别
+          - BERT模型
+          - 优化方法
+          description: List of key concepts extracted from the query, including core technical terms and domain concepts
+      required:
+      - query
+      - concept
+    AI36-2TechnicalQaReport_SeekStreamMessageResponseDTO:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 专利文献中命名实体识别的BERT模型优化方法有哪些
+          description: Technical Q&A title summarizing the core content of the question
+        modules:
+          type: array
+          example:
+          - SUMMARY
+          - APPLICATION
+          - RECOMMEND
+          description: List of technical modules identifying the technology domains involved in the question
+        summary:
+          type: string
+          example: '### 命名实体识别中BERT模型的优化方法\n\n命名实体识别（NER）是自然语言处理的核心任务，旨在从文本中识别并分类实体（如人名、地名、机构名）。BERT（Bidirectional Encoder Representations from Transformers）模型通过预训练和微调，在NER任务中展现了卓越性能...'
+          description: Technical Q&A summary providing a comprehensive answer to the question
+        recommend:
+          type: array
+          example:
+          - 如何在专利文献中进一步优化BERT模型的位置注意力机制，以提高命名实体识别的效率和准确性？
+          - 在专利文献中，针对低资源环境，如何有效结合轻量级模型和知识图谱注入来提升命名实体识别的性能？
+          - 在专利文献中，如何评估和比较不同词典增强策略（如顺序词典增强）对BERT模型命名实体识别性能的影响？
+          - 在专利文献中，如何通过模型拆分与服务化架构优化BERT模型以适应移动端或低资源环境下的命名实体识别任务？
+          - 在专利文献中，如何结合多任务学习和对抗训练来增强BERT模型在命名实体识别任务中的鲁棒性和泛化能力？
+          description: List of recommended related questions to guide further exploration
+        references:
+          type: array
+          example:
+          - APD: ''
+            PBD: '2025-05-06'
+            LINK: https://eureka.zhihuiya.com/literature/#/?paperId=b2e8bd4d-a01b-48b5-b44e-83ff4eb544a1
+            TITLE: 高效基于BERT的命名实体识别的位置关注
+            CONTENT: 本文介绍了一个命名实体识别(NER)的框架,该框架利用自然语言处理(NLP)中变形金刚(BERT)模型的双向编码器表示...
+            SOLUTION_ID: b2e8bd4d-a01b-48b5-b44e-83ff4eb544a1
+            SOLUTION_TYPE: PAPER
+            PDF_IMAGE_COUNT: 0
+          - APD: '2020-11-09'
+            PBD: '2024-03-01'
+            LINK: https://eureka.zhihuiya.com/view/#/fullText'figures/?patentId=a8935c31-bf83-461d-bc05-2fd7a110c80e
+            TITLE: 用于命名实体识别的改进BERT训练模型及命名实体识别方法
+            CONTENT: 通过在BERT模型中增加强化位置编码层和分类层，增强位置编码信息，解决了BERT模型中位置编码信息弱化导致的实体标签预测错误问题，提高了命名实体识别的准确性和召回率。
+            SOLUTION_ID: a8935c31-bf83-461d-bc05-2fd7a110c80e
+            SOLUTION_TYPE: PATENT
+            PDF_IMAGE_COUNT: 6
+          description: List of references including patents, papers and other relevant materials
+          items:
+            $ref: '#/components/schemas/AI36-2TechnicalQaReport_SeekReferenceResponseDTO'
+        application:
+          type: array
+          example:
+          - - 产品/项目
+            - 技术成效
+            - 适用场景
+          - - 改进BERT命名实体识别模型<br/><span class='org-hit' org-id='37e3e5a882bc2bfd36fbc3754171e311'>武汉数博科技有限责任公司</span>
+            - 通过增加强化位置编码层和分类层，增强位置编码信息，提高了命名实体识别的准确性和召回率 <seek-ref-tip data-ref-id='9' >9</seek-ref-tip>
+            - 专利文献中的命名实体识别任务，需要精确识别实体标签的场景
+          - - 命名实体识别系统<br/><span class='org-hit' org-id='05fce7c74b3cf9f248fe5997053139a0'>北京沃东天骏信息技术有限公司</span>
+            - 通过拆分BERT子模型为BERT词向量生成服务和下游机器学习子模型，解决了BERT模型复杂性导致的高性能设备依赖问题，实现了在常规性能设备上高效准确的命名实体识别 <seek-ref-tip data-ref-id='10' >10</seek-ref-tip>
+            - 资源受限的常规性能设备环境，需要高效部署命名实体识别服务的场景
+          description: List of application scenarios, each containing title and description
+        check_summary:
+          type: string
+          example: '### 命名实体识别中BERT模型的优化方法\n\n命名实体识别（NER）是自然语言处理的核心任务，旨在从文本中识别并分类实体（如人名、地名、机构名）。<seek-check-reject-tip data-ref-id=''2dc0d0c9-251c-4eba-9d9c-01a99eec0226''>BERT模型通过预训练和微调，在NER任务中展现了卓越性能...</seek-check-reject-tip>'
+          description: Check summary providing validation assessment of the technical solution
+        summary_think:
+          type: string
+          example: 首先，用户的问题是："专利文献中命名实体识别的BERT模型优化方法有哪些"。用户是研发专家，所以我需要提供专业、深入的内容，参考我们平台的数据处理专业标签体系，比如从解决的问题、使用的手段、达到的效果（性能+数值）、应用领域等角度来组织。
+          description: Summary thinking process showing the AI's analytical reasoning chain
+        agent_suggestion:
+          type: string
+          example: 如何在保持BERT模型NER识别精度(F1>95%)的前提下,将计算资源消耗降低70%以上,同时实现跨领域迁移时无需大规模标注数据即可快速适配新场景?
+          description: Agent suggestion providing comprehensive advice from the AI system
+        tech_mind_suggestion:
+          type: string
+          example: 如何在保持BERT模型NER识别精度(F1>95%)的前提下,将计算资源消耗降低70%以上,同时实现跨领域迁移时无需大规模标注数据即可快速适配新场景?
+          description: Technical mind suggestion providing professional advice from a technical perspective
+        agent_suggestion_scene:
+          type: string
+          example: TECH_MIND
+          description: Agent suggestion scene describing specific scenarios where the suggestion applies
+    AI36-2TechnicalQaReportRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI36-2TechnicalQaReport_PdfImage:
+      type: object
+      properties:
+        image_id:
+          type: string
+          example: HDA0002768365640000011
+          description: Image ID
+        extracted:
+          type: boolean
+          example: false
+          description: Extracted flag
+        patent_id:
+          type: string
+          example: a8935c31-bf83-461d-bc05-2fd7a110c80e
+          description: Patent ID
+        image_from:
+          type: string
+          example: official
+          description: Image source
+        image_type:
+          type: string
+          example: drawing
+          description: Image type
+        is_extracted:
+          type: boolean
+          example: false
+          description: Whether extracted
+        storage_path:
+          type: string
+          example: https://data-fulltext-image.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+          description: Storage path
+        official_size:
+          type: string
+          example: 1000x886
+          description: Official image size
+        source_image_type:
+          type: string
+          example: drawing
+          description: Source image type
+        fulltext_image240_url:
+          type: string
+          example: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+          description: Fulltext image 240 size URL
+    AI36-1TechnicalQaSubmit_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
