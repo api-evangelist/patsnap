@@ -1,0 +1,634 @@
+{
+  "item": [
+    {
+      "id": "c14d2cb8-aa24-4a38-b390-abb4b5135527",
+      "name": "Novelty Check Assistant",
+      "description": {
+        "content": "Novelty Check Assistant APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a2614ab-402d-4fa2-8328-7cdbb5359a89",
+          "name": "M002-1 Novelty Check Agent Creation",
+          "request": {
+            "name": "M002-1 Novelty Check Agent Creation",
+            "description": {
+              "content": "Based on the input technical solution content, generate a novelty assessment report for that solution",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "novelty-check-agent-creation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14a17a49-382d-4f11-980d-20ade74572e2",
+              "name": "Successful m002-1 novelty check agent creation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8425,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e94f21b-3abf-4a4b-8e41-316506d8e2ac",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c7f3321-3b0f-4574-b5d1-70dead58004b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8dd72dee-95f6-4f29-8fc0-4f136aaa1e94",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58dff7c0-c18e-4e81-810c-9af65574eea2",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36fe5bb8-06da-4f48-abaa-939bc68d19fd",
+          "name": "M002-2 Novelty Check Agent Query",
+          "request": {
+            "name": "M002-2 Novelty Check Agent Query",
+            "description": {
+              "content": "Obtain the task results of the Novelty Check Agent through the task_id generated by [M002-1]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "novelty-check-agent-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "efacf687-a8f8-40a2-97bf-f1861dd23aa9",
+              "name": "Successful m002-2 novelty check agent query response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7203,\n  \"data\": {\n    \"status\": 2,\n    \"key_prior_art\": {\n      \"title\": \"Key Prior Art\",\n      \"content\": [\n        {\n          \"reference\": {\n            \"PN\": \"CN1858096A\",\n            \"TITLE\": \"防爆轮胎\",\n            \"CONTENT\": \"提供了一种防爆轮胎，其具有的侧壁加强层能兼顾低发热性和高硬度...\",\n            \"ORG_INFO\": [],\n            \"SOLUTION_ID\": \"2883fa67-e2af-4699-b755-c0f47346908e\",\n            \"SOLUTION_TYPE\": \"PATENT\"\n          }\n        }\n      ]\n    },\n    \"recommendations\": {\n      \"title\": \"改进建议\",\n      \"content\": \"为显著提升提案的新颖性，建议从以下四个维度进行改进...\"\n    },\n    \"proposal_summary\": {\n      \"title\": \"输入想法总结\",\n      \"content\": \"该提案提出了一种用于汽车和橡胶工业的防爆轮胎橡胶配方。其技术功效是实现轮胎的防爆性能。技术手段是采用一种包含共聚丁二烯橡胶、炭黑、片状天然矿石、多巴胺改性碳化硅、硫、硅烷偶联剂和硬脂酸的复合材料。该配方旨在应用于防爆轮胎产品。\"\n    },\n    \"novelty_reasoning\": {\n      \"title\": \"新颖性评估原因分析\",\n      \"content\": \"该提案与现有参考文献相比，整体新颖性为中低。相似之处主要体现在以下几个方面...\"\n    },\n    \"novelty_assessment\": {\n      \"title\": \"新颖性评估\",\n      \"content\": {\n        \"novelty_level\": \"中低\",\n        \"novelty_score\": \"30.9%\"\n      }\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e99aa82-f61c-4532-a8e0-33b87b7ab228",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d01bbd12-f2c2-4e31-9862-226c1f31a860",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7c5d97d-5370-4d55-9b17-f1f1a5e07712",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5dae0661-9f3d-4d49-9d58-33ee69f1b833",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "novelty-check-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2feef276-cc6d-4b83-9d81-bc400d4cd240",
+    "name": "Patsnap Open Platform AI Translation Novelty Check Assistant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

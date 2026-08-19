@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Novelty Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Novelty Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI35-1 Novelty Check - Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit the technical solution content to initiate a novelty search task. The system will analyze the input technical solution and generate a task ID for subsequent steps."
+        },
+        {
+          "info": {
+            "name": "AI35-2 Novelty Check - Technical Solution Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/tech-solution/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the task_id from [AI35-1] and the initial technical solution content, use large model capabilities to obtain the summarized technical solution content and key points."
+        },
+        {
+          "info": {
+            "name": "AI35-3 Novelty Check - Confirm Technical Solution",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/tech-solution/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Confirm the summarized technical solution from [AI35-2]."
+        },
+        {
+          "info": {
+            "name": "AI35-5 Novelty Check - Confirm Technical Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/feature/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After the user modifies or adds/reduces technical features from [AI35-4], submit the confirmation to proceed with subsequent retrieval."
+        },
+        {
+          "info": {
+            "name": "AI35-7 Novelty Check - Confirm Search Elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/agent-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After the user modifies or adds/reduces search elements from [AI35-6], submit the confirmation to proceed with subsequent retrieval."
+        },
+        {
+          "info": {
+            "name": "AI35-4 Novelty Check - Extract Technical Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/feature/extract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract technical features based on the task_id."
+        },
+        {
+          "info": {
+            "name": "AI35-6 Novelty Check - Extract Search Elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/retrieval/elements",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the technical features confirmed in [AI35-5], generate search elements (keywords, classification numbers, etc.)."
+        },
+        {
+          "info": {
+            "name": "AI35-10 Novelty Check - Create Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a complete novelty search report based on the task_id, including all analysis results."
+        },
+        {
+          "info": {
+            "name": "AI35-8 Novelty Check - Obtain Search Strategy and Reference List and Feature Comparison",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/agent-result",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain the retrieval strategy, filter list, and feature comparison content based on the task_id."
+        },
+        {
+          "info": {
+            "name": "AI35-11 Novelty Check - Download Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/report/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain the download link for the generated novelty search report based on the task_id."
+        },
+        {
+          "info": {
+            "name": "AI35-9 Novelty Check - Confirm Reference List and Feature Comparison",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/feature/comparison/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After the user modifies or adds/reduces the filter list and feature comparison from [AI35-8], submit the confirmation to proceed with subsequent retrieval. Additionally, if the user needs to manually add comparison documents or patents, the output parameters of the '[AI35-12] Novelty Search - Add Comparison Document or Patent' interface can be used as part of the input parameters for the 'final_result' in this interface."
+        },
+        {
+          "info": {
+            "name": "AI35-12 Novelty Check - Add Comparison Document or Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/novelty-search/feature/comparison/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "For cases where the user needs to manually add comparison documents or patents, the output parameters of this interface can be used as part of the input parameters for the 'final_result' in '[AI35-9] Novelty Search - Confirm Filter List and Feature Comparison'."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

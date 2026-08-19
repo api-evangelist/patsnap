@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Enterprise Persona Data API
   version: 1.0.0
@@ -276,66 +276,6 @@ paths:
               $ref: '#/components/schemas/C008CompanyProductTechnicalClassificationRequest'
 components:
   schemas:
-    C010CompanyStandardDevelopmentResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C010CompanyStandardDevelopment_CompanyStandardInfoResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C006CompanyAwardsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C006CompanyAwards_CompanyAwardsResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C011CompanyIntellectualPropertyResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C011CompanyIntellectualProperty_CompanyPatsnapMasterEntityCountResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     C009CompanyIndustrialTechnologyChain_CompanyIndustrialTechChainResponse:
       type: object
       properties:
@@ -357,30 +297,11 @@ components:
           type: string
           example: 苏州瀚川智能科技股份有限公司
           description: company name
-    C005CompanyTechnologyLabelRequest:
+    C011CompanyIntellectualProperty_CompanyPatsnapMasterEntityCountResponse:
       type: object
       properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C007CompanyIndustryClassification_CompanyIndustryClassificationResponse:
-      type: object
-      properties:
-        category:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
-        seic_lv1:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
-        seic_lv2:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        other_ip:
+          $ref: '#/components/schemas/C011CompanyIntellectualProperty_OtherIp'
         org_number:
           type: string
           example: 05669441-9
@@ -389,137 +310,14 @@ components:
           type: string
           example: 913205940566944300
           description: unified social credit code
-        category_big:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
         company_name:
           type: string
           example: 苏州瀚川智能科技股份有限公司
           description: company name
-        category_small:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
-        category_middle:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
-    C009CompanyIndustrialTechnologyChainResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C009CompanyIndustrialTechnologyChain_CompanyIndustrialTechChainResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C008CompanyProductTechnicalClassification_TechSubject:
-      type: object
-      properties:
-        rank:
-          type: integer
-          format: int32
-          example: 2
-          description: ranking
-        classification:
-          type: string
-          example: 服务器
-          description: technical subject classification
-    C009CompanyIndustrialTechnologyChainRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C007CompanyIndustryClassification_Classification:
-      type: object
-      properties:
-        code:
-          type: string
-          example: 1.2
-          description: classification code
-        classification:
-          type: string
-          example: 电子核心产业
-          description: classification value
-    C008CompanyProductTechnicalClassificationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_CompanyProductTechClassificationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C008CompanyProductTechnicalClassification_TechProduct:
-      type: object
-      properties:
-        rank:
-          type: integer
-          format: int32
-          example: 2
-          description: ranking
-        classification:
-          type: string
-          example: 客户端设备
-          description: product technical terms
-    C007CompanyIndustryClassificationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C009CompanyIndustrialTechnologyChain_ChainDetail:
-      type: object
-      properties:
-        node_name:
-          type: string
-          example: 电源系统
-          description: industry node name
-        chain_name:
-          type: string
-          example: 新能源汽车
-          description: industry chain name
-        patent_cnt:
-          type: integer
-          format: int32
-          example: 15
-          description: number of patents
+        patent_current:
+          $ref: '#/components/schemas/C011CompanyIntellectualProperty_PatentCurrent'
+        patent_application:
+          $ref: '#/components/schemas/C011CompanyIntellectualProperty_PatentApplication'
     C011CompanyIntellectualProperty_OtherIp:
       type: object
       properties:
@@ -619,6 +417,113 @@ components:
           format: int32
           example: 0
           description: FY3 New Plant Varieties Volume
+    C006CompanyAwardsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C006CompanyAwards_CompanyAwardsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C006CompanyAwards_CompanyAwardsResponse:
+      type: object
+      properties:
+        is_zlj01:
+          type: string
+          example: 1
+          description: Whether or not won the national patent award
+        is_zlj02:
+          type: string
+          example: 1
+          description: Whether or not won the provincial patent award
+        is_gjzqn01:
+          type: string
+          example: 1
+          description: Whether or not won the young and middle-aged science and technology innovation leading talent award
+        org_number:
+          type: string
+          example: 05669441-9
+          description: Organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: Unified social credit code
+        is_gjjsfm01:
+          type: string
+          example: 1
+          description: Whether or not won the state technological innovation award
+        is_gjkjcx01:
+          type: string
+          example: 1
+          description: Whether or not won the science and technology innovation and entrepreneurship talent award
+        is_gjkjjb01:
+          type: string
+          example: 1
+          description: Whether or not won the national science and technology progress Award
+        is_gjzdly01:
+          type: string
+          example: 1
+          description: Whether or not won the innovation team award in key fields
+        is_gjzgkj01:
+          type: string
+          example: 1
+          description: Whether or not won the highest national science and technology award
+        is_gjzrkx01:
+          type: string
+          example: 1
+          description: Whether or not won the state natural science award
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: Company name
+    C009CompanyIndustrialTechnologyChainResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C009CompanyIndustrialTechnologyChain_CompanyIndustrialTechChainResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C009CompanyIndustrialTechnologyChain_ChainDetail:
+      type: object
+      properties:
+        node_name:
+          type: string
+          example: 电源系统
+          description: industry node name
+        chain_name:
+          type: string
+          example: 新能源汽车
+          description: industry chain name
+        patent_cnt:
+          type: integer
+          format: int32
+          example: 15
+          description: number of patents
     C005CompanyTechnologyLabel_CompanyTechnologyLabelResponse:
       type: object
       properties:
@@ -730,11 +635,168 @@ components:
           type: string
           example: 苏州瀚川智能科技股份有限公司
           description: company name
-    C011CompanyIntellectualProperty_CompanyPatsnapMasterEntityCountResponse:
+    C005CompanyTechnologyLabelRequest:
       type: object
       properties:
-        other_ip:
-          $ref: '#/components/schemas/C011CompanyIntellectualProperty_OtherIp'
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C004CompanyAttribute_PublicLabel:
+      type: object
+      properties:
+        type:
+          type: string
+          example: 科创板
+          description: type
+        label:
+          type: string
+          example: A股
+          description: label
+    C007CompanyIndustryClassification_Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          example: 1.2
+          description: classification code
+        classification:
+          type: string
+          example: 电子核心产业
+          description: classification value
+    C010CompanyStandardDevelopmentRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C007CompanyIndustryClassificationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C008CompanyProductTechnicalClassification_TechProduct:
+      type: object
+      properties:
+        rank:
+          type: integer
+          format: int32
+          example: 2
+          description: ranking
+        classification:
+          type: string
+          example: 客户端设备
+          description: product technical terms
+    C011CompanyIntellectualProperty_PatentCurrent:
+      type: object
+      properties:
+        pct_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 0
+          description: Current Number Of PCT Patents
+        sep_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 0
+          description: Current Number Of Standard Essential Patents
+        valid_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 424
+          description: Current Number Of Valid Patents
+        design_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 27
+          description: Current Number Of Design Patents
+        utility_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 383
+          description: Current Number Of Utility Model Patents
+        invention_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 148
+          description: Current Number Of Invention Patents
+        valid_design_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 25
+          description: Current Number Of Valid Design Patents
+        valid_utility_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 366
+          description: Current Number Of Valid Utility Model  Patents
+        valid_invention_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 33
+          description: Current Number Of Valid Invention Patents
+        defense_decryption_apno_current_cnt:
+          type: integer
+          format: int32
+          example: 0
+          description: Current Number Of National Defense Decryption Patents
+    C007CompanyIndustryClassification_CompanyIndustryClassificationResponse:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        seic_lv1:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        seic_lv2:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization number
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        category_big:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        category_small:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+        category_middle:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_Classification'
+    C008CompanyProductTechnicalClassification_CompanyProductTechClassificationResponse:
+      type: object
+      properties:
         org_number:
           type: string
           example: 05669441-9
@@ -747,10 +809,297 @@ components:
           type: string
           example: 苏州瀚川智能科技股份有限公司
           description: company name
-        patent_current:
-          $ref: '#/components/schemas/C011CompanyIntellectualProperty_PatentCurrent'
-        patent_application:
-          $ref: '#/components/schemas/C011CompanyIntellectualProperty_PatentApplication'
+        tech_product:
+          type: array
+          example: 'Please check the form: TechProduct'
+          description: tech product
+          items:
+            $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_TechProduct'
+        tech_subject:
+          type: array
+          example: 'Please check the form: TechSubject'
+          description: tech subject
+          items:
+            $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_TechSubject'
+    C008CompanyProductTechnicalClassification_TechSubject:
+      type: object
+      properties:
+        rank:
+          type: integer
+          format: int32
+          example: 2
+          description: ranking
+        classification:
+          type: string
+          example: 服务器
+          description: technical subject classification
+    C008CompanyProductTechnicalClassificationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_CompanyProductTechClassificationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C009CompanyIndustrialTechnologyChainRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C005CompanyTechnologyLabelResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C005CompanyTechnologyLabel_CompanyTechnologyLabelResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C004CompanyAttribute_CompanyAttributeResponse:
+      type: object
+      properties:
+        group:
+          type: array
+          example: 瀚川智能
+          description: group label
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        process_ipo:
+          type: string
+          example: 已问询
+          description: ipo process
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        public_label:
+          type: array
+          example: 'Please check the form: PublicLabel'
+          description: public label
+          items:
+            $ref: '#/components/schemas/C004CompanyAttribute_PublicLabel'
+        tax_credie_a:
+          type: string
+          example: A级纳税人
+          description: the latest tax information level (A or not)
+        round_lastest:
+          type: string
+          example: 定向增发
+          description: latest financing rounds
+        investment_top100_qk:
+          type: array
+          example: 毅达资本
+          description: top 100 investment institutions
+    C006CompanyAwardsRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C011CompanyIntellectualPropertyRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C007CompanyIndustryClassificationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C007CompanyIndustryClassification_CompanyIndustryClassificationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C004CompanyAttributeResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C004CompanyAttribute_CompanyAttributeResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C010CompanyStandardDevelopment_CompanyStandardInfoResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization number
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        is_standard_team:
+          type: string
+          example: 1
+          description: Whether or not participate in the formulation of team standards
+        is_standard_place:
+          type: string
+          example: 1
+          description: Whether or not participate in the formulation of local standards
+        is_standard_country:
+          type: string
+          example: 1
+          description: Whether or not participate in the formulation of national standards
+        is_standard_industry:
+          type: string
+          example: 1
+          description: Whether or not participate in the formulation of industry standards
+    C011CompanyIntellectualPropertyResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C011CompanyIntellectualProperty_CompanyPatsnapMasterEntityCountResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C008CompanyProductTechnicalClassificationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C004CompanyAttributeRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C010CompanyStandardDevelopmentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C010CompanyStandardDevelopment_CompanyStandardInfoResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     C011CompanyIntellectualProperty_PatentApplication:
       type: object
       properties:
@@ -845,355 +1194,6 @@ components:
           description: 'FY3 Invention Patent Application Volume
 
             (FY3: The natural year in which the current time year-1 is located, that is，previous year)'
-    C006CompanyAwards_CompanyAwardsResponse:
-      type: object
-      properties:
-        is_zlj01:
-          type: string
-          example: 1
-          description: Whether or not won the national patent award
-        is_zlj02:
-          type: string
-          example: 1
-          description: Whether or not won the provincial patent award
-        is_gjzqn01:
-          type: string
-          example: 1
-          description: Whether or not won the young and middle-aged science and technology innovation leading talent award
-        org_number:
-          type: string
-          example: 05669441-9
-          description: Organization code
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: Unified social credit code
-        is_gjjsfm01:
-          type: string
-          example: 1
-          description: Whether or not won the state technological innovation award
-        is_gjkjcx01:
-          type: string
-          example: 1
-          description: Whether or not won the science and technology innovation and entrepreneurship talent award
-        is_gjkjjb01:
-          type: string
-          example: 1
-          description: Whether or not won the national science and technology progress Award
-        is_gjzdly01:
-          type: string
-          example: 1
-          description: Whether or not won the innovation team award in key fields
-        is_gjzgkj01:
-          type: string
-          example: 1
-          description: Whether or not won the highest national science and technology award
-        is_gjzrkx01:
-          type: string
-          example: 1
-          description: Whether or not won the state natural science award
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: Company name
-    C006CompanyAwardsRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C008CompanyProductTechnicalClassification_CompanyProductTechClassificationResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 05669441-9
-          description: organization number
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        tech_product:
-          type: array
-          example: 'Please check the form: TechProduct'
-          description: tech product
-          items:
-            $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_TechProduct'
-        tech_subject:
-          type: array
-          example: 'Please check the form: TechSubject'
-          description: tech subject
-          items:
-            $ref: '#/components/schemas/C008CompanyProductTechnicalClassification_TechSubject'
-    C011CompanyIntellectualProperty_PatentCurrent:
-      type: object
-      properties:
-        pct_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 0
-          description: Current Number Of PCT Patents
-        sep_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 0
-          description: Current Number Of Standard Essential Patents
-        valid_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 424
-          description: Current Number Of Valid Patents
-        design_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 27
-          description: Current Number Of Design Patents
-        utility_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 383
-          description: Current Number Of Utility Model Patents
-        invention_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 148
-          description: Current Number Of Invention Patents
-        valid_design_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 25
-          description: Current Number Of Valid Design Patents
-        valid_utility_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 366
-          description: Current Number Of Valid Utility Model  Patents
-        valid_invention_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 33
-          description: Current Number Of Valid Invention Patents
-        defense_decryption_apno_current_cnt:
-          type: integer
-          format: int32
-          example: 0
-          description: Current Number Of National Defense Decryption Patents
-    C005CompanyTechnologyLabelResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C005CompanyTechnologyLabel_CompanyTechnologyLabelResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C004CompanyAttribute_PublicLabel:
-      type: object
-      properties:
-        type:
-          type: string
-          example: 科创板
-          description: type
-        label:
-          type: string
-          example: A股
-          description: label
-    C011CompanyIntellectualPropertyRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C010CompanyStandardDevelopment_CompanyStandardInfoResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 05669441-9
-          description: organization number
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        is_standard_team:
-          type: string
-          example: 1
-          description: Whether or not participate in the formulation of team standards
-        is_standard_place:
-          type: string
-          example: 1
-          description: Whether or not participate in the formulation of local standards
-        is_standard_country:
-          type: string
-          example: 1
-          description: Whether or not participate in the formulation of national standards
-        is_standard_industry:
-          type: string
-          example: 1
-          description: Whether or not participate in the formulation of industry standards
-    C004CompanyAttributeResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C004CompanyAttribute_CompanyAttributeResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C008CompanyProductTechnicalClassificationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C004CompanyAttribute_CompanyAttributeResponse:
-      type: object
-      properties:
-        group:
-          type: array
-          example: 瀚川智能
-          description: group label
-        org_number:
-          type: string
-          example: 05669441-9
-          description: organization code
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        process_ipo:
-          type: string
-          example: 已问询
-          description: ipo process
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        public_label:
-          type: array
-          example: 'Please check the form: PublicLabel'
-          description: public label
-          items:
-            $ref: '#/components/schemas/C004CompanyAttribute_PublicLabel'
-        tax_credie_a:
-          type: string
-          example: A级纳税人
-          description: the latest tax information level (A or not)
-        round_lastest:
-          type: string
-          example: 定向增发
-          description: latest financing rounds
-        investment_top100_qk:
-          type: array
-          example: 毅达资本
-          description: top 100 investment institutions
-    C010CompanyStandardDevelopmentRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C007CompanyIndustryClassificationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C007CompanyIndustryClassification_CompanyIndustryClassificationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C004CompanyAttributeRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
   securitySchemes:
     bearerAuth:
       type: http

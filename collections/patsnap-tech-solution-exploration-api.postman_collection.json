@@ -1,0 +1,1910 @@
+{
+  "item": [
+    {
+      "id": "6ebfb5ab-04c0-4ab8-a5b8-9e1603705329",
+      "name": "Tech Solution Exploration",
+      "description": {
+        "content": "Tech Solution Exploration APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05733780-c4bd-44e8-86f6-eb61170e3783",
+          "name": "AI33-1 Find-solution - Create Task",
+          "request": {
+            "name": "AI33-1 Find-solution - Create Task",
+            "description": {
+              "content": "Create a find-solution task and get recommendation options, used as the first step in multi-step technical solution generation process",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step1",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"solution_issues\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "098bfa51-7439-4539-b311-80aa74d39600",
+              "name": "Successful ai33-1 find-solution - create task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step1",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"solution_issues\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3947,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e65a89b-b507-4dd2-bfda-5f20c6a34b7f",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step1",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"solution_issues\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f9710d2-de54-40ac-828d-5b1d5e96a4ce",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step1",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"solution_issues\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f7bb664-06af-4d82-9f5c-0e7cd5ab278c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step1",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"solution_issues\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5420c0c6-8512-4f69-bde6-5182e4603b07",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step1",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"solution_issues\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "accfb470-9e2f-4a24-acc6-252a06131989",
+          "name": "AI33-2 Find-solution - Get Recommendation",
+          "request": {
+            "name": "AI33-2 Find-solution - Get Recommendation",
+            "description": {
+              "content": "Get recommendation options based on the task_id returned from step 1",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step2",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38168634-7c05-46e9-9c8b-e88b89e2bb53",
+              "name": "Successful ai33-2 find-solution - get recommendation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step2",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9923,\n  \"data\": {\n    \"status\": \"RUNNING\",\n    \"recommend\": [\n      \"成本增幅≤15%\",\n      \"安全性能不降低\",\n      \"产线兼容改造\"\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed7a083f-f0e9-4e86-82d7-de971bd62ceb",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step2",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be6d956b-7c0e-4258-9a89-73dd5f468bde",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step2",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2a54241-4bc2-4133-8849-0355011e8e65",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step2",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "641af347-5c99-40a7-ad8a-2a41def33c9f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step2",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "895365a4-9774-4a05-bd1a-1a9edda2864b",
+          "name": "AI33-5 Find-solution - Select Direction",
+          "request": {
+            "name": "AI33-5 Find-solution - Select Direction",
+            "description": {
+              "content": "Submit user-selected direction options and start the final solution generation process",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step4",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"directions\": [\n    {\n      \"approaches\": \"<array>\",\n      \"reason\": \"<string>\",\n      \"source_type\": \"<string>\",\n      \"ticked\": \"<boolean>\",\n      \"verification\": \"<string>\"\n    },\n    {\n      \"approaches\": \"<array>\",\n      \"reason\": \"<string>\",\n      \"source_type\": \"<string>\",\n      \"ticked\": \"<boolean>\",\n      \"verification\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7388e270-c943-4f9a-ba7e-24ba1a605dcc",
+              "name": "Successful ai33-5 find-solution - select direction response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step4",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"directions\": [\n    {\n      \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n    },\n    {\n      \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3947,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7aaaeb4b-60fe-468f-951a-a62589e23b96",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step4",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"directions\": [\n    {\n      \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n    },\n    {\n      \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "305929b6-3c55-4e46-a270-8ebc5d856e0f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step4",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"directions\": [\n    {\n      \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n    },\n    {\n      \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8838a9d-2b24-4a8a-919d-694a8f27af45",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step4",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"directions\": [\n    {\n      \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n    },\n    {\n      \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a73368ab-8162-40d4-95d9-2481b0d1c942",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step4",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"directions\": [\n    {\n      \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n    },\n    {\n      \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n      \"ticked\": true,\n      \"approaches\": [\n        \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n      ],\n      \"source_type\": \"model\",\n      \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97f2a6ad-06cb-4898-a4dc-f4de2b39eb0a",
+          "name": "AI33-4 Find-solution - Get Direction",
+          "request": {
+            "name": "AI33-4 Find-solution - Get Direction",
+            "description": {
+              "content": "Get the direction option results for technical solutions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step3-query",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87b42058-02f1-40bc-9f71-1ab4bab9855c",
+              "name": "Successful ai33-4 find-solution - get direction response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-query",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6483,\n  \"data\": {\n    \"status\": \"SUCCEED\",\n    \"directions\": [\n      {\n        \"reason\": \"通过高能量密度电极材料升级与电解液优化提升电池能量密度\",\n        \"ticked\": true,\n        \"approaches\": [\n          \"采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。\"\n        ],\n        \"source_type\": \"model\",\n        \"verification\": \"实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。\"\n      },\n      {\n        \"reason\": \"通过结构优化与轻量化设计减少非活性材料质量占比\",\n        \"ticked\": true,\n        \"approaches\": [\n          \"优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。\"\n        ],\n        \"source_type\": \"model\",\n        \"verification\": \"在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55235a74-aa5a-4d84-b00f-4065fd2298c7",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-query",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39098319-19ff-4dc5-80ec-39efdf368fbe",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-query",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b073d15-c520-4f1a-9f6d-800db8730e27",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-query",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3784384-a10f-4d5b-b522-4530234ad7f5",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-query",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccf41d24-eaec-405c-a566-9d79c15cf440",
+          "name": "AI33-3 Find-solution - Select Recommendation",
+          "request": {
+            "name": "AI33-3 Find-solution - Select Recommendation",
+            "description": {
+              "content": "Submit user-selected recommendation options and start the direction generation process",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step3-submit",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"recommend\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b394a1f-bf50-443f-9184-953a965a91fc",
+              "name": "Successful ai33-3 find-solution - select recommendation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-submit",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3947,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6c0bb36-7b78-4020-8318-cef6091022ec",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-submit",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfd4af6f-cdc9-4088-a785-5ce9d7375d1f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-submit",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cb2f897-1a19-4a36-a9b7-0ef45f0b0fdd",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-submit",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c50150f-6744-45e0-b79b-07c93887b006",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step3-submit",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89e67b5f-1179-456b-815c-105d4f0c876f",
+          "name": "AI33-6 Find-solution - Get Final Solution and Details",
+          "request": {
+            "name": "AI33-6 Find-solution - Get Final Solution and Details",
+            "description": {
+              "content": "Get the final results of technical solution exploration, including complete solution data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "find-solution",
+                "step5",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f882ae9-985d-4495-aab5-42a492e49413",
+              "name": "Successful ai33-6 find-solution - get final solution and details response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step5",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 229,\n  \"data\": {\n    \"status\": \"SUCCEED\",\n    \"solution\": {\n      \"cells\": [\n        {\n          \"id\": \"0f26fa4e9305ef86db199ba4d116f233\",\n          \"data\": {\n            \"initd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"order\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"innovation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"improvements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tech_version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_sub_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"view\": \"vue-shape-view\",\n          \"shape\": \"idea-node\",\n          \"source\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"target\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"z_index\": 1000,\n          \"position\": {\n            \"x\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"y\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"0f26fa4e9305ef86db199ba4d116f233\",\n          \"data\": {\n            \"initd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"order\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"innovation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"improvements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tech_version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_sub_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"view\": \"vue-shape-view\",\n          \"shape\": \"idea-node\",\n          \"source\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"target\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"z_index\": 1000,\n          \"position\": {\n            \"x\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"y\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"title\": \"如何在腹腔镜中安装模拟内脏力反馈的装置\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57b3dee8-3151-45ab-9279-638d98206b66",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step5",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc2ac04d-8b73-4285-8645-e2d38f0126ff",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step5",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c74f2386-18bf-469f-9eda-ecee04fe983d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step5",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "027867ae-8140-4965-9af3-761d5d68b7ba",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "find-solution",
+                    "step5",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cfebf14c-0d4c-448a-ace2-a14e4275d6f0",
+    "name": "Patsnap Open Platform AI Translation Tech Solution Exploration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

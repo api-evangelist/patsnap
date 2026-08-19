@@ -1,0 +1,555 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Custom Aggregate Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Aggregate Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "D005 Patent Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-patent/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries. Read about the search syntax supported in PatSnap here - https://analytics.patsnap.com/search_helper. This includes patent count, patent number, patent ID, etc"
+        },
+        {
+          "info": {
+            "name": "D101 life cycle data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/life-cycle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface is a statistical analysis interface that provides the number of patent applications per year over the past 10 years, as well as the number of invention patent applications."
+        },
+        {
+          "info": {
+            "name": "D007 Patent Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/patent-detail",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "translation language, support cn, en, jp"
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the fulltext of current patent is unavailable, whether to replace it with the fulltext of its family patent？default not to replace: \n<p>1. Yes</p>\n<p>0: No </p>"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent detail by patent_id or patent_number"
+        },
+        {
+          "info": {
+            "name": "D102 Applicant ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/applicant-rank",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the names of the top 10 applicants and the number of patents"
+        },
+        {
+          "info": {
+            "name": "D103 Main applicant technology analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/applicant-technology-analysis",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the names of the top 10 applicants and the number of patents corresponding to the top 10 IPC main groups for each applicant"
+        },
+        {
+          "info": {
+            "name": "D104 Main applicant application trend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/applicant-trend",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the names of the top 10 applicants and the number of patent applications for each year in the past 10 years"
+        },
+        {
+          "info": {
+            "name": "D105 Cooperation applicant analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/cooperation-applicant-analysis",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the names of the top 10 main applicants, the number of patent applications, and their cooperative applicants, the number of patent applications, and the number of cooperative patents"
+        },
+        {
+          "info": {
+            "name": "D106 Patent trend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/patent-trend",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the number of patent applications, grants and grant rates in the past 10 years"
+        },
+        {
+          "info": {
+            "name": "D107 Technology applicant distribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/technology-applicant-distribution",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the top 10 IPC main groups and the number of patents corresponding to the top 10 applicants for each IPC main group"
+        },
+        {
+          "info": {
+            "name": "D108 Technology constitute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/technology-constitute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the number of patents for the top 100 IPC subclasses"
+        },
+        {
+          "info": {
+            "name": "D110 Receiving office statistics (by year)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/rec-office-year",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the number of patents for the top 100 receiving offices in the past 10 years"
+        },
+        {
+          "info": {
+            "name": "D111 Citation ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/refered-rank",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing patent information for the top 20 most cited patents"
+        },
+        {
+          "info": {
+            "name": "D109 Receiving office statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/rec-office",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing the number of patents for the top 100 receiving offices"
+        },
+        {
+          "info": {
+            "name": "D112 Patent family ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/famn-rank",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface belongs to the statistical analysis interface, providing patent information for the top 20 patents with the most family members"
+        },
+        {
+          "info": {
+            "name": "D113 Patent list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/patent-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface returns a list of patent information, supports paging query, returns up to 100 patent information per page. Up to 20,000 patent information can be returned"
+        },
+        {
+          "info": {
+            "name": "D115 Domain Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/domain-map",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface returns the image URL of technical composition"
+        },
+        {
+          "info": {
+            "name": "D114 Patent field details (large text only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/patent-info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface returns patent titles, abstracts, claims, and specifications, including original data sources, Chinese (with translation), and English (with translation). Supports batch queries with a limit of 100 items, request parameters are separated by English commas."
+        },
+        {
+          "info": {
+            "name": "D116 3D Map Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/shhgy/reportdata/3d-map",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface returns the Top 100 IPC classifications, showing the number of patents and invalid patents for each applicant in each group."
+        },
+        {
+          "info": {
+            "name": "Statement of account V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/open-user/statement/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Support input time range to get API calls and billing information"
+        },
+        {
+          "info": {
+            "name": "D301 patent details aggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/patent-detail-aggregation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Patent details can be batch-queried by entering patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "D201 patent details text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/jdf/patent_detail_text",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides patent documentation details, legal status, and patent text, including background art, summary of invention, description of embodiments, first claim, independent claim, and technical elements"
+        },
+        {
+          "info": {
+            "name": "D006 Patent Search Facet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-patent-facet",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries."
+        },
+        {
+          "info": {
+            "name": "D008 patent PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/patent-pdf",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the PDF of current patent is unavailable, whether to replace it with the PDF of its family patent？default not to replace: \n   1. Yes\n   0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent PDF document pathway by patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "D010 Patent Facet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-facet",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries, and statistics by specified field dimension."
+        },
+        {
+          "info": {
+            "name": "D009 Patent Search Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-patent-detail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries. Returns the first patent detail and a list of 20 patents one patent forward or backward from the offset location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

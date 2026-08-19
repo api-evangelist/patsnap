@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Drug Visual Analysis API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug Visual Analysis ",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B057 Bull eyes plot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/bull-eyes-plot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain bull eyes plot"
+        },
+        {
+          "info": {
+            "name": "B064-1 Create drug monitoring",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/alert/drug_search/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Drug monitoring"
+        },
+        {
+          "info": {
+            "name": "B064-2 Edit drug monitoring",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/alert/drug_search/edit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Edit drug monitoring"
+        },
+        {
+          "info": {
+            "name": "B074 Drug milestone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/drug/milestone",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug milestone, including milestone, event, disease, country, organization, etc."
+        },
+        {
+          "info": {
+            "name": "B064-3 Query drug monitoring",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/alert/drug_search/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query drug monitoring"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

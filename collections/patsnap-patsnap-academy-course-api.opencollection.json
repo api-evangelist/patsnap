@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patsnap Academy Course API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patsnap Academy Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AC01 Get Academy Course List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/academy/course-list",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query",
+                "description": "company ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "course limit by every pages"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get academy course lists by company ID.To find more information about the course"
+        },
+        {
+          "info": {
+            "name": "AC02 Get Course Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/academy/course-details",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query",
+                "description": "company ID"
+              },
+              {
+                "name": "course_id",
+                "value": "",
+                "type": "query",
+                "description": "course ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get course details by course ID."
+        },
+        {
+          "info": {
+            "name": "AC03 Get Courseware",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/academy/attach-download",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query",
+                "description": "company ID"
+              },
+              {
+                "name": "courseware_id",
+                "value": "",
+                "type": "query",
+                "description": "courseware ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get courseware by courseware ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

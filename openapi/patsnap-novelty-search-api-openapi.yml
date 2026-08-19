@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Novelty Search API
   version: 1.0.0
@@ -408,18 +408,15 @@ paths:
               $ref: '#/components/schemas/AI35-12ComparisonGenerateRequest'
 components:
   schemas:
-    AI35-12ComparisonGenerate_FeatureComparisonFinalResClaim:
+    AI35-2TechSolutionGetRequest:
       type: object
       properties:
-        claim_num:
-          type: integer
-          format: int32
-          example: 1
-          description: Claim number (claim 1, claim 2, claim 3)
-        claim_text:
+        task_id:
           type: string
-          example: 一种数据处理方法，其特征在于：包括数据采集步骤、数据预处理步骤和数据分析步骤。
-          description: Claim original text
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
     AI35-1NoveltySearchSubmitRequest:
       type: object
       properties:
@@ -442,57 +439,362 @@ components:
       required:
       - input
       - lang
-    AI35-6RetrievalElements_Element:
+    AI35-11ReportGetResponse:
       type: object
       properties:
-        ipc:
-          type: array
-          example:
-          - key: H04M1/725
-            source: keywords_extract
-          description: IPC classification list
-          items:
-            $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
-        word:
-          $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
-        extend:
-          type: array
-          example:
-          - key: telephone
-            source: keywords_extract
-          - key: phone
-            source: keywords_extract
-          - key: telephony
-            source: keywords_extract
-          description: Extended keywords list
-          items:
-            $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
-    AI35-7NoveltySearchAgentSearchRequest:
+        data:
+          $ref: '#/components/schemas/AI35-11ReportGet_NoveltySearchDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-8NoveltySearchAgentResult_AiSearchFinalResultFeature:
       type: object
       properties:
-        elements:
-          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_NoveltySearchElementResDTO'
+        type:
+          type: string
+          example: public
+          description: CC tag type
+        score:
+          type: integer
+          format: int32
+          example: 100
+          description: Similarity score between tech feature and comparison feature
+        differ:
+          type: string
+          example: NONE
+          description: Difference identifier
+        reason:
+          type: string
+          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+          description: Evaluation reason
+        similar:
+          type: boolean
+          example: true
+          description: Is similar
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_type:
+          type: string
+          example: 独权
+          description: Claim type (independent, dependent)
+        public_score:
+          type: number
+          format: float
+          example: 0
+          description: Public score of the feature
+        tech_feature:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Technical feature (from input text)
+        original_type:
+          type: string
+          example: public
+          description: Original CC tag type
+        type_for_user:
+          type: string
+          example: obvious
+          description: User modified CC tag type
+        original_score:
+          type: integer
+          format: int32
+          example: 100
+          description: Original score
+        score_for_user:
+          type: integer
+          format: int32
+          example: 85
+          description: User modified score
+        compare_feature:
+          type: string
+          example: 基于智能手机的图像识别系统
+          description: Compare feature
+        differ_for_user:
+          type: string
+          example: Common
+          description: User modified differ
+        original_differ:
+          type: string
+          example: NONE
+          description: Original differ
+        original_reason:
+          type: string
+          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+          description: Original reason
+        reason_for_user:
+          type: string
+          example: 用户修改的评判理由
+          description: User modified reason
+        comparison_feature:
+          type: string
+          example: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像
+          description: Feature found in comparison document
+    AI35-4FeatureExtract_NoveltySearchFeatureExtractResDTO:
+      type: object
+      properties:
+        data:
+          type: array
+          example:
+          - selected: true
+            user_add: false
+            feature_num: F1
+            feature_weight: topic
+            feature_elements: 电话机, 图像识别能力
+            feature_function: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
+            feature_text_original: 具有图像识别能力的电话机
+            feature_weight_reason: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
+          - selected: true
+            user_add: false
+            feature_num: F1.1
+            feature_weight: core
+            feature_elements: 电话, 摄像装置, 链接关系
+            feature_function: 通过在电话机中集成摄像装置，实现电话机对外部图像信息的采集
+            feature_text_original: 包括电话、与电话链接的摄像装置
+            feature_weight_reason: 现有电话机通常不具备与摄像装置链接的结构，属于本方案为实现图像采集功能而新增的结构
+          - selected: true
+            user_add: false
+            feature_num: F1.2
+            feature_weight: core
+            feature_elements: 命令, 摄像装置, 控制
+            feature_function: 通过命令控制摄像装置的工作，实现电话机对图像采集过程的自动化管理
+            feature_text_original: 至少包括一个用于控制与电话链接的摄像装置工作的命令
+            feature_weight_reason: 现有电话机未涉及通过命令控制外部摄像装置工作的功能，属于本方案为实现自动化图像采集新增的控制手段
+          - selected: true
+            user_add: false
+            feature_num: F1.3
+            feature_weight: core
+            feature_elements: 图像信息, 文字信息, 获取
+            feature_function: 利用图像识别技术对采集到的图像进行处理，自动提取图像中的文字信息，实现图像到文字的转换
+            feature_text_original: 根据摄取的图像信息获取该图像信息源的文字信息
+            feature_weight_reason: 现有电话机无法自动识别图像中的文字信息，属于本方案为实现文字信息自动提取而新增的功能
+          - selected: true
+            user_add: false
+            feature_num: F1.4
+            feature_weight: core
+            feature_elements: 文字信息, 电话显示器, 显示
+            feature_function: 将识别出的文字信息通过电话显示器展示，实现用户对图像文字内容的直接获取
+            feature_text_original: 并将文字信息显示在电话显示器上
+            feature_weight_reason: 现有电话机不具备将图像识别出的文字信息显示的功能，属于本方案为提升用户体验新增的显示手段
+          - selected: true
+            user_add: false
+            feature_num: F1.5
+            feature_weight: core
+            feature_elements: 电路算法, 地址, 网络数据库, 文字信息
+            feature_function: 通过电路算法解析获取图像相关信息的地址，并从网络数据库中进一步获取相关文字信息，实现电话机信息获取能力的扩展
+            feature_text_original: 电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息
+            feature_weight_reason: 现有电话机不具备通过电路算法获取地址并从网络数据库获取相关文字信息的功能，属于本方案为实现信息扩展获取而新增的技术手段
+          description: Technical features list
+          items:
+            $ref: '#/components/schemas/AI35-4FeatureExtract_NoveltySearchFeatureExtractDataDTO'
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task status (1: running, 2: successful, 3: generation exception).'
+    AI35-10NoveltySearchExportResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI35-10NoveltySearchExport_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-6RetrievalElements_BasicElement:
+      type: object
+      properties:
+        key:
+          type: string
+          example: 电话
+          description: Keyword
+        source:
+          type: string
+          example: keywords_extract
+          description: Source
+    AI35-6RetrievalElementsRequest:
+      type: object
+      properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
       required:
-      - elements
       - task_id
-    AI35-10NoveltySearchExportRequest:
+    AI35-3TechSolutionUpdate_AsyncTaskIdResponse:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
-        title:
+    AI35-9ComparisonConfirm_AiSearchFinalResult:
+      type: object
+      properties:
+        comparative_literature_category:
           type: string
-          example: 具有图像识别及文字信息提取功能的电话机
-          description: Title
+          example: novelty
+          description: Comparative literature category (novelty:novelty, creativity:creativity)
+        comparative_literature_type:
+          type: string
+          example: A
+          description: Comparative literature type
+        creativity_type:
+          type: string
+          example: public
+          description: Creativity type (public:public, obvious:obvious)
+        document:
+          type: string
+          example: 相关技术文档内容
+          description: Comparison document
+        feature_match_num:
+          type: integer
+          format: int32
+          example: 0
+          description: Feature match number
+        features:
+          type: array
+          example:
+          - type: public
+            score: 100
+            differ: NONE
+            reason: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别（相当于目标文本的具有图像识别能力的电话机），实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+            similar: true
+            public_score: 0
+            tech_feature: 具有图像识别能力的电话机
+            original_type: public
+            original_score: 100
+            original_differ: NONE
+            original_reason: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别（相当于目标文本的具有图像识别能力的电话机），实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+            comparison_feature: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像，并裁剪出显示屏所在的图像区域；在显示屏图像区域中提取出显示框、显示框标签的外部轮廓；提取出显示框标签的文字，提取出显示框中显示的颜色或文字，并在智能手机页面进行显示
+          - type: public
+            score: 100
+            differ: NONE
+            reason: 对比文件记载了通过智能手机拍摄图像（相当于目标文本的电话与摄像装置链接），智能手机本身集成摄像装置，且用于采集图像，所有要素已被公开。
+            similar: true
+            public_score: 0
+            tech_feature: 包括电话、与电话链接的摄像装置
+            original_type: public
+            original_score: 100
+            original_differ: NONE
+            original_reason: 对比文件记载了通过智能手机拍摄图像（相当于目标文本的电话与摄像装置链接），智能手机本身集成摄像装置，且用于采集图像，所有要素已被公开。
+            comparison_feature: 通过智能手机拍摄生产机器附带控制终端显示屏的图像
+          - type: public
+            score: 100
+            differ: NONE
+            reason: 对比文件记载了智能手机拍摄图像作为待识别图像（相当于目标文本的通过命令控制摄像装置工作），拍摄动作隐含由命令或操作控制摄像装置工作，所有要素已被公开。
+            similar: true
+            public_score: 0
+            tech_feature: 至少包括一个用于控制与电话链接的摄像装置工作的命令
+            original_type: public
+            original_score: 100
+            original_differ: NONE
+            original_reason: 对比文件记载了智能手机拍摄图像作为待识别图像（相当于目标文本的通过命令控制摄像装置工作），拍摄动作隐含由命令或操作控制摄像装置工作，所有要素已被公开。
+            comparison_feature: 智能手机拍摄生产机器附带控制终端显示屏的屏幕图像作为待识别图像
+          - type: public
+            score: 100
+            differ: NONE
+            reason: 对比文件记载了调用Tesseract API接口对图像进行识别，得到显示框标签的文字（相当于目标文本的根据摄取的图像信息获取文字信息），所有要素已被公开。
+            similar: true
+            public_score: 0
+            tech_feature: 根据摄取的图像信息获取该图像信息源的文字信息
+            original_type: public
+            original_score: 100
+            original_differ: NONE
+            original_reason: 对比文件记载了调用Tesseract API接口对图像进行识别，得到显示框标签的文字（相当于目标文本的根据摄取的图像信息获取文字信息），所有要素已被公开。
+            comparison_feature: 调用库函数Tesseract的API接口对灰度化处理后图像进行识别，得到显示框标签的文字
+          - type: public
+            score: 100
+            differ: NONE
+            reason: 对比文件记载了将识别到的文字信息显示到手机屏幕页面（相当于目标文本的将文字信息显示在电话显示器上），所有要素已被公开。
+            similar: true
+            public_score: 0
+            tech_feature: 并将文字信息显示在电话显示器上
+            original_type: public
+            original_score: 100
+            original_differ: NONE
+            original_reason: 对比文件记载了将识别到的文字信息显示到手机屏幕页面（相当于目标文本的将文字信息显示在电话显示器上），所有要素已被公开。
+            comparison_feature: 将识别到的显示框标签的文字以及对应显示框中显示的颜色或文字显示到手机屏幕页面
+          - type: obvious
+            score: 80
+            differ: Common
+            reason: 对比文件记载了通过无线网络传输并存储至服务器的数据库中（对应目标文本的通过地址从网络数据库获取文字信息），但未明确记载通过电路算法解析地址的具体过程。将识别信息传输到数据库并获取相关信息属于本领域常规手段，属于公知常识。
+            similar: true
+            public_score: 0
+            tech_feature: 电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息
+            original_type: obvious
+            original_score: 80
+            original_differ: Common
+            original_reason: 对比文件记载了通过无线网络传输并存储至服务器的数据库中（对应目标文本的通过地址从网络数据库获取文字信息），但未明确记载通过电路算法解析地址的具体过程。将识别信息传输到数据库并获取相关信息属于本领域常规手段，属于公知常识。
+            comparison_feature: 通过无线网络传输并存储至服务器的数据库中
+          description: Technical features list
+          items:
+            $ref: '#/components/schemas/AI35-9ComparisonConfirm_AiSearchFinalResultFeature'
+        lang:
+          type: string
+          example: CN
+          description: Language
+        most_similar:
+          type: boolean
+          example: false
+          description: Is most similar
+        patent_id:
+          type: string
+          example: a344d039-4b85-4ab1-bf83-4e0f9197d010
+          description: Patent ID
+        public_score:
+          type: number
+          format: float
+          example: 0.993
+          description: Public score
+        selected:
+          type: boolean
+          example: false
+          description: Is selected
+        user_added:
+          type: boolean
+          example: false
+          description: User added
+    AI35-11ReportGetRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
       required:
       - task_id
-      - title
+    AI35-5FeatureConfirm_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     AI35-5FeatureConfirm_NoveltySearchFeatureExtractDataDTO:
       type: object
       properties:
@@ -532,13 +834,334 @@ components:
           type: boolean
           example: false
           description: User added
-    AI35-1NoveltySearchSubmit_AsyncTaskIdResponse:
+    AI35-9ComparisonConfirm_AsyncTaskIdResponse:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
+    AI35-8NoveltySearchAgentResult_FeatureAnalysisResult:
+      type: object
+      properties:
+        block_query:
+          type: object
+          example:
+            S1:
+              type: basic
+              count: 96694
+              query: TACD_ALL:(("电话" OR "手机"))
+              status: success
+              feature_text_original: 一种具有图像识别能力的电话机
+          description: Block query information containing detailed construction information for each search block
+        summary_result:
+          type: object
+          example:
+            tech_problem: 现有电话机无法通过图像识别功能获取图像信息源的文字信息并显示在电话显示器上
+            tech_subject: 具有图像识别能力的电话机
+            tech_efficacy: 实现了电话机通过图像识别功能获取图像信息源的文字信息并显示在电话显示器上
+            tech_solution: 一种具有图像识别能力的电话机
+          description: Summary result containing technical problem, technical subject, technical feature table, technical solution and technical efficacy
+        feature_extract_result:
+          type: array
+          example:
+          - feature_num: F1
+            feature_weight: topic
+            feature_function: 提供一种具备图像识别功能的电话机整体结构
+            feature_text_original: 一种具有图像识别能力的电话机
+          description: List of feature extraction results containing detailed information of extracted technical features
+        keywords_extract_result:
+          type: array
+          example:
+          - express: []
+            selected: true
+            feature_type: topic_search
+            feature_text_original: 一种具有图像识别能力的电话机
+          description: List of keyword extraction results containing extracted keywords and related information
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordExtractResult'
+    AI35-8NoveltySearchAgentResult_KeywordInfo:
+      type: object
+      properties:
+        key:
+          type: string
+          example: 电话
+          description: Keyword content
+        source:
+          type: string
+          example: keywords_extract
+          description: Keyword source
+    AI35-2TechSolutionGetResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI35-2TechSolutionGet_NoveltySearchTechSolutionResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-10NoveltySearchExportRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+        title:
+          type: string
+          example: 具有图像识别及文字信息提取功能的电话机
+          description: Title
+      required:
+      - task_id
+      - title
+    AI35-7NoveltySearchAgentSearch_NoveltySearchElementDataDTO:
+      type: object
+      properties:
+        express:
+          type: array
+          example:
+          - ipc:
+            - key: H04M1/725
+              source: keywords_extract
+            word:
+              key: 电话
+              source: keywords_extract
+            extend:
+            - key: telephone
+              source: keywords_extract
+            - key: phone
+              source: keywords_extract
+            - key: telephony
+              source: keywords_extract
+          description: Expression list
+          items:
+            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_Element'
+        feature_text_original:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Original feature text
+        feature_type:
+          type: string
+          example: topic_search
+          description: 'Feature type (topic_search: topic elements, key_search: key elements, sup_search: supplementary elements)'
+        selected:
+          type: boolean
+          example: true
+          description: Selected
+    AI35-8NoveltySearchAgentResult_AiNoveltySearchResponse:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: Language code
+        text:
+          type: string
+          example: 需要处理的文本内容
+          description: Input content used when operateType is expand/simplify/polish
+        cc_num:
+          type: integer
+          format: int32
+          example: 100
+          description: Control the token consumption of algorithm interface to control interface cost (Unnecessary output)
+        cc_pids:
+          type: array
+          example:
+          - CN123456789A
+          - US20210150214A1
+          - JP2021144566A
+          description: List of patents for CC comparison (Unnecessary output)
+        request:
+          type: object
+          example:
+            async: true
+            task_id: a4ff2f0f5de6c15fd646a11df1de83da
+            operate_type: generate
+          description: Request body
+        is_async:
+          type: boolean
+          example: true
+          description: Whether it is an asynchronous request
+        task_cost:
+          type: number
+          format: float
+          example: 276.2
+          description: Total task cost time in seconds
+        update_ts:
+          type: string
+          example: '2025-10-14 13:44:11.458'
+          description: Last update time of the result
+        cc_docs_num:
+          type: integer
+          format: int32
+          example: 70
+          description: Total number of patents compared (Unnecessary output)
+        task_status:
+          type: string
+          example: success
+          description: Current task execution status
+        cc_threshold:
+          type: number
+          format: float
+          example: 0
+          description: CC comparison threshold, features above this threshold are confirmed, below are pending confirmation (Unnecessary output)
+        debug_detail:
+          type: object
+          example:
+            debug_info: 详细的调试信息
+          description: Debug details returned when debug=true is enabled, mainly for internal testing analysis (Unnecessary output)
+        excute_times:
+          type: integer
+          format: int32
+          example: 14
+          description: Number of search executions
+        final_result:
+          type: array
+          example:
+          - lang: CN
+            features: []
+            selected: false
+            patent_id: 1f4bd743-28f7-44d2-abab-b98a38c49f6b
+            user_added: false
+            most_similar: false
+            public_score: 1
+            feature_match_num: 0
+            comparative_literature_type: A
+          description: List of comparison information for found potentially related patents, sorted by public score
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_AiSearchFinalResult'
+        operate_type:
+          type: string
+          example: generate
+          description: Operation type (generate content/expand/polish/simplify)
+        process_dict:
+          type: object
+          example:
+            semantic_search:
+              type: semantic_search
+              title:
+                en: Semantic Search
+                zh: 语义检索
+              status: success
+              query_thinking:
+                zh: 根据用户输入内容进行语义检索
+          description: Detailed results of each search process including title, query thinking, search results and other information
+        find_patent_num:
+          type: integer
+          format: int32
+          example: 0
+          description: Number of potentially similar patents found
+        feature_keywords:
+          type: array
+          example:
+          - weight: 0.85
+            feature: 图像识别
+            keywords:
+            - image recognition
+            - 视觉识别
+          description: List of feature keywords
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_FeatureKeyword'
+        process_dict_keys:
+          type: array
+          example:
+          - semantic_search
+          - all_elements_search_tacd
+          - all_elements_search_ai_summary
+          - all_elements_search_dynamic
+          - relevant_tracking_search
+          description: List of process dictionary keys defining the order of search processes
+        feature_analysis_result:
+          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_FeatureAnalysisResult'
+    AI35-12ComparisonGenerate_NoveltySearchFeatureExtractDataDTO:
+      type: object
+      properties:
+        feature_elements:
+          type: string
+          example: 电话机, 图像识别能力
+          description: Feature elements
+        feature_function:
+          type: string
+          example: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
+          description: Feature function
+        feature_num:
+          type: string
+          example: F1
+          description: Feature number
+        feature_text:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Feature text
+        feature_text_original:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Original feature text
+        feature_weight:
+          type: string
+          example: topic
+          description: Feature weight
+        feature_weight_reason:
+          type: string
+          example: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
+          description: Feature weight reason
+        selected:
+          type: boolean
+          example: true
+          description: Selected
+        user_add:
+          type: boolean
+          example: false
+          description: User added
+    AI35-4FeatureExtract_NoveltySearchFeatureExtractDataDTO:
+      type: object
+      properties:
+        selected:
+          type: boolean
+          example: true
+          description: Selected
+        user_add:
+          type: boolean
+          example: false
+          description: User added
+        feature_num:
+          type: string
+          example: F1
+          description: Feature number
+        feature_text:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Feature text
+        feature_weight:
+          type: string
+          example: topic
+          description: Feature weight
+        feature_elements:
+          type: string
+          example: 电话机, 图像识别能力
+          description: Feature elements
+        feature_function:
+          type: string
+          example: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
+          description: Feature function
+        feature_text_original:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Original feature text
+        feature_weight_reason:
+          type: string
+          example: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
+          description: Feature weight reason
     AI35-8NoveltySearchAgentResult_AiSearchFinalResult:
       type: object
       properties:
@@ -666,466 +1289,27 @@ components:
           type: string
           example: novelty
           description: Comparative literature category (novelty:novelty, creativity:creativity)
-    AI35-3TechSolutionUpdateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI35-3TechSolutionUpdate_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-8NoveltySearchAgentResult_FeatureAnalysisResult:
-      type: object
-      properties:
-        block_query:
-          type: object
-          example:
-            S1:
-              type: basic
-              count: 96694
-              query: TACD_ALL:(("电话" OR "手机"))
-              status: success
-              feature_text_original: 一种具有图像识别能力的电话机
-          description: Block query information containing detailed construction information for each search block
-        summary_result:
-          type: object
-          example:
-            tech_problem: 现有电话机无法通过图像识别功能获取图像信息源的文字信息并显示在电话显示器上
-            tech_subject: 具有图像识别能力的电话机
-            tech_efficacy: 实现了电话机通过图像识别功能获取图像信息源的文字信息并显示在电话显示器上
-            tech_solution: 一种具有图像识别能力的电话机
-          description: Summary result containing technical problem, technical subject, technical feature table, technical solution and technical efficacy
-        feature_extract_result:
-          type: array
-          example:
-          - feature_num: F1
-            feature_weight: topic
-            feature_function: 提供一种具备图像识别功能的电话机整体结构
-            feature_text_original: 一种具有图像识别能力的电话机
-          description: List of feature extraction results containing detailed information of extracted technical features
-        keywords_extract_result:
-          type: array
-          example:
-          - express: []
-            selected: true
-            feature_type: topic_search
-            feature_text_original: 一种具有图像识别能力的电话机
-          description: List of keyword extraction results containing extracted keywords and related information
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordExtractResult'
-    AI35-7NoveltySearchAgentSearch_NoveltySearchElementResDTO:
-      type: object
-      properties:
-        family_merge_enabled:
-          type: boolean
-          example: false
-          description: Family merge enabled
-        list:
-          type: array
-          example:
-          - express:
-            - ipc:
-              - key: H04M1/725
-                source: keywords_extract
-              word:
-                key: 电话
-                source: keywords_extract
-              extend:
-              - key: telephone
-                source: keywords_extract
-              - key: phone
-                source: keywords_extract
-              - key: telephony
-                source: keywords_extract
-            selected: true
-            feature_type: topic_search
-            feature_text_original: 具有图像识别能力的电话机
-          description: Retrieval elements list
-          items:
-            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_NoveltySearchElementDataDTO'
-    AI35-8NoveltySearchAgentResultResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_AiNoveltySearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-5FeatureConfirmResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI35-5FeatureConfirm_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-10NoveltySearchExport_AsyncTaskIdResponse:
+    AI35-8NoveltySearchAgentResultRequest:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI35-7NoveltySearchAgentSearch_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI35-9ComparisonConfirm_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI35-12ComparisonGenerate_FeatureComparisonFinalResItem:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: zh
-          description: Language
-        claims:
-          type: array
-          example:
-          - claim_num: 1
-            claim_text: 一种数据处理方法，其特征在于...
-          description: Claims original text list
-          items:
-            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResClaim'
-        document:
-          type: string
-          example: 一种基于人工智能的数据处理方法
-          description: Document
-        features:
-          type: array
-          example:
-          - score: 85
-            public_score: 90
-            tech_feature: 人工智能算法
-            comparison_feature: 机器学习算法
-          description: Feature list
-          items:
-            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResFeature'
-        patent_id:
-          type: string
-          example: CN123456789A
-          description: Patent ID
-        public_score:
-          type: number
-          format: float
-          example: 87.5
-          description: Disclosure score
-    AI35-2TechSolutionGetRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
+          description: Unique task identifier, returned by submit task API
       required:
       - task_id
-    AI35-5FeatureConfirm_AsyncTaskIdResponse:
+    AI35-2TechSolutionGet_NoveltySearchTechSolutionResponse:
       type: object
       properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI35-8NoveltySearchAgentResult_KeywordExtractResult:
-      type: object
-      properties:
-        express:
-          type: array
-          example:
-          - ipc:
-            - key: H04M1/725
-              source: keywords_extract
-            word:
-              key: 电话
-              source: keywords_extract
-            extend:
-            - key: 手机
-              source: keywords_extract
-          description: List of expressions containing keyword expressions and extension information
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordExpress'
-        selected:
-          type: boolean
-          example: true
-          description: Whether selected
-        feature_type:
-          type: string
-          example: topic_search
-          description: Feature type
-        feature_text_original:
-          type: string
-          example: 一种具有图像识别能力的电话机
-          description: Original feature text
-    AI35-6RetrievalElements_NoveltySearchElementResDTO:
-      type: object
-      properties:
-        list:
-          type: array
-          example:
-          - express:
-            - ipc:
-              - key: H04M1/725
-                source: keywords_extract
-              word:
-                key: 电话
-                source: keywords_extract
-              extend:
-              - key: telephone
-                source: keywords_extract
-              - key: phone
-                source: keywords_extract
-              - key: telephony
-                source: keywords_extract
-            selected: true
-            feature_type: topic_search
-            feature_text_original: 具有图像识别能力的电话机
-          description: Retrieval elements list
-          items:
-            $ref: '#/components/schemas/AI35-6RetrievalElements_NoveltySearchElementDataDTO'
-        family_merge_enabled:
-          type: boolean
-          example: false
-          description: Family merge enabled
-    AI35-12ComparisonGenerate_FeatureComparisonFinalResFeature:
-      type: object
-      properties:
-        type:
-          type: string
-          example: public
-          description: CC tag type
-        score:
-          type: integer
-          format: int32
-          example: 85
-          description: Score
-        differ:
-          type: string
-          example: NONE
-          description: Difference identifier
-        public_score:
-          type: integer
-          format: int32
-          example: 90
-          description: Disclosure score
-        tech_feature:
-          type: string
-          example: 人工智能算法
-          description: Technical feature
-        comparison_feature:
-          type: string
-          example: 机器学习算法
-          description: Comparison feature
-    AI35-7NoveltySearchAgentSearch_BasicElement:
-      type: object
-      properties:
-        key:
-          type: string
-          example: 电话
-          description: Keyword
-        source:
-          type: string
-          example: keywords_extract
-          description: Source
-    AI35-4FeatureExtract_NoveltySearchFeatureExtractDataDTO:
-      type: object
-      properties:
-        selected:
-          type: boolean
-          example: true
-          description: Selected
-        user_add:
-          type: boolean
-          example: false
-          description: User added
-        feature_num:
-          type: string
-          example: F1
-          description: Feature number
-        feature_text:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Feature text
-        feature_weight:
-          type: string
-          example: topic
-          description: Feature weight
-        feature_elements:
-          type: string
-          example: 电话机, 图像识别能力
-          description: Feature elements
-        feature_function:
-          type: string
-          example: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
-          description: Feature function
-        feature_text_original:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Original feature text
-        feature_weight_reason:
-          type: string
-          example: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
-          description: Feature weight reason
-    AI35-7NoveltySearchAgentSearch_NoveltySearchElementDataDTO:
-      type: object
-      properties:
-        express:
-          type: array
-          example:
-          - ipc:
-            - key: H04M1/725
-              source: keywords_extract
-            word:
-              key: 电话
-              source: keywords_extract
-            extend:
-            - key: telephone
-              source: keywords_extract
-            - key: phone
-              source: keywords_extract
-            - key: telephony
-              source: keywords_extract
-          description: Expression list
-          items:
-            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_Element'
-        feature_text_original:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Original feature text
-        feature_type:
-          type: string
-          example: topic_search
-          description: 'Feature type (topic_search: topic elements, key_search: key elements, sup_search: supplementary elements)'
-        selected:
-          type: boolean
-          example: true
-          description: Selected
-    AI35-9ComparisonConfirmResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI35-9ComparisonConfirm_AsyncTaskIdResponse'
         status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-5FeatureConfirmRequest:
-      type: object
-      properties:
-        task_id:
+          format: int32
+          example: 2
+          description: 'Task status (1: running, 2: successful, 3: generation exception).'
+        tech_solution:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-        tech_features:
-          type: array
-          example:
-          - selected: true
-            user_add: false
-            feature_num: F1
-            feature_weight: topic
-            feature_elements: 电话机, 图像识别能力
-            feature_function: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
-            feature_text_original: 具有图像识别能力的电话机
-            feature_weight_reason: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
-          - selected: true
-            user_add: false
-            feature_num: F1.1
-            feature_weight: core
-            feature_elements: 电话, 摄像装置, 链接关系
-            feature_function: 通过在电话机中集成摄像装置，实现电话机对外部图像信息的采集
-            feature_text_original: 包括电话、与电话链接的摄像装置
-            feature_weight_reason: 现有电话机通常不具备与摄像装置链接的结构，属于本方案为实现图像采集功能而新增的结构
-          - selected: true
-            user_add: false
-            feature_num: F1.2
-            feature_weight: core
-            feature_elements: 命令, 摄像装置, 控制
-            feature_function: 通过命令控制摄像装置的工作，实现电话机对图像采集过程的自动化管理
-            feature_text_original: 至少包括一个用于控制与电话链接的摄像装置工作的命令
-            feature_weight_reason: 现有电话机未涉及通过命令控制外部摄像装置工作的功能，属于本方案为实现自动化图像采集新增的控制手段
-          - selected: true
-            user_add: false
-            feature_num: F1.3
-            feature_weight: core
-            feature_elements: 图像信息, 文字信息, 获取
-            feature_function: 利用图像识别技术对采集到的图像进行处理，自动提取图像中的文字信息，实现图像到文字的转换
-            feature_text_original: 根据摄取的图像信息获取该图像信息源的文字信息
-            feature_weight_reason: 现有电话机无法自动识别图像中的文字信息，属于本方案为实现文字信息自动提取而新增的功能
-          - selected: true
-            user_add: false
-            feature_num: F1.4
-            feature_weight: core
-            feature_elements: 文字信息, 电话显示器, 显示
-            feature_function: 将识别出的文字信息通过电话显示器展示，实现用户对图像文字内容的直接获取
-            feature_text_original: 并将文字信息显示在电话显示器上
-            feature_weight_reason: 现有电话机不具备将图像识别出的文字信息显示的功能，属于本方案为提升用户体验新增的显示手段
-          - selected: true
-            user_add: false
-            feature_num: F1.5
-            feature_weight: core
-            feature_elements: 电路算法, 地址, 网络数据库, 文字信息
-            feature_function: 通过电路算法解析获取图像相关信息的地址，并从网络数据库中进一步获取相关文字信息，实现电话机信息获取能力的扩展
-            feature_text_original: 电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息
-            feature_weight_reason: 现有电话机不具备通过电路算法获取地址并从网络数据库获取相关文字信息的功能，属于本方案为实现信息扩展获取而新增的技术手段
-          description: Technical features list
-          items:
-            $ref: '#/components/schemas/AI35-5FeatureConfirm_NoveltySearchFeatureExtractDataDTO'
-      required:
-      - task_id
+          example: 具有图像识别能力的电话机，包括电话、与电话链接的摄像装置，至少包括一个用于控制与电话链接的摄像装置工作的命令，根据摄取的图像信息获取该图像信息源的文字信息，并将文字信息显示在电话显示器上。电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息。
+          description: Novelty search summary data
     AI35-12ComparisonGenerateRequest:
       type: object
       properties:
@@ -1188,11 +1372,11 @@ components:
       required:
       - request
       - tech_features
-    AI35-2TechSolutionGetResponse:
+    AI35-1NoveltySearchSubmitResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI35-2TechSolutionGet_NoveltySearchTechSolutionResponse'
+          $ref: '#/components/schemas/AI35-1NoveltySearchSubmit_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -1208,25 +1392,90 @@ components:
       required:
       - status
       - error_code
-    AI35-6RetrievalElements_NoveltySearchElementResponse:
+    AI35-9ComparisonConfirm_AiSearchFinalResultFeature:
       type: object
       properties:
-        status:
+        claim_num:
           type: integer
           format: int32
-          example: 2
-          description: 'Task status (1: running, 2: successful, 3: generation exception).'
-        elements:
-          $ref: '#/components/schemas/AI35-6RetrievalElements_NoveltySearchElementResDTO'
-    AI35-4FeatureExtractRequest:
-      type: object
-      properties:
-        task_id:
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_type:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
+          example: 独权
+          description: Claim type (independent, dependent)
+        compare_feature:
+          type: string
+          example: 基于智能手机的图像识别系统
+          description: Compare feature
+        comparison_feature:
+          type: string
+          example: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像
+          description: Feature found in comparison document
+        differ:
+          type: string
+          example: NONE
+          description: Difference identifier
+        differ_for_user:
+          type: string
+          example: Common
+          description: User modified differ
+        original_differ:
+          type: string
+          example: NONE
+          description: Original differ
+        original_reason:
+          type: string
+          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+          description: Original reason
+        original_score:
+          type: integer
+          format: int32
+          example: 100
+          description: Original score
+        original_type:
+          type: string
+          example: public
+          description: Original CC tag type
+        public_score:
+          type: number
+          format: float
+          example: 0
+          description: Public score of the feature
+        reason:
+          type: string
+          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
+          description: Evaluation reason
+        reason_for_user:
+          type: string
+          example: 用户修改的评判理由
+          description: User modified reason
+        score:
+          type: integer
+          format: int32
+          example: 100
+          description: Similarity score between tech feature and comparison feature
+        score_for_user:
+          type: integer
+          format: int32
+          example: 85
+          description: User modified score
+        similar:
+          type: boolean
+          example: true
+          description: Is similar
+        tech_feature:
+          type: string
+          example: 具有图像识别能力的电话机
+          description: Technical feature (from input text)
+        type:
+          type: string
+          example: public
+          description: CC tag type
+        type_for_user:
+          type: string
+          example: obvious
+          description: User modified CC tag type
     AI35-9ComparisonConfirmRequest:
       type: object
       properties:
@@ -1404,78 +1653,174 @@ components:
           description: Task id
       required:
       - task_id
-    AI35-4FeatureExtractResponse:
+    AI35-7NoveltySearchAgentSearch_AsyncTaskIdResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI35-4FeatureExtract_NoveltySearchFeatureExtractResDTO'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        task_id:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-2TechSolutionGet_NoveltySearchTechSolutionResponse:
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI35-3TechSolutionUpdateRequest:
       type: object
       properties:
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task status (1: running, 2: successful, 3: generation exception).'
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
         tech_solution:
           type: string
           example: 具有图像识别能力的电话机，包括电话、与电话链接的摄像装置，至少包括一个用于控制与电话链接的摄像装置工作的命令，根据摄取的图像信息获取该图像信息源的文字信息，并将文字信息显示在电话显示器上。电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息。
-          description: Novelty search summary data
-    AI35-8NoveltySearchAgentResult_FeatureKeyword:
+          description: Tech Solution
+      required:
+      - task_id
+    AI35-7NoveltySearchAgentSearch_Element:
       type: object
       properties:
-        weight:
-          type: number
-          format: float
-          example: 0.85
-          description: Weight value
-        feature:
-          type: string
-          example: 图像识别
-          description: Feature name
-        keywords:
+        extend:
           type: array
           example:
-          - image recognition
-          - 视觉识别
-          - 图像分析
-          description: List of keywords
-    AI35-1NoveltySearchSubmitResponse:
+          - key: telephone
+            source: keywords_extract
+          - key: phone
+            source: keywords_extract
+          - key: telephony
+            source: keywords_extract
+          description: Extended keywords list
+          items:
+            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
+        ipc:
+          type: array
+          example:
+          - key: H04M1/725
+            source: keywords_extract
+          description: IPC classification list
+          items:
+            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
+        word:
+          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
+    AI35-7NoveltySearchAgentSearch_NoveltySearchElementResDTO:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI35-1NoveltySearchSubmit_AsyncTaskIdResponse'
-        status:
+        family_merge_enabled:
           type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+          example: false
+          description: Family merge enabled
+        list:
+          type: array
+          example:
+          - express:
+            - ipc:
+              - key: H04M1/725
+                source: keywords_extract
+              word:
+                key: 电话
+                source: keywords_extract
+              extend:
+              - key: telephone
+                source: keywords_extract
+              - key: phone
+                source: keywords_extract
+              - key: telephony
+                source: keywords_extract
+            selected: true
+            feature_type: topic_search
+            feature_text_original: 具有图像识别能力的电话机
+          description: Retrieval elements list
+          items:
+            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_NoveltySearchElementDataDTO'
+    AI35-8NoveltySearchAgentResult_KeywordExpress:
+      type: object
+      properties:
+        ipc:
+          type: array
+          example:
+          - key: H04M1/725
+            source: keywords_extract
+          - key: H04M3/42
+            source: semantic_search
+          - key: G06V10/00
+            source: keywords_extract
+          description: List of International Patent Classification codes
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
+        word:
+          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
+        extend:
+          type: array
+          example:
+          - key: 手机
+            source: keywords_extract
+          - key: telephone
+            source: keywords_extract
+          - key: phone
+            source: keywords_extract
+          description: List of extended keywords including synonyms and near-synonyms
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
+    AI35-12ComparisonGenerate_FeatureComparisonFinalResItem:
+      type: object
+      properties:
+        lang:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-6RetrievalElementsRequest:
+          example: zh
+          description: Language
+        claims:
+          type: array
+          example:
+          - claim_num: 1
+            claim_text: 一种数据处理方法，其特征在于...
+          description: Claims original text list
+          items:
+            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResClaim'
+        document:
+          type: string
+          example: 一种基于人工智能的数据处理方法
+          description: Document
+        features:
+          type: array
+          example:
+          - score: 85
+            public_score: 90
+            tech_feature: 人工智能算法
+            comparison_feature: 机器学习算法
+          description: Feature list
+          items:
+            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResFeature'
+        patent_id:
+          type: string
+          example: CN123456789A
+          description: Patent ID
+        public_score:
+          type: number
+          format: float
+          example: 87.5
+          description: Disclosure score
+    AI35-6RetrievalElements_Element:
+      type: object
+      properties:
+        ipc:
+          type: array
+          example:
+          - key: H04M1/725
+            source: keywords_extract
+          description: IPC classification list
+          items:
+            $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
+        word:
+          $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
+        extend:
+          type: array
+          example:
+          - key: telephone
+            source: keywords_extract
+          - key: phone
+            source: keywords_extract
+          - key: telephony
+            source: keywords_extract
+          description: Extended keywords list
+          items:
+            $ref: '#/components/schemas/AI35-6RetrievalElements_BasicElement'
+    AI35-4FeatureExtractRequest:
       type: object
       properties:
         task_id:
@@ -1484,10 +1829,91 @@ components:
           description: Task id
       required:
       - task_id
-    AI35-4FeatureExtract_NoveltySearchFeatureExtractResDTO:
+    AI35-7NoveltySearchAgentSearchResponse:
       type: object
       properties:
         data:
+          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-8NoveltySearchAgentResultResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_AiNoveltySearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-7NoveltySearchAgentSearch_BasicElement:
+      type: object
+      properties:
+        key:
+          type: string
+          example: 电话
+          description: Keyword
+        source:
+          type: string
+          example: keywords_extract
+          description: Source
+    AI35-12ComparisonGenerate_FeatureComparisonResponseDTO:
+      type: object
+      properties:
+        final_res:
+          type: array
+          example:
+          - lang: zh
+            claims:
+            - claim_num: 1
+              claim_text: 一种数据处理方法，其特征在于...
+            document: 一种基于人工智能的数据处理方法
+            features:
+            - score: 85
+              public_score: 90
+              tech_feature: 人工智能算法
+              comparison_feature: 机器学习算法
+            patent_id: CN123456789A
+            public_score: 87.5
+          description: Final results
+          items:
+            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResItem'
+        threshold:
+          type: integer
+          format: int32
+          example: 75
+          description: Threshold
+    AI35-5FeatureConfirmRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+        tech_features:
           type: array
           example:
           - selected: true
@@ -1540,168 +1966,16 @@ components:
             feature_weight_reason: 现有电话机不具备通过电路算法获取地址并从网络数据库获取相关文字信息的功能，属于本方案为实现信息扩展获取而新增的技术手段
           description: Technical features list
           items:
-            $ref: '#/components/schemas/AI35-4FeatureExtract_NoveltySearchFeatureExtractDataDTO'
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task status (1: running, 2: successful, 3: generation exception).'
-    AI35-8NoveltySearchAgentResult_KeywordExpress:
+            $ref: '#/components/schemas/AI35-5FeatureConfirm_NoveltySearchFeatureExtractDataDTO'
+      required:
+      - task_id
+    AI35-1NoveltySearchSubmit_AsyncTaskIdResponse:
       type: object
       properties:
-        ipc:
-          type: array
-          example:
-          - key: H04M1/725
-            source: keywords_extract
-          - key: H04M3/42
-            source: semantic_search
-          - key: G06V10/00
-            source: keywords_extract
-          description: List of International Patent Classification codes
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
-        word:
-          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
-        extend:
-          type: array
-          example:
-          - key: 手机
-            source: keywords_extract
-          - key: telephone
-            source: keywords_extract
-          - key: phone
-            source: keywords_extract
-          description: List of extended keywords including synonyms and near-synonyms
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordInfo'
-    AI35-9ComparisonConfirm_AiSearchFinalResult:
-      type: object
-      properties:
-        comparative_literature_category:
+        task_id:
           type: string
-          example: novelty
-          description: Comparative literature category (novelty:novelty, creativity:creativity)
-        comparative_literature_type:
-          type: string
-          example: A
-          description: Comparative literature type
-        creativity_type:
-          type: string
-          example: public
-          description: Creativity type (public:public, obvious:obvious)
-        document:
-          type: string
-          example: 相关技术文档内容
-          description: Comparison document
-        feature_match_num:
-          type: integer
-          format: int32
-          example: 0
-          description: Feature match number
-        features:
-          type: array
-          example:
-          - type: public
-            score: 100
-            differ: NONE
-            reason: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别（相当于目标文本的具有图像识别能力的电话机），实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-            similar: true
-            public_score: 0
-            tech_feature: 具有图像识别能力的电话机
-            original_type: public
-            original_score: 100
-            original_differ: NONE
-            original_reason: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别（相当于目标文本的具有图像识别能力的电话机），实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-            comparison_feature: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像，并裁剪出显示屏所在的图像区域；在显示屏图像区域中提取出显示框、显示框标签的外部轮廓；提取出显示框标签的文字，提取出显示框中显示的颜色或文字，并在智能手机页面进行显示
-          - type: public
-            score: 100
-            differ: NONE
-            reason: 对比文件记载了通过智能手机拍摄图像（相当于目标文本的电话与摄像装置链接），智能手机本身集成摄像装置，且用于采集图像，所有要素已被公开。
-            similar: true
-            public_score: 0
-            tech_feature: 包括电话、与电话链接的摄像装置
-            original_type: public
-            original_score: 100
-            original_differ: NONE
-            original_reason: 对比文件记载了通过智能手机拍摄图像（相当于目标文本的电话与摄像装置链接），智能手机本身集成摄像装置，且用于采集图像，所有要素已被公开。
-            comparison_feature: 通过智能手机拍摄生产机器附带控制终端显示屏的图像
-          - type: public
-            score: 100
-            differ: NONE
-            reason: 对比文件记载了智能手机拍摄图像作为待识别图像（相当于目标文本的通过命令控制摄像装置工作），拍摄动作隐含由命令或操作控制摄像装置工作，所有要素已被公开。
-            similar: true
-            public_score: 0
-            tech_feature: 至少包括一个用于控制与电话链接的摄像装置工作的命令
-            original_type: public
-            original_score: 100
-            original_differ: NONE
-            original_reason: 对比文件记载了智能手机拍摄图像作为待识别图像（相当于目标文本的通过命令控制摄像装置工作），拍摄动作隐含由命令或操作控制摄像装置工作，所有要素已被公开。
-            comparison_feature: 智能手机拍摄生产机器附带控制终端显示屏的屏幕图像作为待识别图像
-          - type: public
-            score: 100
-            differ: NONE
-            reason: 对比文件记载了调用Tesseract API接口对图像进行识别，得到显示框标签的文字（相当于目标文本的根据摄取的图像信息获取文字信息），所有要素已被公开。
-            similar: true
-            public_score: 0
-            tech_feature: 根据摄取的图像信息获取该图像信息源的文字信息
-            original_type: public
-            original_score: 100
-            original_differ: NONE
-            original_reason: 对比文件记载了调用Tesseract API接口对图像进行识别，得到显示框标签的文字（相当于目标文本的根据摄取的图像信息获取文字信息），所有要素已被公开。
-            comparison_feature: 调用库函数Tesseract的API接口对灰度化处理后图像进行识别，得到显示框标签的文字
-          - type: public
-            score: 100
-            differ: NONE
-            reason: 对比文件记载了将识别到的文字信息显示到手机屏幕页面（相当于目标文本的将文字信息显示在电话显示器上），所有要素已被公开。
-            similar: true
-            public_score: 0
-            tech_feature: 并将文字信息显示在电话显示器上
-            original_type: public
-            original_score: 100
-            original_differ: NONE
-            original_reason: 对比文件记载了将识别到的文字信息显示到手机屏幕页面（相当于目标文本的将文字信息显示在电话显示器上），所有要素已被公开。
-            comparison_feature: 将识别到的显示框标签的文字以及对应显示框中显示的颜色或文字显示到手机屏幕页面
-          - type: obvious
-            score: 80
-            differ: Common
-            reason: 对比文件记载了通过无线网络传输并存储至服务器的数据库中（对应目标文本的通过地址从网络数据库获取文字信息），但未明确记载通过电路算法解析地址的具体过程。将识别信息传输到数据库并获取相关信息属于本领域常规手段，属于公知常识。
-            similar: true
-            public_score: 0
-            tech_feature: 电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息
-            original_type: obvious
-            original_score: 80
-            original_differ: Common
-            original_reason: 对比文件记载了通过无线网络传输并存储至服务器的数据库中（对应目标文本的通过地址从网络数据库获取文字信息），但未明确记载通过电路算法解析地址的具体过程。将识别信息传输到数据库并获取相关信息属于本领域常规手段，属于公知常识。
-            comparison_feature: 通过无线网络传输并存储至服务器的数据库中
-          description: Technical features list
-          items:
-            $ref: '#/components/schemas/AI35-9ComparisonConfirm_AiSearchFinalResultFeature'
-        lang:
-          type: string
-          example: CN
-          description: Language
-        most_similar:
-          type: boolean
-          example: false
-          description: Is most similar
-        patent_id:
-          type: string
-          example: a344d039-4b85-4ab1-bf83-4e0f9197d010
-          description: Patent ID
-        public_score:
-          type: number
-          format: float
-          example: 0.993
-          description: Public score
-        selected:
-          type: boolean
-          example: false
-          description: Is selected
-        user_added:
-          type: boolean
-          example: false
-          description: User added
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     AI35-12ComparisonGenerate_FeatureComparisonRequestDTO:
       type: object
       properties:
@@ -1719,11 +1993,11 @@ components:
           description: Patent PN number
       required:
       - pn
-    AI35-12ComparisonGenerateResponse:
+    AI35-9ComparisonConfirmResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonResponseDTO'
+          $ref: '#/components/schemas/AI35-9ComparisonConfirm_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -1739,286 +2013,65 @@ components:
       required:
       - status
       - error_code
-    AI35-8NoveltySearchAgentResult_AiNoveltySearchResponse:
+    AI35-12ComparisonGenerate_FeatureComparisonFinalResFeature:
       type: object
       properties:
-        lang:
-          type: string
-          example: CN
-          description: Language code
-        text:
-          type: string
-          example: 需要处理的文本内容
-          description: Input content used when operateType is expand/simplify/polish
-        cc_num:
-          type: integer
-          format: int32
-          example: 100
-          description: Control the token consumption of algorithm interface to control interface cost (Unnecessary output)
-        cc_pids:
-          type: array
-          example:
-          - CN123456789A
-          - US20210150214A1
-          - JP2021144566A
-          description: List of patents for CC comparison (Unnecessary output)
-        request:
-          type: object
-          example:
-            async: true
-            task_id: a4ff2f0f5de6c15fd646a11df1de83da
-            operate_type: generate
-          description: Request body
-        is_async:
-          type: boolean
-          example: true
-          description: Whether it is an asynchronous request
-        task_cost:
-          type: number
-          format: float
-          example: 276.2
-          description: Total task cost time in seconds
-        update_ts:
-          type: string
-          example: '2025-10-14 13:44:11.458'
-          description: Last update time of the result
-        cc_docs_num:
-          type: integer
-          format: int32
-          example: 70
-          description: Total number of patents compared (Unnecessary output)
-        task_status:
-          type: string
-          example: success
-          description: Current task execution status
-        cc_threshold:
-          type: number
-          format: float
-          example: 0
-          description: CC comparison threshold, features above this threshold are confirmed, below are pending confirmation (Unnecessary output)
-        debug_detail:
-          type: object
-          example:
-            debug_info: 详细的调试信息
-          description: Debug details returned when debug=true is enabled, mainly for internal testing analysis (Unnecessary output)
-        excute_times:
-          type: integer
-          format: int32
-          example: 14
-          description: Number of search executions
-        final_result:
-          type: array
-          example:
-          - lang: CN
-            features: []
-            selected: false
-            patent_id: 1f4bd743-28f7-44d2-abab-b98a38c49f6b
-            user_added: false
-            most_similar: false
-            public_score: 1
-            feature_match_num: 0
-            comparative_literature_type: A
-          description: List of comparison information for found potentially related patents, sorted by public score
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_AiSearchFinalResult'
-        operate_type:
-          type: string
-          example: generate
-          description: Operation type (generate content/expand/polish/simplify)
-        process_dict:
-          type: object
-          example:
-            semantic_search:
-              type: semantic_search
-              title:
-                en: Semantic Search
-                zh: 语义检索
-              status: success
-              query_thinking:
-                zh: 根据用户输入内容进行语义检索
-          description: Detailed results of each search process including title, query thinking, search results and other information
-        find_patent_num:
-          type: integer
-          format: int32
-          example: 0
-          description: Number of potentially similar patents found
-        feature_keywords:
-          type: array
-          example:
-          - weight: 0.85
-            feature: 图像识别
-            keywords:
-            - image recognition
-            - 视觉识别
-          description: List of feature keywords
-          items:
-            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_FeatureKeyword'
-        process_dict_keys:
-          type: array
-          example:
-          - semantic_search
-          - all_elements_search_tacd
-          - all_elements_search_ai_summary
-          - all_elements_search_dynamic
-          - relevant_tracking_search
-          description: List of process dictionary keys defining the order of search processes
-        feature_analysis_result:
-          $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_FeatureAnalysisResult'
-    AI35-7NoveltySearchAgentSearch_Element:
-      type: object
-      properties:
-        extend:
-          type: array
-          example:
-          - key: telephone
-            source: keywords_extract
-          - key: phone
-            source: keywords_extract
-          - key: telephony
-            source: keywords_extract
-          description: Extended keywords list
-          items:
-            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
-        ipc:
-          type: array
-          example:
-          - key: H04M1/725
-            source: keywords_extract
-          description: IPC classification list
-          items:
-            $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
-        word:
-          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_BasicElement'
-    AI35-12ComparisonGenerate_NoveltySearchFeatureExtractDataDTO:
-      type: object
-      properties:
-        feature_elements:
-          type: string
-          example: 电话机, 图像识别能力
-          description: Feature elements
-        feature_function:
-          type: string
-          example: 提供一种能够实现图像信息采集、文字识别及信息获取功能的电话机整体结构
-          description: Feature function
-        feature_num:
-          type: string
-          example: F1
-          description: Feature number
-        feature_text:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Feature text
-        feature_text_original:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Original feature text
-        feature_weight:
-          type: string
-          example: topic
-          description: Feature weight
-        feature_weight_reason:
-          type: string
-          example: 本技术方案的主题名称，明确保护对象为具有图像识别能力的电话机
-          description: Feature weight reason
-        selected:
-          type: boolean
-          example: true
-          description: Selected
-        user_add:
-          type: boolean
-          example: false
-          description: User added
-    AI35-9ComparisonConfirm_AiSearchFinalResultFeature:
-      type: object
-      properties:
-        claim_num:
-          type: integer
-          format: int32
-          example: 1
-          description: Claim number (claim 1, claim 2, claim 3)
-        claim_type:
-          type: string
-          example: 独权
-          description: Claim type (independent, dependent)
-        compare_feature:
-          type: string
-          example: 基于智能手机的图像识别系统
-          description: Compare feature
-        comparison_feature:
-          type: string
-          example: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像
-          description: Feature found in comparison document
-        differ:
-          type: string
-          example: NONE
-          description: Difference identifier
-        differ_for_user:
-          type: string
-          example: Common
-          description: User modified differ
-        original_differ:
-          type: string
-          example: NONE
-          description: Original differ
-        original_reason:
-          type: string
-          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-          description: Original reason
-        original_score:
-          type: integer
-          format: int32
-          example: 100
-          description: Original score
-        original_type:
-          type: string
-          example: public
-          description: Original CC tag type
-        public_score:
-          type: number
-          format: float
-          example: 0
-          description: Public score of the feature
-        reason:
-          type: string
-          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-          description: Evaluation reason
-        reason_for_user:
-          type: string
-          example: 用户修改的评判理由
-          description: User modified reason
-        score:
-          type: integer
-          format: int32
-          example: 100
-          description: Similarity score between tech feature and comparison feature
-        score_for_user:
-          type: integer
-          format: int32
-          example: 85
-          description: User modified score
-        similar:
-          type: boolean
-          example: true
-          description: Is similar
-        tech_feature:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Technical feature (from input text)
         type:
           type: string
           example: public
           description: CC tag type
-        type_for_user:
+        score:
+          type: integer
+          format: int32
+          example: 85
+          description: Score
+        differ:
           type: string
-          example: obvious
-          description: User modified CC tag type
-    AI35-3TechSolutionUpdate_AsyncTaskIdResponse:
+          example: NONE
+          description: Difference identifier
+        public_score:
+          type: integer
+          format: int32
+          example: 90
+          description: Disclosure score
+        tech_feature:
+          type: string
+          example: 人工智能算法
+          description: Technical feature
+        comparison_feature:
+          type: string
+          example: 机器学习算法
+          description: Comparison feature
+    AI35-8NoveltySearchAgentResult_KeywordExtractResult:
       type: object
       properties:
-        task_id:
+        express:
+          type: array
+          example:
+          - ipc:
+            - key: H04M1/725
+              source: keywords_extract
+            word:
+              key: 电话
+              source: keywords_extract
+            extend:
+            - key: 手机
+              source: keywords_extract
+          description: List of expressions containing keyword expressions and extension information
+          items:
+            $ref: '#/components/schemas/AI35-8NoveltySearchAgentResult_KeywordExpress'
+        selected:
+          type: boolean
+          example: true
+          description: Whether selected
+        feature_type:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
+          example: topic_search
+          description: Feature type
+        feature_text_original:
+          type: string
+          example: 一种具有图像识别能力的电话机
+          description: Original feature text
     AI35-6RetrievalElementsResponse:
       type: object
       properties:
@@ -2039,104 +2092,18 @@ components:
       required:
       - status
       - error_code
-    AI35-8NoveltySearchAgentResult_AiSearchFinalResultFeature:
-      type: object
-      properties:
-        type:
-          type: string
-          example: public
-          description: CC tag type
-        score:
-          type: integer
-          format: int32
-          example: 100
-          description: Similarity score between tech feature and comparison feature
-        differ:
-          type: string
-          example: NONE
-          description: Difference identifier
-        reason:
-          type: string
-          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-          description: Evaluation reason
-        similar:
-          type: boolean
-          example: true
-          description: Is similar
-        claim_num:
-          type: integer
-          format: int32
-          example: 1
-          description: Claim number (claim 1, claim 2, claim 3)
-        claim_type:
-          type: string
-          example: 独权
-          description: Claim type (independent, dependent)
-        public_score:
-          type: number
-          format: float
-          example: 0
-          description: Public score of the feature
-        tech_feature:
-          type: string
-          example: 具有图像识别能力的电话机
-          description: Technical feature (from input text)
-        original_type:
-          type: string
-          example: public
-          description: Original CC tag type
-        type_for_user:
-          type: string
-          example: obvious
-          description: User modified CC tag type
-        original_score:
-          type: integer
-          format: int32
-          example: 100
-          description: Original score
-        score_for_user:
-          type: integer
-          format: int32
-          example: 85
-          description: User modified score
-        compare_feature:
-          type: string
-          example: 基于智能手机的图像识别系统
-          description: Compare feature
-        differ_for_user:
-          type: string
-          example: Common
-          description: User modified differ
-        original_differ:
-          type: string
-          example: NONE
-          description: Original differ
-        original_reason:
-          type: string
-          example: 对比文件记载了基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄图像并进行识别，实现了图像信息采集、文字识别及信息获取功能，所有要素已被公开。
-          description: Original reason
-        reason_for_user:
-          type: string
-          example: 用户修改的评判理由
-          description: User modified reason
-        comparison_feature:
-          type: string
-          example: 一种基于智能手机图像识别的生产信息采集方法，通过智能手机拍摄生产机器附带控制终端显示屏的图像
-          description: Feature found in comparison document
-    AI35-11ReportGetRequest:
+    AI35-10NoveltySearchExport_AsyncTaskIdResponse:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
-      required:
-      - task_id
-    AI35-11ReportGetResponse:
+    AI35-5FeatureConfirmResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI35-11ReportGet_NoveltySearchDownloadResponse'
+          $ref: '#/components/schemas/AI35-5FeatureConfirm_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -2152,11 +2119,11 @@ components:
       required:
       - status
       - error_code
-    AI35-10NoveltySearchExportResponse:
+    AI35-3TechSolutionUpdateResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI35-10NoveltySearchExport_AsyncTaskIdResponse'
+          $ref: '#/components/schemas/AI35-3TechSolutionUpdate_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -2172,26 +2139,6 @@ components:
       required:
       - status
       - error_code
-    AI35-8NoveltySearchAgentResult_KeywordInfo:
-      type: object
-      properties:
-        key:
-          type: string
-          example: 电话
-          description: Keyword content
-        source:
-          type: string
-          example: keywords_extract
-          description: Keyword source
-    AI35-8NoveltySearchAgentResultRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier, returned by submit task API
-      required:
-      - task_id
     AI35-11ReportGet_NoveltySearchDownloadResponse:
       type: object
       properties:
@@ -2208,6 +2155,98 @@ components:
           type: string
           example: http://downloadurl
           description: Report file download link (returned when export status is successful)
+    AI35-12ComparisonGenerate_FeatureComparisonFinalResClaim:
+      type: object
+      properties:
+        claim_num:
+          type: integer
+          format: int32
+          example: 1
+          description: Claim number (claim 1, claim 2, claim 3)
+        claim_text:
+          type: string
+          example: 一种数据处理方法，其特征在于：包括数据采集步骤、数据预处理步骤和数据分析步骤。
+          description: Claim original text
+    AI35-6RetrievalElements_NoveltySearchElementResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task status (1: running, 2: successful, 3: generation exception).'
+        elements:
+          $ref: '#/components/schemas/AI35-6RetrievalElements_NoveltySearchElementResDTO'
+    AI35-4FeatureExtractResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI35-4FeatureExtract_NoveltySearchFeatureExtractResDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI35-6RetrievalElements_NoveltySearchElementResDTO:
+      type: object
+      properties:
+        list:
+          type: array
+          example:
+          - express:
+            - ipc:
+              - key: H04M1/725
+                source: keywords_extract
+              word:
+                key: 电话
+                source: keywords_extract
+              extend:
+              - key: telephone
+                source: keywords_extract
+              - key: phone
+                source: keywords_extract
+              - key: telephony
+                source: keywords_extract
+            selected: true
+            feature_type: topic_search
+            feature_text_original: 具有图像识别能力的电话机
+          description: Retrieval elements list
+          items:
+            $ref: '#/components/schemas/AI35-6RetrievalElements_NoveltySearchElementDataDTO'
+        family_merge_enabled:
+          type: boolean
+          example: false
+          description: Family merge enabled
+    AI35-12ComparisonGenerateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonResponseDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI35-6RetrievalElements_NoveltySearchElementDataDTO:
       type: object
       properties:
@@ -2242,76 +2281,37 @@ components:
           type: string
           example: 具有图像识别能力的电话机
           description: Original feature text
-    AI35-3TechSolutionUpdateRequest:
+    AI35-8NoveltySearchAgentResult_FeatureKeyword:
       type: object
       properties:
+        weight:
+          type: number
+          format: float
+          example: 0.85
+          description: Weight value
+        feature:
+          type: string
+          example: 图像识别
+          description: Feature name
+        keywords:
+          type: array
+          example:
+          - image recognition
+          - 视觉识别
+          - 图像分析
+          description: List of keywords
+    AI35-7NoveltySearchAgentSearchRequest:
+      type: object
+      properties:
+        elements:
+          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_NoveltySearchElementResDTO'
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
-        tech_solution:
-          type: string
-          example: 具有图像识别能力的电话机，包括电话、与电话链接的摄像装置，至少包括一个用于控制与电话链接的摄像装置工作的命令，根据摄取的图像信息获取该图像信息源的文字信息，并将文字信息显示在电话显示器上。电话机通过电路算法首先得到地址，再通过该地址从相关显示器的网络数据库得到文字信息。
-          description: Tech Solution
       required:
+      - elements
       - task_id
-    AI35-6RetrievalElements_BasicElement:
-      type: object
-      properties:
-        key:
-          type: string
-          example: 电话
-          description: Keyword
-        source:
-          type: string
-          example: keywords_extract
-          description: Source
-    AI35-7NoveltySearchAgentSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI35-7NoveltySearchAgentSearch_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI35-12ComparisonGenerate_FeatureComparisonResponseDTO:
-      type: object
-      properties:
-        final_res:
-          type: array
-          example:
-          - lang: zh
-            claims:
-            - claim_num: 1
-              claim_text: 一种数据处理方法，其特征在于...
-            document: 一种基于人工智能的数据处理方法
-            features:
-            - score: 85
-              public_score: 90
-              tech_feature: 人工智能算法
-              comparison_feature: 机器学习算法
-            patent_id: CN123456789A
-            public_score: 87.5
-          description: Final results
-          items:
-            $ref: '#/components/schemas/AI35-12ComparisonGenerate_FeatureComparisonFinalResItem'
-        threshold:
-          type: integer
-          format: int32
-          example: 75
-          description: Threshold
   securitySchemes:
     bearerAuth:
       type: http

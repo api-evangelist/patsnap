@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Technical Disclosure API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Technical Disclosure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI32-3 Download technical disclosure document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/patent-disclosure/download",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides a download link to the Technical Submission document based on the Task ID of the generated Technical Submission."
+        },
+        {
+          "info": {
+            "name": "AI32-2 Generate technical disclosure task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/patent-disclosure/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract the information obtained in the technical interface based on the「AI32-1」highlights and have AI assist in writing a technical submission."
+        },
+        {
+          "info": {
+            "name": "AI32-1 Key content extraction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/patent-disclosure/tech-means",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the input of technical ideas or program information, the key elements such as technical means are extracted and used to provide input for the subsequent writing of technical submissions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

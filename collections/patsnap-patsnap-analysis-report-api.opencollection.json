@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patsnap Analysis Report API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patsnap Analysis Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "R001 Generate Enterprise Report Task (No logo version)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/innovation/company-report/task/create-no-logo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the enterprise name or unified social credit code, create the enterprise innovation capability report(No Logo), and obtain the report download job ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>"
+        },
+        {
+          "info": {
+            "name": "R001 Generate Enterprise Report Task(Patsnap Logo)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/innovation/company-report/task/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the enterprise name or unified social credit code, create the enterprise innovation capability report(Patsnap Logo), and obtain the report download ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>"
+        },
+        {
+          "info": {
+            "name": "R002 Generate patent value report task(Patsnap Logo)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/patent-report/task/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the patent number or patent ID, create a patent value report (Patsnap Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>"
+        },
+        {
+          "info": {
+            "name": "R002 Query and export patent value report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/patent-report/job_id/status",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query",
+                "description": "job_id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides patent value report downloading (query and export patent value reports according to the job_id returned in the [R002]Generate patent value report task)."
+        },
+        {
+          "info": {
+            "name": "R001 Query and export enterprise report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/innovation/company-report/job_id/status",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query",
+                "description": "job_id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides enterprise report downloading (query and export reports according to the job_id returned in the Generate Enterprise Report Task)"
+        },
+        {
+          "info": {
+            "name": "R003 Create Pre-patent Evaluation Report Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/pre_patent-evaluation-create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input the technical description text of the patent to be applied for (more than 200 words recommended), create the task of pre-patent evaluation report generation, and return the job id of the report export; The report contains scores and detailed index results for the three dimensions of technological innovation, patentability and translation prospect of the technology solution."
+        },
+        {
+          "info": {
+            "name": "R003 Export Pre-patent Evaluation Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/pre_patent-evaluation-export",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query",
+                "description": "job_id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enter the patent evaluation content to obtain the patent evaluation report job ID"
+        },
+        {
+          "info": {
+            "name": "R004-3 Idea Validation - Export Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/idea-validation/job_id/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides technical idea validation report downloading (query and export technical idea validation report according to the job_id returned in the [R004-1]Idea Validation - Create Report)."
+        },
+        {
+          "info": {
+            "name": "R004-1 Idea Validation - Create Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/idea-validation/task/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the technical approach or technical effect, create a technical idea validation report and obtain the report download job ID.\nThe technical idea validation report contains troubleshooting technical essentials, check scope, list of similar patents, comparison file(technical problems, technical approach, technical effect, comparison of similar features, core invention points, enhancement proposals), analysis results, technical monitoring suggestions."
+        },
+        {
+          "info": {
+            "name": "R004-2 Idea Validation - Similar Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/idea-validation/similar-patent-comparison",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the job_id returned in the [R004-1], a list of similar patents can be obtained and compared through semantic search. A maximum of 20 similar patents will be returned, sorted by default from high to low similarity."
+        },
+        {
+          "info": {
+            "name": "R002 Generate patent value report task(No logo)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/patent-report/task/create-no-logo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the patent number or patent ID, create a patent value report (No Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

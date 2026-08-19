@@ -1,0 +1,1807 @@
+{
+  "item": [
+    {
+      "id": "7627f137-1e6b-4ef0-bbd3-f790c45a0e99",
+      "name": "Drug R&D Orgnization",
+      "description": {
+        "content": "Drug R&D Orgnization APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5fec8e61-1ad7-4fb2-bcb7-1e8f71367580",
+          "name": "B033 Organization Pipeline",
+          "request": {
+            "name": "B033 Organization Pipeline",
+            "description": {
+              "content": "Obtain organization pipeline information about drug, target, disease, dev status etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "pipeline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\",\n  \"organization_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c30605a-8581-4c69-8885-92e910082b11",
+              "name": "Successful b033 organization pipeline response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "pipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9078,\n  \"data\": {\n    \"items\": [\n      {\n        \"drug\": {\n          \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Ranibizumab (Genentech)\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"雷珠单抗\"\n            }\n          ]\n        },\n        \"target\": {\n          \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n          \"short_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"VEGF\"\n            }\n          ],\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Vascular endothelial growth factor\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"血管内皮生长因子\"\n            }\n          ]\n        },\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"data_type\": \"Current\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Biosimilar\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"生物类似药\"\n              }\n            ],\n            \"normalized_id\": \"9f2e2934e5b2477e916cdbedf928934b\"\n          },\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Monoclonal antibody\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"单克隆抗体\"\n              }\n            ],\n            \"normalized_id\": \"c38eb408d6b842f487d6a27484156633\"\n          }\n        ],\n        \"dev_status\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"dev_status_time\": 1698710400000,\n        \"therapeutic_area\": [\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          },\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"drug\": {\n          \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Ranibizumab (Genentech)\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"雷珠单抗\"\n            }\n          ]\n        },\n        \"target\": {\n          \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n          \"short_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"VEGF\"\n            }\n          ],\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Vascular endothelial growth factor\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"血管内皮生长因子\"\n            }\n          ]\n        },\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"data_type\": \"Current\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Biosimilar\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"生物类似药\"\n              }\n            ],\n            \"normalized_id\": \"9f2e2934e5b2477e916cdbedf928934b\"\n          },\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Monoclonal antibody\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"单克隆抗体\"\n              }\n            ],\n            \"normalized_id\": \"c38eb408d6b842f487d6a27484156633\"\n          }\n        ],\n        \"dev_status\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"dev_status_time\": 1698710400000,\n        \"therapeutic_area\": [\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          },\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 10,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dc9b96c-533e-4919-b0e6-6ade04453b4a",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "pipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7777e654-5a55-4d09-b570-c22051edfedc",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "pipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8504125e-d783-4479-93f6-e95f24924b81",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "pipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f2add6e-7b5f-4daf-9f2e-066567528ec5",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "pipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f5f1f5a-1dca-40d7-ad6d-0e9a7fc2303b",
+          "name": "B034 Organization basic information",
+          "request": {
+            "name": "B034 Organization basic information",
+            "description": {
+              "content": "Obtain organization basic information about stock symbol, founded date, tags etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "basic-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string>",
+                  "description": "(Required) Organization ID, obtain this through the organization autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1268f4df-30c5-4230-9130-83b0947cedd4",
+              "name": "Successful b034 organization basic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "basic-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization_id",
+                      "value": "11ef8a9e8bf5ca80213a1183511cded3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 811,\n  \"data\": {\n    \"tags\": [\n      {\n        \"type\": \"THERAPEUTIC_AREA\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Neoplasms\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"肿瘤\"\n          }\n        ]\n      },\n      {\n        \"type\": \"DRUG_TYPE\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Monoclonal antibody\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"单克隆抗体\"\n          }\n        ]\n      }\n    ],\n    \"address\": {\n      \"city\": \"Thousand Oaks\",\n      \"state\": \"California\",\n      \"country\": \"United States\"\n    },\n    \"founded_date\": \"string\",\n    \"stock_symbol\": \"AMGN\",\n    \"stock_exchange_code\": \"NASDAQ\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c849ec9-b5e1-4a73-8e6c-427e643fd411",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "basic-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization_id",
+                      "value": "11ef8a9e8bf5ca80213a1183511cded3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a80997f-9503-4e26-b2a0-abd1b10a548e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "basic-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization_id",
+                      "value": "11ef8a9e8bf5ca80213a1183511cded3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4348efc-bf8d-4913-baf7-d6ee587e1038",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "basic-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization_id",
+                      "value": "11ef8a9e8bf5ca80213a1183511cded3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b6cfcb2-112e-41ae-b44c-abb5d9bc2dcf",
+          "name": "B036 Grant funding",
+          "request": {
+            "name": "B036 Grant funding",
+            "description": {
+              "content": "Obtain grant funding about award by organization, funded value, open time etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "grant-funding"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\",\n  \"organization_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff2a5987-5000-430c-aede-b395b31ee028",
+              "name": "Successful b036 grant funding response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "grant-funding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 7881,\n  \"data\": {\n    \"items\": [\n      {\n        \"value\": 500000,\n        \"open_date\": 1598933340000,\n        \"close_date\": 1643601660000,\n        \"currency_code\": \"USD\",\n        \"award_by_organization\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"US Food & Drug Administration\"\n              }\n            ],\n            \"original_name\": \"Food and Drug Administration\",\n            \"organization_id\": \"22f728dbb565b4533dccd54700185db3\"\n          }\n        ]\n      },\n      {\n        \"value\": 500000,\n        \"open_date\": 1598933340000,\n        \"close_date\": 1643601660000,\n        \"currency_code\": \"USD\",\n        \"award_by_organization\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"US Food & Drug Administration\"\n              }\n            ],\n            \"original_name\": \"Food and Drug Administration\",\n            \"organization_id\": \"22f728dbb565b4533dccd54700185db3\"\n          }\n        ]\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 10,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a72dae9-72e9-4c4c-a0a2-217f6bafca32",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "grant-funding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecd0ff97-3196-47a3-9af4-8a71dec32aa3",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "grant-funding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b5c0937-c752-4c74-a477-3c9aa2063d06",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "grant-funding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a439114-fe4b-40de-b250-e3e83c8b4885",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "grant-funding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc751d0b-d84c-4649-9594-ac58149c8e5c",
+          "name": "B035 Organization profit",
+          "request": {
+            "name": "B035 Organization profit",
+            "description": {
+              "content": "Obtain organization profit information about market cap, revenue, income statement etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "profit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organization_id\": \"<string>\",\n  \"duration_type\": \"<string>\",\n  \"duration\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bdb17bb-dd97-42a5-89d9-c9b0ebde8436",
+              "name": "Successful b035 organization profit response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "profit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\",\n  \"duration_type\": \"YEARLY\",\n  \"duration\": \"FIVE_YEAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 491,\n  \"data\": {\n    \"revenue\": 28010000000,\n    \"unix_date\": 1703980800000,\n    \"cash_flows\": [\n      {\n        \"year\": 1553990400000,\n        \"currency_code\": \"USD\",\n        \"free_cash_flow\": {\n          \"free_cf\": 1729000000,\n          \"free_cf_yield\": 0.0817,\n          \"free_cf_growth\": -0.3278\n        },\n        \"capital_expenditures\": {\n          \"capex\": -116000000,\n          \"capex_growth\": 0.2516\n        },\n        \"net_financing_cash_flow\": {\n          \"net_financing_cf\": -4987000000,\n          \"net_financing_cf_growth\": 0.5735\n        },\n        \"net_investing_cash_flow\": {\n          \"net_investing_cf\": 3555000000,\n          \"net_investing_cf_growth\": 0.7615\n        },\n        \"net_operating_cash_flow\": {\n          \"net_oper_cf\": 1845000000,\n          \"net_oper_cf_growth\": -0.3234,\n          \"net_oper_cf_return_on_invest\": 0.2327\n        }\n      },\n      {\n        \"year\": 1553990400000,\n        \"currency_code\": \"USD\",\n        \"free_cash_flow\": {\n          \"free_cf\": 1729000000,\n          \"free_cf_yield\": 0.0817,\n          \"free_cf_growth\": -0.3278\n        },\n        \"capital_expenditures\": {\n          \"capex\": -116000000,\n          \"capex_growth\": 0.2516\n        },\n        \"net_financing_cash_flow\": {\n          \"net_financing_cf\": -4987000000,\n          \"net_financing_cf_growth\": 0.5735\n        },\n        \"net_investing_cash_flow\": {\n          \"net_investing_cf\": 3555000000,\n          \"net_investing_cf_growth\": 0.7615\n        },\n        \"net_operating_cash_flow\": {\n          \"net_oper_cf\": 1845000000,\n          \"net_oper_cf_growth\": -0.3234,\n          \"net_oper_cf_return_on_invest\": 0.2327\n        }\n      }\n    ],\n    \"market_val\": 154206000000,\n    \"currency_code\": \"USD\",\n    \"balance_sheets\": [\n      {\n        \"year\": 1553990400000,\n        \"cash_st\": {\n          \"cash_st\": 26301000000,\n          \"cash_st_growth\": -0.1825,\n          \"cash_st_assets_ratio\": 0.411\n        },\n        \"net_debt\": {\n          \"net_debt\": 7211000000,\n          \"net_debt_growth\": -0.0571,\n          \"net_debt_equity_ratio\": 0.6657\n        },\n        \"total_debt\": {\n          \"debt\": 33512000000,\n          \"debt_growth\": -0.0571,\n          \"debt_equity_ratio\": 3.0938,\n          \"debt_asserts_ratio\": 0.5236\n        },\n        \"total_assets\": {\n          \"assets\": 63997000000,\n          \"assets_growth\": -0.1007,\n          \"assets_turnover\": 0.351,\n          \"return_on_assets\": 0.1195\n        },\n        \"currency_code\": \"USD\",\n        \"total_liabilities\": {\n          \"liabs\": 53165000000,\n          \"liabs_growth\": -0.0428\n        },\n        \"total_shareholders_equity\": {\n          \"shldrs_equity\": 10832000000,\n          \"return_on_equity\": 0.6105,\n          \"shldrs_equity_assets_ratio\": 0.1693\n        }\n      },\n      {\n        \"year\": 1553990400000,\n        \"cash_st\": {\n          \"cash_st\": 26301000000,\n          \"cash_st_growth\": -0.1825,\n          \"cash_st_assets_ratio\": 0.411\n        },\n        \"net_debt\": {\n          \"net_debt\": 7211000000,\n          \"net_debt_growth\": -0.0571,\n          \"net_debt_equity_ratio\": 0.6657\n        },\n        \"total_debt\": {\n          \"debt\": 33512000000,\n          \"debt_growth\": -0.0571,\n          \"debt_equity_ratio\": 3.0938,\n          \"debt_asserts_ratio\": 0.5236\n        },\n        \"total_assets\": {\n          \"assets\": 63997000000,\n          \"assets_growth\": -0.1007,\n          \"assets_turnover\": 0.351,\n          \"return_on_assets\": 0.1195\n        },\n        \"currency_code\": \"USD\",\n        \"total_liabilities\": {\n          \"liabs\": 53165000000,\n          \"liabs_growth\": -0.0428\n        },\n        \"total_shareholders_equity\": {\n          \"shldrs_equity\": 10832000000,\n          \"return_on_equity\": 0.6105,\n          \"shldrs_equity_assets_ratio\": 0.1693\n        }\n      }\n    ],\n    \"revenue_detail\": [\n      {\n        \"year\": 1553990400000,\n        \"revenue\": 5543000000,\n        \"net_margin\": 9062.352404886578,\n        \"gross_margin\": 4136.207668609676,\n        \"currency_code\": \"USD\"\n      },\n      {\n        \"year\": 1553990400000,\n        \"revenue\": 5543000000,\n        \"net_margin\": 5467.134972846552,\n        \"gross_margin\": 198.42741347267156,\n        \"currency_code\": \"USD\"\n      }\n    ],\n    \"income_statements\": [\n      {\n        \"ebit\": {\n          \"ebit\": 2458000000,\n          \"ebit_growth\": -0.1107,\n          \"ebit_margin\": 0.4434\n        },\n        \"year\": 1553990400000,\n        \"sales\": {\n          \"sales\": 5543000000,\n          \"sale_growth\": -0.0081\n        },\n        \"ebitda\": {\n          \"ebitda\": 2953000000,\n          \"ebitda_growth\": -0.0872,\n          \"ebitda_margin\": 0.5327\n        },\n        \"net_income\": {\n          \"net_income\": 1992000000,\n          \"net_income_growth\": -0.138,\n          \"net_income_margin\": 0.3594\n        },\n        \"gross_income\": {\n          \"gross_inc\": 4488000000,\n          \"gross_margin\": 0.8097,\n          \"gross_inc_growth\": -0.0336\n        },\n        \"currency_code\": \"USD\"\n      },\n      {\n        \"ebit\": {\n          \"ebit\": 2458000000,\n          \"ebit_growth\": -0.1107,\n          \"ebit_margin\": 0.4434\n        },\n        \"year\": 1553990400000,\n        \"sales\": {\n          \"sales\": 5543000000,\n          \"sale_growth\": -0.0081\n        },\n        \"ebitda\": {\n          \"ebitda\": 2953000000,\n          \"ebitda_growth\": -0.0872,\n          \"ebitda_margin\": 0.5327\n        },\n        \"net_income\": {\n          \"net_income\": 1992000000,\n          \"net_income_growth\": -0.138,\n          \"net_income_margin\": 0.3594\n        },\n        \"gross_income\": {\n          \"gross_inc\": 4488000000,\n          \"gross_margin\": 0.8097,\n          \"gross_inc_growth\": -0.0336\n        },\n        \"currency_code\": \"USD\"\n      }\n    ],\n    \"market_val_detail\": [\n      {\n        \"year\": 1553990400000,\n        \"market_val\": 116724000000,\n        \"currency_code\": \"USD\"\n      },\n      {\n        \"year\": 1553990400000,\n        \"market_val\": 116724000000,\n        \"currency_code\": \"USD\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b63b197-e8ac-465a-b95a-f854e115c7bc",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "profit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\",\n  \"duration_type\": \"YEARLY\",\n  \"duration\": \"FIVE_YEAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d4a5f46-e9c0-44ef-beeb-7eba69d2b4de",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "profit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\",\n  \"duration_type\": \"YEARLY\",\n  \"duration\": \"FIVE_YEAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afc61ca6-47d1-492c-8a1c-f2ea549f8f1f",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "profit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\",\n  \"duration_type\": \"YEARLY\",\n  \"duration\": \"FIVE_YEAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0c630fa-3aaa-4ca2-a740-c5dbaecfd87f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "profit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\",\n  \"duration_type\": \"YEARLY\",\n  \"duration\": \"FIVE_YEAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d8e2503-c107-43db-8f99-cb19693e8321",
+          "name": "B037 Investment",
+          "request": {
+            "name": "B037 Investment",
+            "description": {
+              "content": "Obtain Investment about investors, funded organization, funding type, transaction amount, announce time etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "investment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\",\n  \"organization_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f230d8ad-649c-4662-9b42-7bad5a109321",
+              "name": "Successful b037 investment response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7830,\n  \"data\": {\n    \"items\": [\n      {\n        \"investors\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Sichuan Baili Pharmaceuticals Co.,Ltd\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"四川百利药业有限责任公司\"\n              }\n            ],\n            \"organization_id\": \"685e5cad5351555103932a4c484281c2\"\n          }\n        ],\n        \"funding_type\": {\n          \"classification\": \"IPO上市后\",\n          \"classification_en\": \"Post IPO\"\n        },\n        \"announced_time\": 1684195200000,\n        \"funded_organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"transaction_amount_lower\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"transaction_amount_upper\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"original_transaction_amount\": \"25,000,000 USD\"\n      },\n      {\n        \"investors\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Sichuan Baili Pharmaceuticals Co.,Ltd\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"四川百利药业有限责任公司\"\n              }\n            ],\n            \"organization_id\": \"685e5cad5351555103932a4c484281c2\"\n          }\n        ],\n        \"funding_type\": {\n          \"classification\": \"IPO上市后\",\n          \"classification_en\": \"Post IPO\"\n        },\n        \"announced_time\": 1684195200000,\n        \"funded_organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"transaction_amount_lower\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"transaction_amount_upper\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"original_transaction_amount\": \"25,000,000 USD\"\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 10,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eedd0e86-5a00-4b99-9050-a11054302292",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "126b5d6b-a381-4d79-be15-800c66c10b1c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83a7b887-a2d5-414b-a7e3-d188531fe1ea",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d91d6a23-a68d-4433-bef3-ac2aadbb0dce",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed5207b4-6c97-4d3a-850c-a3386eaa2df6",
+          "name": "B038 Financing",
+          "request": {
+            "name": "B038 Financing",
+            "description": {
+              "content": "Obtain financing, funded organization, funding type, transaction amount, announce time etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "organization",
+                "financing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\",\n  \"organization_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf3eea21-14f7-4149-887a-801a5f6f66ff",
+              "name": "Successful b038 financing response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "financing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7830,\n  \"data\": {\n    \"items\": [\n      {\n        \"investors\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Sichuan Baili Pharmaceuticals Co.,Ltd\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"四川百利药业有限责任公司\"\n              }\n            ],\n            \"organization_id\": \"685e5cad5351555103932a4c484281c2\"\n          }\n        ],\n        \"funding_type\": {\n          \"classification\": \"IPO上市后\",\n          \"classification_en\": \"Post IPO\"\n        },\n        \"announced_time\": 1684195200000,\n        \"funded_organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"transaction_amount_lower\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"transaction_amount_upper\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"original_transaction_amount\": \"25,000,000 USD\"\n      },\n      {\n        \"investors\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Sichuan Baili Pharmaceuticals Co.,Ltd\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"四川百利药业有限责任公司\"\n              }\n            ],\n            \"organization_id\": \"685e5cad5351555103932a4c484281c2\"\n          }\n        ],\n        \"funding_type\": {\n          \"classification\": \"IPO上市后\",\n          \"classification_en\": \"Post IPO\"\n        },\n        \"announced_time\": 1684195200000,\n        \"funded_organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"transaction_amount_lower\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"transaction_amount_upper\": {\n          \"value_cny\": 178139675,\n          \"value_usd\": 25000000,\n          \"original_value\": 25000000,\n          \"original_currency\": \"USD\"\n        },\n        \"original_transaction_amount\": \"25,000,000 USD\"\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 10,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0ed33fd-378a-46ce-b1f4-32e0a90bb361",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "financing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cccfb3d2-fb58-403b-a92c-54f5ec0b8d62",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "financing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93a649be-6828-448b-ac77-80f2e0dd1102",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "financing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce4dc4a6-9712-4278-a8fb-67437982c247",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "organization",
+                    "financing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"offset\": 0,\n  \"limit\": 10,\n  \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c013519-3c4f-4b9d-85f5-eb3bc258a679",
+    "name": "Patsnap Open Platform AI Translation Drug R&D Orgnization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

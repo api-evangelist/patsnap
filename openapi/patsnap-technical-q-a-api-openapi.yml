@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Technical Q&A API
   version: 1.0.0
@@ -78,140 +78,6 @@ paths:
               $ref: '#/components/schemas/AI36-2TechnicalQaReportRequest'
 components:
   schemas:
-    AI36-2TechnicalQaReport_TechnicalQaResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-          description: Unique task identifier
-        split_query:
-          $ref: '#/components/schemas/AI36-2TechnicalQaReport_ValidationSplitQueryDTO'
-        task_status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task Status (1: running, 2: success, 3: failed)'
-        message_response:
-          $ref: '#/components/schemas/AI36-2TechnicalQaReport_SeekStreamMessageResponseDTO'
-      required:
-      - task_id
-      - task_status
-    AI36-2TechnicalQaReport_OrgInfo:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 37e3e5a882bc2bfd36fbc3754171e311
-          description: Organization ID
-        logo:
-          type: string
-          example: https://filecdn.shuidi.cn/img/upload/images_logo/b1/50/9d/b1509dfe5b2ac787dbe2d5e0753d6f00.png/0x0.png
-          description: Logo icon
-        name:
-          type: string
-          example: 武汉数博科技有限责任公司
-          description: Organization name
-        site:
-          type: string
-          example: www.qhhry.com
-          description: Site information
-        name_cn:
-          type: string
-          example: 武汉数博科技有限责任公司
-          description: Chinese name
-        name_en:
-          type: string
-          example: Dnect
-          description: English name
-        website:
-          type: string
-          example: http://www.qhhry.com
-          description: Organization website
-        state_id:
-          type: string
-          example: 80cd8682-4344-3436-88b9-cfba03d34b78
-          description: State/Province ID
-        entity_id:
-          type: string
-          example: 37e3e5a882bc2bfd36fbc3754171e311
-          description: Entity ID
-        country_id:
-          type: string
-          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
-          description: Country ID
-        state_name:
-          type: string
-          example: 湖北省
-          description: State/Province name
-        entity_type:
-          type: string
-          example: Company
-          description: Entity type
-        country_name:
-          type: string
-          example: 中国
-          description: Country name
-        display_name:
-          type: string
-          example: 武汉数博科技有限责任公司
-          description: Display name
-        founded_date:
-          type: integer
-          format: int32
-          example: 20160722
-          description: Founded date
-        normalized_id:
-          type: string
-          example: 8adef1df2dc299c10291a4a610a69068
-          description: Normalized ID
-        normalized_logo:
-          type: string
-          example: https://filecdn.shuidi.cn/img/upload/images_logo/c7/0c/34/c70c34f6c211298e8d563c49df7706f4.png/0x0.png
-          description: Normalized logo
-        normalized_name:
-          type: string
-          example: 武汉数博科技有限责任公司
-          description: Normalized organization name
-        normalized_display_name:
-          type: string
-          example: Chang'an University
-          description: Normalized display name
-        normalized_entity_type_en:
-          type: string
-          example: Company
-          description: Normalized entity type in English
-    AI36-1TechnicalQaSubmitResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI36-1TechnicalQaSubmit_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI36-2TechnicalQaReport_PaperAuthor:
-      type: object
-      properties:
-        id:
-          type: string
-          example: author_123456
-          description: Author ID
-        name:
-          type: string
-          example: 张三
-          description: Author name
     AI36-2TechnicalQaReport_SeekReferenceResponseDTO:
       type: object
       properties:
@@ -311,6 +177,25 @@ components:
           type: string
           example: Utility Patent
           description: Solution sub-type providing more detailed classification
+    AI36-2TechnicalQaReport_TechnicalQaResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          description: Unique task identifier
+        split_query:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_ValidationSplitQueryDTO'
+        task_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task Status (1: running, 2: success, 3: failed)'
+        message_response:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_SeekStreamMessageResponseDTO'
+      required:
+      - task_id
+      - task_status
     AI36-1TechnicalQaSubmitRequest:
       type: object
       properties:
@@ -340,26 +225,15 @@ components:
       required:
       - input
       - lang
-    AI36-2TechnicalQaReportResponse:
+    AI36-1TechnicalQaSubmit_AsyncTaskIdResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI36-2TechnicalQaReport_TechnicalQaResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        task_id:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
       required:
-      - status
-      - error_code
+      - task_id
     AI36-2TechnicalQaReport_ValidationSplitQueryDTO:
       type: object
       properties:
@@ -381,6 +255,173 @@ components:
       required:
       - query
       - concept
+    AI36-2TechnicalQaReportRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI36-2TechnicalQaReport_PdfImage:
+      type: object
+      properties:
+        image_id:
+          type: string
+          example: HDA0002768365640000011
+          description: Image ID
+        extracted:
+          type: boolean
+          example: false
+          description: Extracted flag
+        patent_id:
+          type: string
+          example: a8935c31-bf83-461d-bc05-2fd7a110c80e
+          description: Patent ID
+        image_from:
+          type: string
+          example: official
+          description: Image source
+        image_type:
+          type: string
+          example: drawing
+          description: Image type
+        is_extracted:
+          type: boolean
+          example: false
+          description: Whether extracted
+        storage_path:
+          type: string
+          example: https://data-fulltext-image.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+          description: Storage path
+        official_size:
+          type: string
+          example: 1000x886
+          description: Official image size
+        source_image_type:
+          type: string
+          example: drawing
+          description: Source image type
+        fulltext_image240_url:
+          type: string
+          example: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
+          description: Fulltext image 240 size URL
+    AI36-2TechnicalQaReport_OrgInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Organization ID
+        logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/b1/50/9d/b1509dfe5b2ac787dbe2d5e0753d6f00.png/0x0.png
+          description: Logo icon
+        name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Organization name
+        site:
+          type: string
+          example: www.qhhry.com
+          description: Site information
+        name_cn:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Chinese name
+        name_en:
+          type: string
+          example: Dnect
+          description: English name
+        website:
+          type: string
+          example: http://www.qhhry.com
+          description: Organization website
+        state_id:
+          type: string
+          example: 80cd8682-4344-3436-88b9-cfba03d34b78
+          description: State/Province ID
+        entity_id:
+          type: string
+          example: 37e3e5a882bc2bfd36fbc3754171e311
+          description: Entity ID
+        country_id:
+          type: string
+          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+          description: Country ID
+        state_name:
+          type: string
+          example: 湖北省
+          description: State/Province name
+        entity_type:
+          type: string
+          example: Company
+          description: Entity type
+        country_name:
+          type: string
+          example: 中国
+          description: Country name
+        display_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Display name
+        founded_date:
+          type: integer
+          format: int32
+          example: 20160722
+          description: Founded date
+        normalized_id:
+          type: string
+          example: 8adef1df2dc299c10291a4a610a69068
+          description: Normalized ID
+        normalized_logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/c7/0c/34/c70c34f6c211298e8d563c49df7706f4.png/0x0.png
+          description: Normalized logo
+        normalized_name:
+          type: string
+          example: 武汉数博科技有限责任公司
+          description: Normalized organization name
+        normalized_display_name:
+          type: string
+          example: Chang'an University
+          description: Normalized display name
+        normalized_entity_type_en:
+          type: string
+          example: Company
+          description: Normalized entity type in English
+    AI36-2TechnicalQaReport_PaperAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+          example: author_123456
+          description: Author ID
+        name:
+          type: string
+          example: 张三
+          description: Author name
+    AI36-1TechnicalQaSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI36-1TechnicalQaSubmit_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI36-2TechnicalQaReport_SeekStreamMessageResponseDTO:
       type: object
       properties:
@@ -463,67 +504,26 @@ components:
           type: string
           example: TECH_MIND
           description: Agent suggestion scene describing specific scenarios where the suggestion applies
-    AI36-2TechnicalQaReportRequest:
+    AI36-2TechnicalQaReportResponse:
       type: object
       properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier, returned by submit task API
-      required:
-      - task_id
-    AI36-2TechnicalQaReport_PdfImage:
-      type: object
-      properties:
-        image_id:
-          type: string
-          example: HDA0002768365640000011
-          description: Image ID
-        extracted:
+        data:
+          $ref: '#/components/schemas/AI36-2TechnicalQaReport_TechnicalQaResponse'
+        status:
           type: boolean
-          example: false
-          description: Extracted flag
-        patent_id:
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: a8935c31-bf83-461d-bc05-2fd7a110c80e
-          description: Patent ID
-        image_from:
-          type: string
-          example: official
-          description: Image source
-        image_type:
-          type: string
-          example: drawing
-          description: Image type
-        is_extracted:
-          type: boolean
-          example: false
-          description: Whether extracted
-        storage_path:
-          type: string
-          example: https://data-fulltext-image.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
-          description: Storage path
-        official_size:
-          type: string
-          example: 1000x886
-          description: Official image size
-        source_image_type:
-          type: string
-          example: drawing
-          description: Source image type
-        fulltext_image240_url:
-          type: string
-          example: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/B/11/25/60/48/4/HDA0002768365640000011.png
-          description: Fulltext image 240 size URL
-    AI36-1TechnicalQaSubmit_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier for subsequent polling to get task results
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
       required:
-      - task_id
+      - status
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http

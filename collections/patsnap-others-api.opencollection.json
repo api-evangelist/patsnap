@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Others API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Others",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI71 Obtain Offline Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/sso/agent/export-link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface serves as an optimized function for the AI API, supporting users in integrating report links into their local systems. The Agents that currently support outputting report links are: [AI32] Technology Disclosure Document, [AI35] Novelty Check, [AI37] Patent Drafting (CNIPA),  and [AI66] FTO Search."
+        },
+        {
+          "info": {
+            "name": "AI01 Drug DDT NER",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/ner/ddt-ner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "To extract the names of Drug, Disease and Target (DDT) from Chinese and English patents, literature, news, clinical trial or Drug approval data"
+        },
+        {
+          "info": {
+            "name": "AI72 Obtain Offline History Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/sso/agent/history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface serves as an optimized function for the AI API, supporting users in integrating history record into their local systems."
+        },
+        {
+          "info": {
+            "name": "L016 Document Parsing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/rd-llm/v1/documents/doc_parsing",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Run layout detection and OCR on the uploaded file. The file type is inferred from the filename extension. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages; a request times out if processing exceeds 300 seconds and returns the image link is a signed link with a validity period of 7 days. output_format is optional and defaults to markdown."
+        },
+        {
+          "info": {
+            "name": "L017 Layout-only Parsing (No OCR)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/rd-llm/v1/documents/layout_parsing",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Run layout detection only, without OCR. Every results.content value is null and markdown is not returned. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. include_crop_urls is optional and defaults to true."
+        },
+        {
+          "info": {
+            "name": "AI72 Batch Obtain Offline History Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/sso/agent/batch-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface serves as an optimized function for the AI API, supporting users in batch querying history records for multiple accounts under the same company."
+        },
+        {
+          "info": {
+            "name": "AI88-1 List Company Tech Monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/eureka/tech-monitor-api/company-monitors",
+            "headers": [
+              {
+                "name": "X-Site-Lang",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all effective company tech monitors, including only id and title."
+        },
+        {
+          "info": {
+            "name": "AI03 News Entity Recognition(NER)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/ner/news-ner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "News Entity Recognition helps you recognize entity type in Chinese/English news text, it supported entity types include companies, personal names, addresses, academic institutions, government institutions, and more."
+        },
+        {
+          "info": {
+            "name": "AI30 Similar Patent Search and Comparison",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/similar-patent-comparison",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "By entering the technical means (required) and technical effects (optional), a list of similar patents can be obtained and compared through semantic search. A maximum of 20 similar patents will be returned, sorted by default from high to low similarity. (To improve the accuracy of the query, please use at least 50 words to describe the technical means)."
+        },
+        {
+          "info": {
+            "name": "AI31 Patent Invention Points Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/patent-core-invention-points",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface allows users to query the core invention points and improvement directions of a patent by inputting either the patent_id or patent_number. It enables quick access to relevant patent information, providing deeper insights into its innovation and technological advancements."
+        },
+        {
+          "info": {
+            "name": "AI88-2 Get Aggregated Company Tech Monitor Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/eureka/tech-monitor-api/company-monitor/aggregated-info",
+            "headers": [
+              {
+                "name": "X-Site-Lang",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tech-monitor-id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the company tech monitor"
+              },
+              {
+                "name": "report_week",
+                "value": "",
+                "type": "query",
+                "description": "The report week of the company tech monitor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves all detailed information of a tech monitor by ID in one call, aggregating data including basic info, hot news, group statistics, overview, charts, etc. Return company tech monitors (including monitor ID) retrieval via [AI88-1]."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

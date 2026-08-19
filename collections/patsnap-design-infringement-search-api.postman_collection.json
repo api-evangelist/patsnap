@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "60136e02-aff0-493b-a42d-5fa232200bf1",
+      "name": "Design Infringement Search",
+      "description": {
+        "content": "Design Infringement Search APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "819ee14d-a6f9-4dc1-ba66-f668bfc641ff",
+          "name": "AI39-1 Appearance Anti-Infringement Search - Submit Task",
+          "request": {
+            "name": "AI39-1 Appearance Anti-Infringement Search - Submit Task",
+            "description": {
+              "content": "Submit design patent search task based on product image and search criteria. The system will automatically perform image similarity search, AI reranking and risk analysis to generate design patent FTO report. Task is executed asynchronously, returns task_id for subsequent polling to get results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "image-search",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<array>\",\n  \"lang\": \"<string>\",\n  \"apply_start_time\": \"<string>\",\n  \"loc_items\": \"<array>\",\n  \"main_field\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ffc44f5-da06-46dc-84e3-3817d2d62bdb",
+              "name": "Successful ai39-1 appearance anti-infringement search - submit task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": [\n    \"US\",\n    \"CN\",\n    \"JP\",\n    \"KR\",\n    \"AU\"\n  ],\n  \"lang\": \"cn\",\n  \"apply_start_time\": \"20200101\",\n  \"loc_items\": [\n    \"14-02\",\n    \"14-03\",\n    \"14-04\"\n  ],\n  \"main_field\": \"智能手机\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7637,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f2fca70-8dc3-4545-af8b-89e6d8457981",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": [\n    \"US\",\n    \"CN\",\n    \"JP\",\n    \"KR\",\n    \"AU\"\n  ],\n  \"lang\": \"cn\",\n  \"apply_start_time\": \"20200101\",\n  \"loc_items\": [\n    \"14-02\",\n    \"14-03\",\n    \"14-04\"\n  ],\n  \"main_field\": \"智能手机\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24de45e0-fbca-4d05-bd18-6ec1c06c7d91",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": [\n    \"US\",\n    \"CN\",\n    \"JP\",\n    \"KR\",\n    \"AU\"\n  ],\n  \"lang\": \"cn\",\n  \"apply_start_time\": \"20200101\",\n  \"loc_items\": [\n    \"14-02\",\n    \"14-03\",\n    \"14-04\"\n  ],\n  \"main_field\": \"智能手机\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27e35521-a338-44f9-96dc-dfdf637d7abf",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": [\n    \"US\",\n    \"CN\",\n    \"JP\",\n    \"KR\",\n    \"AU\"\n  ],\n  \"lang\": \"cn\",\n  \"apply_start_time\": \"20200101\",\n  \"loc_items\": [\n    \"14-02\",\n    \"14-03\",\n    \"14-04\"\n  ],\n  \"main_field\": \"智能手机\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c46344c7-9d71-4383-b266-24e3625f530c",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": [\n    \"US\",\n    \"CN\",\n    \"JP\",\n    \"KR\",\n    \"AU\"\n  ],\n  \"lang\": \"cn\",\n  \"apply_start_time\": \"20200101\",\n  \"loc_items\": [\n    \"14-02\",\n    \"14-03\",\n    \"14-04\"\n  ],\n  \"main_field\": \"智能手机\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed9d06d2-3894-48af-bdbb-515e773534af",
+          "name": "AI39-2 Appearance Anti-Infringement Search - Get Result",
+          "request": {
+            "name": "AI39-2 Appearance Anti-Infringement Search - Get Result",
+            "description": {
+              "content": "Based on the task_id returned by [AI39-1] submit task API, poll to get the execution result of design patent search task. Returns: task status, line drawing (Base64), traditional image search results, RRF fusion search results and complete analysis report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "image-search",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1630a1f-6393-418c-ae41-51e0291dc91f",
+              "name": "Successful ai39-2 appearance anti-infringement search - get result response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8044,\n  \"data\": {\n    \"task_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"task_status\": 2,\n    \"report\": {\n      \"country\": [\n        \"US\",\n        \"CN\",\n        \"JP\",\n        \"KR\",\n        \"AU\",\n        \"EU\"\n      ],\n      \"comparisons\": [\n        {\n          \"score\": 0.45,\n          \"title\": \"人形\",\n          \"img_id\": \"string\",\n          \"status\": 1,\n          \"country\": \"JP\",\n          \"similar\": \"主体均为圆柱形结构，且在圆柱面上分布有面部特征。\",\n          \"confusion\": \"虽然基础形状相似，但具体设计元素差异足以区分。\",\n          \"patent_id\": \"09115a22-cf5a-41e1-8e77-11a8fbb3a5b6\",\n          \"patent_pn\": \"JP1747893S\",\n          \"risk_desc\": \"JP标准关注核心要部。尽管基础几何体（圆柱）相似，但头部装饰（帽子 vs 结）和附属件（垂耳 vs 线臂）的差异属于实质性区别。\",\n          \"difference\": \"专利图顶部为复杂的结状/把手结构，两侧为线状手臂，面部特征为传统风格；用户图顶部为圆锥形帽子，两侧为宽扁垂耳，面部有突出的吻部造型。\",\n          \"risk_level\": \"Low\",\n          \"suggestion\": \"保持当前帽子与垂耳的独特组合，以区别于通用的圆柱形玩偶。\"\n        },\n        {\n          \"score\": 0.45,\n          \"title\": \"人形\",\n          \"img_id\": \"string\",\n          \"status\": 1,\n          \"country\": \"JP\",\n          \"similar\": \"主体均为圆柱形结构，且在圆柱面上分布有面部特征。\",\n          \"confusion\": \"虽然基础形状相似，但具体设计元素差异足以区分。\",\n          \"patent_id\": \"09115a22-cf5a-41e1-8e77-11a8fbb3a5b6\",\n          \"patent_pn\": \"JP1747893S\",\n          \"risk_desc\": \"JP标准关注核心要部。尽管基础几何体（圆柱）相似，但头部装饰（帽子 vs 结）和附属件（垂耳 vs 线臂）的差异属于实质性区别。\",\n          \"difference\": \"专利图顶部为复杂的结状/把手结构，两侧为线状手臂，面部特征为传统风格；用户图顶部为圆锥形帽子，两侧为宽扁垂耳，面部有突出的吻部造型。\",\n          \"risk_level\": \"Low\",\n          \"suggestion\": \"保持当前帽子与垂耳的独特组合，以区别于通用的圆柱形玩偶。\"\n        }\n      ],\n      \"loc\": [\n        \"02 服装、服饰用品和缝纫用品\",\n        \"03 其他类未列入的旅行用品、箱包、阳伞和个人用品\",\n        \"10 钟、表及其他测量仪器，检测仪器，信号仪器\",\n        \"11 装饰品\",\n        \"19 文具、办公用品、美术用品和教学用品\",\n        \"21 游戏器具、玩具、帐篷和体育用品\",\n        \"32 图形符号、标识、表面图案、纹饰\"\n      ],\n      \"operate_date\": 1768195176553,\n      \"apply_start_time\": \"string\",\n      \"high_risk_country\": [\n        \"KR\"\n      ],\n      \"middle_risk_country\": [\n        \"KR\"\n      ],\n      \"suspected_infringement_count\": 0,\n      \"suspected_infringement_country\": [\n        \"KR\"\n      ]\n    },\n    \"patent_messages\": {\n      \"patent_messages\": [\n        {\n          \"loc\": [\n            \"21-01\"\n          ],\n          \"apno\": \"US29/961259\",\n          \"score\": 0.875770605053453,\n          \"title\": \"Inflatable Santa\",\n          \"img_id\": \"USD1055174-D00000_ABST\",\n          \"authority\": \"US\",\n          \"loc_match\": 1,\n          \"patent_id\": \"3fad2c19-8d3d-4f72-b5ae-f2de96787bc0\",\n          \"patent_pn\": \"USD1055174S1\",\n          \"risk_level\": \"High\"\n        }\n      ],\n      \"total_search_result_count\": 156\n    },\n    \"rrffusion_response\": {\n      \"k_value\": 60,\n      \"rerank_count\": 200,\n      \"patent_messages\": [\n        {\n          \"score\": 0.875770605053453,\n          \"title\": \"Inflatable Santa\",\n          \"img_id\": \"USD1055174-D00000_ABST\",\n          \"authority\": \"US\",\n          \"patent_id\": \"3fad2c19-8d3d-4f72-b5ae-f2de96787bc0\",\n          \"patent_pn\": \"USD1055174S1\",\n          \"rrf_score\": 0.030158730158730156,\n          \"rerank_rank\": 10,\n          \"rerank_score\": 55,\n          \"traditional_rank\": 3,\n          \"traditional_score\": 0.875770605053453,\n          \"loc\": [\n            \"21-01\"\n          ],\n          \"url\": \"https://example.com/patent/images/full/0001747893000002.jpg\",\n          \"apdt\": 20200115,\n          \"apno\": \"US29/961259\",\n          \"pbdt\": 20210320,\n          \"url_120\": \"https://example.com/patent/images/thumb/0001747893000002_120.jpg\",\n          \"inventor\": \"张三;李四\",\n          \"loc_match\": 1,\n          \"risk_level\": \"High\",\n          \"current_assignee\": \"某某科技有限公司\",\n          \"original_assignee\": \"某某科技有限公司\"\n        },\n        {\n          \"score\": 0.875770605053453,\n          \"title\": \"Inflatable Santa\",\n          \"img_id\": \"USD1055174-D00000_ABST\",\n          \"authority\": \"US\",\n          \"patent_id\": \"3fad2c19-8d3d-4f72-b5ae-f2de96787bc0\",\n          \"patent_pn\": \"USD1055174S1\",\n          \"rrf_score\": 0.030158730158730156,\n          \"rerank_rank\": 10,\n          \"rerank_score\": 55,\n          \"traditional_rank\": 3,\n          \"traditional_score\": 0.875770605053453,\n          \"loc\": [\n            \"21-01\"\n          ],\n          \"url\": \"https://example.com/patent/images/full/0001747893000002.jpg\",\n          \"apdt\": 20200115,\n          \"apno\": \"US29/961259\",\n          \"pbdt\": 20210320,\n          \"url_120\": \"https://example.com/patent/images/thumb/0001747893000002_120.jpg\",\n          \"inventor\": \"张三;李四\",\n          \"loc_match\": 1,\n          \"risk_level\": \"High\",\n          \"current_assignee\": \"某某科技有限公司\",\n          \"original_assignee\": \"某某科技有限公司\"\n        }\n      ],\n      \"traditional_count\": 200\n    },\n    \"line_drawing_base64\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d088e30e-319f-4d91-b34d-5fdbd646631b",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9c520d1-1b25-436e-8deb-a280ca2df36f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "076d4551-211c-4837-b7c3-8acebea4f1ac",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49ef5a3f-d002-45f7-bb4f-9b85be302278",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "image-search",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "61790077-7632-489e-85d8-71b86d4c39c0",
+    "name": "Patsnap Open Platform AI Translation Design Infringement Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

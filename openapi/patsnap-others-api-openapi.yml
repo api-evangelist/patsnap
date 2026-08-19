@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Others API
   version: 1.0.0
@@ -385,131 +385,6 @@ paths:
           description: Language（CN｜EN）
 components:
   schemas:
-    AI72AgentBatchHistoryRequest:
-      type: object
-      properties:
-        company_id:
-          type: string
-          example: abc123
-          description: Company ID
-        end_time:
-          type: integer
-          format: int64
-          example: 1761580799999
-          description: End timestamp (milliseconds)
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Page number, starting from 1
-        start_time:
-          type: integer
-          format: int64
-          example: 1758902400000
-          description: Start timestamp (milliseconds)
-        user_accounts:
-          type: array
-          example:
-          - email: user1@example.com
-            phone: '12345678900'
-          - email: user2@example.com
-            phone: '12345678901'
-          description: User account list, up to 20, each account contains email and phone
-          items:
-            $ref: '#/components/schemas/AI72AgentBatchHistory_UserAccount'
-      required:
-      - company_id
-      - user_accounts
-    L016DocumentsDocParsing_DocumentParseResponse:
-      type: object
-      properties:
-        state:
-          type: string
-          example: success
-          description: Execution state; success indicates that parsing completed successfully.
-        results:
-          type: array
-          example: 'Please check the form: DocumentResultItem'
-          description: Structured JSONL data; each element represents one document region. An empty array is returned when output_format=markdown.
-          items:
-            $ref: '#/components/schemas/L016DocumentsDocParsing_DocumentResultItem'
-        markdown:
-          type: string
-          example: 'TECHNICAL FIELD
-
-
-            The present disclosure relates to...'
-          description: Complete Markdown summary. Returned when output_format is both or markdown; omitted when output_format=jsonl.
-        file_type:
-          type: string
-          example: pdf
-          description: Input file type inferred from the uploaded filename extension.
-        total_pages:
-          type: integer
-          format: int32
-          example: 12
-          description: Total number of pages; always 1 for an image.
-      required:
-      - state
-      - results
-      - file_type
-      - total_pages
-    AI72AgentBatchHistory_HistoryRecordsResponseDTO:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        limit:
-          type: integer
-          format: int32
-          example: 20
-          description: Records per page
-        total:
-          type: integer
-          format: int64
-          example: 100
-          description: Total number of records
-        history_maps:
-          type: array
-          example:
-          - data:
-            - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              time: '13:58'
-              source: AI_GENERATE
-              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-                ,材料成本上限
-
-                ,生产工艺兼容性 '
-              rawType: ai_generate
-              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              created_at: 23 Oct 2025 13:58
-              business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              business_name: Technical Solution Exploration
-            - id: 2570aeaf-7999-430b-9bef-c43fcda4d928
-              link: /ai/agent-flow/2570aeaf-7999-430b-9bef-c43fcda4d928
-              time: '13:39'
-              source: AI_GENERATE
-              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-                ,材料成本上限
-
-                ,生产工艺兼容性 '
-              rawType: ai_generate
-              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              created_at: 23 Oct 2025 13:39
-              business_id: 2570aeaf-7999-430b-9bef-c43fcda4d928
-              business_name: Technical Solution Exploration
-            date: '2025-10-23'
-          description: History records grouped by date
-          items:
-            $ref: '#/components/schemas/AI72AgentBatchHistory_DailyRecordsDTO'
     AI01NerDdtNer_NerDDTResult:
       type: object
       properties:
@@ -531,332 +406,7 @@ components:
           type: string
           example: Anti-CD19 4-1BB CAR T Cells
           description: entity name
-    AI72AgentHistory_HistoryRecordsDTO:
-      type: object
-      properties:
-        q:
-          type: string
-          example: quantum computing AND artificial intelligence
-          description: Query keywords or query string
-        id:
-          type: string
-          example: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-          description: History record ID
-        efq:
-          type: string
-          example: APD:[20230101 TO 20231231]
-          description: Extended field query
-        link:
-          type: string
-          example: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-          description: Link URL for the history record
-        time:
-          type: string
-          example: '13:58'
-          description: 'Created time (hour:minute only) in format: HH:mm'
-        count:
-          type: object
-          example:
-            total: 1500
-            granted: 800
-            application: 700
-          description: Search result count statistics (patent count, etc.)
-        source:
-          type: string
-          example: AI_GENERATE
-          description: History record source
-        message:
-          type: string
-          example: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值\n,材料成本上限\n,生产工艺兼容性
-          description: Message or description of the history record
-        icon_url:
-          type: string
-          example: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-          description: Full URL of the icon
-        raw_type:
-          type: string
-          example: ai_generate
-          description: History record type
-        icon_path:
-          type: string
-          example: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-          description: Icon path
-        patent_id:
-          type: string
-          example: US20240123456A1
-          description: Patent ID
-        created_at:
-          type: string
-          example: 23 Oct 2025 13:58
-          description: 'Created time in format: yyyy-MM-dd HH:mm or dd MMM yyyy HH:mm'
-        extra_info:
-          type: object
-          example:
-            region: US
-            category: technology
-          description: Extra information
-        business_id:
-          type: string
-          example: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-          description: Business ID (e.g., seekId, mindId, researchId)
-        business_name:
-          type: string
-          example: Technical Solution Exploration
-          description: Business name
-    AI30PatentSimilarPatentComparison_Label:
-      type: object
-      properties:
-        sn:
-          type: integer
-          format: int32
-          example: 39
-          description: 'Passage number of the relevant section Note: ''0'' represents the passage number that is not marked.'
-        passage:
-          type: string
-          example: <cn>本发明所述的有益效果:本发明可以实现车辆的常规行驶、四轮转向、斜行、驻车行驶以及原地中心转向,转向模式丰富,实用性强;通过单独的转向模式或者不同转向模式间的组合和切换控制,可以实现车辆更为灵活的变道超车、路边侧方停车等非常实用的功能,这是常规车辆所无法实现的;通过车辆的原地中心转向和大转角四轮转向,使得车辆能够在狭小的仓库、巷道、车道内快速灵活地掉头,具有极高的机动灵活性。</cn><us>In some disclosed example mechanically actuated controllers the response of the coil to the position of the conductive target when the conductive target is between the second region and the second position is monotonic</us>
-          description: similar paragraphs
-        section:
-          type: string
-          example: description
-          description: 'The source of the relevant section, including description and claim. Note: ''description'' refers to the relevant section sourced from the descriptions, ''claim'' refers to the relevant section sourced from the claims.'
-        sentence:
-          type: array
-          example: <cn>["提升车辆转向和掉头便利性。","能够实现原地转向功能,"]</cn><us>["In some disclosed example mechanically actuated controllers the response of the coil to the position of the conductive target when the conductive target is between the second region and the second position is monotonic。"]</us>
-          description: similar clauses
-    AI88-2CompanyMonitorAggregatedInfo_OtherCountItem:
-      type: object
-      properties:
-        name:
-          type: string
-          example: 其他
-          description: Other group name
-        count:
-          type: integer
-          format: int32
-          example: 1
-          description: Group count
-        groups:
-          type: array
-          example:
-          - title: 正极材料结构稳定性与热安全性提升
-            summary: 该技术采用**聚苯胺-聚乙二醇共聚物**对镍钴锰酸锂正极材料进行表面包覆，通过乳液聚合、混合球磨、低温烧结等工艺形成导电聚合物包覆层。该包覆层能够有效抑制正极材料在循环过程中的结构重组和颗粒碎裂，同时阻止过渡金属离子溶解，显著改善材料的热稳定性。
-            paper_ids: []
-            patent_ids:
-            - beac66e8-2c3a-4e00-a0f7-c7f2f33c728a
-            tech_differences: 相比传统无机包覆材料，**导电聚合物包覆**既保证了离子传导又提供结构保护，在2.8-4.4V高电压下循环性能更优，制备工艺相对简单且成本较低
-          description: Group Info
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupItem'
-        low_score:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_LowScore'
-        group_count:
-          type: integer
-          format: int32
-          example: 1
-          description: Group count
-        overall_summary:
-          type: string
-          example: 分组总结
-          description: Other multiple group summary, empty content
-    AI31PatentPatentCoreInventionPoints_PatentCoreInventionPointsResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN108001293B
-          description: patent publication number
-        patent_id:
-          type: string
-          example: e7b3df69-0f30-4ad3-a753-538e362fd524
-          description: patentID
-        core_invention_points:
-          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_Sentence'
-        enhancement_proposals:
-          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_Sentence'
-    L017DocumentsLayoutParsing_LayoutResultItem:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          example: https://oss.example.com/doc/0_2.png?sign=...
-          description: Cropped-region URL. Null when include_crop_urls=false; when true, URLs are primarily provided for chemical structures and figures.
-        bbox:
-          type: array
-          example:
-          - 0.16
-          - 0.18
-          - 0.37
-          - 0.2
-          - 0.9
-          description: Normalized coordinates [x1, y1, x2, y2, confidence].
-        page:
-          type: integer
-          format: int32
-          example: 0
-          description: Zero-based page index.
-        type:
-          type: string
-          example: figure
-          description: Original region type produced by the layout model.
-        content:
-          type: string
-          example: 'null'
-          description: Always null because layout-only mode does not run OCR.
-      required:
-      - bbox
-      - page
-      - type
-    L016DocumentsDocParsingRequest:
-      type: object
-      properties:
-        file:
-          type: file
-          example: maximum 20MB
-          description: 'File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.'
-        output_format:
-          type: string
-          example: markdown
-          description: 'Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.'
-      required:
-      - file
-    AI30PatentSimilarPatentComparison_SimilarPatent:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN108001293B
-          description: patent publication number
-        means:
-          type: array
-          example: 'Please check the form: Label'
-          description: similar means
-          items:
-            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Label'
-        score:
-          type: number
-          format: float
-          example: 0.9
-          description: similarity
-        efficacy:
-          type: array
-          example: 'Please check the form: Label'
-          description: similar efficacy
-          items:
-            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Label'
-        patent_id:
-          type: string
-          example: 9c341cca-3aca-4003-8bc0-ada07f3702f8
-          description: patent ID
-    AI72AgentHistory_DailyRecordsDTO:
-      type: object
-      properties:
-        data:
-          type: array
-          example:
-          - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            time: '13:58'
-            source: AI_GENERATE
-            message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-              ,材料成本上限
-
-              ,生产工艺兼容性 '
-            rawType: ai_generate
-            icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-            icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-            created_at: 23 Oct 2025 13:58
-            business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            business_name: Technical Solution Exploration
-          description: List of history records for this date
-          items:
-            $ref: '#/components/schemas/AI72AgentHistory_HistoryRecordsDTO'
-        date:
-          type: string
-          example: '2025-10-23'
-          description: 'Date in format: yyyy-MM-dd'
-    AI31PatentPatentCoreInventionPointsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_PatentCoreInventionPointsResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem:
-      type: object
-      properties:
-        item_id:
-          type: string
-          example: e3458499-f03c-474b-863a-01d30545cf1a
-          description: Tech ID
-        item_info:
-          type: object
-          example:
-            pn: CN119092837A
-            doi: 10.1016/j.jechem.2024.02.069
-            abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
-            ancs:
-              ans_name: 沈阳国科金能科技有限公司
-            title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
-            journal: Journal of Energy Chemistry
-            paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-            patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-            relevance:
-              score: 4
-              description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
-            full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-            pdf_images:
-            - labels:
-              - '1'
-              image_id: HDA0005017033410000011
-              extracted: false
-              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-              image_from: official
-              image_type: drawing
-              is_extracted: false
-              storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-              official_size: 649x1000
-              fig_title_code: '1'
-              source_image_type: drawing
-              fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-            llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
-            organizations:
-            - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
-              normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
-              normalized_name: China University of Mining & Technology (Beijing)
-              normalized_display_name: China University of Mining & Technology (Beijing)
-            technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
-            llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
-            llm_innovation_list:
-            - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
-            tech_field_and_topic_list:
-            - 石墨
-            - 导电
-          description: Tech info
-        item_type:
-          type: string
-          example: patent
-          description: Tech type（patent | paper）
-        relevance_score:
-          type: integer
-          format: int32
-          example: 4
-          description: Tech relevance score
-    AI88-1TechMonitorApiCompanyMonitorsResponse:
+    AI03NerNewsNerResponse:
       type: object
       properties:
         data:
@@ -864,7 +414,7 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/AI88-1TechMonitorApiCompanyMonitors_CompanyMonitorSimpleItem'
+            $ref: '#/components/schemas/AI03NerNewsNer_NerNewsResult'
         status:
           type: boolean
           example: 'false'
@@ -880,454 +430,6 @@ components:
       required:
       - status
       - error_code
-    AI72AgentBatchHistory_DailyRecordsDTO:
-      type: object
-      properties:
-        data:
-          type: array
-          example:
-          - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            time: '13:58'
-            source: AI_GENERATE
-            message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-              ,材料成本上限
-
-              ,生产工艺兼容性 '
-            rawType: ai_generate
-            icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-            icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-            created_at: 23 Oct 2025 13:58
-            business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-            business_name: Technical Solution Exploration
-          description: List of history records for this date
-          items:
-            $ref: '#/components/schemas/AI72AgentBatchHistory_HistoryRecordsDTO'
-        date:
-          type: string
-          example: '2025-10-23'
-          description: 'Date in format: yyyy-MM-dd'
-    AI88-2CompanyMonitorAggregatedInfo_TechMonitorSubFieldItem:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 3a425fd2e6d89196eef3e5f471b83b4e
-          description: Company tech monitor sub item id
-        name:
-          type: string
-          example: 宁德时代新能源科技股份有限公司
-          description: Company tech monitor sub item name
-        patent_query:
-          type: string
-          example: ALL_AN:(TREE@"宁德时代新能源科技股份有限公司")
-          description: Company tech monitor sub item query
-        classification_type:
-          type: string
-          example: company
-          description: Company tech monitor sub item type (company | tech)
-    L016DocumentsDocParsingResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/L016DocumentsDocParsing_DocumentParseResponse'
-        status:
-          type: string
-          example: success
-          description: The request completed successfully.
-        error_msg:
-          type: string
-          example: success
-          description: Always success on success.
-        error_code:
-          type: integer
-          format: int32
-          example: 0
-          description: Always 0 on success.
-      required:
-      - data
-      - status
-      - error_msg
-      - error_code
-    AI30PatentSimilarPatentComparisonResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_TechSolutionResearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI88-2CompanyMonitorAggregatedInfo_GroupItem:
-      type: object
-      properties:
-        items:
-          type: array
-          example:
-          - item_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-            item_info:
-              doi: 10.1016/j.jechem.2024.02.069
-              abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
-              title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
-              journal: Journal of Energy Chemistry
-              paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-              relevance:
-                score: 5
-                description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
-              organizations:
-              - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
-                normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
-                normalized_name: China University of Mining & Technology (Beijing)
-                normalized_display_name: China University of Mining & Technology (Beijing)
-            item_type: paper
-            relevance_score: 5
-          - item_id: e3458499-f03c-474b-863a-01d30545cf1a
-            item_info:
-              pn: CN119092837A
-              abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
-              ancs:
-                ans_name: 沈阳国科金能科技有限公司
-              title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
-              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-              relevance:
-                score: 4
-                description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
-              full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-              pdf_images:
-              - labels:
-                - '1'
-                image_id: HDA0005017033410000011
-                extracted: false
-                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-                image_from: official
-                image_type: drawing
-                is_extracted: false
-                storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-                official_size: 649x1000
-                fig_title_code: '1'
-                source_image_type: drawing
-                fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-              llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
-              technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
-              llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
-              llm_innovation_list:
-              - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
-              tech_field_and_topic_list:
-              - 石墨
-              - 导电
-            item_type: patent
-            relevance_score: 4
-          description: Patent or paper information list
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem'
-        title:
-          type: string
-          example: 宽温区性能优化与复合材料体系设计
-          description: Group name
-        images:
-          type: array
-          example:
-          - https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-          description: Patent image list
-        summary:
-          type: string
-          example: 通过**锰酸锂与磷酸锰铁锂复合掺混**技术，结合**分步分散、梯度复合**工艺，实现不同正极材料的优势互补。该技术采用优化配比的复合体系，显著提升了电池在-40℃至55℃宽温区的稳定性，在-20℃环境下能量输出效率达80.8％，同时平衡了**能量密度与安全性**的矛盾。
-          description: Group summary
-        paper_ids:
-          type: array
-          example:
-          - a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-          description: Paper ID list
-        patent_ids:
-          type: array
-          example:
-          - e3458499-f03c-474b-863a-01d30545cf1a
-          - f6ce2b02-e5e6-4c0a-ae73-6c5d5212719f
-          description: Patent ID list
-        tech_differences:
-          type: string
-          example: 相比单一材料体系，**复合掺混策略**有效规避了磷酸铁锂低温性能差、三元材料安全性不足的局限，通过材料协同效应实现性能互补，为宽温区应用提供了成本可控的解决方案。
-          description: Tech differences
-    AI71AgentExportLinkResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI71AgentExportLink_AgentExportResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI03NerNewsNerRequest:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: cn
-          description: 'Choose the language of the input text：
-
-            CN：Chinese
-
-            EN：English'
-        text:
-          type: string
-          example: '药鼎记：生物医药新生力量
-
-
-
-
-
-
-            7964682698844491.jpg
-
-
-            2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。'
-          description: News text content. Chinese text is required to be no more than 500 characters or English text no more than 500 words
-      required:
-      - lang
-      - text
-    AI88-2CompanyMonitorAggregatedInfo_TopCompanyItem:
-      type: object
-      properties:
-        num:
-          type: integer
-          format: int32
-          example: 2
-          description: Company tech count
-        name:
-          type: string
-          example: 合肥国轩高科动力能源有限公司
-          description: Company name
-        tags:
-          type: array
-          example:
-          - 固态聚合物电解质
-          - 低温复合准固态电解质
-          description: Company tech tags
-    AI72AgentBatchHistory_UserHistory:
-      type: object
-      properties:
-        email:
-          type: string
-          example: user@example.com
-          description: User email
-        phone:
-          type: string
-          example: 12345678900
-          description: Phone number
-        history:
-          $ref: '#/components/schemas/AI72AgentBatchHistory_HistoryRecordsResponseDTO'
-    AI72AgentHistory_HistoryRecordsResponseDTO:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        limit:
-          type: integer
-          format: int32
-          example: 20
-          description: Records per page
-        total:
-          type: integer
-          format: int64
-          example: 100
-          description: Total number of records
-        history_maps:
-          type: array
-          example:
-          - data:
-            - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              time: '13:58'
-              source: AI_GENERATE
-              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-                ,材料成本上限
-
-                ,生产工艺兼容性 '
-              rawType: ai_generate
-              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              created_at: 23 Oct 2025 13:58
-              business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-              business_name: Technical Solution Exploration
-            - id: 2570aeaf-7999-430b-9bef-c43fcda4d928
-              link: /ai/agent-flow/2570aeaf-7999-430b-9bef-c43fcda4d928
-              time: '13:39'
-              source: AI_GENERATE
-              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
-
-                ,材料成本上限
-
-                ,生产工艺兼容性 '
-              rawType: ai_generate
-              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-              created_at: 23 Oct 2025 13:39
-              business_id: 2570aeaf-7999-430b-9bef-c43fcda4d928
-              business_name: Technical Solution Exploration
-            date: '2025-10-23'
-          description: History records grouped by date
-          items:
-            $ref: '#/components/schemas/AI72AgentHistory_DailyRecordsDTO'
-    AI88-2CompanyMonitorAggregatedInfo_LowScore:
-      type: object
-      properties:
-        items:
-          type: array
-          example:
-          - item_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-            item_info:
-              doi: 10.1016/j.jechem.2024.02.069
-              abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
-              title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
-              journal: Journal of Energy Chemistry
-              paper_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-              relevance:
-                score: 5
-                description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
-              organizations:
-              - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
-                normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
-                normalized_name: China University of Mining & Technology (Beijing)
-                normalized_display_name: China University of Mining & Technology (Beijing)
-            item_type: paper
-            relevance_score: 5
-          - item_id: e3458499-f03c-474b-863a-01d30545cf1a
-            item_info:
-              pn: CN119092837A
-              abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
-              ancs:
-                ans_name: 沈阳国科金能科技有限公司
-              title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
-              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-              relevance:
-                score: 4
-                description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
-              full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-              pdf_images:
-              - labels:
-                - '1'
-                image_id: HDA0005017033410000011
-                extracted: false
-                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
-                image_from: official
-                image_type: drawing
-                is_extracted: false
-                storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-                official_size: 649x1000
-                fig_title_code: '1'
-                source_image_type: drawing
-                fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-              llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
-              technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
-              llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
-              llm_innovation_list:
-              - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
-              tech_field_and_topic_list:
-              - 石墨
-              - 导电
-            item_type: patent
-            relevance_score: 4
-          description: Patent or paper information list
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem'
-        images:
-          type: array
-          example:
-          - https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
-          description: Patent image list
-        paper_ids:
-          type: array
-          example:
-          - a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-          description: Paper ID list
-        patent_ids:
-          type: array
-          example:
-          - e3458499-f03c-474b-863a-01d30545cf1a
-          - f6ce2b02-e5e6-4c0a-ae73-6c5d5212719f
-          description: Patent ID list
-    AI88-2CompanyMonitorAggregatedInfoResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorAggregatedInfo'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI01NerDdtNerRequest:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: en
-          description: text language, support cn and en
-        source:
-          type: string
-          example: patent
-          description: text source：patent/literature/news, default patent
-        text:
-          type: string
-          example: Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\n\n\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\n\n\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor
-          description: The text of drug DDT information needs to be extracted. Chinese text is required to be no more than 500 characters or English text no more than 500 words
-      required:
-      - lang
-      - text
-    AI31PatentPatentCoreInventionPointsRequest:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: en
-          description: Select the language , the default language is en, you can choose cn or en.
-        patent_id:
-          type: string
-          example: e7b3df69-0f30-4ad3-a753-538e362fd524
-          description: patent ID
-        pn:
-          type: string
-          example: CN108001293B
-          description: patent publication number
-      required:
-      - lang
     AI88-2CompanyMonitorAggregatedInfo_TechMonitorCountResponseDTO:
       type: object
       properties:
@@ -1418,6 +520,341 @@ components:
           description: Tech groups info
           items:
             $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechTopicCountItem'
+    AI30PatentSimilarPatentComparison_TechSolutionResearchResponse:
+      type: object
+      properties:
+        docs:
+          type: array
+          example: 'Please check the form: Docs'
+          description: Return results
+          items:
+            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Docs'
+        count:
+          type: integer
+          format: int32
+          example: 20
+          description: Return the total number of similar patents
+    AI88-2CompanyMonitorAggregatedInfo_TechTopicCountItem:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 磷酸锰铁锂
+          description: Sub tech name
+        count:
+          type: integer
+          format: int32
+          example: 8
+          description: Group Count
+        groups:
+          type: array
+          example:
+          - items:
+            - item_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+              item_info:
+                doi: 10.1016/j.jechem.2024.02.069
+                abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
+                title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
+                journal: Journal of Energy Chemistry
+                paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+                relevance:
+                  score: 5
+                  description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
+                organizations:
+                - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
+                  normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
+                  normalized_name: China University of Mining & Technology (Beijing)
+                  normalized_display_name: China University of Mining & Technology (Beijing)
+              item_type: paper
+              relevance_score: 5
+            - item_id: e3458499-f03c-474b-863a-01d30545cf1a
+              item_info:
+                pn: CN119092837A
+                abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
+                ancs:
+                  ans_name: 沈阳国科金能科技有限公司
+                title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
+                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                relevance:
+                  score: 4
+                  description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
+                full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D29e09f9e19879e83f8c525a258b7635be99a9ff2&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
+                pdf_images:
+                - labels:
+                  - '1'
+                  image_id: HDA0005017033410000011
+                  extracted: false
+                  patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                  image_from: official
+                  image_type: drawing
+                  is_extracted: false
+                  storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D29e09f9e19879e83f8c525a258b7635be99a9ff2&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
+                  official_size: 649x1000
+                  fig_title_code: '1'
+                  source_image_type: drawing
+                  fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D879c1d7d79140ed75272abdfbfee2c78288ead79&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
+                llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
+                technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
+                llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
+                llm_innovation_list:
+                - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
+                tech_field_and_topic_list:
+                - 石墨
+                - 导电
+              item_type: patent
+              relevance_score: 4
+            title: 宽温区性能优化与复合材料体系设计
+            images: []
+            summary: 通过**锰酸锂与磷酸锰铁锂复合掺混**技术，结合**分步分散、梯度复合**工艺，实现不同正极材料的优势互补。该技术采用优化配比的复合体系，显著提升了电池在-40℃至55℃宽温区的稳定性，在-20℃环境下能量输出效率达80.8％，同时平衡了**能量密度与安全性**的矛盾。
+            paper_ids:
+            - a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            patent_ids:
+            - e3458499-f03c-474b-863a-01d30545cf1a
+            tech_differences: ''
+          description: Group Info
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupItem'
+        low_score:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_LowScore'
+        group_count:
+          type: integer
+          format: int32
+          example: 8
+          description: Group Count
+        overall_summary:
+          type: string
+          example: 采用**半固态电极和半固态电解质**设计，通过在集流体表面设置减薄成膜的电解质膜层，结合**一体化半干法制备工艺**，实现极少量电解液的均匀分布。使用含有电解液的半固态电解质膜替代传统隔膜，有效解决了电解液浸润难题。
+          description: Summary of multiple groups
+      required:
+      - name
+      - count
+      - groups
+      - low_score
+      - group_count
+      - overall_summary
+    AI72AgentBatchHistory_HistoryRecordsResponseDTO:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        limit:
+          type: integer
+          format: int32
+          example: 20
+          description: Records per page
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total number of records
+        history_maps:
+          type: array
+          example:
+          - data:
+            - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              time: '13:58'
+              source: AI_GENERATE
+              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+                ,材料成本上限
+
+                ,生产工艺兼容性 '
+              rawType: ai_generate
+              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              created_at: 23 Oct 2025 13:58
+              business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              business_name: Technical Solution Exploration
+            - id: 2570aeaf-7999-430b-9bef-c43fcda4d928
+              link: /ai/agent-flow/2570aeaf-7999-430b-9bef-c43fcda4d928
+              time: '13:39'
+              source: AI_GENERATE
+              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+                ,材料成本上限
+
+                ,生产工艺兼容性 '
+              rawType: ai_generate
+              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              created_at: 23 Oct 2025 13:39
+              business_id: 2570aeaf-7999-430b-9bef-c43fcda4d928
+              business_name: Technical Solution Exploration
+            date: '2025-10-23'
+          description: History records grouped by date
+          items:
+            $ref: '#/components/schemas/AI72AgentBatchHistory_DailyRecordsDTO'
+    AI88-2CompanyMonitorAggregatedInfo_LowScore:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - item_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            item_info:
+              doi: 10.1016/j.jechem.2024.02.069
+              abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
+              title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
+              journal: Journal of Energy Chemistry
+              paper_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+              relevance:
+                score: 5
+                description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
+              organizations:
+              - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
+                normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
+                normalized_name: China University of Mining & Technology (Beijing)
+                normalized_display_name: China University of Mining & Technology (Beijing)
+            item_type: paper
+            relevance_score: 5
+          - item_id: e3458499-f03c-474b-863a-01d30545cf1a
+            item_info:
+              pn: CN119092837A
+              abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
+              ancs:
+                ans_name: 沈阳国科金能科技有限公司
+              title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
+              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+              relevance:
+                score: 4
+                description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
+              full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+              pdf_images:
+              - labels:
+                - '1'
+                image_id: HDA0005017033410000011
+                extracted: false
+                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                image_from: official
+                image_type: drawing
+                is_extracted: false
+                storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+                official_size: 649x1000
+                fig_title_code: '1'
+                source_image_type: drawing
+                fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+              llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
+              technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
+              llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
+              llm_innovation_list:
+              - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
+              tech_field_and_topic_list:
+              - 石墨
+              - 导电
+            item_type: patent
+            relevance_score: 4
+          description: Patent or paper information list
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem'
+        images:
+          type: array
+          example:
+          - https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+          description: Patent image list
+        paper_ids:
+          type: array
+          example:
+          - a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+          description: Paper ID list
+        patent_ids:
+          type: array
+          example:
+          - e3458499-f03c-474b-863a-01d30545cf1a
+          - f6ce2b02-e5e6-4c0a-ae73-6c5d5212719f
+          description: Patent ID list
+    AI31PatentPatentCoreInventionPointsRequest:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: en
+          description: Select the language , the default language is en, you can choose cn or en.
+        patent_id:
+          type: string
+          example: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: patent ID
+        pn:
+          type: string
+          example: CN108001293B
+          description: patent publication number
+      required:
+      - lang
+    AI72AgentBatchHistory_HistoryRecordsDTO:
+      type: object
+      properties:
+        q:
+          type: string
+          example: quantum computing AND artificial intelligence
+          description: Query keywords or query string
+        id:
+          type: string
+          example: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+          description: History record ID
+        efq:
+          type: string
+          example: APD:[20230101 TO 20231231]
+          description: Extended field query
+        link:
+          type: string
+          example: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+          description: Link URL for the history record
+        time:
+          type: string
+          example: '13:58'
+          description: 'Created time (hour:minute only) in format: HH:mm'
+        count:
+          type: object
+          example:
+            total: 1500
+            granted: 800
+            application: 700
+          description: Search result count statistics (patent count, etc.)
+        source:
+          type: string
+          example: AI_GENERATE
+          description: History record source
+        message:
+          type: string
+          example: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值\n,材料成本上限\n,生产工艺兼容性
+          description: Message or description of the history record
+        icon_url:
+          type: string
+          example: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+          description: Full URL of the icon
+        raw_type:
+          type: string
+          example: ai_generate
+          description: History record type
+        icon_path:
+          type: string
+          example: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+          description: Icon path
+        patent_id:
+          type: string
+          example: US20240123456A1
+          description: Patent ID
+        created_at:
+          type: string
+          example: 23 Oct 2025 13:58
+          description: 'Created time in format: yyyy-MM-dd HH:mm or dd MMM yyyy HH:mm'
+        extra_info:
+          type: object
+          example:
+            region: US
+            category: technology
+          description: Extra information
+        business_id:
+          type: string
+          example: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+          description: Business ID (e.g., seekId, mindId, researchId)
+        business_name:
+          type: string
+          example: Technical Solution Exploration
+          description: Business name
     L016DocumentsDocParsing_DocumentResultItem:
       type: object
       properties:
@@ -1448,6 +885,122 @@ components:
       - bbox
       - page
       - type
+    AI88-2CompanyMonitorAggregatedInfo_TechMonitorSubFieldItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 3a425fd2e6d89196eef3e5f471b83b4e
+          description: Company tech monitor sub item id
+        name:
+          type: string
+          example: 宁德时代新能源科技股份有限公司
+          description: Company tech monitor sub item name
+        patent_query:
+          type: string
+          example: ALL_AN:(TREE@"宁德时代新能源科技股份有限公司")
+          description: Company tech monitor sub item query
+        classification_type:
+          type: string
+          example: company
+          description: Company tech monitor sub item type (company | tech)
+    AI30PatentSimilarPatentComparison_SimilarPatent:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN108001293B
+          description: patent publication number
+        means:
+          type: array
+          example: 'Please check the form: Label'
+          description: similar means
+          items:
+            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Label'
+        score:
+          type: number
+          format: float
+          example: 0.9
+          description: similarity
+        efficacy:
+          type: array
+          example: 'Please check the form: Label'
+          description: similar efficacy
+          items:
+            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Label'
+        patent_id:
+          type: string
+          example: 9c341cca-3aca-4003-8bc0-ada07f3702f8
+          description: patent ID
+    AI71AgentExportLink_AgentExportResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.docx
+            task_id: task01
+            file_name: Technical_Solution_Exploration_20251023.docx
+          - url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.pdf
+            task_id: task02
+            file_name: Technical_Solution_Exploration_20251023.pdf
+          description: List of export links
+          items:
+            $ref: '#/components/schemas/AI71AgentExportLink_AgentExport'
+    L016DocumentsDocParsing_DocumentParseResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          example: success
+          description: Execution state; success indicates that parsing completed successfully.
+        results:
+          type: array
+          example: 'Please check the form: DocumentResultItem'
+          description: Structured JSONL data; each element represents one document region. An empty array is returned when output_format=markdown.
+          items:
+            $ref: '#/components/schemas/L016DocumentsDocParsing_DocumentResultItem'
+        markdown:
+          type: string
+          example: 'TECHNICAL FIELD
+
+
+            The present disclosure relates to...'
+          description: Complete Markdown summary. Returned when output_format is both or markdown; omitted when output_format=jsonl.
+        file_type:
+          type: string
+          example: pdf
+          description: Input file type inferred from the uploaded filename extension.
+        total_pages:
+          type: integer
+          format: int32
+          example: 12
+          description: Total number of pages; always 1 for an image.
+      required:
+      - state
+      - results
+      - file_type
+      - total_pages
+    AI72AgentHistoryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI72AgentHistory_HistoryRecordsResponseDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     L017DocumentsLayoutParsingRequest:
       type: object
       properties:
@@ -1457,129 +1010,21 @@ components:
           description: File to analyze for layout.
       required:
       - file
-    AI88-2CompanyMonitorAggregatedInfo_CompanyCountItem:
+    AI88-2CompanyMonitorAggregatedInfo_OverviewSummary:
       type: object
       properties:
-        name:
+        group:
+          type: string
+          example: 低温环境下锂离子电池电导率和电化学性能不足
+          description: Group name
+        sub_name:
           type: string
           example: 合肥国轩高科动力能源有限公司
-          description: Company name
-        count:
-          type: integer
-          format: int32
-          example: '2'
-          description: The number of technology groups in the company for the current period
-        groups:
-          type: array
-          example:
-          - items:
-            - item_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-              item_info:
-                doi: 10.1016/j.jechem.2024.02.069
-                abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
-                title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
-                journal: Journal of Energy Chemistry
-                paper_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-                relevance:
-                  score: 5
-                  description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
-                organizations:
-                - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
-                  normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
-                  normalized_name: China University of Mining & Technology (Beijing)
-                  normalized_display_name: China University of Mining & Technology (Beijing)
-              item_type: paper
-              relevance_score: 5
-            - item_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
-              item_info:
-                pn: CN118213610A
-                abst: <div p='0' i='0'>本发明公开了一种低温复合准固态电解质的制备方法，其特征在于，包括以下步骤：步骤一：向二氧戊烷、添加剂以及快离子导体的混合液中加入锂盐，得到前驱液；步骤二：将前驱液进行原位聚合反应，即得所述低温复合准固态电解质。本发明制备的低温复合准固态电解质的电导率，满足锂离子电池的应用需求。本发明制备的低温复合准固态电解质不使用任何电解液，能够大大提高电池的热稳定性和安全性能。本发明提供的低温复合准固态电解质的制备方法较简单，材料易得，副产物少且对环境友好。本发明提供的固态锂电池具有较为优异的低温电化学性能，并且能够实现有效充放电，具有优异的长循环稳定性能。</div>
-                ancs:
-                  ans_name: 江苏国轩新能源科技有限公司
-                title: 一种低温复合准固态电解质的制备方法及其固态锂电池应用
-                patent_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
-                relevance:
-                  score: 4
-                  description: Subject一致性(S=2)：专利涉及低温复合准固态电解质及固态锂电池，与'锂电池'主题高度一致。Focus匹配(F=1)：focus_area为空，记为1分。关联度R=3(High)。创新度评估：通过向二氧戊烷中加入添加剂和快离子导体进行原位聚合，制备低温复合准固态电解质，在低温电化学性能方面有显著提升，属于材料体系和性能的实质性创新，创新度I=2(High)。综合评分：R=High & I=High → 5分，但技术路线相对成熟，评为4分。
-                full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
-                pdf_images:
-                - image_id: BDA0004750665280000021
-                  extracted: false
-                  patent_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
-                  image_from: official
-                  image_type: drawing
-                  is_extracted: false
-                  storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
-                  official_size: 1000x368
-                  source_image_type: drawing
-                  fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D63635be601c8763612a738127f2a552eeadd6775&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
-                llm_benefit: 显著提高了锂离子电池在低温下的离子电导率和电化学性能，增强了电池的稳定性和安全性能，实现了优异的低温电化学性能和长循环稳定性，满足了锂离子电池的应用需求。
-                technical_title: 通过在锂离子电池中制备低温复合准固态电解质，解决了锂离子电池在低温环境下电导率和电化学性能不足的问题，实现了锂离子电池在低温下的高性能和稳定性，满足了锂离子电池的应用需求。
-                llm_tech_problem: 锂离子电池在低温环境下表现出电能量密度、功率和循环寿命的显著下降，主要由于电解质中离子输运和电极界面电荷转移动力学不足，导致固体电解质界面结构变化，现有聚二氧戊烷基电解质的低温离子导电率不足，无法满足实际应用需求。
-                llm_innovation_list:
-                - 采用一种低温复合准固态电解质的制备方法，通过向二氧戊烷、添加剂和快离子导体的混合液中加入锂盐，进行原位聚合反应，制备出具有提高离子电导率和电化学性能的低温复合准固态电解质，并将其应用于固态锂电池中。
-                tech_field_and_topic_list:
-                - 导体
-              item_type: patent
-              relevance_score: 4
-            title: 低温环境下锂离子电池电导率和电化学性能不足
-            images:
-            - https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
-            summary: 该技术采用**低温复合准固态电解质**制备方法，通过向二氧戊烷、添加剂和快离子导体混合液中加入锂盐进行**原位聚合反应**，制备出具有高离子电导率的复合电解质，显著改善锂离子电池在低温环境下的电化学性能。
-            paper_ids:
-            - a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
-            patent_ids:
-            - 57821030-e8f0-4cd3-8c28-1b1c485133e6
-            tech_differences: 相比传统聚二氧戊烷基电解质，该技术通过**原位聚合**和**快离子导体复合**显著提升低温离子导电率，完全摒弃液态电解液，大幅提高热稳定性和安全性能，但可能面临制备工艺复杂度增加的挑战。
-          description: Tech Groups
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupItem'
-        low_score:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_LowScore'
-        group_count:
-          type: integer
-          format: int32
-          example: '2'
-          description: The number of technology groups in the company for the current period
-        company_name:
+          description: Group type name
+        sub_type:
           type: string
-          example: 合肥国轩高科动力能源有限公司
-          description: Company name
-        overall_summary:
-          type: string
-          example: 采用**半固态电极和半固态电解质**设计，通过在集流体表面设置减薄成膜的电解质膜层，结合**一体化半干法制备工艺**，实现极少量电解液的均匀分布。使用含有电解液的半固态电解质膜替代传统隔膜，有效解决了电解液浸润难题。
-          description: Summary of multiple tech groups
-      required:
-      - name
-      - count
-      - groups
-      - low_score
-      - group_count
-      - company_name
-      - overall_summary
-    L017DocumentsLayoutParsingResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/L017DocumentsLayoutParsing_LayoutParseResponse'
-        status:
-          type: string
-          example: success
-          description: The request completed successfully.
-        error_msg:
-          type: string
-          example: success
-          description: Always success on success.
-        error_code:
-          type: integer
-          format: int32
-          example: 0
-          description: Always 0 on success.
-      required:
-      - data
-      - status
-      - error_msg
-      - error_code
+          example: company
+          description: Group type（company | tech | other）
     AI88-2CompanyMonitorAggregatedInfo_TechMonitorResponseDTO:
       type: object
       properties:
@@ -1673,22 +1118,80 @@ components:
           type: string
           example: true
           description: Company tech monitor pre-compute data status
-    AI31PatentPatentCoreInventionPoints_Sentence:
+    AI72AgentHistoryRequest:
       type: object
       properties:
-        sentence:
-          type: array
-          example: '<cn>["在原地转向时，考虑了车辆的横摆力矩对车身稳定性的影响，并通过控制转向电机的转矩来维持车身的稳定。该系统还包括了方向盘转角传感器、轮速传感器和电机控制器，用于检测方向盘的锁定状态、轮速是否大于零以及增加驱动电机的转矩","该系统还包括了偏航率传感器和横摆角速度传感器，用于实时检测整车的横摆信息并判断是否进行原地转向"]</cn><us>[["Enhanced energy density: the patent application addresses the increasing demand for higher energy density in batteries, particularly in the context of electric vehicles and portable electronic devices. by improving the design and materials used in the electrochemical device, the invention aims to achieve higher energy density without compromising safety or cycle performance.","Improved safety features: with the growing concern for battery safety, the patent application likely includes innovative safety features to prevent issues such as overheating, short circuits, and explosions. these features could involve new materials, structural designs, or monitoring systems to enhance the overall safety of the electronic device.","Enhanced cycle performance: in addition to energy density and safety, the patent application may focus on improving the cycle performance of the electrochemical device. this could involve optimizing the electrode materials, electrolyte composition, or charging/discharging protocols to extend the lifespan of the battery and maintain its performance over multiple cycles.","Integration with electronic devices: the patent application may also describe how the electrochemical device is integrated into electronic devices, such as smartphones, laptops, or electric vehicles. this integration could involve customizing the size, shape, and connectivity of the battery to fit seamlessly within the device and optimize its overall performance."]</us>'
-          description: patent core invention points
-    AI01NerDdtNerResponse:
+        company_id:
+          type: string
+          example: abc123
+          description: Company ID
+        email:
+          type: string
+          example: user@example.com
+          description: User email
+        end_time:
+          type: integer
+          format: int64
+          example: 1761580799999
+          description: End timestamp (milliseconds)
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number, starting from 1
+        phone:
+          type: string
+          example: '12345678900'
+          description: phone number
+        start_time:
+          type: integer
+          format: int64
+          example: 1758902400000
+          description: Start timestamp (milliseconds)
+      required:
+      - company_id
+      - email
+      - phone
+    AI03NerNewsNer_NerNewsResult:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
+          example: 59
+          description: NER end position
+        type:
+          type: string
+          example: GOV
+          description: 'entity type:
+
+            COM：company
+
+            GOV：government
+
+            GPE：address
+
+            ACA：academic
+
+            PPL：personal name
+
+            NPO：non-profit
+
+            CDO：hospital'
+        start:
+          type: integer
+          format: int32
+          example: 50
+          description: NER start position
+        entity:
+          type: string
+          example: 国家药品监督管理局
+          description: entity name
+    AI72AgentBatchHistoryResponse:
       type: object
       properties:
         data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/AI01NerDdtNer_NerDDTResult'
+          $ref: '#/components/schemas/AI72AgentBatchHistory_BatchAgentHistoryResponse'
         status:
           type: boolean
           example: 'false'
@@ -1704,6 +1207,17 @@ components:
       required:
       - status
       - error_code
+    AI72AgentBatchHistory_UserAccount:
+      type: object
+      properties:
+        email:
+          type: string
+          example: user@example.com
+          description: User email
+        phone:
+          type: string
+          example: 12345678900
+          description: Phone number
     AI88-2CompanyMonitorAggregatedInfo_DimensionChartResponseDTO:
       type: object
       properties:
@@ -1890,12 +1404,113 @@ components:
             - '652'
             - '456'
           description: Dimension list and tech count
+    L016DocumentsDocParsingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/L016DocumentsDocParsing_DocumentParseResponse'
+        status:
+          type: string
+          example: success
+          description: The request completed successfully.
+        error_msg:
+          type: string
+          example: success
+          description: Always success on success.
+        error_code:
+          type: integer
+          format: int32
+          example: 0
+          description: Always 0 on success.
+      required:
+      - data
+      - status
+      - error_msg
+      - error_code
+    L017DocumentsLayoutParsing_LayoutResultItem:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: https://oss.example.com/doc/0_2.png?sign=...
+          description: Cropped-region URL. Null when include_crop_urls=false; when true, URLs are primarily provided for chemical structures and figures.
+        bbox:
+          type: array
+          example:
+          - 0.16
+          - 0.18
+          - 0.37
+          - 0.2
+          - 0.9
+          description: Normalized coordinates [x1, y1, x2, y2, confidence].
+        page:
+          type: integer
+          format: int32
+          example: 0
+          description: Zero-based page index.
+        type:
+          type: string
+          example: figure
+          description: Original region type produced by the layout model.
+        content:
+          type: string
+          example: 'null'
+          description: Always null because layout-only mode does not run OCR.
+      required:
+      - bbox
+      - page
+      - type
+    AI88-2CompanyMonitorAggregatedInfoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorAggregatedInfo'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI01NerDdtNerResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/AI01NerDdtNer_NerDDTResult'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI30PatentSimilarPatentComparison_Docs:
       type: object
       properties:
         similar_patent:
           $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_SimilarPatent'
-    AI72AgentBatchHistory_HistoryRecordsDTO:
+    AI72AgentHistory_HistoryRecordsDTO:
       type: object
       properties:
         q:
@@ -1967,221 +1582,29 @@ components:
           type: string
           example: Technical Solution Exploration
           description: Business name
-    AI72AgentHistoryRequest:
-      type: object
-      properties:
-        company_id:
-          type: string
-          example: abc123
-          description: Company ID
-        email:
-          type: string
-          example: user@example.com
-          description: User email
-        end_time:
-          type: integer
-          format: int64
-          example: 1761580799999
-          description: End timestamp (milliseconds)
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Page number, starting from 1
-        phone:
-          type: string
-          example: '12345678900'
-          description: phone number
-        start_time:
-          type: integer
-          format: int64
-          example: 1758902400000
-          description: Start timestamp (milliseconds)
-      required:
-      - company_id
-      - email
-      - phone
-    AI88-2CompanyMonitorAggregatedInfo_PaginationOfHotNewsItem:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page
-        limit:
-          type: integer
-          format: int32
-          example: 20
-          description: Page limit
-        total:
-          type: integer
-          format: int32
-          example: 20
-          description: News count
-        records:
-          type: array
-          example:
-          - link: https://www.electrive.com/2025/08/06/saic-launches-redesigned-mg4-with-semi-solid-state-battery-option/
-            title: 上汽推出改款MG4,可选配半固态电池
-            topics:
-            - 热阻
-            - 渗透测试
-            - 能源消耗
-            - 永磁电动机
-            - 材料科学
-            content: "这款电动车共有四种型号。这款紧凑型电动车基于上汽E3平台打造,配备120千瓦永磁电机,扭矩250牛米,最高时速160公里/小时。MG4车身长度4.4米,轴距2.75米,定位于紧凑型电动车市场,与大众ID.3和比亚迪海豚等车型展开竞争。 \n新车上市时提供两种LFP电池选择:42.8千瓦时和53.9千瓦时,分别支持437公里和530公里的CLTC续航里程。直流充电从30%充至80%大约需要20分钟,标称能耗为10.4千瓦时/100公里。 \n采用半固态电池技术的第五款车型计划于今年晚些时候加入该系列。上汽集团表示,该电池组展现出更高的热安全性,包括符合三向针刺测试标准,并且在预处理的情况下,在零下温度下可维持高达75%的续航里程。半固态电池将于年底前推出,预计9月定价,并于年底前交付。 \n因此,MG4 是首批大规模采用半固态电池技术的量产车型之一。据母公司上汽集团称,该电池通过了三向针刺测试,未产生烟雾,且低温性能有所提升。该公司表示,将电池预热至 -7°C 可使车辆续航里程保持高达 75%。\n该车型的电池系统采用电芯到车身(CTB)集成技术。上汽集团报告称,其在电池结构上的投资约为5亿元人民币(约合6870万美元),该结构采用含镧和铈的铝稀土合金来增强强度和耐热性。 \n名爵于三月发布了全新MG4 EV。正如我们当时所指出的,这是一款全新车型,而非上一代MG4的升级版。从之前的输出功率或电池容量数据来看,这一点显而易见。这款EV之前搭载的是125千瓦的电机和64千瓦时或77千瓦时的电池。 \n外观升级包括箭头形LED尾灯、重新设计的背光MG标识,以及东莱紫和珊瑚红等全新配色。轮毂尺寸范围为16至17英寸。 \n MG4 EV 由中国国有汽车制造商上汽集团生产,该公司于 2005 年收购了原英国品牌 MG。自 2022 年年中推出以来,MG4 在中国市场的表现并未达到预期——MG 汽车品牌在中国的传统与在欧洲不同。上汽集团希望下一代 MG4 能够改变这一现状。 \n cnevpost.com、carnewschina.com"
-            news_id: d3433e1d-de8c-3bcf-bd94-fa82514190c1
-          description: News records
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_HotNewsItem'
-        has_next:
-          type: boolean
-          example: false
-          description: Is there a next page
-        has_previous:
-          type: boolean
-          example: false
-          description: Is there a previous page
-    AI88-1TechMonitorApiCompanyMonitors_CompanyMonitorSimpleItem:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 0d68646fe871417ebe68a6905e698f24
-          description: Company tech monitor ID
-        title:
-          type: string
-          example: 锂电池
-          description: Company tech monitor title
-    AI72AgentHistoryResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI72AgentHistory_HistoryRecordsResponseDTO'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    L017DocumentsLayoutParsing_LayoutParseResponse:
-      type: object
-      properties:
-        state:
-          type: string
-          example: success
-          description: Execution state; success indicates that parsing completed successfully.
-        results:
-          type: array
-          example: 'Please check the form: LayoutResultItem'
-          description: Layout detection results; markdown is not returned.
-          items:
-            $ref: '#/components/schemas/L017DocumentsLayoutParsing_LayoutResultItem'
-        file_type:
-          type: string
-          example: png
-          description: Input file type inferred from the uploaded filename extension.
-        total_pages:
-          type: integer
-          format: int32
-          example: 1
-          description: Total pages; always 1 for an image.
-      required:
-      - state
-      - results
-      - file_type
-      - total_pages
-    AI88-2CompanyMonitorAggregatedInfo_TechMonitorAggregatedInfo:
-      type: object
-      properties:
-        count:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorCountResponseDTO'
-        hot_news:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_PaginationOfHotNewsItem'
-        overview:
-          type: array
-          example: []
-          description: Summary info（[OverviewSummary]）
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_OverviewSummary'
-        basic_info:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorResponseDTO'
-        tech_groups:
-          type: array
-          example: []
-          description: Tech groups info（[TechTopicCountItem]）
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechTopicCountItem'
-        other_groups:
-          type: array
-          example: []
-          description: Other groups info（[OtherCountItem]）
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_OtherCountItem'
-        company_groups:
-          type: array
-          example: []
-          description: Company groups info（[CompanyCountItem]）
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_CompanyCountItem'
-        tech_trend_chart:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_DimensionChartResponseDTO'
-        top_company_chart:
-          type: array
-          example: []
-          description: Top 5 company chart（[TopCompanyItem]）
-          items:
-            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TopCompanyItem'
-        tech_topic_word_cloud_chart:
-          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_DimensionChartResponseDTO'
-    AI71AgentExportLink_AgentExportResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          example:
-          - url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.docx
-            task_id: task01
-            file_name: Technical_Solution_Exploration_20251023.docx
-          - url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.pdf
-            task_id: task02
-            file_name: Technical_Solution_Exploration_20251023.pdf
-          description: List of export links
-          items:
-            $ref: '#/components/schemas/AI71AgentExportLink_AgentExport'
-    AI88-2CompanyMonitorAggregatedInfo_TechTopicCountItem:
+    AI88-2CompanyMonitorAggregatedInfo_CompanyCountItem:
       type: object
       properties:
         name:
           type: string
-          example: 磷酸锰铁锂
-          description: Sub tech name
+          example: 合肥国轩高科动力能源有限公司
+          description: Company name
         count:
           type: integer
           format: int32
-          example: 8
-          description: Group Count
+          example: '2'
+          description: The number of technology groups in the company for the current period
         groups:
           type: array
           example:
           - items:
-            - item_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            - item_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
               item_info:
                 doi: 10.1016/j.jechem.2024.02.069
                 abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
                 title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
                 journal: Journal of Energy Chemistry
-                paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+                paper_id: a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
                 relevance:
                   score: 5
                   description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
@@ -2192,51 +1615,48 @@ components:
                   normalized_display_name: China University of Mining & Technology (Beijing)
               item_type: paper
               relevance_score: 5
-            - item_id: e3458499-f03c-474b-863a-01d30545cf1a
+            - item_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
               item_info:
-                pn: CN119092837A
-                abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
+                pn: CN118213610A
+                abst: <div p='0' i='0'>本发明公开了一种低温复合准固态电解质的制备方法，其特征在于，包括以下步骤：步骤一：向二氧戊烷、添加剂以及快离子导体的混合液中加入锂盐，得到前驱液；步骤二：将前驱液进行原位聚合反应，即得所述低温复合准固态电解质。本发明制备的低温复合准固态电解质的电导率，满足锂离子电池的应用需求。本发明制备的低温复合准固态电解质不使用任何电解液，能够大大提高电池的热稳定性和安全性能。本发明提供的低温复合准固态电解质的制备方法较简单，材料易得，副产物少且对环境友好。本发明提供的固态锂电池具有较为优异的低温电化学性能，并且能够实现有效充放电，具有优异的长循环稳定性能。</div>
                 ancs:
-                  ans_name: 沈阳国科金能科技有限公司
-                title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
-                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                  ans_name: 江苏国轩新能源科技有限公司
+                title: 一种低温复合准固态电解质的制备方法及其固态锂电池应用
+                patent_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
                 relevance:
                   score: 4
-                  description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
-                full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D29e09f9e19879e83f8c525a258b7635be99a9ff2&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
+                  description: Subject一致性(S=2)：专利涉及低温复合准固态电解质及固态锂电池，与'锂电池'主题高度一致。Focus匹配(F=1)：focus_area为空，记为1分。关联度R=3(High)。创新度评估：通过向二氧戊烷中加入添加剂和快离子导体进行原位聚合，制备低温复合准固态电解质，在低温电化学性能方面有显著提升，属于材料体系和性能的实质性创新，创新度I=2(High)。综合评分：R=High & I=High → 5分，但技术路线相对成熟，评为4分。
+                full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
                 pdf_images:
-                - labels:
-                  - '1'
-                  image_id: HDA0005017033410000011
+                - image_id: BDA0004750665280000021
                   extracted: false
-                  patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                  patent_id: 57821030-e8f0-4cd3-8c28-1b1c485133e6
                   image_from: official
                   image_type: drawing
                   is_extracted: false
-                  storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D29e09f9e19879e83f8c525a258b7635be99a9ff2&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
-                  official_size: 649x1000
-                  fig_title_code: '1'
+                  storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
+                  official_size: 1000x368
                   source_image_type: drawing
-                  fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760082617%3B1760687417%26q-key-time%3D1760082617%3B1760687417%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D879c1d7d79140ed75272abdfbfee2c78288ead79&response-expires=Fri%2C%2017%20Oct%202025%2007%3A50%3A17%20GMT
-                llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
-                technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
-                llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
+                  fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D63635be601c8763612a738127f2a552eeadd6775&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
+                llm_benefit: 显著提高了锂离子电池在低温下的离子电导率和电化学性能，增强了电池的稳定性和安全性能，实现了优异的低温电化学性能和长循环稳定性，满足了锂离子电池的应用需求。
+                technical_title: 通过在锂离子电池中制备低温复合准固态电解质，解决了锂离子电池在低温环境下电导率和电化学性能不足的问题，实现了锂离子电池在低温下的高性能和稳定性，满足了锂离子电池的应用需求。
+                llm_tech_problem: 锂离子电池在低温环境下表现出电能量密度、功率和循环寿命的显著下降，主要由于电解质中离子输运和电极界面电荷转移动力学不足，导致固体电解质界面结构变化，现有聚二氧戊烷基电解质的低温离子导电率不足，无法满足实际应用需求。
                 llm_innovation_list:
-                - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
+                - 采用一种低温复合准固态电解质的制备方法，通过向二氧戊烷、添加剂和快离子导体的混合液中加入锂盐，进行原位聚合反应，制备出具有提高离子电导率和电化学性能的低温复合准固态电解质，并将其应用于固态锂电池中。
                 tech_field_and_topic_list:
-                - 石墨
-                - 导电
+                - 导体
               item_type: patent
               relevance_score: 4
-            title: 宽温区性能优化与复合材料体系设计
-            images: []
-            summary: 通过**锰酸锂与磷酸锰铁锂复合掺混**技术，结合**分步分散、梯度复合**工艺，实现不同正极材料的优势互补。该技术采用优化配比的复合体系，显著提升了电池在-40℃至55℃宽温区的稳定性，在-20℃环境下能量输出效率达80.8％，同时平衡了**能量密度与安全性**的矛盾。
+            title: 低温环境下锂离子电池电导率和电化学性能不足
+            images:
+            - https://data-fulltext-image.zhihuiya.com/CN/A/11/82/13/61/0/BDA0004750665280000021.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760172707%3B1760777507%26q-key-time%3D1760172707%3B1760777507%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3D650201fc036dd5f67b3d1f0a662d127467179aeb&response-expires=Sat%2C%2018%20Oct%202025%2008%3A51%3A47%20GMT
+            summary: 该技术采用**低温复合准固态电解质**制备方法，通过向二氧戊烷、添加剂和快离子导体混合液中加入锂盐进行**原位聚合反应**，制备出具有高离子电导率的复合电解质，显著改善锂离子电池在低温环境下的电化学性能。
             paper_ids:
-            - a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            - a1d48f6e-0c76-4ec7-8785-62edd8b3e9ab
             patent_ids:
-            - e3458499-f03c-474b-863a-01d30545cf1a
-            tech_differences: ''
-          description: Group Info
+            - 57821030-e8f0-4cd3-8c28-1b1c485133e6
+            tech_differences: 相比传统聚二氧戊烷基电解质，该技术通过**原位聚合**和**快离子导体复合**显著提升低温离子导电率，完全摒弃液态电解液，大幅提高热稳定性和安全性能，但可能面临制备工艺复杂度增加的挑战。
+          description: Tech Groups
           items:
             $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupItem'
         low_score:
@@ -2244,175 +1664,174 @@ components:
         group_count:
           type: integer
           format: int32
-          example: 8
-          description: Group Count
+          example: '2'
+          description: The number of technology groups in the company for the current period
+        company_name:
+          type: string
+          example: 合肥国轩高科动力能源有限公司
+          description: Company name
         overall_summary:
           type: string
           example: 采用**半固态电极和半固态电解质**设计，通过在集流体表面设置减薄成膜的电解质膜层，结合**一体化半干法制备工艺**，实现极少量电解液的均匀分布。使用含有电解液的半固态电解质膜替代传统隔膜，有效解决了电解液浸润难题。
-          description: Summary of multiple groups
+          description: Summary of multiple tech groups
       required:
       - name
       - count
       - groups
       - low_score
       - group_count
+      - company_name
       - overall_summary
-    AI88-2CompanyMonitorAggregatedInfo_OverviewSummary:
+    AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem:
       type: object
       properties:
-        group:
+        item_id:
           type: string
-          example: 低温环境下锂离子电池电导率和电化学性能不足
-          description: Group name
-        sub_name:
-          type: string
-          example: 合肥国轩高科动力能源有限公司
-          description: Group type name
-        sub_type:
-          type: string
-          example: company
-          description: Group type（company | tech | other）
-    AI72AgentBatchHistory_UserAccount:
-      type: object
-      properties:
-        email:
-          type: string
-          example: user@example.com
-          description: User email
-        phone:
-          type: string
-          example: 12345678900
-          description: Phone number
-    AI71AgentExportLink_AgentExport:
-      type: object
-      properties:
-        url:
-          type: string
-          example: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.docx
-          description: Export file download URL
-        task_id:
-          type: string
-          example: da5eb754-ec87-4a8b-9525-7108b0a76fad
-          description: Task ID
-        file_name:
-          type: string
-          example: Technical_Solution_Exploration_20251023.docx
-          description: Export file name
-    AI88-2CompanyMonitorAggregatedInfo_HotNewsItem:
-      type: object
-      properties:
-        link:
-          type: string
-          example: https://www.electrive.com/2025/08/06/saic-launches-redesigned-mg4-with-semi-solid-state-battery-option/
-          description: News link
-        title:
-          type: string
-          example: 上汽推出改款MG4,可选配半固态电池
-          description: News title
-        topics:
-          type: array
+          example: e3458499-f03c-474b-863a-01d30545cf1a
+          description: Tech ID
+        item_info:
+          type: object
           example:
-          - 热阻
-          - 渗透测试
-          - 能源消耗
-          - 永磁电动机
-          - 材料科学
-          description: News topics
-        content:
+            pn: CN119092837A
+            doi: 10.1016/j.jechem.2024.02.069
+            abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
+            ancs:
+              ans_name: 沈阳国科金能科技有限公司
+            title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
+            journal: Journal of Energy Chemistry
+            paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+            relevance:
+              score: 4
+              description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
+            full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+            pdf_images:
+            - labels:
+              - '1'
+              image_id: HDA0005017033410000011
+              extracted: false
+              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+              image_from: official
+              image_type: drawing
+              is_extracted: false
+              storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+              official_size: 649x1000
+              fig_title_code: '1'
+              source_image_type: drawing
+              fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+            llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
+            organizations:
+            - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
+              normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
+              normalized_name: China University of Mining & Technology (Beijing)
+              normalized_display_name: China University of Mining & Technology (Beijing)
+            technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
+            llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
+            llm_innovation_list:
+            - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
+            tech_field_and_topic_list:
+            - 石墨
+            - 导电
+          description: Tech info
+        item_type:
           type: string
-          example: "这款电动车共有四种型号。这款紧凑型电动车基于上汽E3平台打造,配备120千瓦永磁电机,扭矩250牛米,最高时速160公里/小时。MG4车身长度4.4米,轴距2.75米,定位于紧凑型电动车市场,与大众ID.3和比亚迪海豚等车型展开竞争。 \n新车上市时提供两种LFP电池选择:42.8千瓦时和53.9千瓦时,分别支持437公里和530公里的CLTC续航里程。直流充电从30%充至80%大约需要20分钟,标称能耗为10.4千瓦时/100公里。 \n采用半固态电池技术的第五款车型计划于今年晚些时候加入该系列。上汽集团表示,该电池组展现出更高的热安全性,包括符合三向针刺测试标准,并且在预处理的情况下,在零下温度下可维持高达75%的续航里程。半固态电池将于年底前推出,预计9月定价,并于年底前交付。 \n因此,MG4 是首批大规模采用半固态电池技术的量产车型之一。据母公司上汽集团称,该电池通过了三向针刺测试,未产生烟雾,且低温性能有所提升。该公司表示,将电池预热至 -7°C 可使车辆续航里程保持高达 75%。\n该车型的电池系统采用电芯到车身(CTB)集成技术。上汽集团报告称,其在电池结构上的投资约为5亿元人民币(约合6870万美元),该结构采用含镧和铈的铝稀土合金来增强强度和耐热性。 \n名爵于三月发布了全新MG4 EV。正如我们当时所指出的,这是一款全新车型,而非上一代MG4的升级版。从之前的输出功率或电池容量数据来看,这一点显而易见。这款EV之前搭载的是125千瓦的电机和64千瓦时或77千瓦时的电池。 \n外观升级包括箭头形LED尾灯、重新设计的背光MG标识,以及东莱紫和珊瑚红等全新配色。轮毂尺寸范围为16至17英寸。 \n MG4 EV 由中国国有汽车制造商上汽集团生产,该公司于 2005 年收购了原英国品牌 MG。自 2022 年年中推出以来,MG4 在中国市场的表现并未达到预期——MG 汽车品牌在中国的传统与在欧洲不同。上汽集团希望下一代 MG4 能够改变这一现状。 \n cnevpost.com、carnewschina.com"
-          description: News content
-        news_id:
-          type: string
-          example: d3433e1d-de8c-3bcf-bd94-fa82514190c1
-          description: News ID
-    AI03NerNewsNerResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/AI03NerNewsNer_NerNewsResult'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI72AgentBatchHistoryResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI72AgentBatchHistory_BatchAgentHistoryResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI30PatentSimilarPatentComparison_TechSolutionResearchResponse:
-      type: object
-      properties:
-        docs:
-          type: array
-          example: 'Please check the form: Docs'
-          description: Return results
-          items:
-            $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_Docs'
-        count:
+          example: patent
+          description: Tech type（patent | paper）
+        relevance_score:
           type: integer
           format: int32
-          example: 20
-          description: Return the total number of similar patents
-    AI72AgentBatchHistory_BatchAgentHistoryResponse:
+          example: 4
+          description: Tech relevance score
+    AI88-2CompanyMonitorAggregatedInfo_GroupItem:
       type: object
       properties:
-        user_histories:
+        items:
           type: array
           example:
-          - email: user@example.com
-            phone: '12345678900'
-            history:
-              page: 1
-              limit: 20
-              total: 100
-              history_maps:
-              - data:
-                - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-                  link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
-                  time: '13:58'
-                  source: AI_GENERATE
-                  message: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大
-                  rawType: ai_generate
-                  icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-                  icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
-                  created_at: 23 Oct 2025 13:58
-                  business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
-                  business_name: Technical Solution Exploration
-                date: '2025-10-23'
-          description: User history records list
+          - item_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+            item_info:
+              doi: 10.1016/j.jechem.2024.02.069
+              abst: <jats:sec> <jats:p>固体聚合物电解质(SPE)由于其优异的灵活性、可扩展性以及与电极的界面兼容性,已成为构建固态锂电池最有前途的候选材料之一。</jats:p><jats:p> 本文以液晶单体的共聚物网络和聚乙二醇二甲基丙烯酸酯(PEGDMA)为结构框架,结合聚乙二醇二缩水甘油醚短链散布结构,制备了一种新型全固态聚合物电解质(PPLCE)。 作为移动离子传输实体。</jats:p><jats:p> 制备的 PPLCE 表现出优异的机械性能。 性能和出色的电化学性能。 性能,这归因于其独特的三维共连续结构,以交联半互穿网络和离子液体相为特征,形成具有短程有序和长程无序的独特纳米结构。</jats:p><jats:p> 值得注意的是,事实证明,PEGDMA 的添加对于 PPLCE 的综合性能至关重要,它可以有效地调节微观吗酚。 聚合物网络并改进了机械。 固体电解质的性能以及循环稳定性。</jats:p><jats:p> 当用于锂离子电池时。 在电池配置中,6 wt%-PPLCE 表现出超强稳定性,可在 30 °C 下持续运行超过 2000 小时,过电势最小且一致为 50 mV。</jats:p><jats:p>所得Li|PPLCE|LFP固态电池表现出160.9和120.1 mAh g的高放电比容量 <sup>-1</sup>  分别在 0.2 和 1 C 的电流密度下。</jats:p><jats:p> 即使在 c.d. 循环超过 300 次之后。  0.2 C 时,它保留了令人印象深刻的 73.5% 的容量。</jats:p><jats:p> 此外,它在高 c.d. 下表现出超过 180 次循环的稳定循环。  0.5℃。</jats:p><jats:p> 超强的循环稳定性可能会促进超长寿命全固态锂金属电池的应用。</jats:p></jats:sec>
+              title: 具有高效离子传输通道的三维共连续网络结构聚合物电解质可实现超长寿命全固态锂金属电池
+              journal: Journal of Energy Chemistry
+              paper_id: a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+              relevance:
+                score: 5
+                description: Subject一致性=2分（三维共连续网络聚合物电解质与锂电池高度一致）；Focus匹配=1分；关联度R=3分（High级别）。创新度=2分（独特的三维共连续结构、交联半互穿网络、超过2000小时稳定运行为实质性创新）。矩阵判定：R=High & I=High → 5分。
+              organizations:
+              - normalized_id: 1b9f66d314de36dcc12a8c7a27b172dd
+                normalized_logo: https://filecdn.shuidi.cn/img/upload/images_logo/41/af/31/41af31295388db1079e8cbe856508159.png/0x0.png
+                normalized_name: China University of Mining & Technology (Beijing)
+                normalized_display_name: China University of Mining & Technology (Beijing)
+            item_type: paper
+            relevance_score: 5
+          - item_id: e3458499-f03c-474b-863a-01d30545cf1a
+            item_info:
+              pn: CN119092837A
+              abst: <div p='0' i='0'>本发明涉及锂离子电池制造领域，具体为一种适合在宽温区使用的复合锰基锂电池的制备方法。该方法包括正极制备、负极制备和复合锰基锂电池制备，采用锰酸锂、磷酸锰铁锂、导电剂、粘结剂等依次制得正极浆料、正极卷料和正极片，采用人造石墨、增稠剂、导电剂、粘结剂等依次制得负极浆料、负极卷料和负极片；两个正极片、负极片和隔膜组成的芯包进行连续超声焊接，装入铝壳体内，激光焊接将盖板和铝壳体熔为一个整体，经注液、化成、老化，制得能够适合宽温区使用的复合锰基锂电池，能够在‑40℃～55℃宽温区内持续稳定工作，解决了磷酸铁锂电池能量密度低、低温性能差、三元锂电池安全性差无法过针刺、锰酸锂电池循环性能差的问题。</div>
+              ancs:
+                ans_name: 沈阳国科金能科技有限公司
+              title: 一种适合在宽温区使用的复合锰基锂电池的制备方法
+              patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+              relevance:
+                score: 4
+                description: Subject一致性：专利涉及复合锰基锂电池制备，与'锂电池'主题高度一致(S=2)。Focus匹配：专利采用锰酸锂和磷酸锰铁锂复合，涉及磷酸锰铁锂材料，与followed_topics中的'磷酸锰铁锂'直接对应(F=1)。关联度R=3(High)。创新度：通过锰酸锂和磷酸锰铁锂复合掺混优化宽温区性能，属于材料复合改进创新(I=1,Medium)。综合评分：R=High & I=Medium → 4分。
+              full_image: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+              pdf_images:
+              - labels:
+                - '1'
+                image_id: HDA0005017033410000011
+                extracted: false
+                patent_id: e3458499-f03c-474b-863a-01d30545cf1a
+                image_from: official
+                image_type: drawing
+                is_extracted: false
+                storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+                official_size: 649x1000
+                fig_title_code: '1'
+                source_image_type: drawing
+                fulltext_image240_url: https://data-fulltext-image-thumbnail.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dc6b5ce452d6c106daf30b549768fafa373658a11&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+              llm_benefit: 显著提高了锂电池在低温条件下的放电性能和能量密度，同时增强了高温和过充等苛刻条件下的稳定性和安全性，使电池在-20℃环境下的能量输出效率提高到80.8％，在-40℃环境下达到69.3％，并在55℃高温环境下保持100％的能量输出效率。
+              technical_title: 通过将锰酸锂和磷酸锰铁锂进行复合掺混并优化工艺，制备出适合宽温区使用的复合锰基锂电池，解决了锂电池在低温环境下的性能不足问题，实现了在-20℃到55℃范围内的稳定和高效能量输出。
+              llm_tech_problem: 现有锂电池在低温环境下的性能表现不佳，尤其是磷酸铁锂电池的低温性能差、三元锂电池的安全性能差和锰酸锂电池的循环寿命表现较差，严重影响新能源汽车的推广和使用。
+              llm_innovation_list:
+              - 采用复合锰基锂电池的制备方法，通过将锰酸锂和磷酸锰铁锂进行复合掺混，并优化配比，结合导电剂、粘结剂和有机溶剂的使用，制备出适合宽温区使用的正极和负极材料，采用聚丙烯隔膜和特定电解液，通过真空烘烤和注液工艺提升电池性能。
+              tech_field_and_topic_list:
+              - 石墨
+              - 导电
+            item_type: patent
+            relevance_score: 4
+          description: Patent or paper information list
           items:
-            $ref: '#/components/schemas/AI72AgentBatchHistory_UserHistory'
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupTechInfoItem'
+        title:
+          type: string
+          example: 宽温区性能优化与复合材料体系设计
+          description: Group name
+        images:
+          type: array
+          example:
+          - https://data-fulltext-image.zhihuiya.com/CN/A/11/90/92/83/7/1733725354291/HDA0005017033410000011.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDz31lFbrtH8mIbFyaxA70x49IRP7lLiCT%26q-sign-time%3D1760323190%3B1760927990%26q-key-time%3D1760323190%3B1760927990%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-expires%26q-signature%3Dabe04f1a5c4325f82d6b9a1da8a89baf8a72a032&response-expires=Mon%2C%2020%20Oct%202025%2002%3A39%3A50%20GMT
+          description: Patent image list
+        summary:
+          type: string
+          example: 通过**锰酸锂与磷酸锰铁锂复合掺混**技术，结合**分步分散、梯度复合**工艺，实现不同正极材料的优势互补。该技术采用优化配比的复合体系，显著提升了电池在-40℃至55℃宽温区的稳定性，在-20℃环境下能量输出效率达80.8％，同时平衡了**能量密度与安全性**的矛盾。
+          description: Group summary
+        paper_ids:
+          type: array
+          example:
+          - a2d48f6e-0c76-4ec7-8785-62edd8b3e9ab
+          description: Paper ID list
+        patent_ids:
+          type: array
+          example:
+          - e3458499-f03c-474b-863a-01d30545cf1a
+          - f6ce2b02-e5e6-4c0a-ae73-6c5d5212719f
+          description: Patent ID list
+        tech_differences:
+          type: string
+          example: 相比单一材料体系，**复合掺混策略**有效规避了磷酸铁锂低温性能差、三元材料安全性不足的局限，通过材料协同效应实现性能互补，为宽温区应用提供了成本可控的解决方案。
+          description: Tech differences
     AI71AgentExportLinkRequest:
       type: object
       properties:
@@ -2461,41 +1880,506 @@ components:
       - agent_type
       - company_id
       - lang
-    AI03NerNewsNer_NerNewsResult:
+    AI72AgentBatchHistory_DailyRecordsDTO:
       type: object
       properties:
-        end:
+        data:
+          type: array
+          example:
+          - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            time: '13:58'
+            source: AI_GENERATE
+            message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+              ,材料成本上限
+
+              ,生产工艺兼容性 '
+            rawType: ai_generate
+            icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+            icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+            created_at: 23 Oct 2025 13:58
+            business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            business_name: Technical Solution Exploration
+          description: List of history records for this date
+          items:
+            $ref: '#/components/schemas/AI72AgentBatchHistory_HistoryRecordsDTO'
+        date:
+          type: string
+          example: '2025-10-23'
+          description: 'Date in format: yyyy-MM-dd'
+    L017DocumentsLayoutParsing_LayoutParseResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          example: success
+          description: Execution state; success indicates that parsing completed successfully.
+        results:
+          type: array
+          example: 'Please check the form: LayoutResultItem'
+          description: Layout detection results; markdown is not returned.
+          items:
+            $ref: '#/components/schemas/L017DocumentsLayoutParsing_LayoutResultItem'
+        file_type:
+          type: string
+          example: png
+          description: Input file type inferred from the uploaded filename extension.
+        total_pages:
           type: integer
           format: int32
-          example: 59
-          description: NER end position
-        type:
+          example: 1
+          description: Total pages; always 1 for an image.
+      required:
+      - state
+      - results
+      - file_type
+      - total_pages
+    AI72AgentHistory_DailyRecordsDTO:
+      type: object
+      properties:
+        data:
+          type: array
+          example:
+          - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            time: '13:58'
+            source: AI_GENERATE
+            message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+              ,材料成本上限
+
+              ,生产工艺兼容性 '
+            rawType: ai_generate
+            icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+            icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+            created_at: 23 Oct 2025 13:58
+            business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+            business_name: Technical Solution Exploration
+          description: List of history records for this date
+          items:
+            $ref: '#/components/schemas/AI72AgentHistory_HistoryRecordsDTO'
+        date:
           type: string
-          example: GOV
-          description: 'entity type:
-
-            COM：company
-
-            GOV：government
-
-            GPE：address
-
-            ACA：academic
-
-            PPL：personal name
-
-            NPO：non-profit
-
-            CDO：hospital'
-        start:
+          example: '2025-10-23'
+          description: 'Date in format: yyyy-MM-dd'
+    AI31PatentPatentCoreInventionPoints_Sentence:
+      type: object
+      properties:
+        sentence:
+          type: array
+          example: '<cn>["在原地转向时，考虑了车辆的横摆力矩对车身稳定性的影响，并通过控制转向电机的转矩来维持车身的稳定。该系统还包括了方向盘转角传感器、轮速传感器和电机控制器，用于检测方向盘的锁定状态、轮速是否大于零以及增加驱动电机的转矩","该系统还包括了偏航率传感器和横摆角速度传感器，用于实时检测整车的横摆信息并判断是否进行原地转向"]</cn><us>[["Enhanced energy density: the patent application addresses the increasing demand for higher energy density in batteries, particularly in the context of electric vehicles and portable electronic devices. by improving the design and materials used in the electrochemical device, the invention aims to achieve higher energy density without compromising safety or cycle performance.","Improved safety features: with the growing concern for battery safety, the patent application likely includes innovative safety features to prevent issues such as overheating, short circuits, and explosions. these features could involve new materials, structural designs, or monitoring systems to enhance the overall safety of the electronic device.","Enhanced cycle performance: in addition to energy density and safety, the patent application may focus on improving the cycle performance of the electrochemical device. this could involve optimizing the electrode materials, electrolyte composition, or charging/discharging protocols to extend the lifespan of the battery and maintain its performance over multiple cycles.","Integration with electronic devices: the patent application may also describe how the electrochemical device is integrated into electronic devices, such as smartphones, laptops, or electric vehicles. this integration could involve customizing the size, shape, and connectivity of the battery to fit seamlessly within the device and optimize its overall performance."]</us>'
+          description: patent core invention points
+    AI72AgentBatchHistory_BatchAgentHistoryResponse:
+      type: object
+      properties:
+        user_histories:
+          type: array
+          example:
+          - email: user@example.com
+            phone: '12345678900'
+            history:
+              page: 1
+              limit: 20
+              total: 100
+              history_maps:
+              - data:
+                - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+                  link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+                  time: '13:58'
+                  source: AI_GENERATE
+                  message: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大
+                  rawType: ai_generate
+                  icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+                  icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+                  created_at: 23 Oct 2025 13:58
+                  business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+                  business_name: Technical Solution Exploration
+                date: '2025-10-23'
+          description: User history records list
+          items:
+            $ref: '#/components/schemas/AI72AgentBatchHistory_UserHistory'
+    AI88-2CompanyMonitorAggregatedInfo_TechMonitorAggregatedInfo:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorCountResponseDTO'
+        hot_news:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_PaginationOfHotNewsItem'
+        overview:
+          type: array
+          example: []
+          description: Summary info（[OverviewSummary]）
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_OverviewSummary'
+        basic_info:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechMonitorResponseDTO'
+        tech_groups:
+          type: array
+          example: []
+          description: Tech groups info（[TechTopicCountItem]）
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TechTopicCountItem'
+        other_groups:
+          type: array
+          example: []
+          description: Other groups info（[OtherCountItem]）
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_OtherCountItem'
+        company_groups:
+          type: array
+          example: []
+          description: Company groups info（[CompanyCountItem]）
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_CompanyCountItem'
+        tech_trend_chart:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_DimensionChartResponseDTO'
+        top_company_chart:
+          type: array
+          example: []
+          description: Top 5 company chart（[TopCompanyItem]）
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_TopCompanyItem'
+        tech_topic_word_cloud_chart:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_DimensionChartResponseDTO'
+    AI31PatentPatentCoreInventionPointsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_PatentCoreInventionPointsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI72AgentBatchHistory_UserHistory:
+      type: object
+      properties:
+        email:
+          type: string
+          example: user@example.com
+          description: User email
+        phone:
+          type: string
+          example: 12345678900
+          description: Phone number
+        history:
+          $ref: '#/components/schemas/AI72AgentBatchHistory_HistoryRecordsResponseDTO'
+    AI88-2CompanyMonitorAggregatedInfo_PaginationOfHotNewsItem:
+      type: object
+      properties:
+        page:
           type: integer
           format: int32
-          example: 50
-          description: NER start position
-        entity:
+          example: 1
+          description: Current page
+        limit:
+          type: integer
+          format: int32
+          example: 20
+          description: Page limit
+        total:
+          type: integer
+          format: int32
+          example: 20
+          description: News count
+        records:
+          type: array
+          example:
+          - link: https://www.electrive.com/2025/08/06/saic-launches-redesigned-mg4-with-semi-solid-state-battery-option/
+            title: 上汽推出改款MG4,可选配半固态电池
+            topics:
+            - 热阻
+            - 渗透测试
+            - 能源消耗
+            - 永磁电动机
+            - 材料科学
+            content: "这款电动车共有四种型号。这款紧凑型电动车基于上汽E3平台打造,配备120千瓦永磁电机,扭矩250牛米,最高时速160公里/小时。MG4车身长度4.4米,轴距2.75米,定位于紧凑型电动车市场,与大众ID.3和比亚迪海豚等车型展开竞争。 \n新车上市时提供两种LFP电池选择:42.8千瓦时和53.9千瓦时,分别支持437公里和530公里的CLTC续航里程。直流充电从30%充至80%大约需要20分钟,标称能耗为10.4千瓦时/100公里。 \n采用半固态电池技术的第五款车型计划于今年晚些时候加入该系列。上汽集团表示,该电池组展现出更高的热安全性,包括符合三向针刺测试标准,并且在预处理的情况下,在零下温度下可维持高达75%的续航里程。半固态电池将于年底前推出,预计9月定价,并于年底前交付。 \n因此,MG4 是首批大规模采用半固态电池技术的量产车型之一。据母公司上汽集团称,该电池通过了三向针刺测试,未产生烟雾,且低温性能有所提升。该公司表示,将电池预热至 -7°C 可使车辆续航里程保持高达 75%。\n该车型的电池系统采用电芯到车身(CTB)集成技术。上汽集团报告称,其在电池结构上的投资约为5亿元人民币(约合6870万美元),该结构采用含镧和铈的铝稀土合金来增强强度和耐热性。 \n名爵于三月发布了全新MG4 EV。正如我们当时所指出的,这是一款全新车型,而非上一代MG4的升级版。从之前的输出功率或电池容量数据来看,这一点显而易见。这款EV之前搭载的是125千瓦的电机和64千瓦时或77千瓦时的电池。 \n外观升级包括箭头形LED尾灯、重新设计的背光MG标识,以及东莱紫和珊瑚红等全新配色。轮毂尺寸范围为16至17英寸。 \n MG4 EV 由中国国有汽车制造商上汽集团生产,该公司于 2005 年收购了原英国品牌 MG。自 2022 年年中推出以来,MG4 在中国市场的表现并未达到预期——MG 汽车品牌在中国的传统与在欧洲不同。上汽集团希望下一代 MG4 能够改变这一现状。 \n cnevpost.com、carnewschina.com"
+            news_id: d3433e1d-de8c-3bcf-bd94-fa82514190c1
+          description: News records
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_HotNewsItem'
+        has_next:
+          type: boolean
+          example: false
+          description: Is there a next page
+        has_previous:
+          type: boolean
+          example: false
+          description: Is there a previous page
+    AI88-1TechMonitorApiCompanyMonitorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/AI88-1TechMonitorApiCompanyMonitors_CompanyMonitorSimpleItem'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 国家药品监督管理局
-          description: entity name
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L016DocumentsDocParsingRequest:
+      type: object
+      properties:
+        file:
+          type: file
+          example: maximum 20MB
+          description: 'File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.'
+        output_format:
+          type: string
+          example: markdown
+          description: 'Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.'
+      required:
+      - file
+    AI88-2CompanyMonitorAggregatedInfo_HotNewsItem:
+      type: object
+      properties:
+        link:
+          type: string
+          example: https://www.electrive.com/2025/08/06/saic-launches-redesigned-mg4-with-semi-solid-state-battery-option/
+          description: News link
+        title:
+          type: string
+          example: 上汽推出改款MG4,可选配半固态电池
+          description: News title
+        topics:
+          type: array
+          example:
+          - 热阻
+          - 渗透测试
+          - 能源消耗
+          - 永磁电动机
+          - 材料科学
+          description: News topics
+        content:
+          type: string
+          example: "这款电动车共有四种型号。这款紧凑型电动车基于上汽E3平台打造,配备120千瓦永磁电机,扭矩250牛米,最高时速160公里/小时。MG4车身长度4.4米,轴距2.75米,定位于紧凑型电动车市场,与大众ID.3和比亚迪海豚等车型展开竞争。 \n新车上市时提供两种LFP电池选择:42.8千瓦时和53.9千瓦时,分别支持437公里和530公里的CLTC续航里程。直流充电从30%充至80%大约需要20分钟,标称能耗为10.4千瓦时/100公里。 \n采用半固态电池技术的第五款车型计划于今年晚些时候加入该系列。上汽集团表示,该电池组展现出更高的热安全性,包括符合三向针刺测试标准,并且在预处理的情况下,在零下温度下可维持高达75%的续航里程。半固态电池将于年底前推出,预计9月定价,并于年底前交付。 \n因此,MG4 是首批大规模采用半固态电池技术的量产车型之一。据母公司上汽集团称,该电池通过了三向针刺测试,未产生烟雾,且低温性能有所提升。该公司表示,将电池预热至 -7°C 可使车辆续航里程保持高达 75%。\n该车型的电池系统采用电芯到车身(CTB)集成技术。上汽集团报告称,其在电池结构上的投资约为5亿元人民币(约合6870万美元),该结构采用含镧和铈的铝稀土合金来增强强度和耐热性。 \n名爵于三月发布了全新MG4 EV。正如我们当时所指出的,这是一款全新车型,而非上一代MG4的升级版。从之前的输出功率或电池容量数据来看,这一点显而易见。这款EV之前搭载的是125千瓦的电机和64千瓦时或77千瓦时的电池。 \n外观升级包括箭头形LED尾灯、重新设计的背光MG标识,以及东莱紫和珊瑚红等全新配色。轮毂尺寸范围为16至17英寸。 \n MG4 EV 由中国国有汽车制造商上汽集团生产,该公司于 2005 年收购了原英国品牌 MG。自 2022 年年中推出以来,MG4 在中国市场的表现并未达到预期——MG 汽车品牌在中国的传统与在欧洲不同。上汽集团希望下一代 MG4 能够改变这一现状。 \n cnevpost.com、carnewschina.com"
+          description: News content
+        news_id:
+          type: string
+          example: d3433e1d-de8c-3bcf-bd94-fa82514190c1
+          description: News ID
+    AI71AgentExportLink_AgentExport:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.docx
+          description: Export file download URL
+        task_id:
+          type: string
+          example: da5eb754-ec87-4a8b-9525-7108b0a76fad
+          description: Task ID
+        file_name:
+          type: string
+          example: Technical_Solution_Exploration_20251023.docx
+          description: Export file name
+    AI88-1TechMonitorApiCompanyMonitors_CompanyMonitorSimpleItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 0d68646fe871417ebe68a6905e698f24
+          description: Company tech monitor ID
+        title:
+          type: string
+          example: 锂电池
+          description: Company tech monitor title
+    AI03NerNewsNerRequest:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: 'Choose the language of the input text：
+
+            CN：Chinese
+
+            EN：English'
+        text:
+          type: string
+          example: '药鼎记：生物医药新生力量
+
+
+
+
+
+
+            7964682698844491.jpg
+
+
+            2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。'
+          description: News text content. Chinese text is required to be no more than 500 characters or English text no more than 500 words
+      required:
+      - lang
+      - text
+    AI72AgentHistory_HistoryRecordsResponseDTO:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        limit:
+          type: integer
+          format: int32
+          example: 20
+          description: Records per page
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total number of records
+        history_maps:
+          type: array
+          example:
+          - data:
+            - id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              link: /ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              time: '13:58'
+              source: AI_GENERATE
+              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+                ,材料成本上限
+
+                ,生产工艺兼容性 '
+              rawType: ai_generate
+              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              created_at: 23 Oct 2025 13:58
+              business_id: 2a7a4ddd-7f5d-4266-a96e-13a57095db79
+              business_name: Technical Solution Exploration
+            - id: 2570aeaf-7999-430b-9bef-c43fcda4d928
+              link: /ai/agent-flow/2570aeaf-7999-430b-9bef-c43fcda4d928
+              time: '13:39'
+              source: AI_GENERATE
+              message: '如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值
+
+                ,材料成本上限
+
+                ,生产工艺兼容性 '
+              rawType: ai_generate
+              icon_url: https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              icon_path: agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg
+              created_at: 23 Oct 2025 13:39
+              business_id: 2570aeaf-7999-430b-9bef-c43fcda4d928
+              business_name: Technical Solution Exploration
+            date: '2025-10-23'
+          description: History records grouped by date
+          items:
+            $ref: '#/components/schemas/AI72AgentHistory_DailyRecordsDTO'
+    AI72AgentBatchHistoryRequest:
+      type: object
+      properties:
+        company_id:
+          type: string
+          example: abc123
+          description: Company ID
+        end_time:
+          type: integer
+          format: int64
+          example: 1761580799999
+          description: End timestamp (milliseconds)
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number, starting from 1
+        start_time:
+          type: integer
+          format: int64
+          example: 1758902400000
+          description: Start timestamp (milliseconds)
+        user_accounts:
+          type: array
+          example:
+          - email: user1@example.com
+            phone: '12345678900'
+          - email: user2@example.com
+            phone: '12345678901'
+          description: User account list, up to 20, each account contains email and phone
+          items:
+            $ref: '#/components/schemas/AI72AgentBatchHistory_UserAccount'
+      required:
+      - company_id
+      - user_accounts
+    AI01NerDdtNerRequest:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: en
+          description: text language, support cn and en
+        source:
+          type: string
+          example: patent
+          description: text source：patent/literature/news, default patent
+        text:
+          type: string
+          example: Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\n\n\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\n\n\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor
+          description: The text of drug DDT information needs to be extracted. Chinese text is required to be no more than 500 characters or English text no more than 500 words
+      required:
+      - lang
+      - text
+    AI31PatentPatentCoreInventionPoints_PatentCoreInventionPointsResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN108001293B
+          description: patent publication number
+        patent_id:
+          type: string
+          example: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: patentID
+        core_invention_points:
+          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_Sentence'
+        enhancement_proposals:
+          $ref: '#/components/schemas/AI31PatentPatentCoreInventionPoints_Sentence'
+    AI30PatentSimilarPatentComparisonResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI30PatentSimilarPatentComparison_TechSolutionResearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI30PatentSimilarPatentComparisonRequest:
       type: object
       properties:
@@ -2531,6 +2415,122 @@ components:
           description: technical means
       required:
       - tech_means
+    AI71AgentExportLinkResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI71AgentExportLink_AgentExportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI30PatentSimilarPatentComparison_Label:
+      type: object
+      properties:
+        sn:
+          type: integer
+          format: int32
+          example: 39
+          description: 'Passage number of the relevant section Note: ''0'' represents the passage number that is not marked.'
+        passage:
+          type: string
+          example: <cn>本发明所述的有益效果:本发明可以实现车辆的常规行驶、四轮转向、斜行、驻车行驶以及原地中心转向,转向模式丰富,实用性强;通过单独的转向模式或者不同转向模式间的组合和切换控制,可以实现车辆更为灵活的变道超车、路边侧方停车等非常实用的功能,这是常规车辆所无法实现的;通过车辆的原地中心转向和大转角四轮转向,使得车辆能够在狭小的仓库、巷道、车道内快速灵活地掉头,具有极高的机动灵活性。</cn><us>In some disclosed example mechanically actuated controllers the response of the coil to the position of the conductive target when the conductive target is between the second region and the second position is monotonic</us>
+          description: similar paragraphs
+        section:
+          type: string
+          example: description
+          description: 'The source of the relevant section, including description and claim. Note: ''description'' refers to the relevant section sourced from the descriptions, ''claim'' refers to the relevant section sourced from the claims.'
+        sentence:
+          type: array
+          example: <cn>["提升车辆转向和掉头便利性。","能够实现原地转向功能,"]</cn><us>["In some disclosed example mechanically actuated controllers the response of the coil to the position of the conductive target when the conductive target is between the second region and the second position is monotonic。"]</us>
+          description: similar clauses
+    AI88-2CompanyMonitorAggregatedInfo_TopCompanyItem:
+      type: object
+      properties:
+        num:
+          type: integer
+          format: int32
+          example: 2
+          description: Company tech count
+        name:
+          type: string
+          example: 合肥国轩高科动力能源有限公司
+          description: Company name
+        tags:
+          type: array
+          example:
+          - 固态聚合物电解质
+          - 低温复合准固态电解质
+          description: Company tech tags
+    AI88-2CompanyMonitorAggregatedInfo_OtherCountItem:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 其他
+          description: Other group name
+        count:
+          type: integer
+          format: int32
+          example: 1
+          description: Group count
+        groups:
+          type: array
+          example:
+          - title: 正极材料结构稳定性与热安全性提升
+            summary: 该技术采用**聚苯胺-聚乙二醇共聚物**对镍钴锰酸锂正极材料进行表面包覆，通过乳液聚合、混合球磨、低温烧结等工艺形成导电聚合物包覆层。该包覆层能够有效抑制正极材料在循环过程中的结构重组和颗粒碎裂，同时阻止过渡金属离子溶解，显著改善材料的热稳定性。
+            paper_ids: []
+            patent_ids:
+            - beac66e8-2c3a-4e00-a0f7-c7f2f33c728a
+            tech_differences: 相比传统无机包覆材料，**导电聚合物包覆**既保证了离子传导又提供结构保护，在2.8-4.4V高电压下循环性能更优，制备工艺相对简单且成本较低
+          description: Group Info
+          items:
+            $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_GroupItem'
+        low_score:
+          $ref: '#/components/schemas/AI88-2CompanyMonitorAggregatedInfo_LowScore'
+        group_count:
+          type: integer
+          format: int32
+          example: 1
+          description: Group count
+        overall_summary:
+          type: string
+          example: 分组总结
+          description: Other multiple group summary, empty content
+    L017DocumentsLayoutParsingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/L017DocumentsLayoutParsing_LayoutParseResponse'
+        status:
+          type: string
+          example: success
+          description: The request completed successfully.
+        error_msg:
+          type: string
+          example: success
+          description: Always success on success.
+        error_code:
+          type: integer
+          format: int32
+          example: 0
+          description: Always 0 on success.
+      required:
+      - data
+      - status
+      - error_msg
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http

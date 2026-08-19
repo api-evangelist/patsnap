@@ -1,0 +1,2536 @@
+{
+  "item": [
+    {
+      "id": "a025d608-f91e-4508-a071-a1f653ae1fee",
+      "name": "FTO Search",
+      "description": {
+        "content": "FTO Search APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ac71213-af28-40fc-bd84-c3bb49bf852c",
+          "name": "AI66-1 FTO Search - Create Task",
+          "request": {
+            "name": "AI66-1 FTO Search - Create Task",
+            "description": {
+              "content": "Submit technical solution content to initiate an FTO search task. The system will analyze the input technical solution and generate a task ID for subsequent steps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": \"<array>\",\n  \"exclude_company\": \"<array>\",\n  \"include_company\": \"<array>\",\n  \"lang\": \"<string>\",\n  \"legal_status\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6ac0c87-2c7c-4783-a8a1-ff71a3c036cc",
+              "name": "Successful ai66-1 fto search - create task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\\\\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\\\\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\\\\n本发明还提供一种空调器，包括：\\\\n风速获取模块\\\\n室外盘管温度检测模块\\\\n控制模块（根据风速等级和盘管温度控制除霜启停）\\\\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\\\\n有益效果\\\\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\\\\n最佳实施方式\\\\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\\\\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\\\\n实施例\\\\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\\\\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\\\\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"EP\"\n  ],\n  \"exclude_company\": [\n    \"Apple Inc\",\n    \"Samsung Electronics\"\n  ],\n  \"include_company\": [\n    \"Huawei Technologies\",\n    \"Xiaomi Corp\"\n  ],\n  \"lang\": \"cn\",\n  \"legal_status\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1254,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d522a18e-75a0-410a-adcf-8c5084d8886c",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\\\\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\\\\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\\\\n本发明还提供一种空调器，包括：\\\\n风速获取模块\\\\n室外盘管温度检测模块\\\\n控制模块（根据风速等级和盘管温度控制除霜启停）\\\\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\\\\n有益效果\\\\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\\\\n最佳实施方式\\\\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\\\\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\\\\n实施例\\\\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\\\\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\\\\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"EP\"\n  ],\n  \"exclude_company\": [\n    \"Apple Inc\",\n    \"Samsung Electronics\"\n  ],\n  \"include_company\": [\n    \"Huawei Technologies\",\n    \"Xiaomi Corp\"\n  ],\n  \"lang\": \"cn\",\n  \"legal_status\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9c34fec-e54b-4f42-8c33-d1e3feaf9a03",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\\\\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\\\\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\\\\n本发明还提供一种空调器，包括：\\\\n风速获取模块\\\\n室外盘管温度检测模块\\\\n控制模块（根据风速等级和盘管温度控制除霜启停）\\\\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\\\\n有益效果\\\\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\\\\n最佳实施方式\\\\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\\\\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\\\\n实施例\\\\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\\\\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\\\\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"EP\"\n  ],\n  \"exclude_company\": [\n    \"Apple Inc\",\n    \"Samsung Electronics\"\n  ],\n  \"include_company\": [\n    \"Huawei Technologies\",\n    \"Xiaomi Corp\"\n  ],\n  \"lang\": \"cn\",\n  \"legal_status\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18491859-6a55-482a-8e07-9073404aa923",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\\\\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\\\\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\\\\n本发明还提供一种空调器，包括：\\\\n风速获取模块\\\\n室外盘管温度检测模块\\\\n控制模块（根据风速等级和盘管温度控制除霜启停）\\\\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\\\\n有益效果\\\\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\\\\n最佳实施方式\\\\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\\\\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\\\\n实施例\\\\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\\\\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\\\\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"EP\"\n  ],\n  \"exclude_company\": [\n    \"Apple Inc\",\n    \"Samsung Electronics\"\n  ],\n  \"include_company\": [\n    \"Huawei Technologies\",\n    \"Xiaomi Corp\"\n  ],\n  \"lang\": \"cn\",\n  \"legal_status\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3de854ff-eba8-466f-b5eb-541f6b922ef5",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\\\\n此外，除霜运行时，可根据室外风速限制压缩机最高运行频率（风速越高，允许的最高频率越高）。\\\\n空调器可通过室外风速传感器（单个或多个安装在室外机不同表面）或通讯模块（联网获取）获取室外风速。\\\\n本发明还提供一种空调器，包括：\\\\n风速获取模块\\\\n室外盘管温度检测模块\\\\n控制模块（根据风速等级和盘管温度控制除霜启停）\\\\n存储模块（存储风速等级对应的除霜退出温度和压缩机最高运行频率）\\\\n有益效果\\\\n本发明根据风速调整除霜退出温度，能更准确反映除霜完成的真实状态，避免风力影响，确保及时退出除霜，提升室内制热舒适度。\\\\n最佳实施方式\\\\n空调制热时，检测室外盘管温度Te和环境温度Tao，根据Tao确定霜点温度Tes，当Te < Tes时进入除霜。除霜时，室内风机低速，室外风机停，根据室外风速m限制压缩机最高运行频率fmax（m≤a, fmax=f; a<m≤b, fmax=f+f1; b<m≤c, fmax=f+f2; c<m, fmax=f+f3）。同时，获取对应风速等级的除霜退出温度T1（m≤a, T1=T0; a<m≤b, T1=T0-t1; b<m≤c, T1=T0-t2; c<m, T1=T0-t3）。当Te > T1时，退出除霜。\\\\n室外风速可通过安装在室外机不同表面的风速传感器（取最大值或平均值）或联网获取。\\\\n实施例\\\\n空调器开机进入制热，检测温度，满足除霜条件后进入除霜。控制风机和压缩机频率，根据风速和盘管温度判断是否退出除霜，退出后恢复制热。\\\\n空调器包含风速获取、温度检测、控制和存储模块，实现上述控制逻辑。\\\\n本发明根据风速调整除霜策略，提高了除霜的准确性和效率，保证了室内舒适度。\",\n  \"apd_end\": \"<string>\",\n  \"apd_start\": \"<string>\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"EP\"\n  ],\n  \"exclude_company\": [\n    \"Apple Inc\",\n    \"Samsung Electronics\"\n  ],\n  \"include_company\": [\n    \"Huawei Technologies\",\n    \"Xiaomi Corp\"\n  ],\n  \"lang\": \"cn\",\n  \"legal_status\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d330001-e591-49fa-99f8-29064c61aeeb",
+          "name": "AI66-2 FTO Search - Extract Technical Features",
+          "request": {
+            "name": "AI66-2 FTO Search - Extract Technical Features",
+            "description": {
+              "content": "Extract technical features based on the task_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "feature",
+                "extract"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f55b63f-ec24-4537-b807-775ac3cd5d83",
+              "name": "Successful ai66-2 fto search - extract technical features response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 4505,\n  \"data\": {\n    \"text\": \"空调器及其除霜控制方法\\\\n技术领域\\\\n本发明涉及空调器及其控制技术，具体是一种空调器及其除霜控制方法。\\\\n背景技术\\\\n空调器在制热时，室外换热器易结霜，影响制热效果，需除霜。现有除霜结束判断依据是室外盘管温度高于设定值并持续一段时间。然而，大风天气下，室外换热器散热快，即使霜已融化，盘管温度也可能无法达到除霜退出温度，导致除霜延迟甚至无法退出，影响室内舒适度。\\\\n技术问题\\\\n本发明旨在解决大风天气下，现有空调器因室外换热器散热快导致除霜退出延迟或无法退出的问题。\\\\n技术方案\\\\n本发明提供一种空调器的除霜控制方法，包括：\\\\n除霜运行时，获取室外风速，检测室外盘管温度。\\\\n获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。\\\\n当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\",\n    \"features\": [\n      {\n        \"core\": true,\n        \"score\": 100,\n        \"reason\": \"包含主题，描述了发明的核心内容。\",\n        \"keywords\": [\n          \"空调器\",\n          \"除霜控制方法\"\n        ],\n        \"user_add\": false,\n        \"is_select\": true,\n        \"tech_feature\": \"空调器及其除霜控制方法\"\n      },\n      {\n        \"core\": false,\n        \"score\": 70,\n        \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n        \"keywords\": [\n          \"除霜运行\",\n          \"室外风速\",\n          \"室外盘管温度\"\n        ],\n        \"user_add\": false,\n        \"is_select\": true,\n        \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n      }\n    ],\n    \"threshold\": 60\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bec5ed99-dccd-4e88-b1be-e6f974a8b279",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99978cd4-eb3f-4214-868c-a3e3f8b40348",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8283b578-6ddc-4ed1-bc28-a43f6b760563",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f55697c7-1512-40b6-b91b-3af8de4e4305",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "extract"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecd7d746-6ecb-4dbb-955e-ecf9e63af2af",
+          "name": "AI66-3 FTO Search - Confirm Technical Features",
+          "request": {
+            "name": "AI66-3 FTO Search - Confirm Technical Features",
+            "description": {
+              "content": "After the user modifies or adds/reduces technical features from [AI66-2], submit the confirmation to proceed with subsequent retrieval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "feature",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\",\n  \"tech_features\": [\n    {\n      \"core\": \"<boolean>\",\n      \"is_select\": \"<boolean>\",\n      \"keywords\": \"<array>\",\n      \"reason\": \"<string>\",\n      \"score\": \"<integer>\",\n      \"tech_feature\": \"<string>\",\n      \"user_add\": \"<boolean>\"\n    },\n    {\n      \"core\": \"<boolean>\",\n      \"is_select\": \"<boolean>\",\n      \"keywords\": \"<array>\",\n      \"reason\": \"<string>\",\n      \"score\": \"<integer>\",\n      \"tech_feature\": \"<string>\",\n      \"user_add\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cbea9b24-589c-4743-9d8f-66e0531278c7",
+              "name": "Successful ai66-3 fto search - confirm technical features response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"tech_features\": [\n    {\n      \"core\": true,\n      \"score\": 100,\n      \"reason\": \"包含主题，描述了发明的核心内容。\",\n      \"keywords\": [\n        \"空调器\",\n        \"除霜控制方法\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"空调器及其除霜控制方法\"\n    },\n    {\n      \"core\": false,\n      \"score\": 70,\n      \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n      \"keywords\": [\n        \"除霜运行\",\n        \"室外风速\",\n        \"室外盘管温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n    },\n    {\n      \"core\": false,\n      \"score\": 80,\n      \"reason\": \"根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。\",\n      \"keywords\": [\n        \"室外风速等级\",\n        \"除霜退出温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1254,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "242c2d5c-c352-4e36-bccc-587950f23ad9",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"tech_features\": [\n    {\n      \"core\": true,\n      \"score\": 100,\n      \"reason\": \"包含主题，描述了发明的核心内容。\",\n      \"keywords\": [\n        \"空调器\",\n        \"除霜控制方法\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"空调器及其除霜控制方法\"\n    },\n    {\n      \"core\": false,\n      \"score\": 70,\n      \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n      \"keywords\": [\n        \"除霜运行\",\n        \"室外风速\",\n        \"室外盘管温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n    },\n    {\n      \"core\": false,\n      \"score\": 80,\n      \"reason\": \"根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。\",\n      \"keywords\": [\n        \"室外风速等级\",\n        \"除霜退出温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f55896a9-c472-477d-88db-f511cc91eee8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"tech_features\": [\n    {\n      \"core\": true,\n      \"score\": 100,\n      \"reason\": \"包含主题，描述了发明的核心内容。\",\n      \"keywords\": [\n        \"空调器\",\n        \"除霜控制方法\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"空调器及其除霜控制方法\"\n    },\n    {\n      \"core\": false,\n      \"score\": 70,\n      \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n      \"keywords\": [\n        \"除霜运行\",\n        \"室外风速\",\n        \"室外盘管温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n    },\n    {\n      \"core\": false,\n      \"score\": 80,\n      \"reason\": \"根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。\",\n      \"keywords\": [\n        \"室外风速等级\",\n        \"除霜退出温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40e4c217-f1c3-4a97-a2f7-d0a5326fe423",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"tech_features\": [\n    {\n      \"core\": true,\n      \"score\": 100,\n      \"reason\": \"包含主题，描述了发明的核心内容。\",\n      \"keywords\": [\n        \"空调器\",\n        \"除霜控制方法\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"空调器及其除霜控制方法\"\n    },\n    {\n      \"core\": false,\n      \"score\": 70,\n      \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n      \"keywords\": [\n        \"除霜运行\",\n        \"室外风速\",\n        \"室外盘管温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n    },\n    {\n      \"core\": false,\n      \"score\": 80,\n      \"reason\": \"根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。\",\n      \"keywords\": [\n        \"室外风速等级\",\n        \"除霜退出温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29449ee2-5dde-4dbc-bf87-8362d407e705",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"tech_features\": [\n    {\n      \"core\": true,\n      \"score\": 100,\n      \"reason\": \"包含主题，描述了发明的核心内容。\",\n      \"keywords\": [\n        \"空调器\",\n        \"除霜控制方法\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"空调器及其除霜控制方法\"\n    },\n    {\n      \"core\": false,\n      \"score\": 70,\n      \"reason\": \"结合风速和盘管温度进行除霜控制具有一定的创新性，尤其是在大风天气下的应用。\",\n      \"keywords\": [\n        \"除霜运行\",\n        \"室外风速\",\n        \"室外盘管温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n    },\n    {\n      \"core\": false,\n      \"score\": 80,\n      \"reason\": \"根据风速调整除霜退出温度是一个创新的控制策略，能够更准确地反映除霜完成的状态。\",\n      \"keywords\": [\n        \"室外风速等级\",\n        \"除霜退出温度\"\n      ],\n      \"user_add\": false,\n      \"is_select\": true,\n      \"tech_feature\": \"获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef820fa5-c49f-464e-854e-a94564958530",
+          "name": "AI66-4 FTO Search - Start FTO Search",
+          "request": {
+            "name": "AI66-4 FTO Search - Start FTO Search",
+            "description": {
+              "content": "Based on the technical features confirmed in [AI66-3], start the FTO search agent to perform patent search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "search",
+                "agent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d19e6ce-46dc-4be4-aa16-429477c8753b",
+              "name": "Successful ai66-4 fto search - start fto search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1254,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "041afeba-0fc9-4abb-9284-5af969f8d944",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6d7c45c-eb27-40bd-b360-837707b85f4e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee61b4b0-ace3-4eb4-a13e-0649938bae2e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3399a2b2-9872-4db9-aa8e-2bdab278b5e4",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02041d9b-ed33-4cae-bf98-e7bdbc567974",
+          "name": "AI66-6 FTO Search - Create Report",
+          "request": {
+            "name": "AI66-6 FTO Search - Create Report",
+            "description": {
+              "content": "After the user modifies or adds/reduces the search results from [AI66-5], submit the confirmation and create a complete FTO search report, including all analysis results. Additionally, if the user needs to manually add comparison documents or patents, the output parameters of the [AI66-8] FTO Search - Add Comparison Document or Patent  interface can be used as the corresponding part of the input parameters in this interface.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "report",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": \"<object>\",\n      \"feature_match_num\": \"<integer>\",\n      \"features\": [\n        {\n          \"score\": \"<integer>\",\n          \"tech_feature\": \"<string>\",\n          \"claim_num\": \"<integer>\",\n          \"claim_type\": \"<string>\",\n          \"compare_feature\": \"<string>\",\n          \"comparison_feature\": \"<string>\",\n          \"original_score\": \"<integer>\",\n          \"original_type\": \"<string>\",\n          \"public_score\": \"<float>\",\n          \"score_for_user\": \"<integer>\",\n          \"similar\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"type_for_user\": \"<string>\"\n        },\n        {\n          \"score\": \"<integer>\",\n          \"tech_feature\": \"<string>\",\n          \"claim_num\": \"<integer>\",\n          \"claim_type\": \"<string>\",\n          \"compare_feature\": \"<string>\",\n          \"comparison_feature\": \"<string>\",\n          \"original_score\": \"<integer>\",\n          \"original_type\": \"<string>\",\n          \"public_score\": \"<float>\",\n          \"score_for_user\": \"<integer>\",\n          \"similar\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"type_for_user\": \"<string>\"\n        }\n      ],\n      \"patent_id\": \"<string>\",\n      \"public_score\": \"<float>\",\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": \"<integer>\",\n          \"infringement\": \"<boolean>\"\n        },\n        {\n          \"claim_num\": \"<integer>\",\n          \"infringement\": \"<boolean>\"\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": \"<integer>\",\n          \"claim_text\": \"<string>\"\n        },\n        {\n          \"claim_num\": \"<integer>\",\n          \"claim_text\": \"<string>\"\n        }\n      ],\n      \"comparative_literature_type\": \"<string>\",\n      \"dependent_claim_num\": \"<integer>\",\n      \"document\": \"<string>\",\n      \"equivalent_dependent_claim_num\": \"<integer>\",\n      \"equivalent_independent_claim_num\": \"<integer>\",\n      \"independent_claim_num\": \"<integer>\",\n      \"lang\": \"<string>\",\n      \"most_similar\": \"<boolean>\",\n      \"risk_level\": \"<string>\",\n      \"selected\": \"<boolean>\",\n      \"user_added\": \"<boolean>\"\n    },\n    {\n      \"comparison_conclusion\": \"<object>\",\n      \"feature_match_num\": \"<integer>\",\n      \"features\": [\n        {\n          \"score\": \"<integer>\",\n          \"tech_feature\": \"<string>\",\n          \"claim_num\": \"<integer>\",\n          \"claim_type\": \"<string>\",\n          \"compare_feature\": \"<string>\",\n          \"comparison_feature\": \"<string>\",\n          \"original_score\": \"<integer>\",\n          \"original_type\": \"<string>\",\n          \"public_score\": \"<float>\",\n          \"score_for_user\": \"<integer>\",\n          \"similar\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"type_for_user\": \"<string>\"\n        },\n        {\n          \"score\": \"<integer>\",\n          \"tech_feature\": \"<string>\",\n          \"claim_num\": \"<integer>\",\n          \"claim_type\": \"<string>\",\n          \"compare_feature\": \"<string>\",\n          \"comparison_feature\": \"<string>\",\n          \"original_score\": \"<integer>\",\n          \"original_type\": \"<string>\",\n          \"public_score\": \"<float>\",\n          \"score_for_user\": \"<integer>\",\n          \"similar\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"type_for_user\": \"<string>\"\n        }\n      ],\n      \"patent_id\": \"<string>\",\n      \"public_score\": \"<float>\",\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": \"<integer>\",\n          \"infringement\": \"<boolean>\"\n        },\n        {\n          \"claim_num\": \"<integer>\",\n          \"infringement\": \"<boolean>\"\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": \"<integer>\",\n          \"claim_text\": \"<string>\"\n        },\n        {\n          \"claim_num\": \"<integer>\",\n          \"claim_text\": \"<string>\"\n        }\n      ],\n      \"comparative_literature_type\": \"<string>\",\n      \"dependent_claim_num\": \"<integer>\",\n      \"document\": \"<string>\",\n      \"equivalent_dependent_claim_num\": \"<integer>\",\n      \"equivalent_independent_claim_num\": \"<integer>\",\n      \"independent_claim_num\": \"<integer>\",\n      \"lang\": \"<string>\",\n      \"most_similar\": \"<boolean>\",\n      \"risk_level\": \"<string>\",\n      \"selected\": \"<boolean>\",\n      \"user_added\": \"<boolean>\"\n    }\n  ],\n  \"task_id\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d201e818-bf77-461d-94c1-336591ea03d5",
+              "name": "Successful ai66-6 fto search - create report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    },\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    }\n  ],\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"title\": \"空调器除霜控制方法防侵权分析报告\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4896,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "083ef295-5471-4dce-ad2e-f55b57a387b2",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    },\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    }\n  ],\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"title\": \"空调器除霜控制方法防侵权分析报告\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "841fffd8-79c9-40e4-ab65-3373ff9733cd",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    },\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    }\n  ],\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"title\": \"空调器除霜控制方法防侵权分析报告\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14f4cb10-7cb1-4b1d-bce1-b1c9271c6808",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    },\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    }\n  ],\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"title\": \"空调器除霜控制方法防侵权分析报告\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56ab6f29-76d0-4398-8567-32c0d26c9282",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"final_res\": [\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    },\n    {\n      \"comparison_conclusion\": {\n        \"en\": \"\",\n        \"zh\": \"通过对相关专利各权利要求和标的技术方案的技术特征进行分析可知：\\n\\n专利权利要求1、2、3、4、5、6、7、8、9、10的技术特征与标的技术方案的技术特征等同，因此权利要求1、2、3、4、5、6、7、8、9、10记载的方案涵盖了标的技术方案，标的技术方案落入权利要求1、2、3、4、5、6、7、8、9、10保护范围。\\n\\n综上，在2041-03-31之前于CN不建议实施标的技术方案。或在专利到期日前，采取商业合作、授权许可，或做好稳定性分析处置预案后再于相应地区实施。\"\n      },\n      \"feature_match_num\": 10,\n      \"features\": [\n        {\n          \"score\": 100,\n          \"reason\": \"\",\n          \"similar\": true,\n          \"claim_num\": 1,\n          \"claim_type\": \"independent\",\n          \"public_score\": 0,\n          \"tech_feature\": \"一种空调器的除霜控制方法，其特征在于，所述方法为：空调器除霜运行时，获取室外环境风速，检测室外盘管温度；获取室外环境风速所属的风速等级对应的除霜退出温度；在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜；其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。\",\n          \"original_score\": 100,\n          \"original_reason\": \"\",\n          \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度。获取室外风速等级对应的除霜退出温度（不同风速等级对应不同退出温度，风速越高，退出温度越低）。当室外盘管温度高于对应风速等级的除霜退出温度时，控制空调器退出除霜。\"\n        }\n      ],\n      \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"public_score\": 1,\n      \"claim_equivalent_info\": [\n        {\n          \"claim_num\": 1,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 2,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 3,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 4,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 5,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 6,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 7,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 8,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 9,\n          \"infringement\": true\n        },\n        {\n          \"claim_num\": 10,\n          \"infringement\": true\n        }\n      ],\n      \"claims\": [\n        {\n          \"claim_num\": 1,\n          \"claim_text\": \"1.一种空调器的除霜控制方法，其特征在于，所述方法为： 空调器除霜运行时，获取室外环境风速，检测室外盘管温度； 获取室外环境风速所属的风速等级对应的除霜退出温度； 在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        },\n        {\n          \"claim_num\": 2,\n          \"claim_text\": \"2.根据权利要求1所述的空调器的除霜控制方法，其特征在于，所述空调器除霜运行时，根据所述室外环境风速限制压缩机的最高运行频率。 \"\n        },\n        {\n          \"claim_num\": 6,\n          \"claim_text\": \"6.一种空调器，其特征在于，所述空调器包括： 风速获取模块，用于获取室外环境风速； 室外盘管温度检测模块，用于检测室外盘管温度； 控制模块，用于获取室外环境风速所属的风速等级对应的除霜退出温度，在所述室外盘管温度高于所述室外环境风速所属的风速等级对应的除霜退出温度时，控制所述空调器退出除霜； 存储模块，用于存储风速等级对应的除霜退出温度； 其中，不同风速等级对应不同的除霜退出温度，所述风速等级与所述除霜退出温度负相关。 \"\n        }\n      ],\n      \"comparative_literature_type\": \"A\",\n      \"dependent_claim_num\": 8,\n      \"document\": \"一种空调器的除霜控制方法\",\n      \"equivalent_dependent_claim_num\": 8,\n      \"equivalent_independent_claim_num\": 2,\n      \"independent_claim_num\": 2,\n      \"lang\": \"CN\",\n      \"most_similar\": false,\n      \"risk_level\": \"High\",\n      \"selected\": true,\n      \"user_added\": false\n    }\n  ],\n  \"task_id\": \"8b814751-8264-45df-a157-2da6273b07f9\",\n  \"title\": \"空调器除霜控制方法防侵权分析报告\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c6075c5-c894-479b-b26a-b98292a1a941",
+          "name": "AI66-7 FTO Search - Download Report",
+          "request": {
+            "name": "AI66-7 FTO Search - Download Report",
+            "description": {
+              "content": "Obtain the download link for the generated FTO search report based on the task_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "report",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09551feb-00f7-48b4-8b44-72f59ae7b884",
+              "name": "Successful ai66-7 fto search - download report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6255,\n  \"data\": {\n    \"status\": 2,\n    \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n    \"report_url\": \"http://downloadurl\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f83835ab-9745-447a-b3f1-d00492da7c19",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a2596f6-19a5-4f32-ab4e-628c58e89b4f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb60f479-2e92-44e1-9dce-49e55ceb128a",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d8544b4-7dcc-4aa6-a7c9-4d28726984fc",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "report",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cd7a902-382d-49ca-afae-16e1d2089091",
+          "name": "AI66-8 FTO Search - Add Comparison Document or Patent",
+          "request": {
+            "name": "AI66-8 FTO Search - Add Comparison Document or Patent",
+            "description": {
+              "content": "For cases where the user needs to manually add comparison documents or patents, the output parameters of this interface can be used as the corresponding part of the input parameters in [AI66-6] FTO Search - Create Report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "feature",
+                "comparison"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pn\": \"<string>\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "963afd22-d8a8-49eb-a2d5-f6bc1633ca30",
+              "name": "Successful ai66-8 fto search - add comparison document or patent response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pn\": \"CN118289111A\",\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3746,\n  \"data\": {\n    \"final_res\": [\n      {\n        \"lang\": \"zh\",\n        \"claims\": [\n          {\n            \"claim_num\": 1,\n            \"claim_text\": \"一种数据处理方法，其特征在于...\"\n          }\n        ],\n        \"document\": \"一种基于人工智能的数据处理方法\",\n        \"features\": [\n          {\n            \"score\": 85,\n            \"public_score\": 90,\n            \"tech_feature\": \"人工智能算法\",\n            \"comparison_feature\": \"机器学习算法\"\n          }\n        ],\n        \"patent_id\": \"CN123456789A\",\n        \"public_score\": 87.5\n      }\n    ],\n    \"threshold\": 75\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc58975c-87ea-4b05-a2c7-a2e7af661adb",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pn\": \"CN118289111A\",\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0567e30e-8111-4c57-be48-ea58aedbccd5",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pn\": \"CN118289111A\",\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74723794-37c2-4630-9c7f-b7a27ced1a39",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pn\": \"CN118289111A\",\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f6201f7-3674-44a7-850c-900afef03169",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "feature",
+                    "comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pn\": \"CN118289111A\",\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "048da5fe-f72c-4abb-aab1-7319fa219775",
+          "name": "AI66-5 FTO Search - Obtain FTO Search Results",
+          "request": {
+            "name": "AI66-5 FTO Search - Obtain FTO Search Results",
+            "description": {
+              "content": "Obtain the search results of the FTO search agent based on the task_id confirmed in [AI66-4].",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "fto",
+                "search",
+                "agent",
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7f0a3e7-8b86-4520-8c16-e95e8f9138b5",
+              "name": "Successful ai66-5 fto search - obtain fto search results response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 6331,\n  \"data\": {\n    \"task_id\": \"9f10932dc8ad173d120adf9a75ad67b5\",\n    \"is_async\": true,\n    \"task_cost\": 366.9,\n    \"update_ts\": \"2025-10-23 15:44:31.924\",\n    \"task_status\": \"success\",\n    \"cc_threshold\": 60,\n    \"excute_times\": 7,\n    \"final_result\": [\n      {\n        \"lang\": \"CN\",\n        \"features\": [\n          {\n            \"score\": 100,\n            \"similar\": true,\n            \"public_score\": 0,\n            \"tech_feature\": \"一种空调器的除霜控制方法\",\n            \"comparison_feature\": \"除霜运行时，获取室外风速，检测室外盘管温度\"\n          }\n        ],\n        \"selected\": true,\n        \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n        \"risk_level\": \"High\",\n        \"user_added\": false,\n        \"most_similar\": false,\n        \"public_score\": 1,\n        \"feature_match_num\": 10,\n        \"comparative_literature_type\": \"A\"\n      }\n    ],\n    \"find_patent_num\": 13,\n    \"total_comparison_patent_num\": 13,\n    \"lang\": \"CN\",\n    \"text\": \"空调器及其除霜控制方法\",\n    \"cc_num\": 100,\n    \"cc_pids\": [\n      \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n      \"f1f3c8e0-306f-4370-b5ec-9f11c0082e42\"\n    ],\n    \"operate_type\": \"generate\",\n    \"process_dict\": {\n      \"ipc_cpc_search\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"semantic_search\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"relevant_tracking_search\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"block_progressive_search_1\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"block_progressive_search_2\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"block_progressive_search_3\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      },\n      \"block_progressive_search_4\": {\n        \"cost\": 108,\n        \"status\": \"success\",\n        \"strategy\": {\n          \"type\": \"semantic_search\",\n          \"query\": \"SEMANTIC:87d36ed11cc84a574b0ceabcebdaf597\",\n          \"try_nth\": 1,\n          \"parameters\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"description_en\": \"Semantic search of the input technical solution\",\n          \"description_zh\": \"通过语义检索输入的技术方案\"\n        },\n        \"find_patent_num\": 7,\n        \"comparison_patent_num\": 7,\n        \"comparison_result\": [\n          {\n            \"score\": 91,\n            \"patent_id\": \"3f7db6aa-2263-41d5-bddb-671301f215a7\",\n            \"public_score\": 1,\n            \"feature_match_num\": 10\n          }\n        ]\n      }\n    },\n    \"feature_keywords\": [\n      {\n        \"words\": [],\n        \"synonym\": [\n          \"空调\",\n          \"冷暖设备\",\n          \"制冷设备\"\n        ],\n        \"translation\": \"Air Conditioner\",\n        \"tech_feature\": \"空调器\",\n        \"synonym_score\": [\n          100,\n          95,\n          90\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf0ec4cf-ee4f-4a8f-95ca-494fc31215f4",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b26bedab-0732-46b5-800a-23ed39ea898a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eaaa3fe8-fa20-456c-9245-69520565fad3",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "012df2f4-8c95-4c87-9e01-f934303f7855",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "fto",
+                    "search",
+                    "agent",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d0c9766c-3ef9-4e15-abaf-f155ba04a59e",
+    "name": "Patsnap Open Platform AI Translation FTO Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

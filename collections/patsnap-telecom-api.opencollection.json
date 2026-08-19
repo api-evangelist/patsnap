@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Telecom API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Telecom",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "T001 AI-powered Standard Essential Patent (SEP) Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/open_api/task/aicc",
+            "headers": [
+              {
+                "name": "x-site-lang",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "<p>Input a patent number to automatically complete TS recommendation, section recall, and Claim Chart (CC) comparison, receiving SEP determination results via Server-Sent Events.</p><p>Each SSE event is a <code>data:</code> line containing a JSON object. Events fall into two categories:</p><ul><li><b>PROCESSING</b> — heartbeat/progress update, no business payload</li><li><b>FINISH</b> — final result with <code>content</code> populated (SEP determination conclusion)</li></ul><p><b>Flow when ts is"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

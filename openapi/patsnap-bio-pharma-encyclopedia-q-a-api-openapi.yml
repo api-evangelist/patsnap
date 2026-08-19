@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Bio-Pharma Encyclopedia Q&A API
   version: 1.0.0
@@ -62,37 +62,17 @@ paths:
               $ref: '#/components/schemas/AI68-2ChatAiLsStreamRequest'
 components:
   schemas:
-    AI68-1ChatAiLsChat_EurekalsChatRefDoc:
+    AI68-2ChatAiLsStream_EurekalsChatDelta:
       type: object
       properties:
-        link:
+        role:
           type: string
-          example: <cn>https://zhuanlan.zhihu.com/p/391356908</cn><us>https://zhuanlan.zhihu.com/p/391356908</us>
-          description: Document link address
-        text:
+          example: <cn>assistant</cn><us>assistant</us>
+          description: Role
+        content:
           type: string
-          example: <cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>
-          description: Document text content
-        type:
-          type: string
-          example: <cn>web-site</cn><us>web-site</us>
-          description: Document type
-        index:
-          type: string
-          example: 1
-          description: Document Index
-        post_time:
-          type: string
-          example: <cn>20210720</cn><us>20210720</us>
-          description: Post time
-        _text_display:
-          type: string
-          example: <cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>
-          description: Text display content
-        doc_type_detail:
-          type: string
-          example: <cn>zhihu</cn><us>zhihu</us>
-          description: Document type detail
+          example: <cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>
+          description: Content
     AI68-2ChatAiLsStream_EurekalsChatResponse:
       type: object
       properties:
@@ -116,23 +96,37 @@ components:
           type: string
           example: <cn></cn><us></us>
           description: System fingerprint
-    AI68-1ChatAiLsChat_EurekalsChatFlagResponse:
+    AI68-2ChatAiLsStream_EurekalsChatFilterResult:
       type: object
       properties:
-        chat_id:
+        detected:
+          type: boolean
+          example: false
+          description: Whether detected
+        filtered:
+          type: boolean
+          example: false
+          description: Whether filtered
+    AI68-2ChatAiLsStreamResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
-          description: Chat ID
-        ref_doc:
-          type: array
-          example: 'Please check the form: EurekalsChatRefDoc'
-          description: Reference document list, containing related document reference information
-          items:
-            $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatRefDoc'
-        chat_item_id:
-          type: string
-          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
-          description: Chat item ID
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails:
       type: object
       properties:
@@ -156,74 +150,6 @@ components:
           format: int32
           example: <cn>0</cn><us>0</us>
           description: Rejected prediction tokens
-    AI68-1ChatAiLsChatResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatFlagResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI68-2ChatAiLsStream_EurekalsChatUsage:
-      type: object
-      properties:
-        image_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Image tokens
-        total_tokens:
-          type: integer
-          format: int32
-          example: <cn>15529</cn><us>15529</us>
-          description: Total tokens
-        prompt_tokens:
-          type: integer
-          format: int32
-          example: <cn>12476</cn><us>12476</us>
-          description: Prompt tokens
-        thinking_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Thinking tokens
-        completion_tokens:
-          type: integer
-          format: int32
-          example: <cn>3053</cn><us>3053</us>
-          description: Completion tokens
-        prompt_tokens_details:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails'
-        completion_tokens_details:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails'
-    AI68-2ChatAiLsStream_EurekalsChatChoice:
-      type: object
-      properties:
-        delta:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatDelta'
-        index:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Index
-        finish_reason:
-          type: string
-          example: <cn>stop</cn><us>stop</us>
-          description: Finish reason
-        content_filter_results:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatContentFilterResults'
     AI68-2ChatAiLsStreamRequest:
       type: object
       properties:
@@ -267,33 +193,76 @@ components:
       - long_think
       - query
       - search_website
-    AI68-2ChatAiLsStream_EurekalsChatDelta:
+    AI68-2ChatAiLsStream_EurekalsChatChoice:
       type: object
       properties:
-        role:
+        delta:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatDelta'
+        index:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Index
+        finish_reason:
           type: string
-          example: <cn>assistant</cn><us>assistant</us>
-          description: Role
-        content:
-          type: string
-          example: <cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>
-          description: Content
-    AI68-2ChatAiLsStream_EurekalsChatFilterResult:
+          example: <cn>stop</cn><us>stop</us>
+          description: Finish reason
+        content_filter_results:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatContentFilterResults'
+    AI68-2ChatAiLsStream_EurekalsChatUsage:
       type: object
       properties:
-        detected:
-          type: boolean
-          example: false
-          description: Whether detected
-        filtered:
-          type: boolean
-          example: false
-          description: Whether filtered
-    AI68-2ChatAiLsStreamResponse:
+        image_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Image tokens
+        total_tokens:
+          type: integer
+          format: int32
+          example: <cn>15529</cn><us>15529</us>
+          description: Total tokens
+        prompt_tokens:
+          type: integer
+          format: int32
+          example: <cn>12476</cn><us>12476</us>
+          description: Prompt tokens
+        thinking_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Thinking tokens
+        completion_tokens:
+          type: integer
+          format: int32
+          example: <cn>3053</cn><us>3053</us>
+          description: Completion tokens
+        prompt_tokens_details:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails'
+        completion_tokens_details:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails'
+    AI68-1ChatAiLsChat_EurekalsChatFlagResponse:
+      type: object
+      properties:
+        chat_id:
+          type: string
+          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
+          description: Chat ID
+        ref_doc:
+          type: array
+          example: 'Please check the form: EurekalsChatRefDoc'
+          description: Reference document list, containing related document reference information
+          items:
+            $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatRefDoc'
+        chat_item_id:
+          type: string
+          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
+          description: Chat item ID
+    AI68-1ChatAiLsChatResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatResponse'
+          $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatFlagResponse'
         status:
           type: boolean
           example: 'false'
@@ -324,6 +293,37 @@ components:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatFilterResult'
         self_harm:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatFilterResult'
+    AI68-1ChatAiLsChat_EurekalsChatRefDoc:
+      type: object
+      properties:
+        link:
+          type: string
+          example: <cn>https://zhuanlan.zhihu.com/p/391356908</cn><us>https://zhuanlan.zhihu.com/p/391356908</us>
+          description: Document link address
+        text:
+          type: string
+          example: <cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>
+          description: Document text content
+        type:
+          type: string
+          example: <cn>web-site</cn><us>web-site</us>
+          description: Document type
+        index:
+          type: string
+          example: 1
+          description: Document Index
+        post_time:
+          type: string
+          example: <cn>20210720</cn><us>20210720</us>
+          description: Post time
+        _text_display:
+          type: string
+          example: <cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>
+          description: Text display content
+        doc_type_detail:
+          type: string
+          example: <cn>zhihu</cn><us>zhihu</us>
+          description: Document type detail
     AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails:
       type: object
       properties:

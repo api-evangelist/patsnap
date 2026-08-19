@@ -1,0 +1,2084 @@
+{
+  "item": [
+    {
+      "id": "0d8c4f8e-9480-4a88-aab9-e5226f61a079",
+      "name": "Drug Clinical Trial Data",
+      "description": {
+        "content": "Drug Clinical Trial Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9da1fede-d810-4ef5-a205-1a056af261fe",
+          "name": "B027 Clinical trial contact",
+          "request": {
+            "name": "B027 Clinical trial contact",
+            "description": {
+              "content": "Obtain clinical trial contact through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3bdf4aaf-cc86-48cf-953d-d1a023e86d73",
+              "name": "Successful b027 clinical trial contact response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5453,\n  \"data\": {\n    \"central_contact\": [\n      {\n        \"name\": \"Sa Xiao, PHD\",\n        \"email\": \"xiaosa@baili-pharm.com\",\n        \"phone\": \"15013238943\"\n      }\n    ],\n    \"register_number\": \"NCT06498986\",\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cbe498d-b7d0-4151-b6f3-e9378baeb16f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07d31b71-557f-41cb-825a-d91dc6f28ebe",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fce695ee-67d7-403d-aa7b-b6434c07af15",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62a017ed-0980-4b1c-9793-de054a272092",
+          "name": "B024 Clinical trial description",
+          "request": {
+            "name": "B024 Clinical trial description",
+            "description": {
+              "content": "Obtain clinical trial description through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d1b40b22-843d-44ab-8301-f0d54c505307",
+              "name": "Successful b024 clinical trial description response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3299,\n  \"data\": {\n    \"country\": [\n      {\n        \"country_id\": \"5a365096-b2a6-31cb-acdf-1de1f5ab3abe\",\n        \"alpha2_code\": \"CN\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"China\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"中国\"\n          }\n        ]\n      }\n    ],\n    \"brief_summary\": \"This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.\",\n    \"register_number\": \"NCT06498986\",\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\",\n    \"detailed_description\": \"This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e67390ed-7b37-47c2-b3a6-2d508566bec5",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a648724-243f-4e97-86e8-61dd80335c55",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6aa8fcaf-a746-4510-9465-2a2076346053",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4fc4296-e9c2-4e90-8137-3a99a110c740",
+          "name": "B022 Clinical trial basic information",
+          "request": {
+            "name": "B022 Clinical trial basic information",
+            "description": {
+              "content": "Obtain clinical trial basic information through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "Register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4782e18-721e-44cf-9e57-26d724244fce",
+              "name": "Successful b022 clinical trial basic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3348,\n  \"data\": {\n    \"phase\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"brief_title\": \"A Study of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer\",\n    \"data_source\": \"CTGOV\",\n    \"official_title\": \"A Phase II Clinical Study to Evaluate the Efficacy and Safety of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer\",\n    \"register_number\": \"NCT06498986\",\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\",\n    \"recruitment_status\": \"Not yet recruiting\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59574007-50e2-407f-a1e5-d07a73c12df6",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56322ad8-eebc-489c-a5a6-f51b314a2f49",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0bb7b27-f778-4bbb-a978-4d6f3d5994f0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe511e3b-43f2-4b61-9bfc-7f320c2e2dbb",
+          "name": "B026 Clinical trial design",
+          "request": {
+            "name": "B026 Clinical trial design",
+            "description": {
+              "content": "Obtain clinical trial design through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "design"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6e57cd14-581c-481f-9b36-02d3d3713fb3",
+              "name": "Successful b026 clinical trial design response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5737,\n  \"data\": {\n    \"masking\": \"None (Open Label)\",\n    \"outcome\": [\n      {\n        \"title\": \"Recommended Phase II Dose (RP2D)\",\n        \"time_frame\": \"Up to approximately 24 months\",\n        \"description\": \"The RP2D is defined as the dose level chosen by the sponsor (in consultation with the investigators) for phase II study, based on safety, tolerability, efficacy, PK, and PD data collected during the dose escalation study of BL-B01D1.\",\n        \"outcome_type\": \"Primary\"\n      },\n      {\n        \"title\": \"Objective response rate (ORR)\",\n        \"time_frame\": \"Up to approximately 24 months\",\n        \"description\": \"ORR is defined as the percentage of participants, who has a CR (disappearance of all target lesions) or PR (at least a 30% decrease in the sum of diameters of target lesions). The percentage of participants who experiences a confirmed CR or PR is according to RECIST 1.1.\",\n        \"outcome_type\": \"Primary\"\n      }\n    ],\n    \"allocation\": \"N/A\",\n    \"enrollment\": [\n      {\n        \"enrollment\": \"40\"\n      }\n    ],\n    \"start_date\": {\n      \"time_ts\": 1785542400000,\n      \"date_type\": \"Anticipated\"\n    },\n    \"study_type\": \"Interventional\",\n    \"completion_date\": {\n      \"time_ts\": 1785542400000,\n      \"date_type\": \"Anticipated\"\n    },\n    \"primary_purpose\": \"Treatment\",\n    \"register_number\": \"NCT06498986\",\n    \"arm_intervention\": [\n      {\n        \"intervention\": [\n          {\n            \"intervention_name\": \"BL-B01D1\",\n            \"intervention_type\": \"Drug\",\n            \"intervention_description\": \"Administration by intravenous infusion for a cycle of 3 weeks.\"\n          },\n          {\n            \"intervention_name\": \"Osimertinib Mesylate Tablets\",\n            \"intervention_type\": \"Drug\",\n            \"intervention_description\": \"Oral administration, 80mg daily for a cycle of 3 weeks.\"\n          }\n        ],\n        \"design_group_type\": \"Experimental\",\n        \"design_group_title\": \"BL-B01D1+Osimertinib Mesylate Tablets\",\n        \"design_group_description\": \"Participants receive BL-B01D1+Osimertinib Mesylate Tablets in the first cycle (3 weeks). Participants with clinical benefit could receive additional treatment for more cycles. The administration will be terminated because of disease progression or intolerable toxicity occurring or other reasons.\"\n      }\n    ],\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\",\n    \"first_posted_date\": 1720742400000,\n    \"intervention_model\": \"Single Group Assignment\",\n    \"primary_completion_date\": {\n      \"time_ts\": 1785542400000,\n      \"date_type\": \"Anticipated\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c58bf621-3085-4240-b4a9-d1bf561d45ce",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4415fdcd-ba39-454a-8999-28a57af83873",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06075dd7-2617-4c8d-b28b-2d8c972f787e",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f445f6-2f21-449d-a627-377b70049cc0",
+          "name": "B025 Clinical trial eligibility",
+          "request": {
+            "name": "B025 Clinical trial eligibility",
+            "description": {
+              "content": "Obtain clinical trial eligibility through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "eligibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6ade2fd-a8f1-4302-a46f-3acdff9dac86",
+              "name": "Successful b025 clinical trial eligibility response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "eligibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 2436,\n  \"data\": {\n    \"gender\": \"All\",\n    \"max_age\": {\n      \"age\": \"string\",\n      \"unit\": \"Years\"\n    },\n    \"min_age\": {\n      \"age\": \"string\",\n      \"unit\": \"Years\"\n    },\n    \"register_number\": \"NCT06498986\",\n    \"exclude_criteria\": \"<ul><li>1. Patients with prior systemic therapy;</li><li>2. Previous treatment with EGFR-TKI;</li><li>3. Participants who participated in any other clinical trial within 4 weeks before the trial dose;</li><li>4. Traditional Chinese medicine (TCM) which had received radiotherapy within 4 weeks before the first use of the study drug and had anti-tumor indications within 2 weeks before the first use of the study drug;</li><li>5. Had undergone major surgery within 4 weeks before the first dose;</li><li>6. History of severe heart disease or cerebrovascular disease;</li><li>7. Unstable thrombotic events requiring therapeutic intervention within 6 months before screening; Infusion-related thrombosis was excluded;</li><li>8. QT prolongation, complete left bundle branch block, III degree atrioventricular block, frequent and uncontrollable arrhythmia;</li><li>9. Previous history of interstitial lung disease requiring steroid therapy, or current ILD or grade ≥2 radiation pneumonitis;</li><li>10. Complicated pulmonary diseases leading to clinically severe respiratory function impairment;</li><li>11. Severe systemic infection within 4 weeks before screening;</li><li>12. Patients at risk for active autoimmune disease or with a history of autoimmune disease;</li><li>13. Other malignant tumors within 5 years before the first dose;</li><li>14. HIV antibody positive, active tuberculosis, active hepatitis B virus infection, or hepatitis C virus infection;</li><li>15. Hypertension poorly controlled by two antihypertensive drugs;</li><li>16. Patients with poor glycemic control;</li><li>17. Patients with massive effusions, or effusions with obvious symptoms, or poorly controlled effusions;</li><li>18. Patients with active central nervous system metastases;</li><li>19. Imaging examination showed that the tumor had invaded or enveloped the large blood vessels in the abdomen, chest, neck, and pharynx;</li><li>20. Severe unhealed wound, ulcer, or fracture within 4 weeks before consent signing;</li><li>21. Sign a four weeks before there were clinically significant bleeding or bleeding tendency obviously subjects;</li><li>22. Previous history of allogeneic stem cell, bone marrow or organ transplantation;</li><li>23. Patients with a history of allergy to recombinant humanized antibodies or to any of the excipients of BL-B01D1;</li><li>24. A history of severe neurological or psychiatric illness;</li><li>25. Pregnant or lactating women;</li><li>26. Subjects who were scheduled to receive live vaccine or received live vaccine within 28 days before study randomization;</li><li>27. Other conditions for participation in the trial were not considered appropriate by the investigator.</li>\",\n    \"include_criteria\": \"<ul><li>1. Voluntarily sign the informed consent and follow the requirements of the protocol;</li><li>2. No gender limit;</li><li>3. Age ≥18 years old;</li><li>4. Expected survival time ≥3 months;</li><li>5. Patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer;</li><li>6. Documentation of EGFR sensitive mutations detected from tumor tissue or blood samples;</li><li>7. Consent to provide archived tumor tissue or fresh tissue samples from primary or metastatic sites within 2 years for biomarker testing;</li><li>8. At least one measurable lesion meeting the RECIST v1.1 definition was required;</li><li>9. ECOG ≤1;</li><li>10. Toxicity of previous antineoplastic therapy has returned to ≤ grade 1 defined by NCI-CTCAE v5.0;</li><li>11. No severe cardiac dysfunction, left ventricular ejection fraction ≥50%;</li><li>12. The level of organ function must meet the requirements on the premise that blood transfusion is not allowed within 14 days before the screening period and no cell growth factor drugs are allowed;</li><li>13. Blood coagulation function: international standardization ratio of 1.5 or less, and the part activated clotting time live enzymes acuities were 1.5 x ULN;</li><li>14. Urine protein ≤2+ or ≤1000mg/24h;</li><li>15. Fertile female subjects or male subjects with fertile partners must use highly effective contraception from 7 days before the first dose until 6 months after the dose. Female subjects of childbearing potential had to have a negative serum pregnancy test within 7 days before the first dose.</li>\",\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\",\n    \"healthy_volunteers\": \"No\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b3999fa-c7d6-43f3-9e28-825fcae77939",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "eligibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24677cba-4314-4fc0-9e9e-86af9c066f47",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "eligibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "567d1d98-e2eb-49eb-b007-e47a714880b3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "eligibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07f9798d-2cc1-4980-af4e-7a53225406e4",
+          "name": "B023 Clinical trial related entity",
+          "request": {
+            "name": "B023 Clinical trial related entity",
+            "description": {
+              "content": "Obtain clinical trial related entity through clinical trial id or registry number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "clinical-trial",
+                "related-entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clinical_trial_id",
+                  "value": "<string>",
+                  "description": "Clinical trial id, obtain this through clinical trial search interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "register_number",
+                  "value": "<string>",
+                  "description": "register number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73d4a14a-172e-4884-9a29-50ac3a6bb3e7",
+              "name": "Successful b023 clinical trial related entity response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "related-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8819,\n  \"data\": {\n    \"target\": [\n      {\n        \"target_id\": \"928facc8122849baa0dc00759cff0380\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"KRAS G12C\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"GTPase KRas G12C\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"KRAS G12C突变\"\n          }\n        ]\n      }\n    ],\n    \"condition\": [\n      \"Non-small Cell Lung Cancer\"\n    ],\n    \"control_drug\": [\n      {\n        \"drug_id\": \"79c4211933534056b4a84db1766df362\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Osimertinib mesylate\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"甲磺酸奥希替尼\"\n          }\n        ]\n      }\n    ],\n    \"organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Sichuan Baili Pharmaceuticals Co.,Ltd\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"四川百利药业有限责任公司\"\n          }\n        ],\n        \"organization_id\": \"685e5cad5351555103932a4c484281c2\"\n      }\n    ],\n    \"register_number\": \"NCT06498986\",\n    \"clinical_trial_id\": \"202425a889e52ae802432a8295220e53\",\n    \"condition_disease\": [\n      {\n        \"disease_id\": \"6c9886cb25eb45faba70292cee1f5518\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Locally Advanced Lung Non-Small Cell Carcinoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"局部晚期非小细胞肺癌\"\n          }\n        ]\n      }\n    ],\n    \"main_experimentation_drug\": [\n      {\n        \"drug_id\": \"79c4211933534056b4a84db1766df362\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Osimertinib mesylate\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"甲磺酸奥希替尼\"\n          }\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4abb441-ceaa-4842-8981-850ed7af9b78",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "related-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fddfa986-b3f6-4e5d-83bd-08be61183828",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "related-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cff0a20-9cf4-4ef4-a6c0-108894be23df",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "clinical-trial",
+                    "related-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clinical_trial_id",
+                      "value": "202425a889e52ae802432a8295220e53"
+                    },
+                    {
+                      "key": "register_number",
+                      "value": "NCT06498986"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d9187fc-dd6e-4aae-b668-a6c4052549e6",
+          "name": "B032 Drug clinical result basic information",
+          "request": {
+            "name": "B032 Drug clinical result basic information",
+            "description": {
+              "content": "Obtain clinical result data through clinical  result ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "ct-result",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ct_result_id",
+                  "value": "<string>",
+                  "description": "Clinical trial result ID, obtain this through clinical result search interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "58e9c663-cfde-4a80-a6bd-a245098d350f",
+              "name": "Successful b032 drug clinical result basic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "e8ea588d3590e929a8022420da25d555"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3575,\n  \"data\": {\n    \"drug\": [\n      {\n        \"drug_id\": \"2838b95ade834c96b17ac8bcd2b68c27\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Sotorasib\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"索托拉西布\"\n          }\n        ]\n      }\n    ],\n    \"phase\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"title\": \"Matching-Adjusted Indirect Treatment Comparisons (MAIC) of Sotorasib 960mg (soto960) Plus Panitumumab (pani) Vs. Trifluridine/Tipiracil(T/T) Plus Bevacizumab (bev) in Chemorefractory Metastatic Colorectal Cancer (mCRC)\",\n    \"target\": [\n      {\n        \"target_id\": \"8556307199154d34b1f9bc9685f2ec47\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"IL-6RA\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Interleukin-6 receptor alpha subunit\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"白细胞介素-6受体α亚基\"\n          }\n        ]\n      }\n    ],\n    \"biomarker\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CTNNB1 Mutation\"\n          }\n        ]\n      }\n    ],\n    \"conclusion\": \"Sotorasib-panitumumab demonstrated acceptable safety with promising efficacy in chemotherapy-refractory KRASG12C-mutated metastatic colorectal cancer.\",\n    \"related_id\": [\n      {\n        \"id_type\": \"study_identifier\",\n        \"id_value\": \"CodeBreaK 300\"\n      }\n    ],\n    \"ct_result_id\": \"5400a5a2dee3da90dd52408a3585d805\",\n    \"organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"study_design\": {\n      \"masking\": \"XXXX\",\n      \"allocation\": \"XXXX\",\n      \"primary_purpose\": \"XXXX\",\n      \"intervention_model\": \"XXXX\",\n      \"allocation_normalized\": {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Autologous CAR-T\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"自体CAR-T\"\n          }\n        ],\n        \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n      },\n      \"intervention_model_normalized\": {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Autologous CAR-T\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"自体CAR-T\"\n          }\n        ],\n        \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n      }\n    },\n    \"therapy_type\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Third line\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"三线\"\n          }\n        ],\n        \"normalized_id\": \"62662f0b1d5b3fafabeb571a211e9a31\"\n      }\n    ],\n    \"published_time\": 1719446400000,\n    \"register_number\": [\n      \"NCT05198934\"\n    ],\n    \"single_or_multi\": \"single_drug\",\n    \"mechanism_action\": [\n      {\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"IL-6RA antagonists\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"IL-6RA拮抗剂\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Interleukin-6 receptor alpha subunit antagonists\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"白细胞介素-6受体α亚基拮抗剂\"\n          }\n        ],\n        \"mechanism_id\": \"b30a0bdb2e0bd9c03a908a84588c4217\"\n      }\n    ],\n    \"therapeutic_area\": [\n      {\n        \"disease_id\": \"042cbe45c973477b957717ded29ef7b6\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Nervous System Diseases\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"神经系统疾病\"\n          }\n        ]\n      }\n    ],\n    \"condition_disease\": [\n      {\n        \"disease_id\": \"e35ce4e9b7a846d49e600ce7ac4a7fd6\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Metastatic Colorectal Carcinoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"转移性结直肠癌\"\n          }\n        ]\n      }\n    ],\n    \"general_evaluation\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"original_biomarker\": [\n      {\n        \"name\": \"IL-6\"\n      }\n    ],\n    \"overall_enrollment\": 100,\n    \"register_number_map\": {\n      \"NCT04737187\": \"5a4a2ad359d8a855d925943e23a58845\"\n    },\n    \"sponsor_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"collaborator_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "deb32846-c317-44b1-9601-ba4b9c29969c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "e8ea588d3590e929a8022420da25d555"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8b685e4-38a5-4994-b427-1faf6c6a64d9",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "e8ea588d3590e929a8022420da25d555"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e0fa63b-7f6b-45c8-9252-5fb1602a4624",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "e8ea588d3590e929a8022420da25d555"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "845f6bcd-32e6-4396-a4a1-c0da00596378",
+          "name": "B048 Drug clinical result group information",
+          "request": {
+            "name": "B048 Drug clinical result group information",
+            "description": {
+              "content": "Obtain clinical result group data through clinical  result ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "ct-result",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ct_result_id",
+                  "value": "<string>",
+                  "description": "临床结果ID，通过临床结果检索接口获取"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e29afdc-0ec2-4272-914d-510bd87b893a",
+              "name": "Successful b048 drug clinical result group information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "5adee5585028aaa5da5982d22a808a99"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7275,\n  \"data\": {\n    \"groups\": [\n      {\n        \"group_id\": \"854d42290a95a38d05d90422e5392822\",\n        \"group_type\": \"outcome_group\",\n        \"ct_result_id\": \"a452da8e32d890452d5ea82ee823d8e5\",\n        \"characteristic\": [\n          {\n            \"name\": \"Tocilizumab\",\n            \"type\": \"drug\"\n          }\n        ]\n      }\n    ],\n    \"outcome_measures\": [\n      {\n        \"name\": \"CRP levels\",\n        \"measure_id\": \"M1\",\n        \"result_list\": [\n          {\n            \"value\": \"4.6\",\n            \"group_id\": \"854d42290a95a38d05d90422e5392822\"\n          }\n        ],\n        \"ct_result_id\": \"a452da8e32d890452d5ea82ee823d8e5\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CRP levels\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"CRP levels\"\n          }\n        ],\n        \"outcome_order\": 1,\n        \"unit_of_measure\": \"mg/L\"\n      }\n    ],\n    \"outcome_measure_safety\": [\n      {\n        \"name\": \"Maximum Observed Plasma Concentration (Cmax) of Sotorasib\",\n        \"type\": \"Primary\",\n        \"measure_id\": \"M1\",\n        \"param_type\": \"Geometric Mean\",\n        \"result_list\": [\n          {\n            \"value\": \"4.6\",\n            \"group_id\": \"854d42290a95a38d05d90422e5392822\"\n          }\n        ],\n        \"ct_result_id\": \"5adee5585028aaa5da5982d22a808a99\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CRP levels\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"CRP levels\"\n          }\n        ],\n        \"normalized_id\": [\n          \"9410c1945fa14130b1a205394e3c2361\"\n        ],\n        \"outcome_order\": 1,\n        \"dispersion_type\": \"Geometric Coefficient of Variation\",\n        \"display_section\": \"Adverse Event\",\n        \"unit_of_measure\": \"ng/mL\",\n        \"parent_measure_id\": \"OE1\"\n      },\n      {\n        \"name\": \"Maximum Observed Plasma Concentration (Cmax) of Sotorasib\",\n        \"type\": \"Primary\",\n        \"measure_id\": \"M1\",\n        \"param_type\": \"Geometric Mean\",\n        \"result_list\": [\n          {\n            \"value\": \"4.6\",\n            \"group_id\": \"854d42290a95a38d05d90422e5392822\"\n          }\n        ],\n        \"ct_result_id\": \"5adee5585028aaa5da5982d22a808a99\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CRP levels\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"CRP levels\"\n          }\n        ],\n        \"normalized_id\": [\n          \"9410c1945fa14130b1a205394e3c2361\"\n        ],\n        \"outcome_order\": 1,\n        \"dispersion_type\": \"Geometric Coefficient of Variation\",\n        \"display_section\": \"Adverse Event\",\n        \"unit_of_measure\": \"ng/mL\",\n        \"parent_measure_id\": \"OE1\"\n      }\n    ],\n    \"outcome_measure_efficacy\": [\n      {\n        \"name\": \"Maximum Observed Plasma Concentration (Cmax) of Sotorasib\",\n        \"type\": \"Primary\",\n        \"measure_id\": \"M1\",\n        \"param_type\": \"Geometric Mean\",\n        \"result_list\": [\n          {\n            \"value\": \"4.6\",\n            \"group_id\": \"854d42290a95a38d05d90422e5392822\"\n          }\n        ],\n        \"ct_result_id\": \"5adee5585028aaa5da5982d22a808a99\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CRP levels\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"CRP levels\"\n          }\n        ],\n        \"normalized_id\": [\n          \"9410c1945fa14130b1a205394e3c2361\"\n        ],\n        \"outcome_order\": 1,\n        \"dispersion_type\": \"Geometric Coefficient of Variation\",\n        \"display_section\": \"Adverse Event\",\n        \"unit_of_measure\": \"ng/mL\",\n        \"parent_measure_id\": \"OE1\"\n      },\n      {\n        \"name\": \"Maximum Observed Plasma Concentration (Cmax) of Sotorasib\",\n        \"type\": \"Primary\",\n        \"measure_id\": \"M1\",\n        \"param_type\": \"Geometric Mean\",\n        \"result_list\": [\n          {\n            \"value\": \"4.6\",\n            \"group_id\": \"854d42290a95a38d05d90422e5392822\"\n          }\n        ],\n        \"ct_result_id\": \"5adee5585028aaa5da5982d22a808a99\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"CRP levels\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"CRP levels\"\n          }\n        ],\n        \"normalized_id\": [\n          \"9410c1945fa14130b1a205394e3c2361\"\n        ],\n        \"outcome_order\": 1,\n        \"dispersion_type\": \"Geometric Coefficient of Variation\",\n        \"display_section\": \"Adverse Event\",\n        \"unit_of_measure\": \"ng/mL\",\n        \"parent_measure_id\": \"OE1\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c523fd9f-7e05-4871-9045-40bf2ca63604",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "5adee5585028aaa5da5982d22a808a99"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c7b1811-b7cc-4ac7-a5b9-4c3b4091f161",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "5adee5585028aaa5da5982d22a808a99"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6490a863-03c8-443b-a6f3-b042378f9e0e",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "ct-result",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ct_result_id",
+                      "value": "5adee5585028aaa5da5982d22a808a99"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "88d7a068-5fc3-48b1-bf4c-6cb81fc1d353",
+    "name": "Patsnap Open Platform AI Translation Drug Clinical Trial Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

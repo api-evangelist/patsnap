@@ -1,0 +1,365 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Legal Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Legal Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P033 Standard Essential Patent (SEP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/sep-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive SEP (Standard Essential Patent) data by patent_id or patent_number. This includes data source, standard ID, version, declaration date, title, and projects."
+        },
+        {
+          "info": {
+            "name": "P031 Customs record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/customs-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive customs data by patent_id or patent_number. This includes record number, record status, start date, end date, approval/opinion, product, and contact."
+        },
+        {
+          "info": {
+            "name": "P046 Status of Unified Patent Court",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/status-of-unified-patent-court",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive Status of Unified Patent Court data by patent_id or patent_number.This data includes Opt-out not registered,Opt-out registered,,Withdrawal after opt-out,Positive decision after unitary effect request. For more details please view the full list of fields in the developer document."
+        },
+        {
+          "info": {
+            "name": "P026 Legal Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/legal-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive detailed legal data by patent_id or patent_number. Detailed legal data includes INPADOC legal data (PRS code, PRS code description, PRS date, Ref. Authority code) and official legal data (date, event number, event code, legal status)"
+        },
+        {
+          "info": {
+            "name": "P030 Pledge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/pledge-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive pledge data by patent_id or patent_number. This includes pledge contract number, effective date, pledgee, pledger, and pledge type."
+        },
+        {
+          "info": {
+            "name": "P047 Receive Patent Fee Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/fee/get_fee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receiving patent fee data by ticket_id"
+        },
+        {
+          "info": {
+            "name": "P032 Award",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/award-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive award data by patent_id or patent_number. This includes award name, level, session, referrer, and type."
+        },
+        {
+          "info": {
+            "name": "P028 License",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/license-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive license data by patent_id or patent_number. This includes license contract number, licensor, licensee, license type, and license effective date."
+        },
+        {
+          "info": {
+            "name": "P029 Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/transfer-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive transfer data by patent_id or patent_number. This includes the transfer before assignee, transfer after assignee, and the effective date."
+        },
+        {
+          "info": {
+            "name": "P034 Litigation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/high-value-data/litigation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive litigation data by patent_id or patent_number. This includes litigation title, case number, filing date, verdict date, court, case region, plaintiff, defendant, chief judge and judge."
+        },
+        {
+          "info": {
+            "name": "P047 Create Patent Fee Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/fee/apno_input",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Support input multiple patent application number, create patent fee acquisition task, return ticket_id. Based on this ticket_id, the patent fee data can be obtained from the \"[P047]Receive Patent Fee Data\" API"
+        },
+        {
+          "info": {
+            "name": "P048 Overseas Patent Examination Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/advanced-patent-data/overseas-patent-documents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query the examination file information of overseas patents by entering patent_id or patent_number. This interface does not support querying Chinese patents temporarily"
+        },
+        {
+          "info": {
+            "name": "P027 Re-examination and Invalidation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/re-examination-and-invalidation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive re-examination and invalidation data by patent_id or patent_number. This includes re-examination applicant, invalidation applicant, case type, decision number, decision date, and legal ground."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

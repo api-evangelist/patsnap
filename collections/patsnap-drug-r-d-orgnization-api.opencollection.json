@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Drug R&D Orgnization API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug R&D Orgnization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B033 Organization Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/organization/pipeline",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain organization pipeline information about drug, target, disease, dev status etc."
+        },
+        {
+          "info": {
+            "name": "B034 Organization basic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/organization/basic-info",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query",
+                "description": "Organization ID, obtain this through the organization autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain organization basic information about stock symbol, founded date, tags etc."
+        },
+        {
+          "info": {
+            "name": "B036 Grant funding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/organization/grant-funding",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain grant funding about award by organization, funded value, open time etc."
+        },
+        {
+          "info": {
+            "name": "B035 Organization profit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/organization/profit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain organization profit information about market cap, revenue, income statement etc."
+        },
+        {
+          "info": {
+            "name": "B037 Investment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/organization/investment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain Investment about investors, funded organization, funding type, transaction amount, announce time etc."
+        },
+        {
+          "info": {
+            "name": "B038 Financing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/organization/financing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain financing, funded organization, funding type, transaction amount, announce time etc."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

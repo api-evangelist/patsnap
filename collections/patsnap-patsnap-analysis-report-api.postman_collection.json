@@ -1,0 +1,3261 @@
+{
+  "item": [
+    {
+      "id": "5d4d1fe5-c2c3-4afd-933a-ef5d49900ca1",
+      "name": "Patsnap Analysis Report",
+      "description": {
+        "content": "Patsnap Analysis Report APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9003358-4dc3-4411-883a-6e909ac6d29c",
+          "name": "R001 Generate Enterprise Report Task (No logo version)",
+          "request": {
+            "name": "R001 Generate Enterprise Report Task (No logo version)",
+            "description": {
+              "content": "According to the enterprise name or unified social credit code, create the enterprise innovation capability report(No Logo), and obtain the report download job ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "innovation",
+                "company-report",
+                "task",
+                "create-no-logo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fefc2dd5-7e9e-489f-8213-c2d24c410f09",
+              "name": "Successful r001 generate enterprise report task (no logo version) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1711,\n  \"data\": {\n    \"job_id\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb2e2d4c-f004-4454-8f9f-c78809323904",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3af8422-d0ee-4159-bca7-8edc5661bc5a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4540c413-2a88-4136-8c93-cb57c83d835e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "970169fb-5f5f-498f-9145-7860b1e2e9e9",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fac898e-5748-4e2f-bfe1-10e04a3a1d21",
+          "name": "R001 Generate Enterprise Report Task(Patsnap Logo)",
+          "request": {
+            "name": "R001 Generate Enterprise Report Task(Patsnap Logo)",
+            "description": {
+              "content": "According to the enterprise name or unified social credit code, create the enterprise innovation capability report(Patsnap Logo), and obtain the report download ID.<p>The enterprise innovation capability report contains the summary of the enterprise innovation capability, equity penetration analysis, company competitiveness, R&D scale and stability, technology layout, technology quality, technology influence, risk information.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "innovation",
+                "company-report",
+                "task",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8779dd1c-ee34-40e9-83bc-f2290a07ce6b",
+              "name": "Successful r001 generate enterprise report task(patsnap logo) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1711,\n  \"data\": {\n    \"job_id\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6b02015-5603-4b3f-b75a-8daa490422fd",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e3550f98-c2f8-4b44-880c-e0845de24828",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fa340aa-d489-4b86-bcb4-18216e59aac4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "614e1d69-7d03-44bd-903e-c9d932e99d3a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89cc2e85-7fce-4f43-9fdb-c8ab8219f569",
+          "name": "R002 Generate patent value report task(Patsnap Logo)",
+          "request": {
+            "name": "R002 Generate patent value report task(Patsnap Logo)",
+            "description": {
+              "content": "According to the patent number or patent ID, create a patent value report (Patsnap Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patent-valuation-data",
+                "patent-report",
+                "task",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"<string>\",\n  \"patent_id\": \"<string>\",\n  \"patent_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f51f768c-707a-4df6-85f8-c38054e12c75",
+              "name": "Successful r002 generate patent value report task(patsnap logo) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1711,\n  \"data\": {\n    \"job_id\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bd656e4-96c1-4ae2-baf2-e1b377d69ffa",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6bdd9c01-2d52-45ce-baea-f79f7aecc02e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b3351a6-2d9f-4df8-bcf9-14d185351b48",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2500018f-c9c4-4e74-9c27-12148a391542",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92361839-4597-49c8-bc3c-9352e3588c4e",
+          "name": "R002 Query and export patent value report",
+          "request": {
+            "name": "R002 Query and export patent value report",
+            "description": {
+              "content": "This interface provides patent value report downloading (query and export patent value reports according to the job_id returned in the [R002]Generate patent value report task).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patent-valuation-data",
+                "patent-report",
+                "job_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_id",
+                  "value": "<string>",
+                  "description": "job_id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b6a15fd1-fe6a-41e5-a419-827b5cdc4748",
+              "name": "Successful r002 query and export patent value report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "1579434053399035904"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8361,\n  \"data\": {\n    \"job_id\": \"string\",\n    \"queue_num\": 10,\n    \"job_status\": 1,\n    \"download_url\": \"https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx\",\n    \"abnormal_cause\": \"由于服务器异常，正在修复中\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f09cd1d-26cb-4352-abc7-88fc8205436e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "1579434053399035904"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "050c981a-dc25-425f-856b-1b0f6f001553",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "1579434053399035904"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9d23ff9-fc9f-4c41-aced-945aaad7ef93",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "1579434053399035904"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23ddeb44-530a-4114-8cdc-65c3e3c0b702",
+          "name": "R001 Query and export enterprise report",
+          "request": {
+            "name": "R001 Query and export enterprise report",
+            "description": {
+              "content": "This interface provides enterprise report downloading (query and export reports according to the job_id returned in the Generate Enterprise Report Task)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "innovation",
+                "company-report",
+                "job_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_id",
+                  "value": "<long>",
+                  "description": "job_id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7140d8cf-4db2-44ca-b19d-96e04c601f99",
+              "name": "Successful r001 query and export enterprise report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7306,\n  \"data\": {\n    \"job_id\": 1579434053399036000,\n    \"queue_num\": 10,\n    \"job_status\": 1,\n    \"download_url\": \"https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx\",\n    \"abnormal_cause\": \"由于服务器异常，正在修复中\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ba15156-5a67-4896-9a97-63ed7196768c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c960fe93-0187-47e5-b71a-254ad9b15eb9",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e5de486-03f1-44c5-9d06-4843b1b04225",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company-report",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d70120eb-56a3-4bac-9ba8-145ec0b4948c",
+          "name": "R003 Create Pre-patent Evaluation Report Task",
+          "request": {
+            "name": "R003 Create Pre-patent Evaluation Report Task",
+            "description": {
+              "content": "Input the technical description text of the patent to be applied for (more than 200 words recommended), create the task of pre-patent evaluation report generation, and return the job id of the report export; The report contains scores and detailed index results for the three dimensions of technological innovation, patentability and translation prospect of the technology solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patent-valuation-data",
+                "pre_patent-evaluation-create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"tech_maturity_index\": \"<integer>\",\n  \"report_name\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"report_info\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ccf5b0b-8636-46c9-ad77-55900ec76d0c",
+              "name": "Successful r003 create pre-patent evaluation report task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.\",\n  \"tech_maturity_index\": 1,\n  \"report_name\": \"XX申请前评估报告\",\n  \"limit\": 50,\n  \"report_info\": [\n    {\n      \"key\": \"检索报告编号\",\n      \"value\": \"Report-20240527-1\"\n    },\n    {\n      \"key\": \"发起人\",\n      \"value\": \"张三\"\n    },\n    {\n      \"key\": \"发起日\",\n      \"value\": \"20240527\"\n    },\n    {\n      \"key\": \"所属部门\",\n      \"value\": \"研发部\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9835,\n  \"data\": {\n    \"job_id\": \"b4bdae6b4a65432d91f25b5c52bdfd80\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d955b0d8-2f5c-4b9e-8bac-7e40eed1f7c7",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.\",\n  \"tech_maturity_index\": 1,\n  \"report_name\": \"XX申请前评估报告\",\n  \"limit\": 50,\n  \"report_info\": [\n    {\n      \"key\": \"检索报告编号\",\n      \"value\": \"Report-20240527-1\"\n    },\n    {\n      \"key\": \"发起人\",\n      \"value\": \"张三\"\n    },\n    {\n      \"key\": \"发起日\",\n      \"value\": \"20240527\"\n    },\n    {\n      \"key\": \"所属部门\",\n      \"value\": \"研发部\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18ee5201-8c55-4b49-8a61-b7434837c6c8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.\",\n  \"tech_maturity_index\": 1,\n  \"report_name\": \"XX申请前评估报告\",\n  \"limit\": 50,\n  \"report_info\": [\n    {\n      \"key\": \"检索报告编号\",\n      \"value\": \"Report-20240527-1\"\n    },\n    {\n      \"key\": \"发起人\",\n      \"value\": \"张三\"\n    },\n    {\n      \"key\": \"发起日\",\n      \"value\": \"20240527\"\n    },\n    {\n      \"key\": \"所属部门\",\n      \"value\": \"研发部\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13e83974-f6c3-4429-8337-cda7e9079709",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.\",\n  \"tech_maturity_index\": 1,\n  \"report_name\": \"XX申请前评估报告\",\n  \"limit\": 50,\n  \"report_info\": [\n    {\n      \"key\": \"检索报告编号\",\n      \"value\": \"Report-20240527-1\"\n    },\n    {\n      \"key\": \"发起人\",\n      \"value\": \"张三\"\n    },\n    {\n      \"key\": \"发起日\",\n      \"value\": \"20240527\"\n    },\n    {\n      \"key\": \"所属部门\",\n      \"value\": \"研发部\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7bae96ae-156d-4726-ba7d-2cf5b454a5fe",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.\",\n  \"tech_maturity_index\": 1,\n  \"report_name\": \"XX申请前评估报告\",\n  \"limit\": 50,\n  \"report_info\": [\n    {\n      \"key\": \"检索报告编号\",\n      \"value\": \"Report-20240527-1\"\n    },\n    {\n      \"key\": \"发起人\",\n      \"value\": \"张三\"\n    },\n    {\n      \"key\": \"发起日\",\n      \"value\": \"20240527\"\n    },\n    {\n      \"key\": \"所属部门\",\n      \"value\": \"研发部\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee24f8ce-7d65-4a6c-827a-5b2fbf36b5ab",
+          "name": "R003 Export Pre-patent Evaluation Report",
+          "request": {
+            "name": "R003 Export Pre-patent Evaluation Report",
+            "description": {
+              "content": "Enter the patent evaluation content to obtain the patent evaluation report job ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patent-valuation-data",
+                "pre_patent-evaluation-export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_id",
+                  "value": "<string>",
+                  "description": "job_id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "112e8a4e-710b-46e5-bf6b-55fa9cfab389",
+              "name": "Successful r003 export pre-patent evaluation report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "297e0d32-6c07-48c5-8de5-44efe052bfd1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1387,\n  \"data\": {\n    \"report_url\": \"https://patsnap-imagediscovery.cdn.zhihuiya.com/uploadsearch/2024-01-05/1704422647215-19eb5c92a7b54713aa2a7f3184ab8301-application.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240105T024441Z&X-Amz-SignedHeaders=host&X-Amz-Expires=10800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240105%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=90bbe0c3954d6bc138916416a1cd0942c0d374dcbbe038621201ebce56a63747\",\n    \"report_status\": \"SUCCESS\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4823b857-78c4-4483-8f80-6a1a15e3b365",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "297e0d32-6c07-48c5-8de5-44efe052bfd1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "133961dc-ff1e-40bc-8f23-13305e07a704",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "297e0d32-6c07-48c5-8de5-44efe052bfd1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a86b015-c44d-454d-873e-9833c92afef9",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "pre_patent-evaluation-export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "297e0d32-6c07-48c5-8de5-44efe052bfd1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d99126eb-0c0c-466d-a1e2-365f305c7d31",
+          "name": "R004-3 Idea Validation - Export Report",
+          "request": {
+            "name": "R004-3 Idea Validation - Export Report",
+            "description": {
+              "content": "This interface provides technical idea validation report downloading (query and export technical idea validation report according to the job_id returned in the [R004-1]Idea Validation - Create Report).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "idea-validation",
+                "job_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<string>\",\n  \"file_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c32e944b-cdb1-4808-a1d7-5f260c0e2a46",
+              "name": "Successful r004-3 idea validation - export report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n  \"file_format\": \"ppt\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 2472,\n  \"data\": {\n    \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n    \"job_status\": 2,\n    \"download_url\": \"https://stage-openapi-import.cdn.zhihuiya.com/disclosure_ppt/tech_idea_20241106164047.pptx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDRksnVzITRBhpjUAg2B6oQr56vb8VFtPj%26q-sign-time%3D1730882451%3B1731487251%26q-key-time%3D1730882451%3B1731487251%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D255706ccef17490c2f89da9090e1db796513dbe0\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f60dac87-a41d-4e8b-bdf2-87b1b92d6f07",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n  \"file_format\": \"ppt\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f37200e5-5fa1-41b9-9c08-aefbfa2e6854",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n  \"file_format\": \"ppt\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61dba4e1-bcf1-4e2f-aa5e-9d960fbbe982",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n  \"file_format\": \"ppt\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "883ee89f-0fbb-42c0-8c59-503ee612368a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\",\n  \"file_format\": \"ppt\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5db973e-9269-4040-96d6-91f98ecf195f",
+          "name": "R004-1 Idea Validation - Create Report",
+          "request": {
+            "name": "R004-1 Idea Validation - Create Report",
+            "description": {
+              "content": "According to the technical approach or technical effect, create a technical idea validation report and obtain the report download job ID.\nThe technical idea validation report contains troubleshooting technical essentials, check scope, list of similar patents, comparison file(technical problems, technical approach, technical effect, comparison of similar features, core invention points, enhancement proposals), analysis results, technical monitoring suggestions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "idea-validation",
+                "task",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tech_means\": \"<string>\",\n  \"country\": \"<array>\",\n  \"legal_status\": \"<array>\",\n  \"limit\": \"<integer>\",\n  \"tech_effect\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cba58334-6894-426f-9819-2a550558d22e",
+              "name": "Successful r004-1 idea validation - create report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 5,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1626,\n  \"data\": {\n    \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66467b3c-e166-4610-bd24-a310f4d69fe9",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 5,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e2c0cee-dbf1-481d-befe-6919b0023340",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 5,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99e5137b-ddbf-4b96-98a4-dad35c56b7de",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 5,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0977b226-f84f-4608-9789-c1d4558e7159",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "task",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 5,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4002bf1-a3d3-4b32-a3f3-d22d3872f6d5",
+          "name": "R004-2 Idea Validation - Similar Patent",
+          "request": {
+            "name": "R004-2 Idea Validation - Similar Patent",
+            "description": {
+              "content": "According to the job_id returned in the [R004-1], a list of similar patents can be obtained and compared through semantic search. A maximum of 20 similar patents will be returned, sorted by default from high to low similarity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "idea-validation",
+                "similar-patent-comparison"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a05c885f-1e1b-4263-b7cc-9cbe31edd921",
+              "name": "Successful r004-2 idea validation - similar patent response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 62,\n  \"data\": {\n    \"docs\": [\n      {\n        \"similar_patent\": {\n          \"pn\": \"CN108001293B\",\n          \"means\": [\n            {\n              \"sn\": 39,\n              \"passage\": \"本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器\",\n              \"section\": \"description\",\n              \"sentence\": [\n                \"本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器\"\n              ]\n            }\n          ],\n          \"score\": 0.94976854,\n          \"efficacy\": [],\n          \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\"\n        }\n      }\n    ],\n    \"count\": 20,\n    \"job_status\": 2\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67092b4a-55d0-438e-9e2a-f30ff3b762de",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4754873b-e935-46c2-9e26-a74884910e8b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "111e0f47-d702-475d-8155-4cbe48a09792",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94d501a2-ecbe-4e42-8247-b16819c22a1c",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "idea-validation",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"15362c5fae034dfc8943df299afc18b5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c614155-36d9-4713-bcac-94e22ba531c1",
+          "name": "R002 Generate patent value report task(No logo)",
+          "request": {
+            "name": "R002 Generate patent value report task(No logo)",
+            "description": {
+              "content": "According to the patent number or patent ID, create a patent value report (No Logo), and obtain the report download job ID.<p>Patent value report, including patent high value labels, patent value evaluation, patent abstract, potential buyer recommendations, patent lifecycle, patent legal events, and other information</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "patent-valuation-data",
+                "patent-report",
+                "task",
+                "create-no-logo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"<string>\",\n  \"patent_id\": \"<string>\",\n  \"patent_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43aa4b2a-c086-46d8-a6f1-5e33887fb5f9",
+              "name": "Successful r002 generate patent value report task(no logo) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1711,\n  \"data\": {\n    \"job_id\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6659c5a-1992-4b10-8fdd-f09183b8a46b",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c574101-a47b-47a6-b63c-33636fc4ec33",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9346dfd1-33a2-41df-87dd-14fefc696834",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e792966a-588a-4f98-8351-592e862a33c9",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "patent-valuation-data",
+                    "patent-report",
+                    "task",
+                    "create-no-logo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"report_type\": \"word\",\n  \"patent_id\": \"9cf648f8-8283-4767-9a14-f90f68303f3e\",\n  \"patent_number\": \"CN108977442B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f6c435c5-0cc8-46eb-9156-1c0a2dd1512d",
+    "name": "Patsnap Open Platform AI Translation Patsnap Analysis Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

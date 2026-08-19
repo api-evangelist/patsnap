@@ -1,0 +1,1242 @@
+{
+  "item": [
+    {
+      "id": "57ee4d67-0f72-4dee-befe-6298836fd3f8",
+      "name": "Enterprise Tech Analysis",
+      "description": {
+        "content": "Enterprise Tech Analysis APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebd784b3-7b4c-473d-b896-af1d62c0d997",
+          "name": "C114 industry university research",
+          "request": {
+            "name": "C114 industry university research",
+            "description": {
+              "content": "This interface provides information on the number of industry-university-research cooperation instances for enterprises, the number of applicants for industry-university-research cooperation, and the patent counts of the top 10 industry-university-research cooperation applicants",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "industry-university-research"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "364de2a2-d018-42e6-8e9e-13f82d186b81",
+              "name": "Successful c114 industry university research response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 7669,\n  \"data\": {\n    \"iur_count\": 21367,\n    \"iur_detail\": [\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"iur_name_count\": 625\n      },\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"iur_name_count\": 625\n      }\n    ],\n    \"org_number\": \"69294823-X\",\n    \"credit_code\": \"9131011269294823XQ\",\n    \"company_name\": \"上海帆茂信息科技发展有限公司\",\n    \"iur_app_count\": 587\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f66ee3c-398c-4235-90d1-66ae581edaad",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61ac3c7a-aad8-41e6-9a84-d4b5c3fc65b8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "818dad4d-2004-46d4-916b-5ea4c068f616",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e1fe6f4-ff42-41ff-823d-16edcce20316",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a4f815d-97d2-4495-a1da-434de82c0594",
+          "name": "C112 Enterprise Core Patent Information",
+          "request": {
+            "name": "C112 Enterprise Core Patent Information",
+            "description": {
+              "content": "This interface provides the patent query of the enterprise's core patent (Top 10 patent value).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "innovation",
+                "company",
+                "core_patent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9088d5c-007e-4359-9b23-b2ed05f66964",
+              "name": "Successful c112 enterprise core patent information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company",
+                    "core_patent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5685,\n  \"data\": {\n    \"org_number\": \"582343213/58234321-3\",\n    \"core_patent\": [\n      {\n        \"pn\": \"专利id\",\n        \"abstract\": [\n          {\n            \"lang\": \"EN\",\n            \"text\": \"An augmented reality display system comprises a passable world model data comprises a set of map points corresponding to one or more objects of the real world. The augmented reality system also comprises......\",\n            \"data_format\": \"original\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"text\": \"An augmented reality display system comprises a passable world model data comprises a set of map points corresponding to one or more objects of the real world. The augmented reality system also comprises......\",\n            \"data_format\": \"original\"\n          }\n        ],\n        \"patent_id\": \"专利id\",\n        \"patent_type\": \"APPLICATION\",\n        \"patent_legal\": {\n          \"event_status\": [\n            \"Transfer\"\n          ],\n          \"legal_status\": [\n            \"Examining\"\n          ],\n          \"simple_legal_status\": [\n            \"Pending\"\n          ]\n        },\n        \"patent_value\": 43000,\n        \"patsnap_legal\": 71,\n        \"patsnap_market\": 18,\n        \"invention_title\": [\n          {\n            \"lang\": \"EN\",\n            \"text\": \"Systems and methods for rendering user interfaces for augmented or virtual reality\",\n            \"data_format\": \"original\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"text\": \"Systems and methods for rendering user interfaces for augmented or virtual reality\",\n            \"data_format\": \"original\"\n          }\n        ],\n        \"patsnap_economy\": 23,\n        \"patsnap_strategic\": 71,\n        \"patsnap_technology\": 28,\n        \"application_reference\": {\n          \"date\": 20211221,\n          \"kind\": \"B2\",\n          \"year\": 2012,\n          \"month\": 202112,\n          \"country\": \"US\",\n          \"doc_number\": \"11205304\"\n        },\n        \"publication_reference\": {\n          \"date\": 20211221,\n          \"kind\": \"B2\",\n          \"year\": 2012,\n          \"month\": 202112,\n          \"country\": \"US\",\n          \"doc_number\": \"11205304\"\n        },\n        \"dates_of_public_availability\": {\n          \"year\": 2011,\n          \"month\": 201101,\n          \"printed_with_granted\": 20101022\n        }\n      },\n      {\n        \"pn\": \"专利id\",\n        \"abstract\": [\n          {\n            \"lang\": \"EN\",\n            \"text\": \"An augmented reality display system comprises a passable world model data comprises a set of map points corresponding to one or more objects of the real world. The augmented reality system also comprises......\",\n            \"data_format\": \"original\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"text\": \"An augmented reality display system comprises a passable world model data comprises a set of map points corresponding to one or more objects of the real world. The augmented reality system also comprises......\",\n            \"data_format\": \"original\"\n          }\n        ],\n        \"patent_id\": \"专利id\",\n        \"patent_type\": \"APPLICATION\",\n        \"patent_legal\": {\n          \"event_status\": [\n            \"Transfer\"\n          ],\n          \"legal_status\": [\n            \"Examining\"\n          ],\n          \"simple_legal_status\": [\n            \"Pending\"\n          ]\n        },\n        \"patent_value\": 43000,\n        \"patsnap_legal\": 71,\n        \"patsnap_market\": 18,\n        \"invention_title\": [\n          {\n            \"lang\": \"EN\",\n            \"text\": \"Systems and methods for rendering user interfaces for augmented or virtual reality\",\n            \"data_format\": \"original\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"text\": \"Systems and methods for rendering user interfaces for augmented or virtual reality\",\n            \"data_format\": \"original\"\n          }\n        ],\n        \"patsnap_economy\": 23,\n        \"patsnap_strategic\": 71,\n        \"patsnap_technology\": 28,\n        \"application_reference\": {\n          \"date\": 20211221,\n          \"kind\": \"B2\",\n          \"year\": 2012,\n          \"month\": 202112,\n          \"country\": \"US\",\n          \"doc_number\": \"11205304\"\n        },\n        \"publication_reference\": {\n          \"date\": 20211221,\n          \"kind\": \"B2\",\n          \"year\": 2012,\n          \"month\": 202112,\n          \"country\": \"US\",\n          \"doc_number\": \"11205304\"\n        },\n        \"dates_of_public_availability\": {\n          \"year\": 2011,\n          \"month\": 201101,\n          \"printed_with_granted\": 20101022\n        }\n      }\n    ],\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b66fe95-12bc-4fa5-8483-09cc3e740b4e",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company",
+                    "core_patent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21e12cd3-bf26-456d-aef9-8cc89f58edc0",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company",
+                    "core_patent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1de39ef-3970-4a7e-a6f4-489e7a79b964",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company",
+                    "core_patent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d5382b5-c731-446d-93e7-083f4f4e2dbb",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "innovation",
+                    "company",
+                    "core_patent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7407ffdd-cd31-409e-8788-9b4989e3c4da",
+          "name": "C115 industry university research R&D technology",
+          "request": {
+            "name": "C115 industry university research R&D technology",
+            "description": {
+              "content": "This interface provides the top10 industry university research cooperation applicants of enterprises and the number of patents jointly developed by TOP10 IPC groups",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "industry-university-research-ipc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45193c66-2ad0-4428-a5c1-e01c3ded679b",
+              "name": "Successful c115 industry university research r&d technology response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-ipc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1300,\n  \"data\": {\n    \"iur_detail\": [\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"ipc_detail\": [\n          {\n            \"ipc_main_group\": \"H04N19\",\n            \"ipc_iur_name_count\": 147\n          },\n          {\n            \"ipc_main_group\": \"H04N19\",\n            \"ipc_iur_name_count\": 147\n          }\n        ]\n      },\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"ipc_detail\": [\n          {\n            \"ipc_main_group\": \"H04N19\",\n            \"ipc_iur_name_count\": 147\n          },\n          {\n            \"ipc_main_group\": \"H04N19\",\n            \"ipc_iur_name_count\": 147\n          }\n        ]\n      }\n    ],\n    \"org_number\": \"69294823-X\",\n    \"credit_code\": \"9131011269294823XQ\",\n    \"company_name\": \"上海帆茂信息科技发展有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a45e0c5b-047d-4b07-911a-bc8665f7dc64",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-ipc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9404b654-8a01-4dba-ab9f-def134a489ab",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-ipc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b8bc5bb-3cda-4662-8f8f-8f40e507f74d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-ipc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53eb9284-f544-45d0-b2d9-265236b73d40",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-ipc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60ee1d05-7681-4bef-bd5e-0f7f494b4ac6",
+          "name": "C116 industry university research  region distribution",
+          "request": {
+            "name": "C116 industry university research  region distribution",
+            "description": {
+              "content": "This interface provides enterprises with top10 industry university research cooperation applicants, as well as the number of patents jointly developed in top10 regions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "industry-university-research-region-distribution"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6e64e57-f346-4416-8976-aca7208fcb3a",
+              "name": "Successful c116 industry university research  region distribution response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-region-distribution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 2691,\n  \"data\": {\n    \"iur_detail\": [\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"region_detail\": [\n          {\n            \"region\": \"CN\",\n            \"region_iur_name_count\": 147\n          },\n          {\n            \"region\": \"CN\",\n            \"region_iur_name_count\": 147\n          }\n        ]\n      },\n      {\n        \"iur_name\": \"清华大学\",\n        \"iur_type\": \"院校/研究所\",\n        \"region_detail\": [\n          {\n            \"region\": \"CN\",\n            \"region_iur_name_count\": 147\n          },\n          {\n            \"region\": \"CN\",\n            \"region_iur_name_count\": 147\n          }\n        ]\n      }\n    ],\n    \"org_number\": \"69294823-X\",\n    \"credit_code\": \"9131011269294823XQ\",\n    \"company_name\": \"上海帆茂信息科技发展有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84683790-a3f9-467d-8c59-4597bd86ee7a",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-region-distribution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c9731b7-bf0a-48cc-ad7c-70fd90a85d25",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-region-distribution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8833d73c-f512-49b9-9ead-4beeb211a95e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-region-distribution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fcc1bbb-5e60-4038-bfa9-2dcacd905d47",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "industry-university-research-region-distribution"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "12de07cc-fdbc-4ed8-95bf-2f62f3777c0a",
+    "name": "Patsnap Open Platform AI Translation Enterprise Tech Analysis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

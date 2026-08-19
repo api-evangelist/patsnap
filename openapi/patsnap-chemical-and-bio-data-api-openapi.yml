@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Chemical and Bio Data API
   version: 1.0.0
@@ -881,108 +881,11 @@ paths:
               $ref: '#/components/schemas/B068-2ChatPccMoleculeResultRequest'
 components:
   schemas:
-    B014CompoundDetail_OpenCompoundCrossDTO:
-      type: object
-      properties:
-        zinc:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        chebi:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        mcule:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        comptox:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        fda_srs:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        nih_cli:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        drugbank:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        pharmgkb:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        pub_chem:
-          type: array
-          example: 'Please check the form: ValueUrlDTO'
-          description: PubChem
-          items:
-            $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        bindingdb:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        emolecules:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        nmrshiftdb:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        phamacology:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-        human_metabolome:
-          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
-    B0034JobResult_OpenApiPatentDetail:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: JP1999068462A
-          description: Patent publication number
-        claimed:
-          type: boolean
-          example: true
-          description: Whether the subject sequence is in patent claims
-        location:
-          type: object
-          example:
-            APP:
-            - '5'
-            FIG:
-            - 1A
-            PAGE:
-            - 55/56
-            ANNEX:
-            - '2'
-            TABLE:
-            - A-1
-            EXAMPLE:
-            - '8'
-          description: Sequence location in patent
-        patent_id:
-          type: string
-          example: 94ea8785-959f-47cf-aba2-091605d30c12
-          description: Patent ID
-        sequence_id_number:
-          type: array
-          example:
-          - '1'
-          description: Sequence ID number in patent
-    B016SequenceInfo_BioSequenceInfoCdr:
-      type: object
-      properties:
-        hc_cdr1:
-          type: string
-          example: GYTFTNYY
-          description: hc_cdr1
-        hc_cdr2:
-          type: string
-          example: INPSNGGT
-          description: hc_cdr2
-        hc_cdr3:
-          type: string
-          example: ARRDYRFDMGFDY
-          description: hc_cdr3
-    B067-1TaskSubmitRequest:
-      type: object
-      properties:
-        document:
-          type: file
-          example: document.pdf
-          description: File
-        patent_number:
-          type: string
-          example: WO2025181219A1
-          description: Patent Number
-    B002CompoundPatentsResponse:
+    B063ExtractMultiResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B002CompoundPatents_OpenPatentsItem'
+          $ref: '#/components/schemas/B063ExtractMulti_ExtractMultiResults'
         status:
           type: boolean
           example: 'false'
@@ -998,41 +901,32 @@ components:
       required:
       - status
       - error_code
-    B076V1Ocsr_OcsrResult:
+    B004SequenceJob_OpenApiResponseSequenceInfo:
       type: object
       properties:
-        h2o:
-          type: boolean
-          example: false
-          description: Whether a water/hydrate component was detected.
-        salt:
-          type: boolean
-          example: false
-          description: Whether a salt component was detected.
-        error:
+        label:
           type: string
-          example: failed to recognize structure
-          description: Per-image error reported by the model, if any.
-        metal:
-          type: boolean
-          example: false
-          description: Whether a metal atom was detected.
-        charge:
-          type: boolean
-          example: false
-          description: Whether a net charge was detected.
-        smiles:
+          example: SEQ1
+          description: User provided sequence label
+        job_id:
           type: string
-          example: CC(=O)Oc1ccccc1C(=O)O
-          description: Recognized SMILES string (empty if unrecognized).
-        isotope:
-          type: boolean
-          example: false
-          description: Whether an isotope label was detected.
-        image_type:
+          example: 953a406a18d84dc8b13f0b923e406a43
+          description: ID of the search job in backend, use this ID for subsequent API calls
+        sequence:
           type: string
-          example: molecule
-          description: Model's classification of the depicted structure (e.g. 'molecule').
+          example: GGGAGGCTAAGGCAGGAG
+          description: User provided sequence
+    B075ReactionRoute_ChemicalReactionResponse.AmountUnit:
+      type: object
+      properties:
+        unit:
+          type: string
+          example: mmol
+          description: Unit
+        value:
+          type: string
+          example: 1
+          description: Value
     B068-2ChatPccMoleculeResultRequest:
       type: object
       properties:
@@ -1042,87 +936,6 @@ components:
           description: Job ID, returned by the create task interface
       required:
       - job_id
-    B071ChemicalGetsingledata_PatentChemicalResponse:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Number of items per page
-        items:
-          type: array
-          example: Please check the form:PatentChemicalMention
-          description: Result items list
-          items:
-            $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalMention'
-        total:
-          type: integer
-          format: int32
-          example: 8
-          description: Total number of records
-    B0034JobStatusResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B0034JobStatus_StatusResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B068-1ChatPccMoleculeTaskRequest:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US20240124450A1
-          description: Patent Number
-      required:
-      - pn
-    B075ReactionRouteRequest:
-      type: object
-      properties:
-        inchi_key:
-          type: string
-          example: FDLYAMZZIXQODN-UHFFFAOYSA-N
-          description: Compound InChI Key, required
-        limit:
-          type: integer
-          format: int32
-          example: 20
-          description: Limit, default 20. limit up to 100, and offset + limit must be no more than 10000.
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: Offset, default 0
-        pn:
-          type: string
-          example: US8247416
-          description: Patent number for exact filtering. If omitted, no patent-number filter is applied.
-        type:
-          type: string
-          example: product
-          description: Compound side in the reaction, required, supports reactant and product.
-      required:
-      - inchi_key
-      - type
     B076V1Ocsr_OcsrResponse:
       type: object
       properties:
@@ -1144,268 +957,43 @@ components:
           description: Per-image OCSR results, in input order.
           items:
             $ref: '#/components/schemas/B076V1Ocsr_OcsrResult'
-    B0034JobResult_OpenApiHit:
-      type: object
-      properties:
-        gaps:
-          type: integer
-          format: int32
-          example: 0
-          description: Total number of gap
-        hsps:
-          type: array
-          example: 'Please check the form: OpenApiHsps'
-          description: Hit information
-          items:
-            $ref: '#/components/schemas/B0034JobResult_OpenApiHsps'
-        s_len:
-          type: integer
-          format: int32
-          example: 123
-          description: Subject sequence length
-        score:
-          type: number
-          format: double
-          example: 68.45
-          description: Raw Score
-        evalue:
-          type: string
-          example: 1.12271e-54
-          description: The higher you set this e-value threshold, the more results you are likely to see.E-Value indicates how likely it is that a sequence is similar to yours simply by chance. For instance, if your sequence is very short, there is a higher likelihood that it appears in several locations simply by chance. The greater the e-value, the more likely it is that this is just down to luck.
-        seq_id:
-          type: string
-          example: 834879
-          description: Sequence ID
-        patents:
-          $ref: '#/components/schemas/B0034JobResult_Patent'
-        identity:
-          type: string
-          example: 93/123
-          description: Blast Identity value
-        positive:
-          type: string
-          example: 104/123
-          description: Positive value
-        bit_score:
-          type: number
-          format: double
-          example: 68.45
-          description: Bit Score
-        q_coverage:
-          type: number
-          format: double
-          example: 68.45
-          description: Coverage percentage of query sequence
-        s_coverage:
-          type: number
-          format: double
-          example: 68.45
-          description: Coverage percentage of subject sequence
-        s_sequence:
-          type: string
-          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
-          description: Subject sequence
-        perc_identity:
-          type: number
-          format: double
-          example: 87.34
-          description: Identity percentage value
-        q_perc_identity:
-          type: number
-          format: double
-          example: 87.34
-          description: Identity percentage value of query sequence
-        s_perc_identity:
-          type: number
-          format: double
-          example: 87.34
-          description: Identity percentage value of subject sequence
-    B0034JobStatus_StatusResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: SUCCESS
-          description: Backend job status, including following valid status. QUEUEING,RUNNING,SUCCESS,TIMEOUT,ERROR
-        message:
-          type: string
-          example: Invalid input xxx
-          description: Detailed message of ERROR status
-    B073KeywordSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B073KeywordSearch_ChemicalKeyWordResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B071ChemicalGetsingledataRequest:
-      type: object
-      properties:
-        exclude_reagents:
-          type: boolean
-          example: false
-          description: Exclude reagents
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: Number of returned items, default 10.Maximum limit setting 1000
-        only_first:
-          type: boolean
-          example: false
-          description: Only show compounds that first appear in this patent
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: page, default 1
-        patent_id:
-          type: string
-          example: f5817034-1395-4bc1-b0f2-eb712e66702c
-          description: Patent id
-        patent_number:
-          type: string
-          example: US12497460B2
-          description: Patent number
-        range_max:
-          type: number
-          format: double
-          example: 888
-          description: Maximum molecular weight
-        range_min:
-          type: number
-          format: double
-          example: 30
-          description: Minimum molecular weight
-        source:
-          type: array
-          example:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          description: Source, 1:Manual | 2:Other | 3:Picture | 4:Claims | 5:Abstract | 6:Title | 7:Description
-    B001ChemicalOpenapiCompoundRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Aspirin
-          description: Common names of structure
-        formula:
-          type: string
-          example: C9H8O4
-          description: Molecular formula
-        inchi:
-          type: string
-          example: InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
-          description: Structure Inchi
-        smiles:
-          type: string
-          example: CC(=O)OC1=CC=CC=C1C(O)=O
-          description: Structure Smiles
-        search_type:
-          type: string
-          example: EXT
-          description: Structure search type, the default value is EXT. The option value is EXT, SIM, SUB which means Exact search, Similarity search, Substructure search. Only support inchi, smiles input.
-        sim_threshold:
-          type: number
-          format: float
-          example: 0.5
-          description: Minimum similar score for similarity search, valid for SIM search type only, 0.5 by default.
-        include_stereo:
-          type: boolean
-          example: true
-          description: If include stereo isomers, valid for EXT, SUB search types only, true by default.
-        include_tautomer:
-          type: boolean
-          example: true
-          description: If include tautomers, valid for EXT, SUB search types only, true by default.
-        include_charge:
-          type: boolean
-          example: true
-          description: If include charge difference, valid for EXT, SUB search types only, true by default.
-        include_isotope:
-          type: boolean
-          example: true
-          description: If include isotope difference, valid for EXT, SUB search types only, true by default.
-        include_radical:
-          type: boolean
-          example: true
-          description: If include radical difference, valid for EXT, SUB search types only, true by default.
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Page number. Current page number, start from 1.
-        rows:
-          type: integer
-          format: int32
-          example: 10
-          description: Page Size. Current page result size, not greater than 100.
-      required:
-      - page
-      - rows
-    B016SequenceInfo_BioDrugInfo:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: 2838b95ade834c96b17ac8bcd2b68c27
-          description: ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Adalimumab
-          - lang: CN
-            name: 阿达木单抗
-          description: Name
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_CommonName'
-    B068-1DocanalyzerSubmitpdf_DocAnalyzerJobDataResult:
+    B0034JobResultRequest:
       type: object
       properties:
         job_id:
           type: string
-          example: eeaba18b-a5b1-42c0-b2a8-1fc0a427b914
-          description: job id
-    B071ChemicalGetsingledataResponse:
+          example: 953a406a18d84dc8b13f0b923e406a43
+          description: ID of the search job in backend, use this ID for subsequent API calls
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number, start from 1
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Current page result size, support maximum 100
+        sort_field:
+          $ref: '#/components/schemas/B0034JobResult_OpenApiSortField'
+      required:
+      - job_id
+      - page
+      - size
+    B0034JobResult_Patent:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+        total:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          format: int32
+          example: 1000
+          description: Total patent count of the sequence
+        patents:
+          type: array
+          example: 'Please check the form: OpenApiPatentDetail'
+          description: Patent List
+          items:
+            $ref: '#/components/schemas/B0034JobResult_OpenApiPatentDetail'
     B068-2DocanalyzerGetextractmaterial_DocAnalyzerJobStatusResponseDTO:
       type: object
       properties:
@@ -1426,54 +1014,11 @@ components:
           description: Response message
       required:
       - code
-    B014CompoundDetail_OpenPatentItem:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: JP1999068462A
-          description: Patent PN
-        patent_id:
-          type: string
-          example: 9050f544-32cf-4809-8036-fc577b69be48
-          description: Patent ID
-    B002CompoundPatents_OpenPatentsItem:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-          example: 1000
-          description: Total Patent Count
-        patents:
-          type: array
-          example: 'Please check the form: OpenPatentItem'
-          description: Patent List
-          items:
-            $ref: '#/components/schemas/B002CompoundPatents_OpenPatentItem'
-    B001ChemicalOpenapiCompound_OpenSearchResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int64
-          example: 100
-          description: Total Structure Count
-        results:
-          type: array
-          example: 'Please check the form: OpenCompoundItem'
-          description: Structure records
-          items:
-            $ref: '#/components/schemas/B001ChemicalOpenapiCompound_OpenCompoundItem'
-    B004SequenceJobResponse:
+    B072-1ChemicalSubmittaskResponse:
       type: object
       properties:
         data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B004SequenceJob_OpenApiResponseSequenceInfo'
+          $ref: '#/components/schemas/B072-1ChemicalSubmittask_ChemicalSearchTaskResponse'
         status:
           type: boolean
           example: 'false'
@@ -1489,6 +1034,310 @@ components:
       required:
       - status
       - error_code
+    B016SequenceInfo_BioSequenceInfoCdrs:
+      type: object
+      properties:
+        abm:
+          type: array
+          example: 'Please check the form: BioSequenceInfoCdr'
+          description: abm
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
+        imgt:
+          type: array
+          example: 'Please check the form: BioSequenceInfoCdr'
+          description: imgt
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
+        kabat:
+          type: array
+          example: 'Please check the form: BioSequenceInfoCdr'
+          description: kabat
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
+        chothia:
+          type: array
+          example: 'Please check the form: BioSequenceInfoCdr'
+          description: chothia
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
+        contact:
+          type: array
+          example: 'Please check the form: BioSequenceInfoCdr'
+          description: contact
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
+    B067-1TaskSubmitRequest:
+      type: object
+      properties:
+        document:
+          type: file
+          example: document.pdf
+          description: File
+        patent_number:
+          type: string
+          example: WO2025181219A1
+          description: Patent Number
+    B042PaperSearchRequest:
+      type: object
+      properties:
+        inchi_key_id:
+          type: string
+          example: 126213117
+          description: InChI Key ID
+        lang:
+          type: string
+          example: CN
+          description: 'Language, support: CN, EN'
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number, starting from 1, default 1
+        rows:
+          type: integer
+          format: int32
+          example: 100
+          description: Rows per page, default 10, maximum 100
+        sort_order:
+          type: string
+          example: desc
+          description: Sort by published time, sort order, support:desc,asc
+      required:
+      - inchi_key_id
+    B073KeywordSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B073KeywordSearch_ChemicalKeyWordResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B016SequenceInfo_BioDrugInfo:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: 2838b95ade834c96b17ac8bcd2b68c27
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Adalimumab
+          - lang: CN
+            name: 阿达木单抗
+          description: Name
+          items:
+            $ref: '#/components/schemas/B016SequenceInfo_CommonName'
+    B014CompoundDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B014CompoundDetail_OpenCompoundDetailItem'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B073KeywordSearch_CompoundStructureResult:
+      type: object
+      properties:
+        smiles:
+          type: string
+          example: CCC(C)(C)C(=O)OC1CC(C)C=C2C=CC(C)C(CCC1)C12
+          description: SMILES molecular formula
+        inchi_key:
+          type: string
+          example: NPDFVGFXQSJBAA-ZBDDBYLNSA-N
+          description: InChI Key identifier
+        compound_name:
+          type: string
+          example: Simvastatin
+          description: compound name
+        structure_image_url:
+          type: string
+          example: https://xxx.com/uploadsearch/2026-04-23/1776927563885-e23566962a894d088c1cf01637320034-image.png
+          description: chemical structure image URL
+    B003MotifJob_OpenApiMotifFilterParameter:
+      type: object
+      properties:
+        scov_hsp_perc:
+          $ref: '#/components/schemas/B003MotifJob_OpenAPiNumberRangeParameter'
+        subject_length:
+          $ref: '#/components/schemas/B003MotifJob_OpenAPiNumberRangeParameter'
+    B071ChemicalGetsingledata_PatentChemicalMentionPosition:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page
+        position:
+          type: array
+          example:
+          - 0.2513
+          - 0.6182
+          - 0.3493
+          - 0.6696
+          description: Location
+    B076V1OcsrResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B076V1Ocsr_OcsrResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B067-2OcsrTask_OCSR_2:
+      type: object
+      properties:
+        sort:
+          type: integer
+          format: int32
+          example: 1
+          description: Sort Number
+        index:
+          type: integer
+          format: int32
+          example: 0
+          description: Index
+        names:
+          type: array
+          example:
+          - ALCOHOL
+          description: Name
+        smiles:
+          type: string
+          example: CCO
+          description: SMILES String
+        formula:
+          type: string
+          example: C25H38O5
+          description: Formula
+        pdf_page:
+          type: string
+          example: 1
+          description: PDF Page
+        position:
+          type: array
+          example:
+          - 100
+          - 200
+          - 300
+          - 400
+          description: Structure Position in Page [x1, y1, x2, y2]
+        inchi_key:
+          type: string
+          example: LFQSCWFLJHTTHZ-UHFFFAOYSA-N
+          description: InChI Key
+        pdf_page_size:
+          type: array
+          example:
+          - 595
+          - 842
+          description: PDF Page Size [width, height]
+        isometric_smiles:
+          type: string
+          example: CC1CN(CCN1C2=NC(=O)N(C3=NC(=C(C=C32)F)C4=C(C=CC=C4F)O)C5=C(C=CN=C5C(C)C)C)C(=O)C=C
+          description: InChI Key
+        position_normalized:
+          type: array
+          example:
+          - 0.168
+          - 0.238
+          - 0.504
+          - 0.476
+          description: Normalized Position Coordinates [x1, y1, x2, y2] (0-1 range)
+    B073KeywordSearch_ChemicalKeyWordResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          example: 'Please check the form: CompoundStructureResult'
+          description: compound structure info list
+          items:
+            $ref: '#/components/schemas/B073KeywordSearch_CompoundStructureResult'
+    B003MotifJob_OpenApiMotifParameter:
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/B003MotifJob_OpenApiMotifFilterParameter'
+    B004SequenceJob_OpenApiFilterParameter:
+      type: object
+      properties:
+        perc_identity:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+        q_perc_identity:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+        qcov_hsp_perc:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+        s_perc_identity:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+        scov_hsp_perc:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+        subject_length:
+          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
+    B002CompoundPatents_OpenPatentsItem:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+          example: 1000
+          description: Total Patent Count
+        patents:
+          type: array
+          example: 'Please check the form: OpenPatentItem'
+          description: Patent List
+          items:
+            $ref: '#/components/schemas/B002CompoundPatents_OpenPatentItem'
+    B067-1TaskSubmit_OCSR:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCESS
+          description: 'Task Status: PENDING(Pending), PROCESSING(Processing), SUCCESS(Success), FAILED(Failed)'
+        task_id:
+          type: string
+          example: 8ba05f32a656423fad4876ac7e65ee7a
+          description: Task ID
     B076V1OcsrRequest:
       type: object
       properties:
@@ -1498,130 +1347,203 @@ components:
           description: Image file.
       required:
       - files
-    B075ReactionRoute_ChemicalReactionResponse:
+    B062ExtractSingleRequest:
       type: object
       properties:
-        limit:
+        extract_type:
+          type: string
+          example: EXTRACT_ALL
+          description: Extract Type(EXTRACT_ALL、EXTRACT_RANGE、EXTRACT_NUM、EXTRACT_MANUAL)
+        page:
           type: integer
           format: int32
-          example: 20
-          description: limit
-        total:
+          example: 1
+          description: Current page number, start from 1
+        patent_id:
+          type: string
+          example: d10f8044-d3b9-4b53-b27f-b0f4fe9092cd
+          description: Patent ID
+        patent_number:
+          type: string
+          example: WO2004050828A2
+          description: Patent publication number. One of patent_number、patent_id must be filled in, and if they are filled in at the same time, patent_id shall prevail, followed by patent_number
+        sequence_length:
+          $ref: '#/components/schemas/B062ExtractSingle_OpenAPiNumberRangeParameter'
+        sequence_no_range:
+          type: string
+          example: 1-10
+          description: SEQ ID range(Example:1-10,23,24)
+        sequence_type:
+          type: string
+          example: PROTEIN
+          description: Sequence Type, PROTEIN or NUCLEOTIDE
+        size:
           type: integer
-          format: int64
+          format: int32
+          example: 10
+          description: Current page result size, support maximum 100
+      required:
+      - extract_type
+      - page
+      - sequence_no_range
+      - size
+    B005SequencePatentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B005SequencePatent_Patent'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B068-1DocanalyzerSubmitpdfRequest:
+      type: object
+      properties:
+        file:
+          type: file
+          example: document.pdf
+          description: Upload file
+      required:
+      - file
+    B072-2ChemicalGettaskresult_ChemicalResultEarliestPublished:
+      type: object
+      properties:
+        patent_number:
+          type: string
+          example: US12497460B2
+          description: Patent number
+        publication_date:
+          type: string
+          example: 06 Apr 1976
+          description: Publication date
+    B062ExtractSingle_OpenApiExtractHit:
+      type: object
+      properties:
+        s_len:
+          type: integer
+          format: int32
+          example: 123
+          description: Subject sequence length
+        seq_id:
+          type: string
+          example: 834879
+          description: Sequence ID
+        location:
+          type: object
+          example:
+            APP:
+            - '5'
+            FIG:
+            - 1A
+            PAGE:
+            - 55/56
+            ANNEX:
+            - '2'
+            TABLE:
+            - A-1
+            EXAMPLE:
+            - '8'
+          description: Sequence location in patent
+        s_sequence:
+          type: string
+          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
+          description: Subject sequence
+        sequence_type:
+          type: string
+          example: PROTEIN
+          description: Sequence Type, PROTEIN or NUCLEOTIDE
+        sequence_id_number:
+          type: array
+          example:
+          - '1'
+          description: Sequence ID number in patent
+    B063ExtractMulti_OpenAPiNumberRangeParameter:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
           example: 100
-          description: Total count after filtering
-        offset:
+          description: End value
+        start:
           type: integer
           format: int32
           example: 0
-          description: offset
-        results:
-          type: array
-          example: Please check the form:SmilesReactionWithPn
-          description: Reaction data grouped by patent-number list
-          items:
-            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.SmilesReactionWithPn'
-    B001ChemicalOpenapiCompound_OpenCompoundItem:
+          description: Start value
+    B063ExtractMultiRequest:
       type: object
       properties:
-        inchi_key:
-          type: string
-          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-          description: InchiKey
-        similarity:
-          type: number
-          format: float
-          example: 0.98
-          description: 'Similarity. Structure Similarity
-
-
-            Tanimoto structure similarity score
-
-            For similarity search only'
-        paper_count:
-          type: integer
-          format: int32
-          example: 20
-          description: Related paper count
-        patent_count:
-          type: integer
-          format: int32
-          example: 20
-          description: Related patent count
-    B062ExtractSingle_ExtractResults:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-          example: 1000
-          description: Query Results Count
-        results:
-          type: array
-          example: 'Please check the form: OpenApiExtractHit'
-          description: Query Results
-          items:
-            $ref: '#/components/schemas/B062ExtractSingle_OpenApiExtractHit'
-    B068-1ChatPccMoleculeTask_PccTaskResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 613845b4-83d0-4ac1-8116-5113736faab0
-          description: Job ID, used to query task result later
-    B014CompoundDetail_OpenCompoundDetailItem:
-      type: object
-      properties:
-        inchi:
-          type: string
-          example: InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
-          description: Structure Inchi
-        names:
+        db_type:
           type: array
           example:
-          - Aspirin
-          - 2-acetyloxybenzoic acid
-          description: Structure Names
-        cas_nos:
+          - ALLPATENT
+          description: Extract Range(Enumeration value：ALLPATENT、CLAIMS)
+        limit:
+          type: integer
+          format: int32
+          example: 50000
+          description: The maximum number of returned results is supported to be no more than 100,000, with a default value of 50,000
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number, start from 1
+        patent_ids:
           type: array
           example:
-          - 2296729-00-3
-          description: CAS NO
-        formula:
-          type: string
-          example: C9H8O4
-          description: Molecular formula
-        patents:
-          $ref: '#/components/schemas/B014CompoundDetail_OpenPatentsItem'
-        synonyms:
+          - d10f8044-d3b9-4b53-b27f-b0f4fe9092cd
+          description: Patent ID Collections, Input up to 100 patent IDs.
+        patent_numbers:
           type: array
           example:
-          - CDX
-          description: Synonyms
-        inchi_key:
+          - WO2004050828A2
+          description: Patent publication number collections, Input up to 100 patent Numbers.One of patent_numbers、patent_ids must be filled in, and if they are filled in at the same time, patent_ids shall prevail, followed by patent_numbers
+        sequence_length:
+          $ref: '#/components/schemas/B063ExtractMulti_OpenAPiNumberRangeParameter'
+        sequence_type:
           type: string
-          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-          description: InchiKey
-        iupac_name:
+          example: PROTEIN
+          description: Sequence Type, PROTEIN or NUCLEOTIDE
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Current page result size, support maximum 100
+      required:
+      - db_type
+      - page
+      - size
+    B0034JobResultResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B0034JobResult_Results'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 2-acetyloxybenzoic acid
-          description: IUPAC name
-        mol_weight:
-          type: number
-          format: double
-          example: 363.39
-          description: Mol Weight
-        canonical_smiles:
-          type: string
-          example: CC(=O)OC1=CC=CC=C1C(O)=O
-          description: Structure Canonical Smiles
-        cross_references:
-          $ref: '#/components/schemas/B014CompoundDetail_OpenCompoundCrossDTO'
-        isometric_smiles:
-          type: string
-          example: CC(=O)OC1=CC=CC=C1C(O)=O
-          description: Structure Isometric Smiles
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     B015DrugCompoundPhysicochemicalProps_DrugChemStructPropsResponse:
       type: object
       properties:
@@ -1743,120 +1665,77 @@ components:
           format: double
           example: 111.985
           description: Mononisotopic Mass
-    B014CompoundDetail_ValueUrlDTO:
+    B014CompoundDetail_OpenCompoundCrossDTO:
       type: object
       properties:
-        url:
-          type: string
-          example: http://pubchem.ncbi.nlm.nih.gov/compound/70372773
-          description: url
-        value:
-          type: string
-          example: 70372773
-          description: value
-    B003MotifJob_OpenAPiNumberRangeParameter:
+        zinc:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        chebi:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        mcule:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        comptox:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        fda_srs:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        nih_cli:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        drugbank:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        pharmgkb:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        pub_chem:
+          type: array
+          example: 'Please check the form: ValueUrlDTO'
+          description: PubChem
+          items:
+            $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        bindingdb:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        emolecules:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        nmrshiftdb:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        phamacology:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+        human_metabolome:
+          $ref: '#/components/schemas/B014CompoundDetail_ValueUrlDTO'
+    B005SequencePatentRequest:
       type: object
       properties:
-        end:
-          type: integer
-          format: int32
-          example: 100
-          description: End value
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start value
-    B003MotifJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B003MotifJob_OpenApiResponseSequenceInfo'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B016SequenceInfo_BioSequenceInfoCdrs:
-      type: object
-      properties:
-        abm:
-          type: array
-          example: 'Please check the form: BioSequenceInfoCdr'
-          description: abm
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
-        imgt:
-          type: array
-          example: 'Please check the form: BioSequenceInfoCdr'
-          description: imgt
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
-        kabat:
-          type: array
-          example: 'Please check the form: BioSequenceInfoCdr'
-          description: kabat
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
-        chothia:
-          type: array
-          example: 'Please check the form: BioSequenceInfoCdr'
-          description: chothia
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
-        contact:
-          type: array
-          example: 'Please check the form: BioSequenceInfoCdr'
-          description: contact
-          items:
-            $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoCdr'
-    B068-2ChatPccMoleculeResult_AdmetPrediction:
-      type: object
-      properties:
-        hba:
-          type: integer
-          format: int32
-          example: 7
-          description: Hydrogen Bond Acceptors
-        hbd:
+        page:
           type: integer
           format: int32
           example: 1
-          description: Hydrogen Bond Donors
-        logp:
-          type: number
-          format: double
-          example: 4.75
-          description: LogP
-        tpsa:
-          type: number
-          format: double
-          example: 100.13
-          description: Topological Polar Surface Area (Å²)
-        compound_id:
+          description: Current page number, start from 1
+        seq_id:
           type: string
-          example: 6B
-          description: Compound ID
-        molecular_weight:
-          type: number
-          format: double
-          example: 431.57
-          description: Molecular Weight (Da)
-    B004SequenceJob_OpenApiResponseSequenceInfo:
+          example: 834879
+          description: Sequence ID
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Current page result size, support maximum 100
+      required:
+      - page
+      - seq_id
+      - size
+    B0034JobResult_Results:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+          example: 1000
+          description: Query Results Count
+        results:
+          type: array
+          example: 'Please check the form: OpenApiHit'
+          description: Query Results
+          items:
+            $ref: '#/components/schemas/B0034JobResult_OpenApiHit'
+    B003MotifJob_OpenApiResponseSequenceInfo:
       type: object
       properties:
         label:
@@ -1871,137 +1750,22 @@ components:
           type: string
           example: GGGAGGCTAAGGCAGGAG
           description: User provided sequence
-    B014CompoundDetail_OpenPatentsItem:
+    B004SequenceJob_OpenApiRequestSequenceInfo:
       type: object
       properties:
-        total:
-          type: integer
-          format: int32
-          example: 1000
-          description: Total Patent Count
-        patents:
-          type: array
-          example: 'Please check the form: OpenPatentItem'
-          description: Patent List
-          items:
-            $ref: '#/components/schemas/B014CompoundDetail_OpenPatentItem'
-    B073KeywordSearchRequest:
-      type: object
-    B005SequencePatent_OpenApiPatentDetail:
-      type: object
-      properties:
-        pn:
+        label:
           type: string
-          example: JP1999068462A
-          description: Patent publication number
-        claimed:
-          type: boolean
-          example: true
-          description: Whether the subject sequence is in patent claims
-        location:
-          type: object
-          example:
-            APP:
-            - '5'
-            FIG:
-            - 1A
-            PAGE:
-            - 55/56
-            ANNEX:
-            - '2'
-            TABLE:
-            - A-1
-            EXAMPLE:
-            - '8'
-          description: Sequence location in patent
-        patent_id:
+          example: SEQ1
+          description: User provided sequence label
+        sequence:
           type: string
-          example: 94ea8785-959f-47cf-aba2-091605d30c12
-          description: Patent ID
-        sequence_id_number:
-          type: array
-          example:
-          - '1'
-          description: Sequence ID number in patent
-    B067-1TaskSubmitResponse:
+          example: GGGAGGCTAAGGCAGGAG
+          description: User provided sequence
+    B001ChemicalOpenapiCompoundResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B067-1TaskSubmit_OCSR任务提交响应'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B071ChemicalGetsingledata_PatentChemicalMention:
-      type: object
-      properties:
-        mwt:
-          type: number
-          format: double
-          example: 868.45
-          description: Molecular weight
-        smiles:
-          type: string
-          example: CC1(CCC(=C(C1)C2=CC=C(C=C2)Cl)CN3CCN(CC3)C4=CC(=C(C=C4)C(=O)NS(=O)(=O)C5=CC(=C(C=C5)NCC6CCOCC6)[N+](=O)[O-])OC7=CN=C8C(=C7)C=CN8)C
-          description: SMILES structure
-        inchi_key:
-          type: string
-          example: LQBVNQSMGBZMKD-UHFFFAOYSA-N
-          description: InChI Key
-        patent_id:
-          type: string
-          example: f5817034-1395-4bc1-b0f2-eb712e66702c
-          description: Patent id
-        ta_mention:
-          type: integer
-          format: int32
-          example: 0
-          description: Title and abstract mention count
-        pdf_mention:
-          type: integer
-          format: int32
-          example: 0
-          description: PDF mention count
-        desc_mention:
-          type: integer
-          format: int32
-          example: 8
-          description: Description mention count
-        pdf_position:
-          type: array
-          example: Please check the form:PatentChemicalMentionPosition
-          description: PDF location
-          items:
-            $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalMentionPosition'
-        compound_name:
-          type: string
-          example: VENETOCLAX / 4-[4-[[2-(4-chlorophenyl)-4,4-dimethylcyclohexen-1-yl]methyl]piperazin-1-yl]-N-[3-nitro-4-(oxan-4-ylmethylamino)phenyl]sulfonyl-2-(1H-pyrrolo[2,3-b]pyridin-5-yloxy)benzamide
-          description: Compound name
-        claims_mention:
-          type: integer
-          format: int32
-          example: 1
-          description: Claims mention count
-        publication_date:
-          type: string
-          example: 20230727
-          description: public date
-    B068-2ChatPccMoleculeResultResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B068-2ChatPccMoleculeResult_PccMoleculeResponse'
+          $ref: '#/components/schemas/B001ChemicalOpenapiCompound_OpenSearchResponse'
         status:
           type: boolean
           example: 'false'
@@ -2037,6 +1801,267 @@ components:
       required:
       - status
       - error_code
+    B068-1ChatPccMoleculeTask_PccTaskResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 613845b4-83d0-4ac1-8116-5113736faab0
+          description: Job ID, used to query task result later
+    B076V1Ocsr_OcsrResult:
+      type: object
+      properties:
+        h2o:
+          type: boolean
+          example: false
+          description: Whether a water/hydrate component was detected.
+        salt:
+          type: boolean
+          example: false
+          description: Whether a salt component was detected.
+        error:
+          type: string
+          example: failed to recognize structure
+          description: Per-image error reported by the model, if any.
+        metal:
+          type: boolean
+          example: false
+          description: Whether a metal atom was detected.
+        charge:
+          type: boolean
+          example: false
+          description: Whether a net charge was detected.
+        smiles:
+          type: string
+          example: CC(=O)Oc1ccccc1C(=O)O
+          description: Recognized SMILES string (empty if unrecognized).
+        isotope:
+          type: boolean
+          example: false
+          description: Whether an isotope label was detected.
+        image_type:
+          type: string
+          example: molecule
+          description: Model's classification of the depicted structure (e.g. 'molecule').
+    B068-2DocanalyzerGetextractmaterialResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B068-2DocanalyzerGetextractmaterial_DocAnalyzerJobStatusResponseDTO'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B062ExtractSingle_OpenAPiNumberRangeParameter:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
+          example: 100
+          description: End value
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start value
+    B001ChemicalOpenapiCompoundRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Aspirin
+          description: Common names of structure
+        formula:
+          type: string
+          example: C9H8O4
+          description: Molecular formula
+        inchi:
+          type: string
+          example: InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
+          description: Structure Inchi
+        smiles:
+          type: string
+          example: CC(=O)OC1=CC=CC=C1C(O)=O
+          description: Structure Smiles
+        search_type:
+          type: string
+          example: EXT
+          description: Structure search type, the default value is EXT. The option value is EXT, SIM, SUB which means Exact search, Similarity search, Substructure search. Only support inchi, smiles input.
+        sim_threshold:
+          type: number
+          format: float
+          example: 0.5
+          description: Minimum similar score for similarity search, valid for SIM search type only, 0.5 by default.
+        include_stereo:
+          type: boolean
+          example: true
+          description: If include stereo isomers, valid for EXT, SUB search types only, true by default.
+        include_tautomer:
+          type: boolean
+          example: true
+          description: If include tautomers, valid for EXT, SUB search types only, true by default.
+        include_charge:
+          type: boolean
+          example: true
+          description: If include charge difference, valid for EXT, SUB search types only, true by default.
+        include_isotope:
+          type: boolean
+          example: true
+          description: If include isotope difference, valid for EXT, SUB search types only, true by default.
+        include_radical:
+          type: boolean
+          example: true
+          description: If include radical difference, valid for EXT, SUB search types only, true by default.
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Page number. Current page number, start from 1.
+        rows:
+          type: integer
+          format: int32
+          example: 10
+          description: Page Size. Current page result size, not greater than 100.
+      required:
+      - page
+      - rows
+    B014CompoundDetail_OpenPatentItem:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: Patent PN
+        patent_id:
+          type: string
+          example: 9050f544-32cf-4809-8036-fc577b69be48
+          description: Patent ID
+    B016SequenceInfo_BioSequenceInfoCdr:
+      type: object
+      properties:
+        hc_cdr1:
+          type: string
+          example: GYTFTNYY
+          description: hc_cdr1
+        hc_cdr2:
+          type: string
+          example: INPSNGGT
+          description: hc_cdr2
+        hc_cdr3:
+          type: string
+          example: ARRDYRFDMGFDY
+          description: hc_cdr3
+    B016SequenceInfo_BioSequenceInfoClaim:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US12084692B2
+          description: pn
+        pbdt:
+          type: integer
+          format: int32
+          example: 20250805
+          description: pbdt
+        positions:
+          type: array
+          example:
+          - Claim 17;
+          - Claim 28;
+          description: positions
+    B062ExtractSingle_ExtractResults:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+          example: 1000
+          description: Query Results Count
+        results:
+          type: array
+          example: 'Please check the form: OpenApiExtractHit'
+          description: Query Results
+          items:
+            $ref: '#/components/schemas/B062ExtractSingle_OpenApiExtractHit'
+    B068-1ChatPccMoleculeTaskRequest:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US20240124450A1
+          description: Patent Number
+      required:
+      - pn
+    B014CompoundDetail_ValueUrlDTO:
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://pubchem.ncbi.nlm.nih.gov/compound/70372773
+          description: url
+        value:
+          type: string
+          example: 70372773
+          description: value
+    B062ExtractSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B062ExtractSingle_ExtractResults'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B003MotifJob_OpenAPiNumberRangeParameter:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
+          example: 100
+          description: End value
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start value
+    B001ChemicalOpenapiCompound_OpenSearchResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total Structure Count
+        results:
+          type: array
+          example: 'Please check the form: OpenCompoundItem'
+          description: Structure records
+          items:
+            $ref: '#/components/schemas/B001ChemicalOpenapiCompound_OpenCompoundItem'
     B0034JobResult_OpenApiHsps:
       type: object
       properties:
@@ -2072,670 +2097,83 @@ components:
           type: string
           example: MQVDLLGSAQSAHALH
           description: Subject sequence hit region
-    B067-2OcsrTask_OCSR任务状态查询响应:
+    B075ReactionRoute_ChemicalReactionResponse:
       type: object
       properties:
-        result:
-          type: array
-          example:
-          - sort: 1
-            index: 0
-            names:
-            - ALCOHOL
-            smiles: CCO
-            formula: C25H38O5
-            pdf_page: '1'
-            position:
-            - 100
-            - 200
-            - 300
-            - 400
-            inchi_key: LFQSCWFLJHTTHZ-UHFFFAOYSA-N
-            pdf_page_size:
-            - 595
-            - 842
-            isometric_smiles: '[H][C@]12[C@H](C[C@@H](C)C=C1C=C[C@H](C)[C@@H]2CC[C@@H]1C[C@@H](O)CC(=O)O1)OC(=O)C(C)(C)CC'
-            position_normalized:
-            - 0.168
-            - 0.238
-            - 0.504
-            - 0.476
-          description: OCSR Recognition Results
-          items:
-            $ref: '#/components/schemas/B067-2OcsrTask_OCSR化学结构识别结果'
-        status:
-          type: string
-          example: SUCCESS
-          description: 'Task Status: PENDING(Pending), PROCESSING(Processing), SUCCESS(Success), FAILED(Failed)'
-        task_id:
-          type: string
-          example: oscr_20250122_abc123
-          description: Task ID
-    B063ExtractMulti_ExtractMultiResults:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number, start from 1
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Current page result size, support maximum 100
         limit:
           type: integer
           format: int32
-          example: 50000
-          description: The maximum number of returned results is supported to be no more than 100,000, with a default value of 50,000
-        total:
-          type: integer
-          format: int32
-          example: 1000
-          description: Query Results Count
-        results:
-          type: array
-          example: 'Please check the form: OpenApiExtractMultiHit'
-          description: Query Results
-          items:
-            $ref: '#/components/schemas/B063ExtractMulti_OpenApiExtractMultiHit'
-    B001ChemicalOpenapiCompoundResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B001ChemicalOpenapiCompound_OpenSearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B075ReactionRoute_ChemicalReactionResponse.ReactantItem:
-      type: object
-      properties:
-        smiles:
-          type: string
-          example: CC(=O)Oc1ccccc1C(=O)O
-          description: Compound SMILES
-        inchi_key:
-          type: string
-          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-          description: Compound InChI Key
-        amount_units:
-          type: array
-          example: Please check the form:AmountUnit
-          description: Amount and unit
-          items:
-            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.AmountUnit'
-        compound_name:
-          type: string
-          example: Aspirin
-          description: Compound name
-    B072-2ChemicalGettaskresultResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalSearchResultResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B005SequencePatentResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B005SequencePatent_Patent'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B075ReactionRouteResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B068-2ChatPccMoleculeResult_MoleculeRecommendation:
-      type: object
-      properties:
-        rank:
-          type: integer
-          format: int32
-          example: 1
-          description: Rank
-        smiles:
-          type: string
-          example: CC[C@H]1CCC[C@]1(N)COc1cc(-c2cnc3cccc(C#N)n23)cc(SC)c1C#N
-          description: Molecular structure (SMILES)
-        example:
-          type: string
-          example: 6B
-          description: Example ID
-        molecule_id:
-          type: string
-          example: 6B
-          description: Molecule ID
-        example_page:
-          type: string
-          example: P28
-          description: Page reference of the example
-        key_data_page:
-          type: string
-          example: P51
-          description: Page reference of key data source
-        molecule_image:
-          type: string
-          example: '#123'
-          description: Molecule structure image reference
-        molecule_id_page:
-          type: string
-          example: P28
-          description: Page reference of the molecule ID
-        recommend_reason:
-          type: string
-          example: '...'
-          description: Recommendation reason
-        key_data_highlights:
-          type: string
-          example: 'SIK1 IC₅₀: 0.1 nM, TNFα IC₅₀: 0.5 nM, IL10 EC₅₀: 2 nM'
-          description: Key data highlights, such as IC50 activity data
-    B016SequenceInfo_BioSequenceInfoClaim:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US12084692B2
-          description: pn
-        pbdt:
-          type: integer
-          format: int32
-          example: 20250805
-          description: pbdt
-        positions:
-          type: array
-          example:
-          - Claim 17;
-          - Claim 28;
-          description: positions
-    B042PaperSearch_ChemicalPaperSearchResponse:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        rows:
-          type: integer
-          format: int32
-          example: 10
-          description: Rows per page
-        items:
-          type: array
-          example: Please check the form:ChemicalPaperDetail
-          description: Result items
-          items:
-            $ref: '#/components/schemas/B042PaperSearch_ChemicalPaperDetail'
+          example: 20
+          description: limit
         total:
           type: integer
           format: int64
           example: 100
-          description: Total
-    B004SequenceJob_OpenApiFilterParameter:
-      type: object
-      properties:
-        perc_identity:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-        q_perc_identity:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-        qcov_hsp_perc:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-        s_perc_identity:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-        scov_hsp_perc:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-        subject_length:
-          $ref: '#/components/schemas/B004SequenceJob_OpenAPiNumberRangeParameter'
-    B062ExtractSingleRequest:
-      type: object
-      properties:
-        extract_type:
-          type: string
-          example: EXTRACT_ALL
-          description: Extract Type(EXTRACT_ALL、EXTRACT_RANGE、EXTRACT_NUM、EXTRACT_MANUAL)
-        page:
+          description: Total count after filtering
+        offset:
           type: integer
           format: int32
-          example: 1
-          description: Current page number, start from 1
-        patent_id:
-          type: string
-          example: d10f8044-d3b9-4b53-b27f-b0f4fe9092cd
-          description: Patent ID
-        patent_number:
-          type: string
-          example: WO2004050828A2
-          description: Patent publication number. One of patent_number、patent_id must be filled in, and if they are filled in at the same time, patent_id shall prevail, followed by patent_number
-        sequence_length:
-          $ref: '#/components/schemas/B062ExtractSingle_OpenAPiNumberRangeParameter'
-        sequence_no_range:
-          type: string
-          example: 1-10
-          description: SEQ ID range(Example:1-10,23,24)
-        sequence_type:
-          type: string
-          example: PROTEIN
-          description: Sequence Type, PROTEIN or NUCLEOTIDE
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Current page result size, support maximum 100
-      required:
-      - extract_type
-      - page
-      - sequence_no_range
-      - size
-    B068-2DocanalyzerGetextractmaterial_ResultsWrapper:
-      type: object
-      properties:
-        pages_processed:
-          type: integer
-          format: int32
-          example: 10
-          description: Number of pages processed
-        language_results:
-          type: object
-          example:
-            en:
-              spum:
-              - unit: °C
-                property: Melting Point
-                substance: Polyethylene
-                measurement: 120-130
-                source_sentences:
-                - The melting point of polyethylene is typically between 120-130°C
-              processes:
-                process_1:
-                  steps:
-                  - action: Heat reactants to 120°C
-                    step_id: 1
-                    sub_process_name: Heating Reaction
-                  valid_steps: 3
-                  process_name: Polymerization Process
-                  process_type: Solution Polymerization
-                  process_domain: Polymer Materials
-                  source_section: Experimental Section
-                  process_sub_domain: Polymerization Reaction
-            zh:
-              spum:
-              - unit: °C
-                property: 熔点
-                substance: 聚乙烯
-                measurement: 120-130
-                source_sentences:
-                - 聚乙烯的熔点通常在120-130°C之间
-              processes:
-                process_1:
-                  steps:
-                  - action: 将反应物加热至120℃
-                    step_id: 1
-                    sub_process_name: 加热反应
-                  valid_steps: 5
-                  process_name: 聚合工艺
-                  process_type: 溶液聚合
-                  process_domain: 高分子材料
-                  source_section: 实验部分
-                  process_sub_domain: 聚合反应
-          description: Multi-language analysis results mapping
-    B0034JobResult_OpenApiSortField:
-      type: object
-      properties:
-        field:
-          type: string
-          example: perc_identity
-          description: Sorting Field. perc_identity、q_perc_identity、s_perc_identity、q_coverage、s_coverage、evalue
-        order:
-          type: string
-          example: desc
-          description: Sorting order. desc、asc
-      required:
-      - field
-      - order
-    B062ExtractSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B062ExtractSingle_ExtractResults'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B073KeywordSearch_ChemicalKeyWordResponse:
-      type: object
-      properties:
-        items:
+          example: 0
+          description: offset
+        results:
           type: array
-          example: 'Please check the form: CompoundStructureResult'
-          description: compound structure info list
+          example: Please check the form:SmilesReactionWithPn
+          description: Reaction data grouped by patent-number list
           items:
-            $ref: '#/components/schemas/B073KeywordSearch_CompoundStructureResult'
-    B075ReactionRoute_ChemicalReactionResponse.ReactionItem:
+            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.SmilesReactionWithPn'
+    B072-2ChemicalGettaskresult_ChemicalResultDetail:
       type: object
       properties:
-        products:
-          type: array
-          example: Please check the form:ReactantItem
-          description: Product list
-          items:
-            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactantItem'
-        reactants:
-          type: array
-          example: Please check the form:ReactantItem
-          description: Reactant list
-          items:
-            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactantItem'
-    B062ExtractSingle_OpenApiExtractHit:
-      type: object
-      properties:
-        s_len:
-          type: integer
-          format: int32
-          example: 123
-          description: Subject sequence length
-        seq_id:
+        inchi:
           type: string
-          example: 834879
-          description: Sequence ID
-        location:
-          type: object
-          example:
-            APP:
-            - '5'
-            FIG:
-            - 1A
-            PAGE:
-            - 55/56
-            ANNEX:
-            - '2'
-            TABLE:
-            - A-1
-            EXAMPLE:
-            - '8'
-          description: Sequence location in patent
-        s_sequence:
+          example: InChI=1S/C88H97Cl2N9O33/c1-3-4-5-6-7-8-9-10-60(108)94-68-74(113)71(110)58(32-101)129-87(68)132-78-55-26-40-27-56(78)126-52-18-14-38(24-47(52)90)77(131-86-67(92-34(2)103)73(112)70(109)57(31-100)128-86)69-84(121)98-66(85(122)123)45-29-42(105)30-54(127-88-76(115)75(114)72(111)59(33-102)130-88)61(45)44-23-37(13-15-49(44)106)63(81(118)99-69)96-83(120)65(40)97-82(119)64-39-21-41(104)28-43(22-39)124-53-25-36(12-16-50(53)107)62(91)80(117)93-48(79(116)95-64)20-35-11-17-51(125-55)46(89)19-35/h11-19,21-30,48,57-59,62-77,86-88,100-102,104-107,109-115H,3-10,20,31-33,91H2,1-2H3,(H,92,103)(H,93,117)(H,94,108)(H,95,116)(H,96,120)(H,97,119)(H,98,121)(H,99,118)(H,122,123)/t48-,57-,58-,59-,62-,63-,64+,65-,66+,67-,68-,69+,70-,71-,72-,73-,74-,75+,76+,77-,86+,87+,88+/m1/s1
+          description: InChI identifier
+        smiles:
           type: string
-          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
-          description: Subject sequence
-        sequence_type:
+          example: CCCCCCCCCC(=N[C@@H]1[C@H]([C@@H]([C@H](O[C@H]1OC2=C3C=C4C=C2OC5=C(C=C(C=C5)[C@H]([C@H]6C(=N[C@@H](C7=C(C(=CC(=C7)O)O[C@@H]8[C@H]([C@H]([C@@H]([C@H](O8)CO)O)O)O)C9=C(C=CC(=C9)[C@H](C(=N6)O)N=C([C@@H]4N=C([C@@H]1C2=CC(=CC(=C2)OC2=C(C=CC(=C2)[C@H](C(=N[C@H](CC2=CC(=C(O3)C=C2)Cl)C(=N1)O)O)N)O)O)O)O)C(=O)O)O)O[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)N=C(C)O)Cl)CO)O)O)O
+          description: SMILES structure
+        formula:
           type: string
-          example: PROTEIN
-          description: Sequence Type, PROTEIN or NUCLEOTIDE
-        sequence_id_number:
+          example: C88H97Cl2N9O33
+          description: Molecular formula
+        synonyms:
           type: array
           example:
-          - '1'
-          description: Sequence ID number in patent
-    B072-1ChemicalSubmittaskRequest:
-      type: object
-      properties:
-        limit:
+          - 91032-36-9
+          - テイコプラニン
+          - teicoplanin
+          - teichomycin
+          description: Synonyms list
+        inchi_key:
+          type: string
+          example: BJNLLBUOHPVGFT-PKMGYIMSSA-N
+          description: InChI Key
+        paper_num:
           type: integer
           format: int32
-          example: 10
-          description: Number of returned items, default 10.Maximum limit setting 100
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: page, default 1
+          example: 45
+          description: Total paper number
+        mol_weight:
+          type: number
+          format: double
+          example: 1879.67
+          description: Molecular weight
         patent_ids:
           type: array
           example:
           - 3b583fb3-4edc-45f9-9b8c-2d9a82f5a730
-          description: Patent ID list, either patent_ids or patent_numbers is required, if both are provided, patent_ids takes precedence, maximum 100
-        patent_numbers:
-          type: array
-          example:
-          - US20230233575A1
-          description: Patent number list, either patent_ids or patent_numbers is required, if both are provided, patent_ids takes precedence, maximum 100
-        range_max:
-          type: number
-          format: double
-          example: 888
-          description: Maximum molecular weight
-        range_min:
-          type: number
-          format: double
-          example: 30
-          description: Minimum molecular weight
-        source:
-          type: array
-          example:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          description: Source, 1:Manual | 2:Other | 3:Picture | 4:Claims | 5:Abstract | 6:Title | 7:Description
-      required:
-      - source
-    B003MotifJobRequest:
-      type: object
-      properties:
-        database:
-          type: array
-          example:
-          - ALLPATENT
-          description: 'Target Sequence Database,ALLPATENT (default) : Sequence published in patent title/abstract/claims/description;CLAIMS : Sequence published in patent claims;NONPATENT : Sequence published in non-patent publications'
-        limit:
+          description: Patent ID list
+        patent_num:
           type: integer
           format: int32
-          example: 1000
-          description: Maximum returned results of each query, support maximum 10,000
-        motif_sequence:
+          example: 42653
+          description: Total patent number
+        publication:
+          $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalResultEarliestPublished'
+        compound_name:
           type: string
-          example: RSMATC[AN]{0,1}
-          description: Query Motif Sequence
-        params:
-          $ref: '#/components/schemas/B003MotifJob_OpenApiMotifParameter'
-        query_type:
-          type: string
-          example: PROTEIN
-          description: Target Sequence Type. NUCLEOTIDE,PROTEIN
-        sequence_type:
-          type: string
-          example: PROTEIN
-          description: Query Sequence Type. NUCLEOTIDE,PROTEIN
-      required:
-      - limit
-      - motif_sequence
-      - params
-      - query_type
-      - sequence_type
-    B071ChemicalGetsingledata_PatentChemicalMentionPosition:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Page
-        position:
-          type: array
-          example:
-          - 0.2513
-          - 0.6182
-          - 0.3493
-          - 0.6696
-          description: Location
-    B068-1DocanalyzerSubmitpdfRequest:
-      type: object
-      properties:
-        file:
-          type: file
-          example: document.pdf
-          description: Upload file
-      required:
-      - file
-    B004SequenceJob_OpenApiBlastParameter:
-      type: object
-      properties:
-        algorithm:
-          type: string
-          example: blastn-short
-          description: Blast algorithm. nucleotide searching nucleotide uses megablast, blastn or blastn-short. nucleotide searching protein uses blastx-fast. protein searching protein uses blastp, blastp-fast or blastp-short. protein searching nucleotide uses tblastn-fast.
-        evalue:
-          type: number
-          format: float
-          example: 100
-          description: The higher you set this e-value threshold, the more results you are likely to see.E-Value indicates how likely it is that a sequence is similar to yours simply by chance. For instance, if your sequence is very short, there is a higher likelihood that it appears in several locations simply by chance. The greater the e-value, the more likely it is that this is just down to luck.
-        filter:
-          $ref: '#/components/schemas/B004SequenceJob_OpenApiFilterParameter'
-        with_gaps:
-          type: boolean
-          example: false
-          description: Matching with or without gaps indicates whether or not you want your sequence alignment to include gaps.
-        word_size:
-          type: integer
-          format: int32
-          example: 4
-          description: Length of initial exact match. For nucleotide searching nucleotide valid word sizes are >= 4, others are 2-7. With smaller word size, the matching will be more exact, but the time cost will be longer.
-      required:
-      - algorithm
-    B016SequenceInfo_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B063ExtractMultiRequest:
-      type: object
-      properties:
-        db_type:
-          type: array
-          example:
-          - ALLPATENT
-          description: Extract Range(Enumeration value：ALLPATENT、CLAIMS)
-        limit:
-          type: integer
-          format: int32
-          example: 50000
-          description: The maximum number of returned results is supported to be no more than 100,000, with a default value of 50,000
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number, start from 1
-        patent_ids:
-          type: array
-          example:
-          - d10f8044-d3b9-4b53-b27f-b0f4fe9092cd
-          description: Patent ID Collections, Input up to 100 patent IDs.
-        patent_numbers:
-          type: array
-          example:
-          - WO2004050828A2
-          description: Patent publication number collections, Input up to 100 patent Numbers.One of patent_numbers、patent_ids must be filled in, and if they are filled in at the same time, patent_ids shall prevail, followed by patent_numbers
-        sequence_length:
-          $ref: '#/components/schemas/B063ExtractMulti_OpenAPiNumberRangeParameter'
-        sequence_type:
-          type: string
-          example: PROTEIN
-          description: Sequence Type, PROTEIN or NUCLEOTIDE
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Current page result size, support maximum 100
-      required:
-      - db_type
-      - page
-      - size
-    B067-2OcsrTaskResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B067-2OcsrTask_OCSR任务状态查询响应'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: TEICOPLANIN A2-3 / (1S,2R,19R,22R,34S,37R,40R,52S)-22-amino-5,15-dichloro-64-[(2S,3R,4R,5S,6R)-4,5-dihydroxy-3-(1-hydroxydecylideneamino)-6-(hydroxymethyl)oxan-2-yl]oxy-2-[(2R,3R,4R,5S,6R)-4,5-dihydroxy-3-(1-hydroxyethylideneamino)-6-(hydroxymethyl)oxan-2-yl]oxy-21,26,31,35,38,44,49,54,56,59-decahydroxy-47-[(2R,3S,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-7,13,28-trioxa-20,36,39,53,55,58-hexazaundecacyclo[38.14.2.23,6.214,17.219,34.18,12.123,27.129,33.141,45.010,37.046,51]hexahexaconta-3,5,8,10,12(64),14,16,20,23(61),24,26,29(60),30,32,35,38,41(57),42,44,46(51),47,49,53,55,58,62,65-heptacosaene-52-carboxylic acid
+          description: Compound name
     B068-2ChatPccMoleculeResult_PccMoleculeResponse:
       type: object
       properties:
@@ -2767,31 +2205,11 @@ components:
           type: string
           example: 立体构型的关键性...
           description: Compound structure optimization strategy
-    B068-2DocanalyzerGetextractmaterialRequest:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: eeaba18b-a5b1-42c0-b2a8-1fc0a427b914
-          description: Job Id
-      required:
-      - job_id
-    B016SequenceInfo_BioGeneInfo:
-      type: object
-      properties:
-        name:
-          type: string
-          example: A1BG
-          description: Name
-        gene_id:
-          type: string
-          example: 2838b95ade834c96b17ac8bcd2b68c27
-          description: ID
-    B063ExtractMultiResponse:
+    B016SequenceInfoResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B063ExtractMulti_ExtractMultiResults'
+          $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoResponse'
         status:
           type: boolean
           example: 'false'
@@ -2807,20 +2225,86 @@ components:
       required:
       - status
       - error_code
-    B0034JobResult_Patent:
+    B075ReactionRoute_ChemicalReactionResponse.SmilesReactionWithPn:
+      type: object
+      properties:
+        pns:
+          type: array
+          example:
+          - US123A
+          description: Patent-number list shared by reactions in the same group
+        smiles_reactions:
+          type: array
+          example: Please check the form:ReactionItem
+          description: Reaction list, including reactants and products
+          items:
+            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactionItem'
+    B075ReactionRouteResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B068-2ChatPccMoleculeResult_AdmetPrediction:
+      type: object
+      properties:
+        hba:
+          type: integer
+          format: int32
+          example: 7
+          description: Hydrogen Bond Acceptors
+        hbd:
+          type: integer
+          format: int32
+          example: 1
+          description: Hydrogen Bond Donors
+        logp:
+          type: number
+          format: double
+          example: 4.75
+          description: LogP
+        tpsa:
+          type: number
+          format: double
+          example: 100.13
+          description: Topological Polar Surface Area (Å²)
+        compound_id:
+          type: string
+          example: 6B
+          description: Compound ID
+        molecular_weight:
+          type: number
+          format: double
+          example: 431.57
+          description: Molecular Weight (Da)
+    B014CompoundDetail_OpenPatentsItem:
       type: object
       properties:
         total:
           type: integer
           format: int32
           example: 1000
-          description: Total patent count of the sequence
+          description: Total Patent Count
         patents:
           type: array
-          example: 'Please check the form: OpenApiPatentDetail'
+          example: 'Please check the form: OpenPatentItem'
           description: Patent List
           items:
-            $ref: '#/components/schemas/B0034JobResult_OpenApiPatentDetail'
+            $ref: '#/components/schemas/B014CompoundDetail_OpenPatentItem'
     B015DrugCompoundPhysicochemicalProps_ChemicalToxnet:
       type: object
       properties:
@@ -2931,41 +2415,17 @@ components:
           example:
           - '53 mPa-s (=cP) at 75 deg C[Kirk-Othmer Encyclopedia of Chemical Technology. 4th ed. Volumes 1: New York, NY. John Wiley and Sons, 1991-Present., p. V1: 868 (1991)] **PEER REVIEWED** '
           description: Viscosity
-    B068-2DocanalyzerGetextractmaterialResponse:
+    B016SequenceInfo_BioGeneInfo:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B068-2DocanalyzerGetextractmaterial_DocAnalyzerJobStatusResponseDTO'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        name:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B003MotifJob_OpenApiResponseSequenceInfo:
-      type: object
-      properties:
-        label:
+          example: A1BG
+          description: Name
+        gene_id:
           type: string
-          example: SEQ1
-          description: User provided sequence label
-        job_id:
-          type: string
-          example: 953a406a18d84dc8b13f0b923e406a43
-          description: ID of the search job in backend, use this ID for subsequent API calls
-        sequence:
-          type: string
-          example: GGGAGGCTAAGGCAGGAG
-          description: User provided sequence
+          example: 2838b95ade834c96b17ac8bcd2b68c27
+          description: ID
     B016SequenceInfo_BioSequenceInfoResponse:
       type: object
       properties:
@@ -3039,191 +2499,94 @@ components:
           type: boolean
           example: false
           description: chemically modified
-    B014CompoundDetailResponse:
+    B003MotifJobRequest:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B014CompoundDetail_OpenCompoundDetailItem'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B003MotifJob_OpenApiMotifParameter:
-      type: object
-      properties:
-        filter:
-          $ref: '#/components/schemas/B003MotifJob_OpenApiMotifFilterParameter'
-    B063ExtractMulti_OpenAPiNumberRangeParameter:
-      type: object
-      properties:
-        end:
-          type: integer
-          format: int32
-          example: 100
-          description: End value
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start value
-    B075ReactionRoute_ChemicalReactionResponse.SmilesReactionWithPn:
-      type: object
-      properties:
-        pns:
+        database:
           type: array
           example:
-          - US123A
-          description: Patent-number list shared by reactions in the same group
-        smiles_reactions:
-          type: array
-          example: Please check the form:ReactionItem
-          description: Reaction list, including reactants and products
-          items:
-            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactionItem'
-    B0034JobResult_Results:
-      type: object
-      properties:
-        total:
+          - ALLPATENT
+          description: 'Target Sequence Database,ALLPATENT (default) : Sequence published in patent title/abstract/claims/description;CLAIMS : Sequence published in patent claims;NONPATENT : Sequence published in non-patent publications'
+        limit:
           type: integer
           format: int32
           example: 1000
-          description: Query Results Count
-        results:
-          type: array
-          example: 'Please check the form: OpenApiHit'
-          description: Query Results
-          items:
-            $ref: '#/components/schemas/B0034JobResult_OpenApiHit'
-    B067-2OcsrTask_OCSR化学结构识别结果:
-      type: object
-      properties:
-        sort:
-          type: integer
-          format: int32
-          example: 1
-          description: Sort Number
-        index:
-          type: integer
-          format: int32
-          example: 0
-          description: Index
-        names:
-          type: array
-          example:
-          - ALCOHOL
-          description: Name
-        smiles:
+          description: Maximum returned results of each query, support maximum 10,000
+        motif_sequence:
           type: string
-          example: CCO
-          description: SMILES String
-        formula:
+          example: RSMATC[AN]{0,1}
+          description: Query Motif Sequence
+        params:
+          $ref: '#/components/schemas/B003MotifJob_OpenApiMotifParameter'
+        query_type:
           type: string
-          example: C25H38O5
-          description: Formula
-        pdf_page:
+          example: PROTEIN
+          description: Target Sequence Type. NUCLEOTIDE,PROTEIN
+        sequence_type:
           type: string
-          example: 1
-          description: PDF Page
-        position:
-          type: array
-          example:
-          - 100
-          - 200
-          - 300
-          - 400
-          description: Structure Position in Page [x1, y1, x2, y2]
-        inchi_key:
-          type: string
-          example: LFQSCWFLJHTTHZ-UHFFFAOYSA-N
-          description: InChI Key
-        pdf_page_size:
-          type: array
-          example:
-          - 595
-          - 842
-          description: PDF Page Size [width, height]
-        isometric_smiles:
-          type: string
-          example: CC1CN(CCN1C2=NC(=O)N(C3=NC(=C(C=C32)F)C4=C(C=CC=C4F)O)C5=C(C=CN=C5C(C)C)C)C(=O)C=C
-          description: InChI Key
-        position_normalized:
-          type: array
-          example:
-          - 0.168
-          - 0.238
-          - 0.504
-          - 0.476
-          description: Normalized Position Coordinates [x1, y1, x2, y2] (0-1 range)
-    B042PaperSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B042PaperSearch_ChemicalPaperSearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
+          example: PROTEIN
+          description: Query Sequence Type. NUCLEOTIDE,PROTEIN
       required:
-      - status
-      - error_code
-    B0034JobResultRequest:
+      - limit
+      - motif_sequence
+      - params
+      - query_type
+      - sequence_type
+    B071ChemicalGetsingledataRequest:
       type: object
       properties:
-        job_id:
-          type: string
-          example: 953a406a18d84dc8b13f0b923e406a43
-          description: ID of the search job in backend, use this ID for subsequent API calls
+        exclude_reagents:
+          type: boolean
+          example: false
+          description: Exclude reagents
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of returned items, default 10.Maximum limit setting 1000
+        only_first:
+          type: boolean
+          example: false
+          description: Only show compounds that first appear in this patent
         page:
           type: integer
           format: int32
           example: 1
-          description: Current page number, start from 1
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Current page result size, support maximum 100
-        sort_field:
-          $ref: '#/components/schemas/B0034JobResult_OpenApiSortField'
-      required:
-      - job_id
-      - page
-      - size
-    B072-2ChemicalGettaskresult_ChemicalResultEarliestPublished:
-      type: object
-      properties:
+          description: page, default 1
+        patent_id:
+          type: string
+          example: f5817034-1395-4bc1-b0f2-eb712e66702c
+          description: Patent id
         patent_number:
           type: string
           example: US12497460B2
           description: Patent number
-        publication_date:
-          type: string
-          example: 06 Apr 1976
-          description: Publication date
-    B068-1DocanalyzerSubmitpdfResponse:
+        range_max:
+          type: number
+          format: double
+          example: 888
+          description: Maximum molecular weight
+        range_min:
+          type: number
+          format: double
+          example: 30
+          description: Minimum molecular weight
+        source:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          description: Source, 1:Manual | 2:Other | 3:Picture | 4:Claims | 5:Abstract | 6:Title | 7:Description
+    B072-2ChemicalGettaskresultResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B068-1DocanalyzerSubmitpdf_DocAnalyzerJobDataResult'
+          $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalSearchResultResponse'
         status:
           type: boolean
           example: 'false'
@@ -3239,17 +2602,272 @@ components:
       required:
       - status
       - error_code
-    B002CompoundPatents_OpenPatentItem:
+    B071ChemicalGetsingledata_PatentChemicalMention:
       type: object
       properties:
-        pn:
+        mwt:
+          type: number
+          format: double
+          example: 868.45
+          description: Molecular weight
+        smiles:
           type: string
-          example: JP1999068462A
-          description: Patent PN
+          example: CC1(CCC(=C(C1)C2=CC=C(C=C2)Cl)CN3CCN(CC3)C4=CC(=C(C=C4)C(=O)NS(=O)(=O)C5=CC(=C(C=C5)NCC6CCOCC6)[N+](=O)[O-])OC7=CN=C8C(=C7)C=CN8)C
+          description: SMILES structure
+        inchi_key:
+          type: string
+          example: LQBVNQSMGBZMKD-UHFFFAOYSA-N
+          description: InChI Key
         patent_id:
           type: string
-          example: 9050f544-32cf-4809-8036-fc577b69be48
-          description: Patent ID
+          example: f5817034-1395-4bc1-b0f2-eb712e66702c
+          description: Patent id
+        ta_mention:
+          type: integer
+          format: int32
+          example: 0
+          description: Title and abstract mention count
+        pdf_mention:
+          type: integer
+          format: int32
+          example: 0
+          description: PDF mention count
+        desc_mention:
+          type: integer
+          format: int32
+          example: 8
+          description: Description mention count
+        pdf_position:
+          type: array
+          example: Please check the form:PatentChemicalMentionPosition
+          description: PDF location
+          items:
+            $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalMentionPosition'
+        compound_name:
+          type: string
+          example: VENETOCLAX / 4-[4-[[2-(4-chlorophenyl)-4,4-dimethylcyclohexen-1-yl]methyl]piperazin-1-yl]-N-[3-nitro-4-(oxan-4-ylmethylamino)phenyl]sulfonyl-2-(1H-pyrrolo[2,3-b]pyridin-5-yloxy)benzamide
+          description: Compound name
+        claims_mention:
+          type: integer
+          format: int32
+          example: 1
+          description: Claims mention count
+        publication_date:
+          type: string
+          example: 20230727
+          description: public date
+    B067-1TaskSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B067-1TaskSubmit_OCSR'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B063ExtractMulti_OpenApiExtractMultiHit:
+      type: object
+      properties:
+        s_len:
+          type: integer
+          format: int32
+          example: 123
+          description: Subject sequence length
+        seq_id:
+          type: string
+          example: 834879
+          description: Sequence ID
+        antibody:
+          type: string
+          example: 'Yes'
+          description: Whether it is an antibody sequence
+        location:
+          type: object
+          example:
+            APP:
+            - '5'
+            FIG:
+            - 1A
+            PAGE:
+            - 55/56
+            ANNEX:
+            - '2'
+            TABLE:
+            - A-1
+            EXAMPLE:
+            - '8'
+          description: Sequence location in patent
+        s_sequence:
+          type: string
+          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
+          description: Subject sequence
+        patent_number:
+          type: string
+          example: WO2004050828A2
+          description: Patent publication number
+        sequence_type:
+          type: string
+          example: PROTEIN
+          description: Sequence Type, PROTEIN or NUCLEOTIDE
+        total_per_patent:
+          type: integer
+          format: int32
+          example: 100
+          description: The total number of a single patent sequence
+        claimed_in_patent:
+          type: string
+          example: 1
+          description: Whether it is disclosed in the claims
+        sequence_id_number:
+          type: array
+          example:
+          - '1'
+          description: Sequence ID number in patent
+    B001ChemicalOpenapiCompound_OpenCompoundItem:
+      type: object
+      properties:
+        inchi_key:
+          type: string
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: InchiKey
+        similarity:
+          type: number
+          format: float
+          example: 0.98
+          description: 'Similarity. Structure Similarity
+
+
+            Tanimoto structure similarity score
+
+            For similarity search only'
+        paper_count:
+          type: integer
+          format: int32
+          example: 20
+          description: Related paper count
+        patent_count:
+          type: integer
+          format: int32
+          example: 20
+          description: Related patent count
+    B068-1ChatPccMoleculeTaskResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B068-1ChatPccMoleculeTask_PccTaskResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B068-2DocanalyzerGetextractmaterial_ResultsWrapper:
+      type: object
+      properties:
+        pages_processed:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of pages processed
+        language_results:
+          type: object
+          example:
+            en:
+              spum:
+              - unit: °C
+                property: Melting Point
+                substance: Polyethylene
+                measurement: 120-130
+                source_sentences:
+                - The melting point of polyethylene is typically between 120-130°C
+              processes:
+                process_1:
+                  steps:
+                  - action: Heat reactants to 120°C
+                    step_id: 1
+                    sub_process_name: Heating Reaction
+                  valid_steps: 3
+                  process_name: Polymerization Process
+                  process_type: Solution Polymerization
+                  process_domain: Polymer Materials
+                  source_section: Experimental Section
+                  process_sub_domain: Polymerization Reaction
+            zh:
+              spum:
+              - unit: °C
+                property: 熔点
+                substance: 聚乙烯
+                measurement: 120-130
+                source_sentences:
+                - 聚乙烯的熔点通常在120-130°C之间
+              processes:
+                process_1:
+                  steps:
+                  - action: 将反应物加热至120℃
+                    step_id: 1
+                    sub_process_name: 加热反应
+                  valid_steps: 5
+                  process_name: 聚合工艺
+                  process_type: 溶液聚合
+                  process_domain: 高分子材料
+                  source_section: 实验部分
+                  process_sub_domain: 聚合反应
+          description: Multi-language analysis results mapping
+    B016SequenceInfo_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B071ChemicalGetsingledata_PatentChemicalResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of items per page
+        items:
+          type: array
+          example: Please check the form:PatentChemicalMention
+          description: Result items list
+          items:
+            $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalMention'
+        total:
+          type: integer
+          format: int32
+          example: 8
+          description: Total number of records
     B042PaperSearch_ChemicalPaperDetail:
       type: object
       properties:
@@ -3311,112 +2929,11 @@ components:
           format: int32
           example: 5
           description: Structure Count
-    B003MotifJob_OpenApiMotifFilterParameter:
-      type: object
-      properties:
-        scov_hsp_perc:
-          $ref: '#/components/schemas/B003MotifJob_OpenAPiNumberRangeParameter'
-        subject_length:
-          $ref: '#/components/schemas/B003MotifJob_OpenAPiNumberRangeParameter'
-    B075ReactionRoute_ChemicalReactionResponse.AmountUnit:
-      type: object
-      properties:
-        unit:
-          type: string
-          example: mmol
-          description: Unit
-        value:
-          type: string
-          example: 1
-          description: Value
-    B072-2ChemicalGettaskresult_ChemicalResultDetail:
-      type: object
-      properties:
-        inchi:
-          type: string
-          example: InChI=1S/C88H97Cl2N9O33/c1-3-4-5-6-7-8-9-10-60(108)94-68-74(113)71(110)58(32-101)129-87(68)132-78-55-26-40-27-56(78)126-52-18-14-38(24-47(52)90)77(131-86-67(92-34(2)103)73(112)70(109)57(31-100)128-86)69-84(121)98-66(85(122)123)45-29-42(105)30-54(127-88-76(115)75(114)72(111)59(33-102)130-88)61(45)44-23-37(13-15-49(44)106)63(81(118)99-69)96-83(120)65(40)97-82(119)64-39-21-41(104)28-43(22-39)124-53-25-36(12-16-50(53)107)62(91)80(117)93-48(79(116)95-64)20-35-11-17-51(125-55)46(89)19-35/h11-19,21-30,48,57-59,62-77,86-88,100-102,104-107,109-115H,3-10,20,31-33,91H2,1-2H3,(H,92,103)(H,93,117)(H,94,108)(H,95,116)(H,96,120)(H,97,119)(H,98,121)(H,99,118)(H,122,123)/t48-,57-,58-,59-,62-,63-,64+,65-,66+,67-,68-,69+,70-,71-,72-,73-,74-,75+,76+,77-,86+,87+,88+/m1/s1
-          description: InChI identifier
-        smiles:
-          type: string
-          example: CCCCCCCCCC(=N[C@@H]1[C@H]([C@@H]([C@H](O[C@H]1OC2=C3C=C4C=C2OC5=C(C=C(C=C5)[C@H]([C@H]6C(=N[C@@H](C7=C(C(=CC(=C7)O)O[C@@H]8[C@H]([C@H]([C@@H]([C@H](O8)CO)O)O)O)C9=C(C=CC(=C9)[C@H](C(=N6)O)N=C([C@@H]4N=C([C@@H]1C2=CC(=CC(=C2)OC2=C(C=CC(=C2)[C@H](C(=N[C@H](CC2=CC(=C(O3)C=C2)Cl)C(=N1)O)O)N)O)O)O)O)C(=O)O)O)O[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)N=C(C)O)Cl)CO)O)O)O
-          description: SMILES structure
-        formula:
-          type: string
-          example: C88H97Cl2N9O33
-          description: Molecular formula
-        synonyms:
-          type: array
-          example:
-          - 91032-36-9
-          - テイコプラニン
-          - teicoplanin
-          - teichomycin
-          description: Synonyms list
-        inchi_key:
-          type: string
-          example: BJNLLBUOHPVGFT-PKMGYIMSSA-N
-          description: InChI Key
-        paper_num:
-          type: integer
-          format: int32
-          example: 45
-          description: Total paper number
-        mol_weight:
-          type: number
-          format: double
-          example: 1879.67
-          description: Molecular weight
-        patent_ids:
-          type: array
-          example:
-          - 3b583fb3-4edc-45f9-9b8c-2d9a82f5a730
-          description: Patent ID list
-        patent_num:
-          type: integer
-          format: int32
-          example: 42653
-          description: Total patent number
-        publication:
-          $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalResultEarliestPublished'
-        compound_name:
-          type: string
-          example: TEICOPLANIN A2-3 / (1S,2R,19R,22R,34S,37R,40R,52S)-22-amino-5,15-dichloro-64-[(2S,3R,4R,5S,6R)-4,5-dihydroxy-3-(1-hydroxydecylideneamino)-6-(hydroxymethyl)oxan-2-yl]oxy-2-[(2R,3R,4R,5S,6R)-4,5-dihydroxy-3-(1-hydroxyethylideneamino)-6-(hydroxymethyl)oxan-2-yl]oxy-21,26,31,35,38,44,49,54,56,59-decahydroxy-47-[(2R,3S,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-7,13,28-trioxa-20,36,39,53,55,58-hexazaundecacyclo[38.14.2.23,6.214,17.219,34.18,12.123,27.129,33.141,45.010,37.046,51]hexahexaconta-3,5,8,10,12(64),14,16,20,23(61),24,26,29(60),30,32,35,38,41(57),42,44,46(51),47,49,53,55,58,62,65-heptacosaene-52-carboxylic acid
-          description: Compound name
-    B016SequenceInfoRequest:
-      type: object
-    B072-2ChemicalGettaskresult_ChemicalSearchResultResponse:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        size:
-          type: integer
-          format: int32
-          example: 10
-          description: Number of items per page
-        total:
-          type: integer
-          format: int32
-          example: 180
-          description: Total number of records
-        status:
-          type: string
-          example: SUCCESS
-          description: Response status
-        results:
-          type: array
-          example: Please check the form:ChemicalResultDetail
-          description: Chemical compound results list
-          items:
-            $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalResultDetail'
-    B072-1ChemicalSubmittaskResponse:
+    B068-2ChatPccMoleculeResultResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B072-1ChemicalSubmittask_ChemicalSearchTaskResponse'
+          $ref: '#/components/schemas/B068-2ChatPccMoleculeResult_PccMoleculeResponse'
         status:
           type: boolean
           example: 'false'
@@ -3432,11 +2949,18 @@ components:
       required:
       - status
       - error_code
-    B0034JobResultResponse:
+    B068-1DocanalyzerSubmitpdf_DocAnalyzerJobDataResult:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: eeaba18b-a5b1-42c0-b2a8-1fc0a427b914
+          description: job id
+    B067-2OcsrTaskResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B0034JobResult_Results'
+          $ref: '#/components/schemas/B067-2OcsrTask_OCSR'
         status:
           type: boolean
           example: 'false'
@@ -3459,107 +2983,59 @@ components:
           type: string
           example: 8f1fbc521be54612940b894cf532198d
           description: Task ID for querying task results later
-    B004SequenceJobRequest:
+    B014CompoundDetail_OpenCompoundDetailItem:
       type: object
       properties:
-        database:
+        inchi:
+          type: string
+          example: InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)
+          description: Structure Inchi
+        names:
           type: array
           example:
-          - ALLPATENT
-          description: 'Target Sequence Database,ALLPATENT (default) : Sequence published in patent title/abstract/claims/description;CLAIMS : Sequence published in patent claims;NONPATENT : Sequence published in non-patent publications'
-        limit:
-          type: integer
-          format: int32
-          example: 1000
-          description: Maximum returned results of each query, support maximum 10,000
-        params:
-          $ref: '#/components/schemas/B004SequenceJob_OpenApiBlastParameter'
-        query_type:
-          type: string
-          example: NUCLEOTIDE
-          description: Target Sequence Type. NUCLEOTIDE,PROTEIN
-        sequence_list:
+          - Aspirin
+          - 2-acetyloxybenzoic acid
+          description: Structure Names
+        cas_nos:
           type: array
-          example: 'Please check the form: OpenApiRequestSequenceInfo'
-          description: Query Sequence, support single input query
-          items:
-            $ref: '#/components/schemas/B004SequenceJob_OpenApiRequestSequenceInfo'
-        sequence_type:
+          example:
+          - 2296729-00-3
+          description: CAS NO
+        formula:
           type: string
-          example: NUCLEOTIDE
-          description: Query Sequence Type. NUCLEOTIDE,PROTEIN
-      required:
-      - limit
-      - params
-      - query_type
-      - sequence_list
-      - sequence_type
-    B016SequenceInfoResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B016SequenceInfo_BioSequenceInfoResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B073KeywordSearch_CompoundStructureResult:
-      type: object
-      properties:
-        smiles:
-          type: string
-          example: CCC(C)(C)C(=O)OC1CC(C)C=C2C=CC(C)C(CCC1)C12
-          description: SMILES molecular formula
+          example: C9H8O4
+          description: Molecular formula
+        patents:
+          $ref: '#/components/schemas/B014CompoundDetail_OpenPatentsItem'
+        synonyms:
+          type: array
+          example:
+          - CDX
+          description: Synonyms
         inchi_key:
           type: string
-          example: NPDFVGFXQSJBAA-ZBDDBYLNSA-N
-          description: InChI Key identifier
-        compound_name:
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: InchiKey
+        iupac_name:
           type: string
-          example: Simvastatin
-          description: compound name
-        structure_image_url:
+          example: 2-acetyloxybenzoic acid
+          description: IUPAC name
+        mol_weight:
+          type: number
+          format: double
+          example: 363.39
+          description: Mol Weight
+        canonical_smiles:
           type: string
-          example: https://xxx.com/uploadsearch/2026-04-23/1776927563885-e23566962a894d088c1cf01637320034-image.png
-          description: chemical structure image URL
-    B062ExtractSingle_OpenAPiNumberRangeParameter:
-      type: object
-      properties:
-        end:
-          type: integer
-          format: int32
-          example: 100
-          description: End value
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start value
-    B004SequenceJob_OpenAPiNumberRangeParameter:
-      type: object
-      properties:
-        end:
-          type: integer
-          format: int32
-          example: 100
-          description: End value
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start value
-    B005SequencePatentRequest:
+          example: CC(=O)OC1=CC=CC=C1C(O)=O
+          description: Structure Canonical Smiles
+        cross_references:
+          $ref: '#/components/schemas/B014CompoundDetail_OpenCompoundCrossDTO'
+        isometric_smiles:
+          type: string
+          example: CC(=O)OC1=CC=CC=C1C(O)=O
+          description: Structure Isometric Smiles
+    B063ExtractMulti_ExtractMultiResults:
       type: object
       properties:
         page:
@@ -3567,35 +3043,110 @@ components:
           format: int32
           example: 1
           description: Current page number, start from 1
-        seq_id:
-          type: string
-          example: 834879
-          description: Sequence ID
         size:
           type: integer
           format: int32
           example: 10
           description: Current page result size, support maximum 100
-      required:
-      - page
-      - seq_id
-      - size
-    B067-1TaskSubmit_OCSR任务提交响应:
+        limit:
+          type: integer
+          format: int32
+          example: 50000
+          description: The maximum number of returned results is supported to be no more than 100,000, with a default value of 50,000
+        total:
+          type: integer
+          format: int32
+          example: 1000
+          description: Query Results Count
+        results:
+          type: array
+          example: 'Please check the form: OpenApiExtractMultiHit'
+          description: Query Results
+          items:
+            $ref: '#/components/schemas/B063ExtractMulti_OpenApiExtractMultiHit'
+    B016SequenceInfoRequest:
+      type: object
+    B0034JobResult_OpenApiHit:
       type: object
       properties:
-        status:
+        gaps:
+          type: integer
+          format: int32
+          example: 0
+          description: Total number of gap
+        hsps:
+          type: array
+          example: 'Please check the form: OpenApiHsps'
+          description: Hit information
+          items:
+            $ref: '#/components/schemas/B0034JobResult_OpenApiHsps'
+        s_len:
+          type: integer
+          format: int32
+          example: 123
+          description: Subject sequence length
+        score:
+          type: number
+          format: double
+          example: 68.45
+          description: Raw Score
+        evalue:
           type: string
-          example: SUCCESS
-          description: 'Task Status: PENDING(Pending), PROCESSING(Processing), SUCCESS(Success), FAILED(Failed)'
-        task_id:
+          example: 1.12271e-54
+          description: The higher you set this e-value threshold, the more results you are likely to see.E-Value indicates how likely it is that a sequence is similar to yours simply by chance. For instance, if your sequence is very short, there is a higher likelihood that it appears in several locations simply by chance. The greater the e-value, the more likely it is that this is just down to luck.
+        seq_id:
           type: string
-          example: 8ba05f32a656423fad4876ac7e65ee7a
-          description: Task ID
-    B068-1ChatPccMoleculeTaskResponse:
+          example: 834879
+          description: Sequence ID
+        patents:
+          $ref: '#/components/schemas/B0034JobResult_Patent'
+        identity:
+          type: string
+          example: 93/123
+          description: Blast Identity value
+        positive:
+          type: string
+          example: 104/123
+          description: Positive value
+        bit_score:
+          type: number
+          format: double
+          example: 68.45
+          description: Bit Score
+        q_coverage:
+          type: number
+          format: double
+          example: 68.45
+          description: Coverage percentage of query sequence
+        s_coverage:
+          type: number
+          format: double
+          example: 68.45
+          description: Coverage percentage of subject sequence
+        s_sequence:
+          type: string
+          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
+          description: Subject sequence
+        perc_identity:
+          type: number
+          format: double
+          example: 87.34
+          description: Identity percentage value
+        q_perc_identity:
+          type: number
+          format: double
+          example: 87.34
+          description: Identity percentage value of query sequence
+        s_perc_identity:
+          type: number
+          format: double
+          example: 87.34
+          description: Identity percentage value of subject sequence
+    B0034JobStatusResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B068-1ChatPccMoleculeTask_PccTaskResponse'
+          $ref: '#/components/schemas/B0034JobStatus_StatusResponse'
         status:
           type: boolean
           example: 'false'
@@ -3611,107 +3162,11 @@ components:
       required:
       - status
       - error_code
-    B004SequenceJob_OpenApiRequestSequenceInfo:
-      type: object
-      properties:
-        label:
-          type: string
-          example: SEQ1
-          description: User provided sequence label
-        sequence:
-          type: string
-          example: GGGAGGCTAAGGCAGGAG
-          description: User provided sequence
-    B063ExtractMulti_OpenApiExtractMultiHit:
-      type: object
-      properties:
-        s_len:
-          type: integer
-          format: int32
-          example: 123
-          description: Subject sequence length
-        seq_id:
-          type: string
-          example: 834879
-          description: Sequence ID
-        antibody:
-          type: string
-          example: 'Yes'
-          description: Whether it is an antibody sequence
-        location:
-          type: object
-          example:
-            APP:
-            - '5'
-            FIG:
-            - 1A
-            PAGE:
-            - 55/56
-            ANNEX:
-            - '2'
-            TABLE:
-            - A-1
-            EXAMPLE:
-            - '8'
-          description: Sequence location in patent
-        s_sequence:
-          type: string
-          example: MQPDLHSRALAAHTLHQFRTLSPLTHCMTNEVVQSFTANTLLALGASPAMVIEPEEASQFAAIASALLVNVGTLTQERATAMRAAVERAYHAKTPWTLDPVAVGALEFRRRFCLDLLSLQPAA
-          description: Subject sequence
-        patent_number:
-          type: string
-          example: WO2004050828A2
-          description: Patent publication number
-        sequence_type:
-          type: string
-          example: PROTEIN
-          description: Sequence Type, PROTEIN or NUCLEOTIDE
-        total_per_patent:
-          type: integer
-          format: int32
-          example: 100
-          description: The total number of a single patent sequence
-        claimed_in_patent:
-          type: string
-          example: 1
-          description: Whether it is disclosed in the claims
-        sequence_id_number:
-          type: array
-          example:
-          - '1'
-          description: Sequence ID number in patent
-    B042PaperSearchRequest:
-      type: object
-      properties:
-        inchi_key_id:
-          type: string
-          example: 126213117
-          description: InChI Key ID
-        lang:
-          type: string
-          example: CN
-          description: 'Language, support: CN, EN'
-        page:
-          type: integer
-          format: int32
-          example: 1
-          description: Page number, starting from 1, default 1
-        rows:
-          type: integer
-          format: int32
-          example: 100
-          description: Rows per page, default 10, maximum 100
-        sort_order:
-          type: string
-          example: desc
-          description: Sort by published time, sort order, support:desc,asc
-      required:
-      - inchi_key_id
-    B076V1OcsrResponse:
+    B042PaperSearchResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B076V1Ocsr_OcsrResponse'
+          $ref: '#/components/schemas/B042PaperSearch_ChemicalPaperSearchResponse'
         status:
           type: boolean
           example: 'false'
@@ -3762,6 +3217,340 @@ components:
             error_code: TIMEOUT
             error_message: Task timeout
           description: Error details
+    B004SequenceJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B004SequenceJob_OpenApiResponseSequenceInfo'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B0034JobResult_OpenApiSortField:
+      type: object
+      properties:
+        field:
+          type: string
+          example: perc_identity
+          description: Sorting Field. perc_identity、q_perc_identity、s_perc_identity、q_coverage、s_coverage、evalue
+        order:
+          type: string
+          example: desc
+          description: Sorting order. desc、asc
+      required:
+      - field
+      - order
+    B068-2ChatPccMoleculeResult_MoleculeRecommendation:
+      type: object
+      properties:
+        rank:
+          type: integer
+          format: int32
+          example: 1
+          description: Rank
+        smiles:
+          type: string
+          example: CC[C@H]1CCC[C@]1(N)COc1cc(-c2cnc3cccc(C#N)n23)cc(SC)c1C#N
+          description: Molecular structure (SMILES)
+        example:
+          type: string
+          example: 6B
+          description: Example ID
+        molecule_id:
+          type: string
+          example: 6B
+          description: Molecule ID
+        example_page:
+          type: string
+          example: P28
+          description: Page reference of the example
+        key_data_page:
+          type: string
+          example: P51
+          description: Page reference of key data source
+        molecule_image:
+          type: string
+          example: '#123'
+          description: Molecule structure image reference
+        molecule_id_page:
+          type: string
+          example: P28
+          description: Page reference of the molecule ID
+        recommend_reason:
+          type: string
+          example: '...'
+          description: Recommendation reason
+        key_data_highlights:
+          type: string
+          example: 'SIK1 IC₅₀: 0.1 nM, TNFα IC₅₀: 0.5 nM, IL10 EC₅₀: 2 nM'
+          description: Key data highlights, such as IC50 activity data
+    B042PaperSearch_ChemicalPaperSearchResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        rows:
+          type: integer
+          format: int32
+          example: 10
+          description: Rows per page
+        items:
+          type: array
+          example: Please check the form:ChemicalPaperDetail
+          description: Result items
+          items:
+            $ref: '#/components/schemas/B042PaperSearch_ChemicalPaperDetail'
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Total
+    B005SequencePatent_OpenApiPatentDetail:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: Patent publication number
+        claimed:
+          type: boolean
+          example: true
+          description: Whether the subject sequence is in patent claims
+        location:
+          type: object
+          example:
+            APP:
+            - '5'
+            FIG:
+            - 1A
+            PAGE:
+            - 55/56
+            ANNEX:
+            - '2'
+            TABLE:
+            - A-1
+            EXAMPLE:
+            - '8'
+          description: Sequence location in patent
+        patent_id:
+          type: string
+          example: 94ea8785-959f-47cf-aba2-091605d30c12
+          description: Patent ID
+        sequence_id_number:
+          type: array
+          example:
+          - '1'
+          description: Sequence ID number in patent
+    B073KeywordSearchRequest:
+      type: object
+    B0034JobResult_OpenApiPatentDetail:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: Patent publication number
+        claimed:
+          type: boolean
+          example: true
+          description: Whether the subject sequence is in patent claims
+        location:
+          type: object
+          example:
+            APP:
+            - '5'
+            FIG:
+            - 1A
+            PAGE:
+            - 55/56
+            ANNEX:
+            - '2'
+            TABLE:
+            - A-1
+            EXAMPLE:
+            - '8'
+          description: Sequence location in patent
+        patent_id:
+          type: string
+          example: 94ea8785-959f-47cf-aba2-091605d30c12
+          description: Patent ID
+        sequence_id_number:
+          type: array
+          example:
+          - '1'
+          description: Sequence ID number in patent
+    B004SequenceJobRequest:
+      type: object
+      properties:
+        database:
+          type: array
+          example:
+          - ALLPATENT
+          description: 'Target Sequence Database,ALLPATENT (default) : Sequence published in patent title/abstract/claims/description;CLAIMS : Sequence published in patent claims;NONPATENT : Sequence published in non-patent publications'
+        limit:
+          type: integer
+          format: int32
+          example: 1000
+          description: Maximum returned results of each query, support maximum 10,000
+        params:
+          $ref: '#/components/schemas/B004SequenceJob_OpenApiBlastParameter'
+        query_type:
+          type: string
+          example: NUCLEOTIDE
+          description: Target Sequence Type. NUCLEOTIDE,PROTEIN
+        sequence_list:
+          type: array
+          example: 'Please check the form: OpenApiRequestSequenceInfo'
+          description: Query Sequence, support single input query
+          items:
+            $ref: '#/components/schemas/B004SequenceJob_OpenApiRequestSequenceInfo'
+        sequence_type:
+          type: string
+          example: NUCLEOTIDE
+          description: Query Sequence Type. NUCLEOTIDE,PROTEIN
+      required:
+      - limit
+      - params
+      - query_type
+      - sequence_list
+      - sequence_type
+    B075ReactionRoute_ChemicalReactionResponse.ReactionItem:
+      type: object
+      properties:
+        products:
+          type: array
+          example: Please check the form:ReactantItem
+          description: Product list
+          items:
+            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactantItem'
+        reactants:
+          type: array
+          example: Please check the form:ReactantItem
+          description: Reactant list
+          items:
+            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.ReactantItem'
+    B067-2OcsrTask_OCSR:
+      type: object
+      properties:
+        result:
+          type: array
+          example:
+          - sort: 1
+            index: 0
+            names:
+            - ALCOHOL
+            smiles: CCO
+            formula: C25H38O5
+            pdf_page: '1'
+            position:
+            - 100
+            - 200
+            - 300
+            - 400
+            inchi_key: LFQSCWFLJHTTHZ-UHFFFAOYSA-N
+            pdf_page_size:
+            - 595
+            - 842
+            isometric_smiles: '[H][C@]12[C@H](C[C@@H](C)C=C1C=C[C@H](C)[C@@H]2CC[C@@H]1C[C@@H](O)CC(=O)O1)OC(=O)C(C)(C)CC'
+            position_normalized:
+            - 0.168
+            - 0.238
+            - 0.504
+            - 0.476
+          description: OCSR Recognition Results
+          items:
+            $ref: '#/components/schemas/B067-2OcsrTask_OCSR_2'
+        status:
+          type: string
+          example: SUCCESS
+          description: 'Task Status: PENDING(Pending), PROCESSING(Processing), SUCCESS(Success), FAILED(Failed)'
+        task_id:
+          type: string
+          example: oscr_20250122_abc123
+          description: Task ID
+    B003MotifJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B003MotifJob_OpenApiResponseSequenceInfo'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B075ReactionRoute_ChemicalReactionResponse.ReactantItem:
+      type: object
+      properties:
+        smiles:
+          type: string
+          example: CC(=O)Oc1ccccc1C(=O)O
+          description: Compound SMILES
+        inchi_key:
+          type: string
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: Compound InChI Key
+        amount_units:
+          type: array
+          example: Please check the form:AmountUnit
+          description: Amount and unit
+          items:
+            $ref: '#/components/schemas/B075ReactionRoute_ChemicalReactionResponse.AmountUnit'
+        compound_name:
+          type: string
+          example: Aspirin
+          description: Compound name
+    B071ChemicalGetsingledataResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B071ChemicalGetsingledata_PatentChemicalResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     B005SequencePatent_Patent:
       type: object
       properties:
@@ -3776,6 +3565,217 @@ components:
           description: Patent List
           items:
             $ref: '#/components/schemas/B005SequencePatent_OpenApiPatentDetail'
+    B002CompoundPatents_OpenPatentItem:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: Patent PN
+        patent_id:
+          type: string
+          example: 9050f544-32cf-4809-8036-fc577b69be48
+          description: Patent ID
+    B075ReactionRouteRequest:
+      type: object
+      properties:
+        inchi_key:
+          type: string
+          example: FDLYAMZZIXQODN-UHFFFAOYSA-N
+          description: Compound InChI Key, required
+        limit:
+          type: integer
+          format: int32
+          example: 20
+          description: Limit, default 20. limit up to 100, and offset + limit must be no more than 10000.
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: Offset, default 0
+        pn:
+          type: string
+          example: US8247416
+          description: Patent number for exact filtering. If omitted, no patent-number filter is applied.
+        type:
+          type: string
+          example: product
+          description: Compound side in the reaction, required, supports reactant and product.
+      required:
+      - inchi_key
+      - type
+    B0034JobStatus_StatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCESS
+          description: Backend job status, including following valid status. QUEUEING,RUNNING,SUCCESS,TIMEOUT,ERROR
+        message:
+          type: string
+          example: Invalid input xxx
+          description: Detailed message of ERROR status
+    B072-2ChemicalGettaskresult_ChemicalSearchResultResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        size:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of items per page
+        total:
+          type: integer
+          format: int32
+          example: 180
+          description: Total number of records
+        status:
+          type: string
+          example: SUCCESS
+          description: Response status
+        results:
+          type: array
+          example: Please check the form:ChemicalResultDetail
+          description: Chemical compound results list
+          items:
+            $ref: '#/components/schemas/B072-2ChemicalGettaskresult_ChemicalResultDetail'
+    B004SequenceJob_OpenAPiNumberRangeParameter:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
+          example: 100
+          description: End value
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start value
+    B068-2DocanalyzerGetextractmaterialRequest:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: eeaba18b-a5b1-42c0-b2a8-1fc0a427b914
+          description: Job Id
+      required:
+      - job_id
+    B002CompoundPatentsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B002CompoundPatents_OpenPatentsItem'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B004SequenceJob_OpenApiBlastParameter:
+      type: object
+      properties:
+        algorithm:
+          type: string
+          example: blastn-short
+          description: Blast algorithm. nucleotide searching nucleotide uses megablast, blastn or blastn-short. nucleotide searching protein uses blastx-fast. protein searching protein uses blastp, blastp-fast or blastp-short. protein searching nucleotide uses tblastn-fast.
+        evalue:
+          type: number
+          format: float
+          example: 100
+          description: The higher you set this e-value threshold, the more results you are likely to see.E-Value indicates how likely it is that a sequence is similar to yours simply by chance. For instance, if your sequence is very short, there is a higher likelihood that it appears in several locations simply by chance. The greater the e-value, the more likely it is that this is just down to luck.
+        filter:
+          $ref: '#/components/schemas/B004SequenceJob_OpenApiFilterParameter'
+        with_gaps:
+          type: boolean
+          example: false
+          description: Matching with or without gaps indicates whether or not you want your sequence alignment to include gaps.
+        word_size:
+          type: integer
+          format: int32
+          example: 4
+          description: Length of initial exact match. For nucleotide searching nucleotide valid word sizes are >= 4, others are 2-7. With smaller word size, the matching will be more exact, but the time cost will be longer.
+      required:
+      - algorithm
+    B068-1DocanalyzerSubmitpdfResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B068-1DocanalyzerSubmitpdf_DocAnalyzerJobDataResult'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B072-1ChemicalSubmittaskRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of returned items, default 10.Maximum limit setting 100
+        page:
+          type: integer
+          format: int32
+          example: 1
+          description: page, default 1
+        patent_ids:
+          type: array
+          example:
+          - 3b583fb3-4edc-45f9-9b8c-2d9a82f5a730
+          description: Patent ID list, either patent_ids or patent_numbers is required, if both are provided, patent_ids takes precedence, maximum 100
+        patent_numbers:
+          type: array
+          example:
+          - US20230233575A1
+          description: Patent number list, either patent_ids or patent_numbers is required, if both are provided, patent_ids takes precedence, maximum 100
+        range_max:
+          type: number
+          format: double
+          example: 888
+          description: Maximum molecular weight
+        range_min:
+          type: number
+          format: double
+          example: 30
+          description: Minimum molecular weight
+        source:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          description: Source, 1:Manual | 2:Other | 3:Picture | 4:Claims | 5:Abstract | 6:Title | 7:Description
+      required:
+      - source
   securitySchemes:
     bearerAuth:
       type: http

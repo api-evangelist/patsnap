@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Tech Solution Exploration API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tech Solution Exploration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI33-1 Find-solution - Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step1/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a find-solution task and get recommendation options, used as the first step in multi-step technical solution generation process"
+        },
+        {
+          "info": {
+            "name": "AI33-2 Find-solution - Get Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step2/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get recommendation options based on the task_id returned from step 1"
+        },
+        {
+          "info": {
+            "name": "AI33-5 Find-solution - Select Direction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step4/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit user-selected direction options and start the final solution generation process"
+        },
+        {
+          "info": {
+            "name": "AI33-4 Find-solution - Get Direction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step3-query/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the direction option results for technical solutions"
+        },
+        {
+          "info": {
+            "name": "AI33-3 Find-solution - Select Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step3-submit/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit user-selected recommendation options and start the direction generation process"
+        },
+        {
+          "info": {
+            "name": "AI33-6 Find-solution - Get Final Solution and Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/find-solution/step5/v3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the final results of technical solution exploration, including complete solution data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1749 @@
+{
+  "item": [
+    {
+      "id": "9e344e2a-b8f3-4965-9bba-d2c8bf1fb72c",
+      "name": "Insights Company Report",
+      "description": {
+        "content": "Insights Company Report APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b32edf62-debb-4d37-aa9b-ee21c3dae0c6",
+          "name": "Submit a new Landscape job",
+          "request": {
+            "name": "Submit a new Landscape job",
+            "description": {
+              "content": "Create a new Landscape analysis job to process patent collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.patsnap.v1.0.0+json,application/vnd.zhihuiya.v1.0.0+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<string>\",\n  \"q\": \"<string>\",\n  \"request_type\": \"<string>\",\n  \"uid\": \"<string>\",\n  \"browser_uri\": \"<string>\",\n  \"dashboard_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"exclude_expired_patent\": \"<boolean>\",\n  \"expired_collapse\": \"<boolean>\",\n  \"filter_query\": \"<string>\",\n  \"gid\": \"<array>\",\n  \"lang\": \"<string>\",\n  \"match\": [\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"digest_text\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"digest_text\": \"<string>\"\n    }\n  ],\n  \"oq\": \"<string>\",\n  \"par_job_id\": \"<string>\",\n  \"rows\": \"<integer>\",\n  \"stemming\": \"<boolean>\",\n  \"time_slices\": \"<string>\",\n  \"time_start\": \"<string>\",\n  \"time_stop\": \"<string>\",\n  \"time_type\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67ccafc0-d3f8-40b2-a1c8-a7c542beb7bb",
+              "name": "Successful submit a new landscape job response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"landscape_job_12345\",\n  \"q\": \"electric vehicle\",\n  \"request_type\": \"som\",\n  \"uid\": \"user123\",\n  \"browser_uri\": \"https://example.com/search?q=electric+vehicle\",\n  \"dashboard_id\": \"dashboard123\",\n  \"description\": \"Analysis of electric vehicle technologies\",\n  \"exclude_expired_patent\": false,\n  \"expired_collapse\": true,\n  \"filter_query\": \"assignee:(Tesla)\",\n  \"gid\": [\n    \"group1\",\n    \"group2\"\n  ],\n  \"lang\": \"en\",\n  \"match\": [\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    },\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    }\n  ],\n  \"oq\": \"battery\",\n  \"par_job_id\": \"job123\",\n  \"rows\": 100,\n  \"stemming\": true,\n  \"time_slices\": \"year\",\n  \"time_start\": \"2010-01-01\",\n  \"time_stop\": \"2020-12-31\",\n  \"time_type\": \"filing_date\",\n  \"title\": \"Electric Vehicle Landscape Analysis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"status\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db1b6de5-b1a6-4c90-a2d2-ab24e129be9d",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"landscape_job_12345\",\n  \"q\": \"electric vehicle\",\n  \"request_type\": \"som\",\n  \"uid\": \"user123\",\n  \"browser_uri\": \"https://example.com/search?q=electric+vehicle\",\n  \"dashboard_id\": \"dashboard123\",\n  \"description\": \"Analysis of electric vehicle technologies\",\n  \"exclude_expired_patent\": false,\n  \"expired_collapse\": true,\n  \"filter_query\": \"assignee:(Tesla)\",\n  \"gid\": [\n    \"group1\",\n    \"group2\"\n  ],\n  \"lang\": \"en\",\n  \"match\": [\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    },\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    }\n  ],\n  \"oq\": \"battery\",\n  \"par_job_id\": \"job123\",\n  \"rows\": 100,\n  \"stemming\": true,\n  \"time_slices\": \"year\",\n  \"time_start\": \"2010-01-01\",\n  \"time_stop\": \"2020-12-31\",\n  \"time_type\": \"filing_date\",\n  \"title\": \"Electric Vehicle Landscape Analysis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a1f6865-1013-49cd-b753-17387ec9b5ad",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"landscape_job_12345\",\n  \"q\": \"electric vehicle\",\n  \"request_type\": \"som\",\n  \"uid\": \"user123\",\n  \"browser_uri\": \"https://example.com/search?q=electric+vehicle\",\n  \"dashboard_id\": \"dashboard123\",\n  \"description\": \"Analysis of electric vehicle technologies\",\n  \"exclude_expired_patent\": false,\n  \"expired_collapse\": true,\n  \"filter_query\": \"assignee:(Tesla)\",\n  \"gid\": [\n    \"group1\",\n    \"group2\"\n  ],\n  \"lang\": \"en\",\n  \"match\": [\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    },\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    }\n  ],\n  \"oq\": \"battery\",\n  \"par_job_id\": \"job123\",\n  \"rows\": 100,\n  \"stemming\": true,\n  \"time_slices\": \"year\",\n  \"time_start\": \"2010-01-01\",\n  \"time_stop\": \"2020-12-31\",\n  \"time_type\": \"filing_date\",\n  \"title\": \"Electric Vehicle Landscape Analysis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6582d034-13f2-4a79-ac8e-dd942173fe12",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"landscape_job_12345\",\n  \"q\": \"electric vehicle\",\n  \"request_type\": \"som\",\n  \"uid\": \"user123\",\n  \"browser_uri\": \"https://example.com/search?q=electric+vehicle\",\n  \"dashboard_id\": \"dashboard123\",\n  \"description\": \"Analysis of electric vehicle technologies\",\n  \"exclude_expired_patent\": false,\n  \"expired_collapse\": true,\n  \"filter_query\": \"assignee:(Tesla)\",\n  \"gid\": [\n    \"group1\",\n    \"group2\"\n  ],\n  \"lang\": \"en\",\n  \"match\": [\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    },\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    }\n  ],\n  \"oq\": \"battery\",\n  \"par_job_id\": \"job123\",\n  \"rows\": 100,\n  \"stemming\": true,\n  \"time_slices\": \"year\",\n  \"time_start\": \"2010-01-01\",\n  \"time_stop\": \"2020-12-31\",\n  \"time_type\": \"filing_date\",\n  \"title\": \"Electric Vehicle Landscape Analysis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07de1be4-c9d9-4d2c-9ab8-afab988f9dbf",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"landscape_job_12345\",\n  \"q\": \"electric vehicle\",\n  \"request_type\": \"som\",\n  \"uid\": \"user123\",\n  \"browser_uri\": \"https://example.com/search?q=electric+vehicle\",\n  \"dashboard_id\": \"dashboard123\",\n  \"description\": \"Analysis of electric vehicle technologies\",\n  \"exclude_expired_patent\": false,\n  \"expired_collapse\": true,\n  \"filter_query\": \"assignee:(Tesla)\",\n  \"gid\": [\n    \"group1\",\n    \"group2\"\n  ],\n  \"lang\": \"en\",\n  \"match\": [\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    },\n    {\n      \"title\": \"Electric vehicle battery technology\",\n      \"description\": \"Advanced technologies for electric vehicle batteries\",\n      \"digest_text\": \"Electric vehicle battery technology\"\n    }\n  ],\n  \"oq\": \"battery\",\n  \"par_job_id\": \"job123\",\n  \"rows\": 100,\n  \"stemming\": true,\n  \"time_slices\": \"year\",\n  \"time_start\": \"2010-01-01\",\n  \"time_stop\": \"2020-12-31\",\n  \"time_type\": \"filing_date\",\n  \"title\": \"Electric Vehicle Landscape Analysis\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0c8f419-7a4f-45c3-8768-d46c34faff4c",
+          "name": "Get result of a Landscape job",
+          "request": {
+            "name": "Get result of a Landscape job",
+            "description": {
+              "content": "Get result data of a Landscape analysis job by job ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs",
+                ":job_id",
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_seq",
+                  "value": "<integer>",
+                  "description": "Sequence number of current Landscape job"
+                },
+                {
+                  "disabled": false,
+                  "key": "label_num",
+                  "value": "<integer>",
+                  "description": "Label number of each cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Label language"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c19da766-3195-4c54-8d87-69d9c64e63be",
+              "name": "Successful get result of a landscape job response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "label_num",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "EN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"status\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "204b0f00-3eb7-48d7-b342-e3053abe448a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "label_num",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "EN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f40d4ed-09bb-4073-8842-b2fce8f9e93d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "label_num",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "EN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0145391-b945-4920-adb4-870507cec507",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "label_num",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "EN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b71d546-f5d1-4f9f-bc4a-6c9c5b43ca74",
+          "name": "Get status of a job",
+          "request": {
+            "name": "Get status of a job",
+            "description": {
+              "content": "Get current status of a Landscape job by job ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs",
+                ":job_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_seq",
+                  "value": "<integer>",
+                  "description": "Sequence number of current Landscape job"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c1e368e-19c6-48e4-8361-ba6747dde400",
+              "name": "Successful get status of a job response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"job_status\": \"COMPLETED\",\n  \"error_code\": 400,\n  \"error_message\": \"Invalid query parameters\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ec0beff-45fc-4315-a90c-c8c52a5bfbeb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d26ed1b7-1ae1-48d4-8f9a-b8ad6122ba38",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37c51c79-e636-480d-9146-73ecacf0a8c3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_seq",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cef27bde-8f2c-49e2-af7e-c6b23426363c",
+          "name": "Get all list of a specific facet type",
+          "request": {
+            "name": "Get all list of a specific facet type",
+            "description": {
+              "content": "Get all data lists for a specific facet type in a Landscape job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs",
+                ":job_id",
+                "facets",
+                ":facet_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<integer>",
+                  "description": "Patent number in current page"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Patent offset used for paging"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d27ccbf-d887-4e56-8a40-b679f5cc3c25",
+              "name": "Successful get all list of a specific facet type response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"start\": 0,\n    \"length\": 10,\n    \"facet_list\": [\n      {\n        \"name\": \"IBM\",\n        \"count\": 120,\n        \"group\": 1,\n        \"full_name\": \"International Business Machines Corporation\",\n        \"expired_count\": 25\n      },\n      {\n        \"name\": \"Google\",\n        \"count\": 85,\n        \"group\": 1,\n        \"full_name\": \"Google LLC\",\n        \"expired_count\": 15\n      }\n    ],\n    \"facet_type\": \"applicant\"\n  },\n  \"status\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f26bcd4-658e-48f3-a04f-ccc6dab31f30",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "685dee2a-34fa-418d-9017-37366766cc8b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0358f594-938d-4fa5-9f95-ae688ac2d5d0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "469cbc4d-fe59-43c1-9c51-a3e39b33ef2e",
+          "name": "Get all patents list of a job",
+          "request": {
+            "name": "Get all patents list of a job",
+            "description": {
+              "content": "Get all patent data within a Landscape job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs",
+                ":job_id",
+                "patents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "all_legal",
+                  "value": "<boolean>",
+                  "description": "Whether to get legal info"
+                },
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<integer>",
+                  "description": "Patent number in current page"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_value",
+                  "value": "<boolean>",
+                  "description": "Whether to get patent value"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Patent offset used for paging"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78004daa-0395-4a9f-a471-53c00a56dbe3",
+              "name": "Successful get all patents list of a job response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "patents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_legal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "patent_value",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"patents\": [\n      {\n        \"pn\": \"US7654321B2\",\n        \"patent_id\": \"12345678\"\n      },\n      {\n        \"pn\": \"US7123456B2\",\n        \"patent_id\": \"87654321\"\n      }\n    ],\n    \"total_count\": 1250\n  },\n  \"status\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "256a0308-529e-4c44-a4be-e40651fd31a2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "patents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_legal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "patent_value",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e203b122-7e81-4c0d-91eb-a5d4cbde784d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "patents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_legal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "patent_value",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "387f2966-3cd7-48fd-a9cf-c5277a4dd9d3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "patents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_legal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "patent_value",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a702f303-c219-44a7-a6d6-af39ea6b828a",
+          "name": "Get all patent list of specific Landscape facet",
+          "request": {
+            "name": "Get all patent list of specific Landscape facet",
+            "description": {
+              "content": "Get all patent list data for a specific facet name in a Landscape job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "landscape-api",
+                "jobs",
+                ":job_id",
+                "facets",
+                ":facet_type",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter_expired",
+                  "value": "<boolean>",
+                  "description": "Whether to filter expired patents"
+                },
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<integer>",
+                  "description": "Patent number in current page"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Patent offset used for paging"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d2662f61-46cc-4e55-b2d6-01f255bd3d8e",
+              "name": "Successful get all patent list of specific landscape facet response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_expired",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"start\": 0,\n    \"length\": 10,\n    \"details\": [\n      {\n        \"pn_map\": [\n          {\n            \"pn\": \"US7654321B2\",\n            \"patent_id\": \"12345678\"\n          }\n        ],\n        \"res_value\": \"IBM\"\n      },\n      {\n        \"pn_map\": [\n          {\n            \"pn\": \"US8765432B2\",\n            \"patent_id\": \"87654321\"\n          }\n        ],\n        \"res_value\": \"Google\"\n      }\n    ],\n    \"facet_type\": \"applicant\"\n  },\n  \"status\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c21beb7-a604-4bed-a3ef-e581da8fe097",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_expired",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94f9cdfa-44ab-4c9e-a081-0554faf677c7",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_expired",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93d4f776-58fe-444f-80b5-31ff5a016260",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "landscape-api",
+                    "jobs",
+                    ":job_id",
+                    "facets",
+                    ":facet_type",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter_expired",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "length",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a615c588-166d-4e4a-ac01-dd1d684866db",
+    "name": "Patsnap Open Platform AI Translation Insights Company Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

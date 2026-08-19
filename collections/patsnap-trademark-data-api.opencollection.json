@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Trademark Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "T002 Trademark Image Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/trademark/image-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search for similar trademarks using Base64 encoded trademark image."
+        },
+        {
+          "info": {
+            "name": "T001 Trademark Field Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/trademark/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trademark search can be conducted by entering a combination of multiple fields such as trademark name, applicant, application date, and number, with basic trademark information returned."
+        },
+        {
+          "info": {
+            "name": "T010 Trademark Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/trademark/data/detail",
+            "params": [
+              {
+                "name": "app_num",
+                "value": "",
+                "type": "query",
+                "description": "Trademark application number"
+              },
+              {
+                "name": "ipoffice",
+                "value": "",
+                "type": "query",
+                "description": "country code"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive trademark detail information by application number and country code."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

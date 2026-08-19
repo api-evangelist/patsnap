@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation LS Search API
   version: 1.0.0
@@ -309,7 +309,7 @@ paths:
               $ref: '#/components/schemas/B009-1CoreAggregationRequest'
 components:
   schemas:
-    B012ClinicalTrialSearch_ClinicalTrialSearchOrganizationConditionValue:
+    B011PaperSearch_PaperSearchOrganizationConditionValue:
       type: object
       properties:
         condition:
@@ -321,11 +321,298 @@ components:
           example:
           - 6a8c172f1efc649035845f94c31a9c1e
           description: Value List
-    B009CoreSearchResponse:
+    B007DrugSearch_DrugSearchOrganizationConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+    B011PaperSearchRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        keyword:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchKeywordConditionValue'
+        drug:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDrugConditionValue'
+        target:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchTargetConditionValue'
+        disease:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDiseaseConditionValue'
+        organization:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchOrganizationConditionValue'
+        drug_type:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDrugTypeConditionValue'
+        author:
+          type: array
+          example:
+          - Hutchins, Beth
+          description: Author
+        publication_year:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchPublicationYearLongRangeItem'
+        sort:
+          type: array
+          example:
+          - sort_field: score
+            sort_order: desc
+          description: 'Sorting fields. The value is an enum with the following values: score, PUBLICATION_DATE. The default sorting is by Relevancy descending order. Referencing "PaperSearchSortDto"'
+          items:
+            $ref: '#/components/schemas/B011PaperSearch_PaperSearchSortDto'
+    B012ClinicalTrialSearch_ClinicalTrialSearchMainExperimentationDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B009-1CoreAggregation_AggregationResultItem:
+      type: object
+      properties:
+        key:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Primary key
+        color:
+          type: string
+          example: '#6B778C'
+          description: Color(Return when the aggregated fields are SIMPLE_LEGAL_STATUS and LEGAL_STATUS)
+        count:
+          type: integer
+          format: int64
+          example: 10
+          description: Quantity
+        display_name_cn:
+          type: string
+          example: Polyclonal antibody
+          description: English display name
+        display_name_en:
+          type: string
+          example: 多克隆抗体
+          description: Chinese display name
+    B045DrugDealSearchRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        drug:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugConditionValue'
+        drug_type:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugTypeConditionValue'
+        principle:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchPrincipleConditionValue'
+        partner:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchPartnerConditionValue'
+        target:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchTargetConditionValue'
+        mechanism_action:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchMechanismActionConditionValue'
+        drug_disease:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugDiseaseConditionValue'
+        deal_disease:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDealDiseaseConditionValue'
+        highest_dev_status:
+          type: array
+          example:
+          - Phase_2_3
+          description: 'Highest Phase (Deal). The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
+        country:
+          type: array
+          example:
+          - US
+          description: 'Country/Location. The value is an enum with the following values: US, JP, CN, EU, OTHER.'
+        deal_type:
+          type: array
+          example:
+          - License
+          description: 'Agreement Type. The value is an enum with the following values: Collaboration, License, Acquisition, Investment, Option'
+        amount_disclosure:
+          type: boolean
+          example: true
+          description: Amount Fully Disclosed
+        deal_total_value:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchTotalValueLongRangeItem'
+        deal_upfront_payment:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchUpfrontPaymentLongRangeItem'
+        deal_milestone_payment:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchMilestonePaymentLongRangeItem'
+        deal_time:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDealTimeLongRangeItem'
+        keyword:
+          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchKeywordConditionValue'
+        sort:
+          type: array
+          example:
+          - sort_field: DEAL_TIME
+            sort_order: desc
+          - sort_field: TOTAL_VALUE
+            sort_order: desc
+          - sort_field: NORMALIZED_PHASE_SIGN_RANK_MAX
+            sort_order: desc
+          description: 'Sorting fields. The value is an enum with the following values: DEAL_TIME, TOTAL_VALUE, NORMALIZED_PHASE_SIGN_RANK_MAX. The default sorting is by deal time, total value, and highest R&D phase, all in descending order. Referencing "SortDto"'
+          items:
+            $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchSortDto'
+    B044CtResultSearch_ClinicalTrialResultSearchPublishTimeLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 1483228800000
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1514851199999
+          description: to
+    B044CtResultSearch_ClinicalTrialResultSummaryDto:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Matching-Adjusted Indirect Treatment Comparisons (MAIC) of Sotorasib 960mg (soto960) Plus Panitumumab (pani) Vs. Trifluridine/Tipiracil(T/T) Plus Bevacizumab (bev) in Chemorefractory Metastatic Colorectal Cancer (mCRC)
+          description: Title
+        data_source:
+          type: array
+          example: 'Please check the form: ClinicalTrialResultSourceInfoDto'
+          description: data source
+          items:
+            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSourceInfoDto'
+        ct_result_id:
+          type: string
+          example: 2eadada4ed582332940e522e5258e52e
+          description: Clinical Trial Result Id
+    B043NewsSearch_NewsSearchLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 1722441600000
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1756742399999
+          description: to
+    B011PaperSearch_PaperSearchPublicationYearLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 2019
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 2021
+          description: to
+    B009CoreSearch_PatentAggregationPridtLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 20010101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20240822
+          description: to
+    B009-1CoreAggregation_PatentAggregationPridtLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 20130101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20240822
+          description: to
+    B069MedicineSearch_TranslationalMedicineSearchDataResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:TranslationalMedicineSearchDataDetail
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_TranslationalMedicineSearchDataDetail'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B045DrugDealSearch_DrugDealSearchPartnerConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 8e9a09c415413dc4cd1c139b8fcb6993
+          description: Value List
+    B009CoreSearch_PatentSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: score
+          description: 'sort field, enum values: score,PBDT_YEARMONTHDAY,APD_YEARMONTHDAY,EXDT_TS'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B012ClinicalTrialSearchResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B009CoreSearch_PatentSearchResponseDto'
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -341,79 +628,93 @@ components:
       required:
       - status
       - error_code
-    B009CoreSearch_PatentSearchDiseaseConditionValue:
+    B044CtResultSearchRequest:
       type: object
       properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        main_experimentation_drug:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchMainExperimentationDrugConditionValue'
+        overall_enrollment:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchOverallEnrollmentLongRangeItem'
+        sort:
+          type: array
+          example:
+          - sort_field: ANNOTATION_METHOD_RANK
+            sort_order: desc
+          description: Field order, field can support:ANNOTATION_METHOD_RANK; order can support:desc, asc(default desc)
+          items:
+            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchSortDto'
+        disease:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchDiseaseConditionValue'
+        target:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchTargetConditionValue'
+        sponsor_collaborator_organization:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchSponsorCollaboratorOrganizationConditionValue'
+        study_code:
+          type: array
+          example:
+          - KEYNOTE-045
+          description: Study Code
+        register_number:
+          type: array
+          example:
+          - NCT02256436
+          description: Register Number
+        drug_type:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchDrugTypeConditionValue'
+        control_drug:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchControlDrugConditionValue'
+        therapeutic_area:
           type: array
           example:
           - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Value List
-    B009-1CoreAggregation_PatentAggregationDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          description: Therapeutic Areas, Retrieve therapeutic area id using the [B058].
+        mechanism_action:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchMechanismActionConditionValue'
+        ct_result_meeting:
           type: array
           example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
-    B009CoreSearch_PatentSearchExdtLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 20280101
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 20290101
-          description: to
-    B043NewsSearch_TargetConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - c47a5730bf5e40b3aa76c26820ec6d4e
+          description: Clinical trial result meeting ID, obtain this through the dictionary query interface
+        outcome:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchOutcomeConditionValue'
+        therapy_type:
           type: array
           example:
-          - 9786d32e3d244a688ec6a60d2fe1b10b
-          description: Value List
-    B045DrugDealSearch_DrugDealSearchTargetConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - SECOND_LINE
+          description: 'Therapy Type. The value is an enum with the following values: FIRST_LINE, SECOND_LINE, THIRD_LINE, LAST_LINE, ADJUVANT, NEOADJUVANT, MAINTENANCE, CONSOLIDATION, ADD_ON, INDUCTION.'
+        phase:
           type: array
           example:
-          - d9ded8f23b4140a5828314a55d2d66b4
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchStudyIdentifierConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - Phase_3
+          description: 'Trial Phase. The value is an enum with the following values: Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, Phase_4, Not_Applicable.'
+        publish_time:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchPublishTimeLongRangeItem'
+        general_evaluation:
           type: array
           example:
-          - MK-3475-587
-          description: Value List
+          - POSITIVE
+          description: 'General Evaluation. The value is an enum with the following values: SUPERIORITY, POSITIVE, NON_INFERIORITY, SIMILAR, NON_SUPERIORITY.'
+    B011PaperSearch_PaperTitleDto:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Paper Title Language
+        title:
+          type: string
+          example: 'Adding PD-1/PD-L1 Inhibitors to Chemotherapy for the First-Line Treatment of Extensive Stage Small Cell Lung Cancer (SCLC): A Meta-Analysis of Randomized Trials'
+          description: Paper Title
     B009CoreSearchRequest:
       type: object
       properties:
@@ -496,92 +797,53 @@ components:
           example:
           - CARVEN, GREGORY JOHN
           description: Inventor
-    B045DrugDealSearch_DrugDealSearchPrincipleConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - e7655969b809388df5bfc8ffc865f3cc
-          description: Value List
-    B045DrugDealSearch_DrugDealSearchDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - dc5440fb07a44174930e2ee62c137e54
-          description: Value List
-    B009-1CoreAggregation_PatentAggregationDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B043NewsSearch_KeywordConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - keytruda
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchSponsorCollaboratorOrganizationConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 6a8c172f1efc649035845f94c31a9c1e
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchMainExperimentationDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B009CoreSearch_PatentAggregationPridtLongRangeItem:
+    B009-1CoreAggregation_PatentAggregationExdtLongRangeItem:
       type: object
       properties:
         from:
           type: integer
           format: int64
-          example: 20010101
+          example: 20280101
           description: from
         to:
           type: integer
           format: int64
-          example: 20240822
+          example: 20290101
           description: to
-    B012ClinicalTrialSearch_ClinicalTrialSearchTargetConditionValue:
+    B009CoreSearch_PatentSearchApdtLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 20080101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20090101
+          description: to
+    B007DrugSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B007DrugSearch_DrugSearchResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B012ClinicalTrialSearch_ClinicalTrialSearchDrugTypeConditionValue:
       type: object
       properties:
         condition:
@@ -591,30 +853,7 @@ components:
         value:
           type: array
           example:
-          - 9786d32e3d244a688ec6a60d2fe1b10b
-          description: Value List
-    B007DrugSearch_DrugSearchSortDto:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: DRUG_TYPE_SORT
-          description: 'sort field, enum values: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE'
-        sort_order:
-          type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B043NewsSearch_OrganizationConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 6a8c172f1efc649035845f94c31a9c1e
+          - c38eb408d6b842f487d6a27484156633
           description: Value List
     B043NewsSearch_NewsSearchSortDto:
       type: object
@@ -627,50 +866,7 @@ components:
           type: string
           example: desc
           description: sort order, support:desc,asc
-    B045DrugDealSearch_DrugDealSearchDealTimeLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 1659657600000
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1754438399999
-          description: to
-    B044CtResultSearch_ClinicalTrialResultSummaryDto:
-      type: object
-      properties:
-        title:
-          type: string
-          example: Matching-Adjusted Indirect Treatment Comparisons (MAIC) of Sotorasib 960mg (soto960) Plus Panitumumab (pani) Vs. Trifluridine/Tipiracil(T/T) Plus Bevacizumab (bev) in Chemorefractory Metastatic Colorectal Cancer (mCRC)
-          description: Title
-        data_source:
-          type: array
-          example: 'Please check the form: ClinicalTrialResultSourceInfoDto'
-          description: data source
-          items:
-            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSourceInfoDto'
-        ct_result_id:
-          type: string
-          example: 2eadada4ed582332940e522e5258e52e
-          description: Clinical Trial Result Id
-    B045DrugDealSearch_DrugDealSearchTotalValueLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 500
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1000
-          description: to
-    B045DrugDealSearch_DrugDealSearchPartnerConditionValue:
+    B044CtResultSearch_ClinicalTrialResultSearchDiseaseConditionValue:
       type: object
       properties:
         condition:
@@ -680,9 +876,41 @@ components:
         value:
           type: array
           example:
-          - 8e9a09c415413dc4cd1c139b8fcb6993
+          - 62eaee6d9ee44410b8aca59dfc7408e9
           description: Value List
-    B009CoreSearch_PatentSearchTargetConditionValue:
+    B011PaperSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B011PaperSearch_PaperSearchResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B044CtResultSearch_ClinicalTrialResultSearchSponsorCollaboratorOrganizationConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+    B044CtResultSearch_ClinicalTrialResultSearchTargetConditionValue:
       type: object
       properties:
         condition:
@@ -694,7 +922,7 @@ components:
           example:
           - 9786d32e3d244a688ec6a60d2fe1b10b
           description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchControlDrugConditionValue:
+    B009-1CoreAggregation_PatentAggregationDiseaseConditionValue:
       type: object
       properties:
         condition:
@@ -702,153 +930,55 @@ components:
           example: OR
           description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
         value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B045DrugDealSearch_DrugDealSearchSortDto:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: DEAL_TIME
-          description: 'sort field, enum values: DEAL_TIME, TOTAL_VALUE, NORMALIZED_PHASE_SIGN_RANK_MAX'
-        sort_order:
-          type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B044CtResultSearch_ClinicalTrialResultSearchOverallEnrollmentLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 500
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1000
-          description: to
-    B007DrugSearch_DrugSearchMechanismActionConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 4dd338b149b3ecd0ee860e1fb379b44f
-          description: Value List
-    B043NewsSearch_DiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 3beea980d93a4cc0abc864e27514601c
-          description: Value List
-    B012ClinicalTrialSearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 20000， limit up to 1,000.
-        keyword:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchKeywordConditionValue'
-        main_experimentation_drug:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchMainExperimentationDrugConditionValue'
-        control_drug:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchControlDrugConditionValue'
-        organization:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchOrganizationConditionValue'
-        target:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchTargetConditionValue'
-        mechanism_action:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchMechanismActionConditionValue'
-        disease:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDiseaseConditionValue'
-        drug_type:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDrugTypeConditionValue'
-        study_identifier:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchStudyIdentifierConditionValue'
-        register_number:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchRegisterNumberConditionValue'
-        title:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchTitleConditionValue'
-        recruitment_status:
-          type: array
-          example:
-          - Recruiting
-          description: 'Recruitment Status, The value is an enum with the following values: Not_Yet_Recruiting, Recruiting, Enrolling_By_Invitation, Active_Not_Recruiting, Suspended, Terminated, Completed, Withdrawn, Unknown_Status'
-        phase:
-          type: array
-          example:
-          - Phase_3
-          description: 'Study Phase, The value is an enum with the following values: Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, Phase_4, Not_Applicable'
-        start_date:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchStartDateLongRangeItem'
-        first_posted_date:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchFirstPostedDateLongRangeItem'
-        enrollment:
-          type: array
-          example:
-          - GREATER_THAN_FIVE_HUNDRED
-          description: 'Enrollment, The value is an enum with the following values: LESS_THAN_FIFTEEN, FIFTEEN_TO_SIXTY, SIXTY_TO_THREE_HUNDRED, THREE_HUNDRED_TO_FIVE_HUNDRED, GREATER_THAN_FIVE_HUNDRED'
-        organization_type:
-          type: array
-          example:
-          - Company
-          description: 'Organization Type, The value is an enum with the following values: Company, University_Institution, Other'
-        employee_number:
-          type: array
-          example:
-          - GREATER_THAN_500
-          description: 'Employee Number, The value is an enum with the following values: LESS_THAN_10, BETWEEN_10_AND_100, BETWEEN_100_AND_500, GREATER_THAN_500'
-        country:
-          type: array
-          example:
-          - Asia
-          description: 'Country/Location, The value is an enum with the following values: Asia, North_America, Europe, Oceania, South_America, US, EU, CN, JP, Other'
-        therapeutic_area:
           type: array
           example:
           - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Therapeutic Areas, Retrieve therapeutic area id using the [B058].
-        sort:
+          description: Value List
+    B045DrugDealSearch_DrugDealSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
           type: array
           example:
-          - sort_field: STUDY_FIRST_POSTED_DATE
-            sort_order: desc
-          - sort_field: START_DATE
-            sort_order: desc
-          - sort_field: LAST_UPDATE_POSTED_DATE
-            sort_order: desc
-          description: 'Sorting fields. The value is an enum with the following values: STUDY_FIRST_POSTED_DATE, START_DATE, LAST_UPDATE_POSTED_DATE. The default sorting is by first post date, start date, and last post date, all in descending order. Referencing "ClinicalTrialSearchSortDto"'
-          items:
-            $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchSortDto'
-    B009CoreSearch_PatentSearchResponseDto:
+          - d9ded8f23b4140a5828314a55d2d66b4
+          description: Value List
+    B011PaperSearch_PaperSearchResponseDto:
       type: object
       properties:
         items:
           type: array
-          example: Please check the form:PatentSummaryDto
-          description: result itemsN
+          example: Please check the form:PaperDetailDto
+          description: result items
           items:
-            $ref: '#/components/schemas/B009CoreSearch_PatentSummaryDto'
+            $ref: '#/components/schemas/B011PaperSearch_PaperDetailDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B007DrugSearch_DrugSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:DrugSummaryDto
+          description: result items
+          items:
+            $ref: '#/components/schemas/B007DrugSearch_DrugSummaryDto'
         limit:
           type: integer
           format: int64
@@ -864,12 +994,12 @@ components:
           format: int64
           example: 0
           description: offset
-        uncollapse_total:
+        total_dev_status:
           type: integer
           format: int64
           example: 0
-          description: Uncollapse Total
-    B044CtResultSearch_ClinicalTrialResultSearchOutcomeConditionValue:
+          description: Involved Dev Status Count
+    B043NewsSearch_DrugConditionValue:
       type: object
       properties:
         condition:
@@ -879,56 +1009,17 @@ components:
         value:
           type: array
           example:
-          - 84a502e8ba664184bd01fbee1e8554c3
+          - 945fa31ebe9e41ae912e493aa3324576
           description: Value List
-    B011PaperSearch_PaperSearchDiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Value List
-    B009-1CoreAggregation_PatentAggregationTargetConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 9786d32e3d244a688ec6a60d2fe1b10b
-          description: Value List
-    B009CoreSearch_SimplifiedOrganizationDto:
-      type: object
-      properties:
-        entity_id:
-          type: string
-          example: 7d2ce3422e13151f3260bfc6815fd2ec
-          description: organization id
-        display_name_cn:
-          type: string
-          example: 北京世桥生物制药有限公司
-          description: Chinese name of the institution
-        display_name_en:
-          type: string
-          example: Beijing Sciecure Pharmaceutical Co., Ltd.
-          description: English name of the institution
-    B069MedicineSearch_TranslationalMedicineSearchDataResponse:
+    B045DrugDealSearch_DrugDealSearchResponseDto:
       type: object
       properties:
         items:
           type: array
-          example: Please check the form:TranslationalMedicineSearchDataDetail
+          example: Please check the form:DrugDealDetailDto
           description: Result Items
           items:
-            $ref: '#/components/schemas/B069MedicineSearch_TranslationalMedicineSearchDataDetail'
+            $ref: '#/components/schemas/B045DrugDealSearch_DrugDealDetailDto'
         limit:
           type: integer
           format: int64
@@ -944,7 +1035,7 @@ components:
           format: int64
           example: 0
           description: offset
-    B044CtResultSearch_ClinicalTrialResultSearchMechanismActionConditionValue:
+    B012ClinicalTrialSearch_ClinicalTrialSearchKeywordConditionValue:
       type: object
       properties:
         condition:
@@ -954,102 +1045,7 @@ components:
         value:
           type: array
           example:
-          - 4dd338b149b3ecd0ee860e1fb379b44f
-          description: Value List
-    B011PaperSearch_PaperTitleDto:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Paper Title Language
-        title:
-          type: string
-          example: 'Adding PD-1/PD-L1 Inhibitors to Chemotherapy for the First-Line Treatment of Extensive Stage Small Cell Lung Cancer (SCLC): A Meta-Analysis of Randomized Trials'
-          description: Paper Title
-    B011PaperSearch_PaperSearchDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B045DrugDealSearch_DrugDealSearchDrugDiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchMainExperimentationDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchControlDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 095fdb04424f4214a7b26b7ff6877e67
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:ClinicalTrialSearchDetail
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDetail'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B045DrugDealSearch_DrugDealSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 1151dbc710f64a85923dc05d4a5a0ba9
+          - keytruda
           description: Value List
     B045DrugDealSearchResponse:
       type: object
@@ -1071,59 +1067,169 @@ components:
       required:
       - status
       - error_code
-    B007DrugSearch_DrugSummaryDto:
+    B012ClinicalTrialSearch_ClinicalTrialSearchControlDrugConditionValue:
       type: object
       properties:
-        drug_id:
+        condition:
           type: string
-          example: 11d208e0c26a4345946d95f92d9fcaf0
-          description: Drug ID
-        drug_name:
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
           type: array
           example:
-          - lang: CN
-            name: 阿达格拉西
-          - lang: EN
-            name: Adagrasib
-          description: Drug Name
-          items:
-            $ref: '#/components/schemas/B007DrugSearch_CommonName'
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B009-1CoreAggregationRequest:
+      type: object
+      properties:
+        drug:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDrugConditionValue'
+        drug_patent_type:
+          type: string
+          example: PRODUCT_COMPOUND_SEQUENCE
+          description: 'Drug patent type. The value is an enum with the following values: PRODUCT_COMPOUND_SEQUENCE, DRUG_COMBINATION_FORMULATION, PRODUCT_DERIVATIVE, CRYSTAL_FORM, PROCESS, NEW_USE, DOSAGE_FORM, DEVICE, DIAGNOSTIC_ANALYSIS_AND_ASSAY, OTHERS'
         drug_type:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDrugTypeConditionValue'
+        patent_tech_type:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPatentTechTypeConditionValue'
+        target:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationTargetConditionValue'
+        disease:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDiseaseConditionValue'
+        source:
+          type: string
+          example: MEDSPAL
+          description: 'Patent Source. The value is an enum with the following values: FDA_PURPLE_BOOK, FDA_ORANGE_BOOK, CDE, MEDSPAL, VAXPAL, MFDS'
+        patent_assignee:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPatentAssigneeConditionValue'
+        patent_country:
           type: array
           example:
-          - display_name:
-            - lang: EN
-              name: Small molecule drug
-            - lang: CN
-              name: 小分子化药
-            normalized_id: 1151dbc710f64a85923dc05d4a5a0ba9
-          description: drug type view
-          items:
-            $ref: '#/components/schemas/B007DrugSearch_CommonDictionary'
-    B009CoreSearch_PatentSearchSortDto:
+          - EP
+          description: Authority, obtain this through the dictionary query interface
+        simple_legal_status:
+          type: array
+          example:
+          - ACTIVE
+          description: 'Simple Legal Status. The value is an enum with the following values: INACTIVE, ACTIVE, PENDING, PCT_DESIGNATED_STAGE, PCT_DESIGNATED_STAGE_EXPIRED, UNDETERMINED'
+        pbdt:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPbdtLongRangeItem'
+        apdt:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationApdtLongRangeItem'
+        exdt:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationExdtLongRangeItem'
+        isdt:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationIsdtLongRangeItem'
+        priority_date:
+          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPridtLongRangeItem'
+        aggregation_field:
+          type: array
+          example:
+          - PHS_CORE_DRUG_ID
+          description: '<p>Aggregation field : </p><p>PHS_CORE_DRUG_ID:   Patent Drug</p><p>PHS_DRUG_TYPE_ID:   Drug Type</p><p>PHS_CORE_TYPE_ID:   Drug Patent Type</p><p>PATENT_TECHNOLOGY:  Patent Tech Type</p><p>COUNTRY:            Authority</p><p>FAM_COUNTRY:        Simple Family Jurisdiction</p><p>EXDT_Y:             Estimated Expiry Year</p><p>PHS_THERAPEUTIC_AREA:   Therapeutic Area</p><p>PHS_ORG_ID_ONEID:   Std. Current Assignee</p><p>ANCS_TYPE:          Std. Current Assignee Type</p><p>PHS_ANS_ORG_ID_ONEID:   Std. Original Assignee</p><p>ANS_TYPE:           Std. Original Assignee Type</p><p>IN_FACET:           Inventor</p><p>PHS_EXTENSION_TYPE:   Extension Type</p><p>SPC_STATUS:         SPC Status</p><p>SPC_COUNTRY:        SPC Country/Location</p><p>SPC_EXPIRY_DATE:    SPC Expiry Year</p><p>PED_STATUS:         PED Status</p><p>PED_EXPIRY_DATE:    PED Expiry Year</p><p>PTE_STATUS:         PTE Status</p><p>PTE_COUNTRY:        PTE Country/Location</p><p>PTE_EXPIRY_DATE:    PTE Expiry Year</p><p>PHS_CORE_DRUG_SOURCE:   Information Source</p><p>APD_YEAR:           Application Year</p><p>PBDT_YEAR:          Publication Year</p><p>ISD_YEAR:           Entitlement Year</p><p>FADL_YEAR:          Priority Year</p><p>PHS_DRUG_ID:        Related Drug</p><p>PHS_TARGET_ID:      Related Target</p><p>PHS_DISEASE_ID:     Related Indications</p><p>PHS_DOSAGE_FORM_ID:   Related Dosage Form</p><p>SIMPLE_LEGAL_STATUS:   Simple Legal Status</p><p>LEGAL_STATUS:          Legal Status</p>'
+        current_patent_assignee_type:
+          type: array
+          example:
+          - COMPANY
+          description: current patent assignee type
+        inventor_name:
+          type: array
+          example:
+          - HONIGBERG, LEE
+          description: Inventor
+      required:
+      - aggregation_field
+    B043NewsSearch_KeywordConditionValue:
       type: object
       properties:
-        sort_field:
+        condition:
           type: string
-          example: score
-          description: 'sort field, enum values: score,PBDT_YEARMONTHDAY,APD_YEARMONTHDAY,EXDT_TS'
-        sort_order:
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - keytruda
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
           type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B009-1CoreAggregation_PatentAggregationApdtLongRangeItem:
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 62eaee6d9ee44410b8aca59dfc7408e9
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchTitleConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - Tumors
+          description: Value List
+    B009CoreSearch_PatentSearchPatentAssigneeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 37644001d015f20c92d6232713bd09eb
+          description: Value List
+        keyword_value:
+          type: array
+          example:
+          - Merck Sharp
+          description: Keyword List
+    B045DrugDealSearch_DrugDealSearchTotalValueLongRangeItem:
       type: object
       properties:
         from:
           type: integer
           format: int64
-          example: 20080101
+          example: 500
           description: from
         to:
           type: integer
           format: int64
-          example: 20090101
+          example: 1000
           description: to
+    B069MedicineSearch_DrugFilterAndCondition:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Condition, OR or AND
+        value:
+          type: array
+          example:
+          - c7a2671dc0574f19bc42d557eca3906f
+          - 9ae626b75273433f8f4203ee3f7aa181
+          description: Value list
+    B011PaperSearch_PaperSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
     B045DrugDealSearch_DrugDealSearchMechanismActionConditionValue:
       type: object
       properties:
@@ -1136,26 +1242,94 @@ components:
           example:
           - 27c0848a265e4332836e10d0e8202b4c
           description: Value List
-    B043NewsSearchResponse:
+    B011PaperSearch_PaperSearchSortDto:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B043NewsSearch_NewsSearchResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        sort_field:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+          example: score
+          description: 'sort field, enum values: score, PUBLICATION_DATE'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B007DrugSearch_DrugSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
+    B007DrugSearch_DrugSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B044CtResultSearch_ClinicalTrialResultSearchOutcomeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 84a502e8ba664184bd01fbee1e8554c3
+          description: Value List
+    B069MedicineSearch_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
+    B069MedicineSearch_SortField:
+      type: object
+      properties:
+        field:
+          type: string
+          example: PUB_DT
+          description: 'Sort field, supports: PUB_DT'
+        order:
+          type: string
+          example: desc
+          description: Sort order, desc or asc, default desc
+    B009CoreSearch_PatentAggregationIsdtLongRangeItem:
+      type: object
+      properties:
+        from:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          format: int64
+          example: 20130101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20240822
+          description: to
     B009CoreSearch_PatentSummaryDto:
       type: object
       properties:
@@ -1275,7 +1449,100 @@ components:
           description: Original Assignee
           items:
             $ref: '#/components/schemas/B009CoreSearch_SimplifiedOrganizationDto'
-    B009CoreSearch_PatentAggregationIsdtLongRangeItem:
+    B007DrugSearch_DrugSearchMechanismActionConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 4dd338b149b3ecd0ee860e1fb379b44f
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchRegisterNumberConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - NCT03486873
+          description: Value List
+    B045DrugDealSearch_DrugDealSearchKeywordConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - genentech
+          description: Value List
+    B009-1CoreAggregation_PatentAggregationPatentTechTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 3db27f57784548dc96356669deee2ca1
+          description: Value List
+    B007DrugSearch_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B007DrugSearch_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B011PaperSearch_PaperDetailDto:
+      type: object
+      properties:
+        paper_id:
+          type: string
+          example: 0b20bcfa-6399-30bf-ab29-6a0fafbbe3bd
+          description: Paper ID
+        paper_title:
+          type: array
+          example:
+          - lang: EN
+            title: 'Adding PD-1/PD-L1 Inhibitors to Chemotherapy for the First-Line Treatment of Extensive Stage Small Cell Lung Cancer (SCLC): A Meta-Analysis of Randomized Trials'
+          description: Paper Title
+          items:
+            $ref: '#/components/schemas/B011PaperSearch_PaperTitleDto'
+    B045DrugDealSearch_DrugDealSearchMilestonePaymentLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 500
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1000
+          description: to
+    B009-1CoreAggregation_PatentAggregationPbdtLongRangeItem:
       type: object
       properties:
         from:
@@ -1288,19 +1555,210 @@ components:
           format: int64
           example: 20240822
           description: to
-    B044CtResultSearch_ClinicalTrialResultSearchPublishTimeLongRangeItem:
+    B009-1CoreAggregation_PatentAggregationApdtLongRangeItem:
       type: object
       properties:
         from:
           type: integer
           format: int64
-          example: 1483228800000
+          example: 20080101
           description: from
         to:
           type: integer
           format: int64
-          example: 1514851199999
+          example: 20090101
           description: to
+    B011PaperSearch_PaperSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 62eaee6d9ee44410b8aca59dfc7408e9
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchDetail:
+      type: object
+      properties:
+        brief_title:
+          type: string
+          example: Finding an Effective Dose of GM1 to Reduce or Prevent Neuropathy (Numbness or Weakness) Due to Treatment With Paclitaxel (Phase II)
+          description: Brief Title
+        official_title:
+          type: string
+          example: An Early Phase and Phase II Clinical Trial to Evaluate Ganglioside-Monosialic Acid (GM1) for Preventing Paclitaxel-Associated Neuropathy
+          description: Official Title
+        register_number:
+          type: string
+          example: NCT05751668
+          description: Trial Number
+        clinical_trial_id:
+          type: string
+          example: e3a8282e8e85590e2ad225a2522ea828
+          description: Clinical Trial ID
+    B069MedicineSearch_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
+    B045DrugDealSearch_DrugDealSearchDealTimeLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 1659657600000
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1754438399999
+          description: to
+    B044CtResultSearch_ClinicalTrialResultSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B045DrugDealSearch_DrugDealSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 1151dbc710f64a85923dc05d4a5a0ba9
+          description: Value List
+    B007DrugSearch_DrugSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 3beea980d93a4cc0abc864e27514601c
+          description: Value List
+    B009CoreSearch_SimplifiedOrganizationDto:
+      type: object
+      properties:
+        entity_id:
+          type: string
+          example: 7d2ce3422e13151f3260bfc6815fd2ec
+          description: organization id
+        display_name_cn:
+          type: string
+          example: 北京世桥生物制药有限公司
+          description: Chinese name of the institution
+        display_name_en:
+          type: string
+          example: Beijing Sciecure Pharmaceutical Co., Ltd.
+          description: English name of the institution
+    B007DrugSearch_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B043NewsSearch_TargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
+    B045DrugDealSearch_DrugDealSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: DEAL_TIME
+          description: 'sort field, enum values: DEAL_TIME, TOTAL_VALUE, NORMALIZED_PHASE_SIGN_RANK_MAX'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B043NewsSearchRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        drug:
+          $ref: '#/components/schemas/B043NewsSearch_DrugConditionValue'
+        target:
+          $ref: '#/components/schemas/B043NewsSearch_TargetConditionValue'
+        disease:
+          $ref: '#/components/schemas/B043NewsSearch_DiseaseConditionValue'
+        organization:
+          $ref: '#/components/schemas/B043NewsSearch_OrganizationConditionValue'
+        keyword:
+          $ref: '#/components/schemas/B043NewsSearch_KeywordConditionValue'
+        post_time:
+          $ref: '#/components/schemas/B043NewsSearch_NewsSearchLongRangeItem'
+        sort:
+          type: array
+          example:
+          - sort_field: post_time
+            sort_order: desc
+          description: 'Sorting fields.The value is an enum with the following values: post_time. Default post_time descending order. Referencing "SortDto"'
+          items:
+            $ref: '#/components/schemas/B043NewsSearch_NewsSearchSortDto'
+    B009CoreSearch_PatentSearchTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
     B069MedicineSearch_TranslationalMedicineSourceInfo:
       type: object
       properties:
@@ -1328,47 +1786,42 @@ components:
           type: string
           example: Journal
           description: Normalized Source Category
-    B069MedicineSearch_CommonDrug:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: e82b83b42eba4e5ea3f26f8e06081a5a
-          description: Drug ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Ranibizumab (Genentech)
-          - lang: CN
-            name: 雷珠单抗
-          description: Drug Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
-    B069MedicineSearch_DrugFilterAndCondition:
+    B045DrugDealSearch_DrugDealSearchDrugDiseaseConditionValue:
       type: object
       properties:
         condition:
           type: string
           example: OR
-          description: Condition, OR or AND
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
         value:
           type: array
           example:
-          - c7a2671dc0574f19bc42d557eca3906f
-          - 9ae626b75273433f8f4203ee3f7aa181
-          description: Value list
-    B007DrugSearch_CommonName:
+          - 62eaee6d9ee44410b8aca59dfc7408e9
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchMechanismActionConditionValue:
       type: object
       properties:
-        lang:
+        condition:
           type: string
-          example: EN
-          description: Language
-        name:
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 4dd338b149b3ecd0ee860e1fb379b44f
+          description: Value List
+    B043NewsSearch_DiseaseConditionValue:
+      type: object
+      properties:
+        condition:
           type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 3beea980d93a4cc0abc864e27514601c
+          description: Value List
     B069MedicineSearch_CommonOrganization:
       type: object
       properties:
@@ -1386,7 +1839,241 @@ components:
           type: string
           example: 87bfaf037f8e60c9e25595cd98bb27e4
           description: Organization ID
-    B011PaperSearch_PaperSearchTargetConditionValue:
+    B009CoreSearch_PatentSearchExdtLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 20280101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20290101
+          description: to
+    B007DrugSearch_DrugSearchDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B009-1CoreAggregation_PatentAggregationPatentAssigneeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+        keyword_value:
+          type: array
+          example:
+          - 默沙东
+          description: Keyword List
+    B044CtResultSearch_ClinicalTrialResultSearchOverallEnrollmentLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 500
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1000
+          description: to
+    B043NewsSearch_NewsDetailDto:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Roche to reintroduce Susvimo in the US for people with neovascular age-related macular degeneration (nAMD)
+          description: News title
+        source:
+          type: string
+          example: BBC
+          description: source
+        news_id:
+          type: string
+          example: f57e970e-8f97-39b7-a6be-51846e92bee1
+          description: News ID
+        source_url:
+          type: string
+          example: https://www.biospace.com/article/releases/cerevel-therapeutics-announces-publication-in-the-lancet-of-emraclidine-data-from-phase-1b-clinical-trial-in-people-living-with-schizophrenia/
+          description: News Link
+    B007DrugSearch_DrugSummaryDto:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: 11d208e0c26a4345946d95f92d9fcaf0
+          description: Drug ID
+        drug_name:
+          type: array
+          example:
+          - lang: CN
+            name: 阿达格拉西
+          - lang: EN
+            name: Adagrasib
+          description: Drug Name
+          items:
+            $ref: '#/components/schemas/B007DrugSearch_CommonName'
+        drug_type:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Small molecule drug
+            - lang: CN
+              name: 小分子化药
+            normalized_id: 1151dbc710f64a85923dc05d4a5a0ba9
+          description: drug type view
+          items:
+            $ref: '#/components/schemas/B007DrugSearch_CommonDictionary'
+    B012ClinicalTrialSearch_ClinicalTrialSearchStartDateLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 1514764800000
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1546387199999
+          description: to
+    B069MedicineSearch_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B009CoreSearch_InventorDto:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: language
+        name:
+          type: string
+          example: 张三
+          description: name
+        address:
+          type: string
+          example: Alpharetta, GA
+          description: Address
+    B009-1CoreAggregationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B044CtResultSearch_ClinicalTrialResultSearchControlDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 095fdb04424f4214a7b26b7ff6877e67
+          description: Value List
+    B009-1CoreAggregation_AggregationResult:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - key: 3db27f57784548dc96356669deee2ca1
+            count: 333567
+            display_name_cn: 单克隆抗体
+            display_name_en: Monoclonal antibody (mAb)
+          - key: 33f8f531f649466e963f3dd5e371930d
+            count: 16534
+            display_name_cn: 多克隆抗体
+            display_name_en: Polyclonal antibody
+          - key: b926f94af96c439088bb020c3c774a47
+            count: 16224
+            display_name_cn: 放射标记抗体
+            display_name_en: Radiolabeled antibody
+          - key: 1d4d0871a9c34266bbed06f44368fac8
+            count: 16000
+            display_name_cn: 抗体片段偶联药物
+            display_name_en: Antibody Fragment-Drug Conjugate (FDC)
+          - key: 7e19a4b3743a47e48884bafeaec85b84
+            count: 15518
+            display_name_cn: ADC
+            display_name_en: Antibody drug conjugate (ADC)
+          description: Details of aggregation items
+          items:
+            $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResultItem'
+        total:
+          type: integer
+          format: int64
+          example: 5
+          description: The number of aggregated items
+        aggregation_field:
+          type: string
+          example: PATENT_TECHNOLOGY
+          description: Aggregated field
+    B069MedicineSearch_PublicationDateFilter:
+      type: object
+      properties:
+        end_date:
+          type: string
+          example: '2024-12-31'
+          description: End time (used when custom)
+        start_date:
+          type: string
+          example: '2024-01-01'
+          description: Start time (used when custom)
+        type:
+          type: integer
+          format: int32
+          example: 4
+          description: Time range type, 1:within 1 week | 2:within 1 month | 3:within 1 year | 4:within 3 years | 5:Custom
+    B012ClinicalTrialSearch_ClinicalTrialSearchTargetConditionValue:
       type: object
       properties:
         condition:
@@ -1398,7 +2085,68 @@ components:
           example:
           - 9786d32e3d244a688ec6a60d2fe1b10b
           description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchDiseaseConditionValue:
+    B009CoreSearch_PatentSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B011PaperSearch_PaperSearchDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B012ClinicalTrialSearch_ClinicalTrialSearchFirstPostedDateLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 1514764800000
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 1546387199999
+          description: to
+    B043NewsSearch_NewsSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:NewsDetailDto
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B043NewsSearch_NewsDetailDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B045DrugDealSearch_DrugDealSearchDealDiseaseConditionValue:
       type: object
       properties:
         condition:
@@ -1409,6 +2157,181 @@ components:
           type: array
           example:
           - 62eaee6d9ee44410b8aca59dfc7408e9
+          description: Value List
+    B069MedicineSearch_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
+    B012ClinicalTrialSearch_ClinicalTrialSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:ClinicalTrialSearchDetail
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDetail'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B069MedicineSearchRequest:
+      type: object
+      properties:
+        conference:
+          type: array
+          example:
+          - WCLC 2025
+          - AACR 2024
+          - ADA 2025
+          description: Conference name, ASN 2025 | ESMO 2025 | EHA 2025 | ASCO 2025 | AACR 2025 | ESMO_ELCC 2025 | ASCO_GU 2025 | ASCO_GI 2025 | ASH 2024
+        disease:
+          type: array
+          example:
+          - f98fd32baa8447119bb87f84093b925c
+          - 74d974da49ba407195b38595a0aff704
+          description: Disease
+        drug:
+          $ref: '#/components/schemas/B069MedicineSearch_DrugFilterAndCondition'
+        drug_type:
+          type: array
+          example:
+          - 6718bf09d6024f4db4f309a4cc791cf6
+          - 6be383aaee904d2b8321e2d1fdacf8bb
+          description: Drug type
+        journal:
+          type: array
+          example:
+          - N Engl J Med
+          - Nat Med
+          description: Journal name, Nature | Science | Cell | Lancet | N Engl J Med | Proc Natl Acad Sci U S A | Nat Commun | Nat Genet | Nat Med | Sci Transl Med | J Med Chem
+        keywords:
+          $ref: '#/components/schemas/B069MedicineSearch_KeywordsFilterAndCondition'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Number of returned items, default 10. offset + limit <= 10000, maximum limit setting 100
+        mechanism:
+          type: array
+          example:
+          - cf1cf8ea0f9b80ee88876a3324ceac99
+          - 888b99dda6a62ef2551937c34e253e9c
+          description: Mechanism of action
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        organizations:
+          type: array
+          example:
+          - 5c1eb05d43334b6d6d7973ee3073b7b4
+          - 52aee12631589b24dca3ae62de8a0886
+          description: Organization
+        publication_date:
+          $ref: '#/components/schemas/B069MedicineSearch_PublicationDateFilter'
+        sort:
+          type: array
+          example: 'Please check the form: SortField'
+          description: 'Field sorting, field supports: PUB_DT, order supports desc, asc (default desc)'
+          items:
+            $ref: '#/components/schemas/B069MedicineSearch_SortField'
+        subject:
+          type: array
+          example:
+          - 3期临床研究
+          description: Subject/Tag, Epidemiology|Pathogenesis|Target|Biomarker|Structural Biology|Discovery/Preclinical|Phase 1 Clinical|Phase 1/2 Clinical|Phase 2 Clinical|Phase 2/3 Clinical|Phase 3 Clinical|Post-Marketing Study|Real-World Research|New Technology
+        target:
+          $ref: '#/components/schemas/B069MedicineSearch_TargetFilterAndCondition'
+        translation_stage:
+          type: array
+          example:
+          - T2
+          description: Translational Stage, T0 | T1 | T2 | T3
+    B044CtResultSearch_ClinicalTrialResultSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: PUBLISHED_TIME
+          description: 'sort field, enum values: PUBLISHED_TIME'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B009CoreSearch_PatentSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:PatentSummaryDto
+          description: result itemsN
+          items:
+            $ref: '#/components/schemas/B009CoreSearch_PatentSummaryDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 0
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+        uncollapse_total:
+          type: integer
+          format: int64
+          example: 0
+          description: Uncollapse Total
+    B044CtResultSearch_ClinicalTrialResultSearchMechanismActionConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 4dd338b149b3ecd0ee860e1fb379b44f
           description: Value List
     B045DrugDealSearch_DrugDealDetailDto:
       type: object
@@ -1425,42 +2348,7 @@ components:
           type: string
           example: https://pipelinereview.com/index.php/2017122266940/More-News/Janssen-Enters-Worldwide-Collaboration-and-License-Agreement-with-Chinese-Company-Legend-Biotech-to-Develop-Investigational-CAR-T-Anti-Cancer-Therapy.html
           description: News link
-    B045DrugDealSearch_DrugDealSearchDealDiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchTargetConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 9786d32e3d244a688ec6a60d2fe1b10b
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSourceInfoDto:
-      type: object
-      properties:
-        source:
-          type: string
-          example: MDS
-          description: Source
-        source_url:
-          type: string
-          example: https://www.mdsabstracts.org/abstract/opicapone-improves-global-non-motor-symptoms-burden-in-parkinsons-disease-an-open-label-prospective-study
-          description: Source url
-    B009CoreSearch_PatentSearchPbdtLongRangeItem:
+    B009-1CoreAggregation_PatentAggregationIsdtLongRangeItem:
       type: object
       properties:
         from:
@@ -1473,7 +2361,43 @@ components:
           format: int64
           example: 20240822
           description: to
-    B009-1CoreAggregation_PatentAggregationPatentTechTypeConditionValue:
+    B045DrugDealSearch_DrugDealSearchDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - dc5440fb07a44174930e2ee62c137e54
+          description: Value List
+    B043NewsSearch_OrganizationConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 6a8c172f1efc649035845f94c31a9c1e
+          description: Value List
+    B009-1CoreAggregation_PatentAggregationTargetConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 9786d32e3d244a688ec6a60d2fe1b10b
+          description: Value List
+    B009CoreSearch_PatentSearchPatentTechTypeConditionValue:
       type: object
       properties:
         condition:
@@ -1485,45 +2409,108 @@ components:
           example:
           - 3db27f57784548dc96356669deee2ca1
           description: Value List
-    B011PaperSearchResponse:
+    B069MedicineSearch_CommonNorIdName:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        name:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B012ClinicalTrialSearch_ClinicalTrialSearchDetail:
+          example: Acute Kidney Injury
+          description: name
+        normalized_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Normalized ID
+    B044CtResultSearch_ClinicalTrialResultSearchMainExperimentationDrugConditionValue:
       type: object
       properties:
-        brief_title:
+        condition:
           type: string
-          example: Finding an Effective Dose of GM1 to Reduce or Prevent Neuropathy (Numbness or Weakness) Due to Treatment With Paclitaxel (Phase II)
-          description: Brief Title
-        official_title:
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
+    B069MedicineSearch_KeywordsFilterAndCondition:
+      type: object
+      properties:
+        condition:
           type: string
-          example: An Early Phase and Phase II Clinical Trial to Evaluate Ganglioside-Monosialic Acid (GM1) for Preventing Paclitaxel-Associated Neuropathy
-          description: Official Title
-        register_number:
+          example: OR
+          description: Condition, OR or AND
+        value:
+          type: array
+          example:
+          - Sacituzumab govitecan
+          - Oral
+          description: Value list
+    B009-1CoreAggregation_AggregationResponse:
+      type: object
+      properties:
+        aggregation_result:
+          type: array
+          example:
+          - items:
+            - key: 3db27f57784548dc96356669deee2ca1
+              count: 333567
+              display_name_cn: 单克隆抗体
+              display_name_en: Monoclonal antibody (mAb)
+            - key: 33f8f531f649466e963f3dd5e371930d
+              count: 16534
+              display_name_cn: 多克隆抗体
+              display_name_en: Polyclonal antibody
+            - key: b926f94af96c439088bb020c3c774a47
+              count: 16224
+              display_name_cn: 放射标记抗体
+              display_name_en: Radiolabeled antibody
+            - key: 1d4d0871a9c34266bbed06f44368fac8
+              count: 16000
+              display_name_cn: 抗体片段偶联药物
+              display_name_en: Antibody Fragment-Drug Conjugate (FDC)
+            - key: 7e19a4b3743a47e48884bafeaec85b84
+              count: 15518
+              display_name_cn: ADC
+              display_name_en: Antibody drug conjugate (ADC)
+            total: 5
+            aggregation_field: PATENT_TECHNOLOGY
+          description: Aggregation result
+          items:
+            $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResult'
+    B012ClinicalTrialSearch_ClinicalTrialSearchSortDto:
+      type: object
+      properties:
+        sort_field:
           type: string
-          example: NCT05751668
-          description: Trial Number
-        clinical_trial_id:
+          example: STUDY_FIRST_POSTED_DATE
+          description: 'sort field, enum values: STUDY_FIRST_POSTED_DATE, START_DATE, LAST_UPDATE_POSTED_DATE'
+        sort_order:
           type: string
-          example: e3a8282e8e85590e2ad225a2522ea828
-          description: Clinical Trial ID
+          example: desc
+          description: sort order, support:desc,asc
+    B069MedicineSearch_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B009-1CoreAggregation_PatentAggregationDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
     B009CoreSearch_GetRelatePatentSearchFilterDto:
       type: object
       properties:
@@ -1582,6 +2569,30 @@ components:
           example:
           - '1'
           description: Simple Legal Status
+    B012ClinicalTrialSearch_ClinicalTrialSearchStudyIdentifierConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - MK-3475-587
+          description: Value List
+    B009CoreSearch_PatentSearchDrugConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - 945fa31ebe9e41ae912e493aa3324576
+          description: Value List
     B069MedicineSearch_TargetFilterAndCondition:
       type: object
       properties:
@@ -1595,32 +2606,7 @@ components:
           - d8cdb9ce63174077a9ef868b39bf3421
           - c385dcba5fea4e97bf02bc256757613a
           description: Value list
-    B069MedicineSearch_CommonTarget:
-      type: object
-      properties:
-        target_id:
-          type: string
-          example: 1c2067e5ab054a8995f73efcfcf56207
-          description: Target ID
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: VEGF
-          description: Target Short Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Vascular endothelial growth factor
-          - lang: CN
-            name: 血管内皮生长因子
-          description: Target Full Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
-    B007DrugSearch_DrugSearchOrganizationConditionValue:
+    B012ClinicalTrialSearch_ClinicalTrialSearchOrganizationConditionValue:
       type: object
       properties:
         condition:
@@ -1632,196 +2618,124 @@ components:
           example:
           - 6a8c172f1efc649035845f94c31a9c1e
           description: Value List
-    B007DrugSearch_CommonDictionary:
+    B045DrugDealSearch_DrugDealSearchPrincipleConditionValue:
       type: object
       properties:
-        display_name:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
           type: array
           example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B007DrugSearch_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B009-1CoreAggregation_PatentAggregationExdtLongRangeItem:
+          - e7655969b809388df5bfc8ffc865f3cc
+          description: Value List
+    B044CtResultSearchResponse:
       type: object
       properties:
-        from:
+        data:
+          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B012ClinicalTrialSearchRequest:
+      type: object
+      properties:
+        offset:
           type: integer
           format: int64
-          example: 20280101
-          description: from
-        to:
+          example: 0
+          description: Offset, default 0
+        limit:
           type: integer
           format: int64
-          example: 20290101
-          description: to
-    B009CoreSearch_PatentSearchDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          example: 10
+          description: Limit, default 10. offset + limit <= 20000， limit up to 1,000.
+        keyword:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchKeywordConditionValue'
+        main_experimentation_drug:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchMainExperimentationDrugConditionValue'
+        control_drug:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchControlDrugConditionValue'
+        organization:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchOrganizationConditionValue'
+        target:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchTargetConditionValue'
+        mechanism_action:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchMechanismActionConditionValue'
+        disease:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDiseaseConditionValue'
+        drug_type:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchDrugTypeConditionValue'
+        study_identifier:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchStudyIdentifierConditionValue'
+        register_number:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchRegisterNumberConditionValue'
+        title:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchTitleConditionValue'
+        recruitment_status:
           type: array
           example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B011PaperSearch_PaperSearchPublicationYearLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 2019
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 2021
-          description: to
-    B069MedicineSearch_KeywordsFilterAndCondition:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Condition, OR or AND
-        value:
+          - Recruiting
+          description: 'Recruitment Status, The value is an enum with the following values: Not_Yet_Recruiting, Recruiting, Enrolling_By_Invitation, Active_Not_Recruiting, Suspended, Terminated, Completed, Withdrawn, Unknown_Status'
+        phase:
           type: array
           example:
-          - Sacituzumab govitecan
-          - Oral
-          description: Value list
-    B009-1CoreAggregation_PatentAggregationPatentAssigneeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - Phase_3
+          description: 'Study Phase, The value is an enum with the following values: Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, Phase_4, Not_Applicable'
+        start_date:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchStartDateLongRangeItem'
+        first_posted_date:
+          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchFirstPostedDateLongRangeItem'
+        enrollment:
           type: array
           example:
-          - 6a8c172f1efc649035845f94c31a9c1e
-          description: Value List
-        keyword_value:
+          - GREATER_THAN_FIVE_HUNDRED
+          description: 'Enrollment, The value is an enum with the following values: LESS_THAN_FIFTEEN, FIFTEEN_TO_SIXTY, SIXTY_TO_THREE_HUNDRED, THREE_HUNDRED_TO_FIVE_HUNDRED, GREATER_THAN_FIVE_HUNDRED'
+        organization_type:
           type: array
           example:
-          - 默沙东
-          description: Keyword List
-    B012ClinicalTrialSearch_ClinicalTrialSearchMechanismActionConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - Company
+          description: 'Organization Type, The value is an enum with the following values: Company, University_Institution, Other'
+        employee_number:
           type: array
           example:
-          - 4dd338b149b3ecd0ee860e1fb379b44f
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchKeywordConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - GREATER_THAN_500
+          description: 'Employee Number, The value is an enum with the following values: LESS_THAN_10, BETWEEN_10_AND_100, BETWEEN_100_AND_500, GREATER_THAN_500'
+        country:
           type: array
           example:
-          - keytruda
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchDiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
+          - Asia
+          description: 'Country/Location, The value is an enum with the following values: Asia, North_America, Europe, Oceania, South_America, US, EU, CN, JP, Other'
+        therapeutic_area:
           type: array
           example:
           - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchFirstPostedDateLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 1514764800000
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1546387199999
-          description: to
-    B009-1CoreAggregation_AggregationResponse:
-      type: object
-      properties:
-        aggregation_result:
+          description: Therapeutic Areas, Retrieve therapeutic area id using the [B058].
+        sort:
           type: array
           example:
-          - items:
-            - key: 3db27f57784548dc96356669deee2ca1
-              count: 333567
-              display_name_cn: 单克隆抗体
-              display_name_en: Monoclonal antibody (mAb)
-            - key: 33f8f531f649466e963f3dd5e371930d
-              count: 16534
-              display_name_cn: 多克隆抗体
-              display_name_en: Polyclonal antibody
-            - key: b926f94af96c439088bb020c3c774a47
-              count: 16224
-              display_name_cn: 放射标记抗体
-              display_name_en: Radiolabeled antibody
-            - key: 1d4d0871a9c34266bbed06f44368fac8
-              count: 16000
-              display_name_cn: 抗体片段偶联药物
-              display_name_en: Antibody Fragment-Drug Conjugate (FDC)
-            - key: 7e19a4b3743a47e48884bafeaec85b84
-              count: 15518
-              display_name_cn: ADC
-              display_name_en: Antibody drug conjugate (ADC)
-            total: 5
-            aggregation_field: PATENT_TECHNOLOGY
-          description: Aggregation result
+          - sort_field: STUDY_FIRST_POSTED_DATE
+            sort_order: desc
+          - sort_field: START_DATE
+            sort_order: desc
+          - sort_field: LAST_UPDATE_POSTED_DATE
+            sort_order: desc
+          description: 'Sorting fields. The value is an enum with the following values: STUDY_FIRST_POSTED_DATE, START_DATE, LAST_UPDATE_POSTED_DATE. The default sorting is by first post date, start date, and last post date, all in descending order. Referencing "ClinicalTrialSearchSortDto"'
           items:
-            $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResult'
-    B011PaperSearch_PaperSearchOrganizationConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 6a8c172f1efc649035845f94c31a9c1e
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
+            $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchSortDto'
     B069MedicineSearchResponse:
       type: object
       properties:
@@ -1842,295 +2756,6 @@ components:
       required:
       - status
       - error_code
-    B007DrugSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B007DrugSearch_DrugSearchResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B069MedicineSearch_CommonNorIdName:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Acute Kidney Injury
-          description: name
-        normalized_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Normalized ID
-    B009-1CoreAggregation_PatentAggregationIsdtLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 20130101
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 20240822
-          description: to
-    B009-1CoreAggregation_PatentAggregationPridtLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 20130101
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 20240822
-          description: to
-    B069MedicineSearch_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B011PaperSearch_PaperSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
-    B007DrugSearch_DrugSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
-    B043NewsSearch_DrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B009CoreSearch_PatentSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
-    B007DrugSearch_DrugSearchDrugConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 945fa31ebe9e41ae912e493aa3324576
-          description: Value List
-    B043NewsSearch_NewsDetailDto:
-      type: object
-      properties:
-        title:
-          type: string
-          example: Roche to reintroduce Susvimo in the US for people with neovascular age-related macular degeneration (nAMD)
-          description: News title
-        source:
-          type: string
-          example: BBC
-          description: source
-        news_id:
-          type: string
-          example: f57e970e-8f97-39b7-a6be-51846e92bee1
-          description: News ID
-        source_url:
-          type: string
-          example: https://www.biospace.com/article/releases/cerevel-therapeutics-announces-publication-in-the-lancet-of-emraclidine-data-from-phase-1b-clinical-trial-in-people-living-with-schizophrenia/
-          description: News Link
-    B011PaperSearch_PaperSearchSortDto:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: score
-          description: 'sort field, enum values: score, PUBLICATION_DATE'
-        sort_order:
-          type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B009-1CoreAggregationRequest:
-      type: object
-      properties:
-        drug:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDrugConditionValue'
-        drug_patent_type:
-          type: string
-          example: PRODUCT_COMPOUND_SEQUENCE
-          description: 'Drug patent type. The value is an enum with the following values: PRODUCT_COMPOUND_SEQUENCE, DRUG_COMBINATION_FORMULATION, PRODUCT_DERIVATIVE, CRYSTAL_FORM, PROCESS, NEW_USE, DOSAGE_FORM, DEVICE, DIAGNOSTIC_ANALYSIS_AND_ASSAY, OTHERS'
-        drug_type:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDrugTypeConditionValue'
-        patent_tech_type:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPatentTechTypeConditionValue'
-        target:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationTargetConditionValue'
-        disease:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationDiseaseConditionValue'
-        source:
-          type: string
-          example: MEDSPAL
-          description: 'Patent Source. The value is an enum with the following values: FDA_PURPLE_BOOK, FDA_ORANGE_BOOK, CDE, MEDSPAL, VAXPAL, MFDS'
-        patent_assignee:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPatentAssigneeConditionValue'
-        patent_country:
-          type: array
-          example:
-          - EP
-          description: Authority, obtain this through the dictionary query interface
-        simple_legal_status:
-          type: array
-          example:
-          - ACTIVE
-          description: 'Simple Legal Status. The value is an enum with the following values: INACTIVE, ACTIVE, PENDING, PCT_DESIGNATED_STAGE, PCT_DESIGNATED_STAGE_EXPIRED, UNDETERMINED'
-        pbdt:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPbdtLongRangeItem'
-        apdt:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationApdtLongRangeItem'
-        exdt:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationExdtLongRangeItem'
-        isdt:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationIsdtLongRangeItem'
-        priority_date:
-          $ref: '#/components/schemas/B009-1CoreAggregation_PatentAggregationPridtLongRangeItem'
-        aggregation_field:
-          type: array
-          example:
-          - PHS_CORE_DRUG_ID
-          description: '<p>Aggregation field : </p><p>PHS_CORE_DRUG_ID:   Patent Drug</p><p>PHS_DRUG_TYPE_ID:   Drug Type</p><p>PHS_CORE_TYPE_ID:   Drug Patent Type</p><p>PATENT_TECHNOLOGY:  Patent Tech Type</p><p>COUNTRY:            Authority</p><p>FAM_COUNTRY:        Simple Family Jurisdiction</p><p>EXDT_Y:             Estimated Expiry Year</p><p>PHS_THERAPEUTIC_AREA:   Therapeutic Area</p><p>PHS_ORG_ID_ONEID:   Std. Current Assignee</p><p>ANCS_TYPE:          Std. Current Assignee Type</p><p>PHS_ANS_ORG_ID_ONEID:   Std. Original Assignee</p><p>ANS_TYPE:           Std. Original Assignee Type</p><p>IN_FACET:           Inventor</p><p>PHS_EXTENSION_TYPE:   Extension Type</p><p>SPC_STATUS:         SPC Status</p><p>SPC_COUNTRY:        SPC Country/Location</p><p>SPC_EXPIRY_DATE:    SPC Expiry Year</p><p>PED_STATUS:         PED Status</p><p>PED_EXPIRY_DATE:    PED Expiry Year</p><p>PTE_STATUS:         PTE Status</p><p>PTE_COUNTRY:        PTE Country/Location</p><p>PTE_EXPIRY_DATE:    PTE Expiry Year</p><p>PHS_CORE_DRUG_SOURCE:   Information Source</p><p>APD_YEAR:           Application Year</p><p>PBDT_YEAR:          Publication Year</p><p>ISD_YEAR:           Entitlement Year</p><p>FADL_YEAR:          Priority Year</p><p>PHS_DRUG_ID:        Related Drug</p><p>PHS_TARGET_ID:      Related Target</p><p>PHS_DISEASE_ID:     Related Indications</p><p>PHS_DOSAGE_FORM_ID:   Related Dosage Form</p><p>SIMPLE_LEGAL_STATUS:   Simple Legal Status</p><p>LEGAL_STATUS:          Legal Status</p>'
-        current_patent_assignee_type:
-          type: array
-          example:
-          - COMPANY
-          description: current patent assignee type
-        inventor_name:
-          type: array
-          example:
-          - HONIGBERG, LEE
-          description: Inventor
-      required:
-      - aggregation_field
-    B009-1CoreAggregation_AggregationResult:
-      type: object
-      properties:
-        items:
-          type: array
-          example:
-          - key: 3db27f57784548dc96356669deee2ca1
-            count: 333567
-            display_name_cn: 单克隆抗体
-            display_name_en: Monoclonal antibody (mAb)
-          - key: 33f8f531f649466e963f3dd5e371930d
-            count: 16534
-            display_name_cn: 多克隆抗体
-            display_name_en: Polyclonal antibody
-          - key: b926f94af96c439088bb020c3c774a47
-            count: 16224
-            display_name_cn: 放射标记抗体
-            display_name_en: Radiolabeled antibody
-          - key: 1d4d0871a9c34266bbed06f44368fac8
-            count: 16000
-            display_name_cn: 抗体片段偶联药物
-            display_name_en: Antibody Fragment-Drug Conjugate (FDC)
-          - key: 7e19a4b3743a47e48884bafeaec85b84
-            count: 15518
-            display_name_cn: ADC
-            display_name_en: Antibody drug conjugate (ADC)
-          description: Details of aggregation items
-          items:
-            $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResultItem'
-        total:
-          type: integer
-          format: int64
-          example: 5
-          description: The number of aggregated items
-        aggregation_field:
-          type: string
-          example: PATENT_TECHNOLOGY
-          description: Aggregated field
-    B043NewsSearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        drug:
-          $ref: '#/components/schemas/B043NewsSearch_DrugConditionValue'
-        target:
-          $ref: '#/components/schemas/B043NewsSearch_TargetConditionValue'
-        disease:
-          $ref: '#/components/schemas/B043NewsSearch_DiseaseConditionValue'
-        organization:
-          $ref: '#/components/schemas/B043NewsSearch_OrganizationConditionValue'
-        keyword:
-          $ref: '#/components/schemas/B043NewsSearch_KeywordConditionValue'
-        post_time:
-          $ref: '#/components/schemas/B043NewsSearch_NewsSearchLongRangeItem'
-        sort:
-          type: array
-          example:
-          - sort_field: post_time
-            sort_order: desc
-          description: 'Sorting fields.The value is an enum with the following values: post_time. Default post_time descending order. Referencing "SortDto"'
-          items:
-            $ref: '#/components/schemas/B043NewsSearch_NewsSearchSortDto'
     B069MedicineSearch_TranslationalMedicineSearchDataDetail:
       type: object
       properties:
@@ -2279,11 +2904,35 @@ components:
           description: 'Field order, field can support: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE; order can support:desc, asc (default desc)'
           items:
             $ref: '#/components/schemas/B007DrugSearch_DrugSearchSortDto'
-    B044CtResultSearchResponse:
+    B009-1CoreAggregation_PatentAggregationDrugTypeConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - c38eb408d6b842f487d6a27484156633
+          description: Value List
+    B011PaperSearch_PaperSearchKeywordConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
+          type: array
+          example:
+          - keytruda
+          description: Value List
+    B043NewsSearchResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchResponseDto'
+          $ref: '#/components/schemas/B043NewsSearch_NewsSearchResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -2299,20 +2948,7 @@ components:
       required:
       - status
       - error_code
-    B045DrugDealSearch_DrugDealSearchMilestonePaymentLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 500
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1000
-          description: to
-    B009-1CoreAggregation_PatentAggregationDiseaseConditionValue:
+    B011PaperSearch_PaperSearchDrugConditionValue:
       type: object
       properties:
         condition:
@@ -2322,45 +2958,17 @@ components:
         value:
           type: array
           example:
-          - 62eaee6d9ee44410b8aca59dfc7408e9
+          - 945fa31ebe9e41ae912e493aa3324576
           description: Value List
-    B069MedicineSearch_CommonDictionary:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B044CtResultSearch_ClinicalTrialResultSearchSortDto:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: PUBLISHED_TIME
-          description: 'sort field, enum values: PUBLISHED_TIME'
-        sort_order:
-          type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B045DrugDealSearch_DrugDealSearchResponseDto:
+    B044CtResultSearch_ClinicalTrialResultSearchResponseDto:
       type: object
       properties:
         items:
           type: array
-          example: Please check the form:DrugDealDetailDto
-          description: Result Items
+          example: Please check the form:ClinicalTrialResultSummaryDto
+          description: result items
           items:
-            $ref: '#/components/schemas/B045DrugDealSearch_DrugDealDetailDto'
+            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSummaryDto'
         limit:
           type: integer
           format: int64
@@ -2376,174 +2984,86 @@ components:
           format: int64
           example: 0
           description: offset
-    B069MedicineSearchRequest:
+    B044CtResultSearch_ClinicalTrialResultSourceInfoDto:
       type: object
       properties:
-        conference:
-          type: array
-          example:
-          - WCLC 2025
-          - AACR 2024
-          - ADA 2025
-          description: Conference name, ASN 2025 | ESMO 2025 | EHA 2025 | ASCO 2025 | AACR 2025 | ESMO_ELCC 2025 | ASCO_GU 2025 | ASCO_GI 2025 | ASH 2024
-        disease:
-          type: array
-          example:
-          - f98fd32baa8447119bb87f84093b925c
-          - 74d974da49ba407195b38595a0aff704
-          description: Disease
-        drug:
-          $ref: '#/components/schemas/B069MedicineSearch_DrugFilterAndCondition'
-        drug_type:
-          type: array
-          example:
-          - 6718bf09d6024f4db4f309a4cc791cf6
-          - 6be383aaee904d2b8321e2d1fdacf8bb
-          description: Drug type
-        journal:
-          type: array
-          example:
-          - N Engl J Med
-          - Nat Med
-          description: Journal name, Nature | Science | Cell | Lancet | N Engl J Med | Proc Natl Acad Sci U S A | Nat Commun | Nat Genet | Nat Med | Sci Transl Med | J Med Chem
-        keywords:
-          $ref: '#/components/schemas/B069MedicineSearch_KeywordsFilterAndCondition'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Number of returned items, default 10. offset + limit <= 10000, maximum limit setting 100
-        mechanism:
-          type: array
-          example:
-          - cf1cf8ea0f9b80ee88876a3324ceac99
-          - 888b99dda6a62ef2551937c34e253e9c
-          description: Mechanism of action
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        organizations:
-          type: array
-          example:
-          - 5c1eb05d43334b6d6d7973ee3073b7b4
-          - 52aee12631589b24dca3ae62de8a0886
-          description: Organization
-        publication_date:
-          $ref: '#/components/schemas/B069MedicineSearch_PublicationDateFilter'
-        sort:
-          type: array
-          example: 'Please check the form: SortField'
-          description: 'Field sorting, field supports: PUB_DT, order supports desc, asc (default desc)'
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_SortField'
-        subject:
-          type: array
-          example:
-          - 3期临床研究
-          description: Subject/Tag, Epidemiology|Pathogenesis|Target|Biomarker|Structural Biology|Discovery/Preclinical|Phase 1 Clinical|Phase 1/2 Clinical|Phase 2 Clinical|Phase 2/3 Clinical|Phase 3 Clinical|Post-Marketing Study|Real-World Research|New Technology
-        target:
-          $ref: '#/components/schemas/B069MedicineSearch_TargetFilterAndCondition'
-        translation_stage:
-          type: array
-          example:
-          - T2
-          description: Translational Stage, T0 | T1 | T2 | T3
-    B045DrugDealSearchRequest:
+        source:
+          type: string
+          example: MDS
+          description: Source
+        source_url:
+          type: string
+          example: https://www.mdsabstracts.org/abstract/opicapone-improves-global-non-motor-symptoms-burden-in-parkinsons-disease-an-open-label-prospective-study
+          description: Source url
+    B045DrugDealSearch_DrugDealSearchUpfrontPaymentLongRangeItem:
       type: object
       properties:
-        offset:
+        from:
           type: integer
           format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
+          example: 50
+          description: from
+        to:
           type: integer
           format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        drug:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugConditionValue'
-        drug_type:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugTypeConditionValue'
-        principle:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchPrincipleConditionValue'
-        partner:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchPartnerConditionValue'
-        target:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchTargetConditionValue'
-        mechanism_action:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchMechanismActionConditionValue'
-        drug_disease:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDrugDiseaseConditionValue'
-        deal_disease:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDealDiseaseConditionValue'
-        highest_dev_status:
+          example: 100
+          description: to
+    B009CoreSearch_PatentSearchPbdtLongRangeItem:
+      type: object
+      properties:
+        from:
+          type: integer
+          format: int64
+          example: 20130101
+          description: from
+        to:
+          type: integer
+          format: int64
+          example: 20240822
+          description: to
+    B007DrugSearch_DrugSearchSortDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: DRUG_TYPE_SORT
+          description: 'sort field, enum values: DRUG_TYPE_SORT, GLOBAL_HIGHEST_DEV_STATUS_RANK, FIRST_APPROVED_DATE'
+        sort_order:
+          type: string
+          example: desc
+          description: sort order, support:desc,asc
+    B009CoreSearch_PatentSearchDiseaseConditionValue:
+      type: object
+      properties:
+        condition:
+          type: string
+          example: OR
+          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
+        value:
           type: array
           example:
-          - Phase_2_3
-          description: 'Highest Phase (Deal). The value is an enum with the following values: Discovery, Preclinical, IND, IND_Approval, Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, NDA_BLA, Approved, Clinical, Pending, Discontinued, Withdraw, Suspended, Unknown.'
-        country:
-          type: array
-          example:
-          - US
-          description: 'Country/Location. The value is an enum with the following values: US, JP, CN, EU, OTHER.'
-        deal_type:
-          type: array
-          example:
-          - License
-          description: 'Agreement Type. The value is an enum with the following values: Collaboration, License, Acquisition, Investment, Option'
-        amount_disclosure:
+          - 62eaee6d9ee44410b8aca59dfc7408e9
+          description: Value List
+    B009CoreSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B009CoreSearch_PatentSearchResponseDto'
+        status:
           type: boolean
-          example: true
-          description: Amount Fully Disclosed
-        deal_total_value:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchTotalValueLongRangeItem'
-        deal_upfront_payment:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchUpfrontPaymentLongRangeItem'
-        deal_milestone_payment:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchMilestonePaymentLongRangeItem'
-        deal_time:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchDealTimeLongRangeItem'
-        keyword:
-          $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchKeywordConditionValue'
-        sort:
-          type: array
-          example:
-          - sort_field: DEAL_TIME
-            sort_order: desc
-          - sort_field: TOTAL_VALUE
-            sort_order: desc
-          - sort_field: NORMALIZED_PHASE_SIGN_RANK_MAX
-            sort_order: desc
-          description: 'Sorting fields. The value is an enum with the following values: DEAL_TIME, TOTAL_VALUE, NORMALIZED_PHASE_SIGN_RANK_MAX. The default sorting is by deal time, total value, and highest R&D phase, all in descending order. Referencing "SortDto"'
-          items:
-            $ref: '#/components/schemas/B045DrugDealSearch_DrugDealSearchSortDto'
-    B012ClinicalTrialSearch_ClinicalTrialSearchDrugTypeConditionValue:
-      type: object
-      properties:
-        condition:
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - c38eb408d6b842f487d6a27484156633
-          description: Value List
-    B007DrugSearch_DrugSearchTargetConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 9786d32e3d244a688ec6a60d2fe1b10b
-          description: Value List
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     B069MedicineSearch_CommonMechanismAction:
       type: object
       properties:
@@ -2571,526 +3091,6 @@ components:
           type: string
           example: 27c0848a265e4332836e10d0e8202b4c
           description: Mechanism Action ID
-    B011PaperSearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        keyword:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchKeywordConditionValue'
-        drug:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDrugConditionValue'
-        target:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchTargetConditionValue'
-        disease:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDiseaseConditionValue'
-        organization:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchOrganizationConditionValue'
-        drug_type:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchDrugTypeConditionValue'
-        author:
-          type: array
-          example:
-          - Hutchins, Beth
-          description: Author
-        publication_year:
-          $ref: '#/components/schemas/B011PaperSearch_PaperSearchPublicationYearLongRangeItem'
-        sort:
-          type: array
-          example:
-          - sort_field: score
-            sort_order: desc
-          description: 'Sorting fields. The value is an enum with the following values: score, PUBLICATION_DATE. The default sorting is by Relevancy descending order. Referencing "PaperSearchSortDto"'
-          items:
-            $ref: '#/components/schemas/B011PaperSearch_PaperSearchSortDto'
-    B009CoreSearch_PatentSearchPatentTechTypeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 3db27f57784548dc96356669deee2ca1
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchTitleConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - Tumors
-          description: Value List
-    B009CoreSearch_PatentSearchPatentAssigneeConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 37644001d015f20c92d6232713bd09eb
-          description: Value List
-        keyword_value:
-          type: array
-          example:
-          - Merck Sharp
-          description: Keyword List
-    B012ClinicalTrialSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B012ClinicalTrialSearch_ClinicalTrialSearchResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B012ClinicalTrialSearch_ClinicalTrialSearchStartDateLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 1514764800000
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1546387199999
-          description: to
-    B044CtResultSearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        main_experimentation_drug:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchMainExperimentationDrugConditionValue'
-        overall_enrollment:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchOverallEnrollmentLongRangeItem'
-        sort:
-          type: array
-          example:
-          - sort_field: ANNOTATION_METHOD_RANK
-            sort_order: desc
-          description: Field order, field can support:ANNOTATION_METHOD_RANK; order can support:desc, asc(default desc)
-          items:
-            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchSortDto'
-        disease:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchDiseaseConditionValue'
-        target:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchTargetConditionValue'
-        sponsor_collaborator_organization:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchSponsorCollaboratorOrganizationConditionValue'
-        study_code:
-          type: array
-          example:
-          - KEYNOTE-045
-          description: Study Code
-        register_number:
-          type: array
-          example:
-          - NCT02256436
-          description: Register Number
-        drug_type:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchDrugTypeConditionValue'
-        control_drug:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchControlDrugConditionValue'
-        therapeutic_area:
-          type: array
-          example:
-          - 62eaee6d9ee44410b8aca59dfc7408e9
-          description: Therapeutic Areas, Retrieve therapeutic area id using the [B058].
-        mechanism_action:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchMechanismActionConditionValue'
-        ct_result_meeting:
-          type: array
-          example:
-          - c47a5730bf5e40b3aa76c26820ec6d4e
-          description: Clinical trial result meeting ID, obtain this through the dictionary query interface
-        outcome:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchOutcomeConditionValue'
-        therapy_type:
-          type: array
-          example:
-          - SECOND_LINE
-          description: 'Therapy Type. The value is an enum with the following values: FIRST_LINE, SECOND_LINE, THIRD_LINE, LAST_LINE, ADJUVANT, NEOADJUVANT, MAINTENANCE, CONSOLIDATION, ADD_ON, INDUCTION.'
-        phase:
-          type: array
-          example:
-          - Phase_3
-          description: 'Trial Phase. The value is an enum with the following values: Early_Phase_1, Phase_1, Phase_1_2, Phase_2, Phase_2_3, Phase_3, Phase_4, Not_Applicable.'
-        publish_time:
-          $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSearchPublishTimeLongRangeItem'
-        general_evaluation:
-          type: array
-          example:
-          - POSITIVE
-          description: 'General Evaluation. The value is an enum with the following values: SUPERIORITY, POSITIVE, NON_INFERIORITY, SIMILAR, NON_SUPERIORITY.'
-    B043NewsSearch_NewsSearchLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 1722441600000
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 1756742399999
-          description: to
-    B011PaperSearch_PaperDetailDto:
-      type: object
-      properties:
-        paper_id:
-          type: string
-          example: 0b20bcfa-6399-30bf-ab29-6a0fafbbe3bd
-          description: Paper ID
-        paper_title:
-          type: array
-          example:
-          - lang: EN
-            title: 'Adding PD-1/PD-L1 Inhibitors to Chemotherapy for the First-Line Treatment of Extensive Stage Small Cell Lung Cancer (SCLC): A Meta-Analysis of Randomized Trials'
-          description: Paper Title
-          items:
-            $ref: '#/components/schemas/B011PaperSearch_PaperTitleDto'
-    B009-1CoreAggregationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B009-1CoreAggregation_AggregationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B009-1CoreAggregation_AggregationResultItem:
-      type: object
-      properties:
-        key:
-          type: string
-          example: 676de5ba-893a-36bb-8683-c93306aaf769
-          description: Primary key
-        color:
-          type: string
-          example: '#6B778C'
-          description: Color(Return when the aggregated fields are SIMPLE_LEGAL_STATUS and LEGAL_STATUS)
-        count:
-          type: integer
-          format: int64
-          example: 10
-          description: Quantity
-        display_name_cn:
-          type: string
-          example: Polyclonal antibody
-          description: English display name
-        display_name_en:
-          type: string
-          example: 多克隆抗体
-          description: Chinese display name
-    B007DrugSearch_DrugSearchResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:DrugSummaryDto
-          description: result items
-          items:
-            $ref: '#/components/schemas/B007DrugSearch_DrugSummaryDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 0
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-        total_dev_status:
-          type: integer
-          format: int64
-          example: 0
-          description: Involved Dev Status Count
-    B069MedicineSearch_CommonDisease:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Uveitic Macular Edema
-          - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B069MedicineSearch_CommonName'
-    B069MedicineSearch_SortField:
-      type: object
-      properties:
-        field:
-          type: string
-          example: PUB_DT
-          description: 'Sort field, supports: PUB_DT'
-        order:
-          type: string
-          example: desc
-          description: Sort order, desc or asc, default desc
-    B012ClinicalTrialSearch_ClinicalTrialSearchRegisterNumberConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - NCT03486873
-          description: Value List
-    B044CtResultSearch_ClinicalTrialResultSearchResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:ClinicalTrialResultSummaryDto
-          description: result items
-          items:
-            $ref: '#/components/schemas/B044CtResultSearch_ClinicalTrialResultSummaryDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B045DrugDealSearch_DrugDealSearchUpfrontPaymentLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 50
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 100
-          description: to
-    B069MedicineSearch_PublicationDateFilter:
-      type: object
-      properties:
-        end_date:
-          type: string
-          example: '2024-12-31'
-          description: End time (used when custom)
-        start_date:
-          type: string
-          example: '2024-01-01'
-          description: Start time (used when custom)
-        type:
-          type: integer
-          format: int32
-          example: 4
-          description: Time range type, 1:within 1 week | 2:within 1 month | 3:within 1 year | 4:within 3 years | 5:Custom
-    B009-1CoreAggregation_PatentAggregationPbdtLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 20130101
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 20240822
-          description: to
-    B007DrugSearch_DrugSearchDiseaseConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - 3beea980d93a4cc0abc864e27514601c
-          description: Value List
-    B009CoreSearch_PatentSearchApdtLongRangeItem:
-      type: object
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 20080101
-          description: from
-        to:
-          type: integer
-          format: int64
-          example: 20090101
-          description: to
-    B045DrugDealSearch_DrugDealSearchKeywordConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - genentech
-          description: Value List
-    B012ClinicalTrialSearch_ClinicalTrialSearchSortDto:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: STUDY_FIRST_POSTED_DATE
-          description: 'sort field, enum values: STUDY_FIRST_POSTED_DATE, START_DATE, LAST_UPDATE_POSTED_DATE'
-        sort_order:
-          type: string
-          example: desc
-          description: sort order, support:desc,asc
-    B011PaperSearch_PaperSearchKeywordConditionValue:
-      type: object
-      properties:
-        condition:
-          type: string
-          example: OR
-          description: Logical operators, The value is an enum with the following values:AND,OR. Case-sensitive.
-        value:
-          type: array
-          example:
-          - keytruda
-          description: Value List
-    B009CoreSearch_InventorDto:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: CN
-          description: language
-        name:
-          type: string
-          example: 张三
-          description: name
-        address:
-          type: string
-          example: Alpharetta, GA
-          description: Address
-    B043NewsSearch_NewsSearchResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:NewsDetailDto
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B043NewsSearch_NewsDetailDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B011PaperSearch_PaperSearchResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:PaperDetailDto
-          description: result items
-          items:
-            $ref: '#/components/schemas/B011PaperSearch_PaperDetailDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
   securitySchemes:
     bearerAuth:
       type: http

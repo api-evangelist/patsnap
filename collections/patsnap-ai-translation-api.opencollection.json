@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Translation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "T010 Translate Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/hiro_translation/translate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Translate source text from source language to target language and return a single JSON result."
+        },
+        {
+          "info": {
+            "name": "AI61 AI Translation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/translation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The AI Translation API leverages advanced large language model (LLM) to deliver real-time multilingual translation services worldwide. It enables accurate and seamless conversion of source text into target languages. Developers can easily integrate the API to achieve efficient and precise text translation, fully catering to multilingual application scenarios and enhancing user experience and cross-language communication efficiency."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

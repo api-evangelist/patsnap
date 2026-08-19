@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Drug Basic Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug Basic Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B018 Drug basic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/detail",
+            "params": [
+              {
+                "name": "drug_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug basic information about drugs, including name, target, disease, active organization, etc."
+        },
+        {
+          "info": {
+            "name": "B020 Drug Dev Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/dev-status",
+            "params": [
+              {
+                "name": "drug_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset, default 0"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit, default 10, max 100"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug dev status about organization, disease, country, phase etc."
+        },
+        {
+          "info": {
+            "name": "B019 Drug approval information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/approval",
+            "params": [
+              {
+                "name": "drug_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug approval information about product, submission, etc."
+        },
+        {
+          "info": {
+            "name": "B040 Target basic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/target/detail",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "query",
+                "description": "Target ID, obtain this through the target autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain Target basic information about name, short name, alias etc."
+        },
+        {
+          "info": {
+            "name": "B021 Drug Regulatory Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/special-approval",
+            "params": [
+              {
+                "name": "drug_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug special approval about organization, disease, country, special review etc."
+        },
+        {
+          "info": {
+            "name": "B047 Drug xdc",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/xdc",
+            "params": [
+              {
+                "name": "drug_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug xdc about targeting moiety, payload, linker etc."
+        },
+        {
+          "info": {
+            "name": "B041 Target analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/target/analysis",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "query",
+                "description": "Target ID, obtain this through the target autocomplete interface"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Analysis type, enum: ORGANIZATION、DISEASE、DRUG_TYPE"
+              },
+              {
+                "name": "roll_up",
+                "value": "",
+                "type": "query",
+                "description": "Should the aggregation start from the headquarters as the root node? true - yes, false - no. The default is true"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain Target analysis about organization, disease, drug type etc."
+        },
+        {
+          "info": {
+            "name": "B059 Drug approval file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/drug/approval/file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug approval file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

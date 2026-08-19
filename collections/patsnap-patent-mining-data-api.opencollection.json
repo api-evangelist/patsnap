@@ -1,0 +1,363 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Mining Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Mining Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P023 Application Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/high-value-data/application-domain",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , you can choose cn or en."
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive application domain classification data by patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "P025 The Three Elements of Patent Technology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/high-value-data/tech-problem-and-benefit-summary",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , you can choose cn or en."
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive the classification data for the three elements of patent technology, namely technical problem summary, technical benefit summary and technical approach summary, by providing the patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "P022 Strategic Emerging Industry Classification (SEIC)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/high-value-data/seic-classification",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , you can choose cn or en."
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive strategic emerging industry classification data by patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "P024 Technology Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/high-value-data/technology-topic",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , you can choose cn or en."
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "<p>Receive technology topic classification data by patent_id or patent_number.</p><p>Technology topic is a classification developed by Patsnap that allows you to easily understand key elements of the technical solution. The algorithm leverages AI technology. Technology topic is not provided for design patents.</p>"
+        },
+        {
+          "info": {
+            "name": "P066 Patent Classification Description",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/high-value-data/patent-classification-description",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent classification description data by corresponding classification type and code.<p>Note: There must be all of the two request parameters of classification type and code. The API supports batch requests with a maximum of 10 classification codes of one type, and more classification codes are separated with English comma. Batch requests are deducted from traffic/costs, and will be deducted multiple times based on the number of successful results returned.</p>"
+        },
+        {
+          "info": {
+            "name": "P064 Patent Enhanced Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/patent_enhanced_data",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "the fields you want received, multiple fields are separated by commas."
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent basic bibliography data by patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "P101 material ontology",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/material/material-ontology",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides all  material ontology lables in the patent text"
+        },
+        {
+          "info": {
+            "name": "P100 patent PUM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/material/patent-pum",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides all PUM information (including Property, Unit, and Measurement) in the patent text"
+        },
+        {
+          "info": {
+            "name": "P103 patent SPUM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/material/material-spum",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides all material and PUM (including Property, Unit and Measurement) in the patent text."
+        },
+        {
+          "info": {
+            "name": "P102 material substance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/material/material-substance",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides all material substance name in the patent text."
+        },
+        {
+          "info": {
+            "name": "P063 Patent intelligent attached image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/intelligent-attached-image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent intelligent attached image data by patent_id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

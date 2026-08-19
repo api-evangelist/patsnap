@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Design Infringement Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Design Infringement Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI39-1 Appearance Anti-Infringement Search - Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/image-search/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit design patent search task based on product image and search criteria. The system will automatically perform image similarity search, AI reranking and risk analysis to generate design patent FTO report. Task is executed asynchronously, returns task_id for subsequent polling to get results."
+        },
+        {
+          "info": {
+            "name": "AI39-2 Appearance Anti-Infringement Search - Get Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/image-search/report",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the task_id returned by [AI39-1] submit task API, poll to get the execution result of design patent search task. Returns: task status, line drawing (Base64), traditional image search results, RRF fusion search results and complete analysis report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

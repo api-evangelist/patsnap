@@ -1,0 +1,561 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Basic Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Basic Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P021 Abstract Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/abstract-image",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent abstract image data (the image from front page) by patent_id or patent_number. Patent abstract data includes abstract image number and abstract image URL path."
+        },
+        {
+          "info": {
+            "name": "P020 PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/pdf-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the PDF of current patent is unavailable, whether to replace it with the PDF of its family patent？default not to replace: \n   1. Yes\n   0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent PDF document pathway by patent_id or patent_number."
+        },
+        {
+          "info": {
+            "name": "P015 Cited By Patents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/backward-citation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent backward citation data by patent_id or patent_number. Patent backward citation data includes backward citation number, backward citation count for simple family, INPADOC family and PatSnap family."
+        },
+        {
+          "info": {
+            "name": "P041 Simple Legal Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/simple-legal-status",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive simple legal status data by patent_id or patent_number. Simple Legal Status data includes Active, Pending, Inactive, Undetermined, PCT designated period, PCT designated expiration. For more details please view the full list of fields in the developer document."
+        },
+        {
+          "info": {
+            "name": "P042 Fulltext Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/basic-patent-data/fulltext-image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent fulltext image data by patent_id or patent_number. Patent fulltext data includes fulltext image type and fulltext image URL path."
+        },
+        {
+          "info": {
+            "name": "P016 Patent Citation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/advanced-patent-data/forward-citation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive detailed forward citation data patent_id or patent_number. This includes citation type, citation source, citation category, reference DOI, title, author, and publication."
+        },
+        {
+          "info": {
+            "name": "P013 Patent Legal Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/legal-status",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive legal status data by patent_id or patent_number. Legal status data includes simple legal status, legal status and event status. For more details please view the fields description in the developer document."
+        },
+        {
+          "info": {
+            "name": "P018 Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/claim-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the claims of current patent is unavailable, whether to replace it with the claims of its family patent？default not to replace: \n   1. Yes\n   0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent claim data by patent_id or patent_number. Patent claim data includes claim text, number of claims and independent claims."
+        },
+        {
+          "info": {
+            "name": "P012 Biblio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/bibliography",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent bibliography data by patent_id or patent_number. Patent bibliography data includes a total of 100+ fields, including application information, applicant information and agency information. For more details please view the full list of fields in the developer document."
+        },
+        {
+          "info": {
+            "name": "P014 Patent Family",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/patent-family",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent family data by patent_id or patent_number. Patent family data includes simple, INPADOC, and PatSnap family authority, family members and count."
+        },
+        {
+          "info": {
+            "name": "P011 Simple Biblio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/simple-bibliography",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent basic bibliography data by patent_id or patent_number. For more details please view the full list of fields in the developer document."
+        },
+        {
+          "info": {
+            "name": "P043 Abstract (Translated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/abstract-data-translated",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "translation language, support cn, en, jp"
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the abstract of current patent is unavailable, whether to replace it with the abstract of its family patent？default not to replace: 1. Yes 0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent translated title and abstract by patent_id or patent_number (support Chinese, English, Japanese)."
+        },
+        {
+          "info": {
+            "name": "P019 Description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/description-data",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the description of current patent is unavailable, whether to replace it with the description of its family patent？default not to replace: \n   1. Yes\n   0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent description data by patent_id or patent_number. Patent description data includes the Technical field, Background Art, Summary of Invention, Brief Description of Drawings and Description of Embodiments."
+        },
+        {
+          "info": {
+            "name": "P044 Claim (Translated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/claim-data-translated",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "translation language, support cn, en, jp"
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the claims of current patent is unavailable, whether to replace it with the claims of its family patent？default not to replace: 1. Yes 0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent translated claims by patent_id or patent_number (support Chinese, English, Japanese)"
+        },
+        {
+          "info": {
+            "name": "P045 Description (Translated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/description-data-translated",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "translation language, support cn, en, jp"
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              },
+              {
+                "name": "replace_by_related",
+                "value": "",
+                "type": "query",
+                "description": "When the description of current patent is unavailable, whether to replace it with the description of its family patent？default not to replace: 1. Yes 0: No"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent translated description by patent_id or patent_number (support Chinese, English, Japanese)"
+        },
+        {
+          "info": {
+            "name": "P042 Fulltext Inline Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/fulltext-inline-image",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent fulltext image data by patent_id or patent_number. Patent fulltext data includes fulltext image type and fulltext image URL path."
+        },
+        {
+          "info": {
+            "name": "P073 Fulltext navigation location information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/basic-patent-data/description-offset",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "text language，Only EN, CN, JP, KR, and TW are supported.default EN"
+              },
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The text paragraph location information of a specific patent can be queried by entering \"patent_id\" or \"patent_number\". The paragraph includes: technical field, background technology, invention content, attached drawing description, specific implementation plan, etc."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

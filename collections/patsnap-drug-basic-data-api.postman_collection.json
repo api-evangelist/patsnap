@@ -1,0 +1,2113 @@
+{
+  "item": [
+    {
+      "id": "5532e2a5-c8f5-4fe6-a636-52c367af2104",
+      "name": "Drug Basic Data",
+      "description": {
+        "content": "Drug Basic Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5544e7ab-c2f2-4d49-b34f-8834b26a0c5b",
+          "name": "B018 Drug basic information",
+          "request": {
+            "name": "B018 Drug basic information",
+            "description": {
+              "content": "Obtain drug basic information about drugs, including name, target, disease, active organization, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "drug_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0185e3dd-954a-4f28-bc1e-5ac111a7cff4",
+              "name": "Successful b018 drug basic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 7608,\n  \"data\": {\n    \"target\": [\n      {\n        \"target_id\": \"928facc8122849baa0dc00759cff0380\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"KRAS G12C\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"GTPase KRas G12C\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"KRAS G12C突变\"\n          }\n        ]\n      }\n    ],\n    \"disease\": [\n      {\n        \"disease_id\": \"a0304a462da04e7cb03e3f2c5625544e\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Advanced Lung Non-Small Cell Carcinoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"晚期非小细胞肺癌\"\n          }\n        ]\n      }\n    ],\n    \"drug_id\": \"2838b95ade834c96b17ac8bcd2b68c27\",\n    \"dev_code\": [\n      {\n        \"code\": \"JP 1366\",\n        \"name\": \"JP 1366\",\n        \"status\": \"ACTIVE\"\n      },\n      {\n        \"code\": \"JP 1366\",\n        \"name\": \"JP 1366\",\n        \"status\": \"ACTIVE\"\n      }\n    ],\n    \"sequence\": [\n      {\n        \"chain_type\": [\n          \"L\"\n        ],\n        \"sequence_text\": \"DILLTQSPVILSVSPGERVSFSCRASQSIGTNIHWYQQRTNGSPRLLIKYASESISGIPSRFSGSGSGTDFTLSINSVESEDIADYYCQQNNNWPTTFGAGTKLELKRTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC\",\n        \"sequence_number\": 43254\n      }\n    ],\n    \"atc_codes\": [\n      \"L01XE44\"\n    ],\n    \"drug_name\": [\n      {\n        \"lang\": \"CN\",\n        \"name\": \"索托拉西布\"\n      },\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Sotorasib\"\n      },\n      {\n        \"lang\": \"JP\",\n        \"name\": \"ソトラシブ\"\n      }\n    ],\n    \"drug_type\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Small molecule drug\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"小分子化药\"\n          }\n        ],\n        \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n      }\n    ],\n    \"structure\": [\n      {\n        \"base64\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAEZ0FNQQ\",\n        \"formula\": \"C30H30F2N6O3\",\n        \"inchi_key\": \"NXQKSXLFSAEQCZ-SFHVURJKSA-N\"\n      }\n    ],\n    \"alias_name\": [\n      {\n        \"lang\": \"CN\",\n        \"name\": \"索托雷塞\"\n      },\n      {\n        \"lang\": \"CN\",\n        \"name\": \"索拖拉西布\"\n      }\n    ],\n    \"exist_deal\": true,\n    \"trade_name\": [\n      {\n        \"name\": \"Lumakras\"\n      },\n      {\n        \"name\": \"Lumykras\"\n      },\n      {\n        \"name\": \"ルマケラス\"\n      }\n    ],\n    \"generic_name\": [\n      {\n        \"lang\": \"CN\",\n        \"name\": \"索托拉西布\"\n      },\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Sotorasib\"\n      },\n      {\n        \"lang\": \"JP\",\n        \"name\": \"ソトラシブ\"\n      }\n    ],\n    \"patent_mining\": false,\n    \"milestone_tags\": [\n      {\n        \"date\": 1409788800000,\n        \"name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"FDA Approval\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"FDA批准\"\n          }\n        ]\n      },\n      {\n        \"date\": 1409788800000,\n        \"name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"FDA Approval\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"FDA批准\"\n          }\n        ]\n      }\n    ],\n    \"approval_country\": [\n      {\n        \"country_id\": \"0dc5d896-7408-3c87-84c0-22e3d9b784be\",\n        \"alpha2_code\": \"US\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"United States\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"美国\"\n          }\n        ]\n      }\n    ],\n    \"mechanism_action\": [\n      {\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"KRAS G12C inhibitors\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"KRAS G12C抑制剂\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"GTPase KRas G12C inhibitors\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"KRAS G12C突变抑制剂\"\n          }\n        ],\n        \"mechanism_id\": \"27c0848a265e4332836e10d0e8202b4c\"\n      }\n    ],\n    \"research_disease\": [\n      {\n        \"disease_id\": \"a0304a462da04e7cb03e3f2c5625544e\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Advanced Lung Non-Small Cell Carcinoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"晚期非小细胞肺癌\"\n          }\n        ]\n      }\n    ],\n    \"special_approval\": [\n      {\n        \"country\": {\n          \"country_id\": \"5a365096-b2a6-31cb-acdf-1de1f5ab3abe\",\n          \"alpha2_code\": \"CN\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"China\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"中国\"\n            }\n          ]\n        },\n        \"special_view\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Breakthrough Therapy\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"突破性疗法\"\n            }\n          ],\n          \"normalized_id\": \"c3c948340a7d40f3b7437081f5e8cb4e\"\n        }\n      }\n    ],\n    \"therapeutic_area\": [\n      {\n        \"disease_id\": \"62eaee6d9ee44410b8aca59dfc7408e9\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Neoplasms\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"肿瘤\"\n          }\n        ]\n      }\n    ],\n    \"deal_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"active_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"first_approval_date\": 1409788800000,\n    \"non_research_disease\": [\n      {\n        \"disease_id\": \"a1ddbb69fd3e46b6980bd4e1f1e64a45\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Advanced Pancreatic Adenocarcinoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"晚期胰腺腺癌\"\n          }\n        ]\n      }\n    ],\n    \"highest_dev_status_cn\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"inactive_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"first_approval_date_cn\": 1532044800000,\n    \"first_approved_country\": [\n      {\n        \"country_id\": \"52d1b118-b540-37ba-9cb2-f5aff686bb10\",\n        \"alpha2_code\": \"KR\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"South Korea\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"韩国\"\n          }\n        ]\n      }\n    ],\n    \"first_approved_disease\": [\n      {\n        \"disease_id\": \"b3d498b086894c13bf5ac981a350af82\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"KRAS G12C mutant Non-small Cell Lung Cancer\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"KRAS G12C突变非小细胞肺癌\"\n          }\n        ]\n      }\n    ],\n    \"originator_organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Amgen, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"安进股份有限公司\"\n          }\n        ],\n        \"organization_id\": \"11ef8a9e8bf5ca80213a1183511cded3\"\n      }\n    ],\n    \"global_highest_dev_status\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0598568b-6adf-4745-a80f-0d937ea09eae",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "38b53e20-d00e-40b6-8000-b9f8e63448ee",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db59e889-9ee9-46bf-985d-6e61f33e133d",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f86b8700-07c4-40e6-a6e4-cfd007aefea1",
+          "name": "B020 Drug Dev Status",
+          "request": {
+            "name": "B020 Drug Dev Status",
+            "description": {
+              "content": "Obtain drug dev status about organization, disease, country, phase etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "dev-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "drug_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "Offset, default 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "Limit, default 10, max 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "976fd75c-4a9a-457b-bf07-48c73388e302",
+              "name": "Successful b020 drug dev status response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "dev-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4797,\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"05f69ae72aeccf5a92c9f417efaa3b02\",\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"dev_status\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"dev_status_time\": 1644105600000\n      },\n      {\n        \"id\": \"05f69ae72aeccf5a92c9f417efaa3b02\",\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"dev_status\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"dev_status_time\": 1644105600000\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 0,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcf2ba54-3cf3-4da8-bd52-ccd40c5d0ff2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "dev-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1fff4d7-e98a-4f4c-a935-ebc31f2ebc41",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "dev-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f942973a-66d9-4cb1-9b40-c9041b8fb709",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "dev-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "11d208e0c26a4345946d95f92d9fcaf0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cfbee33-9909-483b-a3c5-b57fcdd6c1d7",
+          "name": "B019 Drug approval information",
+          "request": {
+            "name": "B019 Drug approval information",
+            "description": {
+              "content": "Obtain drug approval information about product, submission, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "drug_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c360731-99ba-4956-bbad-a40939c94b9c",
+              "name": "Successful b019 drug approval information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9621,\n  \"data\": {\n    \"ema\": {\n      \"products\": [\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 9022,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 6273,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 8856,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 3052,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"submissions\": [\n        {\n          \"disease\": [\n            {\n              \"disease_id\": \"e6ee5660ea1d44ad8edb142046da866f\",\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Enthesitis-Related Arthritis\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"附着点炎相关关节炎\"\n                }\n              ]\n            }\n          ],\n          \"regulation\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"action_date\": 1698969600000,\n          \"action_type\": \"Approval\",\n          \"approval_date\": 1698969600000,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"submission_no\": 423,\n          \"submission_type\": \"SUPPL\",\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"original_regulation\": \"STANDARD; Orphan\",\n          \"submission_classification\": \"Labeling\"\n        },\n        {\n          \"disease\": [\n            {\n              \"disease_id\": \"e6ee5660ea1d44ad8edb142046da866f\",\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Enthesitis-Related Arthritis\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"附着点炎相关关节炎\"\n                }\n              ]\n            }\n          ],\n          \"regulation\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"action_date\": 1698969600000,\n          \"action_type\": \"Approval\",\n          \"approval_date\": 1698969600000,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"submission_no\": 423,\n          \"submission_type\": \"SUPPL\",\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"original_regulation\": \"STANDARD; Orphan\",\n          \"submission_classification\": \"Labeling\"\n        }\n      ]\n    },\n    \"fda\": {\n      \"products\": [\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 5655,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 2393,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 2260,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 6851,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"submissions\": [\n        {\n          \"disease\": [\n            {\n              \"disease_id\": \"e6ee5660ea1d44ad8edb142046da866f\",\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Enthesitis-Related Arthritis\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"附着点炎相关关节炎\"\n                }\n              ]\n            }\n          ],\n          \"regulation\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"action_date\": 1698969600000,\n          \"action_type\": \"Approval\",\n          \"approval_date\": 1698969600000,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"submission_no\": 423,\n          \"submission_type\": \"SUPPL\",\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"original_regulation\": \"STANDARD; Orphan\",\n          \"submission_classification\": \"Labeling\"\n        },\n        {\n          \"disease\": [\n            {\n              \"disease_id\": \"e6ee5660ea1d44ad8edb142046da866f\",\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Enthesitis-Related Arthritis\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"附着点炎相关关节炎\"\n                }\n              ]\n            }\n          ],\n          \"regulation\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"action_date\": 1698969600000,\n          \"action_type\": \"Approval\",\n          \"approval_date\": 1698969600000,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"submission_no\": 423,\n          \"submission_type\": \"SUPPL\",\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"original_regulation\": \"STANDARD; Orphan\",\n          \"submission_classification\": \"Labeling\"\n        }\n      ]\n    },\n    \"nmpa\": {\n      \"products\": [\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 6142,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 2075,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 9818,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 7588,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"pmda\": {\n      \"products\": [\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 6886,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 7675,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"appl_no\": \"string\",\n          \"generic\": 0,\n          \"strength\": \"40MG/0.8ML\",\n          \"appl_type\": \"BLA\",\n          \"pack_size\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"biosimilar\": 0,\n          \"product_no\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"trade_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"HUMIRA\"\n            }\n          ],\n          \"data_source\": \"FDA_CDER\",\n          \"approval_date\": 4445,\n          \"market_status\": {\n            \"display_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"normalized_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"special_review\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Additional Monitoring\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"额外监测\"\n                }\n              ],\n              \"normalized_id\": \"30ffad249563481eb8fcfe4a7342269a\"\n            }\n          ],\n          \"applicant_holder\": [\n            {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"AbbVie, Inc.\"\n                }\n              ],\n              \"organization_id\": \"d88590e686ad5608bbbfeb811b14d188\"\n            }\n          ],\n          \"drug_approval_id\": \"25854e08d0e9858e89ad4438028589d2\",\n          \"last_update_date\": 1722384000000,\n          \"first_approval_date\": 6685,\n          \"product_data_source\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Orange Book\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"橙皮书\"\n            }\n          ],\n          \"product_presentation\": \"Blister (PVC/PE/PVDC/alu)\",\n          \"content_concentration\": \"0.8 ml (40 mg/0.8 ml)\",\n          \"dosage_form_and_route\": {\n            \"route\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dosage_from\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"original_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "092eeef1-83cd-4a28-92da-d92e9919233c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd4f3068-d1cd-45a9-aee9-8faad7031924",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1e76c24-d246-4fa0-ba4d-3c6cb01439e8",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8defdc64-c266-42d4-a0f4-5fcbe1826f1a",
+          "name": "B040 Target basic information",
+          "request": {
+            "name": "B040 Target basic information",
+            "description": {
+              "content": "Obtain Target basic information about name, short name, alias etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "target",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "target_id",
+                  "value": "<string>",
+                  "description": "(Required) Target ID, obtain this through the target autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "344bfb59-96fb-4db9-a791-1336652c6140",
+              "name": "Successful b040 target basic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 2788,\n  \"data\": {\n    \"alias\": [\n      {\n        \"lang\": \"EN\",\n        \"name\": \"CD279\"\n      }\n    ],\n    \"profile\": [\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Inhibitory receptor on antigen activated T-cells \"\n      }\n    ],\n    \"target_id\": \"3cbd7b503dd84de6b6d150c6143989fb\",\n    \"short_name\": [\n      {\n        \"lang\": \"EN\",\n        \"name\": \"PD-1\"\n      }\n    ],\n    \"uniprot_id\": [\n      \"Q15116\"\n    ],\n    \"target_name\": [\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Programmed cell death protein 1\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17887c9a-ae33-4e34-82bc-372e7ce7c8e2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e02aab87-93a8-412e-94c6-1bc1d89f0912",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a636ff8d-26a3-4523-841d-4446095a45d0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7f0b229-6233-4963-92ab-2ac5c2ab609f",
+          "name": "B021 Drug Regulatory Review",
+          "request": {
+            "name": "B021 Drug Regulatory Review",
+            "description": {
+              "content": "Obtain drug special approval about organization, disease, country, special review etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "special-approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "drug_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "441ae7e1-f0d6-4eb6-b8a4-0507c5e25dfd",
+              "name": "Successful b021 drug regulatory review response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "special-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8383,\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"c2df2c0cf4f64d5c86d61caa8edb7905\",\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"approval_time\": 1559088000000,\n        \"special_review\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        }\n      },\n      {\n        \"id\": \"c2df2c0cf4f64d5c86d61caa8edb7905\",\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        },\n        \"approval_time\": 1559088000000,\n        \"special_review\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        }\n      }\n    ],\n    \"total\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "061b60a8-d4c3-42d1-83b1-7ca61ca64974",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "special-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "202564e2-411f-4428-a3ac-d477b20b4136",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "special-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28631220-b82c-43a5-885c-22ea94489c11",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "special-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "68431d4745744d9e9e17a3073edd3920"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "878d4f1e-8ed6-4919-9662-82e9433bf79e",
+          "name": "B047 Drug xdc",
+          "request": {
+            "name": "B047 Drug xdc",
+            "description": {
+              "content": "Obtain drug xdc about targeting moiety, payload, linker etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "xdc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "drug_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the drug search interface or drug autocomplete interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7f8fe23-66d8-4947-8d2f-5ff633dc6372",
+              "name": "Successful b047 drug xdc response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "xdc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "002ff1c130254b02983a9282528b4d1c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 796,\n  \"data\": {\n    \"dar\": \"3-4\",\n    \"linker\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"payload\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"antibody_type\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"conjugation_site\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"targeting_moiety\": {\n      \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Ranibizumab (Genentech)\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"雷珠单抗\"\n        }\n      ]\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca63b0d9-d400-4b2a-ab2a-58633a64e567",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "xdc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "002ff1c130254b02983a9282528b4d1c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba3bdf87-e4a9-4612-88b1-f295cf1579da",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "xdc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "002ff1c130254b02983a9282528b4d1c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aeb0e969-f7ce-4d47-b93e-cdda34b2efb3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "xdc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "drug_id",
+                      "value": "002ff1c130254b02983a9282528b4d1c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46096566-039d-491b-809e-7de03b118677",
+          "name": "B041 Target analysis",
+          "request": {
+            "name": "B041 Target analysis",
+            "description": {
+              "content": "Obtain Target analysis about organization, disease, drug type etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "target",
+                "analysis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "target_id",
+                  "value": "<string>",
+                  "description": "(Required) Target ID, obtain this through the target autocomplete interface"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Analysis type, enum: ORGANIZATION、DISEASE、DRUG_TYPE"
+                },
+                {
+                  "disabled": false,
+                  "key": "roll_up",
+                  "value": "<boolean>",
+                  "description": "(Required) Should the aggregation start from the headquarters as the root node? true - yes, false - no. The default is true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a4b4ae6-1237-4eeb-ade1-58e806d977fd",
+              "name": "Successful b041 target analysis response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ORGANIZATION"
+                    },
+                    {
+                      "key": "roll_up",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7138,\n  \"data\": {\n    \"disease\": [\n      {\n        \"phase\": [\n          {\n            \"dev_status\": {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Approved\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"批准上市\"\n                }\n              ],\n              \"normalized_id\": \"efd6215835394b07b046125e3175d3fe\"\n            },\n            \"drug_count\": 7\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Hodgkin's Lymphoma\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"霍奇金淋巴瘤\"\n          }\n        ]\n      }\n    ],\n    \"drug_type\": [\n      {\n        \"id\": \"b4c624212749f84e83429c5a8673c692\",\n        \"phase\": [\n          {\n            \"dev_status\": {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Pending\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"无进展\"\n                }\n              ],\n              \"normalized_id\": \"4d95bf5fb0c340fbb38cda626c1c9c60\"\n            },\n            \"drug_count\": 10\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ]\n      },\n      {\n        \"id\": \"b4c624212749f84e83429c5a8673c692\",\n        \"phase\": [\n          {\n            \"dev_status\": {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Pending\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"无进展\"\n                }\n              ],\n              \"normalized_id\": \"4d95bf5fb0c340fbb38cda626c1c9c60\"\n            },\n            \"drug_count\": 10\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ]\n      }\n    ],\n    \"organization\": [\n      {\n        \"id\": \"b4c624212749f84e83429c5a8673c692\",\n        \"phase\": [\n          {\n            \"dev_status\": {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Pending\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"无进展\"\n                }\n              ],\n              \"normalized_id\": \"4d95bf5fb0c340fbb38cda626c1c9c60\"\n            },\n            \"drug_count\": 10\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ]\n      },\n      {\n        \"id\": \"b4c624212749f84e83429c5a8673c692\",\n        \"phase\": [\n          {\n            \"dev_status\": {\n              \"display_name\": [\n                {\n                  \"lang\": \"EN\",\n                  \"name\": \"Pending\"\n                },\n                {\n                  \"lang\": \"CN\",\n                  \"name\": \"无进展\"\n                }\n              ],\n              \"normalized_id\": \"4d95bf5fb0c340fbb38cda626c1c9c60\"\n            },\n            \"drug_count\": 10\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ecdfba9-255f-4d6c-a312-c0922f376156",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ORGANIZATION"
+                    },
+                    {
+                      "key": "roll_up",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f251f68-bb10-404d-8259-18191ddab868",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ORGANIZATION"
+                    },
+                    {
+                      "key": "roll_up",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c44dd55-cf19-4c4f-9844-8dbdd6090fd5",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "target",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_id",
+                      "value": "9786d32e3d244a688ec6a60d2fe1b10b"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ORGANIZATION"
+                    },
+                    {
+                      "key": "roll_up",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e53d52dd-3836-4905-809e-2ae951249acc",
+          "name": "B059 Drug approval file",
+          "request": {
+            "name": "B059 Drug approval file",
+            "description": {
+              "content": "Obtain drug approval file",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "approval",
+                "file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drug_id\": \"<string>\",\n  \"approval_id\": \"<array>\",\n  \"approval_source\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6b70d95-683b-43da-9c20-c83d42dda55d",
+              "name": "Successful b059 drug approval file response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"68431d4745744d9e9e17a3073edd3920\",\n  \"approval_id\": [\n    \"25854e08d0e9858e89ad4438028589d2\"\n  ],\n  \"approval_source\": \"FDA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 255,\n  \"data\": {\n    \"ema\": [\n      {\n        \"type\": \"Lumykras : EPAR - Product Information\",\n        \"source_url\": \"https://www.ema.europa.eu/documents/product-information/lumykras-epar-product-information_en.pdf\"\n      }\n    ],\n    \"fda\": [\n      {\n        \"type\": \"Letter\",\n        \"source_url\": \"http://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/214665Orig1s000ltr.pdf\"\n      }\n    ],\n    \"nmpa\": [\n      {\n        \"type\": \"HTML\",\n        \"source_url\": \"https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02\"\n      }\n    ],\n    \"pmda\": [\n      {\n        \"type\": \"HTML\",\n        \"source_url\": \"https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e68a7432-aa69-4e7a-8b97-25ad5eb565ff",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"68431d4745744d9e9e17a3073edd3920\",\n  \"approval_id\": [\n    \"25854e08d0e9858e89ad4438028589d2\"\n  ],\n  \"approval_source\": \"FDA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "271fe405-0ce8-4a6c-8a9d-b55273eef1ff",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"68431d4745744d9e9e17a3073edd3920\",\n  \"approval_id\": [\n    \"25854e08d0e9858e89ad4438028589d2\"\n  ],\n  \"approval_source\": \"FDA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b3379d8-72d6-47e7-bf1d-858b515fc973",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"68431d4745744d9e9e17a3073edd3920\",\n  \"approval_id\": [\n    \"25854e08d0e9858e89ad4438028589d2\"\n  ],\n  \"approval_source\": \"FDA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "604173dd-ed4a-43f9-a869-78821c680071",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "approval",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"68431d4745744d9e9e17a3073edd3920\",\n  \"approval_id\": [\n    \"25854e08d0e9858e89ad4438028589d2\"\n  ],\n  \"approval_source\": \"FDA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b0f0a376-57b0-48f1-aca9-6f891c57c208",
+    "name": "Patsnap Open Platform AI Translation Drug Basic Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

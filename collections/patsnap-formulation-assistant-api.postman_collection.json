@@ -1,0 +1,634 @@
+{
+  "item": [
+    {
+      "id": "fb20a9df-db96-4f86-9b73-acd8420a7747",
+      "name": "Formulation Assistant",
+      "description": {
+        "content": "Formulation Assistant APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec5e8f27-4cb0-4dd4-95f5-a57812db209b",
+          "name": "M001-1 Formulation agent creation",
+          "request": {
+            "name": "M001-1 Formulation agent creation",
+            "description": {
+              "content": "Based on the input of a technical requirement, generate an assistant assessment report for the formulation analysis of that requirement",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "formulation-agent-creation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3727db9-99e2-4d85-8660-e65f256871b4",
+              "name": "Successful m001-1 formulation agent creation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7330,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6df9601-1059-4af8-8261-7024a767cfa3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ce33f9e-89a2-41f5-bfee-8f875beb9054",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df0a4443-dff9-4c90-9c18-b1aa492922f5",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c864e5f5-8d61-4382-9f9a-ba73a41c4100",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6e0a191-f388-409d-b0f1-e5143b75322c",
+          "name": "M001-2 Formulation agent query",
+          "request": {
+            "name": "M001-2 Formulation agent query",
+            "description": {
+              "content": "Obtain the task results of the Formulation Agent through the task_id generated by [M001-1]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "formulation-agent-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16f1ea93-4f61-47cb-9b7c-1653c14a24c2",
+              "name": "Successful m001-2 formulation agent query response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9654,\n  \"data\": {\n    \"status\": 2,\n    \"formulations\": [\n      {\n        \"dimension\": \"Mechanical Reinforcement and Energy Dissipation\",\n        \"formulation_1\": {\n          \"source\": \"https://patents.google.com/patent/CN101792545B/zh\",\n          \"status\": \"success\",\n          \"name_cn\": \"name\",\n          \"solution_id\": \"d739436a-6ff9-458a-b7c4-8e6518862a11\",\n          \"country_name\": \"中国\",\n          \"solution_type\": \"WEBSITE\",\n          \"ingredient_list\": [\n            {\n              \"content\": [\n                6,\n                40\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Carbon black\"\n            },\n            {\n              \"content\": [\n                45,\n                80\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Silica (white carbon black)\"\n            },\n            {\n              \"content\": [\n                3,\n                6\n              ],\n              \"function\": \"Filler dispersion/compatibilizer\",\n              \"ingredient\": \"Silane coupling agent\"\n            },\n            {\n              \"content\": [\n                20,\n                45\n              ],\n              \"function\": \"Plasticizer\",\n              \"ingredient\": \"Aromatic oil\"\n            },\n            {\n              \"content\": [\n                1,\n                5\n              ],\n              \"function\": \"Tackifier\",\n              \"ingredient\": \"Tackifying resin\"\n            },\n            {\n              \"content\": [\n                1,\n                4.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Zinc oxide\"\n            },\n            {\n              \"content\": [\n                0.5,\n                2.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Stearic acid\"\n            },\n            {\n              \"content\": [\n                1.5,\n                3.5\n              ],\n              \"function\": \"Crosslinker (vulcanizing agent)\",\n              \"ingredient\": \"Sulfur\"\n            },\n            {\n              \"content\": [\n                2,\n                5\n              ],\n              \"function\": \"Vulcanization accelerator\",\n              \"ingredient\": \"Accelerator\"\n            }\n          ]\n        },\n        \"formulation_2\": {\n          \"source\": \"https://patents.google.com/patent/CN101792545B/zh\",\n          \"status\": \"success\",\n          \"name_cn\": \"name\",\n          \"solution_id\": \"d739436a-6ff9-458a-b7c4-8e6518862a11\",\n          \"country_name\": \"中国\",\n          \"solution_type\": \"WEBSITE\",\n          \"ingredient_list\": [\n            {\n              \"content\": [\n                6,\n                40\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Carbon black\"\n            },\n            {\n              \"content\": [\n                45,\n                80\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Silica (white carbon black)\"\n            },\n            {\n              \"content\": [\n                3,\n                6\n              ],\n              \"function\": \"Filler dispersion/compatibilizer\",\n              \"ingredient\": \"Silane coupling agent\"\n            },\n            {\n              \"content\": [\n                20,\n                45\n              ],\n              \"function\": \"Plasticizer\",\n              \"ingredient\": \"Aromatic oil\"\n            },\n            {\n              \"content\": [\n                1,\n                5\n              ],\n              \"function\": \"Tackifier\",\n              \"ingredient\": \"Tackifying resin\"\n            },\n            {\n              \"content\": [\n                1,\n                4.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Zinc oxide\"\n            },\n            {\n              \"content\": [\n                0.5,\n                2.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Stearic acid\"\n            },\n            {\n              \"content\": [\n                1.5,\n                3.5\n              ],\n              \"function\": \"Crosslinker (vulcanizing agent)\",\n              \"ingredient\": \"Sulfur\"\n            },\n            {\n              \"content\": [\n                2,\n                5\n              ],\n              \"function\": \"Vulcanization accelerator\",\n              \"ingredient\": \"Accelerator\"\n            }\n          ]\n        },\n        \"strategy_index\": 0\n      },\n      {\n        \"dimension\": \"Mechanical Reinforcement and Energy Dissipation\",\n        \"formulation_1\": {\n          \"source\": \"https://patents.google.com/patent/CN101792545B/zh\",\n          \"status\": \"success\",\n          \"name_cn\": \"name\",\n          \"solution_id\": \"d739436a-6ff9-458a-b7c4-8e6518862a11\",\n          \"country_name\": \"中国\",\n          \"solution_type\": \"WEBSITE\",\n          \"ingredient_list\": [\n            {\n              \"content\": [\n                6,\n                40\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Carbon black\"\n            },\n            {\n              \"content\": [\n                45,\n                80\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Silica (white carbon black)\"\n            },\n            {\n              \"content\": [\n                3,\n                6\n              ],\n              \"function\": \"Filler dispersion/compatibilizer\",\n              \"ingredient\": \"Silane coupling agent\"\n            },\n            {\n              \"content\": [\n                20,\n                45\n              ],\n              \"function\": \"Plasticizer\",\n              \"ingredient\": \"Aromatic oil\"\n            },\n            {\n              \"content\": [\n                1,\n                5\n              ],\n              \"function\": \"Tackifier\",\n              \"ingredient\": \"Tackifying resin\"\n            },\n            {\n              \"content\": [\n                1,\n                4.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Zinc oxide\"\n            },\n            {\n              \"content\": [\n                0.5,\n                2.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Stearic acid\"\n            },\n            {\n              \"content\": [\n                1.5,\n                3.5\n              ],\n              \"function\": \"Crosslinker (vulcanizing agent)\",\n              \"ingredient\": \"Sulfur\"\n            },\n            {\n              \"content\": [\n                2,\n                5\n              ],\n              \"function\": \"Vulcanization accelerator\",\n              \"ingredient\": \"Accelerator\"\n            }\n          ]\n        },\n        \"formulation_2\": {\n          \"source\": \"https://patents.google.com/patent/CN101792545B/zh\",\n          \"status\": \"success\",\n          \"name_cn\": \"name\",\n          \"solution_id\": \"d739436a-6ff9-458a-b7c4-8e6518862a11\",\n          \"country_name\": \"中国\",\n          \"solution_type\": \"WEBSITE\",\n          \"ingredient_list\": [\n            {\n              \"content\": [\n                6,\n                40\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Carbon black\"\n            },\n            {\n              \"content\": [\n                45,\n                80\n              ],\n              \"function\": \"Reinforcing filler\",\n              \"ingredient\": \"Silica (white carbon black)\"\n            },\n            {\n              \"content\": [\n                3,\n                6\n              ],\n              \"function\": \"Filler dispersion/compatibilizer\",\n              \"ingredient\": \"Silane coupling agent\"\n            },\n            {\n              \"content\": [\n                20,\n                45\n              ],\n              \"function\": \"Plasticizer\",\n              \"ingredient\": \"Aromatic oil\"\n            },\n            {\n              \"content\": [\n                1,\n                5\n              ],\n              \"function\": \"Tackifier\",\n              \"ingredient\": \"Tackifying resin\"\n            },\n            {\n              \"content\": [\n                1,\n                4.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Zinc oxide\"\n            },\n            {\n              \"content\": [\n                0.5,\n                2.5\n              ],\n              \"function\": \"Activator\",\n              \"ingredient\": \"Stearic acid\"\n            },\n            {\n              \"content\": [\n                1.5,\n                3.5\n              ],\n              \"function\": \"Crosslinker (vulcanizing agent)\",\n              \"ingredient\": \"Sulfur\"\n            },\n            {\n              \"content\": [\n                2,\n                5\n              ],\n              \"function\": \"Vulcanization accelerator\",\n              \"ingredient\": \"Accelerator\"\n            }\n          ]\n        },\n        \"strategy_index\": 0\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1ac8efe-8b29-493f-808a-48bb6558e988",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "124a6007-62cc-4946-b85e-c34fb70389f4",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "360c14b8-8ac7-4fcd-a397-9969c8bf9ce2",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b95bf9dd-cd1f-422e-afa6-1c327051ba83",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "formulation-agent-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2df88243-20f5-4ff6-b33b-901ee0b31e34",
+    "name": "Patsnap Open Platform AI Translation Formulation Assistant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

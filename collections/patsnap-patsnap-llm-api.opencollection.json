@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patsnap LLM API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patsnap LLM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI07 Model(CC GPT)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/cc-gpt-stream",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "-"
+        },
+        {
+          "info": {
+            "name": "AI50 Patent Large Model(Pat GPT)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/pat-gpt-stream",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "It supports inputting technical questions or questions related to patents. The Patent Large Model (Pat GPT) aims to intelligently retrieve, analyze, and mine data in response to the posed questions, providing relevant patent information, trend analysis, and technical evaluations."
+        },
+        {
+          "info": {
+            "name": "AI20 Life Science Large Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/pharm-gpt-stream",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Hiro-LS API supports inquiries related to the pharmaceutical competitive landscape, clinical trials and evidence-based medicine, sequence/compound patents, as well as policies and regulartions issues. The biopharmaceutical large model (Hiro-LS) aims to perform intelligent retrieval, analysis, and data mining in response to these questions, providing continuously evolving biopharmaceutical information to create limitless opportunities for exploration in life sciences."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

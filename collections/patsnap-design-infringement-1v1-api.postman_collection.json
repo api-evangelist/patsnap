@@ -1,0 +1,634 @@
+{
+  "item": [
+    {
+      "id": "45bb1bb3-3ca0-4e2f-b247-f393b26e1f2d",
+      "name": "Design Infringement 1v1",
+      "description": {
+        "content": "Design Infringement 1v1 APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d385a74-de6b-4a81-acc9-b54326cd87ee",
+          "name": "AI67-1 Infringement Detection 1V1 - Search Creation",
+          "request": {
+            "name": "AI67-1 Infringement Detection 1V1 - Search Creation",
+            "description": {
+              "content": "Based on the provided product drawings and patent pn numbers, conduct an infringement search for design patents. Generate task_id with a validity period of 8 hours. It becomes invalid upon expiration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "infringement-detection-1v1-creation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patent_number\": \"<string>\",\n  \"url\": \"<string>\",\n  \"report_lang\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef9a8dc4-ae2b-477f-9e70-e34aa34e647b",
+              "name": "Successful ai67-1 infringement detection 1v1 - search creation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"EU0065350760001S\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\",\n  \"report_lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9323,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10e30574-397d-4719-930c-0f466ae79627",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"EU0065350760001S\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\",\n  \"report_lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7274f7dc-deed-4ec2-8d9b-ee59d70e50ad",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"EU0065350760001S\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\",\n  \"report_lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68f060fc-473a-41bd-af22-5415935b6de0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"EU0065350760001S\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\",\n  \"report_lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1ef6726-6c90-4321-8702-5a40f7aa1773",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"EU0065350760001S\",\n  \"url\": \"https://static-open.zhihuiya.com/sample/common_demo.png\",\n  \"report_lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdae8852-ba04-45fd-8cb6-49bb1ba91abb",
+          "name": "AI67-2 Infringement Detection 1V1 - Search Query",
+          "request": {
+            "name": "AI67-2 Infringement Detection 1V1 - Search Query",
+            "description": {
+              "content": "According to the task_id generated by [AI67-1] Appearance Infringement Prevention Search - Task creation, query and export the appearance infringement prevention search results",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "infringement-detection-1v1-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "721be85d-c250-4e1e-81ff-52f3fb3ac5ef",
+              "name": "Successful ai67-2 infringement detection 1v1 - search query response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8545,\n  \"data\": {\n    \"loc\": [\n      \"14-03\"\n    ],\n    \"country\": [\n      \"US\"\n    ],\n    \"task_id\": \"7ef1a01c-2134-433d-8273-a79b58194251\",\n    \"user_image\": \"https://www.patsnap.com/images/user_image.jpg\",\n    \"comparisons\": [\n      {\n        \"score\": 80,\n        \"title\": \"Floats\",\n        \"status\": 1,\n        \"country\": \"EU\",\n        \"similar\": \"两款产品均为白色充气独角兽造型游泳圈，具有相似的整体轮廓和结构。两者都有突出的独角兽头部造型，带有金色尖角，黑色眼睛，以及彩虹色的鬃毛和尾部。两款产品都采用了白色为主体色调，并在鬃毛和尾部使用了彩虹渐变色彩。\",\n        \"confusion\": \"普通消费者很可能会因两款产品在整体外观、色彩搭配和独特的独角兽造型上的高度相似性而产生混淆。尤其是白色主体与彩虹色鬃毛和尾部的组合，以及金色角和黑色眼睛的设计，使两款产品在视觉上几乎难以区分。\",\n        \"patent_id\": \"f1bc4b3c-8a7f-45a4-b0cb-56014c548719\",\n        \"patent_pn\": \"EU0040356240003S\",\n        \"risk_desc\": \"相似性评分高达85%，根据《专利法》第23条和《专利法实施细则》第65条，从普通消费者的角度看，两款产品在整体视觉效果上高度相似，极易导致混淆。依据最高人民法院关于审理专利纠纷案件适用法律若干问题的解释，这种程度的相似已构成外观设计专利侵权的实质条件。\",\n        \"difference\": \"用户产品的独角兽头部略微向下倾斜，而专利产品的头部更为直立。用户产品的彩虹色鬃毛和尾部色彩排列略有不同，且用户产品的游泳圈中心孔形状更为圆形，而专利产品的中心孔形状更为椭圆。\",\n        \"risk_level\": \"High\",\n        \"suggestion\": \"1. 改变独角兽头部的造型和角度，如设计成更加卡通或夸张的形象；2. 使用完全不同的色彩方案，如将主体改为粉色、蓝色等非白色；3. 调整彩虹色部分的位置和形状，如将彩虹色设计成星星或其他图案；4. 改变游泳圈的整体形状，如设计成更不规则或创新的形状；5. 添加独特的装饰元素，如在独角兽身体上增加图案或标志。\"\n      }\n    ],\n    \"task_status\": 2,\n    \"high_risk_country\": [\n      \"US\"\n    ],\n    \"middle_risk_country\": [\n      \"US\"\n    ],\n    \"suspected_infringement_count\": 1,\n    \"suspected_infringement_country\": [\n      \"US\"\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d325c08b-1585-4df2-9718-9caf5fd3ebcd",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "102a2dd3-4c8c-42cf-b084-fab5a573e86c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e96be82-972d-4ef4-a152-e965387ec5f3",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb8da561-6b07-4603-b642-d6c4c18ccae0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "infringement-detection-1v1-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "833ac302-3fb9-4667-bd9c-5643f7b564dd",
+    "name": "Patsnap Open Platform AI Translation Design Infringement 1v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

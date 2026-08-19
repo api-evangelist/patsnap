@@ -1,0 +1,549 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Chemical and Bio Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chemical and Bio Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B067-1 Submit OCSR Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/eurekals/open/ocsr/task/submit",
+            "headers": [
+              {
+                "name": "X-PatSnap-From",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Only supports PDF file upload (max 15MB) and image (jpg,png,jepg) upload, recognize chemical structure in the document"
+        },
+        {
+          "info": {
+            "name": "B067-2 Get OCSR Task Status And Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/eurekals/open/ocsr/task",
+            "headers": [
+              {
+                "name": "X-PatSnap-From",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "Task ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query OCSR task execution status and results by task ID"
+        },
+        {
+          "info": {
+            "name": "B068-2 Query the triplet task results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/eureka/material/docAnalyzer/getExtractMaterial",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve extracted triplet results using jobId"
+        },
+        {
+          "info": {
+            "name": "B068-1 Create a triplet recognition task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/eureka/material/docAnalyzer/submitPDF",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After uploading the document, a jobId will be generated. Use the jobId to retrieve the extracted triplet results."
+        },
+        {
+          "info": {
+            "name": "B001 Chemical Structure Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chemical-openapi/compound",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search chemical structures base on key information (structure name, formula, InChIKey, SMILES, search type), return number of structures, InchiKey, similarity, number of patents and literature related to each structure."
+        },
+        {
+          "info": {
+            "name": "[B003/4-1]Get Sequence Search Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/sequence/job/result",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Sequence Search Results By Job ID."
+        },
+        {
+          "info": {
+            "name": "B003 Motif Sequence Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/sequence/motif/job",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search sequences with motif expression."
+        },
+        {
+          "info": {
+            "name": "B002 Patent search for individual chemical structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/chemical-openapi/compound/patents",
+            "params": [
+              {
+                "name": "inchi_key",
+                "value": "",
+                "type": "query",
+                "description": "Structure InchiKey"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. Current page number, start from 1."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Page Size. Current page result size, support maximum 100."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all patents of single chemical structure by InchiKey.<p> Patent bibliography data can be obtained by calling [P012]Biblio API using the returned patent ID.</p>"
+        },
+        {
+          "info": {
+            "name": "B004 Normal Sequence Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/sequence/job",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search sequences with key information."
+        },
+        {
+          "info": {
+            "name": "B014 Chemical Structure Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/chemical-openapi/compound/detail",
+            "params": [
+              {
+                "name": "inchi_key",
+                "value": "",
+                "type": "query",
+                "description": "Structure InchiKey"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get chemical structures details by InchiKey"
+        },
+        {
+          "info": {
+            "name": "B005 Single Sequence All Patent List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/sequence/patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all patents of single sequence by seq_id."
+        },
+        {
+          "info": {
+            "name": "[B003/4-0]Backend Search Job Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/bio-openapi/sequence/job/status",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the search job in backend, use this ID for subsequent API calls"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check Backend Search Job Status."
+        },
+        {
+          "info": {
+            "name": "B063 Extract Multiple Patent Sequence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/patent/extract/multi",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract all sequences from a single patent and provide the total count, sequence numbers, sequence codes, and sequence details. Present the information in a paginated format."
+        },
+        {
+          "info": {
+            "name": "B062 Extract Single Patent Sequence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio-openapi/patent/extract/single",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract all sequences from a single patent and provide the total count, sequence numbers, sequence codes, and sequence details. Present the information in a paginated format."
+        },
+        {
+          "info": {
+            "name": "B016 Sequence Infomation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/bio/sequence/info",
+            "params": [
+              {
+                "name": "sequence_id",
+                "value": "",
+                "type": "query",
+                "description": "sequence_id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface provides Sequence information, including Sequence ID, sequence, sequence length, sequence type (nucleotide or protein), SEQ ID NO, sequence claim position, species"
+        },
+        {
+          "info": {
+            "name": "B071 Extract chemical structures from a single patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/patent/chemical/getSingleData",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract chemical structures (compounds) mentioned in a single patent and their related information through patent ID, including compound names, InChI Keys, SMILES, molecular weights, mention counts in different sections, etc."
+        },
+        {
+          "info": {
+            "name": "B072-1 Extract chemical structures from multiple patents-create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/patent/chemical/submitTask",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit a chemical structure search task based on patent IDs or patent numbers, source, molecular weight range, etc., and return a task ID for querying results later"
+        },
+        {
+          "info": {
+            "name": "B072-2 Extract chemical structures from multiple patents-query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/patent/chemical/getTaskResult",
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "taskId"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query the execution result of a chemical structure search task by task ID, returning a list of compounds and their detailed information, including InChI, SMILES, molecular weight, synonyms, patent count, paper count, etc."
+        },
+        {
+          "info": {
+            "name": "B015 Compound Physicochemical Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug/compound-physicochemical-props",
+            "params": [
+              {
+                "name": "inchi_key",
+                "value": "",
+                "type": "query",
+                "description": "Chemical Structure InChIKey"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve physicochemical properties of a single chemical structure (such as molecular weight, compound lipophilicity parameter, number of hydrogen bond donors, Topological Polar Surface Area (TPSA), isotopic mass, acidity/basicity, etc.) by inputting Structure ID, InChIKey, or SMILES (returns based on physicochemical properties displayed on the product side)"
+        },
+        {
+          "info": {
+            "name": "B042 Single Chemical Structure Literature Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/chemical/paper/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search related papers through InChI Key ID, including title, abstract, author, institution, publication, publication date, etc."
+        },
+        {
+          "info": {
+            "name": "B073 Compound Keyword Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chemical-business/keyword/search",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Compound keyword, supports CAS number, generic name (Chinese, Japanese, English), synonym, abbreviation, molecular formula, SMILES, InChI Key"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search compound info by keyword, returns InChI Key, SMILES, compound name and structure image. Supports CAS number, generic name (Chinese, Japanese, English), synonym, abbreviation, molecular formula, SMILES, InChI Key."
+        },
+        {
+          "info": {
+            "name": "B075 Compound reaction routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/synapse/chemical/reaction/route",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query patent reaction routes by compound InChI Key, returning reactants, products, and SMILES grouped by patent numbers."
+        },
+        {
+          "info": {
+            "name": "B076 Hiro-OCSR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ocsr_wrapper/v1/ocsr",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Upload one or more images to recognize chemical structures, returning the SMILES and structure classification for each image in input order."
+        },
+        {
+          "info": {
+            "name": "B068-1 PCC Molecule Structure Prediction-Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/pcc-molecule-task",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface is used to create a PCC molecule structure prediction task. Input a patent number and receive a job ID. Usage flow: first call this interface to get jobId, then use the jobId to call the result interface."
+        },
+        {
+          "info": {
+            "name": "B068-2 PCC Molecule Structure Prediction-Get Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/pcc-molecule-result",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface is used to get the result of a PCC molecule structure prediction task. Input a job ID and receive the optimal molecule recommendation list and Markush structure. When the task status is completed, the extracted structured result is returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

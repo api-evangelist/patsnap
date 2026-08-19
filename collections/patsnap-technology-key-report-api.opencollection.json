@@ -1,0 +1,1568 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Technology Key Report API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Technology Key Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "A011 Patent Type Trend Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/insights/patent-type-trend",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Analyze the application trend of different patent types (invention patents, utility models, design patents) within a specified time range."
+        },
+        {
+          "info": {
+            "name": "A106 Company Most Cited Patents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/most-cited-latest",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Identify the records in this company's portfolio that have been cited most frequently by other records. These represent more referenced patents that have had their technology built by others. These patents are likely to be more valuable and may represent the more relevant technology to the industry. Returns at most Top 10 patent information."
+        },
+        {
+          "info": {
+            "name": "A104 Company Patent Application and Issued Trend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/patent-trends",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Analyze the annual application trend of the company. This chart shows the number of grants or issued patents resulting from applications filed in the same year, indicating the company's filing success rate over time. The most recent 20 years of application and issued data are returned."
+        },
+        {
+          "info": {
+            "name": "A109 Company Patent Simple Legal Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/simple-legal-status",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Simple legal status breakdown of the company's portfolio. This tells you the proportion of patents in the portfolio that are in effect, or no longer active, which you can then use to filter by."
+        },
+        {
+          "info": {
+            "name": "A010 Portfolio Value Distribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/portfolio-value",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Assess the lucrativeness of a technology space based on the spread of estimated patent valuation, with lucrative technologies having a greater proportion of their patent simple families in the higher value buckets.Our valuation method has been developed and implemented by integrating external research published by academics and patent lawyers with our own internal research. We use an underlying set of 80+ different patent indicators (e.g. forward citations, family sizes, patent age, legal status"
+        },
+        {
+          "info": {
+            "name": "A007 Top Assignees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/applicant-ranking",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The top companies with the largest patent portfolios in the technology field. Understand who are the largest players and the competitive threats in the technology space. Returns up to the top 10 assignees."
+        },
+        {
+          "info": {
+            "name": "A009 Most Litigated Patents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/most-asserted",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Identify the patents involved in the most number of litigation cases. This indicates litigation risk associated to patenting in a similar technology space. Returns the Top 10 patents by litigation count."
+        },
+        {
+          "info": {
+            "name": "A003 Wheel of Innovation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/wheel-of-innovation",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A two-tiered view of the keywords and phrases found within records in the technology space. This can be used to influence subsequent patent searches by making you aware of the more common terms used in this technology space. It is also useful to identify terms that are commonly associated with other similar terms. The Circle Chart categorizes the most frequently occurring keywords of the most recent 5,000 publications in the technology field into a 2-tier hierarchy."
+        },
+        {
+          "info": {
+            "name": "A107 Most Citing Companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/most-cited",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Understand the top organisations that are citing this company's top 10 most cited patents. This is helpful to identify the organizations that are operating closest to the company and how they have utilised the technology. A deeper dive in to the patent records can reveal how the technology has potentially been built upon and how it has evolved or been used for alternative applications. From an alternative perspective, these organizations may represent potential licensees or pose a potential liti"
+        },
+        {
+          "info": {
+            "name": "A004 Top authorities of Origin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/priority-country",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This shows the authorities in which the earliest application was filed to show the geographic source of the technology. This helps users assess the innovation capability of the authority and can either indicate where a majority of organizations are based, or which authorities company want to first capitalize in. At most, the Top 200 authorities are returned. Other is the sum of all authorities outside the Top 10."
+        },
+        {
+          "info": {
+            "name": "A105 Company Patent Portfolio Overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/patent-portfolio-overview",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Understand the total number of applications, and how they're broken down into simple families, PCTs and active patents (applications and issued patents)."
+        },
+        {
+          "info": {
+            "name": "A001 Application and Issued Trend (keywords & ipc Search & Query Search)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/patent-trends",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Analyze the annual application trend of the technology. The results include the number of patent applications in the unit of application year, and the number & proportion of patents finally issued in the patents applied for that year. The most recent 20 years of application and issued data are returned."
+        },
+        {
+          "info": {
+            "name": "A102 Company Portfolio Strategy Radar Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/strategy-map",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The Radar Map uses patent information as an indicator of portfolio strategy. The report compares various metrics of the portfolio to highlight the characteristics and the strengths. The algorithm for the Radar Map was developed in collaboration with the Entrepreneurship Centre, National University of Singapore."
+        },
+        {
+          "info": {
+            "name": "A110 Company Patent Transfer In or Transfer Out",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/acquisition-divestiture",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Understand which organizations have most frequently transferred patent ownership to this company and which patents have been transferred.<p>Understand which organisations the company has most frequently transferred patent ownership to and which patents have been involved. This may indicate technology areas this company is no longer targeting or investing research and development resources towards.</p>"
+        },
+        {
+          "info": {
+            "name": "A101 Company Innovation Word Cloud",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/word-cloud",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Understand the top keywords and phrases found in the latest 5000 publications in the company's portfolio.This is helpful to provide a snapshot view of the language used by the company in their filings. Returns up to the top 100 keywords."
+        },
+        {
+          "info": {
+            "name": "A006 Top Inventors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/inventor-ranking",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The graph shows the top inventors in the technology field. This information is useful for evaluating the work of top performers in a specific technology field or for recruiting inventors. Returns up to the top 10 inventors."
+        },
+        {
+          "info": {
+            "name": "A008 Simple Legal Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/simple-legal-status",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Simple legal status breakdown of the technology field. This tells you the proportion of patents in the technology space that are in effect, or no longer active, which you can then use to filter by."
+        },
+        {
+          "info": {
+            "name": "A002 Innovation Word Cloud （keywords & ipc Search）",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/word-cloud",
+            "params": [
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A snapshot view of the keywords and phrases found within records in the technology space. This can be used to influence subsequent patent searches by making you aware of the more common terms used in this technology space.The Word Cloud displays the most frequently occurring keywords of the most recent 5,000 publications in the technology field. Returns up to the top 100 keywords."
+        },
+        {
+          "info": {
+            "name": "A005 Most Cited Patents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights/most-cited",
+            "params": [
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.\nExample: US OR EP"
+              },
+              {
+                "name": "ipc",
+                "value": "",
+                "type": "query",
+                "description": "Patent IPC classification"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Searches for keywords within patent title and summary. Supports AND, OR, NOT search logic, for example \"mobile phone AND (screen OR battery)\"."
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "query_text",
+                "value": "",
+                "type": "query",
+                "description": "Enter the Analytics Query, with a maximum length of 800 characters and cannot contain complex wildcards such as  $W  $PRE   $WS  $SEN  $PARA  $FREQ .etc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "View the top records that have been cited most frequently by other records to understand which records are more prolific and have had their technology built upon by others. These patents are likely to be more influential and may represent the core, innovative technology of the organization it represents. Returns at most Top 10 patent information."
+        },
+        {
+          "info": {
+            "name": "A108 Company Largest Invention Families",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/largest-patent-family",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Identify the patent families in the company's portfolio that have the furthest reach of either global coverage, divisional counterparts, and continuations. Pinpoint the most successful inventions that have received a large amount of resources for increased level of coverage (either by expanding the technical coverage or geographical reach).Returns the top 20 patents by default."
+        },
+        {
+          "info": {
+            "name": "A103 Company Key Technologies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/insights-company/key-technology-overview",
+            "params": [
+              {
+                "name": "company_name",
+                "value": "",
+                "type": "query",
+                "description": "Query the name of a single enterprise"
+              },
+              {
+                "name": "org_number",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "credit_code",
+                "value": "",
+                "type": "query",
+                "description": "This field is not supported in the current version , please search by company name"
+              },
+              {
+                "name": "apply_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date from, format:yyyy"
+              },
+              {
+                "name": "apply_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent apply date to, format:yyyy"
+              },
+              {
+                "name": "public_start_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date from, format:yyyy"
+              },
+              {
+                "name": "public_end_time",
+                "value": "",
+                "type": "query",
+                "description": "Patent publication date to, format:yyyy"
+              },
+              {
+                "name": "simple_legal_status",
+                "value": "",
+                "type": "query",
+                "description": "Patent simple legal status<p>0-Inactive</p><p>1-Active</p><p>2-Pending</p><p>220-PCT designated stage expired</p>n<p>221-PCT designated stage</p><p>999-Undetermined</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "patent_type",
+                "value": "",
+                "type": "query",
+                "description": "Patent application type<p>A:Applications</p><p>B: Patents</p><p>U: Utility models</p><p>D: Designs</p><p>Multiple options can be selected, and multiple content items can be spliced with OR (there is a space between parameter and OR)</p>"
+              },
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Select the authority of the patent, the default query all databases, eg CN、US、EP、JP. To find more information, refer to https://analytics.zhihuiya.com/status.<p>Example: US OR EP</p>"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Select the language , the default language is en, you can choose cn or en."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This report is helpful for determining the organisations' top competencies and to understand which technology areas they have invested in. Assess whether the company is focusing on one broad technology or if they have a diverse portfolio across a number of different technologies. Returns up to the top 10 technology areas."
+        },
+        {
+          "info": {
+            "name": "A201 Distribution of Technical Effects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/company/technology-effect-Distribution",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface allows users to query the technological effects and focused research directions of a company by entering the company's name. Includes: efficacy phrase, number of patents covered by efficacy phrase, number of patents/year"
+        },
+        {
+          "info": {
+            "name": "A202 Technology Field Word Cloud",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/company/technology-field-word-cloud",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Quickly understand the concentrated technologies and product R&D of the enterprise. The word cloud extracts the technical fields of all patents held by the enterprise as a patent owner, sorted by the number of patents covered in each technical field, returning the top 100 technical field terms at most."
+        },
+        {
+          "info": {
+            "name": "A012 Distribution of technical efficacy phrases",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/insights/technology-effect-Distribution",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "By inputting the search formula, query the technical effects of the search formula and the focused technical research directions. It includes: functional phrases, the number of patents covered by the functional phrases, and the number of patents per year (the year of patent application, the number of patents)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,896 @@
+{
+  "item": [
+    {
+      "id": "0d7ceca5-286c-4851-a645-c74149385ddd",
+      "name": "Trademark Data",
+      "description": {
+        "content": "Trademark Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09424263-e2d8-4424-ad0e-098442d1d4c5",
+          "name": "T002 Trademark Image Search",
+          "request": {
+            "name": "T002 Trademark Image Search",
+            "description": {
+              "content": "Search for similar trademarks using Base64 encoded trademark image.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trademark",
+                "image-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image_base64\": \"<string>\",\n  \"ipoffice\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "009c69e8-7d89-4bb9-9653-11c932fc636c",
+              "name": "Successful t002 trademark image search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "image-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_base64\": \"data:image/jpeg;base64,/9j/4AAQSk...\",\n  \"ipoffice\": \"US,EU,CA\",\n  \"page\": 1,\n  \"size\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9618,\n  \"data\": {\n    \"page_size\": 2,\n    \"total_hits\": 2,\n    \"total_pages\": 1,\n    \"current_page\": 1\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "825c8cee-5b7e-465c-bace-111cde12076e",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "image-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_base64\": \"data:image/jpeg;base64,/9j/4AAQSk...\",\n  \"ipoffice\": \"US,EU,CA\",\n  \"page\": 1,\n  \"size\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45074f37-b027-4647-a78b-e34bf033e028",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "image-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_base64\": \"data:image/jpeg;base64,/9j/4AAQSk...\",\n  \"ipoffice\": \"US,EU,CA\",\n  \"page\": 1,\n  \"size\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ca66613-eaca-42b6-a1d5-111715b83fc0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "image-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_base64\": \"data:image/jpeg;base64,/9j/4AAQSk...\",\n  \"ipoffice\": \"US,EU,CA\",\n  \"page\": 1,\n  \"size\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1eda2066-5e7d-40a1-adf1-c44a0d34a787",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "image-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_base64\": \"data:image/jpeg;base64,/9j/4AAQSk...\",\n  \"ipoffice\": \"US,EU,CA\",\n  \"page\": 1,\n  \"size\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "257b74f3-8727-4dcb-b2b7-1e4fb8a23017",
+          "name": "T001 Trademark Field Search",
+          "request": {
+            "name": "T001 Trademark Field Search",
+            "description": {
+              "content": "Trademark search can be conducted by entering a combination of multiple fields such as trademark name, applicant, application date, and number, with basic trademark information returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trademark",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apdt\": \"<string>\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"<string>\",\n  \"ipoffice\": \"<string>\",\n  \"mark\": \"<string>\",\n  \"mode\": \"<string>\",\n  \"nice_code\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"reg_num\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"us_code\": \"<string>\",\n  \"vienna_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d32c857-a19d-453e-8c08-ba3b598bb88e",
+              "name": "Successful t001 trademark field search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apdt\": \"20170101:20171231\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"SAPPLE\",\n  \"ipoffice\": \"US,CA,AU,EU\",\n  \"mark\": \"apple\",\n  \"mode\": \"smart\",\n  \"nice_code\": \"025\",\n  \"page\": 1,\n  \"reg_num\": \"<string>\",\n  \"size\": 10,\n  \"sort\": \"appDate desc\",\n  \"us_code\": \"022\",\n  \"vienna_code\": \"025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1670,\n  \"data\": {\n    \"hits\": [\n      {\n        \"id\": \"US_87706058\",\n        \"no\": 1,\n        \"apdt\": \"string\",\n        \"mark\": \"APPLE\",\n        \"agent\": \"Michael R. Friscia\",\n        \"image\": \"https://open.patsnap.com/trademark/image.jpg\",\n        \"score\": 1,\n        \"status\": \"Dead/Abandoned\",\n        \"app_num\": \"string\",\n        \"ipoffice\": \"US\",\n        \"applicant\": [\n          \"Apple Pear Apple Corp.\"\n        ],\n        \"nice_code\": [\n          \"025\"\n        ],\n        \"offical_page\": \"https://tsdr.uspto.gov/#caseNumber=87706058&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch\"\n      },\n      {\n        \"id\": \"US_87706058\",\n        \"no\": 1,\n        \"apdt\": \"string\",\n        \"mark\": \"APPLE\",\n        \"agent\": \"Michael R. Friscia\",\n        \"image\": \"https://open.patsnap.com/trademark/image.jpg\",\n        \"score\": 1,\n        \"status\": \"Dead/Abandoned\",\n        \"app_num\": \"string\",\n        \"ipoffice\": \"US\",\n        \"applicant\": [\n          \"Apple Pear Apple Corp.\"\n        ],\n        \"nice_code\": [\n          \"025\"\n        ],\n        \"offical_page\": \"https://tsdr.uspto.gov/#caseNumber=87706058&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch\"\n      }\n    ],\n    \"page_size\": 2,\n    \"total_hits\": 5887,\n    \"total_pages\": 2944,\n    \"current_page\": 1\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a62fc677-b056-44aa-978d-d99841394bb1",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apdt\": \"20170101:20171231\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"SAPPLE\",\n  \"ipoffice\": \"US,CA,AU,EU\",\n  \"mark\": \"apple\",\n  \"mode\": \"smart\",\n  \"nice_code\": \"025\",\n  \"page\": 1,\n  \"reg_num\": \"<string>\",\n  \"size\": 10,\n  \"sort\": \"appDate desc\",\n  \"us_code\": \"022\",\n  \"vienna_code\": \"025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95b52558-b04a-4315-be01-cfd8af626e09",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apdt\": \"20170101:20171231\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"SAPPLE\",\n  \"ipoffice\": \"US,CA,AU,EU\",\n  \"mark\": \"apple\",\n  \"mode\": \"smart\",\n  \"nice_code\": \"025\",\n  \"page\": 1,\n  \"reg_num\": \"<string>\",\n  \"size\": 10,\n  \"sort\": \"appDate desc\",\n  \"us_code\": \"022\",\n  \"vienna_code\": \"025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f5f0aac-d37a-42d9-9ae0-7bb675a0801c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apdt\": \"20170101:20171231\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"SAPPLE\",\n  \"ipoffice\": \"US,CA,AU,EU\",\n  \"mark\": \"apple\",\n  \"mode\": \"smart\",\n  \"nice_code\": \"025\",\n  \"page\": 1,\n  \"reg_num\": \"<string>\",\n  \"size\": 10,\n  \"sort\": \"appDate desc\",\n  \"us_code\": \"022\",\n  \"vienna_code\": \"025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da0c0e04-e0ba-4ee5-bc46-b84cd8c2dcf3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apdt\": \"20170101:20171231\",\n  \"app_num\": \"<string>\",\n  \"applicant\": \"SAPPLE\",\n  \"ipoffice\": \"US,CA,AU,EU\",\n  \"mark\": \"apple\",\n  \"mode\": \"smart\",\n  \"nice_code\": \"025\",\n  \"page\": 1,\n  \"reg_num\": \"<string>\",\n  \"size\": 10,\n  \"sort\": \"appDate desc\",\n  \"us_code\": \"022\",\n  \"vienna_code\": \"025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f38b9d54-a80a-458b-b396-4f2747a285bf",
+          "name": "T010 Trademark Detail",
+          "request": {
+            "name": "T010 Trademark Detail",
+            "description": {
+              "content": "Receive trademark detail information by application number and country code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trademark",
+                "data",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_num",
+                  "value": "<string>",
+                  "description": "Trademark application number"
+                },
+                {
+                  "disabled": false,
+                  "key": "ipoffice",
+                  "value": "<string>",
+                  "description": "country code"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdcc7ea9-3bce-4c9e-8378-1a7ec875aaeb",
+              "name": "Successful t010 trademark detail response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "data",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_num",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipoffice",
+                      "value": "EU"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4179,\n  \"data\": {\n    \"apdt\": \"string\",\n    \"pbdt\": \"string\",\n    \"images\": [\n      \"https://open.patsnap.com/trademark/image.jpg\"\n    ],\n    \"status\": \"Live/Pending\",\n    \"app_num\": \"string\",\n    \"reg_num\": \"0000000\",\n    \"ipoffice\": \"US\",\n    \"assignees\": [\n      {\n        \"city\": \"N. HOLLYWOOD\",\n        \"state\": \"CALIFORNIA\",\n        \"address1\": \"13151 SHERMAN WAY, UNIT F\",\n        \"address2\": \"C/O BAKER BOYSDISTRIBUTION\",\n        \"postcode\": \"string\",\n        \"nationality\": \"CALIFORNIA\",\n        \"country_code\": \"-\",\n        \"country_name\": \"-\",\n        \"dba_statement\": \"-\",\n        \"state_organized\": \"-\",\n        \"entity_statement\": \"-\",\n        \"legal_entity_text\": \"LIMITED LIABILITY COMPANY\",\n        \"formerly_statement\": \"-\",\n        \"composed_of_statement\": \"-\",\n        \"legal_entity_type_code\": \"-\",\n        \"person_organization_name\": \"SHAKE JUNT LLC\"\n      },\n      {\n        \"city\": \"N. HOLLYWOOD\",\n        \"state\": \"CALIFORNIA\",\n        \"address1\": \"13151 SHERMAN WAY, UNIT F\",\n        \"address2\": \"C/O BAKER BOYSDISTRIBUTION\",\n        \"postcode\": \"string\",\n        \"nationality\": \"CALIFORNIA\",\n        \"country_code\": \"-\",\n        \"country_name\": \"-\",\n        \"dba_statement\": \"-\",\n        \"state_organized\": \"-\",\n        \"entity_statement\": \"-\",\n        \"legal_entity_text\": \"LIMITED LIABILITY COMPANY\",\n        \"formerly_statement\": \"-\",\n        \"composed_of_statement\": \"-\",\n        \"legal_entity_type_code\": \"-\",\n        \"person_organization_name\": \"SHAKE JUNT LLC\"\n      }\n    ],\n    \"applicants\": [\n      {\n        \"city\": \"El Segundo\",\n        \"name\": \"PowerDMS, Inc.\",\n        \"state\": \"DE\",\n        \"postal_code\": \"string\",\n        \"internal_address\": \"2120 Park Place, Suite 100\"\n      },\n      {\n        \"city\": \"El Segundo\",\n        \"name\": \"PowerDMS, Inc.\",\n        \"state\": \"DE\",\n        \"postal_code\": \"string\",\n        \"internal_address\": \"2120 Park Place, Suite 100\"\n      }\n    ],\n    \"status_date\": \"string\",\n    \"mark_drawing\": \"Standard character mark\",\n    \"offical_page\": \"https://tsdr.uspto.gov/#caseNumber=98337947\",\n    \"location_date\": \"string\",\n    \"correspondents\": [\n      {\n        \"name\": \"Andrew Dallmann\",\n        \"internal_address\": \"Laguna Hills, CA 92653\",\n        \"attorney_docket_number\": \"1087.003.006\"\n      },\n      {\n        \"name\": \"Andrew Dallmann\",\n        \"internal_address\": \"Laguna Hills, CA 92653\",\n        \"attorney_docket_number\": \"1087.003.006\"\n      }\n    ],\n    \"classifications\": [\n      {\n        \"code\": \"string\",\n        \"class_kind\": \"Nice\",\n        \"status_code\": \"string\",\n        \"status_date\": \"2023-12-31\"\n      },\n      {\n        \"code\": \"string\",\n        \"class_kind\": \"Nice\",\n        \"status_code\": \"string\",\n        \"status_date\": \"2023-12-31\"\n      }\n    ],\n    \"current_location\": \"INTENT TO USE SECTION\",\n    \"mark_identification\": \"POWERVITALS\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "507dac3a-b461-4809-9727-8b24bf968e17",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "data",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_num",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipoffice",
+                      "value": "EU"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cb21039-03d4-4cce-a7bd-b60563fb7740",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "data",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_num",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipoffice",
+                      "value": "EU"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1245f470-3e5e-49a8-8e9d-62c4f29f1eea",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trademark",
+                    "data",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_num",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipoffice",
+                      "value": "EU"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "222a26f7-7bc6-4f09-800a-a87a6e8a1fcc",
+    "name": "Patsnap Open Platform AI Translation Trademark Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,3277 @@
+{
+  "item": [
+    {
+      "id": "2d69d480-1608-45f8-8091-5b97c2b3b83b",
+      "name": "Others",
+      "description": {
+        "content": "Others APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7952fb03-f2f0-4ce0-aea0-f467a8238a53",
+          "name": "AI71 Obtain Offline Report",
+          "request": {
+            "name": "AI71 Obtain Offline Report",
+            "description": {
+              "content": "This interface serves as an optimized function for the AI API, supporting users in integrating report links into their local systems. The Agents that currently support outputting report links are: [AI32] Technology Disclosure Document, [AI35] Novelty Check, [AI37] Patent Drafting (CNIPA),  and [AI66] FTO Search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "sso",
+                "agent",
+                "export-link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_type\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"email\": \"<string>\",\n  \"end_time\": \"<long>\",\n  \"page\": \"<integer>\",\n  \"phone\": \"<string>\",\n  \"start_time\": \"<long>\",\n  \"task_id_list\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "55a32a9e-83f1-455b-a25a-829998bd07d6",
+              "name": "Successful ai71 obtain offline report response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "export-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_type\": \"ai_novelty_search\",\n  \"company_id\": \"abc123\",\n  \"lang\": \"CN\",\n  \"email\": \"user@example.com\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"phone\": \"12345678900\",\n  \"start_time\": 1758902400000,\n  \"task_id_list\": [\n    \"task_id_1\",\n    \"task_id_2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8492,\n  \"data\": {\n    \"items\": [\n      {\n        \"url\": \"https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.docx\",\n        \"task_id\": \"task01\",\n        \"file_name\": \"Technical_Solution_Exploration_20251023.docx\"\n      },\n      {\n        \"url\": \"https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/reports/technical_solution_20251023.pdf\",\n        \"task_id\": \"task02\",\n        \"file_name\": \"Technical_Solution_Exploration_20251023.pdf\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e05f6044-4703-454b-a043-c7aacb147779",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "export-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_type\": \"ai_novelty_search\",\n  \"company_id\": \"abc123\",\n  \"lang\": \"CN\",\n  \"email\": \"user@example.com\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"phone\": \"12345678900\",\n  \"start_time\": 1758902400000,\n  \"task_id_list\": [\n    \"task_id_1\",\n    \"task_id_2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "795ba594-f92b-4f43-bc0f-9e254bc10281",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "export-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_type\": \"ai_novelty_search\",\n  \"company_id\": \"abc123\",\n  \"lang\": \"CN\",\n  \"email\": \"user@example.com\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"phone\": \"12345678900\",\n  \"start_time\": 1758902400000,\n  \"task_id_list\": [\n    \"task_id_1\",\n    \"task_id_2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac02a722-35b4-4174-8b71-3bd62a020921",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "export-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_type\": \"ai_novelty_search\",\n  \"company_id\": \"abc123\",\n  \"lang\": \"CN\",\n  \"email\": \"user@example.com\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"phone\": \"12345678900\",\n  \"start_time\": 1758902400000,\n  \"task_id_list\": [\n    \"task_id_1\",\n    \"task_id_2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "890f5b14-a6ba-4f4b-b3b5-e894e61eab09",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "export-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_type\": \"ai_novelty_search\",\n  \"company_id\": \"abc123\",\n  \"lang\": \"CN\",\n  \"email\": \"user@example.com\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"phone\": \"12345678900\",\n  \"start_time\": 1758902400000,\n  \"task_id_list\": [\n    \"task_id_1\",\n    \"task_id_2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19cbbf8c-028b-4c0e-be7e-3500811fd5f9",
+          "name": "AI01 Drug DDT NER",
+          "request": {
+            "name": "AI01 Drug DDT NER",
+            "description": {
+              "content": "To extract the names of Drug, Disease and Target (DDT) from Chinese and English patents, literature, news, clinical trial or Drug approval data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "ner",
+                "ddt-ner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"text\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f83a5db-95e1-4719-a402-c70517eb8538",
+              "name": "Successful ai01 drug ddt ner response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "ddt-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"text\": \"Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\\\\n\\\\n\\\\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\\\\n\\\\n\\\\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\\\\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\\\\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\\\\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\\\\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\\\\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\\\\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\\\\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor\",\n  \"source\": \"patent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5090,\n  \"data\": [\n    {\n      \"end\": 53,\n      \"type\": \"Drug\",\n      \"start\": 26,\n      \"entity\": \"Anti-CD19 4-1BB CAR T Cells\"\n    },\n    {\n      \"end\": 53,\n      \"type\": \"Drug\",\n      \"start\": 26,\n      \"entity\": \"Anti-CD19 4-1BB CAR T Cells\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4416960-564b-468c-9998-647acd0f33a3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "ddt-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"text\": \"Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\\\\n\\\\n\\\\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\\\\n\\\\n\\\\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\\\\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\\\\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\\\\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\\\\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\\\\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\\\\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\\\\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor\",\n  \"source\": \"patent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0fbff79-5c00-4075-9e64-98b4ca79a91f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "ddt-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"text\": \"Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\\\\n\\\\n\\\\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\\\\n\\\\n\\\\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\\\\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\\\\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\\\\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\\\\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\\\\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\\\\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\\\\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor\",\n  \"source\": \"patent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acc2f0bd-b2d7-4686-9629-c3cf32f5d6da",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "ddt-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"text\": \"Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\\\\n\\\\n\\\\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\\\\n\\\\n\\\\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\\\\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\\\\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\\\\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\\\\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\\\\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\\\\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\\\\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor\",\n  \"source\": \"patent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7587f60b-3653-4db8-bfd1-a5fa96ec1ede",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "ddt-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"text\": \"Regression of Established Atherosclerotic Plaques, and Treating Sudden-Onset Asthma Attacks, using PARP Inhibitors\\\\n\\\\n\\\\nA method is disclosed for treating and inducing the regression of established atherosclerotic plaques. A method is disclosed for treating asthma, including treatment of an ongoing asthma attack. In both cases, treatment with PARP inhibitors, such as the PARP inhibitor TIQ-A (Thieno[2,3-c]isoquinolin-5-one), can lead to regression of existing disease and symptoms.\\\\n\\\\n\\\\n1. A method for relieving symptoms of a sudden-onset asthma attack in a human; said method comprising administering an effective amount of a PARP inhibitor to a human who is experiencing an acute asthma attack, wherein said PARP inhibitor is administered from 0 hours to 12 hours after the beginning of the sudden-onset asthma attack.\\\\n2. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 6 hours after the beginning of the sudden-onset asthma attack.\\\\n3. The method of claim 1, wherein the PARP inhibitor is administered from 0 hours to 1 hours after the beginning of the sudden-onset asthma attack.\\\\n4. The method of claim 1, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n5. The method of claim 1, wherein the PARP inhibitor is TIQ-A.\\\\n6. The method of claim 1, wherein the PARP inhibitor is a PARP-1 inhibitor.\\\\n7. A method for inducing the regression of one or more existing atherosclerotic plaques in a human; said method comprising administering an effective amount of a PARP inhibitor over time to a human who has previously been diagnosed with one or more atherosclerotic plaques; then assaying one or more of the plaques to confirm whether one or more of the existing plaques has regressed in response to the PARP inhibitor; and then, if said assaying step indicates that one or more of the plaques has regressed, continuing further administration of the PARP inhibitor for an additional time to induce further regression of one or more of the plaques.\\\\n8. The method of claim 7, wherein the PARP inhibitor is selected from the group consisting of TIQ-A; AIQ; 3-AB; PJ-34; 1,5-Isoquinolinediol; 3-Methyl-5-AIQ hydrochloride; 4-Amino-1,8-naphthalimide; 4-Hydroxyquinazoline; 5-AIQ hydrochloride; 5-Iodo-6-amino-1,2-benzopyrone; 6(5H)-Phenanthridinone; EB-47 dihydrochloride dihydrate; NU1025; DR2313; BSI 401; BSI 201; AZD 2281; INO 1001; GPI 15427; GPI 16539; GPI 6150; DR2313; AG14361; NU1025; CEP 6800; AG 014699; ABT-888; minocycline; tetracycline; and derivatives of these compounds.\\\\n9. The method of claim 7, wherein the PARP inhibitor is TIQ-A.\\\\n10. The method of claim 7, wherein the PARP inhibitor is a PARP-1 inhibitor\",\n  \"source\": \"patent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8750061b-7b3d-4b0f-852b-7b82ffd931a7",
+          "name": "AI72 Obtain Offline History Record",
+          "request": {
+            "name": "AI72 Obtain Offline History Record",
+            "description": {
+              "content": "This interface serves as an optimized function for the AI API, supporting users in integrating history record into their local systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "sso",
+                "agent",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_id\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"end_time\": \"<long>\",\n  \"page\": \"<integer>\",\n  \"start_time\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ac79822-344b-42dd-a2fd-8e7bde5126b7",
+              "name": "Successful ai72 obtain offline history record response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"12345678900\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8298,\n  \"data\": {\n    \"page\": 1,\n    \"limit\": 20,\n    \"total\": 100,\n    \"history_maps\": [\n      {\n        \"data\": [\n          {\n            \"link\": \"/ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79\",\n            \"time\": \"13:58\",\n            \"source\": \"AI_GENERATE\",\n            \"message\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值\\n,材料成本上限\\n,生产工艺兼容性 \",\n            \"rawType\": \"ai_generate\",\n            \"icon_url\": \"https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n            \"icon_path\": \"agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n            \"created_at\": \"23 Oct 2025 13:58\",\n            \"business_id\": \"2a7a4ddd-7f5d-4266-a96e-13a57095db79\",\n            \"business_name\": \"Technical Solution Exploration\"\n          },\n          {\n            \"link\": \"/ai/agent-flow/2570aeaf-7999-430b-9bef-c43fcda4d928\",\n            \"time\": \"13:39\",\n            \"source\": \"AI_GENERATE\",\n            \"message\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大 热管理安全阈值\\n,材料成本上限\\n,生产工艺兼容性 \",\n            \"rawType\": \"ai_generate\",\n            \"icon_url\": \"https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n            \"icon_path\": \"agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n            \"created_at\": \"23 Oct 2025 13:39\",\n            \"business_id\": \"2570aeaf-7999-430b-9bef-c43fcda4d928\",\n            \"business_name\": \"Technical Solution Exploration\"\n          }\n        ],\n        \"date\": \"2025-10-23\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d292c73-6394-4439-95bd-7fc33bf10d43",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"12345678900\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0170fea1-e523-49b7-88db-58c6e3b6a4aa",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"12345678900\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "435164fb-4243-4313-a67f-e993fe1550c5",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"12345678900\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99b5e5e4-0e9f-40a7-bd75-08a276b46260",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"12345678900\",\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fad1a729-61aa-4716-872a-175641953c42",
+          "name": "L016 Document Parsing",
+          "request": {
+            "name": "L016 Document Parsing",
+            "description": {
+              "content": "Run layout detection and OCR on the uploaded file. The file type is inferred from the filename extension. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages; a request times out if processing exceeds 300 seconds and returns the image link is a signed link with a validity period of 7 days. output_format is optional and defaults to markdown.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rd-llm",
+                "v1",
+                "documents",
+                "doc_parsing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<file>",
+                  "type": "text",
+                  "description": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages."
+                },
+                {
+                  "key": "output_format",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c027808-d5f4-442a-9ae6-6d3bf34bf7ac",
+              "name": "Successful l016 document parsing response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"state\": \"success\",\n    \"results\": [\n      {\n        \"bbox\": [\n          0.16,\n          0.18,\n          0.37,\n          0.2,\n          0.9\n        ],\n        \"page\": 0,\n        \"type\": \"text\",\n        \"url\": \"https://oss.example.com/doc/0_2.png?sign=...\"\n      },\n      {\n        \"bbox\": [\n          0.16,\n          0.18,\n          0.37,\n          0.2,\n          0.9\n        ],\n        \"page\": 0,\n        \"type\": \"text\",\n        \"url\": \"https://oss.example.com/doc/0_2.png?sign=...\"\n      }\n    ],\n    \"file_type\": \"pdf\",\n    \"total_pages\": 12,\n    \"markdown\": \"TECHNICAL FIELD\\n\\nThe present disclosure relates to...\"\n  },\n  \"status\": \"success\",\n  \"error_msg\": \"success\",\n  \"error_code\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5b30273-42a3-434c-9436-9400da0b00b1",
+              "name": "Invalid request, missing file, empty file, or unsupported file format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7f8e410-9ab9-4a84-aff3-a98d74ba72ef",
+              "name": "File exceeds 20 MB or the document exceeds 200 pages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98268fb8-868d-4bec-ab6b-8649a173d3b1",
+              "name": "Internal server error; error_code is INTERNAL_ERROR.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5fac826-2aa8-4547-9366-9682636da266",
+              "name": "Downstream processing failed; error_code may be OCR_FAILED, LAYOUT_DETECTION_FAILED, PDF_PARSE_FAILED, or DOCUMENT_CONVERSION_FAILED.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f624d3c-531f-4c26-a668-f9f8de517f65",
+              "name": "Request processing exceeded 300 seconds; error_code is GATEWAY_TIMEOUT.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "doc_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to parse. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. Each file must not exceed 20 MB or 200 pages.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Output format: both returns structured JSONL data and Markdown; jsonl returns structured JSONL data only; markdown returns Markdown only. The returned image link is a signed link with a validity period of 7 days. Defaults to markdown if not specified.",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "markdown",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e1ad179-481d-47a1-a856-31cddb337c09",
+          "name": "L017 Layout-only Parsing (No OCR)",
+          "request": {
+            "name": "L017 Layout-only Parsing (No OCR)",
+            "description": {
+              "content": "Run layout detection only, without OCR. Every results.content value is null and markdown is not returned. Supported types: png, jpg, jpeg, pdf, doc, docx, ppt, pptx, xls, and xlsx. include_crop_urls is optional and defaults to true.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rd-llm",
+                "v1",
+                "documents",
+                "layout_parsing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<file>",
+                  "type": "text",
+                  "description": "(Required) File to analyze for layout."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c1148b3-09dc-4c10-ba8b-023776d18430",
+              "name": "Successful l017 layout-only parsing (no ocr) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"state\": \"success\",\n    \"results\": [\n      {\n        \"bbox\": [\n          0.16,\n          0.18,\n          0.37,\n          0.2,\n          0.9\n        ],\n        \"page\": 0,\n        \"type\": \"figure\",\n        \"url\": \"https://oss.example.com/doc/0_2.png?sign=...\",\n        \"content\": \"null\"\n      },\n      {\n        \"bbox\": [\n          0.16,\n          0.18,\n          0.37,\n          0.2,\n          0.9\n        ],\n        \"page\": 0,\n        \"type\": \"figure\",\n        \"url\": \"https://oss.example.com/doc/0_2.png?sign=...\",\n        \"content\": \"null\"\n      }\n    ],\n    \"file_type\": \"png\",\n    \"total_pages\": 1\n  },\n  \"status\": \"success\",\n  \"error_msg\": \"success\",\n  \"error_code\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b81bc98-ad48-40f0-bcfd-6d116463721b",
+              "name": "Invalid request, missing file, empty file, or unsupported file format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05b5b09a-c92f-4fea-9842-ab35811b6af6",
+              "name": "File exceeds 20 MB or the document exceeds 200 pages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1ce3ad9-0370-4ed3-93f2-90eb05613409",
+              "name": "Internal server error; error_code is INTERNAL_ERROR.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c19dee08-015a-411f-83e1-08d30fae1393",
+              "name": "Downstream processing failed; error_code may be OCR_FAILED, LAYOUT_DETECTION_FAILED, PDF_PARSE_FAILED, or DOCUMENT_CONVERSION_FAILED.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "538c8c50-d6c3-4300-bd0a-f115d0f5e341",
+              "name": "Request processing exceeded 300 seconds; error_code is GATEWAY_TIMEOUT.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rd-llm",
+                    "v1",
+                    "documents",
+                    "layout_parsing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File to analyze for layout.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "maximum 20MB",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7599e81-a830-49ff-a185-702be6667bf0",
+          "name": "AI72 Batch Obtain Offline History Record",
+          "request": {
+            "name": "AI72 Batch Obtain Offline History Record",
+            "description": {
+              "content": "This interface serves as an optimized function for the AI API, supporting users in batch querying history records for multiple accounts under the same company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "sso",
+                "agent",
+                "batch-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_id\": \"<string>\",\n  \"user_accounts\": [\n    {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"end_time\": \"<long>\",\n  \"page\": \"<integer>\",\n  \"start_time\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7b14a0f-2faa-429f-9449-6c4f6c3f21ee",
+              "name": "Successful ai72 batch obtain offline history record response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "batch-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"user_accounts\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"phone\": \"12345678900\"\n    },\n    {\n      \"email\": \"user2@example.com\",\n      \"phone\": \"12345678901\"\n    }\n  ],\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1459,\n  \"data\": {\n    \"user_histories\": [\n      {\n        \"email\": \"user@example.com\",\n        \"phone\": \"12345678900\",\n        \"history\": {\n          \"page\": 1,\n          \"limit\": 20,\n          \"total\": 100,\n          \"history_maps\": [\n            {\n              \"data\": [\n                {\n                  \"link\": \"/ai/agent-flow/2a7a4ddd-7f5d-4266-a96e-13a57095db79\",\n                  \"time\": \"13:58\",\n                  \"source\": \"AI_GENERATE\",\n                  \"message\": \"如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大\",\n                  \"rawType\": \"ai_generate\",\n                  \"icon_url\": \"https://qa-patsnap-import-workspace.cdn.zhihuiya.com/agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n                  \"icon_path\": \"agent/9b6135cd012c425e84edf84e6b03e366-image.jpeg\",\n                  \"created_at\": \"23 Oct 2025 13:58\",\n                  \"business_id\": \"2a7a4ddd-7f5d-4266-a96e-13a57095db79\",\n                  \"business_name\": \"Technical Solution Exploration\"\n                }\n              ],\n              \"date\": \"2025-10-23\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "931351d1-35bb-48bd-8488-02b89130e6d8",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "batch-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"user_accounts\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"phone\": \"12345678900\"\n    },\n    {\n      \"email\": \"user2@example.com\",\n      \"phone\": \"12345678901\"\n    }\n  ],\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fda3c5c8-3758-4d94-a8a8-460784c1d0c1",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "batch-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"user_accounts\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"phone\": \"12345678900\"\n    },\n    {\n      \"email\": \"user2@example.com\",\n      \"phone\": \"12345678901\"\n    }\n  ],\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7e1316b-ae64-4f75-a10f-9e8783b88b7b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "batch-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"user_accounts\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"phone\": \"12345678900\"\n    },\n    {\n      \"email\": \"user2@example.com\",\n      \"phone\": \"12345678901\"\n    }\n  ],\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe3b2c89-7724-4020-84c5-c29fe5bad7d7",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "sso",
+                    "agent",
+                    "batch-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"abc123\",\n  \"user_accounts\": [\n    {\n      \"email\": \"user1@example.com\",\n      \"phone\": \"12345678900\"\n    },\n    {\n      \"email\": \"user2@example.com\",\n      \"phone\": \"12345678901\"\n    }\n  ],\n  \"end_time\": 1761580799999,\n  \"page\": 1,\n  \"start_time\": 1758902400000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "403993c7-d4c5-4907-9d16-8bc1a199f9c7",
+          "name": "AI88-1 List Company Tech Monitors",
+          "request": {
+            "name": "AI88-1 List Company Tech Monitors",
+            "description": {
+              "content": "Returns all effective company tech monitors, including only id and title.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eureka",
+                "tech-monitor-api",
+                "company-monitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Language（CN｜EN）",
+                "key": "X-Site-Lang",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8104cc4-c042-47f9-84ee-a9545b7930fa",
+              "name": "Successful ai88-1 list company tech monitors response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eureka",
+                    "tech-monitor-api",
+                    "company-monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Language（CN｜EN）",
+                    "key": "X-Site-Lang",
+                    "value": "CN"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 973,\n  \"data\": [\n    {\n      \"id\": \"0d68646fe871417ebe68a6905e698f24\",\n      \"title\": \"锂电池\"\n    },\n    {\n      \"id\": \"0d68646fe871417ebe68a6905e698f24\",\n      \"title\": \"锂电池\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2116e382-6739-4d25-a5c6-aa92ff6dcab9",
+          "name": "AI03 News Entity Recognition(NER)",
+          "request": {
+            "name": "AI03 News Entity Recognition(NER)",
+            "description": {
+              "content": "News Entity Recognition helps you recognize entity type in Chinese/English news text, it supported entity types include companies, personal names, addresses, academic institutions, government institutions, and more.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "ner",
+                "news-ner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd65e044-9a1a-4886-b731-6ae9f8e1939f",
+              "name": "Successful ai03 news entity recognition(ner) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "news-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"药鼎记：生物医药新生力量\\n\\n\\n\\n\\n\\n7964682698844491.jpg\\n\\n2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6800,\n  \"data\": [\n    {\n      \"end\": 59,\n      \"type\": \"GOV\",\n      \"start\": 50,\n      \"entity\": \"国家药品监督管理局\"\n    },\n    {\n      \"end\": 59,\n      \"type\": \"GOV\",\n      \"start\": 50,\n      \"entity\": \"国家药品监督管理局\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb261cd5-3b93-4067-973a-461ea0026ce8",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "news-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"药鼎记：生物医药新生力量\\n\\n\\n\\n\\n\\n7964682698844491.jpg\\n\\n2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0467423-0bb6-48b5-9026-cd881fea5c1a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "news-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"药鼎记：生物医药新生力量\\n\\n\\n\\n\\n\\n7964682698844491.jpg\\n\\n2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58591a9e-dd21-42d3-82a6-01d6e8d2023e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "news-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"药鼎记：生物医药新生力量\\n\\n\\n\\n\\n\\n7964682698844491.jpg\\n\\n2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd2bca20-a574-400a-910f-b5b39d7ab237",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "ner",
+                    "news-ner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"text\": \"药鼎记：生物医药新生力量\\n\\n\\n\\n\\n\\n7964682698844491.jpg\\n\\n2018年3月以来，国家药品监督管理局采取了各种措施加快全球创新药进入中国的速度，通过参与全球同步开发引进新药的模式也正在逐步实现；同时，中国创新药产业进入收获期，国产IND（新药临床研究申请）被受理的数量持续升高，且中国创新药Licence-out在数量和金额上都呈现快速增长态势。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5cfc6ab-45c8-42a8-9087-a63bf9df3487",
+          "name": "AI30 Similar Patent Search and Comparison",
+          "request": {
+            "name": "AI30 Similar Patent Search and Comparison",
+            "description": {
+              "content": "By entering the technical means (required) and technical effects (optional), a list of similar patents can be obtained and compared through semantic search. A maximum of 20 similar patents will be returned, sorted by default from high to low similarity. (To improve the accuracy of the query, please use at least 50 words to describe the technical means).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "similar-patent-comparison"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tech_means\": \"<string>\",\n  \"country\": \"<array>\",\n  \"legal_status\": \"<array>\",\n  \"limit\": \"<integer>\",\n  \"tech_effect\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dee9556e-02e1-4489-992b-7186c525e59f",
+              "name": "Successful ai30 similar patent search and comparison response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 20,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1474,\n  \"data\": {\n    \"docs\": [\n      {\n        \"similar_patent\": {\n          \"pn\": \"CN108001293B\",\n          \"means\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"score\": 0.9,\n          \"efficacy\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"patent_id\": \"9c341cca-3aca-4003-8bc0-ada07f3702f8\"\n        }\n      },\n      {\n        \"similar_patent\": {\n          \"pn\": \"CN108001293B\",\n          \"means\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"score\": 0.9,\n          \"efficacy\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"patent_id\": \"9c341cca-3aca-4003-8bc0-ada07f3702f8\"\n        }\n      }\n    ],\n    \"count\": 20\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efec6bd7-e22a-4c8c-893a-49e41699e496",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 20,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "835bd7fc-9f44-41f8-9ae1-e9af3c9ccc70",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 20,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "166bb561-f7c2-47e7-a8f8-9b76174e02e6",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 20,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "391697a7-b892-4a11-9807-8e61f9d4abc4",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "similar-patent-comparison"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tech_means\": \"原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。\",\n  \"country\": [\n    \"CN\",\n    \"US\",\n    \"KR\"\n  ],\n  \"legal_status\": [\n    \"失效\",\n    \"有效\",\n    \"审中\",\n    \"PCT指定期满\",\n    \"PCT指定期内\",\n    \"未确认\"\n  ],\n  \"limit\": 20,\n  \"tech_effect\": \"实现了车辆的原地掉头\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de81ae99-f32b-4d72-9078-94525795b650",
+          "name": "AI31 Patent Invention Points Summary",
+          "request": {
+            "name": "AI31 Patent Invention Points Summary",
+            "description": {
+              "content": "This interface allows users to query the core invention points and improvement directions of a patent by inputting either the patent_id or patent_number. It enables quick access to relevant patent information, providing deeper insights into its innovation and technological advancements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "patent-core-invention-points"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"patent_id\": \"<string>\",\n  \"pn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e85a2a3-b7f2-47df-877a-fc80aadbcfac",
+              "name": "Successful ai31 patent invention points summary response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "patent-core-invention-points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n  \"pn\": \"CN108001293B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9274,\n  \"data\": {\n    \"pn\": \"CN108001293B\",\n    \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n    \"core_invention_points\": {},\n    \"enhancement_proposals\": {}\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2ea7219-3a53-4565-b80a-282f749546dc",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "patent-core-invention-points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n  \"pn\": \"CN108001293B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa1d0b5d-089f-49fe-8501-fb37258ba755",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "patent-core-invention-points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n  \"pn\": \"CN108001293B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6125191d-87fe-4009-84e9-bb153fb4c329",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "patent-core-invention-points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n  \"pn\": \"CN108001293B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2107facf-b7b9-4937-8636-ca04d464c296",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "patent-core-invention-points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"en\",\n  \"patent_id\": \"e7b3df69-0f30-4ad3-a753-538e362fd524\",\n  \"pn\": \"CN108001293B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "276c6778-3c25-4970-8fdc-ae650aa2f17d",
+          "name": "AI88-2 Get Aggregated Company Tech Monitor Info",
+          "request": {
+            "name": "AI88-2 Get Aggregated Company Tech Monitor Info",
+            "description": {
+              "content": "Retrieves all detailed information of a tech monitor by ID in one call, aggregating data including basic info, hot news, group statistics, overview, charts, etc. Return company tech monitors (including monitor ID) retrieval via [AI88-1].",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eureka",
+                "tech-monitor-api",
+                "company-monitor",
+                "aggregated-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tech-monitor-id",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the company tech monitor"
+                },
+                {
+                  "disabled": false,
+                  "key": "report_week",
+                  "value": "<string>",
+                  "description": "The report week of the company tech monitor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Language（CN｜EN）",
+                "key": "X-Site-Lang",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78bacc40-5e24-4fb7-9a5e-c6385ee9e14f",
+              "name": "Successful ai88-2 get aggregated company tech monitor info response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eureka",
+                    "tech-monitor-api",
+                    "company-monitor",
+                    "aggregated-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tech-monitor-id",
+                      "value": "0d68646fe871417ebe68a6905e698f24"
+                    },
+                    {
+                      "key": "report_week",
+                      "value": "202610"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Language（CN｜EN）",
+                    "key": "X-Site-Lang",
+                    "value": "CN"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1253,\n  \"data\": {\n    \"count\": {\n      \"other_count\": [\n        {\n          \"name\": \"其他\",\n          \"count\": 1,\n          \"groups\": [\n            {\n              \"title\": \"正极材料结构稳定性与热安全性提升\",\n              \"summary\": \"该技术采用**聚苯胺-聚乙二醇共聚物**对镍钴锰酸锂正极材料进行表面包覆，通过乳液聚合、混合球磨、低温烧结等工艺形成导电聚合物包覆层。该包覆层能够有效抑制正极材料在循环过程中的结构重组和颗粒碎裂，同时阻止过渡金属离子溶解，显著改善材料的热稳定性。\",\n              \"paper_ids\": [],\n              \"patent_ids\": [\n                \"beac66e8-2c3a-4e00-a0f7-c7f2f33c728a\"\n              ],\n              \"tech_differences\": \"相比传统无机包覆材料，**导电聚合物包覆**既保证了离子传导又提供结构保护，在2.8-4.4V高电压下循环性能更优，制备工艺相对简单且成本较低\"\n            },\n            {\n              \"title\": \"聚合物电解质界面稳定性问题\",\n              \"summary\": \"该技术提出**分子拥挤策略**，通过15-crown-5调节Li+协调结构，迫使阴离子挤入配位环境，削弱Li+与聚合物配位，提高离子传输效率，并原位构建富含**LiF的薄而坚韧界面钝化层**\",\n              \"paper_ids\": [\n                \"75d7f005-fbce-4845-8caa-0b58e8d06f0f\"\n              ],\n              \"patent_ids\": [],\n              \"tech_differences\": \"相比传统聚合物电解质依赖材料改性，该技术通过**分子拥挤机制**主动调节离子配位环境，实现界面原位钝化，显著提升循环稳定性和柔韧性\"\n            }\n          ],\n          \"low_score\": {\n            \"paper_ids\": [\n              \"4b33dc35-636c-47b0-b3df-658327bd6883\",\n              \"a67d1682-2f28-42fd-bcc2-daecc084cfcd\"\n            ],\n            \"patent_ids\": [\n              \"9d57648b-6311-40d5-aaf0-f149a456eb93\",\n              \"5d52edeb-44c9-4a83-adfc-b8abbfe8d12a\"\n            ]\n          },\n          \"group_count\": 1,\n          \"overall_summary\": \"\"\n        }\n      ],\n      \"company_count\": [\n        {\n          \"name\": \"合肥国轩高科动力能源有限公司\",\n          \"count\": 2,\n          \"groups\": [\n            {\n              \"title\": \"低温环境下锂离子电池电导率和电化学性能不足\",\n              \"summary\": \"该技术采用**低温复合准固态电解质**制备方法，通过向二氧戊烷、添加剂和快离子导体混合液中加入锂盐进行**原位聚合反应**，制备出具有高离子电导率的复合电解质，显著改善锂离子电池在低温环境下的电化学性能。\",\n              \"paper_ids\": [],\n              \"patent_ids\": [\n                \"57821030-e8f0-4cd3-8c28-1b1c485133e6\"\n              ],\n              \"tech_differences\": \"相比传统聚二氧戊烷基电解质，该技术通过**原位聚合**和**快离子导体复合**显著提升低温离子导电率，完全摒弃液态电解液，大幅提高热稳定性和安全性能，但可能面临制备工艺复杂度增加的挑战。\"\n            },\n            {\n              \"title\": \"室温下固态聚合物电解质离子电导率偏低\",\n              \"summary\": \"该技术开发了**梳状聚合物电解质**，侧链上分别含有**环状碳酸酯单元**和**环氧乙烷单元**，通过无规共聚物结构设计使导电锂盐与聚合物基体在不同侧链上分布，室温离子电导率达到1.08×10-4 Scm-1。\",\n              \"paper_ids\": [],\n              \"patent_ids\": [\n                \"91f6bc45-f347-4847-a95c-7ade564d15b5\"\n              ],\n              \"tech_differences\": \"突破传统PEO基电解质的结构限制，采用**梳状分子设计**和**侧链功能化分离**策略，通过降低玻璃化转变温度和优化离子传输路径，实现室温电导率的显著提升，为固态电池产业化提供了新的技术路径。\"\n            }\n          ],\n          \"low_score\": {\n            \"paper_ids\": [],\n            \"patent_ids\": []\n          },\n          \"group_count\": 2,\n          \"company_name\": \"合肥国轩高科动力能源有限公司\",\n          \"overall_summary\": \"\"\n        }\n      ],\n      \"tech_topic_count\": [\n        {\n          \"name\": \"磷酸锰铁锂\",\n          \"count\": 2,\n          \"groups\": [\n            {\n              \"title\": \"宽温区性能优化与复合材料体系设计\",\n              \"summary\": \"通过**锰酸锂与磷酸锰铁锂复合掺混**技术，结合**分步分散、梯度复合**工艺，实现不同正极材料的优势互补。该技术采用优化配比的复合体系，显著提升了电池在-40℃至55℃宽温区的稳定性，在-20℃环境下能量输出效率达80.8％，同时平衡了**能量密度与安全性**的矛盾。\",\n              \"paper_ids\": [],\n              \"patent_ids\": [\n                \"e3458499-f03c-474b-863a-01d30545cf1a\",\n                \"f6ce2b02-e5e6-4c0a-ae73-6c5d5212719f\"\n              ],\n              \"tech_differences\": \"相比单一材料体系，**复合掺混策略**有效规避了磷酸铁锂低温性能差、三元材料安全性不足的局限，通过材料协同效应实现性能互补，为宽温区应用提供了成本可控的解决方案。\"\n            },\n            {\n              \"title\": \"化成工艺优化与SEI膜调控\",\n              \"summary\": \"针对**磷酸锰铁锂-三元复合正极**体系，开发了**分阶段充放电化成工艺**。通过小电流充电至20％-40％SOC，再大电流充电至50％-70％SOC的梯度策略，结合**压力热压和高温老化**处理，有效促进SEI膜形成，提升首次库伦效率和循环性能。\",\n              \"paper_ids\": [],\n              \"patent_ids\": [\n                \"4b8bd230-cba0-4a26-85aa-2663d18c4402\"\n              ],\n              \"tech_differences\": \"突破传统单一电流密度化成模式，**分阶段电流控制**显著改善了电解液利用率和化成反应充分性，为复合正极材料的界面稳定性提供了精准调控手段。\"\n            }\n          ],\n          \"low_score\": {\n            \"paper_ids\": [],\n            \"patent_ids\": [\n              \"53c007eb-f850-4528-af1f-a16469069e41\",\n              \"0b0b782d-1a2d-4e32-be1e-cceaf66ff341\",\n              \"80c317de-a665-4451-a497-aea375356396\"\n            ]\n          },\n          \"group_count\": 2,\n          \"overall_summary\": \"\"\n        }\n      ]\n    },\n    \"hot_news\": {\n      \"page\": 1,\n      \"limit\": 20,\n      \"total\": 20,\n      \"records\": [\n        {\n          \"link\": \"https://www.electrive.com/2025/08/06/saic-launches-redesigned-mg4-with-semi-solid-state-battery-option/\",\n          \"title\": \"上汽推出改款MG4,可选配半固态电池\",\n          \"topics\": [\n            \"热阻\",\n            \"渗透测试\",\n            \"能源消耗\",\n            \"永磁电动机\",\n            \"材料科学\"\n          ],\n          \"content\": \"这款电动车共有四种型号。这款紧凑型电动车基于上汽E3平台打造,配备120千瓦永磁电机,扭矩250牛米,最高时速160公里/小时。MG4车身长度4.4米,轴距2.75米,定位于紧凑型电动车市场,与大众ID.3和比亚迪海豚等车型展开竞争。 \\n新车上市时提供两种LFP电池选择:42.8千瓦时和53.9千瓦时,分别支持437公里和530公里的CLTC续航里程。直流充电从30%充至80%大约需要20分钟,标称能耗为10.4千瓦时/100公里。 \\n采用半固态电池技术的第五款车型计划于今年晚些时候加入该系列。上汽集团表示,该电池组展现出更高的热安全性,包括符合三向针刺测试标准,并且在预处理的情况下,在零下温度下可维持高达75%的续航里程。半固态电池将于年底前推出,预计9月定价,并于年底前交付。 \\n因此,MG4 是首批大规模采用半固态电池技术的量产车型之一。据母公司上汽集团称,该电池通过了三向针刺测试,未产生烟雾,且低温性能有所提升。该公司表示,将电池预热至 -7°C 可使车辆续航里程保持高达 75%。\\n该车型的电池系统采用电芯到车身(CTB)集成技术。上汽集团报告称,其在电池结构上的投资约为5亿元人民币(约合6870万美元),该结构采用含镧和铈的铝稀土合金来增强强度和耐热性。 \\n名爵于三月发布了全新MG4 EV。正如我们当时所指出的,这是一款全新车型,而非上一代MG4的升级版。从之前的输出功率或电池容量数据来看,这一点显而易见。这款EV之前搭载的是125千瓦的电机和64千瓦时或77千瓦时的电池。 \\n外观升级包括箭头形LED尾灯、重新设计的背光MG标识,以及东莱紫和珊瑚红等全新配色。轮毂尺寸范围为16至17英寸。 \\n MG4 EV 由中国国有汽车制造商上汽集团生产,该公司于 2005 年收购了原英国品牌 MG。自 2022 年年中推出以来,MG4 在中国市场的表现并未达到预期——MG 汽车品牌在中国的传统与在欧洲不同。上汽集团希望下一代 MG4 能够改变这一现状。 \\n cnevpost.com、carnewschina.com\",\n          \"news_id\": \"d3433e1d-de8c-3bcf-bd94-fa82514190c1\"\n        }\n      ],\n      \"has_next\": false,\n      \"has_previous\": false\n    },\n    \"basic_info\": {\n      \"title\": \"锂电池\",\n      \"creator\": \"zhourui@patsnap.com\",\n      \"subject\": \"锂电池\",\n      \"industry\": \"材料\",\n      \"ipc_query\": \"(IPC:(\\\"H01M4\\\" OR \\\"H01M10\\\") OR CPC:(\\\"H01M4\\\" OR \\\"H01M10\\\"))\",\n      \"created_at\": \"2025-09-26T07:05:50.600Z\",\n      \"focus_area\": \"密度\",\n      \"news_query\": [\n        \"锂电池\"\n      ],\n      \"updated_at\": \"2025-09-26T07:11:24.411Z\",\n      \"user_input\": \"锂电池 行业：材料\",\n      \"auto_create\": false,\n      \"intent_type\": \"TechKeyword\",\n      \"patent_query\": \"(ALL_TECH:(\\\"锂电池\\\" OR \\\"锂离子电池\\\"))\",\n      \"empty_summary\": false,\n      \"sub_field_list\": [\n        {\n          \"name\": \"磷酸锰铁锂\",\n          \"patent_query\": \"ALL_TECH:(\\\"磷酸锰铁锂\\\" OR \\\"LMFP\\\" OR \\\"LiFeMnPO4\\\" OR \\\"混合磷酸盐\\\") AND (IPC:(\\\"H01M4\\\" OR \\\"H01M10\\\") OR CPC:(\\\"H01M4\\\" OR \\\"H01M10\\\"))\",\n          \"classification_type\": \"tech\"\n        }\n      ],\n      \"tech_monitor_id\": \"0d68646fe871417ebe68a6905e698f24\",\n      \"recommend_company\": [\n        \"宁德时代新能源科技股份有限公司\",\n        \"比亚迪股份有限公司\"\n      ],\n      \"tech_monitor_type\": \"COMPANY\",\n      \"pre_compute_status\": \"string\"\n    },\n    \"tech_trend_chart\": {\n      \"extra\": {\n        \"max\": 299,\n        \"min\": 9,\n        \"PBD_YM\": [\n          {\n            \"code\": \"202504\",\n            \"label\": \"4月\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 651\n          },\n          {\n            \"code\": \"202505\",\n            \"label\": \"5月\",\n            \"pbd_ym\": \"202505\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 617\n          },\n          {\n            \"code\": \"202506\",\n            \"label\": \"6月\",\n            \"pbd_ym\": \"202506\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 698\n          },\n          {\n            \"code\": \"202507\",\n            \"label\": \"7月\",\n            \"pbd_ym\": \"202507\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 673\n          },\n          {\n            \"code\": \"202508\",\n            \"label\": \"8月\",\n            \"pbd_ym\": \"202508\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 652\n          },\n          {\n            \"code\": \"202509\",\n            \"label\": \"9月\",\n            \"pbd_ym\": \"202509\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 456\n          }\n        ],\n        \"TECH_FIELD\": [\n          {\n            \"code\": \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"label\": \"磷酸锰铁锂\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"tech_field_name\": \"磷酸锰铁锂\"\n          },\n          {\n            \"code\": \"1984213324b049c4bcc266c19fe8d626\",\n            \"label\": \"凝胶聚合物电解质\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"1984213324b049c4bcc266c19fe8d626\",\n            \"tech_field_name\": \"凝胶聚合物电解质\"\n          },\n          {\n            \"code\": \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"label\": \"石墨烯导电剂\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"tech_field_name\": \"石墨烯导电剂\"\n          },\n          {\n            \"code\": \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"label\": \"钠离子正极材料\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"tech_field_name\": \"钠离子正极材料\"\n          },\n          {\n            \"code\": \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"label\": \"陶瓷涂层隔膜\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"tech_field_name\": \"陶瓷涂层隔膜\"\n          },\n          {\n            \"code\": \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"label\": \"固态电解质\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"tech_field_name\": \"固态电解质\"\n          },\n          {\n            \"code\": \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"label\": \"硅纳米线负极\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"tech_field_name\": \"硅纳米线负极\"\n          },\n          {\n            \"code\": \"3dd6b8ea15c14aa9b16ddf5004095314\",\n            \"label\": \"锂金属负极\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"3dd6b8ea15c14aa9b16ddf5004095314\",\n            \"tech_field_name\": \"锂金属负极\"\n          }\n        ]\n      },\n      \"total\": {\n        \"pbd_ym\": [\n          3747\n        ]\n      },\n      \"source\": [\n        {\n          \"count\": 651,\n          \"pbd_ym\": \"202504\",\n          \"percentage\": 0.1737,\n          \"1984213324b049c4bcc266c19fe8d626\": 18,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 148,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 46,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 264,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 39,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 49,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 38,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 49\n        },\n        {\n          \"count\": 617,\n          \"pbd_ym\": \"202505\",\n          \"percentage\": 0.1647,\n          \"1984213324b049c4bcc266c19fe8d626\": 21,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 128,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 40,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 275,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 37,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 50,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 22,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 44\n        },\n        {\n          \"count\": 698,\n          \"pbd_ym\": \"202506\",\n          \"percentage\": 0.1863,\n          \"1984213324b049c4bcc266c19fe8d626\": 20,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 167,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 42,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 297,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 24,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 54,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 36,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 58\n        },\n        {\n          \"count\": 673,\n          \"pbd_ym\": \"202507\",\n          \"percentage\": 0.1796,\n          \"1984213324b049c4bcc266c19fe8d626\": 16,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 145,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 42,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 299,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 37,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 55,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 33,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 46\n        },\n        {\n          \"count\": 652,\n          \"pbd_ym\": \"202508\",\n          \"percentage\": 0.174,\n          \"1984213324b049c4bcc266c19fe8d626\": 24,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 114,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 62,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 272,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 25,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 53,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 50,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 52\n        },\n        {\n          \"count\": 456,\n          \"pbd_ym\": \"202509\",\n          \"percentage\": 0.1217,\n          \"1984213324b049c4bcc266c19fe8d626\": 9,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 88,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 31,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 192,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 30,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 43,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 27,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 36\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"pbd_ym\": [\n            \"202504\",\n            \"202505\",\n            \"202506\",\n            \"202507\",\n            \"202508\",\n            \"202509\"\n          ]\n        },\n        {\n          \"tech_field\": [\n            \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"1984213324b049c4bcc266c19fe8d626\",\n            \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"3dd6b8ea15c14aa9b16ddf5004095314\"\n          ]\n        },\n        {\n          \"count\": [\n            \"651\",\n            \"617\",\n            \"698\",\n            \"673\",\n            \"652\",\n            \"456\"\n          ]\n        }\n      ]\n    },\n    \"tech_topic_word_cloud_chart\": {\n      \"extra\": {\n        \"max\": 299,\n        \"min\": 9,\n        \"PBD_YM\": [\n          {\n            \"code\": \"202504\",\n            \"label\": \"4月\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 651\n          },\n          {\n            \"code\": \"202505\",\n            \"label\": \"5月\",\n            \"pbd_ym\": \"202505\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 617\n          },\n          {\n            \"code\": \"202506\",\n            \"label\": \"6月\",\n            \"pbd_ym\": \"202506\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 698\n          },\n          {\n            \"code\": \"202507\",\n            \"label\": \"7月\",\n            \"pbd_ym\": \"202507\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 673\n          },\n          {\n            \"code\": \"202508\",\n            \"label\": \"8月\",\n            \"pbd_ym\": \"202508\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 652\n          },\n          {\n            \"code\": \"202509\",\n            \"label\": \"9月\",\n            \"pbd_ym\": \"202509\",\n            \"tech_field_count\": 8,\n            \"total_patent_count\": 456\n          }\n        ],\n        \"TECH_FIELD\": [\n          {\n            \"code\": \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"label\": \"磷酸锰铁锂\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"tech_field_name\": \"磷酸锰铁锂\"\n          },\n          {\n            \"code\": \"1984213324b049c4bcc266c19fe8d626\",\n            \"label\": \"凝胶聚合物电解质\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"1984213324b049c4bcc266c19fe8d626\",\n            \"tech_field_name\": \"凝胶聚合物电解质\"\n          },\n          {\n            \"code\": \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"label\": \"石墨烯导电剂\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"tech_field_name\": \"石墨烯导电剂\"\n          },\n          {\n            \"code\": \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"label\": \"钠离子正极材料\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"tech_field_name\": \"钠离子正极材料\"\n          },\n          {\n            \"code\": \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"label\": \"陶瓷涂层隔膜\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"tech_field_name\": \"陶瓷涂层隔膜\"\n          },\n          {\n            \"code\": \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"label\": \"固态电解质\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"tech_field_name\": \"固态电解质\"\n          },\n          {\n            \"code\": \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"label\": \"硅纳米线负极\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"tech_field_name\": \"硅纳米线负极\"\n          },\n          {\n            \"code\": \"3dd6b8ea15c14aa9b16ddf5004095314\",\n            \"label\": \"锂金属负极\",\n            \"pbd_ym\": \"202504\",\n            \"tech_field_id\": \"3dd6b8ea15c14aa9b16ddf5004095314\",\n            \"tech_field_name\": \"锂金属负极\"\n          }\n        ]\n      },\n      \"total\": {\n        \"pbd_ym\": [\n          3747\n        ]\n      },\n      \"source\": [\n        {\n          \"count\": 651,\n          \"pbd_ym\": \"202504\",\n          \"percentage\": 0.1737,\n          \"1984213324b049c4bcc266c19fe8d626\": 18,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 148,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 46,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 264,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 39,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 49,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 38,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 49\n        },\n        {\n          \"count\": 617,\n          \"pbd_ym\": \"202505\",\n          \"percentage\": 0.1647,\n          \"1984213324b049c4bcc266c19fe8d626\": 21,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 128,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 40,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 275,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 37,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 50,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 22,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 44\n        },\n        {\n          \"count\": 698,\n          \"pbd_ym\": \"202506\",\n          \"percentage\": 0.1863,\n          \"1984213324b049c4bcc266c19fe8d626\": 20,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 167,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 42,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 297,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 24,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 54,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 36,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 58\n        },\n        {\n          \"count\": 673,\n          \"pbd_ym\": \"202507\",\n          \"percentage\": 0.1796,\n          \"1984213324b049c4bcc266c19fe8d626\": 16,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 145,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 42,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 299,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 37,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 55,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 33,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 46\n        },\n        {\n          \"count\": 652,\n          \"pbd_ym\": \"202508\",\n          \"percentage\": 0.174,\n          \"1984213324b049c4bcc266c19fe8d626\": 24,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 114,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 62,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 272,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 25,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 53,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 50,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 52\n        },\n        {\n          \"count\": 456,\n          \"pbd_ym\": \"202509\",\n          \"percentage\": 0.1217,\n          \"1984213324b049c4bcc266c19fe8d626\": 9,\n          \"3dd6b8ea15c14aa9b16ddf5004095314\": 88,\n          \"482785ec3acc45f1a7a6d7497387e29c\": 31,\n          \"7cd95d14b1bd4cf1b842eaf65aa87b63\": 192,\n          \"8aa558dc8b0241aa88a971e6c4272b81\": 30,\n          \"94d69192e8594946b0a22f5c06e26fa8\": 43,\n          \"99bbb157b97f4f13b33be9e4093a28e6\": 27,\n          \"e95ccd97ae91429eaaf7017335b8fefd\": 36\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"pbd_ym\": [\n            \"202504\",\n            \"202505\",\n            \"202506\",\n            \"202507\",\n            \"202508\",\n            \"202509\"\n          ]\n        },\n        {\n          \"tech_field\": [\n            \"94d69192e8594946b0a22f5c06e26fa8\",\n            \"1984213324b049c4bcc266c19fe8d626\",\n            \"e95ccd97ae91429eaaf7017335b8fefd\",\n            \"8aa558dc8b0241aa88a971e6c4272b81\",\n            \"99bbb157b97f4f13b33be9e4093a28e6\",\n            \"7cd95d14b1bd4cf1b842eaf65aa87b63\",\n            \"482785ec3acc45f1a7a6d7497387e29c\",\n            \"3dd6b8ea15c14aa9b16ddf5004095314\"\n          ]\n        },\n        {\n          \"count\": [\n            \"651\",\n            \"617\",\n            \"698\",\n            \"673\",\n            \"652\",\n            \"456\"\n          ]\n        }\n      ]\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d39f34d-d76f-4c5c-b876-265442b31aaa",
+    "name": "Patsnap Open Platform AI Translation Others API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

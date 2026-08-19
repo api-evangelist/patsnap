@@ -1,0 +1,295 @@
+{
+  "item": [
+    {
+      "id": "c3ab8467-2cc6-4d04-a4c3-274d24c9741e",
+      "name": "Telecom",
+      "description": {
+        "content": "Telecom APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8578d9d8-d307-4ee8-92ca-c6ddac6e2b70",
+          "name": "T001 AI-powered Standard Essential Patent (SEP) Analysis",
+          "request": {
+            "name": "T001 AI-powered Standard Essential Patent (SEP) Analysis",
+            "description": {
+              "content": "<p>Input a patent number to automatically complete TS recommendation, section recall, and Claim Chart (CC) comparison, receiving SEP determination results via Server-Sent Events.</p><p>Each SSE event is a <code>data:</code> line containing a JSON object. Events fall into two categories:</p><ul><li><b>PROCESSING</b> — heartbeat/progress update, no business payload</li><li><b>FINISH</b> — final result with <code>content</code> populated (SEP determination conclusion)</li></ul><p><b>Flow when ts is provided</b> (skip TS recommendation): <code>INIT</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p><p><b>Flow when ts is omitted</b> (auto-recommend TS): <code>INIT</code> → <code>RECOMMEND_TS</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "open_api",
+                "task",
+                "aicc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Response language for AI-generated text (explanation, reason, etc.)",
+                "key": "x-site-lang",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "text/event-stream"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patent_number\": \"<string>\",\n  \"ts\": [\n    {\n      \"ts_number\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"ts_number\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "488cd532-eff7-44af-9aff-f1e600db7ce9",
+              "name": "Successful t001 ai-powered standard essential patent (sep) analysis response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "open_api",
+                    "task",
+                    "aicc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Response language for AI-generated text (explanation, reason, etc.)",
+                    "key": "x-site-lang",
+                    "value": "EN"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"US8767570B2\",\n  \"ts\": [\n    {\n      \"ts_number\": \"38.300\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"PROCESSING\",\n    \"task_id\": \"e0a90f0b-461e-4d51-abd9-e62ad65310e1\",\n    \"step\": \"CC_COMPARE\",\n    \"content\": {\n      \"compare_results\": [\n        {\n          \"pid\": \"be561264-14b0-4978-ad3b-e2c961d1d687\",\n          \"claim\": \"1. A method comprising: transmitting, by a requesting device, at least one resource request...\",\n          \"success\": true,\n          \"cc_result\": {\n            \"is_sep\": \"部分必要\",\n            \"explanation\": \"该权利要求与3GPP标准中IUC功能存在对应关系，判定为部分必要。\",\n            \"all_mappings\": []\n          }\n        }\n      ]\n    }\n  },\n  \"status\": true,\n  \"error_code\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c680e33-2c74-4c71-9af2-bfd41f8d9531",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "open_api",
+                    "task",
+                    "aicc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Response language for AI-generated text (explanation, reason, etc.)",
+                    "key": "x-site-lang",
+                    "value": "EN"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"US8767570B2\",\n  \"ts\": [\n    {\n      \"ts_number\": \"38.300\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04e539f4-086b-4017-90ac-95607fec5668",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "open_api",
+                    "task",
+                    "aicc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Response language for AI-generated text (explanation, reason, etc.)",
+                    "key": "x-site-lang",
+                    "value": "EN"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"US8767570B2\",\n  \"ts\": [\n    {\n      \"ts_number\": \"38.300\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4841d82b-7e36-4f19-aa06-9e977038c487",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "open_api",
+                    "task",
+                    "aicc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Response language for AI-generated text (explanation, reason, etc.)",
+                    "key": "x-site-lang",
+                    "value": "EN"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_number\": \"US8767570B2\",\n  \"ts\": [\n    {\n      \"ts_number\": \"38.300\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d13548e-4d01-4aef-9cea-4eae66116f98",
+    "name": "Patsnap Open Platform AI Translation Telecom API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

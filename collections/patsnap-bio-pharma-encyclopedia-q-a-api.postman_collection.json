@@ -1,0 +1,230 @@
+{
+  "item": [
+    {
+      "id": "eae2d717-e9a4-42d9-b093-1dc113cb7c5a",
+      "name": "Bio-Pharma Encyclopedia Q&A",
+      "description": {
+        "content": "Bio-Pharma Encyclopedia Q&A APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3118e70e-330f-429d-957b-71de472a2302",
+          "name": "AI68-1 Hiro LS Researcher-Create",
+          "request": {
+            "name": "AI68-1 Hiro LS Researcher-Create",
+            "description": {
+              "content": "This interface is used to initialize an Biomedical Encyclopedia Q&A chat session, obtain chat ID and chat item ID, as well as related reference document information. Usage flow: first call this interface to get chatId and chatItemId, then use these IDs to call the streaming interface to get AI responses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "ai-ls-chat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deep_search\": \"<boolean>\",\n  \"long_think\": \"<boolean>\",\n  \"query\": \"<string>\",\n  \"search_website\": \"<boolean>\",\n  \"data_source\": \"<integer>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "aefd4c15-64e6-4a3a-b6b5-2efacd27b33e",
+              "name": "Successful ai68-1 hiro ls researcher-create response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "ai-ls-chat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deep_search\": false,\n  \"long_think\": false,\n  \"query\": \"<cn>药物RMC6236的PK/PD数据有哪些？</cn><us>What is the data of the drug RMC6236?</us>\",\n  \"search_website\": false,\n  \"data_source\": \"<integer>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1650,\n  \"data\": {\n    \"chat_id\": \"<cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>\",\n    \"ref_doc\": [\n      {\n        \"link\": \"<cn>https://zhuanlan.zhihu.com/p/391356908</cn><us>https://zhuanlan.zhihu.com/p/391356908</us>\",\n        \"text\": \"<cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>\",\n        \"type\": \"<cn>web-site</cn><us>web-site</us>\",\n        \"index\": \"string\",\n        \"post_time\": \"<cn>20210720</cn><us>20210720</us>\",\n        \"_text_display\": \"<cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>\",\n        \"doc_type_detail\": \"<cn>zhihu</cn><us>zhihu</us>\"\n      },\n      {\n        \"link\": \"<cn>https://zhuanlan.zhihu.com/p/391356908</cn><us>https://zhuanlan.zhihu.com/p/391356908</us>\",\n        \"text\": \"<cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>\",\n        \"type\": \"<cn>web-site</cn><us>web-site</us>\",\n        \"index\": \"string\",\n        \"post_time\": \"<cn>20210720</cn><us>20210720</us>\",\n        \"_text_display\": \"<cn>2021年中国EGFR抑制剂行业分析报告-市场格局现状与未来前景研究</cn><us>2021 China EGFR Inhibitor Industry Analysis Report - Market Structure Status and Future Prospects Research</us>\",\n        \"doc_type_detail\": \"<cn>zhihu</cn><us>zhihu</us>\"\n      }\n    ],\n    \"chat_item_id\": \"<cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a17cba3f-d3c1-4e35-887a-c2787f297976",
+          "name": "AI68-2 Hiro LS Researcher-Obtain Result",
+          "request": {
+            "name": "AI68-2 Hiro LS Researcher-Obtain Result",
+            "description": {
+              "content": "This interface supports inputting questions related to biomedicine. The Biomedical Encyclopedia Q&A aims to intelligently retrieve, analyze, and mine data in response to the posed questions, providing relevant biomedical knowledge, concept explanations, and encyclopedia information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "ai-ls-stream"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/event-stream"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chat_id\": \"<string>\",\n  \"chat_item_id\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "3236fde7-1520-426f-a964-c3977577d801",
+              "name": "Successful ai68-2 hiro ls researcher-obtain result response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "ai-ls-stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_id\": \"a4a14dcbc26849b3a5bb338acb4ceccc\",\n  \"chat_item_id\": \"52347f9d260a48438a1fb122f593c12f\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 970,\n  \"data\": {\n    \"usage\": {\n      \"image_tokens\": 8379,\n      \"total_tokens\": 5655,\n      \"prompt_tokens\": 7616,\n      \"thinking_tokens\": 1434,\n      \"completion_tokens\": 9276,\n      \"prompt_tokens_details\": {\n        \"audio_tokens\": 5960,\n        \"cached_tokens\": 7230,\n        \"cache_read_tokens\": 742,\n        \"cached_creation_tokens\": 4530\n      },\n      \"completion_tokens_details\": {\n        \"audio_tokens\": 4127,\n        \"reasoning_tokens\": 2055,\n        \"accepted_prediction_tokens\": 6679,\n        \"rejected_prediction_tokens\": 8501\n      }\n    },\n    \"chat_id\": \"<cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>\",\n    \"choices\": [\n      {\n        \"delta\": {\n          \"role\": \"<cn>assistant</cn><us>assistant</us>\",\n          \"content\": \"<cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>\"\n        },\n        \"index\": 6254,\n        \"finish_reason\": \"<cn>stop</cn><us>stop</us>\",\n        \"content_filter_results\": {\n          \"hate\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sexual\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"violence\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"jailbreak\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"profanity\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self_harm\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"delta\": {\n          \"role\": \"<cn>assistant</cn><us>assistant</us>\",\n          \"content\": \"<cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>\"\n        },\n        \"index\": 6829,\n        \"finish_reason\": \"<cn>stop</cn><us>stop</us>\",\n        \"content_filter_results\": {\n          \"hate\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sexual\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"violence\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"jailbreak\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"profanity\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self_harm\": {\n            \"detected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filtered\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"chat_item_id\": \"<cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>\",\n    \"system_fingerprint\": \"<cn></cn><us></us>\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "599d9af0-c950-4b2c-a934-9e30e2240ebc",
+    "name": "Patsnap Open Platform AI Translation Bio-Pharma Encyclopedia Q&A API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

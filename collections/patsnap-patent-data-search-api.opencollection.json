@@ -1,0 +1,407 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Data Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Data Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P062 Receive Image Batch Search Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/image-search/single-batch-result",
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "Task ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the search results by querying the job_i returned by the interface for generating image batch retrieval tasks based on [P062]."
+        },
+        {
+          "info": {
+            "name": "P072 Classification number search assistant interface",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/search/patent/classification/helper-search",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Classified retrieval content"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The classification number assistant category includes ipc, cpc, and loc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the retrieval content and the type of classification number assistant, obtain the classification level information related to the retrieval content"
+        },
+        {
+          "info": {
+            "name": "P071 Classification Number Assistant Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/search/patent/classification/helper-section-subclass",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Classification Number"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The classification number assistant category includes ipc, cpc, and loc"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface supports querying the list of all subcategories of each type of classification (supporting IPC, CPC, LOC)."
+        },
+        {
+          "info": {
+            "name": "P075 Search the patent nested version with a search formula",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/nested-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries. Read about the search syntax supported in PatSnap here - https://analytics.patsnap.com/search_helper. This includes patent count, patent number, and patent ID."
+        },
+        {
+          "info": {
+            "name": "P001 Analytics Query Search Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries, to get total search patent count of different queries. Read about the search syntax supported in PatSnap here - https://analytics.patsnap.com/search_helper."
+        },
+        {
+          "info": {
+            "name": "P002 Analytics Query Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/query-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search PatSnap's global patent database using standard text queries. Read about the search syntax supported in PatSnap here - https://analytics.patsnap.com/search_helper. This includes patent count, patent number, and patent ID."
+        },
+        {
+          "info": {
+            "name": "P004 Original Applicant Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/company-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive original assignee (applicant) patent data. This includes patent count, patent number and patent ID."
+        },
+        {
+          "info": {
+            "name": "P005 Current Assignee Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/current-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive current assignee patent data. This includes patent count, patent number and patent ID."
+        },
+        {
+          "info": {
+            "name": "P007 Patent Number Search Similar Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/similar-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive similar patent list by patent id or patent number search, patent id is preferred when both are requested, the maximum number of patents returned is 1000. Sort by default from high to low similarity score."
+        },
+        {
+          "info": {
+            "name": "P008 Semantic Search Similar Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/semantic-search-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent list by semantic search ,the maximum number of patents returned is 1000. Sort by default from high to low similarity .Try entering a technical piece of text e.g. an abstract (we recommend entering >200 words for best results)."
+        },
+        {
+          "info": {
+            "name": "P010 Image Search Get Image Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/image-search/image-upload",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain the url accessible to the public network by uploading an image."
+        },
+        {
+          "info": {
+            "name": "P006 Current Assignee Search Defense Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/company-search-defense-patent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive applicant defense patent data. This includes patent count, patent number, and patent ID."
+        },
+        {
+          "info": {
+            "name": "P061 Image Search Similar Patent - Multiple images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/image-multiple",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Image Search helps you search for design patents or utility patents using multiple images (up to four). By default, the similarity is sorted from high to low, and one call can return up to 100 similar patents."
+        },
+        {
+          "info": {
+            "name": "P060 Image Search Similar Patent - Single image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/image-single",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Image Search helps you search for design patents or utility patents using images. By default, the similarity is sorted from high to low, and one call can return up to 100 similar patents."
+        },
+        {
+          "info": {
+            "name": "P069 Patsnap Standard Patent Number Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/patent-search-pn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the Patsnap Patent Number by entering the patent application number. This API supports inputting a numeric number and specifying the receiving jurisdiction to obtain the Patsnap Standard Patent Number. The returned information includes: Current Applicant, Original Applicant, Inventor, Application Date, Publication Date. Country code refer to https://analytics.zhihuiya.com/status."
+        },
+        {
+          "info": {
+            "name": "P003 Analytics Query Search and Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-field/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "According to the search query, the corresponding filtering results are obtained, and the filtering results are optional."
+        },
+        {
+          "info": {
+            "name": "P070 Keyword Assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/keyword-suggest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The Keyword Helper helps expand your search by recommending synonyms of the words entered.\nAdd content to the Type field in the interface documentation：\nSynonyms refer to words with the same or very similar meaning.\nHyponyms are words that represent more specific terms.\nSimilar keywords are words that share a similar concept or theme."
+        },
+        {
+          "info": {
+            "name": "P062 Create Image Batch Search Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/image-search/single-batch-create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Support batch uploading of multiple product images (up to 10 images) to create image batch retrieval tasks (retrieval results are the same as [P060] Patent Image Retrieval - Single Image), and return job_id. Batch image retrieval tasks are performed daily from 22:00 to 08:00. After 8:00 the day after requesting job_i, the [P062] interface is called based on job_i to obtain the batch image retrieval results (link to the corresponding interface page URL) and retrieve the retrieval results."
+        },
+        {
+          "info": {
+            "name": "P060 Image Search Similar Patent - Single image Enhanced Shape Search version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/search/patent/image-single/beta",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface supports searching for similar design patents via an image URL. By default, the results are sorted by similarity from highest to lowest, and a single request can return up to 100 similar patents. The search side has incorporated a step that converts the user's image into a patent-style line drawing, which better supports the recall effectiveness of images based on contour and shape. This can better support overseas e-commerce in conducting infringement searches against European an"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

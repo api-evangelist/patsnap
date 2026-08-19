@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Bio-Pharma Encyclopedia Q&A API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bio-Pharma Encyclopedia Q&A",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI68-1 Hiro LS Researcher-Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/ai-ls-chat",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface is used to initialize an Biomedical Encyclopedia Q&A chat session, obtain chat ID and chat item ID, as well as related reference document information. Usage flow: first call this interface to get chatId and chatItemId, then use these IDs to call the streaming interface to get AI responses."
+        },
+        {
+          "info": {
+            "name": "AI68-2 Hiro LS Researcher-Obtain Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/chat/ai-ls-stream",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This interface supports inputting questions related to biomedicine. The Biomedical Encyclopedia Q&A aims to intelligently retrieve, analyze, and mine data in response to the posed questions, providing relevant biomedical knowledge, concept explanations, and encyclopedia information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

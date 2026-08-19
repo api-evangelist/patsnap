@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation FTO Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FTO Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI66-1 FTO Search - Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit technical solution content to initiate an FTO search task. The system will analyze the input technical solution and generate a task ID for subsequent steps."
+        },
+        {
+          "info": {
+            "name": "AI66-2 FTO Search - Extract Technical Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/feature/extract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extract technical features based on the task_id."
+        },
+        {
+          "info": {
+            "name": "AI66-3 FTO Search - Confirm Technical Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/feature/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After the user modifies or adds/reduces technical features from [AI66-2], submit the confirmation to proceed with subsequent retrieval."
+        },
+        {
+          "info": {
+            "name": "AI66-4 FTO Search - Start FTO Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/search/agent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the technical features confirmed in [AI66-3], start the FTO search agent to perform patent search."
+        },
+        {
+          "info": {
+            "name": "AI66-6 FTO Search - Create Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/report/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "After the user modifies or adds/reduces the search results from [AI66-5], submit the confirmation and create a complete FTO search report, including all analysis results. Additionally, if the user needs to manually add comparison documents or patents, the output parameters of the [AI66-8] FTO Search - Add Comparison Document or Patent  interface can be used as the corresponding part of the input parameters in this interface."
+        },
+        {
+          "info": {
+            "name": "AI66-7 FTO Search - Download Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/report/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain the download link for the generated FTO search report based on the task_id."
+        },
+        {
+          "info": {
+            "name": "AI66-8 FTO Search - Add Comparison Document or Patent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/feature/comparison",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "For cases where the user needs to manually add comparison documents or patents, the output parameters of this interface can be used as the corresponding part of the input parameters in [AI66-6] FTO Search - Create Report."
+        },
+        {
+          "info": {
+            "name": "AI66-5 FTO Search - Obtain FTO Search Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/fto/search/agent/result",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain the search results of the FTO search agent based on the task_id confirmed in [AI66-4]."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

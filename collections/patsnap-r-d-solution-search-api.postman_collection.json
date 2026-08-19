@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "e9d57c90-046a-4631-ad93-27ce67940b64",
+      "name": "R&D solution search",
+      "description": {
+        "content": "R&D solution search APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f9a26aa-4c4a-482a-ad2a-cfd5165dc8fb",
+          "name": "Solution Search",
+          "request": {
+            "name": "Solution Search",
+            "description": {
+              "content": "Search related cases from the solution library based on the user question.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "method-services",
+                "solution-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_question\": \"<string>\",\n  \"limit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08456ce1-c76d-4e6b-b55c-a7784cbacc3e",
+              "name": "Successful solution search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "method-services",
+                    "solution-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_question\": \"<cn>蒸箱烹饪过程中冷凝水因表面张力难以流入排水孔，如何提高排水效率并避免堵塞？</cn><us>How to improve drainage efficiency?</us>\",\n  \"limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 720,\n  \"data\": {\n    \"cases\": [\n      {\n        \"case_id\": \"84ad176f-9403-40fb-bf26-819f8573c266\",\n        \"effect_summary\": \"<cn>有效解决了冷凝水积聚和细菌滋生问题。</cn><us>Effectively solves condensate accumulation.</us>\",\n        \"problem_summary\": \"<cn>在蒸箱烹饪过程中，冷凝水由于水的表面张力作用难以流入排水孔。</cn><us>Condensate is hard to drain due to surface tension.</us>\",\n        \"innovation_summary\": \"<cn>设计了一种排水组件，包括板体和至少一个引流板。</cn><us>A drainage component with a guide plate.</us>\"\n      },\n      {\n        \"case_id\": \"84ad176f-9403-40fb-bf26-819f8573c266\",\n        \"effect_summary\": \"<cn>有效解决了冷凝水积聚和细菌滋生问题。</cn><us>Effectively solves condensate accumulation.</us>\",\n        \"problem_summary\": \"<cn>在蒸箱烹饪过程中，冷凝水由于水的表面张力作用难以流入排水孔。</cn><us>Condensate is hard to drain due to surface tension.</us>\",\n        \"innovation_summary\": \"<cn>设计了一种排水组件，包括板体和至少一个引流板。</cn><us>A drainage component with a guide plate.</us>\"\n      }\n    ],\n    \"total\": 2658\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "87410bb7-e7af-46a3-afd2-fcca58f9f820",
+    "name": "Patsnap Open Platform AI Translation R&D solution search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Technical Q&A API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Technical Q&A",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI36-1 Technical Q&A - Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/technical-qa/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit AI Q&A task based on technical question. The system will automatically perform question analysis, knowledge retrieval and answer generation. Task is executed asynchronously, returns task_id for subsequent polling to get results."
+        },
+        {
+          "info": {
+            "name": "AI36-2 Technical Q&A - Query Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/technical-qa/report",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the task_id returned by [AI36-1] submit task API, poll to get the execution result of technical Q&A task. Returns: task status, question analysis results, references and complete answer content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

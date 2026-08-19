@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Enterprise IP Data API
   version: 1.0.0
@@ -210,11 +210,26 @@ paths:
               $ref: '#/components/schemas/C046PatentPotentialBuyerRequest'
 components:
   schemas:
-    C032SpecialIpDataSoftwareCopyrightResponse:
+    C046PatentPotentialBuyerRequest:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 7fbd16c6-d005-4689-85a7-4d5eacef01e1
+          description: patent ID
+        pn:
+          type: string
+          example: CN104244439B
+          description: patent publication number
+    C046PatentPotentialBuyerResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/C032SpecialIpDataSoftwareCopyright_SoftwareCopyrightResponse'
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/C046PatentPotentialBuyer_PatentPotentialBuyerResponse'
         status:
           type: boolean
           example: 'false'
@@ -230,234 +245,6 @@ components:
       required:
       - status
       - error_code
-    C033SpecialIpDataIcDesignRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 杭州友旺电子有限公司
-          description: Name of a single enterprise
-        credit_code:
-          type: string
-          example: '914403001922038216'
-          description: Unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: '192203821'
-          description: Organization number of a single enterprise
-        page_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number (default first page)
-        page_size:
-          type: integer
-          format: int32
-          example: 20
-          description: Number of per page (default 20 entries, maximum 20 entries)
-    C032SpecialIpDataSoftwareCopyright_SoftwareCopyright:
-      type: object
-      properties:
-        cat_num:
-          type: string
-          example: 66000-0000
-          description: Category Number
-        reg_num:
-          type: string
-          example: 2022SR0575595
-          description: Registration Number
-        version:
-          type: string
-          example: V1.0
-          description: Version
-        reg_time:
-          type: integer
-          format: int64
-          example: 20221023
-          description: Registration and approval date
-        full_name:
-          type: string
-          example: 华为HiSecEngine Probe网络流量威胁检测探针软件
-          description: Full name
-        simple_name:
-          type: string
-          example: Probe探针
-          description: Abbreviation
-        publish_time:
-          type: integer
-          format: int64
-          example: 20201023
-          description: First publication date
-        author_nationality:
-          type: string
-          example: 华为技术有限公司
-          description: Copyright owner
-    C034NewPlantVarietyApplicationResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-          example: 679
-          description: Total count
-        plant_variety_protection_application_data:
-          type: array
-          example: 'Please check the form: PlantVarietyProtectionApplication'
-          description: plant variety protection application data
-          items:
-            $ref: '#/components/schemas/C034NewPlantVarietyApplication_PlantVarietyProtectionApplication'
-    C033SpecialIpDataIcDesign_ICDesignResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-          example: 679
-          description: Total count
-        ic_design_data:
-          type: array
-          example: 'Please check the form: ICDesign'
-          description: ic design data
-          items:
-            $ref: '#/components/schemas/C033SpecialIpDataIcDesign_ICDesign'
-    C033SpecialIpDataIcDesignResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C033SpecialIpDataIcDesign_ICDesignResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C034NewPlantVarietyIssueRequest:
-      type: object
-      properties:
-        page_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number (default first page)
-        company_name:
-          type: string
-          example: 楚雄彝族自治州农业科学研究推广所
-          description: Name of a single enterprise
-        page_size:
-          type: integer
-          format: int32
-          example: 20
-          description: Number of per page (default 20 entries, maximum 20 entries)
-      required:
-      - company_name
-    C034NewPlantVarietyApplicationRequest:
-      type: object
-      properties:
-        page_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number (default first page)
-        company_name:
-          type: string
-          example: 楚雄彝族自治州农业科学研究推广所
-          description: Name of a single enterprise
-        page_size:
-          type: integer
-          format: int32
-          example: 20
-          description: Number of per page (default 20 entries, maximum 20 entries)
-      required:
-      - company_name
-    C034NewPlantVarietyApplication_PlantVarietyProtectionApplication:
-      type: object
-      properties:
-        breeders:
-          type: array
-          example:
-          - 苏东辉
-          - 唐清耀
-          description: Breeders
-        applicants:
-          type: array
-          example:
-          - 楚雄彝族自治州农业科学研究推广所
-          description: Applicants
-        species_name:
-          type: string
-          example: 水稻 Oryza sativa L.
-          description: Species name
-        application_date:
-          type: integer
-          format: int32
-          example: 20090101
-          description: Application date
-        publication_date:
-          type: integer
-          format: int32
-          example: 20090101
-          description: Publication date
-        application_number:
-          type: string
-          example: 20030288
-          description: Application number
-        publication_number:
-          type: string
-          example: CNA001867G
-          description: Publication number
-        temporary_variety_name:
-          type: string
-          example: 博优938
-          description: Temporary variety name
-    C031SpecialIpDataEnterpriseTrademark_Trademark:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 234554350
-          description: Trade id
-        reg_no:
-          type: string
-          example: 63607346
-          description: Registration number
-        status:
-          type: string
-          example: 商标已注册
-          description: Trademark status
-        int_cls:
-          type: string
-          example: 42-网站服务
-          description: International classification
-        tm_name:
-          type: string
-          example: 工业矿鸿
-          description: Trade name
-        app_date:
-          type: integer
-          format: int64
-          example: 20221023
-          description: Application date
-        category:
-          type: string
-          example: 商标注册申请---申请收文
-          description: Process category
-        tm_class:
-          type: string
-          example: 42
-          description: International classification code
-        applicant_cn:
-          type: string
-          example: 华为技术有限公司
-          description: applicant
     C033SpecialIpDataIcDesign_ICDesign:
       type: object
       properties:
@@ -501,15 +288,11 @@ components:
           format: int64
           example: 20211228
           description: Design completion date
-    C046PatentPotentialBuyerResponse:
+    C033SpecialIpDataIcDesignResponse:
       type: object
       properties:
         data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/C046PatentPotentialBuyer_PatentPotentialBuyerResponse'
+          $ref: '#/components/schemas/C033SpecialIpDataIcDesign_ICDesignResponse'
         status:
           type: boolean
           example: 'false'
@@ -539,21 +322,137 @@ components:
           description: software copyright data
           items:
             $ref: '#/components/schemas/C032SpecialIpDataSoftwareCopyright_SoftwareCopyright'
-    C031SpecialIpDataEnterpriseTrademark_TrademarkResponse:
+    C034NewPlantVarietyIssueRequest:
       type: object
       properties:
-        total:
+        page_number:
           type: integer
           format: int32
-          example: 679
-          description: Total count
-        enterprise_trademark_data:
+          example: 1
+          description: Current page number (default first page)
+        company_name:
+          type: string
+          example: 楚雄彝族自治州农业科学研究推广所
+          description: Name of a single enterprise
+        page_size:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of per page (default 20 entries, maximum 20 entries)
+      required:
+      - company_name
+    C046PatentPotentialBuyer_PatentPotentialBuyerResponse:
+      type: object
+      properties:
+        company_id:
+          type: string
+          example: 580dadaf4e8990e4937f6326dadefdac
+          description: company id
+        patent_cnt:
+          type: string
+          example: 4
+          description: number of similar patents
+        buy_all_cnt:
+          type: string
+          example: 101
+          description: the number of company's patent purchase records in the past three years
+        buy_this_cnt:
+          type: string
+          example: 2
+          description: total number of patents purchased from the target patent's assignee company
+        company_name:
+          type: string
+          example: 中国移动通信集团有限公司
+          description: company name
+        sim_score_avg:
+          type: string
+          example: 76.25
+          description: average similarity value of patents
+    C034NewPlantVarietyApplicationRequest:
+      type: object
+      properties:
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number (default first page)
+        company_name:
+          type: string
+          example: 楚雄彝族自治州农业科学研究推广所
+          description: Name of a single enterprise
+        page_size:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of per page (default 20 entries, maximum 20 entries)
+      required:
+      - company_name
+    C034NewPlantVarietyIssue_PlantVarietyProtectionApplication:
+      type: object
+      properties:
+        breeders:
           type: array
-          example: 'Please check the form: Trademark'
-          description: enterprise trademark data
-          items:
-            $ref: '#/components/schemas/C031SpecialIpDataEnterpriseTrademark_Trademark'
-    C034NewPlantVarietyIssueResponse:
+          example:
+          - 苏东辉
+          - 唐清耀
+          description: Breeders
+        applicants:
+          type: array
+          example:
+          - 楚雄彝族自治州农业科学研究推广所
+          description: Applicants
+        species_name:
+          type: string
+          example: 水稻 Oryza sativa L.
+          description: Species name
+        application_date:
+          type: integer
+          format: int32
+          example: 20090101
+          description: Application date
+        publication_date:
+          type: integer
+          format: int32
+          example: 20090101
+          description: Publication date
+        application_number:
+          type: string
+          example: 20030288
+          description: Application number
+        publication_number:
+          type: string
+          example: CNA001867G
+          description: Publication number
+        temporary_variety_name:
+          type: string
+          example: 博优938
+          description: Temporary variety name
+    C033SpecialIpDataIcDesignRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 杭州友旺电子有限公司
+          description: Name of a single enterprise
+        credit_code:
+          type: string
+          example: '914403001922038216'
+          description: Unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: '192203821'
+          description: Organization number of a single enterprise
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number (default first page)
+        page_size:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of per page (default 20 entries, maximum 20 entries)
+    C034NewPlantVarietyApplicationResponse:
       type: object
       properties:
         total:
@@ -566,12 +465,26 @@ components:
           example: 'Please check the form: PlantVarietyProtectionApplication'
           description: plant variety protection application data
           items:
-            $ref: '#/components/schemas/C034NewPlantVarietyIssue_PlantVarietyProtectionApplication'
-    C031SpecialIpDataEnterpriseTrademarkResponse:
+            $ref: '#/components/schemas/C034NewPlantVarietyApplication_PlantVarietyProtectionApplication'
+    C033SpecialIpDataIcDesign_ICDesignResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+          example: 679
+          description: Total count
+        ic_design_data:
+          type: array
+          example: 'Please check the form: ICDesign'
+          description: ic design data
+          items:
+            $ref: '#/components/schemas/C033SpecialIpDataIcDesign_ICDesign'
+    C032SpecialIpDataSoftwareCopyrightResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/C031SpecialIpDataEnterpriseTrademark_TrademarkResponse'
+          $ref: '#/components/schemas/C032SpecialIpDataSoftwareCopyright_SoftwareCopyrightResponse'
         status:
           type: boolean
           example: 'false'
@@ -624,59 +537,21 @@ components:
           type: string
           example: '29'
           description: International classification
-    C032SpecialIpDataSoftwareCopyrightRequest:
+    C034NewPlantVarietyIssueResponse:
       type: object
       properties:
-        company_name:
-          type: string
-          example: 华为技术有限公司
-          description: Name of a single enterprise
-        credit_code:
-          type: string
-          example: '914403001922038216'
-          description: Unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: '192203821'
-          description: Organization number of a single enterprise
-        page_number:
+        total:
           type: integer
           format: int32
-          example: 1
-          description: Current page number (default first page)
-        page_size:
-          type: integer
-          format: int32
-          example: 20
-          description: Number of per page (default 20 entries, maximum 20 entries)
-    C046PatentPotentialBuyer_PatentPotentialBuyerResponse:
-      type: object
-      properties:
-        company_id:
-          type: string
-          example: 580dadaf4e8990e4937f6326dadefdac
-          description: company id
-        patent_cnt:
-          type: string
-          example: 4
-          description: number of similar patents
-        buy_all_cnt:
-          type: string
-          example: 101
-          description: the number of company's patent purchase records in the past three years
-        buy_this_cnt:
-          type: string
-          example: 2
-          description: total number of patents purchased from the target patent's assignee company
-        company_name:
-          type: string
-          example: 中国移动通信集团有限公司
-          description: company name
-        sim_score_avg:
-          type: string
-          example: 76.25
-          description: average similarity value of patents
-    C034NewPlantVarietyIssue_PlantVarietyProtectionApplication:
+          example: 679
+          description: Total count
+        plant_variety_protection_application_data:
+          type: array
+          example: 'Please check the form: PlantVarietyProtectionApplication'
+          description: plant variety protection application data
+          items:
+            $ref: '#/components/schemas/C034NewPlantVarietyIssue_PlantVarietyProtectionApplication'
+    C034NewPlantVarietyApplication_PlantVarietyProtectionApplication:
       type: object
       properties:
         breeders:
@@ -716,17 +591,142 @@ components:
           type: string
           example: 博优938
           description: Temporary variety name
-    C046PatentPotentialBuyerRequest:
+    C032SpecialIpDataSoftwareCopyright_SoftwareCopyright:
       type: object
       properties:
-        patent_id:
+        cat_num:
           type: string
-          example: 7fbd16c6-d005-4689-85a7-4d5eacef01e1
-          description: patent ID
-        pn:
+          example: 66000-0000
+          description: Category Number
+        reg_num:
           type: string
-          example: CN104244439B
-          description: patent publication number
+          example: 2022SR0575595
+          description: Registration Number
+        version:
+          type: string
+          example: V1.0
+          description: Version
+        reg_time:
+          type: integer
+          format: int64
+          example: 20221023
+          description: Registration and approval date
+        full_name:
+          type: string
+          example: 华为HiSecEngine Probe网络流量威胁检测探针软件
+          description: Full name
+        simple_name:
+          type: string
+          example: Probe探针
+          description: Abbreviation
+        publish_time:
+          type: integer
+          format: int64
+          example: 20201023
+          description: First publication date
+        author_nationality:
+          type: string
+          example: 华为技术有限公司
+          description: Copyright owner
+    C031SpecialIpDataEnterpriseTrademarkResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C031SpecialIpDataEnterpriseTrademark_TrademarkResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C032SpecialIpDataSoftwareCopyrightRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 华为技术有限公司
+          description: Name of a single enterprise
+        credit_code:
+          type: string
+          example: '914403001922038216'
+          description: Unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: '192203821'
+          description: Organization number of a single enterprise
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number (default first page)
+        page_size:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of per page (default 20 entries, maximum 20 entries)
+    C031SpecialIpDataEnterpriseTrademark_TrademarkResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+          example: 679
+          description: Total count
+        enterprise_trademark_data:
+          type: array
+          example: 'Please check the form: Trademark'
+          description: enterprise trademark data
+          items:
+            $ref: '#/components/schemas/C031SpecialIpDataEnterpriseTrademark_Trademark'
+    C031SpecialIpDataEnterpriseTrademark_Trademark:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 234554350
+          description: Trade id
+        reg_no:
+          type: string
+          example: 63607346
+          description: Registration number
+        status:
+          type: string
+          example: 商标已注册
+          description: Trademark status
+        int_cls:
+          type: string
+          example: 42-网站服务
+          description: International classification
+        tm_name:
+          type: string
+          example: 工业矿鸿
+          description: Trade name
+        app_date:
+          type: integer
+          format: int64
+          example: 20221023
+          description: Application date
+        category:
+          type: string
+          example: 商标注册申请---申请收文
+          description: Process category
+        tm_class:
+          type: string
+          example: 42
+          description: International classification code
+        applicant_cn:
+          type: string
+          example: 华为技术有限公司
+          description: applicant
   securitySchemes:
     bearerAuth:
       type: http

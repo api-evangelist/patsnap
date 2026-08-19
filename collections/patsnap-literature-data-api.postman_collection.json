@@ -1,0 +1,1543 @@
+{
+  "item": [
+    {
+      "id": "2f62c29b-3d10-44fd-852e-4d1205982c1a",
+      "name": "Literature Data",
+      "description": {
+        "content": "Literature Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5e30e71-a2ec-4b9e-bb3c-66ce056d3e51",
+          "name": "L011 Literature Author and Affiliation",
+          "request": {
+            "name": "L011 Literature Author and Affiliation",
+            "description": {
+              "content": "Receive literature author and affiliation by paper_id or doi.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "literature",
+                "author-affiliation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"doi\": \"<string>\",\n  \"paper_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3bdaccfb-125f-40eb-8bd4-e91c3be6a4d6",
+              "name": "Successful l011 literature author and affiliation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "author-affiliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1506,\n  \"data\": [\n    {\n      \"doi\": \"10.1039/d3nr04740g\",\n      \"paper_id\": \"8be86941-0455-4ca4-921b-61e1c01d6393\",\n      \"author_data\": [\n        {\n          \"name\": \"Bihannic, Isabelle\",\n          \"orcid\": \"0000-0001-9780-2509\",\n          \"surname\": \"Bihannic\",\n          \"sequence\": 6,\n          \"co_authors\": [\n            \"Beaussart, Audrey\",\n            \"Sohm, Bénédicte\",\n            \"Caillet, Céline\"\n          ],\n          \"first_name\": \"Isabelle\",\n          \"published_list\": [\n            \"Hoppe, Sandrine,Farge, Laurent,Tournilhac, François,et al.Deformation mechanisms in PBT at elevated temperatures.Mater Today Commun.2023 Aug;36:106774.doi:10.1016/j.mtcomm.2023.106774.\",\n            \"Duval, Jérôme F.L.,Bihannic, Isabelle,Razafitianamaharavo, Angelina,et al.New insights into the effects of growth phase and enzymatic treatment on the cell-wall properties of Chlorella vulgaris microalgae.Algal Res.2023 Jan;69:102955.doi:10.1016/j.algal.2022.102955.\"\n          ],\n          \"affiliation_name\": \"Université de Lorraine, CNRS, LIEC, F-54000 Nancy, France. nicolas.lesniewska@univ-lorraine.fr.\",\n          \"affiliation_type\": \"Education\",\n          \"affiliation_rorid\": \"https://ror.org/04vfs2w97\",\n          \"affiliation_country\": \"France\"\n        },\n        {\n          \"name\": \"Bihannic, Isabelle\",\n          \"orcid\": \"0000-0001-9780-2509\",\n          \"surname\": \"Bihannic\",\n          \"sequence\": 6,\n          \"co_authors\": [\n            \"Beaussart, Audrey\",\n            \"Sohm, Bénédicte\",\n            \"Caillet, Céline\"\n          ],\n          \"first_name\": \"Isabelle\",\n          \"published_list\": [\n            \"Hoppe, Sandrine,Farge, Laurent,Tournilhac, François,et al.Deformation mechanisms in PBT at elevated temperatures.Mater Today Commun.2023 Aug;36:106774.doi:10.1016/j.mtcomm.2023.106774.\",\n            \"Duval, Jérôme F.L.,Bihannic, Isabelle,Razafitianamaharavo, Angelina,et al.New insights into the effects of growth phase and enzymatic treatment on the cell-wall properties of Chlorella vulgaris microalgae.Algal Res.2023 Jan;69:102955.doi:10.1016/j.algal.2022.102955.\"\n          ],\n          \"affiliation_name\": \"Université de Lorraine, CNRS, LIEC, F-54000 Nancy, France. nicolas.lesniewska@univ-lorraine.fr.\",\n          \"affiliation_type\": \"Education\",\n          \"affiliation_rorid\": \"https://ror.org/04vfs2w97\",\n          \"affiliation_country\": \"France\"\n        }\n      ]\n    },\n    {\n      \"doi\": \"10.1039/d3nr04740g\",\n      \"paper_id\": \"8be86941-0455-4ca4-921b-61e1c01d6393\",\n      \"author_data\": [\n        {\n          \"name\": \"Bihannic, Isabelle\",\n          \"orcid\": \"0000-0001-9780-2509\",\n          \"surname\": \"Bihannic\",\n          \"sequence\": 6,\n          \"co_authors\": [\n            \"Beaussart, Audrey\",\n            \"Sohm, Bénédicte\",\n            \"Caillet, Céline\"\n          ],\n          \"first_name\": \"Isabelle\",\n          \"published_list\": [\n            \"Hoppe, Sandrine,Farge, Laurent,Tournilhac, François,et al.Deformation mechanisms in PBT at elevated temperatures.Mater Today Commun.2023 Aug;36:106774.doi:10.1016/j.mtcomm.2023.106774.\",\n            \"Duval, Jérôme F.L.,Bihannic, Isabelle,Razafitianamaharavo, Angelina,et al.New insights into the effects of growth phase and enzymatic treatment on the cell-wall properties of Chlorella vulgaris microalgae.Algal Res.2023 Jan;69:102955.doi:10.1016/j.algal.2022.102955.\"\n          ],\n          \"affiliation_name\": \"Université de Lorraine, CNRS, LIEC, F-54000 Nancy, France. nicolas.lesniewska@univ-lorraine.fr.\",\n          \"affiliation_type\": \"Education\",\n          \"affiliation_rorid\": \"https://ror.org/04vfs2w97\",\n          \"affiliation_country\": \"France\"\n        },\n        {\n          \"name\": \"Bihannic, Isabelle\",\n          \"orcid\": \"0000-0001-9780-2509\",\n          \"surname\": \"Bihannic\",\n          \"sequence\": 6,\n          \"co_authors\": [\n            \"Beaussart, Audrey\",\n            \"Sohm, Bénédicte\",\n            \"Caillet, Céline\"\n          ],\n          \"first_name\": \"Isabelle\",\n          \"published_list\": [\n            \"Hoppe, Sandrine,Farge, Laurent,Tournilhac, François,et al.Deformation mechanisms in PBT at elevated temperatures.Mater Today Commun.2023 Aug;36:106774.doi:10.1016/j.mtcomm.2023.106774.\",\n            \"Duval, Jérôme F.L.,Bihannic, Isabelle,Razafitianamaharavo, Angelina,et al.New insights into the effects of growth phase and enzymatic treatment on the cell-wall properties of Chlorella vulgaris microalgae.Algal Res.2023 Jan;69:102955.doi:10.1016/j.algal.2022.102955.\"\n          ],\n          \"affiliation_name\": \"Université de Lorraine, CNRS, LIEC, F-54000 Nancy, France. nicolas.lesniewska@univ-lorraine.fr.\",\n          \"affiliation_type\": \"Education\",\n          \"affiliation_rorid\": \"https://ror.org/04vfs2w97\",\n          \"affiliation_country\": \"France\"\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7baaa839-7293-4da0-832c-8fd54311eeef",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "author-affiliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "016be8aa-590d-46a3-a864-700903db0546",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "author-affiliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2fca357-8b59-4158-900b-510b1cf2a2be",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "author-affiliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee8a73be-7b0e-4a6d-8eb9-5fafa0e9ff70",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "author-affiliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b150a2d1-eb48-48c4-8555-03f44714d04c",
+          "name": "L010 Literature Bibliographic Information",
+          "request": {
+            "name": "L010 Literature Bibliographic Information",
+            "description": {
+              "content": "Receive literature bibliography data by paper_id or doi.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "literature",
+                "bibliography"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"doi\": \"<string>\",\n  \"paper_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4803ea3b-844e-4fe6-b4f4-7351073406b6",
+              "name": "Successful l010 literature bibliographic information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "bibliography"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1072,\n  \"data\": [\n    {\n      \"doi\": \"10.1016/j.bpj.2024.07.030\",\n      \"type\": \"Journal\",\n      \"issue\": \"string\",\n      \"title\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device\"\n        }\n      ],\n      \"author\": [\n        \"Ruppelt, Dominik\",\n        \"Ackermann, Elena L M\",\n        \"Robinson, Tom\",\n        \"Steinem, Claudia\"\n      ],\n      \"volume\": \"string\",\n      \"abstract\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Proton transport across lipid membranes is one of the most fundamental reactions that make up living organisms. In vitro, however, the study of proton transport reactions can be very challenging due to limitations imposed by proton concentrations, compartment size, and unstirred layers as well as buffer exchange and buffer capacity. In this study, we have developed a proton permeation assay based on the microfluidic trapping of giant vesicles enclosing the pH-sensitive dye pyranine to address some of these challenges. Time-resolved fluorescence imaging upon a rapid pH shift enabled us to investigate the facilitated H<sup>+</sup> permeation mediated by either a channel or a carrier. Specifically, we compared the proton transport rates as a function of different proton gradients of the channel gramicidin D and the proton carrier carbonyl cyanide-m-chlorophenyl hydrazone. Our results demonstrate the efficacy of the assay in monitoring proton transport reactions and distinguishing between a channel-like and a carrier-like mechanism. This groundbreaking result enabled us to elucidate the enigmatic mode of the proton permeation mechanism of the recently discovered natural fibupeptide lugdunin.\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Proton transport across lipid membranes is one of the most fundamental reactions that make up living organisms. In vitro, however, the study of proton transport reactions can be very challenging due to limitations imposed by proton concentrations, compartment size, and unstirred layers as well as buffer exchange and buffer capacity. In this study, we have developed a proton permeation assay based on the microfluidic trapping of giant vesicles enclosing the pH-sensitive dye pyranine to address some of these challenges. Time-resolved fluorescence imaging upon a rapid pH shift enabled us to investigate the facilitated H<sup>+</sup> permeation mediated by either a channel or a carrier. Specifically, we compared the proton transport rates as a function of different proton gradients of the channel gramicidin D and the proton carrier carbonyl cyanide-m-chlorophenyl hydrazone. Our results demonstrate the efficacy of the assay in monitoring proton transport reactions and distinguishing between a channel-like and a carrier-like mechanism. This groundbreaking result enabled us to elucidate the enigmatic mode of the proton permeation mechanism of the recently discovered natural fibupeptide lugdunin.\"\n        }\n      ],\n      \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46\",\n      \"pagination\": \"3267-3274\",\n      \"publication\": \"Biophysical Journal\",\n      \"publication_date\": 20240901,\n      \"publication_year\": \"string\",\n      \"publish_institution\": \"Elsevier BV\"\n    },\n    {\n      \"doi\": \"10.1016/j.bpj.2024.07.030\",\n      \"type\": \"Journal\",\n      \"issue\": \"string\",\n      \"title\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device\"\n        }\n      ],\n      \"author\": [\n        \"Ruppelt, Dominik\",\n        \"Ackermann, Elena L M\",\n        \"Robinson, Tom\",\n        \"Steinem, Claudia\"\n      ],\n      \"volume\": \"string\",\n      \"abstract\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Proton transport across lipid membranes is one of the most fundamental reactions that make up living organisms. In vitro, however, the study of proton transport reactions can be very challenging due to limitations imposed by proton concentrations, compartment size, and unstirred layers as well as buffer exchange and buffer capacity. In this study, we have developed a proton permeation assay based on the microfluidic trapping of giant vesicles enclosing the pH-sensitive dye pyranine to address some of these challenges. Time-resolved fluorescence imaging upon a rapid pH shift enabled us to investigate the facilitated H<sup>+</sup> permeation mediated by either a channel or a carrier. Specifically, we compared the proton transport rates as a function of different proton gradients of the channel gramicidin D and the proton carrier carbonyl cyanide-m-chlorophenyl hydrazone. Our results demonstrate the efficacy of the assay in monitoring proton transport reactions and distinguishing between a channel-like and a carrier-like mechanism. This groundbreaking result enabled us to elucidate the enigmatic mode of the proton permeation mechanism of the recently discovered natural fibupeptide lugdunin.\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"Proton transport across lipid membranes is one of the most fundamental reactions that make up living organisms. In vitro, however, the study of proton transport reactions can be very challenging due to limitations imposed by proton concentrations, compartment size, and unstirred layers as well as buffer exchange and buffer capacity. In this study, we have developed a proton permeation assay based on the microfluidic trapping of giant vesicles enclosing the pH-sensitive dye pyranine to address some of these challenges. Time-resolved fluorescence imaging upon a rapid pH shift enabled us to investigate the facilitated H<sup>+</sup> permeation mediated by either a channel or a carrier. Specifically, we compared the proton transport rates as a function of different proton gradients of the channel gramicidin D and the proton carrier carbonyl cyanide-m-chlorophenyl hydrazone. Our results demonstrate the efficacy of the assay in monitoring proton transport reactions and distinguishing between a channel-like and a carrier-like mechanism. This groundbreaking result enabled us to elucidate the enigmatic mode of the proton permeation mechanism of the recently discovered natural fibupeptide lugdunin.\"\n        }\n      ],\n      \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46\",\n      \"pagination\": \"3267-3274\",\n      \"publication\": \"Biophysical Journal\",\n      \"publication_date\": 20240901,\n      \"publication_year\": \"string\",\n      \"publish_institution\": \"Elsevier BV\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f38502ea-22c5-41f0-ae95-d68eaeadb844",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "bibliography"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17dd9869-a8b5-4258-9c3c-ce7cabdc0db1",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "bibliography"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5e6c47a-84d5-45bc-95e9-94c96bfcab11",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "bibliography"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e67a77f8-4d0f-4186-a435-b450ed11cd31",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "bibliography"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660003e5-6121-498c-999a-129f6f19a885",
+          "name": "L012 Literature Citation",
+          "request": {
+            "name": "L012 Literature Citation",
+            "description": {
+              "content": "Receive literature citation data by paper_id or doi.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "literature",
+                "citation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"doi\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"paper_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52139012-ca3d-48ae-bed9-34a53c492d4c",
+              "name": "Successful l012 literature citation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "citation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"page_number\": 1,\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1489,\n  \"data\": [\n    {\n      \"doi\": \"10.3390/s20030734\",\n      \"paper_id\": \"1f0f61d1-0d76-3a29-a677-7f0cf7a332f7,00001b6d-2cfa-411a-ab41-8a05fd675d46\",\n      \"reference_no\": 20,\n      \"np_citation_no\": 2,\n      \"reference_data\": [\n        {\n          \"paper_id\": \"4590883d-3d89-35ef-b662-cd820dc1427c\",\n          \"sequence\": 1,\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        },\n        {\n          \"paper_id\": \"4590883d-3d89-35ef-b662-cd820dc1427c\",\n          \"sequence\": 1,\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        }\n      ],\n      \"np_citation_data\": [\n        {\n          \"paper_id\": \"4b656503-a352-4815-93ba-76a7cb967d25\",\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        },\n        {\n          \"paper_id\": \"4b656503-a352-4815-93ba-76a7cb967d25\",\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        }\n      ],\n      \"patent_citation_no\": 1,\n      \"patent_citation_data\": [\n        {\n          \"pn\": \"CN112833870A\",\n          \"apdt\": 20201230,\n          \"apno\": \"CN202011610975.8\",\n          \"pbdt\": 20201230,\n          \"title\": \"核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法\",\n          \"inventor\": [\n            \"张燚\",\n            \"汪之国\",\n            \"李佳佳\"\n          ],\n          \"patent_id\": \"fd509ad5-7da1-464f-9b32-2858be00f2e9\",\n          \"current_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ],\n          \"original_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ]\n        },\n        {\n          \"pn\": \"CN112833870A\",\n          \"apdt\": 20201230,\n          \"apno\": \"CN202011610975.8\",\n          \"pbdt\": 20201230,\n          \"title\": \"核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法\",\n          \"inventor\": [\n            \"张燚\",\n            \"汪之国\",\n            \"李佳佳\"\n          ],\n          \"patent_id\": \"fd509ad5-7da1-464f-9b32-2858be00f2e9\",\n          \"current_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ],\n          \"original_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ]\n        }\n      ]\n    },\n    {\n      \"doi\": \"10.3390/s20030734\",\n      \"paper_id\": \"1f0f61d1-0d76-3a29-a677-7f0cf7a332f7,00001b6d-2cfa-411a-ab41-8a05fd675d46\",\n      \"reference_no\": 20,\n      \"np_citation_no\": 2,\n      \"reference_data\": [\n        {\n          \"paper_id\": \"4590883d-3d89-35ef-b662-cd820dc1427c\",\n          \"sequence\": 1,\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        },\n        {\n          \"paper_id\": \"4590883d-3d89-35ef-b662-cd820dc1427c\",\n          \"sequence\": 1,\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        }\n      ],\n      \"np_citation_data\": [\n        {\n          \"paper_id\": \"4b656503-a352-4815-93ba-76a7cb967d25\",\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        },\n        {\n          \"paper_id\": \"4b656503-a352-4815-93ba-76a7cb967d25\",\n          \"citation_text\": \"A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.\"\n        }\n      ],\n      \"patent_citation_no\": 1,\n      \"patent_citation_data\": [\n        {\n          \"pn\": \"CN112833870A\",\n          \"apdt\": 20201230,\n          \"apno\": \"CN202011610975.8\",\n          \"pbdt\": 20201230,\n          \"title\": \"核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法\",\n          \"inventor\": [\n            \"张燚\",\n            \"汪之国\",\n            \"李佳佳\"\n          ],\n          \"patent_id\": \"fd509ad5-7da1-464f-9b32-2858be00f2e9\",\n          \"current_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ],\n          \"original_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ]\n        },\n        {\n          \"pn\": \"CN112833870A\",\n          \"apdt\": 20201230,\n          \"apno\": \"CN202011610975.8\",\n          \"pbdt\": 20201230,\n          \"title\": \"核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法\",\n          \"inventor\": [\n            \"张燚\",\n            \"汪之国\",\n            \"李佳佳\"\n          ],\n          \"patent_id\": \"fd509ad5-7da1-464f-9b32-2858be00f2e9\",\n          \"current_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ],\n          \"original_assignee\": [\n            \"中国人民解放军国防科技大学\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10c16bca-d6dd-4df5-9e18-0eb5f78b4c37",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "citation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"page_number\": 1,\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2fe7d2c-9243-41a0-a7d6-b91117d72e40",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "citation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"page_number\": 1,\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44e2ac73-5b45-4ea4-8bcb-0ccfb5c56c74",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "citation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"page_number\": 1,\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab874ed1-e72b-4129-a077-b17987649942",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "citation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"page_number\": 1,\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1c23d84-277d-4ef1-a320-7ea6a784a2f6",
+          "name": "L014 Journal",
+          "request": {
+            "name": "L014 Journal",
+            "description": {
+              "content": "Receive literature citation data by paper_id or doi.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "literature",
+                "journal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"doi\": \"<string>\",\n  \"paper_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e63ccdc-7ed4-4fc7-bfbe-8dd3ca2ed8a3",
+              "name": "Successful l014 journal response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "journal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1077,\n  \"data\": [\n    {\n      \"cn\": \"11-4537/X\",\n      \"doi\": \"10.3390/antibiotics10040379\",\n      \"issn\": \"2079-6382\",\n      \"lang\": \"中文\",\n      \"eissn\": \"2079-6382\",\n      \"address\": \"北京市海淀区中关村南大街5号\",\n      \"contact\": \"string\",\n      \"country\": \"瑞士\",\n      \"website\": \"https://www.mdpi.com/journal/antibiotics\",\n      \"paper_id\": \"00d3b12d-1141-3a4a-a0e1-91cbb9c53d0b\",\n      \"frequency\": \"双月刊\",\n      \"organizer\": \"北京理工大学\",\n      \"publisher\": \"MDPI AG\",\n      \"postal_code\": \"string\",\n      \"journal_name\": \"Antibiotics-Basel\",\n      \"subject_area\": \"药理学\",\n      \"supervising_agency\": \"中国兵器工业集团公司\"\n    },\n    {\n      \"cn\": \"11-4537/X\",\n      \"doi\": \"10.3390/antibiotics10040379\",\n      \"issn\": \"2079-6382\",\n      \"lang\": \"中文\",\n      \"eissn\": \"2079-6382\",\n      \"address\": \"北京市海淀区中关村南大街5号\",\n      \"contact\": \"string\",\n      \"country\": \"瑞士\",\n      \"website\": \"https://www.mdpi.com/journal/antibiotics\",\n      \"paper_id\": \"00d3b12d-1141-3a4a-a0e1-91cbb9c53d0b\",\n      \"frequency\": \"双月刊\",\n      \"organizer\": \"北京理工大学\",\n      \"publisher\": \"MDPI AG\",\n      \"postal_code\": \"string\",\n      \"journal_name\": \"Antibiotics-Basel\",\n      \"subject_area\": \"药理学\",\n      \"supervising_agency\": \"中国兵器工业集团公司\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "612e10fd-18b9-428f-9c8d-119335f26125",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "journal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1315792b-7688-4431-a11e-c342bb1321f3",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "journal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbaa6f5e-1d73-4aad-aa5b-b0cc82cc4b97",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "journal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de6362b6-cf45-4241-afbd-b2baf1fc2134",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "literature",
+                    "journal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"doi\": \"10.1016/j.bpj.2024.07.030\",\n  \"paper_id\": \"00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45a27b57-9f2f-48fe-9435-e13e02ae6a9d",
+          "name": "L001 Literature Search",
+          "request": {
+            "name": "L001 Literature Search",
+            "description": {
+              "content": "Search and query our global literature database by entering the title, abstract, author, and other details of the literature.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "literature",
+                "query-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date_time\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"query_text\": \"<string>\",\n  \"text\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1aeb91b-8e7d-44b5-8208-1be73abc3c97",
+              "name": "Successful l001 literature search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "literature",
+                    "query-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_time\": \"[1714521600000 TO 1748011043000]\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"query_text\": \"title:(car) and author:(\\\"haiyang\\\") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]\",\n  \"text\": \"Journal of Personalized Medicine\",\n  \"type\": \"publication\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4420,\n  \"data\": {\n    \"results\": [\n      {\n        \"doi\": \"10.3390/jpm13121685\",\n        \"title\": [\n          \"Variability in Provider Assessment of Sepsis and Potential of Host Response Technology to Address this Dilemma—Results of an Online Delphi Study\"\n        ],\n        \"author\": [\n          \"Kraus, Chadd K\",\n          \"O'Neal, Hollis R\",\n          \"Ledeboer, Nathan A\",\n          \"Rice, Todd W\",\n          \"Self, Wesley H\"\n        ],\n        \"paper_id\": \"938ad823-46f7-485b-959d-610a767e5a6e\"\n      },\n      {\n        \"doi\": \"10.3390/jpm13121685\",\n        \"title\": [\n          \"Variability in Provider Assessment of Sepsis and Potential of Host Response Technology to Address this Dilemma—Results of an Online Delphi Study\"\n        ],\n        \"author\": [\n          \"Kraus, Chadd K\",\n          \"O'Neal, Hollis R\",\n          \"Ledeboer, Nathan A\",\n          \"Rice, Todd W\",\n          \"Self, Wesley H\"\n        ],\n        \"paper_id\": \"938ad823-46f7-485b-959d-610a767e5a6e\"\n      }\n    ],\n    \"result_count\": 10,\n    \"total_search_result_count\": 7113\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7040caa-1e8f-482e-aa4f-d7c04baf8ed3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "literature",
+                    "query-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_time\": \"[1714521600000 TO 1748011043000]\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"query_text\": \"title:(car) and author:(\\\"haiyang\\\") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]\",\n  \"text\": \"Journal of Personalized Medicine\",\n  \"type\": \"publication\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cee7826d-70be-4ef2-b9fa-f1566e9493ed",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "literature",
+                    "query-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_time\": \"[1714521600000 TO 1748011043000]\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"query_text\": \"title:(car) and author:(\\\"haiyang\\\") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]\",\n  \"text\": \"Journal of Personalized Medicine\",\n  \"type\": \"publication\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c2d9a87-2aec-4097-b70f-1a7c0e23c4ae",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "literature",
+                    "query-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_time\": \"[1714521600000 TO 1748011043000]\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"query_text\": \"title:(car) and author:(\\\"haiyang\\\") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]\",\n  \"text\": \"Journal of Personalized Medicine\",\n  \"type\": \"publication\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97141b56-a9f6-4879-be00-a540e31b28a3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "literature",
+                    "query-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date_time\": \"[1714521600000 TO 1748011043000]\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"query_text\": \"title:(car) and author:(\\\"haiyang\\\") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]\",\n  \"text\": \"Journal of Personalized Medicine\",\n  \"type\": \"publication\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "781507be-706f-4978-b74c-07b6e8320485",
+    "name": "Patsnap Open Platform AI Translation Literature Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

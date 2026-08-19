@@ -1,0 +1,2440 @@
+{
+  "item": [
+    {
+      "id": "dfef9f47-39c2-4aa5-b61d-a2febdf4ec00",
+      "name": "Enterprise Tech Evaluation",
+      "description": {
+        "content": "Enterprise Tech Evaluation APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "013bc39f-7173-4ced-8e8c-f00a62ebe872",
+          "name": "C028 backtracking of enterprise patent risk warning",
+          "request": {
+            "name": "C028 backtracking of enterprise patent risk warning",
+            "description": {
+              "content": "This API provides patent risk warning data for historical retrospective versions of enterprises, including patent pledge litigation, transfer in/out, invalid rejection, etc.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "enterprise-patent-risk-warning-backtracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1ee25e9-c7b3-4df4-aa0e-6785510c9b4a",
+              "name": "Successful c028 backtracking of enterprise patent risk warning response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7095,\n  \"data\": {\n    \"date\": \"string\",\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"patent_count\": {\n      \"apno_cnt\": 481,\n      \"rejected\": 0,\n      \"patent_pledge\": 0,\n      \"patent_reexam\": 0,\n      \"patent_transfer\": 21,\n      \"patent_transfer_out\": 0,\n      \"active_invention_cnt\": 25,\n      \"granted_invention_cnt\": 25,\n      \"patent_litigation_defendant\": 0,\n      \"patent_litigation_plaintiff\": 0\n    },\n    \"patent_event_count\": {\n      \"pledge\": 0,\n      \"reexam\": 0,\n      \"transfer\": 21,\n      \"transfer_out\": 0,\n      \"litigation_defendant\": 0,\n      \"litigation_plaintiff\": 0\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98f2a2b4-5419-4ce4-90fa-43904440dd97",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ecfce9f-d084-46be-9d57-c9ef96526dc2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bca9caf-defa-4563-884d-52f98b432dca",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9884884d-35fd-47dc-91e6-db7a5eccb74d",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bdd8b68-ed83-4017-9176-927edc9ae2c7",
+          "name": "C029 trend of enterprise patent risk warning",
+          "request": {
+            "name": "C029 trend of enterprise patent risk warning",
+            "description": {
+              "content": "This API provides information on the changes in patent risk warning data for enterprises. The data update frequency is on the 1st and 16th of each month, including whether the latest patent pledge has been increased, whether the latest patent litigation has been increased, and so on.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "enterprise-patent-risk-warning-trend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21e891cc-cded-497c-aec4-95dd43a5a6c8",
+              "name": "Successful c029 trend of enterprise patent risk warning response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-trend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7207,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"patent_count_growth\": {\n      \"apno_cnt_growth\": 14,\n      \"rejected_growth\": 0,\n      \"patent_pledge_growth\": 0,\n      \"patent_reexam_growth\": 0,\n      \"patent_transfer_growth\": 0,\n      \"patent_transfer_out_growth\": 0,\n      \"active_invention_cnt_growth\": 1,\n      \"granted_invention_cnt_growth\": 1,\n      \"patent_litigation_defendant_growth\": 0,\n      \"patent_litigation_plaintiff_growth\": 0\n    },\n    \"patent_event_count_growth\": {\n      \"pledge_growth\": 0,\n      \"reexam_growth\": 0,\n      \"transfer_growth\": 0,\n      \"transfer_out_growth\": 0,\n      \"litigation_defendant_growth\": 0,\n      \"litigation_plaintiff_growth\": 0\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d08e1ac-d429-45d9-870a-9daf0ed29bfc",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-trend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a77fb266-961e-4d80-8a40-a12b4dc8ba62",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-trend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f965556-46fb-42e2-80db-dcec1a9b4134",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-trend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5fe5810f-788e-4442-98f2-696c2caccac2",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning-trend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "def53197-055f-4738-8ff3-d08f627f09b4",
+          "name": "C027 enterprise patent risk warning",
+          "request": {
+            "name": "C027 enterprise patent risk warning",
+            "description": {
+              "content": "This API provides enterprise patent risk warning data, including patent pledge litigation, transfer in/out, invalid rejection, etc.<p>A global sci-tech enterprise is an enterprise that satisfies one of the following conditions: (1) has patent or patent application, (2) has records of venture financing, (3) has scientific and technological qualifications (high-tech enterprises, technologybased smes, etc.), (4) is a listed enterprise, (5) is a newly established subsidiary of a group with strong scientific and technological strength.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "enterprise-patent-risk-warning"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c330b251-df30-477f-9f09-6b3827214f70",
+              "name": "Successful c027 enterprise patent risk warning response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1306,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"patent_count\": {\n      \"apno_cnt\": 481,\n      \"rejected\": 0,\n      \"patent_pledge\": 0,\n      \"patent_reexam\": 0,\n      \"patent_transfer\": 21,\n      \"patent_transfer_out\": 0,\n      \"active_invention_cnt\": 25,\n      \"granted_invention_cnt\": 25,\n      \"patent_litigation_defendant\": 0,\n      \"patent_litigation_plaintiff\": 0\n    },\n    \"patent_event_count\": {\n      \"pledge\": 0,\n      \"reexam\": 0,\n      \"transfer\": 21,\n      \"transfer_out\": 0,\n      \"litigation_defendant\": 0,\n      \"litigation_plaintiff\": 0\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88ca3e41-bd2b-42a0-9926-4208e8f84fb0",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8588f6ac-d111-41ac-b527-39e811e108a6",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8491e828-4018-4dc6-a8bb-fb6720fc4734",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "146bf3ae-56f3-4673-9bce-4b3e723b8e1b",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "enterprise-patent-risk-warning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3c71ba3-e83b-4fa8-87ae-756bed38b15d",
+          "name": "C024 scientific and technological company evaluation and indicators",
+          "request": {
+            "name": "C024 scientific and technological company evaluation and indicators",
+            "description": {
+              "content": "This interface provides the evaluation results and evaluation calculation index pool of the enterprise's scientific and technological innovation capability",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "technology-evaluation-indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5aef053b-e29e-4df7-b047-07899bc3e2f0",
+              "name": "Successful c024 scientific and technological company evaluation and indicators response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9784,\n  \"data\": {\n    \"score\": 86.5,\n    \"rating_v2\": \"AAA\",\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"original_detail\": {\n      \"ic_num\": 37,\n      \"reg_num\": 37,\n      \"apno_cnt\": 435,\n      \"duration\": 10.266,\n      \"round_all\": 4,\n      \"value_avg\": 27200,\n      \"value_sum\": 27200,\n      \"avg_3y_cnt\": 88.66,\n      \"reg_3y_avg\": 3.66,\n      \"reg_num_5y\": 37,\n      \"tech_width\": 1.7026,\n      \"country_cnt\": 5,\n      \"num_members\": 4,\n      \"pct_apno_cnt\": 5,\n      \"ip_dependency\": 0,\n      \"value_top5_avg\": 27200,\n      \"invention_ratio\": 0.257,\n      \"avg_cited_by_cnt\": 0.408,\n      \"in_examing_ratio\": 0.1802,\n      \"most_recent_time\": 5.886,\n      \"num_certificates\": 4,\n      \"reg_growth_ratio\": -0.34,\n      \"apno_cnt_valid_5y\": 403,\n      \"fin_money_sum_all\": 1.69,\n      \"ipc_sub_class_cnt\": 57,\n      \"patent_valid_ratio\": 0.9406,\n      \"active_inventor_cnt\": 3,\n      \"invention_stability\": 11.751595636338072,\n      \"joint_applicant_cnt\": 5,\n      \"non_design_apno_cnt\": 437,\n      \"self_cited_by_ratio\": 0.02,\n      \"avg_technology_score\": 0.266,\n      \"num_trademarks_total\": 4,\n      \"active_inventor_ratio\": 5,\n      \"granted_invention_cnt\": 23,\n      \"joint_application_cnt\": 6,\n      \"reg_capital_formatted\": 1.082,\n      \"external_licensing_cnt\": 0,\n      \"num_certificates_valid\": 4,\n      \"patenting_growth_ratio\": 1.301,\n      \"avg_remaining_life_span\": 8.723,\n      \"granted_invention_ratio\": 23,\n      \"non_design_pct_apno_cnt\": 5,\n      \"num_trademarks_total_5y\": 19,\n      \"actual_capital_formatted\": 81,\n      \"avg_funding_interval_all\": 2.114,\n      \"most_cited_patents_value\": 10.8,\n      \"standard_information_num\": 2,\n      \"total_patent_award_score\": 0,\n      \"core_patents_cited_by_cnt\": 2897,\n      \"num_trademarks_registered\": 34,\n      \"tech_global_concentration\": 1.7026,\n      \"top5_current_impact_index\": 0.0182,\n      \"core_patents_cited_by_ratio\": 10.8,\n      \"granted_invention_cnt_pb_1y\": 23,\n      \"num_trademarks_registered_5y\": 13,\n      \"invention_cnt_validity_lower_5\": 0,\n      \"most_recent_money_q25_formatted\": 9340.293381074336,\n      \"country_standard_information_num\": 0,\n      \"invention_cnt_validity_higher_10\": 15,\n      \"granted_invention_cnt_pb_original_2y\": 23,\n      \"invention_cnt_validity_higher_5_lower_10\": 8\n    },\n    \"score_dimension\": {\n      \"fundamental\": 2.1,\n      \"tech_layout\": 1.1,\n      \"tech_quality\": 5.264,\n      \"tech_influence\": 0.3,\n      \"rd_scale_and_stability\": 4.7\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9eb214bb-5057-4e28-9d8e-4ecd4bb2f221",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb1e00eb-9686-40df-9ff8-1f96696531e4",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a1f4aa8-f5ab-4925-acc5-ba8dd2ff65a4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc97cc5b-64fc-4918-ad4b-42606f94e275",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e1c41e2-dc51-4f0e-a25e-67f7f87b4998",
+          "name": "C022 scientific and technological company evaluation",
+          "request": {
+            "name": "C022 scientific and technological company evaluation",
+            "description": {
+              "content": "This interface provides the evaluation results of the enterprise's scientific and technological innovation capability",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "technology-evaluation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9f52ce6-09ce-4c35-9de0-73ec2908133e",
+              "name": "Successful c022 scientific and technological company evaluation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1068,\n  \"data\": {\n    \"score\": 86.5,\n    \"rating_v2\": \"AAA\",\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"fundamental\": 5.05,\n    \"tech_layout\": 20.33,\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"tech_quality\": 27.1,\n    \"tech_influence\": 10.5,\n    \"rd_scale_and_stability\": 34.4\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b914c124-f955-4a77-a786-dfa07ed55c51",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de7a396c-7464-4f79-af58-426fcc60da32",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4688e94-5200-42d2-8695-12c32b1314b2",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87474eb8-150d-46d0-8bf5-123f8ea9505f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbf40e70-cd37-48f1-9340-44a8ecfb3e59",
+          "name": "C023 scientific and technological company indicators",
+          "request": {
+            "name": "C023 scientific and technological company indicators",
+            "description": {
+              "content": "This interface provides the evaluation and calculation index pool of the enterprise's scientific and technological innovation capability",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "technology-indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e713dc48-803c-4fb4-935b-373193398df6",
+              "name": "Successful c023 scientific and technological company indicators response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7483,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"original_detail\": {\n      \"ic_num\": 37,\n      \"reg_num\": 37,\n      \"apno_cnt\": 435,\n      \"duration\": 10.266,\n      \"round_all\": 4,\n      \"value_avg\": 27200,\n      \"value_sum\": 27200,\n      \"avg_3y_cnt\": 88.66,\n      \"reg_3y_avg\": 3.66,\n      \"reg_num_5y\": 37,\n      \"tech_width\": 1.7026,\n      \"country_cnt\": 5,\n      \"num_members\": 4,\n      \"pct_apno_cnt\": 5,\n      \"ip_dependency\": 0,\n      \"value_top5_avg\": 27200,\n      \"invention_ratio\": 0.257,\n      \"avg_cited_by_cnt\": 0.408,\n      \"in_examing_ratio\": 0.1802,\n      \"most_recent_time\": 5.886,\n      \"num_certificates\": 4,\n      \"reg_growth_ratio\": -0.34,\n      \"apno_cnt_valid_5y\": 403,\n      \"fin_money_sum_all\": 1.69,\n      \"ipc_sub_class_cnt\": 57,\n      \"patent_valid_ratio\": 0.9406,\n      \"active_inventor_cnt\": 3,\n      \"invention_stability\": 11.751595636338072,\n      \"joint_applicant_cnt\": 5,\n      \"non_design_apno_cnt\": 437,\n      \"self_cited_by_ratio\": 0.02,\n      \"avg_technology_score\": 0.266,\n      \"num_trademarks_total\": 4,\n      \"active_inventor_ratio\": 5,\n      \"granted_invention_cnt\": 23,\n      \"joint_application_cnt\": 6,\n      \"reg_capital_formatted\": 1.082,\n      \"external_licensing_cnt\": 0,\n      \"num_certificates_valid\": 4,\n      \"patenting_growth_ratio\": 1.301,\n      \"avg_remaining_life_span\": 8.723,\n      \"granted_invention_ratio\": 23,\n      \"non_design_pct_apno_cnt\": 5,\n      \"num_trademarks_total_5y\": 19,\n      \"actual_capital_formatted\": 81,\n      \"avg_funding_interval_all\": 2.114,\n      \"most_cited_patents_value\": 10.8,\n      \"standard_information_num\": 2,\n      \"total_patent_award_score\": 0,\n      \"core_patents_cited_by_cnt\": 2802,\n      \"num_trademarks_registered\": 34,\n      \"tech_global_concentration\": 1.7026,\n      \"top5_current_impact_index\": 0.0182,\n      \"core_patents_cited_by_ratio\": 10.8,\n      \"granted_invention_cnt_pb_1y\": 23,\n      \"num_trademarks_registered_5y\": 13,\n      \"invention_cnt_validity_lower_5\": 0,\n      \"most_recent_money_q25_formatted\": 3657.0202379024895,\n      \"country_standard_information_num\": 0,\n      \"invention_cnt_validity_higher_10\": 15,\n      \"granted_invention_cnt_pb_original_2y\": 23,\n      \"invention_cnt_validity_higher_5_lower_10\": 8\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7c5aebe-63c4-427c-81f7-295fc0a15a09",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ea05798-be3a-4548-b9b9-344c28216b8f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8569dbc-d9ab-47e3-9e76-7d715bd55617",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "357b39c2-3269-488b-a350-a9e556e2ac5b",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d33e84b-022b-40b3-a70c-f1ddb6c22207",
+          "name": "C025 scientific and technological company group",
+          "request": {
+            "name": "C025 scientific and technological company group",
+            "description": {
+              "content": "This interface provides the evaluation results and evaluation calculation index pool of the technological innovation capability of the enterprise group after penetration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "company-group-technology-evaluation-indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91953a3d-aad6-48fb-a846-ce85b879ba05",
+              "name": "Successful c025 scientific and technological company group response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "company-group-technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7510,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"score_group\": 86.5,\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"rating_v2_group\": \"AAA\",\n    \"original_detail_group\": {\n      \"ic_num\": 37,\n      \"reg_num\": 37,\n      \"apno_cnt\": 435,\n      \"duration\": 10.266,\n      \"round_all\": 4,\n      \"value_avg\": 27200,\n      \"value_sum\": 27200,\n      \"avg_3y_cnt\": 88.66,\n      \"reg_3y_avg\": 3.66,\n      \"reg_num_5y\": 37,\n      \"tech_width\": 1.7026,\n      \"country_cnt\": 5,\n      \"num_members\": 4,\n      \"pct_apno_cnt\": 5,\n      \"ip_dependency\": 0,\n      \"value_top5_avg\": 27200,\n      \"invention_ratio\": 0.257,\n      \"avg_cited_by_cnt\": 0.408,\n      \"in_examing_ratio\": 0.1802,\n      \"most_recent_time\": 5.886,\n      \"num_certificates\": 4,\n      \"reg_growth_ratio\": -0.34,\n      \"apno_cnt_valid_5y\": 403,\n      \"fin_money_sum_all\": 1.69,\n      \"ipc_sub_class_cnt\": 57,\n      \"patent_valid_ratio\": 0.9406,\n      \"active_inventor_cnt\": 3,\n      \"invention_stability\": 11.751595636338072,\n      \"joint_applicant_cnt\": 5,\n      \"non_design_apno_cnt\": 437,\n      \"self_cited_by_ratio\": 0.02,\n      \"avg_technology_score\": 0.266,\n      \"num_trademarks_total\": 4,\n      \"active_inventor_ratio\": 5,\n      \"granted_invention_cnt\": 23,\n      \"joint_application_cnt\": 6,\n      \"reg_capital_formatted\": 1.082,\n      \"external_licensing_cnt\": 0,\n      \"num_certificates_valid\": 4,\n      \"patenting_growth_ratio\": 1.301,\n      \"avg_remaining_life_span\": 8.723,\n      \"granted_invention_ratio\": 23,\n      \"non_design_pct_apno_cnt\": 5,\n      \"num_trademarks_total_5y\": 19,\n      \"actual_capital_formatted\": 81,\n      \"avg_funding_interval_all\": 2.114,\n      \"most_cited_patents_value\": 10.8,\n      \"standard_information_num\": 2,\n      \"total_patent_award_score\": 0,\n      \"core_patents_cited_by_cnt\": 8008,\n      \"num_trademarks_registered\": 34,\n      \"tech_global_concentration\": 1.7026,\n      \"top5_current_impact_index\": 0.0182,\n      \"core_patents_cited_by_ratio\": 10.8,\n      \"granted_invention_cnt_pb_1y\": 23,\n      \"num_trademarks_registered_5y\": 13,\n      \"invention_cnt_validity_lower_5\": 0,\n      \"most_recent_money_q25_formatted\": 6229.223115954158,\n      \"country_standard_information_num\": 0,\n      \"invention_cnt_validity_higher_10\": 15,\n      \"granted_invention_cnt_pb_original_2y\": 23,\n      \"invention_cnt_validity_higher_5_lower_10\": 8\n    },\n    \"score_dimension_group\": {\n      \"fundamental\": 2.1,\n      \"tech_layout\": 1.1,\n      \"tech_quality\": 5.264,\n      \"tech_influence\": 0.3,\n      \"rd_scale_and_stability\": 4.7\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f65eefed-6f89-4a1a-a006-44d78ad41674",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "company-group-technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b81be1a9-d03a-4d2d-bb80-ce812ff12cf2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "company-group-technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a40467d7-33f4-4d51-a52f-3dcfcd73612c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "company-group-technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95139bf6-2f9e-4d28-838b-6203c454bb13",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "company-group-technology-evaluation-indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7422a43c-33db-4324-9141-a4035b711b8c",
+          "name": "C026 backtracking of scientific and technological company",
+          "request": {
+            "name": "C026 backtracking of scientific and technological company",
+            "description": {
+              "content": "This interface provides the evaluation results and evaluation model indicators of the enterprise's historical technological innovation capability",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "technology-evaluation-indicators-backtracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3ec83d1-e590-436b-926d-0186f662a640",
+              "name": "Successful c026 backtracking of scientific and technological company response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3260,\n  \"data\": {\n    \"date\": \"string\",\n    \"score\": 86.5,\n    \"rating_v2\": \"AAA\",\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"original_detail\": {\n      \"ic_num\": 37,\n      \"rounds\": 4,\n      \"reg_num\": 37,\n      \"apno_cnt\": 435,\n      \"duration\": 10.266,\n      \"value_avg\": 27200,\n      \"value_sum\": 27200,\n      \"avg_3y_cnt\": 88.66,\n      \"reg_3y_avg\": 3.66,\n      \"reg_num_5y\": 37,\n      \"tech_width\": 1.7026,\n      \"country_cnt\": 5,\n      \"num_members\": 4,\n      \"ip_dependency\": 0,\n      \"value_top5_avg\": 27200,\n      \"invention_ratio\": 0.257,\n      \"avg_cited_by_cnt\": 0.408,\n      \"in_examing_ratio\": 0.1802,\n      \"most_recent_time\": 5.886,\n      \"num_certificates\": 4,\n      \"reg_growth_ratio\": -0.34,\n      \"apno_cnt_valid_5y\": 403,\n      \"ipc_sub_class_cnt\": 57,\n      \"patent_valid_ratio\": 0.9406,\n      \"active_inventor_cnt\": 3,\n      \"invention_stability\": 11.751595636338072,\n      \"joint_applicant_cnt\": 5,\n      \"non_design_apno_cnt\": 437,\n      \"self_cited_by_ratio\": 0.02,\n      \"avg_funding_interval\": 2.114,\n      \"avg_technology_score\": 0.266,\n      \"num_trademarks_total\": 4,\n      \"active_inventor_ratio\": 5,\n      \"granted_invention_cnt\": 23,\n      \"joint_application_cnt\": 6,\n      \"reg_capital_formatted\": 1.082,\n      \"external_licensing_cnt\": 0,\n      \"money_q25_sum_weighted\": 1.69,\n      \"num_certificates_valid\": 4,\n      \"patenting_growth_ratio\": 1.301,\n      \"avg_remaining_life_span\": 8.723,\n      \"granted_invention_ratio\": 23,\n      \"non_design_pct_apno_cnt\": 5,\n      \"num_trademarks_total_5y\": 19,\n      \"actual_capital_formatted\": 81,\n      \"most_cited_patents_value\": 10.8,\n      \"standard_information_num\": 2,\n      \"total_patent_award_score\": 0,\n      \"core_patents_cited_by_cnt\": 7919,\n      \"num_trademarks_registered\": 34,\n      \"tech_global_concentration\": 1.7026,\n      \"top5_current_impact_index\": 0.0182,\n      \"core_patents_cited_by_ratio\": 10.8,\n      \"granted_invention_cnt_pb_1y\": 23,\n      \"num_trademarks_registered_5y\": 13,\n      \"invention_cnt_validity_lower_5\": 0,\n      \"most_recent_money_q25_formatted\": 6310.505596612876,\n      \"country_standard_information_num\": 0,\n      \"invention_cnt_validity_higher_10\": 15,\n      \"granted_invention_cnt_pb_original_2y\": 23,\n      \"invention_cnt_validity_higher_5_lower_10\": 8\n    },\n    \"score_dimension\": {\n      \"fundamental\": 2.1,\n      \"tech_layout\": 1.1,\n      \"tech_quality\": 5.264,\n      \"tech_influence\": 0.3,\n      \"rd_scale_and_stability\": 4.7\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7069b61f-ea0d-4dd4-9039-181dbf877242",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72f9e79f-a2e2-4512-925d-790ca8e83e6a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7a86afa-911d-4019-b332-faa8dcf80242",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5a17c0b-38aa-42b1-87fd-fd2e9437f9cc",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-evaluation-indicators-backtracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<string>\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "358322e2-952a-43ee-8750-aae54703f0fa",
+    "name": "Patsnap Open Platform AI Translation Enterprise Tech Evaluation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1591 @@
+{
+  "item": [
+    {
+      "id": "479d8c34-d5ca-43d5-84cc-c467c6bc3e0a",
+      "name": "Specification Drafting",
+      "description": {
+        "content": "Specification Drafting APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf94245a-e530-415d-ab77-76d6e00ed959",
+          "name": "AI37-2 Patent Drafting (CNIPA) - Initialization Summary Result",
+          "request": {
+            "name": "AI37-2 Patent Drafting (CNIPA) - Initialization Summary Result",
+            "description": {
+              "content": "Based on the input task_id, get initialization result",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "specification",
+                "init-result",
+                "cnipa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2230cb4-9e69-449c-9847-80b8e7b47d46",
+              "name": "Successful ai37-2 patent drafting (cnipa) - initialization summary result response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init-result",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8030,\n  \"data\": {\n    \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"status\": 2,\n    \"benefit\": \"采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\\\n可拆卸法兰结构设计便于更换电极和维护；\\\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\",\n    \"category\": \"设备\",\n    \"classification\": [\n      \"H01B17/36\",\n      \"G01R31/12\",\n      \"H02B13/065\",\n      \"H01B17/14\",\n      \"H02B13/035\"\n    ],\n    \"technical_methods\": \"本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\\\n高压导杆电极可通过电极过渡连接件进行更换；\\\\n3号气室端部设有可拆卸法兰结构；\\\\n多个石英玻璃观察窗口，用于观察放电过程；\\\\n装置支撑座和辅助支撑架支撑试验装置本体。\",\n    \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。\",\n    \"embodiment_outline\": [\n      {\n        \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n        \"label\": \"common\"\n      },\n      {\n        \"type\": \"设备\",\n        \"label\": \"outline\",\n        \"outline\": \"outline\",\n        \"claim_text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n        \"claim_numbers\": [\n          1,\n          2,\n          3,\n          4,\n          5,\n          6,\n          7\n        ],\n        \"embodiment_number\": 1,\n        \"reference_claim_number\": []\n      },\n      {\n        \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n        \"label\": \"common\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd1ab162-d55b-4920-b951-498ed65aded3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init-result",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99cb0357-1bdf-48b2-bbc2-59059139f189",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init-result",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d42f3237-3c7b-414b-b3e5-621bef8533df",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init-result",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e136511-f29a-43ef-b146-45c63819b328",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init-result",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4da76c75-8c5d-4b17-b04c-c9c96234adb9",
+          "name": "AI37-3 Patent Specification Drafting (CNIPA) - Technical Feature Extraction",
+          "request": {
+            "name": "AI37-3 Patent Specification Drafting (CNIPA) - Technical Feature Extraction",
+            "description": {
+              "content": "Based on the task_id and technology category returned by the specification initialization interface, extract the technical feature information of the specification, including feature tree (containing claim features and concept words) and term lists, providing basic data for subsequent report generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "specification",
+                "extract-feature",
+                "cnipa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"<string>\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48c0df75-fa2d-4e03-8041-9443b47e31a6",
+              "name": "Successful ai37-3 patent specification drafting (cnipa) - technical feature extraction response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "extract-feature",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 574,\n  \"data\": {\n    \"terms\": [\n      {\n        \"name\": \"直流气体绝缘\",\n        \"annotated\": false,\n        \"unique_id\": \"1\"\n      },\n      {\n        \"name\": \"金属封闭输电线路\",\n        \"annotated\": false,\n        \"unique_id\": \"2\"\n      },\n      {\n        \"name\": \"试验研究装置\",\n        \"annotated\": false,\n        \"unique_id\": \"3\"\n      },\n      {\n        \"name\": \"L型\",\n        \"annotated\": false,\n        \"unique_id\": \"4\"\n      },\n      {\n        \"name\": \"外形\",\n        \"annotated\": false,\n        \"unique_id\": \"5\"\n      },\n      {\n        \"name\": \"竖直方向\",\n        \"annotated\": false,\n        \"unique_id\": \"6\"\n      },\n      {\n        \"name\": \"高压引线端\",\n        \"annotated\": false,\n        \"unique_id\": \"7\"\n      },\n      {\n        \"name\": \"高压均压环\",\n        \"annotated\": false,\n        \"unique_id\": \"8\"\n      },\n      {\n        \"name\": \"硅橡胶复合绝缘子\",\n        \"annotated\": false,\n        \"unique_id\": \"9\"\n      },\n      {\n        \"name\": \"高压套管\",\n        \"annotated\": false,\n        \"unique_id\": \"10\"\n      },\n      {\n        \"name\": \"水平方向\",\n        \"annotated\": false,\n        \"unique_id\": \"11\"\n      },\n      {\n        \"name\": \"同轴分布\",\n        \"annotated\": false,\n        \"unique_id\": \"12\"\n      },\n      {\n        \"name\": \"高压导杆电极\",\n        \"annotated\": false,\n        \"unique_id\": \"13\"\n      },\n      {\n        \"name\": \"试验装置外壳\",\n        \"annotated\": false,\n        \"unique_id\": \"14\"\n      },\n      {\n        \"name\": \"1号气室\",\n        \"annotated\": false,\n        \"unique_id\": \"15\"\n      },\n      {\n        \"name\": \"2号气室\",\n        \"annotated\": false,\n        \"unique_id\": \"16\"\n      },\n      {\n        \"name\": \"3号气室\",\n        \"annotated\": false,\n        \"unique_id\": \"17\"\n      },\n      {\n        \"name\": \"横向\",\n        \"annotated\": false,\n        \"unique_id\": \"18\"\n      },\n      {\n        \"name\": \"1号盆式绝缘子\",\n        \"annotated\": false,\n        \"unique_id\": \"19\"\n      },\n      {\n        \"name\": \"2号盆式绝缘子\",\n        \"annotated\": false,\n        \"unique_id\": \"20\"\n      },\n      {\n        \"name\": \"独立气室\",\n        \"annotated\": false,\n        \"unique_id\": \"21\"\n      },\n      {\n        \"name\": \"独立充放气阀门\",\n        \"annotated\": false,\n        \"unique_id\": \"22\"\n      },\n      {\n        \"name\": \"1号充放气阀门\",\n        \"annotated\": false,\n        \"unique_id\": \"23\"\n      },\n      {\n        \"name\": \"2号充放气阀门\",\n        \"annotated\": false,\n        \"unique_id\": \"24\"\n      },\n      {\n        \"name\": \"3号充放气阀门\",\n        \"annotated\": false,\n        \"unique_id\": \"25\"\n      },\n      {\n        \"name\": \"充放气阀门\",\n        \"annotated\": false,\n        \"unique_id\": \"26\"\n      },\n      {\n        \"name\": \"气压表\",\n        \"annotated\": false,\n        \"unique_id\": \"27\"\n      },\n      {\n        \"name\": \"密度计\",\n        \"annotated\": false,\n        \"unique_id\": \"28\"\n      },\n      {\n        \"name\": \"气压恒定\",\n        \"annotated\": false,\n        \"unique_id\": \"29\"\n      },\n      {\n        \"name\": \"不用于试验\",\n        \"annotated\": false,\n        \"unique_id\": \"30\"\n      },\n      {\n        \"name\": \"试验单元段\",\n        \"annotated\": false,\n        \"unique_id\": \"31\"\n      },\n      {\n        \"name\": \"棒板电极\",\n        \"annotated\": false,\n        \"unique_id\": \"32\"\n      },\n      {\n        \"name\": \"同轴圆柱电极\",\n        \"annotated\": false,\n        \"unique_id\": \"33\"\n      },\n      {\n        \"name\": \"支柱绝缘子\",\n        \"annotated\": false,\n        \"unique_id\": \"34\"\n      },\n      {\n        \"name\": \"金属导电微粒\",\n        \"annotated\": false,\n        \"unique_id\": \"35\"\n      },\n      {\n        \"name\": \"SF6气体间隙绝缘特性试验\",\n        \"annotated\": false,\n        \"unique_id\": \"36\"\n      },\n      {\n        \"name\": \"绝缘子闪络特性试验\",\n        \"annotated\": false,\n        \"unique_id\": \"37\"\n      },\n      {\n        \"name\": \"金属导电微粒试验\",\n        \"annotated\": false,\n        \"unique_id\": \"38\"\n      },\n      {\n        \"name\": \"温度补偿\",\n        \"annotated\": false,\n        \"unique_id\": \"39\"\n      },\n      {\n        \"name\": \"气体密度计\",\n        \"annotated\": false,\n        \"unique_id\": \"40\"\n      },\n      {\n        \"name\": \"屏蔽均压罩\",\n        \"annotated\": false,\n        \"unique_id\": \"41\"\n      },\n      {\n        \"name\": \"电场\",\n        \"annotated\": false,\n        \"unique_id\": \"42\"\n      },\n      {\n        \"name\": \"同轴外壳电极\",\n        \"annotated\": false,\n        \"unique_id\": \"43\"\n      },\n      {\n        \"name\": \"电极对\",\n        \"annotated\": false,\n        \"unique_id\": \"44\"\n      },\n      {\n        \"name\": \"电极过渡连接件\",\n        \"annotated\": false,\n        \"unique_id\": \"45\"\n      },\n      {\n        \"name\": \"配套电极\",\n        \"annotated\": false,\n        \"unique_id\": \"46\"\n      },\n      {\n        \"name\": \"尺寸\",\n        \"annotated\": false,\n        \"unique_id\": \"47\"\n      },\n      {\n        \"name\": \"粗糙度\",\n        \"annotated\": false,\n        \"unique_id\": \"48\"\n      },\n      {\n        \"name\": \"气体间隙绝缘特性试验\",\n        \"annotated\": false,\n        \"unique_id\": \"49\"\n      },\n      {\n        \"name\": \"可拆卸法兰结构\",\n        \"annotated\": false,\n        \"unique_id\": \"50\"\n      },\n      {\n        \"name\": \"1号石英玻璃观察窗口\",\n        \"annotated\": false,\n        \"unique_id\": \"51\"\n      },\n      {\n        \"name\": \"2号石英玻璃观察窗口\",\n        \"annotated\": false,\n        \"unique_id\": \"52\"\n      },\n      {\n        \"name\": \"3号石英玻璃观察窗口\",\n        \"annotated\": false,\n        \"unique_id\": \"53\"\n      },\n      {\n        \"name\": \"主试验石英玻璃观察窗口\",\n        \"annotated\": false,\n        \"unique_id\": \"54\"\n      },\n      {\n        \"name\": \"石英玻璃\",\n        \"annotated\": false,\n        \"unique_id\": \"55\"\n      },\n      {\n        \"name\": \"远紫外材料\",\n        \"annotated\": false,\n        \"unique_id\": \"56\"\n      },\n      {\n        \"name\": \"放电过程\",\n        \"annotated\": false,\n        \"unique_id\": \"57\"\n      },\n      {\n        \"name\": \"波长\",\n        \"annotated\": false,\n        \"unique_id\": \"58\"\n      },\n      {\n        \"name\": \"光谱范围\",\n        \"annotated\": false,\n        \"unique_id\": \"59\"\n      },\n      {\n        \"name\": \"透过率\",\n        \"annotated\": false,\n        \"unique_id\": \"60\"\n      },\n      {\n        \"name\": \"不锈钢\",\n        \"annotated\": false,\n        \"unique_id\": \"61\"\n      },\n      {\n        \"name\": \"装置支撑座\",\n        \"annotated\": false,\n        \"unique_id\": \"62\"\n      },\n      {\n        \"name\": \"辅助支撑架\",\n        \"annotated\": false,\n        \"unique_id\": \"63\"\n      },\n      {\n        \"name\": \"试验装置本体\",\n        \"annotated\": false,\n        \"unique_id\": \"64\"\n      },\n      {\n        \"name\": \"平稳放置\",\n        \"annotated\": false,\n        \"unique_id\": \"65\"\n      },\n      {\n        \"name\": \"移动\",\n        \"annotated\": false,\n        \"unique_id\": \"66\"\n      }\n    ],\n    \"feature_tree\": [\n      {\n        \"num\": \"string\",\n        \"parent\": \"1,2,3,4,5,6\",\n        \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n        \"claim_features\": [\n          {\n            \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n            \"concepts\": [\n              \"不锈钢\",\n              \"装置支撑座\",\n              \"辅助支撑架\",\n              \"试验装置本体\",\n              \"平稳放置\",\n              \"移动\"\n            ]\n          }\n        ]\n      },\n      {\n        \"num\": \"string\",\n        \"parent\": \"1,2,3,4,5,6\",\n        \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n        \"claim_features\": [\n          {\n            \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n            \"concepts\": [\n              \"不锈钢\",\n              \"装置支撑座\",\n              \"辅助支撑架\",\n              \"试验装置本体\",\n              \"平稳放置\",\n              \"移动\"\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17ef6427-fec9-4a61-b73b-4430f1103957",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "extract-feature",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5611149-44a0-4996-8581-7f4fdb3f328a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "extract-feature",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19558afc-0729-47ef-8433-1511a3eb203b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "extract-feature",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7247bbde-79cf-4b8b-b4d2-a8c48e02db47",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "extract-feature",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "416b6c18-eb46-43cc-8db4-adbb60f80d41",
+          "name": "AI37-1 Patent Drafting (CNIPA) - Initialization Summary",
+          "request": {
+            "name": "AI37-1 Patent Drafting (CNIPA) - Initialization Summary",
+            "description": {
+              "content": "Based on the input disclosure content and claims content, perform specification initialization processing, including sensitive word detection, language detection, obtaining classification numbers, technology type recognition, technical problem/technical methods/technical benefits extraction, embodiment outline generation, etc., and return task_id for subsequent processes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "specification",
+                "init",
+                "cnipa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claim\": \"<string>\",\n  \"disclosure\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dc6cbc1-1afc-4f26-8255-432c9e90ee07",
+              "name": "Successful ai37-1 patent drafting (cnipa) - initialization summary response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claim\": \"1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n  \"disclosure\": \"技术领域\\n本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。\\n\\n背景技术\\n气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。\\n\\n然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。\\n\\n目前国内外现有的SF6气体绝缘试验装置存在以下不足：\\n\\n现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；\\n日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；\\n美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；\\n国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。\\n综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。\\n\\n技术问题\\n现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；\\n单一结构布局限制了试验类型，无法满足多样化试验需求；\\n无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；\\n电极更换不便，影响试验效率。\\n技术方案\\n本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\n\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\n高压导杆电极可通过电极过渡连接件进行更换；\\n3号气室端部设有可拆卸法兰结构；\\n多个石英玻璃观察窗口，用于观察放电过程；\\n装置支撑座和辅助支撑架支撑试验装置本体。\\n技术功效\\n与现有技术相比，本发明具有以下优点：\\n\\n采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\n可拆卸法兰结构设计便于更换电极和维护；\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\\n\\n典型实施例\\n本发明的试验装置整体呈\\\\\\\"L\\\\\\\"型，包括竖直部分和水平部分。\\n竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。\\n水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。\\n1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。\\n高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。\\n整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8030,\n  \"data\": {\n    \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"status\": 2,\n    \"benefit\": \"采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\\\n可拆卸法兰结构设计便于更换电极和维护；\\\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\",\n    \"category\": \"设备\",\n    \"classification\": [\n      \"H01B17/36\",\n      \"G01R31/12\",\n      \"H02B13/065\",\n      \"H01B17/14\",\n      \"H02B13/035\"\n    ],\n    \"technical_methods\": \"本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\\\n高压导杆电极可通过电极过渡连接件进行更换；\\\\n3号气室端部设有可拆卸法兰结构；\\\\n多个石英玻璃观察窗口，用于观察放电过程；\\\\n装置支撑座和辅助支撑架支撑试验装置本体。\",\n    \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。\",\n    \"embodiment_outline\": [\n      {\n        \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n        \"label\": \"common\"\n      },\n      {\n        \"type\": \"设备\",\n        \"label\": \"outline\",\n        \"outline\": \"outline\",\n        \"claim_text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n        \"claim_numbers\": [\n          1,\n          2,\n          3,\n          4,\n          5,\n          6,\n          7\n        ],\n        \"embodiment_number\": 1,\n        \"reference_claim_number\": []\n      },\n      {\n        \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n        \"label\": \"common\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8750bd88-b944-4b2d-8aa5-70b949ecf743",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claim\": \"1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n  \"disclosure\": \"技术领域\\n本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。\\n\\n背景技术\\n气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。\\n\\n然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。\\n\\n目前国内外现有的SF6气体绝缘试验装置存在以下不足：\\n\\n现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；\\n日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；\\n美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；\\n国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。\\n综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。\\n\\n技术问题\\n现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；\\n单一结构布局限制了试验类型，无法满足多样化试验需求；\\n无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；\\n电极更换不便，影响试验效率。\\n技术方案\\n本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\n\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\n高压导杆电极可通过电极过渡连接件进行更换；\\n3号气室端部设有可拆卸法兰结构；\\n多个石英玻璃观察窗口，用于观察放电过程；\\n装置支撑座和辅助支撑架支撑试验装置本体。\\n技术功效\\n与现有技术相比，本发明具有以下优点：\\n\\n采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\n可拆卸法兰结构设计便于更换电极和维护；\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\\n\\n典型实施例\\n本发明的试验装置整体呈\\\\\\\"L\\\\\\\"型，包括竖直部分和水平部分。\\n竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。\\n水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。\\n1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。\\n高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。\\n整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "030e50a3-6dcd-4e06-9a43-d29cc979391c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claim\": \"1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n  \"disclosure\": \"技术领域\\n本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。\\n\\n背景技术\\n气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。\\n\\n然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。\\n\\n目前国内外现有的SF6气体绝缘试验装置存在以下不足：\\n\\n现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；\\n日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；\\n美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；\\n国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。\\n综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。\\n\\n技术问题\\n现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；\\n单一结构布局限制了试验类型，无法满足多样化试验需求；\\n无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；\\n电极更换不便，影响试验效率。\\n技术方案\\n本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\n\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\n高压导杆电极可通过电极过渡连接件进行更换；\\n3号气室端部设有可拆卸法兰结构；\\n多个石英玻璃观察窗口，用于观察放电过程；\\n装置支撑座和辅助支撑架支撑试验装置本体。\\n技术功效\\n与现有技术相比，本发明具有以下优点：\\n\\n采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\n可拆卸法兰结构设计便于更换电极和维护；\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\\n\\n典型实施例\\n本发明的试验装置整体呈\\\\\\\"L\\\\\\\"型，包括竖直部分和水平部分。\\n竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。\\n水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。\\n1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。\\n高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。\\n整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "758694d0-bde3-41cc-ab57-9835a5293f11",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claim\": \"1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n  \"disclosure\": \"技术领域\\n本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。\\n\\n背景技术\\n气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。\\n\\n然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。\\n\\n目前国内外现有的SF6气体绝缘试验装置存在以下不足：\\n\\n现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；\\n日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；\\n美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；\\n国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。\\n综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。\\n\\n技术问题\\n现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；\\n单一结构布局限制了试验类型，无法满足多样化试验需求；\\n无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；\\n电极更换不便，影响试验效率。\\n技术方案\\n本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\n\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\n高压导杆电极可通过电极过渡连接件进行更换；\\n3号气室端部设有可拆卸法兰结构；\\n多个石英玻璃观察窗口，用于观察放电过程；\\n装置支撑座和辅助支撑架支撑试验装置本体。\\n技术功效\\n与现有技术相比，本发明具有以下优点：\\n\\n采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\n可拆卸法兰结构设计便于更换电极和维护；\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\\n\\n典型实施例\\n本发明的试验装置整体呈\\\\\\\"L\\\\\\\"型，包括竖直部分和水平部分。\\n竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。\\n水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。\\n1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。\\n高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。\\n整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86fca4c8-da09-44a9-9e98-e648489e412f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "init",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claim\": \"1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n  \"disclosure\": \"技术领域\\n本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。\\n\\n背景技术\\n气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。\\n\\n然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。\\n\\n目前国内外现有的SF6气体绝缘试验装置存在以下不足：\\n\\n现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；\\n日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；\\n美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；\\n国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。\\n综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。\\n\\n技术问题\\n现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；\\n单一结构布局限制了试验类型，无法满足多样化试验需求；\\n无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；\\n电极更换不便，影响试验效率。\\n技术方案\\n本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\\\\\\\"L\\\\\\\"型的外形，包括：\\n\\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\\n高压导杆电极可通过电极过渡连接件进行更换；\\n3号气室端部设有可拆卸法兰结构；\\n多个石英玻璃观察窗口，用于观察放电过程；\\n装置支撑座和辅助支撑架支撑试验装置本体。\\n技术功效\\n与现有技术相比，本发明具有以下优点：\\n\\n采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\\n可拆卸法兰结构设计便于更换电极和维护；\\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。\\n\\n典型实施例\\n本发明的试验装置整体呈\\\\\\\"L\\\\\\\"型，包括竖直部分和水平部分。\\n竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。\\n水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。\\n1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。\\n高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。\\n整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c072192-4e1e-491d-88ca-ef3371d1d9b8",
+          "name": "AI37-4 Patent Specification Drafting (CNIPA) - Report Generation",
+          "request": {
+            "name": "AI37-4 Patent Specification Drafting (CNIPA) - Report Generation",
+            "description": {
+              "content": "Based on the technical features obtained from previous interfaces and complete information input by users (including invention title, classification numbers, technical problems/methods/benefits, feature tree, term lists, embodiments, images, etc.), generate a complete patent specification report, support asynchronous processing, and return task_id for querying generation status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "specification",
+                "generate-report",
+                "cnipa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"benefit\": \"<string>\",\n  \"classification\": \"<array>\",\n  \"embodiments\": [\n    {\n      \"claim_numbers\": \"<array>\",\n      \"embodiment_number\": \"<integer>\",\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"claim_numbers\": \"<array>\",\n      \"embodiment_number\": \"<integer>\",\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"concepts\": \"<array>\",\n          \"feature\": \"<string>\",\n          \"feature_deleted\": \"<integer>\"\n        },\n        {\n          \"concepts\": \"<array>\",\n          \"feature\": \"<string>\",\n          \"feature_deleted\": \"<integer>\"\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"simple_claim\": \"<string>\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"concepts\": \"<array>\",\n          \"feature\": \"<string>\",\n          \"feature_deleted\": \"<integer>\"\n        },\n        {\n          \"concepts\": \"<array>\",\n          \"feature\": \"<string>\",\n          \"feature_deleted\": \"<integer>\"\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"simple_claim\": \"<string>\"\n    }\n  ],\n  \"technical_methods\": \"<string>\",\n  \"technical_problem\": \"<string>\",\n  \"terms\": [\n    {\n      \"name\": \"<string>\",\n      \"unique_id\": \"<string>\",\n      \"annotated\": \"<boolean>\",\n      \"number\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"unique_id\": \"<string>\",\n      \"annotated\": \"<boolean>\",\n      \"number\": \"<string>\"\n    }\n  ],\n  \"urls\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1fcfb094-9073-422f-b713-952da6489ea7",
+              "name": "Successful ai37-4 patent specification drafting (cnipa) - report generation response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "generate-report",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n  \"benefit\": \"结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求\",\n  \"classification\": [\n    \"G01R31/12\",\n    \"H02G15/08\"\n  ],\n  \"embodiments\": [\n    {\n      \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n      \"label\": \"common\"\n    },\n    {\n      \"text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n      \"type\": \"设备\",\n      \"label\": \"outline\",\n      \"outline\": \"outline\",\n      \"claim_numbers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"embodiment_number\": 1,\n      \"reference_claim_number\": []\n    },\n    {\n      \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n      \"label\": \"common\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    }\n  ],\n  \"technical_methods\": \"采用三个气室形式的分段结构设计，减少试验过程中气体的使用量\",\n  \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大\",\n  \"terms\": [\n    {\n      \"name\": \"直流气体绝缘\",\n      \"annotated\": false,\n      \"unique_id\": \"1\"\n    },\n    {\n      \"name\": \"金属封闭输电线路\",\n      \"annotated\": false,\n      \"unique_id\": \"2\"\n    },\n    {\n      \"name\": \"试验研究装置\",\n      \"annotated\": false,\n      \"unique_id\": \"3\"\n    },\n    {\n      \"name\": \"L型\",\n      \"annotated\": false,\n      \"unique_id\": \"4\"\n    },\n    {\n      \"name\": \"外形\",\n      \"annotated\": false,\n      \"unique_id\": \"5\"\n    },\n    {\n      \"name\": \"竖直方向\",\n      \"annotated\": false,\n      \"unique_id\": \"6\"\n    },\n    {\n      \"name\": \"高压引线端\",\n      \"annotated\": false,\n      \"unique_id\": \"7\"\n    },\n    {\n      \"name\": \"高压均压环\",\n      \"annotated\": false,\n      \"unique_id\": \"8\"\n    },\n    {\n      \"name\": \"硅橡胶复合绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"9\"\n    },\n    {\n      \"name\": \"高压套管\",\n      \"annotated\": false,\n      \"unique_id\": \"10\"\n    },\n    {\n      \"name\": \"水平方向\",\n      \"annotated\": false,\n      \"unique_id\": \"11\"\n    },\n    {\n      \"name\": \"同轴分布\",\n      \"annotated\": false,\n      \"unique_id\": \"12\"\n    },\n    {\n      \"name\": \"高压导杆电极\",\n      \"annotated\": false,\n      \"unique_id\": \"13\"\n    },\n    {\n      \"name\": \"试验装置外壳\",\n      \"annotated\": false,\n      \"unique_id\": \"14\"\n    },\n    {\n      \"name\": \"1号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"15\"\n    },\n    {\n      \"name\": \"2号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"16\"\n    },\n    {\n      \"name\": \"3号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"17\"\n    },\n    {\n      \"name\": \"横向\",\n      \"annotated\": false,\n      \"unique_id\": \"18\"\n    },\n    {\n      \"name\": \"1号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"19\"\n    },\n    {\n      \"name\": \"2号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"20\"\n    },\n    {\n      \"name\": \"独立气室\",\n      \"annotated\": false,\n      \"unique_id\": \"21\"\n    },\n    {\n      \"name\": \"独立充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"22\"\n    },\n    {\n      \"name\": \"1号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"23\"\n    },\n    {\n      \"name\": \"2号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"24\"\n    },\n    {\n      \"name\": \"3号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"25\"\n    },\n    {\n      \"name\": \"充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"26\"\n    },\n    {\n      \"name\": \"气压表\",\n      \"annotated\": false,\n      \"unique_id\": \"27\"\n    },\n    {\n      \"name\": \"密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"28\"\n    },\n    {\n      \"name\": \"气压恒定\",\n      \"annotated\": false,\n      \"unique_id\": \"29\"\n    },\n    {\n      \"name\": \"不用于试验\",\n      \"annotated\": false,\n      \"unique_id\": \"30\"\n    },\n    {\n      \"name\": \"试验单元段\",\n      \"annotated\": false,\n      \"unique_id\": \"31\"\n    },\n    {\n      \"name\": \"棒板电极\",\n      \"annotated\": false,\n      \"unique_id\": \"32\"\n    },\n    {\n      \"name\": \"同轴圆柱电极\",\n      \"annotated\": false,\n      \"unique_id\": \"33\"\n    },\n    {\n      \"name\": \"支柱绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"34\"\n    },\n    {\n      \"name\": \"金属导电微粒\",\n      \"annotated\": false,\n      \"unique_id\": \"35\"\n    },\n    {\n      \"name\": \"SF6气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"36\"\n    },\n    {\n      \"name\": \"绝缘子闪络特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"37\"\n    },\n    {\n      \"name\": \"金属导电微粒试验\",\n      \"annotated\": false,\n      \"unique_id\": \"38\"\n    },\n    {\n      \"name\": \"温度补偿\",\n      \"annotated\": false,\n      \"unique_id\": \"39\"\n    },\n    {\n      \"name\": \"气体密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"40\"\n    },\n    {\n      \"name\": \"屏蔽均压罩\",\n      \"annotated\": false,\n      \"unique_id\": \"41\"\n    },\n    {\n      \"name\": \"电场\",\n      \"annotated\": false,\n      \"unique_id\": \"42\"\n    },\n    {\n      \"name\": \"同轴外壳电极\",\n      \"annotated\": false,\n      \"unique_id\": \"43\"\n    },\n    {\n      \"name\": \"电极对\",\n      \"annotated\": false,\n      \"unique_id\": \"44\"\n    },\n    {\n      \"name\": \"电极过渡连接件\",\n      \"annotated\": false,\n      \"unique_id\": \"45\"\n    },\n    {\n      \"name\": \"配套电极\",\n      \"annotated\": false,\n      \"unique_id\": \"46\"\n    },\n    {\n      \"name\": \"尺寸\",\n      \"annotated\": false,\n      \"unique_id\": \"47\"\n    },\n    {\n      \"name\": \"粗糙度\",\n      \"annotated\": false,\n      \"unique_id\": \"48\"\n    },\n    {\n      \"name\": \"气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"49\"\n    },\n    {\n      \"name\": \"可拆卸法兰结构\",\n      \"annotated\": false,\n      \"unique_id\": \"50\"\n    },\n    {\n      \"name\": \"1号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"51\"\n    },\n    {\n      \"name\": \"2号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"52\"\n    },\n    {\n      \"name\": \"3号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"53\"\n    },\n    {\n      \"name\": \"主试验石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"54\"\n    },\n    {\n      \"name\": \"石英玻璃\",\n      \"annotated\": false,\n      \"unique_id\": \"55\"\n    },\n    {\n      \"name\": \"远紫外材料\",\n      \"annotated\": false,\n      \"unique_id\": \"56\"\n    },\n    {\n      \"name\": \"放电过程\",\n      \"annotated\": false,\n      \"unique_id\": \"57\"\n    },\n    {\n      \"name\": \"波长\",\n      \"annotated\": false,\n      \"unique_id\": \"58\"\n    },\n    {\n      \"name\": \"光谱范围\",\n      \"annotated\": false,\n      \"unique_id\": \"59\"\n    },\n    {\n      \"name\": \"透过率\",\n      \"annotated\": false,\n      \"unique_id\": \"60\"\n    },\n    {\n      \"name\": \"不锈钢\",\n      \"annotated\": false,\n      \"unique_id\": \"61\"\n    },\n    {\n      \"name\": \"装置支撑座\",\n      \"annotated\": false,\n      \"unique_id\": \"62\"\n    },\n    {\n      \"name\": \"辅助支撑架\",\n      \"annotated\": false,\n      \"unique_id\": \"63\"\n    },\n    {\n      \"name\": \"试验装置本体\",\n      \"annotated\": false,\n      \"unique_id\": \"64\"\n    },\n    {\n      \"name\": \"平稳放置\",\n      \"annotated\": false,\n      \"unique_id\": \"65\"\n    },\n    {\n      \"name\": \"移动\",\n      \"annotated\": false,\n      \"unique_id\": \"66\"\n    }\n  ],\n  \"urls\": [\n    \"https://example.com/image1.jpg\",\n    \"https://example.com/image2.jpg\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5817,\n  \"data\": {\n    \"status\": 2,\n    \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n    \"report_url\": \"http://downloadurl\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b785d769-0451-4f8b-a2ec-538cd31696b8",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "generate-report",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n  \"benefit\": \"结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求\",\n  \"classification\": [\n    \"G01R31/12\",\n    \"H02G15/08\"\n  ],\n  \"embodiments\": [\n    {\n      \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n      \"label\": \"common\"\n    },\n    {\n      \"text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n      \"type\": \"设备\",\n      \"label\": \"outline\",\n      \"outline\": \"outline\",\n      \"claim_numbers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"embodiment_number\": 1,\n      \"reference_claim_number\": []\n    },\n    {\n      \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n      \"label\": \"common\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    }\n  ],\n  \"technical_methods\": \"采用三个气室形式的分段结构设计，减少试验过程中气体的使用量\",\n  \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大\",\n  \"terms\": [\n    {\n      \"name\": \"直流气体绝缘\",\n      \"annotated\": false,\n      \"unique_id\": \"1\"\n    },\n    {\n      \"name\": \"金属封闭输电线路\",\n      \"annotated\": false,\n      \"unique_id\": \"2\"\n    },\n    {\n      \"name\": \"试验研究装置\",\n      \"annotated\": false,\n      \"unique_id\": \"3\"\n    },\n    {\n      \"name\": \"L型\",\n      \"annotated\": false,\n      \"unique_id\": \"4\"\n    },\n    {\n      \"name\": \"外形\",\n      \"annotated\": false,\n      \"unique_id\": \"5\"\n    },\n    {\n      \"name\": \"竖直方向\",\n      \"annotated\": false,\n      \"unique_id\": \"6\"\n    },\n    {\n      \"name\": \"高压引线端\",\n      \"annotated\": false,\n      \"unique_id\": \"7\"\n    },\n    {\n      \"name\": \"高压均压环\",\n      \"annotated\": false,\n      \"unique_id\": \"8\"\n    },\n    {\n      \"name\": \"硅橡胶复合绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"9\"\n    },\n    {\n      \"name\": \"高压套管\",\n      \"annotated\": false,\n      \"unique_id\": \"10\"\n    },\n    {\n      \"name\": \"水平方向\",\n      \"annotated\": false,\n      \"unique_id\": \"11\"\n    },\n    {\n      \"name\": \"同轴分布\",\n      \"annotated\": false,\n      \"unique_id\": \"12\"\n    },\n    {\n      \"name\": \"高压导杆电极\",\n      \"annotated\": false,\n      \"unique_id\": \"13\"\n    },\n    {\n      \"name\": \"试验装置外壳\",\n      \"annotated\": false,\n      \"unique_id\": \"14\"\n    },\n    {\n      \"name\": \"1号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"15\"\n    },\n    {\n      \"name\": \"2号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"16\"\n    },\n    {\n      \"name\": \"3号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"17\"\n    },\n    {\n      \"name\": \"横向\",\n      \"annotated\": false,\n      \"unique_id\": \"18\"\n    },\n    {\n      \"name\": \"1号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"19\"\n    },\n    {\n      \"name\": \"2号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"20\"\n    },\n    {\n      \"name\": \"独立气室\",\n      \"annotated\": false,\n      \"unique_id\": \"21\"\n    },\n    {\n      \"name\": \"独立充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"22\"\n    },\n    {\n      \"name\": \"1号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"23\"\n    },\n    {\n      \"name\": \"2号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"24\"\n    },\n    {\n      \"name\": \"3号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"25\"\n    },\n    {\n      \"name\": \"充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"26\"\n    },\n    {\n      \"name\": \"气压表\",\n      \"annotated\": false,\n      \"unique_id\": \"27\"\n    },\n    {\n      \"name\": \"密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"28\"\n    },\n    {\n      \"name\": \"气压恒定\",\n      \"annotated\": false,\n      \"unique_id\": \"29\"\n    },\n    {\n      \"name\": \"不用于试验\",\n      \"annotated\": false,\n      \"unique_id\": \"30\"\n    },\n    {\n      \"name\": \"试验单元段\",\n      \"annotated\": false,\n      \"unique_id\": \"31\"\n    },\n    {\n      \"name\": \"棒板电极\",\n      \"annotated\": false,\n      \"unique_id\": \"32\"\n    },\n    {\n      \"name\": \"同轴圆柱电极\",\n      \"annotated\": false,\n      \"unique_id\": \"33\"\n    },\n    {\n      \"name\": \"支柱绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"34\"\n    },\n    {\n      \"name\": \"金属导电微粒\",\n      \"annotated\": false,\n      \"unique_id\": \"35\"\n    },\n    {\n      \"name\": \"SF6气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"36\"\n    },\n    {\n      \"name\": \"绝缘子闪络特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"37\"\n    },\n    {\n      \"name\": \"金属导电微粒试验\",\n      \"annotated\": false,\n      \"unique_id\": \"38\"\n    },\n    {\n      \"name\": \"温度补偿\",\n      \"annotated\": false,\n      \"unique_id\": \"39\"\n    },\n    {\n      \"name\": \"气体密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"40\"\n    },\n    {\n      \"name\": \"屏蔽均压罩\",\n      \"annotated\": false,\n      \"unique_id\": \"41\"\n    },\n    {\n      \"name\": \"电场\",\n      \"annotated\": false,\n      \"unique_id\": \"42\"\n    },\n    {\n      \"name\": \"同轴外壳电极\",\n      \"annotated\": false,\n      \"unique_id\": \"43\"\n    },\n    {\n      \"name\": \"电极对\",\n      \"annotated\": false,\n      \"unique_id\": \"44\"\n    },\n    {\n      \"name\": \"电极过渡连接件\",\n      \"annotated\": false,\n      \"unique_id\": \"45\"\n    },\n    {\n      \"name\": \"配套电极\",\n      \"annotated\": false,\n      \"unique_id\": \"46\"\n    },\n    {\n      \"name\": \"尺寸\",\n      \"annotated\": false,\n      \"unique_id\": \"47\"\n    },\n    {\n      \"name\": \"粗糙度\",\n      \"annotated\": false,\n      \"unique_id\": \"48\"\n    },\n    {\n      \"name\": \"气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"49\"\n    },\n    {\n      \"name\": \"可拆卸法兰结构\",\n      \"annotated\": false,\n      \"unique_id\": \"50\"\n    },\n    {\n      \"name\": \"1号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"51\"\n    },\n    {\n      \"name\": \"2号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"52\"\n    },\n    {\n      \"name\": \"3号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"53\"\n    },\n    {\n      \"name\": \"主试验石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"54\"\n    },\n    {\n      \"name\": \"石英玻璃\",\n      \"annotated\": false,\n      \"unique_id\": \"55\"\n    },\n    {\n      \"name\": \"远紫外材料\",\n      \"annotated\": false,\n      \"unique_id\": \"56\"\n    },\n    {\n      \"name\": \"放电过程\",\n      \"annotated\": false,\n      \"unique_id\": \"57\"\n    },\n    {\n      \"name\": \"波长\",\n      \"annotated\": false,\n      \"unique_id\": \"58\"\n    },\n    {\n      \"name\": \"光谱范围\",\n      \"annotated\": false,\n      \"unique_id\": \"59\"\n    },\n    {\n      \"name\": \"透过率\",\n      \"annotated\": false,\n      \"unique_id\": \"60\"\n    },\n    {\n      \"name\": \"不锈钢\",\n      \"annotated\": false,\n      \"unique_id\": \"61\"\n    },\n    {\n      \"name\": \"装置支撑座\",\n      \"annotated\": false,\n      \"unique_id\": \"62\"\n    },\n    {\n      \"name\": \"辅助支撑架\",\n      \"annotated\": false,\n      \"unique_id\": \"63\"\n    },\n    {\n      \"name\": \"试验装置本体\",\n      \"annotated\": false,\n      \"unique_id\": \"64\"\n    },\n    {\n      \"name\": \"平稳放置\",\n      \"annotated\": false,\n      \"unique_id\": \"65\"\n    },\n    {\n      \"name\": \"移动\",\n      \"annotated\": false,\n      \"unique_id\": \"66\"\n    }\n  ],\n  \"urls\": [\n    \"https://example.com/image1.jpg\",\n    \"https://example.com/image2.jpg\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecefe43f-470f-4c3c-b91a-d74badd0c275",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "generate-report",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n  \"benefit\": \"结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求\",\n  \"classification\": [\n    \"G01R31/12\",\n    \"H02G15/08\"\n  ],\n  \"embodiments\": [\n    {\n      \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n      \"label\": \"common\"\n    },\n    {\n      \"text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n      \"type\": \"设备\",\n      \"label\": \"outline\",\n      \"outline\": \"outline\",\n      \"claim_numbers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"embodiment_number\": 1,\n      \"reference_claim_number\": []\n    },\n    {\n      \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n      \"label\": \"common\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    }\n  ],\n  \"technical_methods\": \"采用三个气室形式的分段结构设计，减少试验过程中气体的使用量\",\n  \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大\",\n  \"terms\": [\n    {\n      \"name\": \"直流气体绝缘\",\n      \"annotated\": false,\n      \"unique_id\": \"1\"\n    },\n    {\n      \"name\": \"金属封闭输电线路\",\n      \"annotated\": false,\n      \"unique_id\": \"2\"\n    },\n    {\n      \"name\": \"试验研究装置\",\n      \"annotated\": false,\n      \"unique_id\": \"3\"\n    },\n    {\n      \"name\": \"L型\",\n      \"annotated\": false,\n      \"unique_id\": \"4\"\n    },\n    {\n      \"name\": \"外形\",\n      \"annotated\": false,\n      \"unique_id\": \"5\"\n    },\n    {\n      \"name\": \"竖直方向\",\n      \"annotated\": false,\n      \"unique_id\": \"6\"\n    },\n    {\n      \"name\": \"高压引线端\",\n      \"annotated\": false,\n      \"unique_id\": \"7\"\n    },\n    {\n      \"name\": \"高压均压环\",\n      \"annotated\": false,\n      \"unique_id\": \"8\"\n    },\n    {\n      \"name\": \"硅橡胶复合绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"9\"\n    },\n    {\n      \"name\": \"高压套管\",\n      \"annotated\": false,\n      \"unique_id\": \"10\"\n    },\n    {\n      \"name\": \"水平方向\",\n      \"annotated\": false,\n      \"unique_id\": \"11\"\n    },\n    {\n      \"name\": \"同轴分布\",\n      \"annotated\": false,\n      \"unique_id\": \"12\"\n    },\n    {\n      \"name\": \"高压导杆电极\",\n      \"annotated\": false,\n      \"unique_id\": \"13\"\n    },\n    {\n      \"name\": \"试验装置外壳\",\n      \"annotated\": false,\n      \"unique_id\": \"14\"\n    },\n    {\n      \"name\": \"1号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"15\"\n    },\n    {\n      \"name\": \"2号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"16\"\n    },\n    {\n      \"name\": \"3号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"17\"\n    },\n    {\n      \"name\": \"横向\",\n      \"annotated\": false,\n      \"unique_id\": \"18\"\n    },\n    {\n      \"name\": \"1号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"19\"\n    },\n    {\n      \"name\": \"2号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"20\"\n    },\n    {\n      \"name\": \"独立气室\",\n      \"annotated\": false,\n      \"unique_id\": \"21\"\n    },\n    {\n      \"name\": \"独立充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"22\"\n    },\n    {\n      \"name\": \"1号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"23\"\n    },\n    {\n      \"name\": \"2号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"24\"\n    },\n    {\n      \"name\": \"3号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"25\"\n    },\n    {\n      \"name\": \"充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"26\"\n    },\n    {\n      \"name\": \"气压表\",\n      \"annotated\": false,\n      \"unique_id\": \"27\"\n    },\n    {\n      \"name\": \"密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"28\"\n    },\n    {\n      \"name\": \"气压恒定\",\n      \"annotated\": false,\n      \"unique_id\": \"29\"\n    },\n    {\n      \"name\": \"不用于试验\",\n      \"annotated\": false,\n      \"unique_id\": \"30\"\n    },\n    {\n      \"name\": \"试验单元段\",\n      \"annotated\": false,\n      \"unique_id\": \"31\"\n    },\n    {\n      \"name\": \"棒板电极\",\n      \"annotated\": false,\n      \"unique_id\": \"32\"\n    },\n    {\n      \"name\": \"同轴圆柱电极\",\n      \"annotated\": false,\n      \"unique_id\": \"33\"\n    },\n    {\n      \"name\": \"支柱绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"34\"\n    },\n    {\n      \"name\": \"金属导电微粒\",\n      \"annotated\": false,\n      \"unique_id\": \"35\"\n    },\n    {\n      \"name\": \"SF6气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"36\"\n    },\n    {\n      \"name\": \"绝缘子闪络特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"37\"\n    },\n    {\n      \"name\": \"金属导电微粒试验\",\n      \"annotated\": false,\n      \"unique_id\": \"38\"\n    },\n    {\n      \"name\": \"温度补偿\",\n      \"annotated\": false,\n      \"unique_id\": \"39\"\n    },\n    {\n      \"name\": \"气体密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"40\"\n    },\n    {\n      \"name\": \"屏蔽均压罩\",\n      \"annotated\": false,\n      \"unique_id\": \"41\"\n    },\n    {\n      \"name\": \"电场\",\n      \"annotated\": false,\n      \"unique_id\": \"42\"\n    },\n    {\n      \"name\": \"同轴外壳电极\",\n      \"annotated\": false,\n      \"unique_id\": \"43\"\n    },\n    {\n      \"name\": \"电极对\",\n      \"annotated\": false,\n      \"unique_id\": \"44\"\n    },\n    {\n      \"name\": \"电极过渡连接件\",\n      \"annotated\": false,\n      \"unique_id\": \"45\"\n    },\n    {\n      \"name\": \"配套电极\",\n      \"annotated\": false,\n      \"unique_id\": \"46\"\n    },\n    {\n      \"name\": \"尺寸\",\n      \"annotated\": false,\n      \"unique_id\": \"47\"\n    },\n    {\n      \"name\": \"粗糙度\",\n      \"annotated\": false,\n      \"unique_id\": \"48\"\n    },\n    {\n      \"name\": \"气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"49\"\n    },\n    {\n      \"name\": \"可拆卸法兰结构\",\n      \"annotated\": false,\n      \"unique_id\": \"50\"\n    },\n    {\n      \"name\": \"1号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"51\"\n    },\n    {\n      \"name\": \"2号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"52\"\n    },\n    {\n      \"name\": \"3号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"53\"\n    },\n    {\n      \"name\": \"主试验石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"54\"\n    },\n    {\n      \"name\": \"石英玻璃\",\n      \"annotated\": false,\n      \"unique_id\": \"55\"\n    },\n    {\n      \"name\": \"远紫外材料\",\n      \"annotated\": false,\n      \"unique_id\": \"56\"\n    },\n    {\n      \"name\": \"放电过程\",\n      \"annotated\": false,\n      \"unique_id\": \"57\"\n    },\n    {\n      \"name\": \"波长\",\n      \"annotated\": false,\n      \"unique_id\": \"58\"\n    },\n    {\n      \"name\": \"光谱范围\",\n      \"annotated\": false,\n      \"unique_id\": \"59\"\n    },\n    {\n      \"name\": \"透过率\",\n      \"annotated\": false,\n      \"unique_id\": \"60\"\n    },\n    {\n      \"name\": \"不锈钢\",\n      \"annotated\": false,\n      \"unique_id\": \"61\"\n    },\n    {\n      \"name\": \"装置支撑座\",\n      \"annotated\": false,\n      \"unique_id\": \"62\"\n    },\n    {\n      \"name\": \"辅助支撑架\",\n      \"annotated\": false,\n      \"unique_id\": \"63\"\n    },\n    {\n      \"name\": \"试验装置本体\",\n      \"annotated\": false,\n      \"unique_id\": \"64\"\n    },\n    {\n      \"name\": \"平稳放置\",\n      \"annotated\": false,\n      \"unique_id\": \"65\"\n    },\n    {\n      \"name\": \"移动\",\n      \"annotated\": false,\n      \"unique_id\": \"66\"\n    }\n  ],\n  \"urls\": [\n    \"https://example.com/image1.jpg\",\n    \"https://example.com/image2.jpg\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd80c249-e3de-4c1a-825c-c2bdf09608ce",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "generate-report",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n  \"benefit\": \"结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求\",\n  \"classification\": [\n    \"G01R31/12\",\n    \"H02G15/08\"\n  ],\n  \"embodiments\": [\n    {\n      \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n      \"label\": \"common\"\n    },\n    {\n      \"text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n      \"type\": \"设备\",\n      \"label\": \"outline\",\n      \"outline\": \"outline\",\n      \"claim_numbers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"embodiment_number\": 1,\n      \"reference_claim_number\": []\n    },\n    {\n      \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n      \"label\": \"common\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    }\n  ],\n  \"technical_methods\": \"采用三个气室形式的分段结构设计，减少试验过程中气体的使用量\",\n  \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大\",\n  \"terms\": [\n    {\n      \"name\": \"直流气体绝缘\",\n      \"annotated\": false,\n      \"unique_id\": \"1\"\n    },\n    {\n      \"name\": \"金属封闭输电线路\",\n      \"annotated\": false,\n      \"unique_id\": \"2\"\n    },\n    {\n      \"name\": \"试验研究装置\",\n      \"annotated\": false,\n      \"unique_id\": \"3\"\n    },\n    {\n      \"name\": \"L型\",\n      \"annotated\": false,\n      \"unique_id\": \"4\"\n    },\n    {\n      \"name\": \"外形\",\n      \"annotated\": false,\n      \"unique_id\": \"5\"\n    },\n    {\n      \"name\": \"竖直方向\",\n      \"annotated\": false,\n      \"unique_id\": \"6\"\n    },\n    {\n      \"name\": \"高压引线端\",\n      \"annotated\": false,\n      \"unique_id\": \"7\"\n    },\n    {\n      \"name\": \"高压均压环\",\n      \"annotated\": false,\n      \"unique_id\": \"8\"\n    },\n    {\n      \"name\": \"硅橡胶复合绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"9\"\n    },\n    {\n      \"name\": \"高压套管\",\n      \"annotated\": false,\n      \"unique_id\": \"10\"\n    },\n    {\n      \"name\": \"水平方向\",\n      \"annotated\": false,\n      \"unique_id\": \"11\"\n    },\n    {\n      \"name\": \"同轴分布\",\n      \"annotated\": false,\n      \"unique_id\": \"12\"\n    },\n    {\n      \"name\": \"高压导杆电极\",\n      \"annotated\": false,\n      \"unique_id\": \"13\"\n    },\n    {\n      \"name\": \"试验装置外壳\",\n      \"annotated\": false,\n      \"unique_id\": \"14\"\n    },\n    {\n      \"name\": \"1号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"15\"\n    },\n    {\n      \"name\": \"2号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"16\"\n    },\n    {\n      \"name\": \"3号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"17\"\n    },\n    {\n      \"name\": \"横向\",\n      \"annotated\": false,\n      \"unique_id\": \"18\"\n    },\n    {\n      \"name\": \"1号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"19\"\n    },\n    {\n      \"name\": \"2号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"20\"\n    },\n    {\n      \"name\": \"独立气室\",\n      \"annotated\": false,\n      \"unique_id\": \"21\"\n    },\n    {\n      \"name\": \"独立充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"22\"\n    },\n    {\n      \"name\": \"1号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"23\"\n    },\n    {\n      \"name\": \"2号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"24\"\n    },\n    {\n      \"name\": \"3号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"25\"\n    },\n    {\n      \"name\": \"充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"26\"\n    },\n    {\n      \"name\": \"气压表\",\n      \"annotated\": false,\n      \"unique_id\": \"27\"\n    },\n    {\n      \"name\": \"密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"28\"\n    },\n    {\n      \"name\": \"气压恒定\",\n      \"annotated\": false,\n      \"unique_id\": \"29\"\n    },\n    {\n      \"name\": \"不用于试验\",\n      \"annotated\": false,\n      \"unique_id\": \"30\"\n    },\n    {\n      \"name\": \"试验单元段\",\n      \"annotated\": false,\n      \"unique_id\": \"31\"\n    },\n    {\n      \"name\": \"棒板电极\",\n      \"annotated\": false,\n      \"unique_id\": \"32\"\n    },\n    {\n      \"name\": \"同轴圆柱电极\",\n      \"annotated\": false,\n      \"unique_id\": \"33\"\n    },\n    {\n      \"name\": \"支柱绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"34\"\n    },\n    {\n      \"name\": \"金属导电微粒\",\n      \"annotated\": false,\n      \"unique_id\": \"35\"\n    },\n    {\n      \"name\": \"SF6气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"36\"\n    },\n    {\n      \"name\": \"绝缘子闪络特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"37\"\n    },\n    {\n      \"name\": \"金属导电微粒试验\",\n      \"annotated\": false,\n      \"unique_id\": \"38\"\n    },\n    {\n      \"name\": \"温度补偿\",\n      \"annotated\": false,\n      \"unique_id\": \"39\"\n    },\n    {\n      \"name\": \"气体密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"40\"\n    },\n    {\n      \"name\": \"屏蔽均压罩\",\n      \"annotated\": false,\n      \"unique_id\": \"41\"\n    },\n    {\n      \"name\": \"电场\",\n      \"annotated\": false,\n      \"unique_id\": \"42\"\n    },\n    {\n      \"name\": \"同轴外壳电极\",\n      \"annotated\": false,\n      \"unique_id\": \"43\"\n    },\n    {\n      \"name\": \"电极对\",\n      \"annotated\": false,\n      \"unique_id\": \"44\"\n    },\n    {\n      \"name\": \"电极过渡连接件\",\n      \"annotated\": false,\n      \"unique_id\": \"45\"\n    },\n    {\n      \"name\": \"配套电极\",\n      \"annotated\": false,\n      \"unique_id\": \"46\"\n    },\n    {\n      \"name\": \"尺寸\",\n      \"annotated\": false,\n      \"unique_id\": \"47\"\n    },\n    {\n      \"name\": \"粗糙度\",\n      \"annotated\": false,\n      \"unique_id\": \"48\"\n    },\n    {\n      \"name\": \"气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"49\"\n    },\n    {\n      \"name\": \"可拆卸法兰结构\",\n      \"annotated\": false,\n      \"unique_id\": \"50\"\n    },\n    {\n      \"name\": \"1号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"51\"\n    },\n    {\n      \"name\": \"2号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"52\"\n    },\n    {\n      \"name\": \"3号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"53\"\n    },\n    {\n      \"name\": \"主试验石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"54\"\n    },\n    {\n      \"name\": \"石英玻璃\",\n      \"annotated\": false,\n      \"unique_id\": \"55\"\n    },\n    {\n      \"name\": \"远紫外材料\",\n      \"annotated\": false,\n      \"unique_id\": \"56\"\n    },\n    {\n      \"name\": \"放电过程\",\n      \"annotated\": false,\n      \"unique_id\": \"57\"\n    },\n    {\n      \"name\": \"波长\",\n      \"annotated\": false,\n      \"unique_id\": \"58\"\n    },\n    {\n      \"name\": \"光谱范围\",\n      \"annotated\": false,\n      \"unique_id\": \"59\"\n    },\n    {\n      \"name\": \"透过率\",\n      \"annotated\": false,\n      \"unique_id\": \"60\"\n    },\n    {\n      \"name\": \"不锈钢\",\n      \"annotated\": false,\n      \"unique_id\": \"61\"\n    },\n    {\n      \"name\": \"装置支撑座\",\n      \"annotated\": false,\n      \"unique_id\": \"62\"\n    },\n    {\n      \"name\": \"辅助支撑架\",\n      \"annotated\": false,\n      \"unique_id\": \"63\"\n    },\n    {\n      \"name\": \"试验装置本体\",\n      \"annotated\": false,\n      \"unique_id\": \"64\"\n    },\n    {\n      \"name\": \"平稳放置\",\n      \"annotated\": false,\n      \"unique_id\": \"65\"\n    },\n    {\n      \"name\": \"移动\",\n      \"annotated\": false,\n      \"unique_id\": \"66\"\n    }\n  ],\n  \"urls\": [\n    \"https://example.com/image1.jpg\",\n    \"https://example.com/image2.jpg\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31b3177b-f133-4951-999a-0bb65856d590",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "generate-report",
+                    "cnipa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"设备\",\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\",\n  \"benefit\": \"结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求\",\n  \"classification\": [\n    \"G01R31/12\",\n    \"H02G15/08\"\n  ],\n  \"embodiments\": [\n    {\n      \"text\": \"为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。\",\n      \"label\": \"common\"\n    },\n    {\n      \"text\": \"\\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\\n\\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\\n\\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\\n\\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\\n\\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述3号气室端部设有可拆卸法兰结构。\\n\\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\\n\\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。\",\n      \"type\": \"设备\",\n      \"label\": \"outline\",\n      \"outline\": \"outline\",\n      \"claim_numbers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"embodiment_number\": 1,\n      \"reference_claim_number\": []\n    },\n    {\n      \"text\": \"最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。\",\n      \"label\": \"common\"\n    }\n  ],\n  \"feature_tree\": [\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    },\n    {\n      \"claim_features\": [\n        {\n          \"feature\": \"还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动\",\n          \"concepts\": [\n            \"不锈钢\",\n            \"装置支撑座\",\n            \"辅助支撑架\",\n            \"试验装置本体\",\n            \"平稳放置\",\n            \"移动\"\n          ]\n        }\n      ],\n      \"num\": \"<string>\",\n      \"parent\": \"1,2,3,4,5,6\",\n      \"simple_claim\": \"一种用于直流气体绝缘金属封闭输电线路的试验研究装置\"\n    }\n  ],\n  \"technical_methods\": \"采用三个气室形式的分段结构设计，减少试验过程中气体的使用量\",\n  \"technical_problem\": \"现有SF6气体绝缘试验装置体积过大，气体消耗量大\",\n  \"terms\": [\n    {\n      \"name\": \"直流气体绝缘\",\n      \"annotated\": false,\n      \"unique_id\": \"1\"\n    },\n    {\n      \"name\": \"金属封闭输电线路\",\n      \"annotated\": false,\n      \"unique_id\": \"2\"\n    },\n    {\n      \"name\": \"试验研究装置\",\n      \"annotated\": false,\n      \"unique_id\": \"3\"\n    },\n    {\n      \"name\": \"L型\",\n      \"annotated\": false,\n      \"unique_id\": \"4\"\n    },\n    {\n      \"name\": \"外形\",\n      \"annotated\": false,\n      \"unique_id\": \"5\"\n    },\n    {\n      \"name\": \"竖直方向\",\n      \"annotated\": false,\n      \"unique_id\": \"6\"\n    },\n    {\n      \"name\": \"高压引线端\",\n      \"annotated\": false,\n      \"unique_id\": \"7\"\n    },\n    {\n      \"name\": \"高压均压环\",\n      \"annotated\": false,\n      \"unique_id\": \"8\"\n    },\n    {\n      \"name\": \"硅橡胶复合绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"9\"\n    },\n    {\n      \"name\": \"高压套管\",\n      \"annotated\": false,\n      \"unique_id\": \"10\"\n    },\n    {\n      \"name\": \"水平方向\",\n      \"annotated\": false,\n      \"unique_id\": \"11\"\n    },\n    {\n      \"name\": \"同轴分布\",\n      \"annotated\": false,\n      \"unique_id\": \"12\"\n    },\n    {\n      \"name\": \"高压导杆电极\",\n      \"annotated\": false,\n      \"unique_id\": \"13\"\n    },\n    {\n      \"name\": \"试验装置外壳\",\n      \"annotated\": false,\n      \"unique_id\": \"14\"\n    },\n    {\n      \"name\": \"1号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"15\"\n    },\n    {\n      \"name\": \"2号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"16\"\n    },\n    {\n      \"name\": \"3号气室\",\n      \"annotated\": false,\n      \"unique_id\": \"17\"\n    },\n    {\n      \"name\": \"横向\",\n      \"annotated\": false,\n      \"unique_id\": \"18\"\n    },\n    {\n      \"name\": \"1号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"19\"\n    },\n    {\n      \"name\": \"2号盆式绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"20\"\n    },\n    {\n      \"name\": \"独立气室\",\n      \"annotated\": false,\n      \"unique_id\": \"21\"\n    },\n    {\n      \"name\": \"独立充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"22\"\n    },\n    {\n      \"name\": \"1号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"23\"\n    },\n    {\n      \"name\": \"2号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"24\"\n    },\n    {\n      \"name\": \"3号充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"25\"\n    },\n    {\n      \"name\": \"充放气阀门\",\n      \"annotated\": false,\n      \"unique_id\": \"26\"\n    },\n    {\n      \"name\": \"气压表\",\n      \"annotated\": false,\n      \"unique_id\": \"27\"\n    },\n    {\n      \"name\": \"密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"28\"\n    },\n    {\n      \"name\": \"气压恒定\",\n      \"annotated\": false,\n      \"unique_id\": \"29\"\n    },\n    {\n      \"name\": \"不用于试验\",\n      \"annotated\": false,\n      \"unique_id\": \"30\"\n    },\n    {\n      \"name\": \"试验单元段\",\n      \"annotated\": false,\n      \"unique_id\": \"31\"\n    },\n    {\n      \"name\": \"棒板电极\",\n      \"annotated\": false,\n      \"unique_id\": \"32\"\n    },\n    {\n      \"name\": \"同轴圆柱电极\",\n      \"annotated\": false,\n      \"unique_id\": \"33\"\n    },\n    {\n      \"name\": \"支柱绝缘子\",\n      \"annotated\": false,\n      \"unique_id\": \"34\"\n    },\n    {\n      \"name\": \"金属导电微粒\",\n      \"annotated\": false,\n      \"unique_id\": \"35\"\n    },\n    {\n      \"name\": \"SF6气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"36\"\n    },\n    {\n      \"name\": \"绝缘子闪络特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"37\"\n    },\n    {\n      \"name\": \"金属导电微粒试验\",\n      \"annotated\": false,\n      \"unique_id\": \"38\"\n    },\n    {\n      \"name\": \"温度补偿\",\n      \"annotated\": false,\n      \"unique_id\": \"39\"\n    },\n    {\n      \"name\": \"气体密度计\",\n      \"annotated\": false,\n      \"unique_id\": \"40\"\n    },\n    {\n      \"name\": \"屏蔽均压罩\",\n      \"annotated\": false,\n      \"unique_id\": \"41\"\n    },\n    {\n      \"name\": \"电场\",\n      \"annotated\": false,\n      \"unique_id\": \"42\"\n    },\n    {\n      \"name\": \"同轴外壳电极\",\n      \"annotated\": false,\n      \"unique_id\": \"43\"\n    },\n    {\n      \"name\": \"电极对\",\n      \"annotated\": false,\n      \"unique_id\": \"44\"\n    },\n    {\n      \"name\": \"电极过渡连接件\",\n      \"annotated\": false,\n      \"unique_id\": \"45\"\n    },\n    {\n      \"name\": \"配套电极\",\n      \"annotated\": false,\n      \"unique_id\": \"46\"\n    },\n    {\n      \"name\": \"尺寸\",\n      \"annotated\": false,\n      \"unique_id\": \"47\"\n    },\n    {\n      \"name\": \"粗糙度\",\n      \"annotated\": false,\n      \"unique_id\": \"48\"\n    },\n    {\n      \"name\": \"气体间隙绝缘特性试验\",\n      \"annotated\": false,\n      \"unique_id\": \"49\"\n    },\n    {\n      \"name\": \"可拆卸法兰结构\",\n      \"annotated\": false,\n      \"unique_id\": \"50\"\n    },\n    {\n      \"name\": \"1号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"51\"\n    },\n    {\n      \"name\": \"2号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"52\"\n    },\n    {\n      \"name\": \"3号石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"53\"\n    },\n    {\n      \"name\": \"主试验石英玻璃观察窗口\",\n      \"annotated\": false,\n      \"unique_id\": \"54\"\n    },\n    {\n      \"name\": \"石英玻璃\",\n      \"annotated\": false,\n      \"unique_id\": \"55\"\n    },\n    {\n      \"name\": \"远紫外材料\",\n      \"annotated\": false,\n      \"unique_id\": \"56\"\n    },\n    {\n      \"name\": \"放电过程\",\n      \"annotated\": false,\n      \"unique_id\": \"57\"\n    },\n    {\n      \"name\": \"波长\",\n      \"annotated\": false,\n      \"unique_id\": \"58\"\n    },\n    {\n      \"name\": \"光谱范围\",\n      \"annotated\": false,\n      \"unique_id\": \"59\"\n    },\n    {\n      \"name\": \"透过率\",\n      \"annotated\": false,\n      \"unique_id\": \"60\"\n    },\n    {\n      \"name\": \"不锈钢\",\n      \"annotated\": false,\n      \"unique_id\": \"61\"\n    },\n    {\n      \"name\": \"装置支撑座\",\n      \"annotated\": false,\n      \"unique_id\": \"62\"\n    },\n    {\n      \"name\": \"辅助支撑架\",\n      \"annotated\": false,\n      \"unique_id\": \"63\"\n    },\n    {\n      \"name\": \"试验装置本体\",\n      \"annotated\": false,\n      \"unique_id\": \"64\"\n    },\n    {\n      \"name\": \"平稳放置\",\n      \"annotated\": false,\n      \"unique_id\": \"65\"\n    },\n    {\n      \"name\": \"移动\",\n      \"annotated\": false,\n      \"unique_id\": \"66\"\n    }\n  ],\n  \"urls\": [\n    \"https://example.com/image1.jpg\",\n    \"https://example.com/image2.jpg\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be3548a5-70e6-44fd-ab75-cbfc0dda2857",
+          "name": "AI37-5 Patent Specification Drafting (CNIPA) - Report Download",
+          "request": {
+            "name": "AI37-5 Patent Specification Drafting (CNIPA) - Report Download",
+            "description": {
+              "content": "Based on the task_id returned by the generate specification report interface, query the report generation status and obtain the download link. After the report generation is completed, the complete patent specification document can be obtained through the returned download link.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "specification",
+                "download-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7de182e3-28e8-4967-b832-fc542332bc4e",
+              "name": "Successful ai37-5 patent specification drafting (cnipa) - report download response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "download-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5817,\n  \"data\": {\n    \"status\": 2,\n    \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n    \"report_url\": \"http://downloadurl\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a0d1707-240b-41ed-86d7-31877936e5a9",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "download-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4846561a-e380-41f3-8f0b-f6ee844c2b4a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "download-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e62e94a-f013-4a36-8746-b749613b84e0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "download-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af645f20-8a0c-47bd-b909-62a24decfc0f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "specification",
+                    "download-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91173768-5308-4f3e-a4dc-8d44071a6bb3",
+    "name": "Patsnap Open Platform AI Translation Specification Drafting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

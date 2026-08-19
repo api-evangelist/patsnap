@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation API
   version: 1.0.0
@@ -78,6 +78,38 @@ paths:
               $ref: '#/components/schemas/AI61AiTranslationRequest'
 components:
   schemas:
+    AI61AiTranslation_AiTranslationResponse:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.
+        target_lang:
+          type: string
+          example: EN
+          description: Target language.
+        translate_result:
+          type: string
+          example: Hello, world!
+          description: Translation result.
+    AI61AiTranslationRequest:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
+        target_lang:
+          type: string
+          example: EN
+          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
+        text:
+          type: string
+          example: 你好，世界！
+          description: The original text that needs to be translated.Cannot exceed 2000 characters
+      required:
+      - text
     T010HiroTranslationTranslateRequest:
       type: object
       properties:
@@ -121,58 +153,6 @@ components:
       required:
       - status
       - error_code
-    AI61AiTranslation_AiTranslationResponse:
-      type: object
-      properties:
-        source_lang:
-          type: string
-          example: CN
-          description: Source language.
-        target_lang:
-          type: string
-          example: EN
-          description: Target language.
-        translate_result:
-          type: string
-          example: Hello, world!
-          description: Translation result.
-    T010HiroTranslationTranslate_HiroTranslateResponse:
-      type: object
-      properties:
-        state:
-          type: string
-          example: success
-          description: Execution status, always success
-        textTranslated:
-          type: string
-          example: The invention discloses a classified marking device for archive management file storage.
-          description: Full translated text
-        translatedCharacterCount:
-          type: integer
-          format: int32
-          example: 82
-          description: Character count of translated text
-      required:
-      - state
-      - textTranslated
-      - translatedCharacterCount
-    AI61AiTranslationRequest:
-      type: object
-      properties:
-        source_lang:
-          type: string
-          example: CN
-          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
-        target_lang:
-          type: string
-          example: EN
-          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
-        text:
-          type: string
-          example: 你好，世界！
-          description: The original text that needs to be translated.Cannot exceed 2000 characters
-      required:
-      - text
     T010HiroTranslationTranslateResponse:
       type: object
       properties:
@@ -193,6 +173,26 @@ components:
       required:
       - status
       - error_code
+    T010HiroTranslationTranslate_HiroTranslateResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          example: success
+          description: Execution status, always success
+        textTranslated:
+          type: string
+          example: The invention discloses a classified marking device for archive management file storage.
+          description: Full translated text
+        translatedCharacterCount:
+          type: integer
+          format: int32
+          example: 82
+          description: Character count of translated text
+      required:
+      - state
+      - textTranslated
+      - translatedCharacterCount
   securitySchemes:
     bearerAuth:
       type: http

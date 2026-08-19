@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Chemical SAR Extract API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chemical SAR Extract",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit SAR Extraction Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/eurekals/open/sar/file/extract",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language, CN or EN"
+              },
+              {
+                "name": "pn",
+                "value": "",
+                "type": "query",
+                "description": "Patent PN number"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Supports patent PN number or PDF file upload. The system will automatically download and create a SAR extraction task"
+        },
+        {
+          "info": {
+            "name": "Get SAR File Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/eurekals/open/sar/file/detail",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query the status and result of a SAR extraction task. Returns details after all files are parsed"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1805 @@
+{
+  "item": [
+    {
+      "id": "2fdc3efc-24b1-4e93-9e7c-54841173b52c",
+      "name": "Drug Mining Data",
+      "description": {
+        "content": "Drug Mining Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f55da359-8189-4af7-8ed9-c93835fc6dcb",
+          "name": "B031 Medical News",
+          "request": {
+            "name": "B031 Medical News",
+            "description": {
+              "content": "Obtain news about title, content, publish date etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "news_id",
+                  "value": "<string>",
+                  "description": "(Required) News ID, obtain this through the [B045] medical news search interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "976c86f5-c658-4844-888f-779da31dc90d",
+              "name": "Successful b031 medical news response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "news_id",
+                      "value": "f57e970e-8f97-39b7-a6be-51846e92bee1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 6526,\n  \"data\": {\n    \"drug\": [\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      }\n    ],\n    \"tags\": [\n      \"Careers\",\n      \"Resume\",\n      \"BioSpace\",\n      \"advice\"\n    ],\n    \"title\": \"Roche to reintroduce Susvimo in the US for people with neovascular age-related macular degeneration (nAMD)\",\n    \"author\": [\n      \"Thomas  Fink\"\n    ],\n    \"target\": [\n      {\n        \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"VEGF\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Vascular endothelial growth factor\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"血管内皮生长因子\"\n          }\n        ]\n      }\n    ],\n    \"channel\": [\n      \"company information\"\n    ],\n    \"content\": \"The FDA has approved updates to Susvimo, which will be available to US retina specialists and patients with nAMD in the coming weeks\\\\nSusvimo offers the first alternative to regular eye injections that are standard of care for nAMD, which impacts 20 million people worldwide and can cause blindness if left untreated\",\n    \"disease\": [\n      {\n        \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Uveitic Macular Edema\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"葡萄膜炎黄斑水肿\"\n          }\n        ]\n      }\n    ],\n    \"news_id\": \"f57e970e-8f97-39b7-a6be-51846e92bee1\",\n    \"post_time\": 1720600697798,\n    \"source_url\": \"https://www.biospace.com/article/releases/cerevel-therapeutics-announces-publication-in-the-lancet-of-emraclidine-data-from-phase-1b-clinical-trial-in-people-living-with-schizophrenia/\",\n    \"organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ],\n        \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29704d38-acf0-4851-93fc-b9064dd71342",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "news_id",
+                      "value": "f57e970e-8f97-39b7-a6be-51846e92bee1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "856dba17-a699-45c5-9e7f-1bac3be0d5ae",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "news_id",
+                      "value": "f57e970e-8f97-39b7-a6be-51846e92bee1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee202bbb-1db8-4133-b2ac-b772c402e60d",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "news_id",
+                      "value": "f57e970e-8f97-39b7-a6be-51846e92bee1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6e65918-1217-41b4-94f7-5427f15f1cc1",
+          "name": "B039 Drug deal information",
+          "request": {
+            "name": "B039 Drug deal information",
+            "description": {
+              "content": "Obtain drug deal information about partner, principle, deal time, drug etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug-deal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deal_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug Deal ID, obtain this through the [B045] drug deal search interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "10f66d34-fab8-4a76-9df2-0fe81d089562",
+              "name": "Successful b039 drug deal information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug-deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deal_id",
+                      "value": "284929245a22a8a9e2ed5ee82ae52250"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8300,\n  \"data\": {\n    \"drug\": [\n      {\n        \"drug_id\": \"81364d1ace044fdc8af8f60026eb2c7b\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ciltacabtagene autoleucel\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"西达基奥仑赛\"\n          }\n        ]\n      }\n    ],\n    \"target\": [\n      {\n        \"target_id\": \"e49efee164e537c2a4ba9cec109e0adb\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"BCMA\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"B-cell maturation protein\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"B细胞成熟蛋白\"\n          }\n        ]\n      }\n    ],\n    \"deal_id\": \"284929245a22a8a9e2ed5ee82ae52250\",\n    \"partner\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Janssen Biotech, Inc.\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"森托克奧素生物技術產品有限合夥事業\"\n          }\n        ],\n        \"organization_id\": \"ee3f62ab873c539d75e06f49cc09d7fc\"\n      }\n    ],\n    \"deal_time\": 1513814400000,\n    \"deal_type\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"License\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"许可\"\n          }\n        ],\n        \"normalized_id\": \"c6bb6fa84d924b0cabd8f5dd2af17708\"\n      }\n    ],\n    \"drug_type\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Autologous CAR-T\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"自体CAR-T\"\n          }\n        ],\n        \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n      }\n    ],\n    \"principle\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ],\n        \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n      },\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Roche Holding AG\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"罗氏\"\n          }\n        ],\n        \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n      }\n    ],\n    \"deal_title\": \"Janssen Enters Worldwide Collaboration and License Agreement with Chinese Company Legend Biotech to Develop Investigational CAR-T Anti-Cancer Therapy\",\n    \"source_url\": \"https://pipelinereview.com/index.php/2017122266940/More-News/Janssen-Enters-Worldwide-Collaboration-and-License-Agreement-with-Chinese-Company-Legend-Biotech-to-Develop-Investigational-CAR-T-Anti-Cancer-Therapy.html\",\n    \"deal_status\": {\n      \"display_name\": [\n        {\n          \"lang\": \"EN\",\n          \"name\": \"Autologous CAR-T\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"name\": \"自体CAR-T\"\n        }\n      ],\n      \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n    },\n    \"deal_total_value\": {\n      \"unit\": \"million dollar\",\n      \"value\": \"string\"\n    },\n    \"territory_excluded\": [\n      {\n        \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n        \"alpha2_code\": \"JP\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Japan\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"日本\"\n          }\n        ]\n      }\n    ],\n    \"territory_included\": [\n      {\n        \"country_id\": \"4cc6684d-f7b4-392b-9dec-6fce3264fac8\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Global\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"全球\"\n          }\n        ]\n      }\n    ],\n    \"deal_upfront_payment\": {\n      \"unit\": \"million dollar\",\n      \"value\": \"string\"\n    },\n    \"deal_milestone_payment\": {\n      \"unit\": \"million dollar\",\n      \"value\": \"string\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c88d687-7219-4846-b239-ca22c6163d8c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug-deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deal_id",
+                      "value": "284929245a22a8a9e2ed5ee82ae52250"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c1c5dbc-64f0-45cb-857a-9ed5f815a891",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug-deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deal_id",
+                      "value": "284929245a22a8a9e2ed5ee82ae52250"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f3b6b30-b1e4-4021-8421-dd25788cd1c3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug-deal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deal_id",
+                      "value": "284929245a22a8a9e2ed5ee82ae52250"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c697240-5da2-4f4f-9193-7b119c2a3278",
+          "name": "B028 Patented drug and patent type",
+          "request": {
+            "name": "B028 Patented drug and patent type",
+            "description": {
+              "content": "Obtain patented drug and patent type through patent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "patent",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "Patent ID, obtain this through drug core patent search interface or drug related patent search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b6d1c6f-23b8-48bd-9f14-a1408644e032",
+              "name": "Successful b028 patented drug and patent type response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "patent",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "f00a5247-0886-4ec4-aeae-572b32fe633a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 2468,\n  \"data\": {\n    \"apno\": \"CN200680056438.5\",\n    \"drug\": [\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      },\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      }\n    ],\n    \"title\": [\n      {\n        \"lang\": \"CN\",\n        \"text\": \"Antibody and checkpoint inhibitor combination therapy\"\n      },\n      {\n        \"lang\": \"CN\",\n        \"text\": \"Antibody and checkpoint inhibitor combination therapy\"\n      }\n    ],\n    \"target\": [\n      {\n        \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"VEGF\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Vascular endothelial growth factor\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"血管内皮生长因子\"\n          }\n        ]\n      },\n      {\n        \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"VEGF\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Vascular endothelial growth factor\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"血管内皮生长因子\"\n          }\n        ]\n      }\n    ],\n    \"disease\": [\n      {\n        \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Uveitic Macular Edema\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"葡萄膜炎黄斑水肿\"\n          }\n        ]\n      },\n      {\n        \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Uveitic Macular Edema\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"葡萄膜炎黄斑水肿\"\n          }\n        ]\n      }\n    ],\n    \"core_drug\": [\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      },\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      }\n    ],\n    \"patent_id\": \"f00a5247-0886-4ec4-aeae-572b32fe633a\",\n    \"patent_tech_type\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Autologous CAR-T\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"自体CAR-T\"\n          }\n        ],\n        \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n      },\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Autologous CAR-T\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"自体CAR-T\"\n          }\n        ],\n        \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n      }\n    ],\n    \"core_recommend_drug\": [\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      },\n      {\n        \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n        \"drug_type\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Small molecule drug\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"小分子化药\"\n              }\n            ],\n            \"normalized_id\": \"1151dbc710f64a85923dc05d4a5a0ba9\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"雷珠单抗\"\n          }\n        ]\n      }\n    ],\n    \"cde_drug_patent_types\": [\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"567c4038545f44fb99efc9ff81d9eba2\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CNA-3103\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"567c4038545f44fb99efc9ff81d9eba2\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CNA-3103\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"fda_drug_patent_types\": [\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          },\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          },\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"phs_drug_patent_types\": [\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          },\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"patent_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"exclusivity_code\": \"NPP\",\n        \"patent_type_drug\": [\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          },\n          {\n            \"drug_id\": \"e82b83b42eba4e5ea3f26f8e06081a5a\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Ranibizumab (Genentech)\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"雷珠单抗\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26f3afde-8e6a-4076-8319-2df5b57db800",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "patent",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "f00a5247-0886-4ec4-aeae-572b32fe633a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "946aa5bd-1d36-4725-996f-515ddd971248",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "patent",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "f00a5247-0886-4ec4-aeae-572b32fe633a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5561194e-16bb-438f-89ef-cf8e0f0ce16a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "patent",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "f00a5247-0886-4ec4-aeae-572b32fe633a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f07b3503-f898-4eb9-b4ef-b6bb2252f611",
+          "name": "B070 Translational medicine detail",
+          "request": {
+            "name": "B070 Translational medicine detail",
+            "description": {
+              "content": "Obtain translational medicine details through translational medicine id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "translational",
+                "medicine",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "translational_medicine_id",
+                  "value": "<string>",
+                  "description": "Translational medicine id, obtain this through translational medicine search interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43fad69c-f816-4712-ac28-e2e547b68386",
+              "name": "Successful b070 translational medicine detail response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "translational",
+                    "medicine",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "translational_medicine_id",
+                      "value": "eda470b5-773b-346d-b6df-7b5daae53505"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8771,\n  \"data\": {\n    \"author\": [\n      {\n        \"ordinal\": 1,\n        \"superscript\": [\n          1,\n          2\n        ],\n        \"original_name\": \"John Smith\"\n      },\n      {\n        \"ordinal\": 1,\n        \"superscript\": [\n          1,\n          2\n        ],\n        \"original_name\": \"John Smith\"\n      }\n    ],\n    \"pubmed_url\": [\n      \"https://pubmed.ncbi.nlm.nih.gov/12345678/\"\n    ],\n    \"source_url\": [\n      \"https://example.com/source/123456\"\n    ],\n    \"abstract_text\": [\n      {\n        \"lang\": \"EN\",\n        \"text\": \"This study investigates novel biomarkers for cancer research...\"\n      },\n      {\n        \"lang\": \"EN\",\n        \"text\": \"This study investigates novel biomarkers for cancer research...\"\n      }\n    ],\n    \"author_institution\": [\n      {\n        \"ordinal\": 1,\n        \"original_name\": \"Harvard Medical School\"\n      },\n      {\n        \"ordinal\": 1,\n        \"original_name\": \"Harvard Medical School\"\n      }\n    ],\n    \"translational_medicine_title\": [\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Ranibizumab (Genentech)\"\n      },\n      {\n        \"lang\": \"EN\",\n        \"name\": \"Ranibizumab (Genentech)\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "542fb16f-cc5d-4e46-b23f-5487a627f48a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "translational",
+                    "medicine",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "translational_medicine_id",
+                      "value": "eda470b5-773b-346d-b6df-7b5daae53505"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49d3689f-12c5-4f0d-ac9a-4e7fd30b7ed6",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "translational",
+                    "medicine",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "translational_medicine_id",
+                      "value": "eda470b5-773b-346d-b6df-7b5daae53505"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c4745cd-d933-4936-8bf8-52a1077c1780",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "translational",
+                    "medicine",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "translational_medicine_id",
+                      "value": "eda470b5-773b-346d-b6df-7b5daae53505"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7790582-013f-4a66-9f7a-111b4326231e",
+          "name": "B030 Medical Literature",
+          "request": {
+            "name": "B030 Medical Literature",
+            "description": {
+              "content": "Obtain Literature about title, journal, publication date etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "paper",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "paper_id",
+                  "value": "<string>",
+                  "description": "(Required) Drug ID, obtain this through the paper search interface"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c23e8ba1-2e07-41d0-80ff-e5c1873193de",
+              "name": "Successful b030 medical literature response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "paper",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paper_id",
+                      "value": "c61f84d1-b6b6-35d8-b178-94faa296df56"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 592,\n  \"data\": {\n    \"doi\": \"10.1007/s00262-011-1007-5\",\n    \"drug\": [\n      {\n        \"drug_id\": \"bf776b0ad6b8481e8bf5e048fa7c2b8e\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"HW-CX04\"\n          }\n        ]\n      }\n    ],\n    \"author\": [\n      \"Karen Angélica Cavassani\",\n      \"Maria Renata Sales Nogueira Costa\",\n      \"Thaís Helena Gasparoto\"\n    ],\n    \"source\": [\n      \"CROSSREF\",\n      \"PUBMED\",\n      \"CAS\",\n      \"MAG\"\n    ],\n    \"target\": [\n      {\n        \"target_id\": \"06c7ab146b884a3aa890cfd1a4a0e168\",\n        \"short_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"PDL1\"\n          }\n        ],\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Programmed death-ligand 1\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"程序性死亡配体1\"\n          }\n        ]\n      }\n    ],\n    \"disease\": [\n      {\n        \"disease_id\": \"62eaee6d9ee44410b8aca59dfc7408e9\",\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Neoplasms\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"肿瘤\"\n          }\n        ]\n      }\n    ],\n    \"journal\": \"Cancer Immunology, Immunotherapy\",\n    \"paper_id\": \"c61f84d1-b6b6-35d8-b178-94faa296df56\",\n    \"epub_date\": \"string\",\n    \"paper_title\": [\n      {\n        \"lang\": \"EN\",\n        \"title\": \"Enhanced programmed death 1 (PD-1) and PD-1 ligand (PD-L1) expression in patients with actinic cheilitis and oral squamous cell carcinoma\"\n      }\n    ],\n    \"organization\": [\n      {\n        \"display_name\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"University of California San Diego\"\n          },\n          {\n            \"lang\": \"CN\",\n            \"name\": \"加利福尼亚大学圣迭戈分校\"\n          }\n        ],\n        \"organization_id\": \"56440a5c579d138c19fbf0ae12547495\"\n      }\n    ],\n    \"paper_abstract\": [\n      {\n        \"abst\": \"PD-1 and PD-L1 can be involved in tumor escape, and little is known about the role of these molecules in oral tumors or pre-malignant lesions. In the present study, we investigated the expression of PD-1 and PD-L1 in the blood and lesion samples of patients with actinic cheilitis (AC) and oral squamous cell carcinoma (OSCC). Our results showed that lymphocytes from peripheral blood and tissue samples exhibited high expression of PD-1 in both groups analyzed. Patients with AC presented higher percentage as well as the absolute numbers of CD4+PD-1+ and CD8+PD-1+ lymphocytes in peripheral blood mononuclear cells (PBMC) than healthy individuals, while patients with OSCC presented an increased frequency of CD8+PD1+ in PBMC when compared with controls. On the other hand, increased frequency of CD4+ and CD8+ T cells expressing PD-1(+) accumulate in samples from OSCC, and the expression of PD-L1 was intense in OSCC and moderate in AC lesion sites. Lower levels of IFN-γ and higher levels of TGF-β were detected in OSCC samples. Our data demonstrate that PD-1 and PD-L1 molecules are present in blood and samples of AC and OSCC patients. Further studies are required to understand the significance of PD-1 and PD-L1 in oral tumors microenvironment.\",\n        \"lang\": \"EN\"\n      }\n    ],\n    \"publication_date\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e303ed-5cfe-44e7-b34b-077ef296ca1b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "paper",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paper_id",
+                      "value": "c61f84d1-b6b6-35d8-b178-94faa296df56"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad60c0cf-3a28-4dae-b48e-d30d95a79d78",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "paper",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paper_id",
+                      "value": "c61f84d1-b6b6-35d8-b178-94faa296df56"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bc1f9d1-d96e-4ae6-8d4d-4fd3dcd63977",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "paper",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "paper_id",
+                      "value": "c61f84d1-b6b6-35d8-b178-94faa296df56"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae992920-8b6f-42ca-a02e-9b4605c8b0fe",
+          "name": "B066 Affinity Search",
+          "request": {
+            "name": "B066 Affinity Search",
+            "description": {
+              "content": "Search affinity details between antibody and antigen through affinity ID, including antibody sequence, antigen information, detection method, test conditions, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "bio",
+                "affinity",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "affinity_id",
+                  "value": "<string>",
+                  "description": "(Required) Affinity search ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number (must be >=1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "<integer>",
+                  "description": "Rows per page (must be >=1 and <=10)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3507d9cc-4352-4112-bf18-7f47e7735e6f",
+              "name": "Successful b066 affinity search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "affinity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "affinity_id",
+                      "value": "n14778540229713683257531356477449681766"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 7216,\n  \"data\": {\n    \"page\": 1,\n    \"rows\": 10,\n    \"total\": 100,\n    \"source\": {\n      \"source_type\": \"patent\",\n      \"antibody_patent_id\": \"AB_12345678\",\n      \"antibody_patent_number\": \"CN302052315S\",\n      \"heavy_chain_sequence_id\": \"HC_12345678\",\n      \"light_chain_sequence_id\": \"LC_12345678\"\n    },\n    \"antigen_name\": \"CD19\",\n    \"antibody_name\": [\n      \"Rituximab\"\n    ],\n    \"antigen_species\": \"Human\",\n    \"antigen_uniport\": [\n      {\n        \"uniprot_id\": \"P15391\",\n        \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n      },\n      {\n        \"uniprot_id\": \"P15391\",\n        \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n      }\n    ],\n    \"affinity_details\": [\n      {\n        \"ph\": \"string\",\n        \"unit\": \"1/Ms\",\n        \"index\": \"Kd\",\n        \"value\": \"string\",\n        \"method\": \"SPR\",\n        \"ori_unit\": \"M^-1s^-1\",\n        \"ori_value\": \"string\",\n        \"temperature\": \"room temperature\"\n      },\n      {\n        \"ph\": \"string\",\n        \"unit\": \"1/Ms\",\n        \"index\": \"Kd\",\n        \"value\": \"string\",\n        \"method\": \"SPR\",\n        \"ori_unit\": \"M^-1s^-1\",\n        \"ori_value\": \"string\",\n        \"temperature\": \"room temperature\"\n      }\n    ],\n    \"antibody_sequence\": {\n      \"antibody_heavy_chain\": \"EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARDYRYDYWGQGTLVTVSS\",\n      \"antibody_light_chain\": \"DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK\",\n      \"heavy_chain_sequence_number\": 123456789,\n      \"light_chain_sequence_number\": 987654321\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d88a7b13-6238-4a7a-9ea3-625b697259fb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "affinity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "affinity_id",
+                      "value": "n14778540229713683257531356477449681766"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ec195ad-54aa-4fbf-96c2-48f618cc4190",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "affinity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "affinity_id",
+                      "value": "n14778540229713683257531356477449681766"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e20103a5-c4dd-4745-8def-1bb126330e10",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "affinity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "affinity_id",
+                      "value": "n14778540229713683257531356477449681766"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67e670a5-f747-4244-b0bb-f3eb0d5ee251",
+          "name": "B065 Antigen-Antibody Pairing Search",
+          "request": {
+            "name": "B065 Antigen-Antibody Pairing Search",
+            "description": {
+              "content": "Search related antibody sequence information through antigen name, including antigen sequence, antibody heavy/light chain sequences, UniProt ID, source, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "bio",
+                "antibody",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "antigen_name",
+                  "value": "<string>",
+                  "description": "(Required) Antigen name"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number (must be >=1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "<integer>",
+                  "description": "Rows per page (must be >=1 and <=10)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aa5deb6e-cc2d-4709-9731-76b1a5365f84",
+              "name": "Successful b065 antigen-antibody pairing search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "antibody",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "antigen_name",
+                      "value": "TRBV6-2"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9714,\n  \"data\": {\n    \"page\": 1,\n    \"rows\": 10,\n    \"items\": [\n      {\n        \"source\": {\n          \"source_type\": \"patent\",\n          \"antibody_patent_id\": \"AB_12345678\",\n          \"antibody_patent_number\": \"CN302052315S\",\n          \"heavy_chain_sequence_id\": \"HC_12345678\",\n          \"light_chain_sequence_id\": \"LC_12345678\"\n        },\n        \"affinity_id\": \"n14778540229713683257531356477449681766\",\n        \"antigen_name\": \"CD19\",\n        \"antibody_name\": [\n          \"Rituximab\"\n        ],\n        \"antigen_species\": \"Human\",\n        \"antigen_uniport\": [\n          {\n            \"uniprot_id\": \"P15391\",\n            \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n          },\n          {\n            \"uniprot_id\": \"P15391\",\n            \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n          }\n        ],\n        \"antigen_sequence\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\",\n        \"antibody_sequence\": {\n          \"antibody_heavy_chain\": \"EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARDYRYDYWGQGTLVTVSS\",\n          \"antibody_light_chain\": \"DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK\",\n          \"heavy_chain_sequence_number\": 123456789,\n          \"light_chain_sequence_number\": 987654321\n        }\n      },\n      {\n        \"source\": {\n          \"source_type\": \"patent\",\n          \"antibody_patent_id\": \"AB_12345678\",\n          \"antibody_patent_number\": \"CN302052315S\",\n          \"heavy_chain_sequence_id\": \"HC_12345678\",\n          \"light_chain_sequence_id\": \"LC_12345678\"\n        },\n        \"affinity_id\": \"n14778540229713683257531356477449681766\",\n        \"antigen_name\": \"CD19\",\n        \"antibody_name\": [\n          \"Rituximab\"\n        ],\n        \"antigen_species\": \"Human\",\n        \"antigen_uniport\": [\n          {\n            \"uniprot_id\": \"P15391\",\n            \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n          },\n          {\n            \"uniprot_id\": \"P15391\",\n            \"uniprot_id_seq\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\"\n          }\n        ],\n        \"antigen_sequence\": \"MKLLVVVLFLGAETTGSTQQLIQESGPGLVAPSQSLSITCTVSGFSLTNYGVHWVRQSPGKGLEWLGVIWSGGNTDYNTPFTSRLSINKDNSKSQVFFKMNSLQSNDTAIYYCARDYRYDYWGQGTLVTVSS\",\n        \"antibody_sequence\": {\n          \"antibody_heavy_chain\": \"EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARDYRYDYWGQGTLVTVSS\",\n          \"antibody_light_chain\": \"DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK\",\n          \"heavy_chain_sequence_number\": 123456789,\n          \"light_chain_sequence_number\": 987654321\n        }\n      }\n    ],\n    \"total\": 100\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c4897cb-409b-40df-b5db-ef4124612c9d",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "antibody",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "antigen_name",
+                      "value": "TRBV6-2"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e43fdf4e-de5e-4d29-8db3-3db72bd4a1e3",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "antibody",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "antigen_name",
+                      "value": "TRBV6-2"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b8e38a29-22aa-448a-8156-d3faefbbd359",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bio",
+                    "antibody",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "antigen_name",
+                      "value": "TRBV6-2"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7634806a-8870-4d1a-99ee-0b0e441c54c7",
+    "name": "Patsnap Open Platform AI Translation Drug Mining Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

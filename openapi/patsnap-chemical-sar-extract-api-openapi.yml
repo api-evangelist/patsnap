@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Chemical SAR Extract API
   version: 1.0.0
@@ -95,168 +95,6 @@ paths:
               $ref: '#/components/schemas/FileDetailRequest'
 components:
   schemas:
-    FileExtractResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FileExtract_SarExtractBatchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    FileDetail_SarStructure:
-      type: object
-      properties:
-        mol:
-          type: string
-          example: "CC(=O)Oc1ccccc1C(=O)O\n  MJ201900                      \n\n  7  7  0  0  0  0  0  0  0  0999 V2000"
-          description: MOL format
-        smiles:
-          type: string
-          example: CC(=O)Oc1ccccc1C(=O)O
-          description: SMILES expression
-        inchy_key:
-          type: string
-          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-          description: InChI Key
-    FileDetail_OpenFileDetailResponse:
-      type: object
-      properties:
-        files:
-          type: array
-          example:
-          - fileId: abc123
-            status: SUCCESS
-            fileName: patent.pdf
-          description: File detail list
-          items:
-            $ref: '#/components/schemas/FileDetail_FileInfo'
-        status:
-          type: string
-          example: PROCESSING
-          description: 'Overall task status: PENDING / PROCESSING / SUCCESS / FAILED / NOT_FOUND'
-    FileExtract_SarExtractBatchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: PENDING
-          description: 'Task status: PENDING (processing) / FAILED (failed)'
-        task_id:
-          type: string
-          example: abc123xyz
-          description: Task ID , used to poll the extraction status
-    FileDetail_SarDosingRegimen:
-      type: object
-      properties:
-        route:
-          type: string
-          example: Oral
-          description: Route of administration
-        dosage:
-          type: string
-          example: 10 mg/kg
-          description: Dosage
-        duration:
-          type: string
-          example: 7 days
-          description: Duration
-        frequency:
-          type: string
-          example: Once daily
-          description: Frequency
-    FileDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FileDetail_OpenFileDetailResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    FileDetail_BasicTargetName:
-      type: object
-      properties:
-        target_id:
-          type: string
-          example: T001
-          description: Target ID
-        display_name_cn:
-          type: string
-          example: 表皮生长因子受体
-          description: Display name (CN)
-        display_name_en:
-          type: string
-          example: EGFR
-          description: Display name (EN)
-    FileDetailRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: abc123xyz
-          description: Task ID returned by the /file/extract API
-      required:
-      - task_id
-    FileDetail_FileInfo:
-      type: object
-      properties:
-        items:
-          type: array
-          example:
-          - unit: nM
-            value: '10'
-            resultId: result_001
-            indicator: IC50
-          description: SAR extraction result list (only returned when status=SUCCESS)
-          items:
-            $ref: '#/components/schemas/FileDetail_ResultItem'
-        total:
-          type: integer
-          format: int32
-          example: 5
-          description: Total result count (only returned when status=SUCCESS)
-        status:
-          type: string
-          example: SUCCESS
-          description: 'File status: PENDING / PROCESSING / SUCCESS / FAILED'
-        file_id:
-          type: string
-          example: abc123xyz
-          description: File ID
-        file_name:
-          type: string
-          example: patent.pdf
-          description: File name
-    FileExtractRequest:
-      type: object
-      properties:
-        file:
-          type: file
-          example: document.pdf
-          description: PDF file to upload
     FileDetail_ResultItem:
       type: object
       properties:
@@ -342,6 +180,168 @@ components:
           type: string
           example: Cell line
           description: Experimental subject
+    FileDetail_SarDosingRegimen:
+      type: object
+      properties:
+        route:
+          type: string
+          example: Oral
+          description: Route of administration
+        dosage:
+          type: string
+          example: 10 mg/kg
+          description: Dosage
+        duration:
+          type: string
+          example: 7 days
+          description: Duration
+        frequency:
+          type: string
+          example: Once daily
+          description: Frequency
+    FileExtract_SarExtractBatchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: PENDING
+          description: 'Task status: PENDING (processing) / FAILED (failed)'
+        task_id:
+          type: string
+          example: abc123xyz
+          description: Task ID , used to poll the extraction status
+    FileExtractResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileExtract_SarExtractBatchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    FileDetail_OpenFileDetailResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          example:
+          - fileId: abc123
+            status: SUCCESS
+            fileName: patent.pdf
+          description: File detail list
+          items:
+            $ref: '#/components/schemas/FileDetail_FileInfo'
+        status:
+          type: string
+          example: PROCESSING
+          description: 'Overall task status: PENDING / PROCESSING / SUCCESS / FAILED / NOT_FOUND'
+    FileDetailRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: abc123xyz
+          description: Task ID returned by the /file/extract API
+      required:
+      - task_id
+    FileDetail_BasicTargetName:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: T001
+          description: Target ID
+        display_name_cn:
+          type: string
+          example: 表皮生长因子受体
+          description: Display name (CN)
+        display_name_en:
+          type: string
+          example: EGFR
+          description: Display name (EN)
+    FileDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileDetail_OpenFileDetailResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    FileDetail_FileInfo:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - unit: nM
+            value: '10'
+            resultId: result_001
+            indicator: IC50
+          description: SAR extraction result list (only returned when status=SUCCESS)
+          items:
+            $ref: '#/components/schemas/FileDetail_ResultItem'
+        total:
+          type: integer
+          format: int32
+          example: 5
+          description: Total result count (only returned when status=SUCCESS)
+        status:
+          type: string
+          example: SUCCESS
+          description: 'File status: PENDING / PROCESSING / SUCCESS / FAILED'
+        file_id:
+          type: string
+          example: abc123xyz
+          description: File ID
+        file_name:
+          type: string
+          example: patent.pdf
+          description: File name
+    FileExtractRequest:
+      type: object
+      properties:
+        file:
+          type: file
+          example: document.pdf
+          description: PDF file to upload
+    FileDetail_SarStructure:
+      type: object
+      properties:
+        mol:
+          type: string
+          example: "CC(=O)Oc1ccccc1C(=O)O\n  MJ201900                      \n\n  7  7  0  0  0  0  0  0  0  0999 V2000"
+          description: MOL format
+        smiles:
+          type: string
+          example: CC(=O)Oc1ccccc1C(=O)O
+          description: SMILES expression
+        inchy_key:
+          type: string
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: InChI Key
   securitySchemes:
     bearerAuth:
       type: http

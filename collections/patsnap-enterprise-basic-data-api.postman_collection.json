@@ -1,0 +1,4246 @@
+{
+  "item": [
+    {
+      "id": "0b2eab20-6bfd-44ea-a899-84f14197e9ee",
+      "name": "Enterprise Basic Data",
+      "description": {
+        "content": "Enterprise Basic Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62703108-4010-4eac-ba33-057d7c9b8f8a",
+          "name": "C002 outbound investment",
+          "request": {
+            "name": "C002 outbound investment",
+            "description": {
+              "content": "This interface provides enterprise information for external investment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "outbound-investment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3891cf3-abfa-4b22-8bc5-7045262dab64",
+              "name": "Successful c002 outbound investment response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "outbound-investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5549,\n  \"data\": {\n    \"investment\": [\n      {\n        \"credit_code\": \"91120116MA06WGQC4X\",\n        \"company_name\": \"天津瀚川智能科技有限公司\",\n        \"investment_proportion\": 60\n      },\n      {\n        \"credit_code\": \"91120116MA06WGQC4X\",\n        \"company_name\": \"天津瀚川智能科技有限公司\",\n        \"investment_proportion\": 60\n      }\n    ],\n    \"org_number\": \"58234321-3\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州博众智能机器人有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "063a79ff-4ec4-404a-aedf-11404aa0a961",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "outbound-investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a92b9b19-a6a5-47cc-bc68-e5e5af709ec0",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "outbound-investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37dda1af-7482-488b-8e32-a33a6e03fde5",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "outbound-investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "634cdbce-80b8-450b-a577-6d4c39a033d2",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "outbound-investment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d97a83fd-f0b5-4f8d-9440-11c4523c0b24",
+          "name": "C020 standard information",
+          "request": {
+            "name": "C020 standard information",
+            "description": {
+              "content": "This interface provides detailed information on all standards recognized by the enterprise, including national standards, industry standards, local standards, and team standards",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "standard-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page_number\": \"<integer>\",\n  \"standard_type\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7451cd3e-7c10-4f51-92f5-fcbc407cd164",
+              "name": "Successful c020 standard information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "standard-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"standard_type\": \"国家标准\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3097,\n  \"data\": {\n    \"org_number\": \"722088964/72208896-4\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"中航工业机电系统股份有限公司\",\n    \"standard_count\": 7,\n    \"standard_information\": [\n      {\n        \"drafter\": \"徐聚元、邢路坤 等\",\n        \"revision\": \"制定\",\n        \"record_date\": \"string\",\n        \"standard_id\": \"GB/T 5267.2-2017\",\n        \"release_date\": \"string\",\n        \"drafting_unit\": \"机械工业通用零部件产品质量监督检测中心，宁波市鄞州计氏金属表面处理厂，浙江新东方汽车零部件有限公司，浙江迪特高强度螺栓有限公司，上海申光高强度螺栓有限公司，中机生产力促进中心，宁波九龙紧固件制造有限公司，浙江国检检测技术股份有限公司\",\n        \"record_number\": \"64199-2018\",\n        \"standard_name\": \"紧固件 非电解锌片涂层\",\n        \"standard_type\": \"国家标准\",\n        \"implement_date\": \"string\",\n        \"release_company\": \"全国紧固件标准化技术委员会\",\n        \"standard_status\": \"现行\",\n        \"similar_standard\": [\n          {\n            \"standard_id\": \"GB/T5267.2-2002\",\n            \"standard_name\": \"紧固件非电解锌片涂层\"\n          },\n          {\n            \"standard_id\": \"GB/T5267.2-2002\",\n            \"standard_name\": \"紧固件非电解锌片涂层\"\n          }\n        ],\n        \"standard_name_en\": \"Fasteners—Non-electrolytically applied zinc flake coatings\",\n        \"application_scope\": \"本文件适用于以无机粉体（包括但不限于方解石、沸石、石英石、云母石等）为主，辅以聚烯烃树脂及助剂混合改性后的无机化聚烯烃膜材料。\",\n        \"implement_company\": \"全国紧固件标准化技术委员会\",\n        \"standard_category\": \"基础\",\n        \"standard_number_cn\": \"J13\",\n        \"standard_properties\": \"推荐性\",\n        \"competent_department\": \"中国机械工业联合会\",\n        \"technical_committees\": \"全国紧固件标准化技术委员会\",\n        \"standard_number_inter\": \"21.060.10\",\n        \"main_technical_contents\": \"本文件基于主编单位多年的国际快餐试验数据和生产实践经验，以及主编单位对“817”小肉鸡饲养的数据积累。借鉴了相关国标和行业标准，在此基础上，对部分数据制定了更细、更高的标准。在感官；水分；混合均匀度；卫生指标；营养成分；检验方法；检验规则；标签、包装、运输和贮存；保质期方面提出了严格的标准要求。\",\n        \"all_substitute_standards\": [\n          \"GB/T 5267.2-2002\"\n        ]\n      },\n      {\n        \"drafter\": \"徐聚元、邢路坤 等\",\n        \"revision\": \"制定\",\n        \"record_date\": \"string\",\n        \"standard_id\": \"GB/T 5267.2-2017\",\n        \"release_date\": \"string\",\n        \"drafting_unit\": \"机械工业通用零部件产品质量监督检测中心，宁波市鄞州计氏金属表面处理厂，浙江新东方汽车零部件有限公司，浙江迪特高强度螺栓有限公司，上海申光高强度螺栓有限公司，中机生产力促进中心，宁波九龙紧固件制造有限公司，浙江国检检测技术股份有限公司\",\n        \"record_number\": \"64199-2018\",\n        \"standard_name\": \"紧固件 非电解锌片涂层\",\n        \"standard_type\": \"国家标准\",\n        \"implement_date\": \"string\",\n        \"release_company\": \"全国紧固件标准化技术委员会\",\n        \"standard_status\": \"现行\",\n        \"similar_standard\": [\n          {\n            \"standard_id\": \"GB/T5267.2-2002\",\n            \"standard_name\": \"紧固件非电解锌片涂层\"\n          },\n          {\n            \"standard_id\": \"GB/T5267.2-2002\",\n            \"standard_name\": \"紧固件非电解锌片涂层\"\n          }\n        ],\n        \"standard_name_en\": \"Fasteners—Non-electrolytically applied zinc flake coatings\",\n        \"application_scope\": \"本文件适用于以无机粉体（包括但不限于方解石、沸石、石英石、云母石等）为主，辅以聚烯烃树脂及助剂混合改性后的无机化聚烯烃膜材料。\",\n        \"implement_company\": \"全国紧固件标准化技术委员会\",\n        \"standard_category\": \"基础\",\n        \"standard_number_cn\": \"J13\",\n        \"standard_properties\": \"推荐性\",\n        \"competent_department\": \"中国机械工业联合会\",\n        \"technical_committees\": \"全国紧固件标准化技术委员会\",\n        \"standard_number_inter\": \"21.060.10\",\n        \"main_technical_contents\": \"本文件基于主编单位多年的国际快餐试验数据和生产实践经验，以及主编单位对“817”小肉鸡饲养的数据积累。借鉴了相关国标和行业标准，在此基础上，对部分数据制定了更细、更高的标准。在感官；水分；混合均匀度；卫生指标；营养成分；检验方法；检验规则；标签、包装、运输和贮存；保质期方面提出了严格的标准要求。\",\n        \"all_substitute_standards\": [\n          \"GB/T 5267.2-2002\"\n        ]\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "680dc60c-78cd-4bcc-ae5d-345646ef7442",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "standard-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"standard_type\": \"国家标准\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6f072ec-4b42-47f9-91ff-31d48153e1b5",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "standard-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"standard_type\": \"国家标准\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29447c2a-d524-419c-b5a5-552a1834b32b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "standard-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"standard_type\": \"国家标准\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e245e5da-ac2d-4f1f-81ce-93937782aeab",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "standard-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"standard_type\": \"国家标准\",\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4ea2cf8-8042-4e1b-a84d-c19b0c68404d",
+          "name": "C013 financing information",
+          "request": {
+            "name": "C013 financing information",
+            "description": {
+              "content": "This interface provides detailed information of enterprise financing events",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "financing-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14892c2f-a421-4d54-8c7c-2f8813003af5",
+              "name": "Successful c013 financing information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "financing-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1050,\n  \"data\": {\n    \"org_number\": \"5513850T8-2\",\n    \"credit_code\": \"91110108551385082Q\",\n    \"company_name\": \"小米科技有限责任公司\",\n    \"financing_detail\": [\n      {\n        \"money\": \"超1亿美元\",\n        \"round\": \"E+轮\",\n        \"share\": \"10%\",\n        \"value\": \"15亿美元\",\n        \"news_url\": \"https://36kr.com/p/892489171660039\",\n        \"pub_time\": \"string\",\n        \"news_title\": \"爱回收完成超1亿美元E+轮融资，集团品牌升级为“万物新生”\",\n        \"investor_name\": \"京东集团，国泰君安国际，国和投资，清新资本，汇禾资本，毅峰资本\"\n      },\n      {\n        \"money\": \"超1亿美元\",\n        \"round\": \"E+轮\",\n        \"share\": \"10%\",\n        \"value\": \"15亿美元\",\n        \"news_url\": \"https://36kr.com/p/892489171660039\",\n        \"pub_time\": \"string\",\n        \"news_title\": \"爱回收完成超1亿美元E+轮融资，集团品牌升级为“万物新生”\",\n        \"investor_name\": \"京东集团，国泰君安国际，国和投资，清新资本，汇禾资本，毅峰资本\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4e66e93-499d-4af1-a3a2-afab2fa31052",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "financing-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8987abed-9767-4807-beaa-a88d20558082",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "financing-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27b99838-f97b-40f2-8c50-d29b475ed47c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "financing-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bcc1416-4408-4844-9b53-3b39ba15e5c8",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "financing-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed9a438e-e15c-4de9-9653-628a3184d676",
+          "name": "C019 IPO process",
+          "request": {
+            "name": "C019 IPO process",
+            "description": {
+              "content": "This interface provides information related to enterprise IPO declaration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "ipo-process"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "317c71aa-5350-44eb-9f03-1c825280102d",
+              "name": "Successful c019 ipo process response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "ipo-process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3014,\n  \"data\": {\n    \"org_number\": \"MA1MDBFY3/MA1MDBFY-3\",\n    \"credit_code\": \"91320213MA1MDBFY36\",\n    \"ipo_process\": [\n      {\n        \"lawyers\": \"李源,张露文,刘璐,王金波\",\n        \"sponsor\": \"张建,彭浩\",\n        \"exchange\": \"上海交易所\",\n        \"law_firm\": \"北京德恒律师事务所\",\n        \"bond_name\": \"微导纳米\",\n        \"bond_type\": \"科创板\",\n        \"evaluators\": \"姜海成,尚银波\",\n        \"accept_date\": \"string\",\n        \"accountants\": \"李雯敏,周一惠,郭海龙\",\n        \"update_date\": \"string\",\n        \"audit_status\": \"上市委会议通过\",\n        \"accept_process\": [\n          {\n            \"date\": \"string\",\n            \"audit_status\": \"已受理\"\n          },\n          {\n            \"date\": \"string\",\n            \"audit_status\": \"已受理\"\n          }\n        ],\n        \"accounting_firm\": \"天职国际会计师事务所（特殊普通合伙）\",\n        \"financing_money\": 10,\n        \"sponsor_institution\": \"浙商证券股份有限公司\",\n        \"evaluation_organization\": \"沃克森（北京）国际资产评估有限公司\"\n      },\n      {\n        \"lawyers\": \"李源,张露文,刘璐,王金波\",\n        \"sponsor\": \"张建,彭浩\",\n        \"exchange\": \"上海交易所\",\n        \"law_firm\": \"北京德恒律师事务所\",\n        \"bond_name\": \"微导纳米\",\n        \"bond_type\": \"科创板\",\n        \"evaluators\": \"姜海成,尚银波\",\n        \"accept_date\": \"string\",\n        \"accountants\": \"李雯敏,周一惠,郭海龙\",\n        \"update_date\": \"string\",\n        \"audit_status\": \"上市委会议通过\",\n        \"accept_process\": [\n          {\n            \"date\": \"string\",\n            \"audit_status\": \"已受理\"\n          },\n          {\n            \"date\": \"string\",\n            \"audit_status\": \"已受理\"\n          }\n        ],\n        \"accounting_firm\": \"天职国际会计师事务所（特殊普通合伙）\",\n        \"financing_money\": 10,\n        \"sponsor_institution\": \"浙商证券股份有限公司\",\n        \"evaluation_organization\": \"沃克森（北京）国际资产评估有限公司\"\n      }\n    ],\n    \"company_name\": \"江苏微导纳米科技股份有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "475605f9-7568-456d-8367-80b676c7714a",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "ipo-process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "001f4aee-fa57-4afd-9063-362f7230c8e6",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "ipo-process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a8de583-3114-4087-8790-92124a0f8080",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "ipo-process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a7f754c-2711-42ef-9e03-856759a8502a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "ipo-process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cda13b9c-1949-42ab-8260-1b3c3f650637",
+          "name": "C021 qualification certificate",
+          "request": {
+            "name": "C021 qualification certificate",
+            "description": {
+              "content": "This interface provides certificate information obtained by enterprises, including quality management system certification (ISO9001), safety production license, etc",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "qualification-certificate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page_number\": \"<integer>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51071a7d-c40a-4363-a57c-45e9667c0bf2",
+              "name": "Successful c021 qualification certificate response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "qualification-certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9202,\n  \"data\": {\n    \"org_number\": \"572927506/57292750-6\",\n    \"credit_code\": \"91330424572927506D\",\n    \"company_name\": \"浙江新东方汽车零部件有限公司\",\n    \"certificate_count\": 1,\n    \"qualification_certificate\": [\n      {\n        \"detail\": [\n          {\n            \"title\": \"认证项目\",\n            \"content\": \"汽车行业质量管理体系认证\"\n          },\n          {\n            \"title\": \"认证项目\",\n            \"content\": \"汽车行业质量管理体系认证\"\n          }\n        ],\n        \"cert_no\": \"string\",\n        \"end_date\": \"string\",\n        \"start_date\": \"string\",\n        \"certificate_name\": \"汽车行业质量管理体系认证\"\n      },\n      {\n        \"detail\": [\n          {\n            \"title\": \"认证项目\",\n            \"content\": \"汽车行业质量管理体系认证\"\n          },\n          {\n            \"title\": \"认证项目\",\n            \"content\": \"汽车行业质量管理体系认证\"\n          }\n        ],\n        \"cert_no\": \"string\",\n        \"end_date\": \"string\",\n        \"start_date\": \"string\",\n        \"certificate_name\": \"汽车行业质量管理体系认证\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83e7852e-aef9-4306-8d8e-966a2b9595c3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "qualification-certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5cb12c8-e7a0-4fa6-8140-66384676eb37",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "qualification-certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21c4e074-76f1-49e5-b9df-6649491e3ae9",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "qualification-certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1c7945b-e798-4880-8a79-88e4c486d7d2",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "qualification-certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": 1,\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "518f5403-c489-4dbf-838a-aa0cd51ff0a5",
+          "name": "C001 registration information",
+          "request": {
+            "name": "C001 registration information",
+            "description": {
+              "content": "This interface is to provide the company's Enterprise information, such as unified social credit code, enterprise status, registered capital, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "registration-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01a3b9a8-0f65-4930-86ef-bc81b332739e",
+              "name": "Successful c001 registration information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "registration-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 2888,\n  \"data\": {\n    \"city\": \"苏州市\",\n    \"state\": \"江苏省\",\n    \"name_en\": \"Bohhom Robot Co. Ltd\",\n    \"website\": \"www.yngreen.com\",\n    \"district\": \"虎丘区\",\n    \"location\": \"吴江经济技术开发区山湖西路558号东运科技园7\",\n    \"reg_code\": \"string\",\n    \"issue_date\": 20220509,\n    \"org_number\": \"58234321-3\",\n    \"tax_number\": \"string\",\n    \"credit_code\": \"string\",\n    \"reg_capital\": \"2000万人民币\",\n    \"company_name\": \"苏州博众智能机器人有限公司\",\n    \"founded_date\": 20110926,\n    \"entity_status\": \"存续（在营、开业、在册）\",\n    \"reg_authority\": \"吉林市市场监督管理局\",\n    \"short_name_cn\": \"博众智能\",\n    \"actual_capital\": \"1868万人民币\",\n    \"business_scope\": \"许可项目：第一类增值电信业务（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以审批结果为准）\\\\r\\\\n一般项目：智能机器人的研发；智能机器人销售；人工智能行业应用系统集成服务；人工智能基础软件开发；人工智能应用软件开发；光伏设备及元器件制造；光伏设备及元器件销售；光电子器件制造；光电子器件销售；电子专用材料研发；电子产品销售；电子元器件制造；物联网设备制造；物联网设备销售；租赁服务（不含许可类租赁服务）；货物进出口；技术进出口（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）\",\n    \"description_cn\": \"苏州博众智能机器人有限公司，2011-09-26日成立，经营范围包括许可项目：第一类增值电信业务（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以审批结果为准）\\\\r\\\\n一般项目：智能机器人的研发；智能机器人销售；人工智能行业应用系统集成服务；人工智能基础软件开发；人工智能应用软件开发；光伏设备及元器件制造；光伏设备及元器件销售；光电子器件制造；光电子器件销售；电子专用材料研发；电子产品销售；电子元器件制造；物联网设备制造；物联网设备销售；租赁服务（不含许可类租赁服务）；货物进出口；技术进出口（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）\",\n    \"social_staff_num\": 35,\n    \"legal_person_name\": \"刘娜\",\n    \"employee_number_interval\": \"50人以下\",\n    \"normalized_entity_type_cn\": \"有限责任公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "708d5902-3832-43f1-a5a9-35c14497f693",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "registration-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5776a94d-01bd-4e80-8d08-f2332fba53cb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "registration-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f90d7a78-7537-4d3e-b114-3389decbca93",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "registration-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae30321c-ff3f-4cfc-bb8f-9ce8d576d77c",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "registration-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c584c364-3ed8-4f18-a66f-a153d3cd2e00",
+          "name": "C003 shareholder information",
+          "request": {
+            "name": "C003 shareholder information",
+            "description": {
+              "content": "This interface provides all shareholder information of the enterprise",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "shareholder-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61f83d8a-af1a-4c75-be4b-461d56180994",
+              "name": "Successful c003 shareholder information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "shareholder-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 7702,\n  \"data\": {\n    \"org_number\": \"58234321-3\",\n    \"credit_code\": \"string\",\n    \"shareholder\": [\n      {\n        \"stock_name\": \"苏州瀚川投资管理有限公司\",\n        \"credit_code\": \"91320594313721239Q\",\n        \"is_personal\": \"string\",\n        \"stock_proportion\": 33.62\n      },\n      {\n        \"stock_name\": \"苏州瀚川投资管理有限公司\",\n        \"credit_code\": \"91320594313721239Q\",\n        \"is_personal\": \"string\",\n        \"stock_proportion\": 33.62\n      }\n    ],\n    \"company_name\": \"苏州博众智能机器人有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5093143e-264c-445d-b907-1df71eb82953",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "shareholder-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "048498d0-b35b-4785-938e-1a1a9d2fdc40",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "shareholder-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f04ba9ad-378f-4115-a624-19bb1d1d7256",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "shareholder-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bf0178c-4b89-4123-b1e5-e34482d514de",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "shareholder-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "204dd00d-bb8c-4bcc-9126-712e12d4fd26",
+          "name": "C014 technology qualification",
+          "request": {
+            "name": "C014 technology qualification",
+            "description": {
+              "content": "This interface provides details of all scientific and technological qualifications recognized by enterprises",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "technology-qualification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ed1863d-9bd7-4451-89ee-2c234f8048d9",
+              "name": "Successful c014 technology qualification response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 1728,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"tech_qualification\": [\n      {\n        \"year\": \"string\",\n        \"level\": \"国家级\",\n        \"end_date\": \"string\",\n        \"tag_type\": \"高新技术企业\",\n        \"publish_date\": \"string\",\n        \"issuing_agency\": \"科技部火炬中心\"\n      },\n      {\n        \"year\": \"string\",\n        \"level\": \"国家级\",\n        \"end_date\": \"string\",\n        \"tag_type\": \"高新技术企业\",\n        \"publish_date\": \"string\",\n        \"issuing_agency\": \"科技部火炬中心\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e380d16e-aa3f-4f6d-a391-d8d0df923f4d",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ad3d8b8-8d38-4ed1-a9c1-db9de933725e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "042fa8df-f9eb-44d8-9625-91dc1e7ceaf2",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f545000a-6fff-4b8c-8ae0-ba4d4ee7fe4e",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "technology-qualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d210abc-ae80-4aaf-ad29-604a99626f52",
+          "name": "C018 listing Information",
+          "request": {
+            "name": "C018 listing Information",
+            "description": {
+              "content": "This interface provides listing information of enterprises, including stock codes, listing time, exchanges, listing sectors, etc",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "listing-Information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b489c2a7-2ea0-445e-9791-d0ef2493c357",
+              "name": "Successful c018 listing information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "listing-Information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3607,\n  \"data\": {\n    \"org_number\": \"722088964/72208896-4\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"中航工业机电系统股份有限公司\",\n    \"listing_information\": [\n      {\n        \"exchange\": \"深圳交易所\",\n        \"bond_code\": \"002013\",\n        \"bond_name\": \"中航机电\",\n        \"bond_type\": \"主板\",\n        \"bond_label\": \"A股\",\n        \"english_name\": \"AVIC Electromechanical Systems Co., Ltd.\",\n        \"listing_date\": \"string\",\n        \"delisting_date\": \"string\"\n      },\n      {\n        \"exchange\": \"深圳交易所\",\n        \"bond_code\": \"002013\",\n        \"bond_name\": \"中航机电\",\n        \"bond_type\": \"主板\",\n        \"bond_label\": \"A股\",\n        \"english_name\": \"AVIC Electromechanical Systems Co., Ltd.\",\n        \"listing_date\": \"string\",\n        \"delisting_date\": \"string\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ea4c328-faf9-45a1-b05e-3492aa52f43c",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "listing-Information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea4adeea-5d6c-439b-b875-7350679ac1a0",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "listing-Information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "442d1175-020e-4ccb-90e7-1a37e52de956",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "listing-Information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7993c434-4b5f-4970-8509-1e5e2e974e66",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "listing-Information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf09bc1f-e744-459d-9efc-eeae1330b57a",
+          "name": "C015 awards information",
+          "request": {
+            "name": "C015 awards information",
+            "description": {
+              "content": "This interface provides detailed information about the relevant awards obtained by the enterprise",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "awards-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0b125c8-1fbc-45fb-94e7-7de31cf3094d",
+              "name": "Successful c015 awards information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "awards-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8867,\n  \"data\": {\n    \"org_number\": \"05669441-9\",\n    \"credit_code\": \"string\",\n    \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n    \"awards_qualification\": [\n      {\n        \"year\": \"string\",\n        \"award\": \"国家科学技术进步奖\",\n        \"level\": \"国家级\",\n        \"awards_level\": \"二等奖\",\n        \"publish_date\": \"string\",\n        \"issuing_agency\": \"科技部\"\n      },\n      {\n        \"year\": \"string\",\n        \"award\": \"国家科学技术进步奖\",\n        \"level\": \"国家级\",\n        \"awards_level\": \"二等奖\",\n        \"publish_date\": \"string\",\n        \"issuing_agency\": \"科技部\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b8940ae-fa7f-4792-b208-5a0cfd5bc03d",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "awards-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ad1a8c0-6a4b-43d6-b630-6d520b9f670f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "awards-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03691642-676f-4e02-9ee4-d21000764cad",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "awards-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e124864b-c8d8-494c-87a1-687c250dd7cb",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "awards-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16953bab-ed75-4262-8533-998cadcd9f4a",
+          "name": "C016 main menber",
+          "request": {
+            "name": "C016 main menber",
+            "description": {
+              "content": "This interface provides information about key personnel of the enterprise, including directors, supervisors and senior executives of the enterprise",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "main-member"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4935f5d4-f440-4892-b5a3-f639f8b030d7",
+              "name": "Successful c016 main menber response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "main-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9634,\n  \"data\": {\n    \"org_number\": \"MA1FL46U-1\",\n    \"credit_code\": \"91310000MA1FL46U1L\",\n    \"main_member\": [\n      {\n        \"name\": \"李虹\",\n        \"title\": \"董事长\",\n        \"is_dimission\": \"string\"\n      },\n      {\n        \"name\": \"李虹\",\n        \"title\": \"董事长\",\n        \"is_dimission\": \"string\"\n      }\n    ],\n    \"company_name\": \"华润微电子控股有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb06c1a-adbe-452d-bed8-4432c5fe725c",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "main-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "131d6292-db4d-4e94-8eda-e79fc7a5648a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "main-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2576e57-faa0-49fa-9988-d7799fc7cfa4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "main-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce108ba5-07a5-4c23-9710-2b30381fafd7",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "main-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ed333dd-538b-45df-8529-dba0006591d1",
+          "name": "C017 core member",
+          "request": {
+            "name": "C017 core member",
+            "description": {
+              "content": "This interface provides information about the core team members of the enterprise as well as personal profiles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "core-member"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "711e6196-b6be-47c9-85d6-ec7655fd7935",
+              "name": "Successful c017 core member response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "core-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9754,\n  \"data\": {\n    \"org_number\": \"73814112-5\",\n    \"core_member\": [\n      {\n        \"desc\": \"曹韻丽女士,1963年出生,中国国籍,无永久境外居留权。财务会计专业专科学历,会计师。\\n2002年起任职于上海飞凯光电材料股份有限公司,历任财务会计、财务部经理。现任上海飞凯光电材料股份有限公司董事、副总经理。\",\n        \"name\": \"曹韻丽\",\n        \"title\": \"副总经理&副董事长&董事\",\n        \"is_dimission\": \"string\"\n      },\n      {\n        \"desc\": \"曹韻丽女士,1963年出生,中国国籍,无永久境外居留权。财务会计专业专科学历,会计师。\\n2002年起任职于上海飞凯光电材料股份有限公司,历任财务会计、财务部经理。现任上海飞凯光电材料股份有限公司董事、副总经理。\",\n        \"name\": \"曹韻丽\",\n        \"title\": \"副总经理&副董事长&董事\",\n        \"is_dimission\": \"string\"\n      }\n    ],\n    \"credit_code\": \"string\",\n    \"company_name\": \"上海飞凯材料科技股份有限公司\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b847431-95d2-488b-a768-f740e0e75a82",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "core-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61832971-37da-4f4d-880d-3141dad1070b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "core-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6c76e1e-e541-405b-a67a-2a5019e81e35",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "core-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1abc7f21-25b6-4a49-a44d-465961196e55",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "core-member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fea2aeb8-a01d-48dc-b4d6-faa012083572",
+          "name": "C038 investment information",
+          "request": {
+            "name": "C038 investment information",
+            "description": {
+              "content": "This interface provides detailed information of enterprise investment events",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "investment-information"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b98646f3-ecf0-4314-8d0b-0595723c7210",
+              "name": "Successful c038 investment information response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "investment-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 3081,\n  \"data\": {\n    \"org_number\": \"69294823-X\",\n    \"credit_code\": \"9131011269294823XQ\",\n    \"company_name\": \"上海帆茂信息科技发展有限公司\",\n    \"to_investees\": [\n      {\n        \"investee\": \"北京金匙基因科技有限公司\",\n        \"news_url\": \"http://sc.stock.cnfol.com/ggzixun/20200203/27933892.shtml\",\n        \"news_title\": \"金匙基因获得5000万元B+轮投资\",\n        \"funding_date\": \"string\"\n      },\n      {\n        \"investee\": \"北京金匙基因科技有限公司\",\n        \"news_url\": \"http://sc.stock.cnfol.com/ggzixun/20200203/27933892.shtml\",\n        \"news_title\": \"金匙基因获得5000万元B+轮投资\",\n        \"funding_date\": \"string\"\n      }\n    ],\n    \"last_funding_date\": \"string\",\n    \"last_funding_round\": \"天使轮\",\n    \"last_funding_total\": \"未披露\",\n    \"num_funding_rounds\": \"string\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdc826d4-27e9-4a42-ab70-c0c96d84c76d",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "investment-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5475ba3-4da5-4ba4-a4e4-3efaab844d92",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "investment-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70652365-a268-4fde-89e1-db4f97ac412c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "investment-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c9eecca-fbde-4f78-a8e1-275a387d7774",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "investment-information"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"小米科技有限责任公司\",\n  \"credit_code\": \"91110108551385082Q\",\n  \"org_number\": \"5513850T82\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f21075e-ab6c-486c-9699-bd7f62b4e6ab",
+          "name": "C037 Company Search",
+          "request": {
+            "name": "C037 Company Search",
+            "description": {
+              "content": "This interface uses parameters such as name (keyword search), region (country, province, city, district/county), industry (strategic emerging classification, national economic classification), industrial and commercial information (establishment time, operating status, registered capital, number of insured persons), capital market (financing process, listing status), enterprise label (patent information, technology qualification), science and technology innovation model (global science and technology innovation rating, domestic science and technology innovation rating, whether it is a smart sprout science and technology innovation enterprise) to query and return a list of retrieved enterprises or science and technology innovation enterprises",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"<string>\",\n  \"city\": \"<string>\",\n  \"country\": \"<string>\",\n  \"district\": \"<string>\",\n  \"entity_status\": \"<string>\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"<string>\",\n  \"gbc_lv2\": \"<string>\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"<string>\",\n  \"level\": \"<string>\",\n  \"list_status\": \"<string>\",\n  \"province\": \"<string>\",\n  \"rating\": \"<string>\",\n  \"rating_global\": \"<string>\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"<string>\",\n  \"seic_lv2\": \"<string>\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9597586f-29bc-4174-874d-75edf0e19f47",
+              "name": "Successful c037 company search response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"credit_code\",\n  \"city\": \"苏州市\",\n  \"country\": \"中国\",\n  \"district\": \"吴中区\",\n  \"entity_status\": \"ACTIVE\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"制造业\",\n  \"gbc_lv2\": \"纺织业\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"中国科学院苏州纳米技术与纳米仿生研究所\",\n  \"level\": \"国家级|省级|市级\",\n  \"list_status\": \"<string>\",\n  \"province\": \"江苏省\",\n  \"rating\": \"AAA|AA|A|BBB|BB|B\",\n  \"rating_global\": \"AAA|AA\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"新一代信息技术企业\",\n  \"seic_lv2\": \"电子核心产业\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"高新技术企业\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5116,\n  \"data\": {\n    \"sort_field\": \"credit_code\",\n    \"page_number\": \"string\",\n    \"company_list\": [\n      {\n        \"credit_code\": \"913205940566944194\",\n        \"company_name\": \"苏州瀚川智能科技股份有限公司\",\n        \"company_name_en\": \"Suzhou Harmontronics Automation Technology Co., Ltd.\",\n        \"is_patsnap_company\": 1\n      }\n    ],\n    \"company_count\": 1345\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb85b72f-1b41-42ab-886b-3dc30e6614f3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"credit_code\",\n  \"city\": \"苏州市\",\n  \"country\": \"中国\",\n  \"district\": \"吴中区\",\n  \"entity_status\": \"ACTIVE\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"制造业\",\n  \"gbc_lv2\": \"纺织业\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"中国科学院苏州纳米技术与纳米仿生研究所\",\n  \"level\": \"国家级|省级|市级\",\n  \"list_status\": \"<string>\",\n  \"province\": \"江苏省\",\n  \"rating\": \"AAA|AA|A|BBB|BB|B\",\n  \"rating_global\": \"AAA|AA\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"新一代信息技术企业\",\n  \"seic_lv2\": \"电子核心产业\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"高新技术企业\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8107d6c-7648-43b8-b55a-7bf3a88314a5",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"credit_code\",\n  \"city\": \"苏州市\",\n  \"country\": \"中国\",\n  \"district\": \"吴中区\",\n  \"entity_status\": \"ACTIVE\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"制造业\",\n  \"gbc_lv2\": \"纺织业\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"中国科学院苏州纳米技术与纳米仿生研究所\",\n  \"level\": \"国家级|省级|市级\",\n  \"list_status\": \"<string>\",\n  \"province\": \"江苏省\",\n  \"rating\": \"AAA|AA|A|BBB|BB|B\",\n  \"rating_global\": \"AAA|AA\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"新一代信息技术企业\",\n  \"seic_lv2\": \"电子核心产业\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"高新技术企业\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "624c4afc-0eea-4ee1-b481-1fe6573d2e81",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"credit_code\",\n  \"city\": \"苏州市\",\n  \"country\": \"中国\",\n  \"district\": \"吴中区\",\n  \"entity_status\": \"ACTIVE\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"制造业\",\n  \"gbc_lv2\": \"纺织业\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"中国科学院苏州纳米技术与纳米仿生研究所\",\n  \"level\": \"国家级|省级|市级\",\n  \"list_status\": \"<string>\",\n  \"province\": \"江苏省\",\n  \"rating\": \"AAA|AA|A|BBB|BB|B\",\n  \"rating_global\": \"AAA|AA\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"新一代信息技术企业\",\n  \"seic_lv2\": \"电子核心产业\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"高新技术企业\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e551a65b-ed71-4df5-b38a-06f0b50bcbb7",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page_number\": \"<string>\",\n  \"sort_field\": \"credit_code\",\n  \"city\": \"苏州市\",\n  \"country\": \"中国\",\n  \"district\": \"吴中区\",\n  \"entity_status\": \"ACTIVE\",\n  \"fin_process\": \"<string>\",\n  \"founded_date_lower\": \"<string>\",\n  \"founded_date_upper\": \"<string>\",\n  \"gbc_lv1\": \"制造业\",\n  \"gbc_lv2\": \"纺织业\",\n  \"is_patent\": \"<string>\",\n  \"is_patsnap_company\": \"<string>\",\n  \"key_word\": \"中国科学院苏州纳米技术与纳米仿生研究所\",\n  \"level\": \"国家级|省级|市级\",\n  \"list_status\": \"<string>\",\n  \"province\": \"江苏省\",\n  \"rating\": \"AAA|AA|A|BBB|BB|B\",\n  \"rating_global\": \"AAA|AA\",\n  \"reg_capital_lower\": \"<string>\",\n  \"reg_capital_upper\": \"<string>\",\n  \"seic_lv1\": \"新一代信息技术企业\",\n  \"seic_lv2\": \"电子核心产业\",\n  \"social_staff_num_lower\": \"<string>\",\n  \"social_staff_num_upper\": \"<string>\",\n  \"tech_tags\": \"高新技术企业\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ebdcd171-82b1-4fa1-a640-a5cf02fe041c",
+    "name": "Patsnap Open Platform AI Translation Enterprise Basic Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

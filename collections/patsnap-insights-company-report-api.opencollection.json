@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Insights Company Report API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Insights Company Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a new Landscape job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/landscape-api/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new Landscape analysis job to process patent collection."
+        },
+        {
+          "info": {
+            "name": "Get result of a Landscape job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/landscape-api/jobs/:job_id/result",
+            "params": [
+              {
+                "name": "job_seq",
+                "value": "",
+                "type": "query",
+                "description": "Sequence number of current Landscape job"
+              },
+              {
+                "name": "label_num",
+                "value": "",
+                "type": "query",
+                "description": "Label number of each cluster"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Label language"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get result data of a Landscape analysis job by job ID."
+        },
+        {
+          "info": {
+            "name": "Get status of a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/landscape-api/jobs/:job_id/status",
+            "params": [
+              {
+                "name": "job_seq",
+                "value": "",
+                "type": "query",
+                "description": "Sequence number of current Landscape job"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get current status of a Landscape job by job ID."
+        },
+        {
+          "info": {
+            "name": "Get all list of a specific facet type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/landscape-api/jobs/:job_id/facets/:facet_type",
+            "params": [
+              {
+                "name": "length",
+                "value": "",
+                "type": "query",
+                "description": "Patent number in current page"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Patent offset used for paging"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all data lists for a specific facet type in a Landscape job."
+        },
+        {
+          "info": {
+            "name": "Get all patents list of a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/landscape-api/jobs/:job_id/patents",
+            "params": [
+              {
+                "name": "all_legal",
+                "value": "",
+                "type": "query",
+                "description": "Whether to get legal info"
+              },
+              {
+                "name": "length",
+                "value": "",
+                "type": "query",
+                "description": "Patent number in current page"
+              },
+              {
+                "name": "patent_value",
+                "value": "",
+                "type": "query",
+                "description": "Whether to get patent value"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Patent offset used for paging"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all patent data within a Landscape job."
+        },
+        {
+          "info": {
+            "name": "Get all patent list of specific Landscape facet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/landscape-api/jobs/:job_id/facets/:facet_type/detail",
+            "params": [
+              {
+                "name": "filter_expired",
+                "value": "",
+                "type": "query",
+                "description": "Whether to filter expired patents"
+              },
+              {
+                "name": "length",
+                "value": "",
+                "type": "query",
+                "description": "Patent number in current page"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Patent offset used for paging"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all patent list data for a specific facet name in a Landscape job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

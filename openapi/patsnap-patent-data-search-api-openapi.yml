@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Patent Data Search API
   version: 1.0.0
@@ -658,46 +658,109 @@ paths:
               $ref: '#/components/schemas/P060ImageSingleBetaRequest'
 components:
   schemas:
-    P060ImageSingleBetaResponse:
+    P062ImageSearchSingleBatchResult_MoreImageSearchResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/P060ImageSingleBeta_ImageSearchResponse'
         status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+          example: success
+          description: Node status, such as success indicating successful generation
+        search_result:
+          type: array
+          example: 'Please check the form: MoreImageSearchResult'
+          description: search results
+          items:
+            $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_MoreImageSearchResult'
+        total_search_result_count:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P062ImageSearchSingleBatchResultResponse:
+          format: int64
+          example: 100
+          description: number of search results
+    P062ImageSearchSingleBatchCreate_MoreImageSearchTaskResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_MoreImageSearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        job_id:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+          example: 1
+          description: task id
+    P060PatentImageSingle_ImageSearchExtendResponse:
+      type: object
+      properties:
+        patent_messages:
+          type: array
+          example: 'Please check the form: PatentExtendMessage'
+          description: similar patent information
+          items:
+            $ref: '#/components/schemas/P060PatentImageSingle_PatentExtendMessage'
+        total_search_result_count:
           type: integer
-          example: '0'
-          description: Error Code
+          format: int32
+          example: 100
+          description: number of search results
+    P001PatentQuerySearchCount_SearchPatentCountResponse:
+      type: object
+      properties:
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P070PatentKeywordSuggestRequest:
+      type: object
+      properties:
+        keyword:
+          type: array
+          example:
+          - car
+          description: keyword
+        lang:
+          type: array
+          example:
+          - cn
+          - en
+          description: language(cn/en)
+        type:
+          type: array
+          example:
+          - synonym
+          - related
+          description: 'language:<p>synonym : synonym</p><p>related : related words</p><p>hypernym : hypernym</p>'
       required:
-      - status
-      - error_code
+      - keyword
+      - lang
+      - type
+    P004PatentCompanySearch_SearchPatentResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: PatentBaseResponse'
+          description: result
+          items:
+            $ref: '#/components/schemas/P004PatentCompanySearch_PatentBaseResponse'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P071ClassificationHelperSectionSubclass_ClassificationHelperResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: A
+          description: Classification code
+        has_children:
+          type: boolean
+          example: true
+          description: has children nodes
+        lang_desc_map:
+          $ref: '#/components/schemas/P071ClassificationHelperSectionSubclass_LangDescMap'
     P075PatentNestedSearch_Facet:
       type: object
       properties:
@@ -768,11 +831,11 @@ components:
       required:
       - tag
       - type
-    P062ImageSearchSingleBatchCreateResponse:
+    P001PatentQuerySearchCountResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P062ImageSearchSingleBatchCreate_MoreImageSearchTaskResponse'
+          $ref: '#/components/schemas/P001PatentQuerySearchCount_SearchPatentCountResponse'
         status:
           type: boolean
           example: 'false'
@@ -788,6 +851,973 @@ components:
       required:
       - status
       - error_code
+    P062ImageSearchSingleBatchResultRequest:
+      type: object
+    P007PatentSimilarSearchRequest:
+      type: object
+      properties:
+        country:
+          type: array
+          example:
+          - CNA
+          - CNB
+          description: 'Authority and kind code.
+
+            For the Authority code, refer to https://analytics.patsnap.com/status;
+
+            Kind code is: A (Application), B (Granted Patent), U (Utility Model), D (Design).
+
+            Multiple items can be searched, separated by comma.'
+        patent_id:
+          type: string
+          example: b053642f-3108-4ea9-b629-420b0ab959e3
+          description: Patent id
+        pbd_from:
+          type: string
+          example: 20200101
+          description: Start year of publication date
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        apd_from:
+          type: string
+          example: 20200101
+          description: Start year of application date
+        patent_number:
+          type: string
+          example: CN106185468A
+          description: Patent number
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+        apd_to:
+          type: string
+          example: 20220101
+          description: End year of application date
+        pbd_to:
+          type: string
+          example: 20220101
+          description: End year of publication date
+        relevancy:
+          type: string
+          example: 50%
+          description: 'relevancy
+
+            (the relevancy calculated logic can refer to: https://help.zhihuiya.com/help/360007811592/article/360040181092?categoryId=360002609831&showTabs=false)'
+    P005PatentCurrentSearch_SearchPatentResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: PatentBaseResponse'
+          description: result
+          items:
+            $ref: '#/components/schemas/P005PatentCurrentSearch_PatentBaseResponse'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P004PatentCompanySearchRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        application:
+          type: string
+          example: Apple, Inc.
+          description: Standardized Original Assignee (Applicant) name, the search logic is the same as Analytics query [ANS:(Apple, Inc.)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "Apple OR Huawei"
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+      required:
+      - application
+    P007PatentSimilarSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P007PatentSimilarSearch_SearchComputeResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P007PatentSimilarSearch_SemanticResult:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: patent number
+        apdt:
+          type: integer
+          format: int32
+          example: 20211108
+          description: Application Date
+        apno:
+          type: string
+          example: US17/521392
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20230815
+          description: Publication Date
+        title:
+          type: string
+          example: Techniques for using multiple symbols to provide feedback for a sidelink transmission
+          description: Title
+        inventor:
+          type: string
+          example: ELSHAFIE, AHMED | YANG, WEI | HOSSEINI, SEYEDKIANOUSH
+          description: Inventor
+        patent_id:
+          type: string
+          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
+          description: patent id
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+        current_assignee:
+          type: string
+          example: QUALCOMM INCORPORATED
+          description: Current Assignee
+        original_assignee:
+          type: string
+          example: QUALCOMM INCORPORATED
+          description: Original Assignee (Applicant)
+    P003PatentFieldQuery_PatentFieldResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: APPLE INC.
+          description: field value
+        count:
+          type: integer
+          format: int32
+          example: 2509
+          description: count
+    P072ClassificationHelperSearch_QueryResults:
+      type: object
+      properties:
+        cls_tree:
+          $ref: '#/components/schemas/P072ClassificationHelperSearch_ClassificationTree'
+    P004PatentCompanySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P004PatentCompanySearch_SearchPatentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P005PatentCurrentSearchRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+        assignee:
+          type: string
+          example: Apple, Inc.
+          description: Standardized Current Assignee name, the search logic is the same as Analytics query [ANCS:(Apple, Inc.)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "Apple OR Huawei"
+      required:
+      - assignee
+    P007PatentSimilarSearch_SearchComputeResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: SemanticResult'
+          description: result
+          items:
+            $ref: '#/components/schemas/P007PatentSimilarSearch_SemanticResult'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P071ClassificationHelperSectionSubclass_LangDescMap:
+      type: object
+      properties:
+        cn:
+          type: string
+          example: 人类生活必需
+          description: Chinese description
+        en:
+          type: string
+          example: HUMAN NECESSITIES
+          description: English description
+    P075PatentNestedSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P075PatentNestedSearch_PatentNestedSearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P072ClassificationHelperSearch_ClassificationTree:
+      type: object
+      properties:
+        id:
+          type: string
+          example: A
+          description: Classification code
+        children:
+          type: array
+          example: 'Please check the form: ClassificationTree'
+          description: sub Classification number hierarchy tree
+        lang_desc_map:
+          $ref: '#/components/schemas/P072ClassificationHelperSearch_LangDescMap'
+    P069PatentPatentSearchPnResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P069PatentPatentSearchPn_SearchPatentV2Response'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P060ImageSingleBeta_PatentMessage:
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://patsnap-imagefulltext240.cdn.zhihuiya.com/EU/S/00/47/44/21/70/00/9/004744217_0009_0002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240311T111032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240311%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=017c433982a4c397014bb96c92f320c7da2248a9d6b2ce6352f6adbffc4b0d99
+          description: similar image url
+        apdt:
+          type: integer
+          format: int64
+          example: 20190528
+          description: Application Date
+        apno:
+          type: string
+          example: EU006535076
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int64
+          example: 20190528
+          description: Publication Date
+        score:
+          type: number
+          example: 0.8884816
+          description: similar score (Valid only when sorted by similarity, that is, the request parameter field is SCORE)
+        title:
+          type: string
+          example: Mobile phones
+          description: patent title
+        img_id:
+          type: string
+          example: HDA0001130916580000011
+          description: similar image id
+        inventor:
+          type: string
+          example: ELSHAFIE, AHMED|YANG, WEI|HOSSEINI, SEYEDKIANOUSH
+          description: Inventor
+        loc_match:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Whether a similar patent hits a high-weight LOC (Valid only when request parameter model is 1 and field is SCORE)
+
+            1: hits
+
+            0: misses'
+        patent_id:
+          type: string
+          example: 6e433449-143b-41d9-9abf-6c6519b07779
+          description: similar patent ID
+        patent_pn:
+          type: string
+          example: EU0065350760001S
+          description: similar patent number
+        current_assignee:
+          type: string
+          example: HUAWEI TECHNOLOGIES CO., LTD.
+          description: Current Assignee
+        original_assignee:
+          type: string
+          example: HUAWEI TECHNOLOGIES CO., LTD.
+          description: Original Assignee (Applicant)
+      required:
+      - url
+      - title
+      - img_id
+      - patent_id
+      - patent_pn
+    P060ImageSingleBetaRequest:
+      type: object
+      properties:
+        apply_end_time:
+          type: string
+          example: '20200101'
+          description: Patent apply date to, format:yyyyMMdd
+        apply_start_time:
+          type: string
+          example: '20100101'
+          description: Patent apply date from, format:yyyyMMdd
+        assignees:
+          type: string
+          example: huawei
+          description: all assignees
+        country:
+          type: array
+          example:
+          - US
+          - EU
+          - CN
+          description: 'patent authority code
+
+            For the authority code, refer to https://analytics.patsnap.com/status, Multiple items can be searched, separated by comma.'
+        field:
+          type: string
+          example: SCORE
+          description: <p>field sort(only Chinese).field support SCORE,APD,PBD,ISD. The default SCORE</p>
+        include_machine_translation:
+          type: boolean
+          example: true
+          description: Includes Machine Translations
+        is_https:
+          type: integer
+          format: int32
+          example: 0
+          description: '<p>Select whether to return https domain image, default is 0, that is, return http domain image</p><p> 1: Return https</p><p> 0: Return http</p>'
+        lang:
+          type: string
+          example: original
+          description: 'Set the language preference of the title, you can choose cn, en or original, the default is original:
+
+            original: Original title
+
+            cn: Chinese translation title
+
+            en: English translation Title'
+        legal_status:
+          type: string
+          example: 3,2
+          description: <p>patent legal status</p><p>1:Published 2:Examining 3:Granted 8:Double 11:Withdrawn 12:Withdrawn-Undetermined 17:Withdrawn-Deemed 18:Withdrawn-Voluntarily 13:Rejected 14:Revoked 15:Expired 16:Non-payment 21:Restoration 22:Ceased 23:P-Revoked 24:Discontinuation 30:Abandoned 19:Abandoned-Deemed 20:Abandoned-Voluntarily 25:Abandoned-Undetermined 222:Non-Entry PCT-NP (In time limit)） 223:PCT-NP (In time limit) 224:PCT-NP (Past time limit) 225:Non-Entry PCT-NP (Past time limit)</p>
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Returns the number of patents, 1 <= limit <= 100，default is 10
+        loc:
+          type: string
+          example: (14-03 OR 14-02)
+          description: <p>LOC is the classification for Industrial Designs.</p><p>Enter LOC code, use AND/OR/NOT to connect multiple codes.</p>
+        main_field:
+          type: string
+          example: (phones or 手机)
+          description: '<p>patent main field</p><p>The main field includes: title, abstract, claims, description, publication number, application number, applicant, inventor and IPC/UPC/LOC classification numbers.</p>'
+        model:
+          type: integer
+          format: int32
+          example: 1
+          description: '<p>Select the image search model (there are different models for design patent and utility model)</p><p>Designs:</p><p>   1: Smart Recommendation [recommended]</p><p>   2: Image Search</p><p>Utility models:</p><p>   3: Search by shape only</p><p>   4: Search by shape & color [recommended]</p>'
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: '0 <= offset <= 1000, default is 0
+
+            If you want to get patents that are ranked lower than 100, you can set offset=100'
+        order:
+          type: string
+          example: desc
+          description: order supports desc,asc. The default desc
+        patent_type:
+          type: string
+          example: D
+          description: <p>选择检索外观专利或实用新型专利：</p><p> D：外观专利</p><p> U：实用新型专利</p>
+        public_end_time:
+          type: string
+          example: '20200101'
+          description: Patent publication date to, format:yyyyMMdd
+        public_start_time:
+          type: string
+          example: '20100101'
+          description: Patent publication date from, format:yyyyMMdd
+        return_img_id:
+          type: boolean
+          example: false
+          description: Whether to return img_id
+        score_expansion:
+          type: boolean
+          example: true
+          description: Score expansion
+        simple_legal_status:
+          type: string
+          example: 1,2
+          description: <p>patent simple legal status</p><p>0:Inactive 1:Active 2:Pending 220:PCT designated stage expired 221:PCT designated stage 999:Undetermined, Multiple items can be searched, separated by comma.</p>
+        url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: image url
+        query_text:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Analytics query
+        stemming:
+          type: integer
+          format: int32
+          example: 0
+          description: '<p>Whether to turn on the stemming function, 1: turn on; 0: turn off. Off by default</p><p>Note: </p><p>Stemming ON will search for the original word and expand the search to consider singular, plural, and tense variations e.g. a search for "come" will expand to "comes", "came", "coming" and so on.</p><p>Stemming OFF will only search for exact matches of the keywords entered.</p><p>The use of wildcards in keywords within a search query will impact the effect of stemming.</p><p>Stemming ON only supports English words. Stemming does not apply to Assignees, Inventors, or any other person-related fields.</p>'
+        pre_filter:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Whether to turn on the pre_filter function, 1: turn on; 0: turn off. on by default'
+      required:
+      - model
+      - patent_type
+      - url
+    P008PatentSemanticSearch_SearchComputeResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: SemanticResult'
+          description: result
+          items:
+            $ref: '#/components/schemas/P008PatentSemanticSearch_SemanticResult'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P072ClassificationHelperSearch_LangDescMap:
+      type: object
+      properties:
+        cn:
+          type: string
+          example: 人类生活必需
+          description: Chinese description
+        en:
+          type: string
+          example: HUMAN NECESSITIES
+          description: English description
+    P006PatentCompanySearchDefenseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P006PatentCompanySearchDefense_SearchPatentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P006PatentCompanySearchDefense_SearchPatentResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: PatentBaseResponse'
+          description: result
+          items:
+            $ref: '#/components/schemas/P006PatentCompanySearchDefense_PatentBaseResponse'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P060ImageSingleBeta_ImageSearchResponse:
+      type: object
+      properties:
+        patent_messages:
+          type: array
+          example: 'Please check the form: PatentMessage'
+          description: similar patent information
+          items:
+            $ref: '#/components/schemas/P060ImageSingleBeta_PatentMessage'
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 100
+          description: number of search results
+    P072ClassificationHelperSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P072ClassificationHelperSearch_ClassificationSearchHelperResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P062ImageSearchSingleBatchResult_MoreImageSearchResult:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+          description: action status
+        search_url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: url
+        result_count:
+          type: integer
+          format: int32
+          example: 100
+          description: number of search results
+        patent_messages:
+          type: array
+          example: 'Please check the form: PatentMessage'
+          description: similar patent information
+          items:
+            $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_PatentMessage'
+    P070PatentKeywordSuggest_Keyword:
+      type: object
+      properties:
+        keyword:
+          type: string
+          example: automobile
+          description: keyword
+    P002PatentQuerySearch_SearchPatentResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: PatentBaseResponse'
+          description: result
+          items:
+            $ref: '#/components/schemas/P002PatentQuerySearch_PatentBaseResponse'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P062ImageSearchSingleBatchResultResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_MoreImageSearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P069PatentPatentSearchPnRequest:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: Patent number
+        apno:
+          type: string
+          example: US16/123456
+          description: Application number
+        authority:
+          type: array
+          example:
+          - US
+          - CN
+          - EP
+          description: Authorities
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: Offset, default is 0
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Result limit, default is 10, maximum is 1000
+    P001PatentQuerySearchCountRequest:
+      type: object
+      properties:
+        collapse_order:
+          type: string
+          example: LATEST
+          description: When collapse_type="APNO", and collapse_by="APD" or "PBD", the collapse_order can be set as "OLDEST" or "LATEST", means keep the patent date of oldest or latest one
+        collapse_by:
+          type: string
+          example: PBD
+          description: <p>"APD" means order according to application date;</p><p>"PBD" means order according to publication date;</p><p>"AUTHORITY" means order according to authority;</p><p>"SCORE" means order according to the relevance score</p>
+        collapse_type:
+          type: string
+          example: DOCDB
+          description: <p>"ALL" or Null value means no collapse;</p><p>"APNO" means collapse according to application number;</p><p>"DOCDB" means collapse according to simple family;</p><p>"INPADOC" means collapse according to inpadoc family;</p><p>"EXTEND" means collapse according to patsnap family</p>
+        query_text:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Analytics query, maximum length 1,500 characters
+      required:
+      - query_text
+    P003PatentFieldQueryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P003PatentFieldQuery_DataFieldResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P072ClassificationHelperSearch_ClassificationSearchHelperResponse:
+      type: object
+      properties:
+        h_words:
+          type: array
+          example:
+          - 手机
+          - 电脑
+          description: Key word hit
+        has_children:
+          type: string
+          example: true
+          description: has children nodes
+        query_results:
+          type: array
+          example: 'Please check the form: QueryResults'
+          description: search results
+          items:
+            $ref: '#/components/schemas/P072ClassificationHelperSearch_QueryResults'
+    P061PatentImageMultiple_ImageSearchExtendResponse:
+      type: object
+      properties:
+        patent_messages:
+          type: array
+          example: 'Please check the form: PatentExtendMessage'
+          description: similar patent information
+          items:
+            $ref: '#/components/schemas/P061PatentImageMultiple_PatentExtendMessage'
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 100
+          description: number of search results
+    P075PatentNestedSearch_PatentNestedSearchResponse:
+      type: object
+      properties:
+        facets:
+          type: object
+          example:
+            PUM_PROP_ID_CN:
+            - name: af1d2b97-6078-514c-a2f1-9d930de64767
+              count: 158
+            - name: 6979882c-f05c-516e-9bab-723396999f87
+              count: 80
+            PUM_PROP_ID_CN_num_buckets: 131
+          description: statistical result（Dynamic key, defined based on the tag in the input parameter）
+        num_found:
+          type: integer
+          format: int32
+          example: 1000
+          description: Total search result count
+        id_mapping:
+          type: object
+          example: AnsEntity
+          description: When ANS is triggered, ANS information will be returned.
+    P069PatentPatentSearchPn_SearchPatentV2Response:
+      type: object
+      properties:
+        results:
+          type: array
+          example: 'Please check the form: PatentBaseV2Response'
+          description: result
+          items:
+            $ref: '#/components/schemas/P069PatentPatentSearchPn_PatentBaseV2Response'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int64
+          example: 1000
+          description: Total search result count
+    P005PatentCurrentSearch_PatentBaseResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+    P008PatentSemanticSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P008PatentSemanticSearch_SearchComputeResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P062ImageSearchSingleBatchResult_PatentMessage:
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://patsnap-imagefulltext240.cdn.zhihuiya.com/EU/S/00/47/44/21/70/00/9/004744217_0009_0002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240311T111032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240311%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=017c433982a4c397014bb96c92f320c7da2248a9d6b2ce6352f6adbffc4b0d99
+          description: similar image url
+        apdt:
+          type: integer
+          format: int64
+          example: 20190528
+          description: Application Date
+        apno:
+          type: string
+          example: EU006535076
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int64
+          example: 20190528
+          description: Publication Date
+        score:
+          type: number
+          example: 0.8884816
+          description: similar score (Valid only when sorted by similarity, that is, the request parameter field is SCORE)
+        title:
+          type: string
+          example: Mobile phones
+          description: patent title
+        img_id:
+          type: string
+          example: HDA0001130916580000011
+          description: similar image id
+        inventor:
+          type: string
+          example: ELSHAFIE, AHMED|YANG, WEI|HOSSEINI, SEYEDKIANOUSH
+          description: Inventor
+        loc_match:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Whether a similar patent hits a high-weight LOC (Valid only when request parameter model is 1 and field is SCORE)
+
+            1: hits
+
+            0: misses'
+        patent_id:
+          type: string
+          example: 6e433449-143b-41d9-9abf-6c6519b07779
+          description: similar patent ID
+        patent_pn:
+          type: string
+          example: EU0065350760001S
+          description: similar patent number
+        current_assignee:
+          type: string
+          example: HUAWEI TECHNOLOGIES CO., LTD.
+          description: Current Assignee
+        original_assignee:
+          type: string
+          example: HUAWEI TECHNOLOGIES CO., LTD.
+          description: Original Assignee (Applicant)
+      required:
+      - url
+      - title
+      - img_id
+      - patent_id
+      - patent_pn
+    P005PatentCurrentSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P005PatentCurrentSearch_SearchPatentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P002PatentQuerySearchRequest:
+      type: object
+      properties:
+        collapse_by:
+          type: string
+          example: PBD
+          description: <p>"APD" means order according to application date;</p><p>"PBD" means order according to publication date;</p><p>"AUTHORITY" means order according to authority;</p><p>"SCORE" means order according to the relevance score</p>
+        collapse_order:
+          type: string
+          example: LATEST
+          description: When collapse_type="APNO", and collapse_by="APD" or "PBD", the collapse_order can be set as "OLDEST" or "LATEST", means keep the patent date of oldest or latest one
+        collapse_type:
+          type: string
+          example: DOCDB
+          description: <p>"ALL" or Null value means no collapse;</p><p>"APNO" means collapse according to application number;</p><p>"DOCDB" means collapse according to simple family;</p><p>"INPADOC" means collapse according to inpadoc family;</p><p>"EXTEND" means collapse according to patsnap family</p>
+        query_text:
+          type: string
+          example: 'TACD: virtual reality'
+          description: Analytics query, maximum length 12,000 characters
+        sort:
+          type: array
+          example:
+          - field: PBDT_YEARMONTHDAY
+            order: DESC
+          description: 'Field order, field can support: PBDT_YEARMONTHDAY, APD_YEARMONTHDAY, ISD,SCORE; order can support: desc, asc.'
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+      required:
+      - query_text
     P061PatentImageMultipleRequest:
       type: object
       properties:
@@ -916,7 +1946,41 @@ components:
       - model
       - patent_type
       - urls
-    P060PatentImageSingle_PatentExtendMessage:
+    P008PatentSemanticSearch_SemanticResult:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: JP1999068462A
+          description: patent number
+        patent_id:
+          type: string
+          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
+          description: patent id
+        relevancy:
+          type: string
+          example: 99%
+          description: relevancy between the result patent and the input content
+    P006PatentCompanySearchDefenseRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        application:
+          type: string
+          example: 上海宇航系统工程研究所
+          description: Applicant name, the search logic is the same as Analytics query [AN:(上海宇航系统工程研究所)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "上海宇航系统工程研究所 OR 北京理工大学""
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+      required:
+      - application
+    P061PatentImageMultiple_PatentExtendMessage:
       type: object
       properties:
         loc:
@@ -994,116 +2058,6 @@ components:
       - img_id
       - patent_id
       - patent_pn
-    P008PatentSemanticSearch_SemanticResult:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: JP1999068462A
-          description: patent number
-        patent_id:
-          type: string
-          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
-          description: patent id
-        relevancy:
-          type: string
-          example: 99%
-          description: relevancy between the result patent and the input content
-    P072ClassificationHelperSearch_ClassificationTree:
-      type: object
-      properties:
-        id:
-          type: string
-          example: A
-          description: Classification code
-        children:
-          type: array
-          example: 'Please check the form: ClassificationTree'
-          description: sub Classification number hierarchy tree
-        lang_desc_map:
-          $ref: '#/components/schemas/P072ClassificationHelperSearch_LangDescMap'
-    P070PatentKeywordSuggestRequest:
-      type: object
-      properties:
-        keyword:
-          type: array
-          example:
-          - car
-          description: keyword
-        lang:
-          type: array
-          example:
-          - cn
-          - en
-          description: language(cn/en)
-        type:
-          type: array
-          example:
-          - synonym
-          - related
-          description: 'language:<p>synonym : synonym</p><p>related : related words</p><p>hypernym : hypernym</p>'
-      required:
-      - keyword
-      - lang
-      - type
-    P003PatentFieldQueryRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: 0 <= offset+limit <= 200
-        query:
-          type: string
-          example: TTL:汽车
-          description: query
-        field:
-          type: string
-          example: ASSIGNEE
-          description: 'Filter item result set, please enter the field code, up to 5 fields are supported, separated by comma.<p>ASSIGNEE: standard - the current applicant (patent)</p><p>ANCS_TYPE: indicates the type of the applicant（ACADEMY COMPANY GOVERNMENT PERSON HOSPITAL BANK OTHER）</p><p>INVENTOR: the inventor</p><p>SIMPLE_LEGAL_STATUS: simple legal status (0: invalid 1: valid 2: under review 220: PCT specified period 221: PCT specified period 999: unconfirmed)  </p><p>LEGAL_STATUS:  Legal status (1: disclosure 2: substantive review 3: authorization 8: avoidance of reauthorization 11: withdrawal 13: rejection 14: full cancellation 15: expiration 16: unpaid annual fee 21: restoration of rights 22: Termination of rights 23: Partial invalidation 24: application for termination 30:  Abandonment 222: PCT International Announcement 223: PCT enters designated country (specified period) 224: PCT enters designated country (specified period) 225: PCT does not enter designated country)  </p><p>LEGAL_EVENT:  Legal events (61: transfer of rights 62: License 63: pledge 64: trust 65: objection 66: review 69: Customs record 70: litigation 71: preservation 72: Invalid procedure 73: oral hearing 74: Declassification of National Defense 75: Double Application in one Case)  </p><p>APPLICATION_YEAR: application year</p><p>PUBLICATION_YEAR: public year</p><p>ISSUE_YEAR: entitlement year</p><p>AGENCY: the agency</p><p>PATENT_TYPE: patent type（A: Applications B: Patents U: Utility models D: Designs AB: Applications+Patents）</p><p>AUTHORITY: (https://analytics.patsnap.com/status)</p>'
-        limit:
-          type: integer
-          format: int32
-          example: 50
-          description: Returns the number of statistical results, 1 <= limit <= 100，default is 50
-        lang:
-          type: string
-          example: cn
-          description: Select the language, the default language is cn, you can choose cn、en or jp.
-      required:
-      - offset
-      - query
-      - field
-      - limit
-    P075PatentNestedSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P075PatentNestedSearch_PatentNestedSearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P001PatentQuerySearchCount_SearchPatentCountResponse:
-      type: object
-      properties:
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
     P002PatentQuerySearchResponse:
       type: object
       properties:
@@ -1124,89 +2078,11 @@ components:
       required:
       - status
       - error_code
-    P002PatentQuerySearch_SearchPatentResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: PatentBaseResponse'
-          description: result
-          items:
-            $ref: '#/components/schemas/P002PatentQuerySearch_PatentBaseResponse'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P008PatentSemanticSearch_SearchComputeResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: SemanticResult'
-          description: result
-          items:
-            $ref: '#/components/schemas/P008PatentSemanticSearch_SemanticResult'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P061PatentImageMultipleResponse:
+    P010ImageSearchImageUploadResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P061PatentImageMultiple_ImageSearchExtendResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P072ClassificationHelperSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P072ClassificationHelperSearch_ClassificationSearchHelperResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P004PatentCompanySearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P004PatentCompanySearch_SearchPatentResponse'
+          $ref: '#/components/schemas/P010ImageSearchImageUpload_FileUrlResponse'
         status:
           type: boolean
           example: 'false'
@@ -1233,26 +2109,11 @@ components:
           type: string
           example: 718ead9c-4f3c-4674-8f5a-24e126827269
           description: patent id
-    P006PatentCompanySearchDefense_PatentBaseResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US11205304B2
-          description: patent number
-        patent_id:
-          type: string
-          example: 718ead9c-4f3c-4674-8f5a-24e126827269
-          description: patent id
-    P003PatentFieldQueryResponse:
+    P062ImageSearchSingleBatchCreateResponse:
       type: object
       properties:
         data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P003PatentFieldQuery_DataFieldResponse'
+          $ref: '#/components/schemas/P062ImageSearchSingleBatchCreate_MoreImageSearchTaskResponse'
         status:
           type: boolean
           example: 'false'
@@ -1268,266 +2129,6 @@ components:
       required:
       - status
       - error_code
-    P061PatentImageMultiple_ImageSearchExtendResponse:
-      type: object
-      properties:
-        patent_messages:
-          type: array
-          example: 'Please check the form: PatentExtendMessage'
-          description: similar patent information
-          items:
-            $ref: '#/components/schemas/P061PatentImageMultiple_PatentExtendMessage'
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 100
-          description: number of search results
-    P007PatentSimilarSearch_SearchComputeResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: SemanticResult'
-          description: result
-          items:
-            $ref: '#/components/schemas/P007PatentSimilarSearch_SemanticResult'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P062ImageSearchSingleBatchResult_MoreImageSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-          description: Node status, such as success indicating successful generation
-        search_result:
-          type: array
-          example: 'Please check the form: MoreImageSearchResult'
-          description: search results
-          items:
-            $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_MoreImageSearchResult'
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 100
-          description: number of search results
-    P060PatentImageSingle_ImageSearchExtendResponse:
-      type: object
-      properties:
-        patent_messages:
-          type: array
-          example: 'Please check the form: PatentExtendMessage'
-          description: similar patent information
-          items:
-            $ref: '#/components/schemas/P060PatentImageSingle_PatentExtendMessage'
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 100
-          description: number of search results
-    P007PatentSimilarSearchRequest:
-      type: object
-      properties:
-        country:
-          type: array
-          example:
-          - CNA
-          - CNB
-          description: 'Authority and kind code.
-
-            For the Authority code, refer to https://analytics.patsnap.com/status;
-
-            Kind code is: A (Application), B (Granted Patent), U (Utility Model), D (Design).
-
-            Multiple items can be searched, separated by comma.'
-        patent_id:
-          type: string
-          example: b053642f-3108-4ea9-b629-420b0ab959e3
-          description: Patent id
-        pbd_from:
-          type: string
-          example: 20200101
-          description: Start year of publication date
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        apd_from:
-          type: string
-          example: 20200101
-          description: Start year of application date
-        patent_number:
-          type: string
-          example: CN106185468A
-          description: Patent number
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-        apd_to:
-          type: string
-          example: 20220101
-          description: End year of application date
-        pbd_to:
-          type: string
-          example: 20220101
-          description: End year of publication date
-        relevancy:
-          type: string
-          example: 50%
-          description: 'relevancy
-
-            (the relevancy calculated logic can refer to: https://help.zhihuiya.com/help/360007811592/article/360040181092?categoryId=360002609831&showTabs=false)'
-    P060ImageSingleBeta_ImageSearchResponse:
-      type: object
-      properties:
-        patent_messages:
-          type: array
-          example: 'Please check the form: PatentMessage'
-          description: similar patent information
-          items:
-            $ref: '#/components/schemas/P060ImageSingleBeta_PatentMessage'
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 100
-          description: number of search results
-    P060ImageSingleBetaRequest:
-      type: object
-      properties:
-        apply_end_time:
-          type: string
-          example: '20200101'
-          description: Patent apply date to, format:yyyyMMdd
-        apply_start_time:
-          type: string
-          example: '20100101'
-          description: Patent apply date from, format:yyyyMMdd
-        assignees:
-          type: string
-          example: huawei
-          description: all assignees
-        country:
-          type: array
-          example:
-          - US
-          - EU
-          - CN
-          description: 'patent authority code
-
-            For the authority code, refer to https://analytics.patsnap.com/status, Multiple items can be searched, separated by comma.'
-        field:
-          type: string
-          example: SCORE
-          description: <p>field sort(only Chinese).field support SCORE,APD,PBD,ISD. The default SCORE</p>
-        include_machine_translation:
-          type: boolean
-          example: true
-          description: Includes Machine Translations
-        is_https:
-          type: integer
-          format: int32
-          example: 0
-          description: '<p>Select whether to return https domain image, default is 0, that is, return http domain image</p><p> 1: Return https</p><p> 0: Return http</p>'
-        lang:
-          type: string
-          example: original
-          description: 'Set the language preference of the title, you can choose cn, en or original, the default is original:
-
-            original: Original title
-
-            cn: Chinese translation title
-
-            en: English translation Title'
-        legal_status:
-          type: string
-          example: 3,2
-          description: <p>patent legal status</p><p>1:Published 2:Examining 3:Granted 8:Double 11:Withdrawn 12:Withdrawn-Undetermined 17:Withdrawn-Deemed 18:Withdrawn-Voluntarily 13:Rejected 14:Revoked 15:Expired 16:Non-payment 21:Restoration 22:Ceased 23:P-Revoked 24:Discontinuation 30:Abandoned 19:Abandoned-Deemed 20:Abandoned-Voluntarily 25:Abandoned-Undetermined 222:Non-Entry PCT-NP (In time limit)） 223:PCT-NP (In time limit) 224:PCT-NP (Past time limit) 225:Non-Entry PCT-NP (Past time limit)</p>
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: Returns the number of patents, 1 <= limit <= 100，default is 10
-        loc:
-          type: string
-          example: (14-03 OR 14-02)
-          description: <p>LOC is the classification for Industrial Designs.</p><p>Enter LOC code, use AND/OR/NOT to connect multiple codes.</p>
-        main_field:
-          type: string
-          example: (phones or 手机)
-          description: '<p>patent main field</p><p>The main field includes: title, abstract, claims, description, publication number, application number, applicant, inventor and IPC/UPC/LOC classification numbers.</p>'
-        model:
-          type: integer
-          format: int32
-          example: 1
-          description: '<p>Select the image search model (there are different models for design patent and utility model)</p><p>Designs:</p><p>   1: Smart Recommendation [recommended]</p><p>   2: Image Search</p><p>Utility models:</p><p>   3: Search by shape only</p><p>   4: Search by shape & color [recommended]</p>'
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: '0 <= offset <= 1000, default is 0
-
-            If you want to get patents that are ranked lower than 100, you can set offset=100'
-        order:
-          type: string
-          example: desc
-          description: order supports desc,asc. The default desc
-        patent_type:
-          type: string
-          example: D
-          description: <p>选择检索外观专利或实用新型专利：</p><p> D：外观专利</p><p> U：实用新型专利</p>
-        public_end_time:
-          type: string
-          example: '20200101'
-          description: Patent publication date to, format:yyyyMMdd
-        public_start_time:
-          type: string
-          example: '20100101'
-          description: Patent publication date from, format:yyyyMMdd
-        return_img_id:
-          type: boolean
-          example: false
-          description: Whether to return img_id
-        score_expansion:
-          type: boolean
-          example: true
-          description: Score expansion
-        simple_legal_status:
-          type: string
-          example: 1,2
-          description: <p>patent simple legal status</p><p>0:Inactive 1:Active 2:Pending 220:PCT designated stage expired 221:PCT designated stage 999:Undetermined, Multiple items can be searched, separated by comma.</p>
-        url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: image url
-        query_text:
-          type: string
-          example: 'TACD: virtual reality'
-          description: Analytics query
-        stemming:
-          type: integer
-          format: int32
-          example: 0
-          description: '<p>Whether to turn on the stemming function, 1: turn on; 0: turn off. Off by default</p><p>Note: </p><p>Stemming ON will search for the original word and expand the search to consider singular, plural, and tense variations e.g. a search for "come" will expand to "comes", "came", "coming" and so on.</p><p>Stemming OFF will only search for exact matches of the keywords entered.</p><p>The use of wildcards in keywords within a search query will impact the effect of stemming.</p><p>Stemming ON only supports English words. Stemming does not apply to Assignees, Inventors, or any other person-related fields.</p>'
-        pre_filter:
-          type: integer
-          format: int32
-          example: 1
-          description: 'Whether to turn on the pre_filter function, 1: turn on; 0: turn off. on by default'
-      required:
-      - model
-      - patent_type
-      - url
     P070PatentKeywordSuggest_Item:
       type: object
       properties:
@@ -1566,643 +2167,6 @@ components:
           description: Keyword list
           items:
             $ref: '#/components/schemas/P070PatentKeywordSuggest_Keyword'
-    P062ImageSearchSingleBatchCreate_MoreImageSearchTaskResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 1
-          description: task id
-    P010ImageSearchImageUploadRequest:
-      type: object
-      properties:
-        image:
-          type: file
-          example: maximum 4096KB
-          description: JPG,PNG
-      required:
-      - image
-    P069PatentPatentSearchPnResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P069PatentPatentSearchPn_SearchPatentV2Response'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P005PatentCurrentSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P005PatentCurrentSearch_SearchPatentResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P005PatentCurrentSearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-        assignee:
-          type: string
-          example: Apple, Inc.
-          description: Standardized Current Assignee name, the search logic is the same as Analytics query [ANCS:(Apple, Inc.)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "Apple OR Huawei"
-      required:
-      - assignee
-    P007PatentSimilarSearch_SemanticResult:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: JP1999068462A
-          description: patent number
-        apdt:
-          type: integer
-          format: int32
-          example: 20211108
-          description: Application Date
-        apno:
-          type: string
-          example: US17/521392
-          description: Application Number
-        pbdt:
-          type: integer
-          format: int32
-          example: 20230815
-          description: Publication Date
-        title:
-          type: string
-          example: Techniques for using multiple symbols to provide feedback for a sidelink transmission
-          description: Title
-        inventor:
-          type: string
-          example: ELSHAFIE, AHMED | YANG, WEI | HOSSEINI, SEYEDKIANOUSH
-          description: Inventor
-        patent_id:
-          type: string
-          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
-          description: patent id
-        relevancy:
-          type: string
-          example: 99%
-          description: relevancy between the result patent and the input content
-        current_assignee:
-          type: string
-          example: QUALCOMM INCORPORATED
-          description: Current Assignee
-        original_assignee:
-          type: string
-          example: QUALCOMM INCORPORATED
-          description: Original Assignee (Applicant)
-    P006PatentCompanySearchDefense_SearchPatentResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: PatentBaseResponse'
-          description: result
-          items:
-            $ref: '#/components/schemas/P006PatentCompanySearchDefense_PatentBaseResponse'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P007PatentSimilarSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P007PatentSimilarSearch_SearchComputeResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P069PatentPatentSearchPn_SearchPatentV2Response:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: PatentBaseV2Response'
-          description: result
-          items:
-            $ref: '#/components/schemas/P069PatentPatentSearchPn_PatentBaseV2Response'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P003PatentFieldQuery_DataFieldResponse:
-      type: object
-      properties:
-        assignee:
-          type: array
-          example: 'Please check the form: PatentFieldResponse'
-          description: Fields that support statistics
-          items:
-            $ref: '#/components/schemas/P003PatentFieldQuery_PatentFieldResponse'
-    P008PatentSemanticSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P008PatentSemanticSearch_SearchComputeResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P062ImageSearchSingleBatchResultRequest:
-      type: object
-    P075PatentNestedSearchRequest:
-      type: object
-      properties:
-        facet:
-          type: array
-          example: 'Please check the form: Facet'
-          description: '<p>Nested statistical configuration</p><p>Supports four types:</p><p>field - Field statistics</p><p>range - Range statistics</p><p>query - Query statistics</p><p>aggregate - Aggregate statistics</p><p>1. field (Field statistics)</p><p><code>{  "type": "field",  "tag": "patent_type",  "field": "PATENT_TYPE",  "limit": 10,  "mincount": 1,  "offset": 0,  "num_buckets": true}</code></p><p>2. range (Range statistics)</p><p><code>{  "type": "range",  "tag": "apd_year",  "field": "APD_YEAR",  "start": 2000,  "end": 2018,  "gap": 1}</code></p><p>3. query (Query statistics)</p><p><code>{  "type": "query",  "tag": "patent_type",  "query": "PV:[0 TO 100000]"}</code></p><p>4. aggregate (Aggregate statistics)</p><p><code>{  "type": "aggregate",  "tag": "avg_pv",  "expr": "avg(PV)"  }</code></p>'
-          items:
-            $ref: '#/components/schemas/P075PatentNestedSearch_Facet'
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: Return the number of documents.
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset
-        query_text:
-          type: string
-          example: TTL:car
-          description: 'Search expression text. Refer to : https://analytics.patsnap.com/search_helper'
-        sort:
-          type: array
-          example:
-          - field: SCORE
-            order: DESC
-          description: sort
-          items:
-            $ref: '#/components/schemas/P075PatentNestedSearch_Sort'
-        stemming:
-          type: boolean
-          example: false
-          description: 'Whether to enable word segmentation, after enabling it, support the same stem query (for example: "cars" can be searched by "car"). By default, it is not enabled. Currently, only fields related to TTL/ABST/CLMS/DESC are supported'
-      required:
-      - query_text
-    P005PatentCurrentSearch_SearchPatentResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: PatentBaseResponse'
-          description: result
-          items:
-            $ref: '#/components/schemas/P005PatentCurrentSearch_PatentBaseResponse'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
-    P004PatentCompanySearchRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        application:
-          type: string
-          example: Apple, Inc.
-          description: Standardized Original Assignee (Applicant) name, the search logic is the same as Analytics query [ANS:(Apple, Inc.)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "Apple OR Huawei"
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-      required:
-      - application
-    P075PatentNestedSearch_PatentNestedSearchResponse:
-      type: object
-      properties:
-        facets:
-          type: object
-          example:
-            PUM_PROP_ID_CN:
-            - name: af1d2b97-6078-514c-a2f1-9d930de64767
-              count: 158
-            - name: 6979882c-f05c-516e-9bab-723396999f87
-              count: 80
-            PUM_PROP_ID_CN_num_buckets: 131
-          description: statistical result（Dynamic key, defined based on the tag in the input parameter）
-        num_found:
-          type: integer
-          format: int32
-          example: 1000
-          description: Total search result count
-        id_mapping:
-          type: object
-          example: AnsEntity
-          description: When ANS is triggered, ANS information will be returned.
-    P071ClassificationHelperSectionSubclassResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P071ClassificationHelperSectionSubclass_ClassificationHelperResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P075PatentNestedSearch_Sort:
-      type: object
-      properties:
-        field:
-          type: string
-          example: SCORE
-          description: sort field
-        order:
-          type: string
-          example: DESC
-          description: sort order
-    P072ClassificationHelperSearch_ClassificationSearchHelperResponse:
-      type: object
-      properties:
-        h_words:
-          type: array
-          example:
-          - 手机
-          - 电脑
-          description: Key word hit
-        has_children:
-          type: string
-          example: true
-          description: has children nodes
-        query_results:
-          type: array
-          example: 'Please check the form: QueryResults'
-          description: search results
-          items:
-            $ref: '#/components/schemas/P072ClassificationHelperSearch_QueryResults'
-    P001PatentQuerySearchCountResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P001PatentQuerySearchCount_SearchPatentCountResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P070PatentKeywordSuggest_Keyword:
-      type: object
-      properties:
-        keyword:
-          type: string
-          example: automobile
-          description: keyword
-    P062ImageSearchSingleBatchResult_PatentMessage:
-      type: object
-      properties:
-        url:
-          type: string
-          example: http://patsnap-imagefulltext240.cdn.zhihuiya.com/EU/S/00/47/44/21/70/00/9/004744217_0009_0002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240311T111032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240311%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=017c433982a4c397014bb96c92f320c7da2248a9d6b2ce6352f6adbffc4b0d99
-          description: similar image url
-        apdt:
-          type: integer
-          format: int64
-          example: 20190528
-          description: Application Date
-        apno:
-          type: string
-          example: EU006535076
-          description: Application Number
-        pbdt:
-          type: integer
-          format: int64
-          example: 20190528
-          description: Publication Date
-        score:
-          type: number
-          example: 0.8884816
-          description: similar score (Valid only when sorted by similarity, that is, the request parameter field is SCORE)
-        title:
-          type: string
-          example: Mobile phones
-          description: patent title
-        img_id:
-          type: string
-          example: HDA0001130916580000011
-          description: similar image id
-        inventor:
-          type: string
-          example: ELSHAFIE, AHMED|YANG, WEI|HOSSEINI, SEYEDKIANOUSH
-          description: Inventor
-        loc_match:
-          type: integer
-          format: int32
-          example: 1
-          description: 'Whether a similar patent hits a high-weight LOC (Valid only when request parameter model is 1 and field is SCORE)
-
-            1: hits
-
-            0: misses'
-        patent_id:
-          type: string
-          example: 6e433449-143b-41d9-9abf-6c6519b07779
-          description: similar patent ID
-        patent_pn:
-          type: string
-          example: EU0065350760001S
-          description: similar patent number
-        current_assignee:
-          type: string
-          example: HUAWEI TECHNOLOGIES CO., LTD.
-          description: Current Assignee
-        original_assignee:
-          type: string
-          example: HUAWEI TECHNOLOGIES CO., LTD.
-          description: Original Assignee (Applicant)
-      required:
-      - url
-      - title
-      - img_id
-      - patent_id
-      - patent_pn
-    P001PatentQuerySearchCountRequest:
-      type: object
-      properties:
-        collapse_order:
-          type: string
-          example: LATEST
-          description: When collapse_type="APNO", and collapse_by="APD" or "PBD", the collapse_order can be set as "OLDEST" or "LATEST", means keep the patent date of oldest or latest one
-        collapse_by:
-          type: string
-          example: PBD
-          description: <p>"APD" means order according to application date;</p><p>"PBD" means order according to publication date;</p><p>"AUTHORITY" means order according to authority;</p><p>"SCORE" means order according to the relevance score</p>
-        collapse_type:
-          type: string
-          example: DOCDB
-          description: <p>"ALL" or Null value means no collapse;</p><p>"APNO" means collapse according to application number;</p><p>"DOCDB" means collapse according to simple family;</p><p>"INPADOC" means collapse according to inpadoc family;</p><p>"EXTEND" means collapse according to patsnap family</p>
-        query_text:
-          type: string
-          example: 'TACD: virtual reality'
-          description: Analytics query, maximum length 1,500 characters
-      required:
-      - query_text
-    P069PatentPatentSearchPn_PatentBaseV2Response:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US11205304B2
-          description: patent number
-        apdt:
-          type: integer
-          format: int32
-          example: 20211108
-          description: Application Date
-        apno:
-          type: string
-          example: US17/521392
-          description: Application Number
-        pbdt:
-          type: integer
-          format: int32
-          example: 20230815
-          description: Publication Date
-        title:
-          type: string
-          example: Techniques for using multiple symbols to provide feedback for a sidelink transmission
-          description: Title
-        inventor:
-          type: string
-          example: ELSHAFIE, AHMED | YANG, WEI | HOSSEINI, SEYEDKIANOUSH
-          description: Inventor
-        patent_id:
-          type: string
-          example: 718ead9c-4f3c-4674-8f5a-24e126827269
-          description: patent id
-        current_assignee:
-          type: string
-          example: QUALCOMM INCORPORATED
-          description: Current Assignee
-        original_assignee:
-          type: string
-          example: QUALCOMM INCORPORATED
-          description: Original Assignee (Applicant)
-    P072ClassificationHelperSearch_LangDescMap:
-      type: object
-      properties:
-        cn:
-          type: string
-          example: 人类生活必需
-          description: Chinese description
-        en:
-          type: string
-          example: HUMAN NECESSITIES
-          description: English description
-    P062ImageSearchSingleBatchResult_MoreImageSearchResult:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-          description: action status
-        search_url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: url
-        result_count:
-          type: integer
-          format: int32
-          example: 100
-          description: number of search results
-        patent_messages:
-          type: array
-          example: 'Please check the form: PatentMessage'
-          description: similar patent information
-          items:
-            $ref: '#/components/schemas/P062ImageSearchSingleBatchResult_PatentMessage'
-    P060ImageSingleBeta_PatentMessage:
-      type: object
-      properties:
-        url:
-          type: string
-          example: http://patsnap-imagefulltext240.cdn.zhihuiya.com/EU/S/00/47/44/21/70/00/9/004744217_0009_0002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240311T111032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20240311%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Signature=017c433982a4c397014bb96c92f320c7da2248a9d6b2ce6352f6adbffc4b0d99
-          description: similar image url
-        apdt:
-          type: integer
-          format: int64
-          example: 20190528
-          description: Application Date
-        apno:
-          type: string
-          example: EU006535076
-          description: Application Number
-        pbdt:
-          type: integer
-          format: int64
-          example: 20190528
-          description: Publication Date
-        score:
-          type: number
-          example: 0.8884816
-          description: similar score (Valid only when sorted by similarity, that is, the request parameter field is SCORE)
-        title:
-          type: string
-          example: Mobile phones
-          description: patent title
-        img_id:
-          type: string
-          example: HDA0001130916580000011
-          description: similar image id
-        inventor:
-          type: string
-          example: ELSHAFIE, AHMED|YANG, WEI|HOSSEINI, SEYEDKIANOUSH
-          description: Inventor
-        loc_match:
-          type: integer
-          format: int32
-          example: 1
-          description: 'Whether a similar patent hits a high-weight LOC (Valid only when request parameter model is 1 and field is SCORE)
-
-            1: hits
-
-            0: misses'
-        patent_id:
-          type: string
-          example: 6e433449-143b-41d9-9abf-6c6519b07779
-          description: similar patent ID
-        patent_pn:
-          type: string
-          example: EU0065350760001S
-          description: similar patent number
-        current_assignee:
-          type: string
-          example: HUAWEI TECHNOLOGIES CO., LTD.
-          description: Current Assignee
-        original_assignee:
-          type: string
-          example: HUAWEI TECHNOLOGIES CO., LTD.
-          description: Original Assignee (Applicant)
-      required:
-      - url
-      - title
-      - img_id
-      - patent_id
-      - patent_pn
-    P004PatentCompanySearch_SearchPatentResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: 'Please check the form: PatentBaseResponse'
-          description: result
-          items:
-            $ref: '#/components/schemas/P004PatentCompanySearch_PatentBaseResponse'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int64
-          example: 1000
-          description: Total search result count
     P070PatentKeywordSuggest_KeywordSuggestResponse:
       type: object
       properties:
@@ -2239,6 +2203,36 @@ components:
           description: Return data
           items:
             $ref: '#/components/schemas/P070PatentKeywordSuggest_Item'
+    P003PatentFieldQueryRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: 0 <= offset+limit <= 200
+        query:
+          type: string
+          example: TTL:汽车
+          description: query
+        field:
+          type: string
+          example: ASSIGNEE
+          description: 'Filter item result set, please enter the field code, up to 5 fields are supported, separated by comma.<p>ASSIGNEE: standard - the current applicant (patent)</p><p>ANCS_TYPE: indicates the type of the applicant（ACADEMY COMPANY GOVERNMENT PERSON HOSPITAL BANK OTHER）</p><p>INVENTOR: the inventor</p><p>SIMPLE_LEGAL_STATUS: simple legal status (0: invalid 1: valid 2: under review 220: PCT specified period 221: PCT specified period 999: unconfirmed)  </p><p>LEGAL_STATUS:  Legal status (1: disclosure 2: substantive review 3: authorization 8: avoidance of reauthorization 11: withdrawal 13: rejection 14: full cancellation 15: expiration 16: unpaid annual fee 21: restoration of rights 22: Termination of rights 23: Partial invalidation 24: application for termination 30:  Abandonment 222: PCT International Announcement 223: PCT enters designated country (specified period) 224: PCT enters designated country (specified period) 225: PCT does not enter designated country)  </p><p>LEGAL_EVENT:  Legal events (61: transfer of rights 62: License 63: pledge 64: trust 65: objection 66: review 69: Customs record 70: litigation 71: preservation 72: Invalid procedure 73: oral hearing 74: Declassification of National Defense 75: Double Application in one Case)  </p><p>APPLICATION_YEAR: application year</p><p>PUBLICATION_YEAR: public year</p><p>ISSUE_YEAR: entitlement year</p><p>AGENCY: the agency</p><p>PATENT_TYPE: patent type（A: Applications B: Patents U: Utility models D: Designs AB: Applications+Patents）</p><p>AUTHORITY: (https://analytics.patsnap.com/status)</p>'
+        limit:
+          type: integer
+          format: int32
+          example: 50
+          description: Returns the number of statistical results, 1 <= limit <= 100，default is 50
+        lang:
+          type: string
+          example: cn
+          description: Select the language, the default language is cn, you can choose cn、en or jp.
+      required:
+      - offset
+      - query
+      - field
+      - limit
     P004PatentCompanySearch_PatentBaseResponse:
       type: object
       properties:
@@ -2250,66 +2244,6 @@ components:
           type: string
           example: 718ead9c-4f3c-4674-8f5a-24e126827269
           description: patent id
-    P071ClassificationHelperSectionSubclass_LangDescMap:
-      type: object
-      properties:
-        cn:
-          type: string
-          example: 人类生活必需
-          description: Chinese description
-        en:
-          type: string
-          example: HUMAN NECESSITIES
-          description: English description
-    P003PatentFieldQuery_PatentFieldResponse:
-      type: object
-      properties:
-        name:
-          type: string
-          example: APPLE INC.
-          description: field value
-        count:
-          type: integer
-          format: int32
-          example: 2509
-          description: count
-    P072ClassificationHelperSearch_QueryResults:
-      type: object
-      properties:
-        cls_tree:
-          $ref: '#/components/schemas/P072ClassificationHelperSearch_ClassificationTree'
-    P006PatentCompanySearchDefenseRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        application:
-          type: string
-          example: 上海宇航系统工程研究所
-          description: Applicant name, the search logic is the same as Analytics query [AN:(上海宇航系统工程研究所)], up to 100 companies can be searched; multiple companies are separated by " OR ", e.g. "上海宇航系统工程研究所 OR 北京理工大学""
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-      required:
-      - application
-    P071ClassificationHelperSectionSubclass_ClassificationHelperResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: A
-          description: Classification code
-        has_children:
-          type: boolean
-          example: true
-          description: has children nodes
-        lang_desc_map:
-          $ref: '#/components/schemas/P071ClassificationHelperSectionSubclass_LangDescMap'
     P070PatentKeywordSuggestResponse:
       type: object
       properties:
@@ -2330,11 +2264,11 @@ components:
       required:
       - status
       - error_code
-    P010ImageSearchImageUploadResponse:
+    P061PatentImageMultipleResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P010ImageSearchImageUpload_FileUrlResponse'
+          $ref: '#/components/schemas/P061PatentImageMultiple_ImageSearchExtendResponse'
         status:
           type: boolean
           example: 'false'
@@ -2477,11 +2411,34 @@ components:
       - model
       - patent_type
       - urls
-    P006PatentCompanySearchDefenseResponse:
+    P010ImageSearchImageUpload_FileUrlResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://img1.baidu.com/it/u=3787347995,722716643&fm=26&fmt=auto
+          description: url
+        expire:
+          type: integer
+          format: int32
+          example: 32400
+          description: period of validity,Unit:second
+    P075PatentNestedSearch_Sort:
+      type: object
+      properties:
+        field:
+          type: string
+          example: SCORE
+          description: sort field
+        order:
+          type: string
+          example: DESC
+          description: sort order
+    P060PatentImageSingleResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P006PatentCompanySearchDefense_SearchPatentResponse'
+          $ref: '#/components/schemas/P060PatentImageSingle_ImageSearchExtendResponse'
         status:
           type: boolean
           example: 'false'
@@ -2497,108 +2454,31 @@ components:
       required:
       - status
       - error_code
-    P008PatentSemanticSearchRequest:
+    P071ClassificationHelperSectionSubclassResponse:
       type: object
       properties:
-        country:
+        data:
           type: array
-          example:
-          - CNA
-          - CNB
-          description: 'Authority and kind code.
-
-            For the Authority code, refer to https://analytics.patsnap.com/status;
-
-            Kind code is: A (Application), B (Granted Patent), U (Utility Model), D (Design).
-
-            Multiple items can be searched, separated by comma.'
-        pbd_from:
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P071ClassificationHelperSectionSubclass_ClassificationHelperResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 20200101
-          description: Start year of publication date
-        offset:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
           type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        apd_from:
-          type: string
-          example: 20200101
-          description: Start year of application date
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-        apd_to:
-          type: string
-          example: 20220101
-          description: End year of application date
-        pbd_to:
-          type: string
-          example: 20220101
-          description: End year of publication date
-        relevancy:
-          type: string
-          example: 50%
-          description: 'relevancy
-
-            (the relevancy calculated logic can refer to: https://help.zhihuiya.com/help/360007811592/article/360040181092?categoryId=360002609831&showTabs=false)'
-        text:
-          type: string
-          example: The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.
-          description: semantic query text
+          example: '0'
+          description: Error Code
       required:
-      - text
-    P002PatentQuerySearchRequest:
-      type: object
-      properties:
-        collapse_by:
-          type: string
-          example: PBD
-          description: <p>"APD" means order according to application date;</p><p>"PBD" means order according to publication date;</p><p>"AUTHORITY" means order according to authority;</p><p>"SCORE" means order according to the relevance score</p>
-        collapse_order:
-          type: string
-          example: LATEST
-          description: When collapse_type="APNO", and collapse_by="APD" or "PBD", the collapse_order can be set as "OLDEST" or "LATEST", means keep the patent date of oldest or latest one
-        collapse_type:
-          type: string
-          example: DOCDB
-          description: <p>"ALL" or Null value means no collapse;</p><p>"APNO" means collapse according to application number;</p><p>"DOCDB" means collapse according to simple family;</p><p>"INPADOC" means collapse according to inpadoc family;</p><p>"EXTEND" means collapse according to patsnap family</p>
-        query_text:
-          type: string
-          example: 'TACD: virtual reality'
-          description: Analytics query, maximum length 12,000 characters
-        sort:
-          type: array
-          example:
-          - field: PBDT_YEARMONTHDAY
-            order: DESC
-          description: 'Field order, field can support: PBDT_YEARMONTHDAY, APD_YEARMONTHDAY, ISD,SCORE; order can support: desc, asc.'
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,000
-      required:
-      - query_text
-    P005PatentCurrentSearch_PatentBaseResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US11205304B2
-          description: patent number
-        patent_id:
-          type: string
-          example: 718ead9c-4f3c-4674-8f5a-24e126827269
-          description: patent id
-    P061PatentImageMultiple_PatentExtendMessage:
+      - status
+      - error_code
+    P060PatentImageSingle_PatentExtendMessage:
       type: object
       properties:
         loc:
@@ -2676,34 +2556,15 @@ components:
       - img_id
       - patent_id
       - patent_pn
-    P069PatentPatentSearchPnRequest:
+    P003PatentFieldQuery_DataFieldResponse:
       type: object
       properties:
-        pn:
-          type: string
-          example: US11205304B2
-          description: Patent number
-        apno:
-          type: string
-          example: US16/123456
-          description: Application number
-        authority:
+        assignee:
           type: array
-          example:
-          - US
-          - CN
-          - EP
-          description: Authorities
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: Offset, default is 0
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: Result limit, default is 10, maximum is 1000
+          example: 'Please check the form: PatentFieldResponse'
+          description: Fields that support statistics
+          items:
+            $ref: '#/components/schemas/P003PatentFieldQuery_PatentFieldResponse'
     P060PatentImageSingleRequest:
       type: object
       properties:
@@ -2830,11 +2691,162 @@ components:
       - model
       - patent_type
       - url
-    P060PatentImageSingleResponse:
+    P006PatentCompanySearchDefense_PatentBaseResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+    P069PatentPatentSearchPn_PatentBaseV2Response:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        apdt:
+          type: integer
+          format: int32
+          example: 20211108
+          description: Application Date
+        apno:
+          type: string
+          example: US17/521392
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20230815
+          description: Publication Date
+        title:
+          type: string
+          example: Techniques for using multiple symbols to provide feedback for a sidelink transmission
+          description: Title
+        inventor:
+          type: string
+          example: ELSHAFIE, AHMED | YANG, WEI | HOSSEINI, SEYEDKIANOUSH
+          description: Inventor
+        patent_id:
+          type: string
+          example: 718ead9c-4f3c-4674-8f5a-24e126827269
+          description: patent id
+        current_assignee:
+          type: string
+          example: QUALCOMM INCORPORATED
+          description: Current Assignee
+        original_assignee:
+          type: string
+          example: QUALCOMM INCORPORATED
+          description: Original Assignee (Applicant)
+    P010ImageSearchImageUploadRequest:
+      type: object
+      properties:
+        image:
+          type: file
+          example: maximum 4096KB
+          description: JPG,PNG
+      required:
+      - image
+    P075PatentNestedSearchRequest:
+      type: object
+      properties:
+        facet:
+          type: array
+          example: 'Please check the form: Facet'
+          description: '<p>Nested statistical configuration</p><p>Supports four types:</p><p>field - Field statistics</p><p>range - Range statistics</p><p>query - Query statistics</p><p>aggregate - Aggregate statistics</p><p>1. field (Field statistics)</p><p><code>{  "type": "field",  "tag": "patent_type",  "field": "PATENT_TYPE",  "limit": 10,  "mincount": 1,  "offset": 0,  "num_buckets": true}</code></p><p>2. range (Range statistics)</p><p><code>{  "type": "range",  "tag": "apd_year",  "field": "APD_YEAR",  "start": 2000,  "end": 2018,  "gap": 1}</code></p><p>3. query (Query statistics)</p><p><code>{  "type": "query",  "tag": "patent_type",  "query": "PV:[0 TO 100000]"}</code></p><p>4. aggregate (Aggregate statistics)</p><p><code>{  "type": "aggregate",  "tag": "avg_pv",  "expr": "avg(PV)"  }</code></p>'
+          items:
+            $ref: '#/components/schemas/P075PatentNestedSearch_Facet'
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: Return the number of documents.
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset
+        query_text:
+          type: string
+          example: TTL:car
+          description: 'Search expression text. Refer to : https://analytics.patsnap.com/search_helper'
+        sort:
+          type: array
+          example:
+          - field: SCORE
+            order: DESC
+          description: sort
+          items:
+            $ref: '#/components/schemas/P075PatentNestedSearch_Sort'
+        stemming:
+          type: boolean
+          example: false
+          description: 'Whether to enable word segmentation, after enabling it, support the same stem query (for example: "cars" can be searched by "car"). By default, it is not enabled. Currently, only fields related to TTL/ABST/CLMS/DESC are supported'
+      required:
+      - query_text
+    P008PatentSemanticSearchRequest:
+      type: object
+      properties:
+        country:
+          type: array
+          example:
+          - CNA
+          - CNB
+          description: 'Authority and kind code.
+
+            For the Authority code, refer to https://analytics.patsnap.com/status;
+
+            Kind code is: A (Application), B (Granted Patent), U (Utility Model), D (Design).
+
+            Multiple items can be searched, separated by comma.'
+        pbd_from:
+          type: string
+          example: 20200101
+          description: Start year of publication date
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 20000 (the max number of Semantic Search is 1000)
+        apd_from:
+          type: string
+          example: 20200101
+          description: Start year of application date
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,000
+        apd_to:
+          type: string
+          example: 20220101
+          description: End year of application date
+        pbd_to:
+          type: string
+          example: 20220101
+          description: End year of publication date
+        relevancy:
+          type: string
+          example: 50%
+          description: 'relevancy
+
+            (the relevancy calculated logic can refer to: https://help.zhihuiya.com/help/360007811592/article/360040181092?categoryId=360002609831&showTabs=false)'
+        text:
+          type: string
+          example: The invention discloses an automobile front-view based wireless video transmission system and method. The system comprises a front-view camera, a wireless video transmitting module, a wireless video receiving module, a display screen, a display triggering device, a first controller, a wireless command transmitting module, a wireless command receiving module, a second controller and an automobile starting detecting module, wherein the display screen is connected with the wireless video receiving module; the front-view camera is connected with the wireless video transmitting module; the wireless video transmitting module is wirelessly connected with the wireless video receiving module and wirelessly transmits a video shot by the front-view camera; and the wireless video receiving module receives and sends the video and displays the video on the display screen, so that the mounting time of the front-view camera is shortened greatly, no damage can be caused to an original automobile, the front-view camera can be mounted without a threading manner, and great convenience is brought to the owner of the automobile.
+          description: semantic query text
+      required:
+      - text
+    P060ImageSingleBetaResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P060PatentImageSingle_ImageSearchExtendResponse'
+          $ref: '#/components/schemas/P060ImageSingleBeta_ImageSearchResponse'
         status:
           type: boolean
           example: 'false'
@@ -2850,18 +2862,6 @@ components:
       required:
       - status
       - error_code
-    P010ImageSearchImageUpload_FileUrlResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          example: https://img1.baidu.com/it/u=3787347995,722716643&fm=26&fmt=auto
-          description: url
-        expire:
-          type: integer
-          format: int32
-          example: 32400
-          description: period of validity,Unit:second
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,0 +1,2849 @@
+{
+  "item": [
+    {
+      "id": "967c268a-7de0-4412-91e9-24338f9a3523",
+      "name": "Tech Solution Exploration(Materials)",
+      "description": {
+        "content": "Tech Solution Exploration(Materials) APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef74143b-2704-4140-a631-80d01e99b446",
+          "name": "AI73-2 Find Solutions (Materials)-Get Recommend Solution",
+          "request": {
+            "name": "AI73-2 Find Solutions (Materials)-Get Recommend Solution",
+            "description": {
+              "content": "Get recommended technical solutions by task ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "recommend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f02f749-c802-4524-96d2-851a07141983",
+              "name": "Successful ai73-2 find solutions (materials)-get recommend solution response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 449,\n  \"data\": {\n    \"status\": \"RUNNING\",\n    \"recommend\": [\n      \"二氧化钛复配\",\n      \"有机硅改性ZnO\",\n      \"微胶囊包埋技术\"\n    ],\n    \"has_recommend\": false\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b847db8-602c-41c7-9d5b-7acaf615cf6a",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2de28352-6252-489f-a4ee-715e0c5c4305",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c5873d0-4603-42c1-865e-f2eaea95a3d0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18e6f49e-48c7-4e8f-bf43-004e7919a5c7",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a9095bb-4510-44b7-99d2-9eb2bc955fb2",
+          "name": "AI73-3 Find Solutions (Materials)-Confirm Recommend Solution",
+          "request": {
+            "name": "AI73-3 Find Solutions (Materials)-Confirm Recommend Solution",
+            "description": {
+              "content": "Confirm selected recommended solutions and start generating technical mind map.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "confirm-recommend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\",\n  \"recommend\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b52ff26e-71ff-4444-9a40-3f36df063587",
+              "name": "Successful ai73-3 find solutions (materials)-confirm recommend solution response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "confirm-recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7002,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddb7ec38-ea09-4dba-bf15-3c85108b9648",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "confirm-recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1ca8ca7-d3e7-4b91-9328-c27cca87b1eb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "confirm-recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fe1ccc7-e3f7-4901-9aca-38c521191d0a",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "confirm-recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e063a27a-010c-46aa-8b2d-e673e89a7d1b",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "confirm-recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"recommend\": [\n    \"成本增幅≤15%\",\n    \"安全性能不降低\",\n    \"产线兼容改造\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e74ae6b7-73ae-4913-8bd0-86239958be9e",
+          "name": "AI73-1 Find Solutions (Materials)-Submit Task",
+          "request": {
+            "name": "AI73-1 Find Solutions (Materials)-Submit Task",
+            "description": {
+              "content": "Submit a material find solution task and return the task ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"lang\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad6f5e11-3021-49c9-b45e-f763595c46ee",
+              "name": "Successful ai73-1 find solutions (materials)-submit task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？\",\n  \"lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7002,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9efc98c-c30c-4f11-b358-5fea49215ae0",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？\",\n  \"lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b9254ce-4584-48ae-8cb7-1de558f8a74f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？\",\n  \"lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a58b65a3-b320-4d89-b9cc-5707de5a419d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？\",\n  \"lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf28c833-6355-4f41-b022-119685b6bc88",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何在不影响高温高湿环境下稳定性的前提下，改善氧化锌防晒霜的UVA防护效果，同时避免油腻残留？\",\n  \"lang\": \"cn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71026df7-741e-4cd6-99f1-02ce42a59f87",
+          "name": "AI73-6 Find Solutions (Materials)-Get Citation Reference List",
+          "request": {
+            "name": "AI73-6 Find Solutions (Materials)-Get Citation Reference List",
+            "description": {
+              "content": "Get citation reference list of mind map node with pagination support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "citation-reference-list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"board_id\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"task_id\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"page\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f37bd41a-c01e-4c28-99bf-7e0a486b2b95",
+              "name": "Successful ai73-6 find solutions (materials)-get citation reference list response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "citation-reference-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"limit\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6804,\n  \"data\": {\n    \"page\": 1,\n    \"limit\": 20,\n    \"total\": 10,\n    \"records\": [\n      {\n        \"PBD\": \"2017-03-09\",\n        \"TITLE\": \"紫外线稳定和超疏水的木材表面\",\n        \"CONTENT\": \"使用二氧化钛或氧化锌纳米棒阵列和疏水性分子对木材进行原位处理\",\n        \"ORG_INFO\": [\n          {\n            \"display_name\": \"瑞士蘇黎世聯邦理工學院\"\n          }\n        ],\n        \"SOLUTION_ID\": \"1070a534-ef1e-443d-8d90-7305e543a6ff\",\n        \"SOLUTION_TYPE\": \"PATENT\"\n      }\n    ],\n    \"has_next\": false,\n    \"has_previous\": false\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8824168-d367-4a69-9ad1-a4e140e2d68b",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "citation-reference-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"limit\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bfbf332b-7bea-4fba-8459-1b289d69cc17",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "citation-reference-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"limit\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0184300-6316-4419-9dcd-79d0eb29fb8f",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "citation-reference-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"limit\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75f805ae-3bbb-4db8-a1cb-32ee1b20959f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "citation-reference-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"limit\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26793365-d3d4-48e3-a462-68b3cac0396b",
+          "name": "AI73-7 Find Solutions (Materials)-Get Node Reference",
+          "request": {
+            "name": "AI73-7 Find Solutions (Materials)-Get Node Reference",
+            "description": {
+              "content": "Get reference information of mind map node, including technical principle, engineering reliability, expected challenges, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "node-reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"board_id\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ff359fe-7e9e-466a-aa34-e689ca78c5f6",
+              "name": "Successful ai73-7 find solutions (materials)-get node reference response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "node-reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4473,\n  \"data\": {\n    \"expected_challenge\": [\n      \"成本方面,两亲性嵌段共聚物的合成工艺相对复杂,可能导致生产成本偏高<cite class=\\\"rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold\\\" title=\\\"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物\\\"><a href=\\\"/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138\\\" target=\\\"_blank\\\">1</a></cite>。\"\n    ],\n    \"technical_maturity\": [\n      \"该技术已经过专利验证和实际应用,满足化妆品级原料标准<cite class=\\\"rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold\\\" title=\\\"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物\\\"><a href=\\\"/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138\\\" target=\\\"_blank\\\">1</a></cite>。\"\n    ],\n    \"technical_principle\": [\n      \"该方案主要通过PDMS-PEG两亲性嵌段共聚物作为分散基质来改善ZnO的分散性和UV防护效果。其中疏水PDMS段与有机相相容,亲水PEG段通过氢键作用与ZnO表面-OH基团结合<cite class=\\\"rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold\\\" title=\\\"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物\\\"><a href=\\\"/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138\\\" target=\\\"_blank\\\">1</a></cite>。\"\n    ],\n    \"engineering_reliability\": [\n      \"根据专利数据显示,该技术可实现<100nm、PDI<0.3的高固含(~20wt%)透明分散体<cite class=\\\"rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold\\\" title=\\\"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物\\\"><a href=\\\"/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138\\\" target=\\\"_blank\\\">1</a></cite>。\"\n    ],\n    \"industry_application_cases\": [\n      \"欧莱雅公司利用类似的两亲性共聚物技术成功开发出稳定性更好的防晒产品,显著改善了UV防护效果<cite class=\\\"rounded-full bg-gray-hover px-2 py-0.5 mx-0.5 text-eureka-500 inline-flex items-center justify-center font-semibold\\\" title=\\\"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途、用这些共聚物稳定的分散体和含有它们的化妆品组合物\\\"><a href=\\\"/view/#/?patentId=172d02c0-aa4d-48f3-9c05-8bffeb0ee138\\\" target=\\\"_blank\\\">1</a></cite>。\"\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29cde7de-ad6b-429f-b7ab-3b16277b6dac",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "node-reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1cf6c64-d193-4c9a-ac8c-aa654e56bb62",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "node-reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d47f3d6-837c-4d73-98f3-3b107ce7010b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "node-reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d80b22ad-ff0d-4d80-a29f-45dc591365b0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "node-reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02c27844-014b-4812-9624-f1ff22495406",
+          "name": "AI73-4 Find Solutions (Materials)-Get Thinking Response",
+          "request": {
+            "name": "AI73-4 Find Solutions (Materials)-Get Thinking Response",
+            "description": {
+              "content": "Get AI thinking process, including problem analysis, direction decomposition, literature search, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "thinking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cc7bb322-5e92-446f-ac9a-e72560838b70",
+              "name": "Successful ai73-4 find solutions (materials)-get thinking response response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "thinking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1042,\n  \"data\": {\n    \"status\": \"SUCCEED\",\n    \"board_id\": \"51a9eba9cd984bc3b474550830dc832a\",\n    \"direction\": {\n      \"data\": {\n        \"status\": \"FINISH\",\n        \"stream_message\": {\n          \"ac21b332-b8e8-4222-97b1-f2f0288544f8\": {\n            \"brief\": {\n              \"name\": \"Hierarchical Dispersion Control\",\n              \"description\": \"This direction addresses...\"\n            }\n          },\n          \"ac21b332-b8e8-4222-97b1-f2f0288544f8_details\": \"Engineering polymer matrices...\"\n        }\n      },\n      \"status\": true,\n      \"error_code\": 0\n    },\n    \"references\": {\n      \"references\": [\n        {\n          \"PBD\": \"2006-10-19\",\n          \"TITLE\": \"两亲共聚物在稳定屏蔽UV辐射的不溶性有机化合物分散体中的用途\",\n          \"CONTENT\": \"两亲共聚物通过使用亲水性和疏水性块来稳定紫外线筛分剂的分散体\",\n          \"ORG_INFO\": [\n            {\n              \"display_name\": \"欧莱雅股份有限公司\",\n              \"normalized_display_name\": \"欧莱雅\"\n            }\n          ],\n          \"SOLUTION_ID\": \"172d02c0-aa4d-48f3-9c05-8bffeb0ee138\",\n          \"SOLUTION_TYPE\": \"PATENT\"\n        }\n      ]\n    },\n    \"problem_statement\": {\n      \"domain\": \"Materials Science - Cosmetic Formulation and UV Protection Materials\",\n      \"problem_title\": \"Enhanced ZnO Sunscreen UVA Protection Optimization\",\n      \"success_criteria\": [\n        {\n          \"metric\": \"UVA Protection Factor\",\n          \"target\": \"Enhanced UVA protection compared to baseline ZnO formulation\",\n          \"priority\": \"high\",\n          \"validation_method\": \"In vitro UV transmission spectroscopy and critical wavelength determination\"\n        }\n      ],\n      \"refined_statement\": \"Develop an optimized zinc oxide-based sunscreen formulation that enhances UVA protection effectiveness through strategic combination with organic UV filters while maintaining photochemical and thermal stability under high temperature and humidity conditions, and eliminating greasy residue formation on skin application.\",\n      \"background_context\": \"Zinc oxide (ZnO) is a widely used inorganic UV filter in sunscreens due to its broad-spectrum protection and photostability. However, current ZnO-based formulations face challenges in providing adequate UVA protection while maintaining stability under high temperature and humidity conditions.\",\n      \"technical_constraints\": [\n        {\n          \"category\": \"Environmental Stability\",\n          \"description\": \"Formulation must maintain chemical and physical stability under high temperature and high humidity conditions without degradation of UV protection efficacy\",\n          \"impact_level\": \"high\"\n        }\n      ],\n      \"performance_requirements\": [\n        {\n          \"unit\": \"nm\",\n          \"parameter\": \"UV Protection Range\",\n          \"tolerance\": \"±5nm\",\n          \"target_value\": \"290-400nm\"\n        }\n      ]\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a29ebd33-dfff-42ca-9340-bdfa524ddf20",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "thinking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "021560ae-74cf-43a6-a14f-14e302041884",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "thinking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7c8c69e-f625-44ac-9a4d-a092d52c7c67",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "thinking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5421a5c6-3d82-4aac-ba95-0cc9c36bd533",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "thinking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d811092-ab41-4cc3-bb85-84aeb8f2c2d3",
+          "name": "AI73-9 Find Solutions (Materials)-Get Solution",
+          "request": {
+            "name": "AI73-9 Find Solutions (Materials)-Get Solution",
+            "description": {
+              "content": "Get generated implementation plan content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "implementation-response"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"board_id\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b52f7c7d-2504-4e9a-aec0-a572e94d755b",
+              "name": "Successful ai73-9 find solutions (materials)-get solution response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation-response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8582,\n  \"data\": {\n    \"status\": \"SUCCEED\",\n    \"markdown_message\": \"# 过渡金属掺杂ZnO纳米粒子防晒剂实施策略\\\\n\\\\n本实施策略采用系统性实验设计（DoE）方法，旨在开发具有增强UVA防护能力的过渡金属掺杂ZnO纳米粒子防晒剂。\\\\n\\\\n## 实验设计目标与框架\\\\n\\\\n### 主要目标\\\\n- 开发Fe、Mn或Cu掺杂的ZnO纳米粒子，实现UVA吸收扩展\\\\n- 优化合成工艺参数以获得最佳光学性能\\\\n- 验证产品的光稳定性和安全性\\\\n- 建立可扩展的生产工艺\\\\n\\\\n### 设计选择：筛选-优化组合设计\\\\n采用两阶段实验设计：初期筛选设计识别关键因子，后期响应面优化设计确定最佳工艺条件。\\\\n\\\\n## Steps\\\\n\\\\n### **阶段一：筛选实验设计**\\\\n\\\\n#### 实验因子与水平设置\\\\n\\\\n| 因子 | 低水平(-1) | 高水平(+1) | 单位 |\\\\n|------|------------|------------|------|\\\\n| 掺杂剂类型 | Fe | Cu | - |\\\\n| 掺杂浓度 | 0.5 | 5.0 | mol% |\\\\n| 合成方法 | 溶胶-凝胶 | 水热法 | - |\\\\n| 反应温度 | 60 | 180 | °C |\\\\n| 反应时间 | 2 | 24 | 小时 |\\\\n| pH值 | 8 | 10 | - |\\\\n\\\\n#### 响应变量定义\\\\n\\\\n| 响应变量 | 目标 | 测量方法 |\\\\n|----------|------|----------|\\\\n| UVA吸收系数 | 最大化 | UV-Vis光谱 |\\\\n| 粒径 | 20-50 nm | TEM/DLS |\\\\n| 带隙宽度 | 最小化 | Tauc图分析 |\\\\n| 晶体结构纯度 | 最大化 | XRD分析 |\\\\n\\\\n### **阶段二：优化实验设计**\\\\n\\\\n基于筛选结果，采用Box-Behnken响应面设计优化关键参数：\\\\n\\\\n#### 关键工艺参数优化\\\\n- **溶胶-凝胶路径**：锌醋酸二水合物(0.1M) + 掺杂剂盐类\\\\n- **前驱体制备**：乙醇/水混合溶剂系统\\\\n- **沉淀控制**：NaOH调节pH至最优值\\\\n- **热处理**：350-450°C煅烧优化\\\\n\\\\n#### 表面改性验证\\\\n使用3-三甲氧基硅烷基丙基甲基丙烯酸酯进行表面功能化，提高聚合物基质相容性。\\\\n\\\\n### **阶段三：全面表征与验证**\\\\n\\\\n#### 结构表征协议\\\\n- **XRD分析**：确认晶体结构和相纯度\\\\n- **TEM成像**：验证粒径分布和形貌\\\\n- **XPS分析**：确定掺杂剂氧化态\\\\n- **UV-Vis光谱**：量化带隙窄化效应\\\\n\\\\n#### 性能评估标准\\\\n- **光学性能**：UVA区域吸收增强≥30%\\\\n- **光稳定性**：连续UV照射100小时后性能保持≥90%\\\\n- **分散稳定性**：Zeta电位绝对值≥30mV\\\\n\\\\n### **阶段四：配方开发与应用测试**\\\\n\\\\n#### 防晒配方集成\\\\n- 纳米粒子浓度优化（5-25 wt%）\\\\n- 载体系统相容性评估\\\\n- 流变性能调节\\\\n- SPF值标准化测试\\\\n\\\\n## Development Timeline\\\\n\\\\n### **第一周：快速探索研发阶段**\\\\n\\\\n#### 第1-2天：材料准备与基础合成\\\\n- 采购高纯度前驱体材料（锌醋酸、过渡金属盐类）\\\\n- 建立标准合成协议\\\\n- 完成首批样品制备（3种掺杂剂×2种浓度）\\\\n\\\\n#### 第3-4天：初步表征分析\\\\n- UV-Vis光谱快速筛选\\\\n- XRD相结构初步验证\\\\n- 粒径分布测定\\\\n\\\\n#### 第5-7天：工艺参数优化\\\\n- 基于初步结果调整合成条件\\\\n- 完成筛选实验设计的关键实验点\\\\n- 数据分析与最优条件识别\\\\n\\\\n### **第2-4周：系统优化阶段**\\\\n\\\\n#### 第2周：响应面优化实验\\\\n- 执行Box-Behnken设计的27个实验点\\\\n- 全面表征分析（XRD、TEM、XPS、UV-Vis）\\\\n- 统计分析与模型建立\\\\n\\\\n#### 第3周：表面改性与功能化\\\\n- 硅烷偶联剂改性优化\\\\n- 分散稳定性评估\\\\n- 聚合物基质相容性测试\\\\n\\\\n#### 第4周：性能验证与标准化\\\\n- 光稳定性长期测试启动\\\\n- 防晒效果SPF测试\\\\n- 安全性初步评估\\\\n\\\\n### **第2-6月：中试放大阶段**\\\\n\\\\n#### 第2月：工艺放大设计\\\\n- 反应器设计与工艺参数调整\\\\n- 批次一致性验证\\\\n- 质量控制体系建立\\\\n\\\\n#### 第3-4月：产品配方开发\\\\n- 多种载体系统测试\\\\n- 配方稳定性研究\\\\n- 用户体验优化\\\\n\\\\n#### 第5-6月：法规认证准备\\\\n- 安全性毒理学评估\\\\n- 环境影响评估\\\\n- 产品注册文件准备\\\\n\\\\n### **第7-12月：商业化准备阶段**\\\\n\\\\n#### 产业化生产线建设\\\\n- 生产设备采购与安装\\\\n- 自动化控制系统集成\\\\n- 员工培训与认证\\\\n\\\\n#### 市场推广与客户验证\\\\n- 样品分发与客户反馈\\\\n- 市场定位与定价策略\\\\n- 供应链体系建立\\\\n\\\\n## Risks and Mitigation\\\\n\\\\n### **技术风险**\\\\n\\\\n#### 掺杂剂分布不均匀性\\\\n**风险描述**：过渡金属离子在ZnO晶格中分布不均可能导致光学性能不一致\\\\n**缓解措施**：\\\\n- 采用共沉淀-水热联合工艺确保均匀混合\\\\n- 延长反应时间至充分扩散\\\\n- 引入超声辅助混合技术\\\\n\\\\n#### 二次相形成风险\\\\n**风险描述**：掺杂浓度超过固溶度极限可能形成杂质相\\\\n**缓解措施**：\\\\n- 严格控制掺杂浓度≤5 mol%\\\\n- 实时XRD监测相纯度\\\\n- 建立掺杂浓度-相纯度关联数据库\\\\n\\\\n### **材料供应风险**\\\\n\\\\n#### 原材料价格波动\\\\n**风险描述**：过渡金属盐类价格受市场供需影响较大\\\\n**缓解措施**：\\\\n- 建立多供应商采购体系\\\\n- 签订长期供货合同锁定价格\\\\n- 开发替代掺杂剂方案\\\\n\\\\n#### 高纯度材料获取困难\\\\n**风险描述**：高纯度前驱体材料供应可能受限\\\\n**缓解措施**：\\\\n- 与材料供应商建立战略合作关系\\\\n- 建立原材料库存缓冲\\\\n- 开发内部提纯工艺作为备选\\\\n\\\\n### **法规合规风险**\\\\n\\\\n#### 新材料安全认证周期长\\\\n**风险描述**：过渡金属掺杂纳米材料可能面临严格的安全评估要求\\\\n**缓解措施**：\\\\n- 提前启动毒理学和生态毒性研究\\\\n- 与监管机构保持密切沟通\\\\n- 参考现有ZnO防晒剂的安全数据库\\\\n\\\\n#### 环境法规变化影响\\\\n**风险描述**：纳米材料环境法规日趋严格可能影响产品上市\\\\n**缓解措施**：\\\\n- 建立环境影响全生命周期评估\\\\n- 开发生物降解性增强技术\\\\n- 制定环境友好型生产工艺\\\\n\\\\n### **市场竞争风险**\\\\n\\\\n#### 技术路线被替代\\\\n**风险描述**：其他UVA防护技术可能提供更优解决方案\\\\n**缓解措施**：\\\\n- 持续技术创新和专利布局\\\\n- 建立差异化竞争优势\\\\n- 拓展应用领域降低单一市场依赖\\\\n\\\\n#### 成本竞争压力\\\\n**风险描述**：传统防晒剂成本优势可能限制市场渗透\\\\n**缓解措施**：\\\\n- 通过规模化生产降低成本\\\\n- 强调产品附加值和性能优势\\\\n- 开发高端细分市场应用\\\\n\\\\n### **理想成果定义**\\\\n\\\\n#### 技术指标达成\\\\n- UVA吸收系数提升≥30%相比纯ZnO\\\\n- 粒径控制在20-50nm范围内\\\\n- 光稳定性保持≥95%（100小时UV照射后）\\\\n- 批次间性能一致性变异系数≤5%\\\\n\\\\n#### 商业化成功标准\\\\n- 产品通过所有法规认证要求\\\\n- 建立年产能≥100吨的生产线\\\\n- 获得≥3家主要客户的长期供货合同\\\\n- 实现产品毛利率≥40%\\\\n\\\\n#### 可持续发展目标\\\\n- 生产过程废料回收率≥90%\\\\n- 产品全生命周期碳足迹低于传统防晒剂20%\\\\n- 建立完善的产品回收处理体系\\\\n`\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79ea255d-a725-4fa3-ac6b-f3164257ceb3",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation-response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9dc1a7a-d93e-4edc-b4e0-bf243922dd31",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation-response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "254ab19a-16fe-4513-9c9d-06146e7d2f3c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation-response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f230dca-8c45-44a1-8359-7206e90d116f",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation-response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f15a7779-c6c9-4c1a-9ae8-81631f7a8d56",
+          "name": "AI73-5 Find Solutions (Materials)-Get Mind Map",
+          "request": {
+            "name": "AI73-5 Find Solutions (Materials)-Get Mind Map",
+            "description": {
+              "content": "Get generated material technical mind map data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "mind"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06fe8866-c806-4603-86a7-3d3370598386",
+              "name": "Successful ai73-5 find solutions (materials)-get mind map response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "mind"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5299,\n  \"data\": {\n    \"status\": \"SUCCEED\",\n    \"solution\": {\n      \"cells\": [\n        {\n          \"id\": \"0f26fa4e9305ef86db199ba4d116f233\",\n          \"data\": {\n            \"initd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"order\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"innovation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"improvements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tech_version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_sub_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"view\": \"vue-shape-view\",\n          \"shape\": \"idea-node\",\n          \"source\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"target\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"z_index\": 1000,\n          \"position\": {\n            \"x\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"y\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"0f26fa4e9305ef86db199ba4d116f233\",\n          \"data\": {\n            \"initd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"order\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"node_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"innovation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"route_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"improvements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tech_version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sys_sub_content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"view\": \"vue-shape-view\",\n          \"shape\": \"idea-node\",\n          \"source\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"target\": {\n            \"cell\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"z_index\": 1000,\n          \"position\": {\n            \"x\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"y\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"title\": \"如何在腹腔镜中安装模拟内脏力反馈的装置\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19af8b7a-60f4-4875-be17-f9a31eb4b2e8",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "mind"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5607e55-08c9-4dde-9302-05504773145f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "mind"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b5bc35b-ed5a-4df7-8836-d9518817cc02",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "mind"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b61ad7ed-3549-44fe-bb01-c22f298aaaf4",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "mind"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddc2aaf7-42db-4db6-b4f2-bc967f8d457b",
+          "name": "AI73-8 Find Solutions (Materials)-Generate Solution",
+          "request": {
+            "name": "AI73-8 Find Solutions (Materials)-Generate Solution",
+            "description": {
+              "content": "Generate detailed implementation plan for specified node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "material",
+                "find-solution",
+                "implementation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"board_id\": \"<string>\",\n  \"node_id\": \"<string>\",\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08e8b060-d60f-4af9-bd0b-8cba71ef41e5",
+              "name": "Successful ai73-8 find solutions (materials)-generate solution response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7002,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b1fe973-874f-4c7d-bd99-4fe8a85a452b",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "507f9be6-b5e9-44ad-bcaa-2ac7209282cf",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97ea14c5-ed82-4fba-9da7-eaa1215ac280",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2eb4e18f-aaf4-4a62-af1d-a0359b917c50",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "material",
+                    "find-solution",
+                    "implementation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"board_id\": \"d12fcd63d27028b88a73168d5bca44d5\",\n  \"node_id\": \"node123456\",\n  \"task_id\": \"d12fcd63d27028b88a73168d5bca44d5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f525ca9b-3e76-46b7-a44d-48696580e958",
+    "name": "Patsnap Open Platform AI Translation Tech Solution Exploration(Materials) Tech Solution Exploration(Materials) Tech Solution Exploration(Materials) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

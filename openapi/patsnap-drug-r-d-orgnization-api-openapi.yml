@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Drug R&D Orgnization API
   version: 1.0.0
@@ -211,107 +211,21 @@ paths:
               $ref: '#/components/schemas/B038OrganizationFinancingRequest'
 components:
   schemas:
-    B033OrganizationPipelineResponse:
+    B035OrganizationProfit_GrossIncome:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B033OrganizationPipeline_GetOrganizationPipelineResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B035OrganizationProfit_GetOrganizationProfitResponseDto:
-      type: object
-      properties:
-        revenue:
+        gross_inc:
           type: number
-          example: 28010000000
-          description: Revenue
-        unix_date:
-          type: integer
-          format: int64
-          example: 1703980800000
-          description: Statistical Cutoff Time
-        cash_flows:
-          type: array
-          example: Please check the form:CashFlow
-          description: Cash flow
-          items:
-            $ref: '#/components/schemas/B035OrganizationProfit_CashFlow'
-        market_val:
+          example: 4488000000
+          description: Gross Income
+        gross_margin:
           type: number
-          example: 154206000000
-          description: Market Cap
-        currency_code:
-          type: string
-          example: USD
-          description: Currency Code
-        balance_sheets:
-          type: array
-          example: Please check the form:BalanceSheet
-          description: Balance Sheet
-          items:
-            $ref: '#/components/schemas/B035OrganizationProfit_BalanceSheet'
-        revenue_detail:
-          type: array
-          example: Please check the form:RevenueValue
-          description: Revenue(According To Dimension)
-          items:
-            $ref: '#/components/schemas/B035OrganizationProfit_RevenueValue'
-        income_statements:
-          type: array
-          example: Please check the form:IncomeStatement
-          description: Income Statement
-          items:
-            $ref: '#/components/schemas/B035OrganizationProfit_IncomeStatement'
-        market_val_detail:
-          type: array
-          example: Please check the form:ProfitValue
-          description: Market Cap(According To Dimension)
-          items:
-            $ref: '#/components/schemas/B035OrganizationProfit_ProfitValue'
-    B034OrganizationBasicInfoResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B034OrganizationBasicInfo_GetOrganizationResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B037OrganizationInvestment_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+          example: 0.8097
+          description: Gross Margin
+        gross_inc_growth:
+          type: number
+          example: -0.0336
+          description: Growth
     B034OrganizationBasicInfo_CommonName:
       type: object
       properties:
@@ -323,27 +237,48 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B038OrganizationFinancingResponse:
+    B035OrganizationProfit_CashFlow:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B038OrganizationFinancing_GetOrganizationFinancingResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+        year:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B038OrganizationFinancing_MoneyRaised:
+          format: int64
+          example: 1553990400000
+          description: Date
+        currency_code:
+          type: string
+          example: USD
+          description: Currency Code
+        free_cash_flow:
+          $ref: '#/components/schemas/B035OrganizationProfit_FreeCashFlow'
+        capital_expenditures:
+          $ref: '#/components/schemas/B035OrganizationProfit_CapitalExpenditures'
+        net_financing_cash_flow:
+          $ref: '#/components/schemas/B035OrganizationProfit_NetFinancingCashFlow'
+        net_investing_cash_flow:
+          $ref: '#/components/schemas/B035OrganizationProfit_NetInvestingCashFlow'
+        net_operating_cash_flow:
+          $ref: '#/components/schemas/B035OrganizationProfit_NetOperatingCashFlow'
+    B035OrganizationProfit_TotalDebt:
+      type: object
+      properties:
+        debt:
+          type: number
+          example: 33512000000
+          description: Total Debt
+        debt_growth:
+          type: number
+          example: -0.0571
+          description: Growth
+        debt_equity_ratio:
+          type: number
+          example: 3.0938
+          description: Total Debt / Total Equity
+        debt_asserts_ratio:
+          type: number
+          example: 0.5236
+          description: Total Debt / Total Assets
+    B037OrganizationInvestment_MoneyRaised:
       type: object
       properties:
         value_cny:
@@ -365,39 +300,11 @@ components:
           type: string
           example: USD
           description: Amount Original Currency Code
-    B033OrganizationPipeline_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B033OrganizationPipeline_CommonDisease:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Uveitic Macular Edema
-          - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
-    B037OrganizationInvestmentResponse:
+    B033OrganizationPipelineResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B037OrganizationInvestment_GetOrganizationInvestmentResponseDto'
+          $ref: '#/components/schemas/B033OrganizationPipeline_GetOrganizationPipelineResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -413,65 +320,138 @@ components:
       required:
       - status
       - error_code
-    B036OrganizationGrantFunding_OrganizationGrantFundingDto:
+    B038OrganizationFinancing_CommonOrganization:
       type: object
       properties:
-        value:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B038OrganizationFinancing_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B034OrganizationBasicInfoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B034OrganizationBasicInfo_GetOrganizationResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B035OrganizationProfit_TotalLiabilities:
+      type: object
+      properties:
+        liabs:
           type: number
-          format: double
-          example: 500000
-          description: Amount
-        open_date:
+          example: 53165000000
+          description: Total Liabilities
+        liabs_growth:
+          type: number
+          example: -0.0428
+          description: Growth
+    B035OrganizationProfit_ProfitValue:
+      type: object
+      properties:
+        year:
           type: integer
           format: int64
-          example: 1598933340000
-          description: Open Date
-        close_date:
-          type: integer
-          format: int64
-          example: 1643601660000
-          description: Closed Date
+          example: 1553990400000
+          description: Date
+        market_val:
+          type: number
+          example: 116724000000
+          description: Market Cap
         currency_code:
           type: string
           example: USD
           description: Currency Code
-        award_by_organization:
+    B037OrganizationInvestmentRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: Organization ID
+    B033OrganizationPipelineRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: Organization ID
+    B036OrganizationGrantFundingRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: Organization ID
+    B033OrganizationPipeline_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
           type: array
           example:
-          - display_name:
-            - lang: EN
-              name: US Food & Drug Administration
-            original_name: Food and Drug Administration
-            organization_id: 22f728dbb565b4533dccd54700185db3
-          description: Award By
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B036OrganizationGrantFunding_AwardOrganization'
-    B035OrganizationProfit_TotalShareholdersEquity:
-      type: object
-      properties:
-        shldrs_equity:
-          type: number
-          example: 10832000000
-          description: Total Shareholders' Equity
-        return_on_equity:
-          type: number
-          example: 0.6105
-          description: Return on Equity
-        shldrs_equity_assets_ratio:
-          type: number
-          example: 0.1693
-          description: Total Shareholders' Equity / Total Assets
-    B035OrganizationProfit_CapitalExpenditures:
-      type: object
-      properties:
-        capex:
-          type: number
-          example: -116000000
-          description: Capital Expenditures
-        capex_growth:
-          type: number
-          example: 0.2516
-          description: Growth
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
     B038OrganizationFinancing_FundingRoundDto:
       type: object
       properties:
@@ -504,347 +484,6 @@ components:
           type: string
           example: 25,000,000 USD
           description: Amount Original Value
-    B035OrganizationProfit_NetIncome:
-      type: object
-      properties:
-        net_income:
-          type: number
-          example: 1992000000
-          description: Net Income
-        net_income_growth:
-          type: number
-          example: -0.138
-          description: Growth
-        net_income_margin:
-          type: number
-          example: 0.3594
-          description: Net Margin
-    B037OrganizationInvestment_GetOrganizationInvestmentResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:FundingRoundDto
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B037OrganizationInvestment_FundingRoundDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B033OrganizationPipeline_GetOrganizationPipelineResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:PipelineDto
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_PipelineDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B033OrganizationPipeline_CommonDrug:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: e82b83b42eba4e5ea3f26f8e06081a5a
-          description: Drug ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Ranibizumab (Genentech)
-          - lang: CN
-            name: 雷珠单抗
-          description: Drug Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
-    B034OrganizationBasicInfo_OrganizationTag:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 62eaee6d9ee44410b8aca59dfc7408e9
-          description: ID
-        type:
-          type: string
-          example: THERAPEUTIC_AREA
-          description: Type, Therapeutic Area/Drug Type
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Neoplasms
-          - lang: CN
-            name: 肿瘤
-          description: Name
-          items:
-            $ref: '#/components/schemas/B034OrganizationBasicInfo_CommonName'
-    B038OrganizationFinancingRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        organization_id:
-          type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
-          description: Organization ID
-    B035OrganizationProfitResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B035OrganizationProfit_GetOrganizationProfitResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B035OrganizationProfit_Ebitda:
-      type: object
-      properties:
-        ebitda:
-          type: number
-          example: 2953000000
-          description: EBITDA
-        ebitda_growth:
-          type: number
-          example: -0.0872
-          description: Growth
-        ebitda_margin:
-          type: number
-          example: 0.5327
-          description: EBITDA Margin
-    B035OrganizationProfitRequest:
-      type: object
-      properties:
-        organization_id:
-          type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
-          description: Organization ID
-        duration_type:
-          type: string
-          example: YEARLY
-          description: 'Dimension type. The value is an enum with the following values: QUARTERLY、SEMI_ANNUAL、YEARLY. Default YEARLY'
-        duration:
-          type: string
-          example: FIVE_YEAR
-          description: 'Time Range. The value is an enum with the following values: ONE_YEAR、THREE_YEAR、FIVE_YEAR、TEN_YEAR. Default FIVE_YEAR'
-    B038OrganizationFinancing_FundingTypeDto:
-      type: object
-      properties:
-        classification:
-          type: string
-          example: IPO上市后
-          description: Investment Type Name
-        classification_en:
-          type: string
-          example: Post IPO
-          description: Investment Type（EN）Name
-    B035OrganizationProfit_TotalAssets:
-      type: object
-      properties:
-        assets:
-          type: number
-          example: 63997000000
-          description: Total Assets
-        assets_growth:
-          type: number
-          example: -0.1007
-          description: Growth
-        assets_turnover:
-          type: number
-          example: 0.351
-          description: Asset Turnover
-        return_on_assets:
-          type: number
-          example: 0.1195
-          description: Return on Assets
-    B035OrganizationProfit_TotalDebt:
-      type: object
-      properties:
-        debt:
-          type: number
-          example: 33512000000
-          description: Total Debt
-        debt_growth:
-          type: number
-          example: -0.0571
-          description: Growth
-        debt_equity_ratio:
-          type: number
-          example: 3.0938
-          description: Total Debt / Total Equity
-        debt_asserts_ratio:
-          type: number
-          example: 0.5236
-          description: Total Debt / Total Assets
-    B033OrganizationPipeline_CommonCountry:
-      type: object
-      properties:
-        country_id:
-          type: string
-          example: 676de5ba-893a-36bb-8683-c93306aaf769
-          description: Country/Location ID
-        alpha2_code:
-          type: string
-          example: US
-          description: Alpha Code
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: United States
-          - lang: CN
-            name: 美国
-          description: Country/Location Name
-          items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
-    B037OrganizationInvestment_FundingTypeDto:
-      type: object
-      properties:
-        classification:
-          type: string
-          example: IPO上市后
-          description: Investment Type Name
-        classification_en:
-          type: string
-          example: Post IPO
-          description: Investment Type（EN）Name
-    B038OrganizationFinancing_GetOrganizationFinancingResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:FundingRoundDto
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B038OrganizationFinancing_FundingRoundDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B035OrganizationProfit_CashSt:
-      type: object
-      properties:
-        cash_st:
-          type: number
-          example: 26301000000
-          description: Cash & Short-Term Investments
-        cash_st_growth:
-          type: number
-          example: -0.1825
-          description: Growth
-        cash_st_assets_ratio:
-          type: number
-          example: 0.411
-          description: Cash & ST Investments / Total Assets
-    B035OrganizationProfit_Ebit:
-      type: object
-      properties:
-        ebit:
-          type: number
-          example: 2458000000
-          description: EBIT
-        ebit_growth:
-          type: number
-          example: -0.1107
-          description: Growth
-        ebit_margin:
-          type: number
-          example: 0.4434
-          description: EBIT margin
-    B037OrganizationInvestment_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B037OrganizationInvestment_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B036OrganizationGrantFunding_AwardOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B036OrganizationGrantFunding_CommonName'
-        original_name:
-          type: string
-          example: Food and Drug Administration
-          description: Organization Original Name
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
     B037OrganizationInvestment_FundingRoundDto:
       type: object
       properties:
@@ -877,154 +516,45 @@ components:
           type: string
           example: 25,000,000 USD
           description: Amount Original Value
-    B033OrganizationPipeline_CommonDictionary:
+    B035OrganizationProfit_TotalAssets:
+      type: object
+      properties:
+        assets:
+          type: number
+          example: 63997000000
+          description: Total Assets
+        assets_growth:
+          type: number
+          example: -0.1007
+          description: Growth
+        assets_turnover:
+          type: number
+          example: 0.351
+          description: Asset Turnover
+        return_on_assets:
+          type: number
+          example: 0.1195
+          description: Return on Assets
+    B036OrganizationGrantFunding_AwardOrganization:
       type: object
       properties:
         display_name:
           type: array
           example:
           - lang: EN
-            name: Autologous CAR-T
+            name: Roche Holding AG
           - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
-        normalized_id:
+            $ref: '#/components/schemas/B036OrganizationGrantFunding_CommonName'
+        original_name:
           type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B036OrganizationGrantFunding_GetOrganizationGrantFundingResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:OrganizationGrantFundingDto
-          description: Result Items
-          items:
-            $ref: '#/components/schemas/B036OrganizationGrantFunding_OrganizationGrantFundingDto'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 10
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B035OrganizationProfit_NetDebt:
-      type: object
-      properties:
-        net_debt:
-          type: number
-          example: 7211000000
-          description: Net Debt
-        net_debt_growth:
-          type: number
-          example: -0.0571
-          description: Growth
-        net_debt_equity_ratio:
-          type: number
-          example: 0.6657
-          description: Net Debt / Total Equity
-    B033OrganizationPipelineRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+          example: Food and Drug Administration
+          description: Organization Original Name
         organization_id:
           type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
-          description: Organization ID
-    B038OrganizationFinancing_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B035OrganizationProfit_NetFinancingCashFlow:
-      type: object
-      properties:
-        net_financing_cf:
-          type: number
-          example: -4987000000
-          description: Net Financing Cash Flow
-        net_financing_cf_growth:
-          type: number
-          example: 0.5735
-          description: Growth
-    B035OrganizationProfit_TotalLiabilities:
-      type: object
-      properties:
-        liabs:
-          type: number
-          example: 53165000000
-          description: Total Liabilities
-        liabs_growth:
-          type: number
-          example: -0.0428
-          description: Growth
-    B035OrganizationProfit_Sales:
-      type: object
-      properties:
-        sales:
-          type: number
-          example: 5543000000
-          description: Sales
-        sale_growth:
-          type: number
-          example: -0.0081
-          description: Growth
-    B035OrganizationProfit_GrossIncome:
-      type: object
-      properties:
-        gross_inc:
-          type: number
-          example: 4488000000
-          description: Gross Income
-        gross_margin:
-          type: number
-          example: 0.8097
-          description: Gross Margin
-        gross_inc_growth:
-          type: number
-          example: -0.0336
-          description: Growth
-    B037OrganizationInvestmentRequest:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        organization_id:
-          type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
           description: Organization ID
     B034OrganizationBasicInfo_GetOrganizationResponseDto:
       type: object
@@ -1063,22 +593,122 @@ components:
           type: string
           example: NASDAQ
           description: Stock Exchange Code
-    B034OrganizationBasicInfo_Address:
+    B037OrganizationInvestment_GetOrganizationInvestmentResponseDto:
       type: object
       properties:
-        city:
+        items:
+          type: array
+          example: Please check the form:FundingRoundDto
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B037OrganizationInvestment_FundingRoundDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B038OrganizationFinancingRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: Offset, default 0
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
+        organization_id:
           type: string
-          example: Thousand Oaks
-          description: City
-        state:
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: Organization ID
+    B033OrganizationPipeline_CommonName:
+      type: object
+      properties:
+        lang:
           type: string
-          example: California
-          description: State
-        country:
+          example: EN
+          description: Language
+        name:
           type: string
-          example: United States
-          description: Country
-    B035OrganizationProfit_CashFlow:
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B035OrganizationProfitRequest:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: Organization ID
+        duration_type:
+          type: string
+          example: YEARLY
+          description: 'Dimension type. The value is an enum with the following values: QUARTERLY、SEMI_ANNUAL、YEARLY. Default YEARLY'
+        duration:
+          type: string
+          example: FIVE_YEAR
+          description: 'Time Range. The value is an enum with the following values: ONE_YEAR、THREE_YEAR、FIVE_YEAR、TEN_YEAR. Default FIVE_YEAR'
+    B036OrganizationGrantFunding_OrganizationGrantFundingDto:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+          example: 500000
+          description: Amount
+        open_date:
+          type: integer
+          format: int64
+          example: 1598933340000
+          description: Open Date
+        close_date:
+          type: integer
+          format: int64
+          example: 1643601660000
+          description: Closed Date
+        currency_code:
+          type: string
+          example: USD
+          description: Currency Code
+        award_by_organization:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: US Food & Drug Administration
+            original_name: Food and Drug Administration
+            organization_id: 22f728dbb565b4533dccd54700185db3
+          description: Award By
+          items:
+            $ref: '#/components/schemas/B036OrganizationGrantFunding_AwardOrganization'
+    B035OrganizationProfit_FreeCashFlow:
+      type: object
+      properties:
+        free_cf:
+          type: number
+          example: 1729000000
+          description: Free Cash Flow
+        free_cf_yield:
+          type: number
+          example: 0.0817
+          description: Free Cash Flow Yield
+        free_cf_growth:
+          type: number
+          example: -0.3278
+          description: Growth
+    B035OrganizationProfit_BalanceSheet:
       type: object
       properties:
         year:
@@ -1086,31 +716,158 @@ components:
           format: int64
           example: 1553990400000
           description: Date
+        cash_st:
+          $ref: '#/components/schemas/B035OrganizationProfit_CashSt'
+        net_debt:
+          $ref: '#/components/schemas/B035OrganizationProfit_NetDebt'
+        total_debt:
+          $ref: '#/components/schemas/B035OrganizationProfit_TotalDebt'
+        total_assets:
+          $ref: '#/components/schemas/B035OrganizationProfit_TotalAssets'
         currency_code:
           type: string
           example: USD
           description: Currency Code
-        free_cash_flow:
-          $ref: '#/components/schemas/B035OrganizationProfit_FreeCashFlow'
-        capital_expenditures:
-          $ref: '#/components/schemas/B035OrganizationProfit_CapitalExpenditures'
-        net_financing_cash_flow:
-          $ref: '#/components/schemas/B035OrganizationProfit_NetFinancingCashFlow'
-        net_investing_cash_flow:
-          $ref: '#/components/schemas/B035OrganizationProfit_NetInvestingCashFlow'
-        net_operating_cash_flow:
-          $ref: '#/components/schemas/B035OrganizationProfit_NetOperatingCashFlow'
-    B035OrganizationProfit_NetInvestingCashFlow:
+        total_liabilities:
+          $ref: '#/components/schemas/B035OrganizationProfit_TotalLiabilities'
+        total_shareholders_equity:
+          $ref: '#/components/schemas/B035OrganizationProfit_TotalShareholdersEquity'
+    B038OrganizationFinancing_CommonName:
       type: object
       properties:
-        net_investing_cf:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B035OrganizationProfit_TotalShareholdersEquity:
+      type: object
+      properties:
+        shldrs_equity:
           type: number
-          example: 3555000000
-          description: Net Investing Cash Flow
-        net_investing_cf_growth:
+          example: 10832000000
+          description: Total Shareholders' Equity
+        return_on_equity:
           type: number
-          example: 0.7615
-          description: Growth
+          example: 0.6105
+          description: Return on Equity
+        shldrs_equity_assets_ratio:
+          type: number
+          example: 0.1693
+          description: Total Shareholders' Equity / Total Assets
+    B033OrganizationPipeline_CommonCountry:
+      type: object
+      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+    B033OrganizationPipeline_GetOrganizationPipelineResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:PipelineDto
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B033OrganizationPipeline_PipelineDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B036OrganizationGrantFundingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B036OrganizationGrantFunding_GetOrganizationGrantFundingResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B033OrganizationPipeline_CommonTarget:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+    B035OrganizationProfitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B035OrganizationProfit_GetOrganizationProfitResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     B033OrganizationPipeline_PipelineDto:
       type: object
       properties:
@@ -1163,52 +920,78 @@ components:
           description: Therapeutic Area
           items:
             $ref: '#/components/schemas/B033OrganizationPipeline_CommonDisease'
-    B035OrganizationProfit_BalanceSheet:
+    B035OrganizationProfit_GetOrganizationProfitResponseDto:
       type: object
       properties:
-        year:
+        revenue:
+          type: number
+          example: 28010000000
+          description: Revenue
+        unix_date:
           type: integer
           format: int64
-          example: 1553990400000
-          description: Date
-        cash_st:
-          $ref: '#/components/schemas/B035OrganizationProfit_CashSt'
-        net_debt:
-          $ref: '#/components/schemas/B035OrganizationProfit_NetDebt'
-        total_debt:
-          $ref: '#/components/schemas/B035OrganizationProfit_TotalDebt'
-        total_assets:
-          $ref: '#/components/schemas/B035OrganizationProfit_TotalAssets'
+          example: 1703980800000
+          description: Statistical Cutoff Time
+        cash_flows:
+          type: array
+          example: Please check the form:CashFlow
+          description: Cash flow
+          items:
+            $ref: '#/components/schemas/B035OrganizationProfit_CashFlow'
+        market_val:
+          type: number
+          example: 154206000000
+          description: Market Cap
         currency_code:
           type: string
           example: USD
           description: Currency Code
-        total_liabilities:
-          $ref: '#/components/schemas/B035OrganizationProfit_TotalLiabilities'
-        total_shareholders_equity:
-          $ref: '#/components/schemas/B035OrganizationProfit_TotalShareholdersEquity'
-    B037OrganizationInvestment_MoneyRaised:
+        balance_sheets:
+          type: array
+          example: Please check the form:BalanceSheet
+          description: Balance Sheet
+          items:
+            $ref: '#/components/schemas/B035OrganizationProfit_BalanceSheet'
+        revenue_detail:
+          type: array
+          example: Please check the form:RevenueValue
+          description: Revenue(According To Dimension)
+          items:
+            $ref: '#/components/schemas/B035OrganizationProfit_RevenueValue'
+        income_statements:
+          type: array
+          example: Please check the form:IncomeStatement
+          description: Income Statement
+          items:
+            $ref: '#/components/schemas/B035OrganizationProfit_IncomeStatement'
+        market_val_detail:
+          type: array
+          example: Please check the form:ProfitValue
+          description: Market Cap(According To Dimension)
+          items:
+            $ref: '#/components/schemas/B035OrganizationProfit_ProfitValue'
+    B037OrganizationInvestment_CommonName:
       type: object
       properties:
-        value_cny:
-          type: number
-          format: double
-          example: 178139675
-          description: Amount Original Value(CNY)
-        value_usd:
-          type: number
-          format: double
-          example: 25000000
-          description: Amount Original Value(USD)
-        original_value:
-          type: number
-          format: double
-          example: 25000000
-          description: Amount Original Value
-        original_currency:
+        lang:
           type: string
-          example: USD
-          description: Amount Original Currency Code
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B035OrganizationProfit_CapitalExpenditures:
+      type: object
+      properties:
+        capex:
+          type: number
+          example: -116000000
+          description: Capital Expenditures
+        capex_growth:
+          type: number
+          example: 0.2516
+          description: Growth
     B035OrganizationProfit_NetOperatingCashFlow:
       type: object
       properties:
@@ -1224,6 +1007,32 @@ components:
           type: number
           example: 0.2327
           description: Cash Flow Return on Invested Capital
+    B035OrganizationProfit_NetInvestingCashFlow:
+      type: object
+      properties:
+        net_investing_cf:
+          type: number
+          example: 3555000000
+          description: Net Investing Cash Flow
+        net_investing_cf_growth:
+          type: number
+          example: 0.7615
+          description: Growth
+    B035OrganizationProfit_NetIncome:
+      type: object
+      properties:
+        net_income:
+          type: number
+          example: 1992000000
+          description: Net Income
+        net_income_growth:
+          type: number
+          example: -0.138
+          description: Growth
+        net_income_margin:
+          type: number
+          example: 0.3594
+          description: Net Margin
     B036OrganizationGrantFunding_CommonName:
       type: object
       properties:
@@ -1235,39 +1044,92 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B038OrganizationFinancing_CommonOrganization:
+    B033OrganizationPipeline_CommonDisease:
       type: object
       properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: Roche Holding AG
+            name: Uveitic Macular Edema
           - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B038OrganizationFinancing_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B035OrganizationProfit_ProfitValue:
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+    B035OrganizationProfit_NetDebt:
       type: object
       properties:
+        net_debt:
+          type: number
+          example: 7211000000
+          description: Net Debt
+        net_debt_growth:
+          type: number
+          example: -0.0571
+          description: Growth
+        net_debt_equity_ratio:
+          type: number
+          example: 0.6657
+          description: Net Debt / Total Equity
+    B034OrganizationBasicInfo_OrganizationTag:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 62eaee6d9ee44410b8aca59dfc7408e9
+          description: ID
+        type:
+          type: string
+          example: THERAPEUTIC_AREA
+          description: Type, Therapeutic Area/Drug Type
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Neoplasms
+          - lang: CN
+            name: 肿瘤
+          description: Name
+          items:
+            $ref: '#/components/schemas/B034OrganizationBasicInfo_CommonName'
+    B035OrganizationProfit_IncomeStatement:
+      type: object
+      properties:
+        ebit:
+          $ref: '#/components/schemas/B035OrganizationProfit_Ebit'
         year:
           type: integer
           format: int64
           example: 1553990400000
           description: Date
-        market_val:
-          type: number
-          example: 116724000000
-          description: Market Cap
+        sales:
+          $ref: '#/components/schemas/B035OrganizationProfit_Sales'
+        ebitda:
+          $ref: '#/components/schemas/B035OrganizationProfit_Ebitda'
+        net_income:
+          $ref: '#/components/schemas/B035OrganizationProfit_NetIncome'
+        gross_income:
+          $ref: '#/components/schemas/B035OrganizationProfit_GrossIncome'
         currency_code:
           type: string
           example: USD
           description: Currency Code
+    B038OrganizationFinancing_FundingTypeDto:
+      type: object
+      properties:
+        classification:
+          type: string
+          example: IPO上市后
+          description: Investment Type Name
+        classification_en:
+          type: string
+          example: Post IPO
+          description: Investment Type（EN）Name
     B035OrganizationProfit_RevenueValue:
       type: object
       properties:
@@ -1292,11 +1154,11 @@ components:
           type: string
           example: USD
           description: Currency Code
-    B036OrganizationGrantFundingResponse:
+    B037OrganizationInvestmentResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B036OrganizationGrantFunding_GetOrganizationGrantFundingResponseDto'
+          $ref: '#/components/schemas/B037OrganizationInvestment_GetOrganizationInvestmentResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1312,85 +1174,223 @@ components:
       required:
       - status
       - error_code
-    B035OrganizationProfit_IncomeStatement:
+    B038OrganizationFinancing_MoneyRaised:
       type: object
       properties:
-        ebit:
-          $ref: '#/components/schemas/B035OrganizationProfit_Ebit'
-        year:
-          type: integer
-          format: int64
-          example: 1553990400000
-          description: Date
-        sales:
-          $ref: '#/components/schemas/B035OrganizationProfit_Sales'
-        ebitda:
-          $ref: '#/components/schemas/B035OrganizationProfit_Ebitda'
-        net_income:
-          $ref: '#/components/schemas/B035OrganizationProfit_NetIncome'
-        gross_income:
-          $ref: '#/components/schemas/B035OrganizationProfit_GrossIncome'
-        currency_code:
+        value_cny:
+          type: number
+          format: double
+          example: 178139675
+          description: Amount Original Value(CNY)
+        value_usd:
+          type: number
+          format: double
+          example: 25000000
+          description: Amount Original Value(USD)
+        original_value:
+          type: number
+          format: double
+          example: 25000000
+          description: Amount Original Value
+        original_currency:
           type: string
           example: USD
-          description: Currency Code
-    B036OrganizationGrantFundingRequest:
+          description: Amount Original Currency Code
+    B037OrganizationInvestment_FundingTypeDto:
       type: object
       properties:
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: Offset, default 0
+        classification:
+          type: string
+          example: IPO上市后
+          description: Investment Type Name
+        classification_en:
+          type: string
+          example: Post IPO
+          description: Investment Type（EN）Name
+    B034OrganizationBasicInfo_Address:
+      type: object
+      properties:
+        city:
+          type: string
+          example: Thousand Oaks
+          description: City
+        state:
+          type: string
+          example: California
+          description: State
+        country:
+          type: string
+          example: United States
+          description: Country
+    B035OrganizationProfit_Ebitda:
+      type: object
+      properties:
+        ebitda:
+          type: number
+          example: 2953000000
+          description: EBITDA
+        ebitda_growth:
+          type: number
+          example: -0.0872
+          description: Growth
+        ebitda_margin:
+          type: number
+          example: 0.5327
+          description: EBITDA Margin
+    B036OrganizationGrantFunding_GetOrganizationGrantFundingResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:OrganizationGrantFundingDto
+          description: Result Items
+          items:
+            $ref: '#/components/schemas/B036OrganizationGrantFunding_OrganizationGrantFundingDto'
         limit:
           type: integer
           format: int64
           example: 10
-          description: Limit, default 10. offset + limit <= 10000， limit up to 1,000.
-        organization_id:
-          type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
-          description: Organization ID
-    B033OrganizationPipeline_CommonTarget:
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B038OrganizationFinancing_GetOrganizationFinancingResponseDto:
       type: object
       properties:
-        target_id:
-          type: string
-          example: 1c2067e5ab054a8995f73efcfcf56207
-          description: Target ID
-        short_name:
+        items:
           type: array
-          example:
-          - lang: EN
-            name: VEGF
-          description: Target Short Name, Referencing "CommonName"
+          example: Please check the form:FundingRoundDto
+          description: Result Items
           items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+            $ref: '#/components/schemas/B038OrganizationFinancing_FundingRoundDto'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 10
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B035OrganizationProfit_Sales:
+      type: object
+      properties:
+        sales:
+          type: number
+          example: 5543000000
+          description: Sales
+        sale_growth:
+          type: number
+          example: -0.0081
+          description: Growth
+    B037OrganizationInvestment_CommonOrganization:
+      type: object
+      properties:
         display_name:
           type: array
           example:
           - lang: EN
-            name: Vascular endothelial growth factor
+            name: Roche Holding AG
           - lang: CN
-            name: 血管内皮生长因子
-          description: Target Full Name, Referencing "CommonName"
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
-    B035OrganizationProfit_FreeCashFlow:
+            $ref: '#/components/schemas/B037OrganizationInvestment_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B035OrganizationProfit_Ebit:
       type: object
       properties:
-        free_cf:
+        ebit:
           type: number
-          example: 1729000000
-          description: Free Cash Flow
-        free_cf_yield:
+          example: 2458000000
+          description: EBIT
+        ebit_growth:
           type: number
-          example: 0.0817
-          description: Free Cash Flow Yield
-        free_cf_growth:
-          type: number
-          example: -0.3278
+          example: -0.1107
           description: Growth
+        ebit_margin:
+          type: number
+          example: 0.4434
+          description: EBIT margin
+    B033OrganizationPipeline_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B033OrganizationPipeline_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B035OrganizationProfit_CashSt:
+      type: object
+      properties:
+        cash_st:
+          type: number
+          example: 26301000000
+          description: Cash & Short-Term Investments
+        cash_st_growth:
+          type: number
+          example: -0.1825
+          description: Growth
+        cash_st_assets_ratio:
+          type: number
+          example: 0.411
+          description: Cash & ST Investments / Total Assets
+    B035OrganizationProfit_NetFinancingCashFlow:
+      type: object
+      properties:
+        net_financing_cf:
+          type: number
+          example: -4987000000
+          description: Net Financing Cash Flow
+        net_financing_cf_growth:
+          type: number
+          example: 0.5735
+          description: Growth
+    B038OrganizationFinancingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B038OrganizationFinancing_GetOrganizationFinancingResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http

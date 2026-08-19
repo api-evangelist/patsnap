@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Tech Pre-research Report API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tech Pre-research Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI34-2 Quick-search report creation - custom directory(Beta)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/quick-search-report/creation/custom-dir",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the input directory related to a certain technology, generate the pre-research report of that technology."
+        },
+        {
+          "info": {
+            "name": "AI34-3 Quick-search report Query(Beta)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/ai/quick-search-report/query",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "query",
+                "description": "report_id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query the status of report generation by using the report ID generated through the creation of the pre-research report interface."
+        },
+        {
+          "info": {
+            "name": "AI34-1 Quick-search report creation(Beta)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/quick-search-report/creation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the input question related to a certain technology, generate the pre-research report of that technology."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

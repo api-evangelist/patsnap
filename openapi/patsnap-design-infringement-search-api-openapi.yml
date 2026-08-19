@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Design Infringement Search API
   version: 1.0.0
@@ -78,291 +78,7 @@ paths:
               $ref: '#/components/schemas/AI39-2ImageSearchReportRequest'
 components:
   schemas:
-    AI39-2ImageSearchReportRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier, returned by submit task API
-      required:
-      - task_id
-    AI39-2ImageSearchReport_AppearanceAntiInfringementResponse:
-      type: object
-      properties:
-        report:
-          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageSimilarReportResponseV2'
-        task_id:
-          type: string
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-          description: Unique task identifier
-        task_status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task Status (1: running, 2: success, 3: failed)'
-        patent_messages:
-          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageSimilarSearchData'
-        rrffusion_response:
-          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageRRFFusionResponse'
-        line_drawing_base64:
-          type: string
-          example: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
-          description: Base64 encoded string of line drawing image
-      required:
-      - task_id
-      - task_status
-    AI39-2ImageSearchReport_ImageSimilarSearchData:
-      type: object
-      properties:
-        patent_messages:
-          type: array
-          example:
-          - loc:
-            - 21-01
-            apno: US29/961259
-            score: 0.875770605053453
-            title: Inflatable Santa
-            img_id: USD1055174-D00000_ABST
-            authority: US
-            loc_match: 1
-            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
-            patent_pn: USD1055174S1
-            risk_level: High
-          description: List of patent information, containing detailed information of patents similar to user image
-          items:
-            $ref: '#/components/schemas/AI39-2ImageSearchReport_专利信息项'
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 156
-          description: Total number of search results, including all similar patents
-      required:
-      - patent_messages
-      - total_search_result_count
-    AI39-2ImageSearchReport_ImageSimilarReportResponseV2:
-      type: object
-      properties:
-        loc:
-          type: array
-          example:
-          - 02 服装、服饰用品和缝纫用品
-          - 03 其他类未列入的旅行用品、箱包、阳伞和个人用品
-          - 10 钟、表及其他测量仪器，检测仪器，信号仪器
-          - 11 装饰品
-          - 19 文具、办公用品、美术用品和教学用品
-          - 21 游戏器具、玩具、帐篷和体育用品
-          - 32 图形符号、标识、表面图案、纹饰
-          description: LOC classification number list, identifying the design classification of the product
-        country:
-          type: array
-          example:
-          - US
-          - CN
-          - JP
-          - KR
-          - AU
-          - EU
-          description: Target export country list, represented by country codes
-        comparisons:
-          type: array
-          example:
-          - score: 0.45
-            title: 人形
-            img_id: 0001747893000002
-            status: 1
-            country: JP
-            similar: 主体均为圆柱形结构
-            confusion: 基础形状相似但设计元素差异足以区分
-            patent_id: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
-            patent_pn: JP1747893S
-            risk_desc: JP标准关注核心要部
-            difference: 专利图顶部为复杂的结状结构
-            risk_level: Low
-            suggestion: 保持当前帽子与垂耳的独特组合
-          description: List of comparison items with existing patents, including similarity analysis, risk assessment and suggestions
-          items:
-            $ref: '#/components/schemas/AI39-2ImageSearchReport_专利对比项V2'
-        operate_date:
-          type: integer
-          format: int64
-          example: 1768195176553
-          description: Operation timestamp in milliseconds
-        apply_start_time:
-          type: string
-          example: 20200101
-          description: Patent application start time in yyyyMMdd format
-        high_risk_country:
-          type: array
-          example:
-          - KR
-          description: List of high-risk export countries where highly similar patents exist
-        middle_risk_country:
-          type: array
-          example:
-          - KR
-          description: List of medium-risk export countries where moderately similar patents exist
-        suspected_infringement_count:
-          type: integer
-          format: int32
-          example: 0
-          description: Count of suspected infringing patents
-        suspected_infringement_country:
-          type: array
-          example:
-          - KR
-          description: List of suspected infringement countries where potentially infringing patents exist
-      required:
-      - country
-      - comparisons
-    AI39-2ImageSearchReport_ImageRRFFusionResponse:
-      type: object
-      properties:
-        k_value:
-          type: integer
-          format: int32
-          example: 60
-          description: k parameter value for RRF fusion algorithm, used to adjust fusion weights
-        rerank_count:
-          type: integer
-          format: int32
-          example: 200
-          description: Number of results returned by AI reranking
-        patent_messages:
-          type: array
-          example:
-          - loc:
-            - 21-01
-            apno: US29/961259
-            score: 0.875770605053453
-            title: Inflatable Santa
-            img_id: USD1055174-D00000_ABST
-            loc_match: 1
-            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
-            patent_pn: USD1055174S1
-            rrf_score: 0.030158730158730156
-            risk_level: High
-            rerank_rank: 10
-            rerank_score: 55
-            traditional_rank: 3
-            traditional_score: 0.875770605053453
-          description: List of patent results after fusion, combining traditional search and AI rerank results
-          items:
-            $ref: '#/components/schemas/AI39-2ImageSearchReport_RRF融合结果'
-        traditional_count:
-          type: integer
-          format: int32
-          example: 200
-          description: Number of results returned by traditional image search
-      required:
-      - k_value
-      - rerank_count
-      - patent_messages
-      - traditional_count
-    AI39-2ImageSearchReport_专利信息项:
-      type: object
-      properties:
-        loc:
-          type: array
-          example:
-          - 21-01
-          description: LOC classification number list, identifying the design classification of the patent
-        url:
-          type: string
-          example: https://example.com/patent/images/full/0001747893000002.jpg
-          description: Full URL address of patent image
-        apdt:
-          type: integer
-          format: int32
-          example: 20200115
-          description: Patent application date as integer in yyyyMMdd format
-        apno:
-          type: string
-          example: US29/961259
-          description: Patent application number
-        pbdt:
-          type: integer
-          format: int32
-          example: 20210320
-          description: Patent publication date as integer in yyyyMMdd format
-        score:
-          type: number
-          format: double
-          example: 0.875770605053453
-          description: Similarity score ranging from 0 to 1, higher score indicates higher similarity with user image
-        title:
-          type: string
-          example: Inflatable Santa
-          description: Patent title
-        img_id:
-          type: string
-          example: USD1055174-D00000_ABST
-          description: Patent image identifier for retrieving patent images
-        url_120:
-          type: string
-          example: https://example.com/patent/images/thumb/0001747893000002_120.jpg
-          description: Thumbnail URL address of patent image (120px)
-        inventor:
-          type: string
-          example: 张三;李四
-          description: Inventor name(s), multiple inventors separated by semicolon
-        authority:
-          type: string
-          example: US
-          description: Authority/country code, indicating the country or region where the patent is granted
-        loc_match:
-          type: integer
-          format: int32
-          example: 1
-          description: 'LOC classification match indicator: 1-matched, 0-not matched'
-        patent_id:
-          type: string
-          example: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
-          description: Unique patent identifier
-        patent_pn:
-          type: string
-          example: USD1055174S1
-          description: Patent publication number
-        risk_level:
-          type: string
-          example: High
-          description: 'Risk level: High, Medium, or Low'
-        current_assignee:
-          type: string
-          example: 某某科技有限公司
-          description: Current assignee name
-        original_assignee:
-          type: string
-          example: 某某科技有限公司
-          description: Original assignee name
-      required:
-      - score
-      - title
-      - img_id
-      - authority
-      - patent_id
-      - patent_pn
-    AI39-2ImageSearchReportResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI39-2ImageSearchReport_AppearanceAntiInfringementResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI39-2ImageSearchReport_RRF融合结果:
+    AI39-2ImageSearchReport_RRF:
       type: object
       properties:
         loc:
@@ -475,58 +191,11 @@ components:
       - rerank_score
       - traditional_rank
       - traditional_score
-    AI39-1ImageSearchSubmit_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier for subsequent polling to get task results
-      required:
-      - task_id
-    AI39-1ImageSearchSubmitRequest:
-      type: object
-      properties:
-        apply_start_time:
-          type: string
-          example: '20200101'
-          description: Patent application start time in yyyyMMdd format, used to filter patents filed after this date
-        country:
-          type: array
-          example:
-          - US
-          - CN
-          - JP
-          - KR
-          - AU
-          description: Target country/region code list, supports US, CN, JP, KR, AU, EU, etc.
-        lang:
-          type: string
-          example: cn
-          description: Report language, cn for Chinese, en for English
-        loc_items:
-          type: array
-          example:
-          - 14-02
-          - 14-03
-          - 14-04
-          description: Locarno classification list
-        main_field:
-          type: string
-          example: 智能手机
-          description: Main field/keyword for auxiliary search
-        url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: Image URL
-      required:
-      - country
-      - lang
-    AI39-1ImageSearchSubmitResponse:
+    AI39-2ImageSearchReportResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI39-1ImageSearchSubmit_AsyncTaskIdResponse'
+          $ref: '#/components/schemas/AI39-2ImageSearchReport_AppearanceAntiInfringementResponse'
         status:
           type: boolean
           example: 'false'
@@ -542,7 +211,7 @@ components:
       required:
       - status
       - error_code
-    AI39-2ImageSearchReport_专利对比项V2:
+    AI39-2ImageSearchReport______V2:
       type: object
       properties:
         score:
@@ -613,6 +282,337 @@ components:
       - difference
       - risk_level
       - suggestion
+    AI39-2ImageSearchReport:
+      type: object
+      properties:
+        loc:
+          type: array
+          example:
+          - 21-01
+          description: LOC classification number list, identifying the design classification of the patent
+        url:
+          type: string
+          example: https://example.com/patent/images/full/0001747893000002.jpg
+          description: Full URL address of patent image
+        apdt:
+          type: integer
+          format: int32
+          example: 20200115
+          description: Patent application date as integer in yyyyMMdd format
+        apno:
+          type: string
+          example: US29/961259
+          description: Patent application number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20210320
+          description: Patent publication date as integer in yyyyMMdd format
+        score:
+          type: number
+          format: double
+          example: 0.875770605053453
+          description: Similarity score ranging from 0 to 1, higher score indicates higher similarity with user image
+        title:
+          type: string
+          example: Inflatable Santa
+          description: Patent title
+        img_id:
+          type: string
+          example: USD1055174-D00000_ABST
+          description: Patent image identifier for retrieving patent images
+        url_120:
+          type: string
+          example: https://example.com/patent/images/thumb/0001747893000002_120.jpg
+          description: Thumbnail URL address of patent image (120px)
+        inventor:
+          type: string
+          example: 张三;李四
+          description: Inventor name(s), multiple inventors separated by semicolon
+        authority:
+          type: string
+          example: US
+          description: Authority/country code, indicating the country or region where the patent is granted
+        loc_match:
+          type: integer
+          format: int32
+          example: 1
+          description: 'LOC classification match indicator: 1-matched, 0-not matched'
+        patent_id:
+          type: string
+          example: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
+          description: Unique patent identifier
+        patent_pn:
+          type: string
+          example: USD1055174S1
+          description: Patent publication number
+        risk_level:
+          type: string
+          example: High
+          description: 'Risk level: High, Medium, or Low'
+        current_assignee:
+          type: string
+          example: 某某科技有限公司
+          description: Current assignee name
+        original_assignee:
+          type: string
+          example: 某某科技有限公司
+          description: Original assignee name
+      required:
+      - score
+      - title
+      - img_id
+      - authority
+      - patent_id
+      - patent_pn
+    AI39-2ImageSearchReport_AppearanceAntiInfringementResponse:
+      type: object
+      properties:
+        report:
+          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageSimilarReportResponseV2'
+        task_id:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          description: Unique task identifier
+        task_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task Status (1: running, 2: success, 3: failed)'
+        patent_messages:
+          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageSimilarSearchData'
+        rrffusion_response:
+          $ref: '#/components/schemas/AI39-2ImageSearchReport_ImageRRFFusionResponse'
+        line_drawing_base64:
+          type: string
+          example: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
+          description: Base64 encoded string of line drawing image
+      required:
+      - task_id
+      - task_status
+    AI39-1ImageSearchSubmit_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI39-1ImageSearchSubmitResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI39-1ImageSearchSubmit_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI39-2ImageSearchReport_ImageSimilarReportResponseV2:
+      type: object
+      properties:
+        loc:
+          type: array
+          example:
+          - 02 服装、服饰用品和缝纫用品
+          - 03 其他类未列入的旅行用品、箱包、阳伞和个人用品
+          - 10 钟、表及其他测量仪器，检测仪器，信号仪器
+          - 11 装饰品
+          - 19 文具、办公用品、美术用品和教学用品
+          - 21 游戏器具、玩具、帐篷和体育用品
+          - 32 图形符号、标识、表面图案、纹饰
+          description: LOC classification number list, identifying the design classification of the product
+        country:
+          type: array
+          example:
+          - US
+          - CN
+          - JP
+          - KR
+          - AU
+          - EU
+          description: Target export country list, represented by country codes
+        comparisons:
+          type: array
+          example:
+          - score: 0.45
+            title: 人形
+            img_id: 0001747893000002
+            status: 1
+            country: JP
+            similar: 主体均为圆柱形结构
+            confusion: 基础形状相似但设计元素差异足以区分
+            patent_id: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
+            patent_pn: JP1747893S
+            risk_desc: JP标准关注核心要部
+            difference: 专利图顶部为复杂的结状结构
+            risk_level: Low
+            suggestion: 保持当前帽子与垂耳的独特组合
+          description: List of comparison items with existing patents, including similarity analysis, risk assessment and suggestions
+          items:
+            $ref: '#/components/schemas/AI39-2ImageSearchReport______V2'
+        operate_date:
+          type: integer
+          format: int64
+          example: 1768195176553
+          description: Operation timestamp in milliseconds
+        apply_start_time:
+          type: string
+          example: 20200101
+          description: Patent application start time in yyyyMMdd format
+        high_risk_country:
+          type: array
+          example:
+          - KR
+          description: List of high-risk export countries where highly similar patents exist
+        middle_risk_country:
+          type: array
+          example:
+          - KR
+          description: List of medium-risk export countries where moderately similar patents exist
+        suspected_infringement_count:
+          type: integer
+          format: int32
+          example: 0
+          description: Count of suspected infringing patents
+        suspected_infringement_country:
+          type: array
+          example:
+          - KR
+          description: List of suspected infringement countries where potentially infringing patents exist
+      required:
+      - country
+      - comparisons
+    AI39-2ImageSearchReport_ImageSimilarSearchData:
+      type: object
+      properties:
+        patent_messages:
+          type: array
+          example:
+          - loc:
+            - 21-01
+            apno: US29/961259
+            score: 0.875770605053453
+            title: Inflatable Santa
+            img_id: USD1055174-D00000_ABST
+            authority: US
+            loc_match: 1
+            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
+            patent_pn: USD1055174S1
+            risk_level: High
+          description: List of patent information, containing detailed information of patents similar to user image
+          items:
+            $ref: '#/components/schemas/AI39-2ImageSearchReport'
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 156
+          description: Total number of search results, including all similar patents
+      required:
+      - patent_messages
+      - total_search_result_count
+    AI39-2ImageSearchReport_ImageRRFFusionResponse:
+      type: object
+      properties:
+        k_value:
+          type: integer
+          format: int32
+          example: 60
+          description: k parameter value for RRF fusion algorithm, used to adjust fusion weights
+        rerank_count:
+          type: integer
+          format: int32
+          example: 200
+          description: Number of results returned by AI reranking
+        patent_messages:
+          type: array
+          example:
+          - loc:
+            - 21-01
+            apno: US29/961259
+            score: 0.875770605053453
+            title: Inflatable Santa
+            img_id: USD1055174-D00000_ABST
+            loc_match: 1
+            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
+            patent_pn: USD1055174S1
+            rrf_score: 0.030158730158730156
+            risk_level: High
+            rerank_rank: 10
+            rerank_score: 55
+            traditional_rank: 3
+            traditional_score: 0.875770605053453
+          description: List of patent results after fusion, combining traditional search and AI rerank results
+          items:
+            $ref: '#/components/schemas/AI39-2ImageSearchReport_RRF'
+        traditional_count:
+          type: integer
+          format: int32
+          example: 200
+          description: Number of results returned by traditional image search
+      required:
+      - k_value
+      - rerank_count
+      - patent_messages
+      - traditional_count
+    AI39-1ImageSearchSubmitRequest:
+      type: object
+      properties:
+        apply_start_time:
+          type: string
+          example: '20200101'
+          description: Patent application start time in yyyyMMdd format, used to filter patents filed after this date
+        country:
+          type: array
+          example:
+          - US
+          - CN
+          - JP
+          - KR
+          - AU
+          description: Target country/region code list, supports US, CN, JP, KR, AU, EU, etc.
+        lang:
+          type: string
+          example: cn
+          description: Report language, cn for Chinese, en for English
+        loc_items:
+          type: array
+          example:
+          - 14-02
+          - 14-03
+          - 14-04
+          description: Locarno classification list
+        main_field:
+          type: string
+          example: 智能手机
+          description: Main field/keyword for auxiliary search
+        url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: Image URL
+      required:
+      - country
+      - lang
+    AI39-2ImageSearchReportRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
   securitySchemes:
     bearerAuth:
       type: http

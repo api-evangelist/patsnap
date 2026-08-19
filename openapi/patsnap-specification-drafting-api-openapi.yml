@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Specification Drafting API
   version: 1.0.0
@@ -177,25 +177,22 @@ paths:
               $ref: '#/components/schemas/AI37-5SpecificationDownloadReportRequest'
 components:
   schemas:
-    AI37-3ExtractFeatureCnipa_ClaimFeature:
+    AI37-5SpecificationDownloadReport_NoveltySearchDownloadResponse:
       type: object
       properties:
-        feature:
-          type: string
-          example: 三个独立气室共同组成横向的试验装置外壳
-          description: Technical feature description
-        concepts:
-          type: array
-          example:
-          - 气室
-          - 试验装置
-          - 外壳
-          description: Concept words list
-        feature_deleted:
+        status:
           type: integer
           format: int32
-          example: 0
-          description: Feature deleted flag
+          example: 2
+          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of the technical survey report
+        report_url:
+          type: string
+          example: http://downloadurl
+          description: Report file download link (returned when export status is successful)
     AI37-2InitResultCnipa_EmbodimentOutlineItem:
       type: object
       properties:
@@ -232,133 +229,52 @@ components:
           format: int32
           example: 1
           description: Reference embodiment number
-    AI37-3ExtractFeatureCnipa_Term:
+    AI37-5SpecificationDownloadReportRequest:
       type: object
       properties:
-        name:
+        task_id:
           type: string
-          example: 气室
-          description: Term name
-        number:
-          type: string
-          example: 1
-          description: Number
-        annotated:
-          type: boolean
-          example: false
-          description: Whether annotated
-        unique_id:
-          type: string
-          example: 1
-          description: Unique identifier
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
       required:
-      - name
-      - unique_id
-    AI37-1InitCnipaResponse:
+      - task_id
+    AI37-3ExtractFeatureCnipaRequest:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI37-1InitCnipa_SpecificationInitResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        category:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI37-2InitResultCnipa_SpecificationInitResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
-        benefit:
-          type: string
-          example: 采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\n可拆卸法兰结构设计便于更换电极和维护；\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
-          description: Technical benefits
+          example: 设备
+          description: Technology category
         task_id:
           type: string
           example: 123e4567-e89b-12d3-a456-426614174000
           description: Task ID
-        category:
-          type: string
-          example: 设备
-          description: Technology category(Composition of matter,Machine, Process, Manufacture)
-        classification:
-          type: array
-          example:
-          - H01B17/36
-          - G01R31/12
-          - H02B13/065
-          - H01B17/14
-          - H02B13/035
-          description: Classification list
-        technical_methods:
-          type: string
-          example: 本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\n高压导杆电极可通过电极过渡连接件进行更换；\n3号气室端部设有可拆卸法兰结构；\n多个石英玻璃观察窗口，用于观察放电过程；\n装置支撑座和辅助支撑架支撑试验装置本体。
-          description: Technical methods
-        technical_problem:
-          type: string
-          example: 现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。
-          description: Technical problem
-        embodiment_outline:
-          type: array
-          example:
-          - text: 为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。
-            label: common
-          - type: 设备
-            label: outline
-            outline: outline
-            claim_text: "\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\n\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\n\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\n\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\n\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室端部设有可拆卸法兰结构。\n\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\n\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。"
-            claim_numbers:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
-            - 7
-            embodiment_number: 1
-            reference_claim_number: []
-          - text: 最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。
-            label: common
-          description: Embodiment outline list
-          items:
-            $ref: '#/components/schemas/AI37-2InitResultCnipa_EmbodimentOutlineItem'
       required:
+      - category
       - task_id
-    AI37-4GenerateReportCnipa_Term:
+    AI37-4GenerateReportCnipa_EmbodimentGenerateItem:
       type: object
       properties:
-        annotated:
-          type: boolean
-          example: false
-          description: Whether annotated
-        name:
-          type: string
-          example: 气室
-          description: Term name
-        number:
-          type: string
+        claim_numbers:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          description: Claim numbers list
+        embodiment_number:
+          type: integer
+          format: int32
           example: 1
-          description: Number
-        unique_id:
+          description: Embodiment number
+        text:
           type: string
-          example: 1
-          description: Unique identifier
-      required:
-      - name
-      - unique_id
+          example: 本实施例提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致"L"型的外形...
+          description: Embodiment content text
+        type:
+          type: string
+          example: 设备
+          description: Type (Composition of matter,Machine, Process, Manufacture)
     AI37-3ExtractFeatureCnipaResponse:
       type: object
       properties:
@@ -379,130 +295,6 @@ components:
       required:
       - status
       - error_code
-    AI37-5SpecificationDownloadReport_NoveltySearchDownloadResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of the technical survey report
-        report_url:
-          type: string
-          example: http://downloadurl
-          description: Report file download link (returned when export status is successful)
-    AI37-2InitResultCnipaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI37-2InitResultCnipa_SpecificationInitResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI37-4GenerateReportCnipa_NoveltySearchDownloadResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of the technical survey report
-        report_url:
-          type: string
-          example: http://downloadurl
-          description: Report file download link (returned when export status is successful)
-    AI37-1InitCnipa_SpecificationInitResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
-        benefit:
-          type: string
-          example: 采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\n可拆卸法兰结构设计便于更换电极和维护；\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
-          description: Technical benefits
-        task_id:
-          type: string
-          example: 123e4567-e89b-12d3-a456-426614174000
-          description: Task ID
-        category:
-          type: string
-          example: 设备
-          description: Technology category(Composition of matter,Machine, Process, Manufacture)
-        classification:
-          type: array
-          example:
-          - H01B17/36
-          - G01R31/12
-          - H02B13/065
-          - H01B17/14
-          - H02B13/035
-          description: Classification list
-        technical_methods:
-          type: string
-          example: 本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\n高压导杆电极可通过电极过渡连接件进行更换；\n3号气室端部设有可拆卸法兰结构；\n多个石英玻璃观察窗口，用于观察放电过程；\n装置支撑座和辅助支撑架支撑试验装置本体。
-          description: Technical methods
-        technical_problem:
-          type: string
-          example: 现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。
-          description: Technical problem
-        embodiment_outline:
-          type: array
-          example:
-          - text: 为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。
-            label: common
-          - type: 设备
-            label: outline
-            outline: outline
-            claim_text: "\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\n\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\n\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\n\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\n\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室端部设有可拆卸法兰结构。\n\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\n\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。"
-            claim_numbers:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
-            - 7
-            embodiment_number: 1
-            reference_claim_number: []
-          - text: 最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。
-            label: common
-          description: Embodiment outline list
-          items:
-            $ref: '#/components/schemas/AI37-1InitCnipa_EmbodimentOutlineItem'
-      required:
-      - task_id
-    AI37-2InitResultCnipaRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
     AI37-4GenerateReportCnipa_ClaimFeature:
       type: object
       properties:
@@ -522,56 +314,42 @@ components:
           format: int32
           example: 0
           description: Feature deleted flag
-    AI37-3ExtractFeatureCnipaRequest:
+    AI37-4GenerateReportCnipa_NoveltySearchDownloadResponse:
       type: object
       properties:
-        category:
-          type: string
-          example: 设备
-          description: Technology category
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
         task_id:
           type: string
-          example: 123e4567-e89b-12d3-a456-426614174000
-          description: Task ID
-      required:
-      - category
-      - task_id
-    AI37-1InitCnipa_EmbodimentOutlineItem:
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of the technical survey report
+        report_url:
+          type: string
+          example: http://downloadurl
+          description: Report file download link (returned when export status is successful)
+    AI37-4GenerateReportCnipaResponse:
       type: object
       properties:
-        text:
+        data:
+          $ref: '#/components/schemas/AI37-4GenerateReportCnipa_NoveltySearchDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 本实施例提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置...
-          description: Text content
-        type:
-          type: string
-          example: 设备
-          description: Type (Composition of matter,Machine, Process, Manufacture)
-        label:
-          type: string
-          example: outline
-          description: Label
-        claim_text:
-          type: string
-          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
-          description: Claim text
-        claim_numbers:
-          type: array
-          example:
-          - 1
-          - 2
-          - 3
-          description: Claim numbers list
-        embodiment_number:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
           type: integer
-          format: int32
-          example: 1
-          description: Embodiment number
-        reference_embodiment_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Reference embodiment number
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI37-4GenerateReportCnipaRequest:
       type: object
       properties:
@@ -1002,6 +780,454 @@ components:
       - category
       - task_id
       - title
+    AI37-2InitResultCnipaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI37-2InitResultCnipa_SpecificationInitResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI37-4GenerateReportCnipa_Term:
+      type: object
+      properties:
+        annotated:
+          type: boolean
+          example: false
+          description: Whether annotated
+        name:
+          type: string
+          example: 气室
+          description: Term name
+        number:
+          type: string
+          example: 1
+          description: Number
+        unique_id:
+          type: string
+          example: 1
+          description: Unique identifier
+      required:
+      - name
+      - unique_id
+    AI37-2InitResultCnipa_SpecificationInitResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
+        benefit:
+          type: string
+          example: 采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\n可拆卸法兰结构设计便于更换电极和维护；\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
+          description: Technical benefits
+        task_id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          description: Task ID
+        category:
+          type: string
+          example: 设备
+          description: Technology category(Composition of matter,Machine, Process, Manufacture)
+        classification:
+          type: array
+          example:
+          - H01B17/36
+          - G01R31/12
+          - H02B13/065
+          - H01B17/14
+          - H02B13/035
+          description: Classification list
+        technical_methods:
+          type: string
+          example: 本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\n高压导杆电极可通过电极过渡连接件进行更换；\n3号气室端部设有可拆卸法兰结构；\n多个石英玻璃观察窗口，用于观察放电过程；\n装置支撑座和辅助支撑架支撑试验装置本体。
+          description: Technical methods
+        technical_problem:
+          type: string
+          example: 现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。
+          description: Technical problem
+        embodiment_outline:
+          type: array
+          example:
+          - text: 为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。
+            label: common
+          - type: 设备
+            label: outline
+            outline: outline
+            claim_text: "\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\n\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\n\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\n\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\n\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室端部设有可拆卸法兰结构。\n\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\n\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。"
+            claim_numbers:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            embodiment_number: 1
+            reference_claim_number: []
+          - text: 最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。
+            label: common
+          description: Embodiment outline list
+          items:
+            $ref: '#/components/schemas/AI37-2InitResultCnipa_EmbodimentOutlineItem'
+      required:
+      - task_id
+    AI37-3ExtractFeatureCnipa_FeatureTreeBO:
+      type: object
+      properties:
+        num:
+          type: string
+          example: 7
+          description: Claim number
+        parent:
+          type: string
+          example: 1,2,3,4,5,6
+          description: Parent claim number
+        simple_claim:
+          type: string
+          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
+          description: Simplified claim description
+        claim_features:
+          type: array
+          example:
+          - feature: 还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动
+            concepts:
+            - 不锈钢
+            - 装置支撑座
+            - 辅助支撑架
+            - 试验装置本体
+            - 平稳放置
+            - 移动
+          description: Claim features list
+          items:
+            $ref: '#/components/schemas/AI37-3ExtractFeatureCnipa_ClaimFeature'
+    AI37-1InitCnipaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI37-1InitCnipa_SpecificationInitResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI37-1InitCnipaRequest:
+      type: object
+      properties:
+        claim:
+          type: string
+          example: '1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。
+
+            2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。
+
+            3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。
+
+            4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。
+
+            5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            所述3号气室端部设有可拆卸法兰结构。
+
+            6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。
+
+            7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
+
+            还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。'
+          description: Claims content
+        disclosure:
+          type: string
+          example: '技术领域
+
+            本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。
+
+
+            背景技术
+
+            气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。
+
+
+            然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。
+
+
+            目前国内外现有的SF6气体绝缘试验装置存在以下不足：
+
+
+            现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；
+
+            日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；
+
+            美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；
+
+            国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。
+
+            综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。
+
+
+            技术问题
+
+            现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；
+
+            单一结构布局限制了试验类型，无法满足多样化试验需求；
+
+            无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；
+
+            电极更换不便，影响试验效率。
+
+            技术方案
+
+            本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：
+
+
+            竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；
+
+            水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；
+
+            三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；
+
+            3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；
+
+            支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；
+
+            高压导杆电极可通过电极过渡连接件进行更换；
+
+            3号气室端部设有可拆卸法兰结构；
+
+            多个石英玻璃观察窗口，用于观察放电过程；
+
+            装置支撑座和辅助支撑架支撑试验装置本体。
+
+            技术功效
+
+            与现有技术相比，本发明具有以下优点：
+
+
+            采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；
+
+            通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；
+
+            支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；
+
+            可拆卸法兰结构设计便于更换电极和维护；
+
+            多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；
+
+            结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
+
+
+            典型实施例
+
+            本发明的试验装置整体呈\"L\"型，包括竖直部分和水平部分。
+
+            竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。
+
+            水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。
+
+            1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。
+
+            3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。
+
+            高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。
+
+            3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。
+
+            整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。'
+          description: Disclosure content
+      required:
+      - claim
+      - disclosure
+    AI37-5SpecificationDownloadReportResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI37-5SpecificationDownloadReport_NoveltySearchDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI37-4GenerateReportCnipa_FeatureTreeBO:
+      type: object
+      properties:
+        claim_features:
+          type: array
+          example:
+          - feature: 还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动
+            concepts:
+            - 不锈钢
+            - 装置支撑座
+            - 辅助支撑架
+            - 试验装置本体
+            - 平稳放置
+            - 移动
+          description: Claim features list
+          items:
+            $ref: '#/components/schemas/AI37-4GenerateReportCnipa_ClaimFeature'
+        num:
+          type: string
+          example: 7
+          description: Claim number
+        parent:
+          type: string
+          example: 1,2,3,4,5,6
+          description: Parent claim number
+        simple_claim:
+          type: string
+          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
+          description: Simplified claim description
+    AI37-1InitCnipa_SpecificationInitResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export Status (1: Exporting, 2: Export successful, 3: Report generation exception)'
+        benefit:
+          type: string
+          example: 采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；\n通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；\n支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；\n可拆卸法兰结构设计便于更换电极和维护；\n多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；\n结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
+          description: Technical benefits
+        task_id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          description: Task ID
+        category:
+          type: string
+          example: 设备
+          description: Technology category(Composition of matter,Machine, Process, Manufacture)
+        classification:
+          type: array
+          example:
+          - H01B17/36
+          - G01R31/12
+          - H02B13/065
+          - H01B17/14
+          - H02B13/035
+          description: Classification list
+        technical_methods:
+          type: string
+          example: 本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：\n竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；\n水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；\n三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；\n3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；\n支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；\n高压导杆电极可通过电极过渡连接件进行更换；\n3号气室端部设有可拆卸法兰结构；\n多个石英玻璃观察窗口，用于观察放电过程；\n装置支撑座和辅助支撑架支撑试验装置本体。
+          description: Technical methods
+        technical_problem:
+          type: string
+          example: 现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；单一结构布局限制了试验类型，无法满足多样化试验需求；无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；电极更换不便，影响试验效率。
+          description: Technical problem
+        embodiment_outline:
+          type: array
+          example:
+          - text: 为使本申请实施例的目的、技术方案和优点更加清楚，下面将结合本发明实施例中的附图，对本申请实施例中的技术方案进行清楚、完整地描述，显然，所描述的实施例是本申请一部分实施例，而不是全部的实施例。基于本申请中的实施例，本领域普通技术人员在没有作出创造性劳动前提下所获得的所有其他实施例，都属于本发明保护的范围。
+            label: common
+          - type: 设备
+            label: outline
+            outline: outline
+            claim_text: "\n1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。\n\n  2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。\n\n  3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。\n\n  4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。\n\n  5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述3号气室端部设有可拆卸法兰结构。\n\n  6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。\n\n  7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于\n还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。"
+            claim_numbers:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            embodiment_number: 1
+            reference_claim_number: []
+          - text: 最后应说明的是：以上所述的仅是本申请的优选实施方式，本申请不限于以上实施例。可以理解，本领域技术人员在不脱离本申请的精神和构思的前提下直接导出或联想到的其他改进和变化，均应认为包含在本申请的保护范围之内。
+            label: common
+          description: Embodiment outline list
+          items:
+            $ref: '#/components/schemas/AI37-1InitCnipa_EmbodimentOutlineItem'
+      required:
+      - task_id
+    AI37-3ExtractFeatureCnipa_ClaimFeature:
+      type: object
+      properties:
+        feature:
+          type: string
+          example: 三个独立气室共同组成横向的试验装置外壳
+          description: Technical feature description
+        concepts:
+          type: array
+          example:
+          - 气室
+          - 试验装置
+          - 外壳
+          description: Concept words list
+        feature_deleted:
+          type: integer
+          format: int32
+          example: 0
+          description: Feature deleted flag
+    AI37-2InitResultCnipaRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI37-3ExtractFeatureCnipa_Term:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 气室
+          description: Term name
+        number:
+          type: string
+          example: 1
+          description: Number
+        annotated:
+          type: boolean
+          example: false
+          description: Whether annotated
+        unique_id:
+          type: string
+          example: 1
+          description: Unique identifier
+      required:
+      - name
+      - unique_id
     AI37-3ExtractFeatureCnipa_SpecificationFeatureResponse:
       type: object
       properties:
@@ -1368,38 +1594,25 @@ components:
           description: Feature tree list
           items:
             $ref: '#/components/schemas/AI37-3ExtractFeatureCnipa_FeatureTreeBO'
-    AI37-5SpecificationDownloadReportRequest:
+    AI37-1InitCnipa_EmbodimentOutlineItem:
       type: object
       properties:
-        task_id:
+        text:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    AI37-4GenerateReportCnipaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI37-4GenerateReportCnipa_NoveltySearchDownloadResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+          example: 本实施例提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置...
+          description: Text content
+        type:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI37-4GenerateReportCnipa_EmbodimentGenerateItem:
-      type: object
-      properties:
+          example: 设备
+          description: Type (Composition of matter,Machine, Process, Manufacture)
+        label:
+          type: string
+          example: outline
+          description: Label
+        claim_text:
+          type: string
+          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
+          description: Claim text
         claim_numbers:
           type: array
           example:
@@ -1412,224 +1625,11 @@ components:
           format: int32
           example: 1
           description: Embodiment number
-        text:
-          type: string
-          example: 本实施例提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致"L"型的外形...
-          description: Embodiment content text
-        type:
-          type: string
-          example: 设备
-          description: Type (Composition of matter,Machine, Process, Manufacture)
-    AI37-3ExtractFeatureCnipa_FeatureTreeBO:
-      type: object
-      properties:
-        num:
-          type: string
-          example: 7
-          description: Claim number
-        parent:
-          type: string
-          example: 1,2,3,4,5,6
-          description: Parent claim number
-        simple_claim:
-          type: string
-          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
-          description: Simplified claim description
-        claim_features:
-          type: array
-          example:
-          - feature: 还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动
-            concepts:
-            - 不锈钢
-            - 装置支撑座
-            - 辅助支撑架
-            - 试验装置本体
-            - 平稳放置
-            - 移动
-          description: Claim features list
-          items:
-            $ref: '#/components/schemas/AI37-3ExtractFeatureCnipa_ClaimFeature'
-    AI37-4GenerateReportCnipa_FeatureTreeBO:
-      type: object
-      properties:
-        claim_features:
-          type: array
-          example:
-          - feature: 还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动
-            concepts:
-            - 不锈钢
-            - 装置支撑座
-            - 辅助支撑架
-            - 试验装置本体
-            - 平稳放置
-            - 移动
-          description: Claim features list
-          items:
-            $ref: '#/components/schemas/AI37-4GenerateReportCnipa_ClaimFeature'
-        num:
-          type: string
-          example: 7
-          description: Claim number
-        parent:
-          type: string
-          example: 1,2,3,4,5,6
-          description: Parent claim number
-        simple_claim:
-          type: string
-          example: 一种用于直流气体绝缘金属封闭输电线路的试验研究装置
-          description: Simplified claim description
-    AI37-1InitCnipaRequest:
-      type: object
-      properties:
-        claim:
-          type: string
-          example: '1.一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致“L”型的外形，包括竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；以及在水平方向上，同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；1号气室、2号气室和3号气室共同组成横向的试验装置外壳，所述三个气室由1号盆式绝缘子和2号盆式绝缘子隔离成为独立的气室，所述三个气室还分别具有相应的独立充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门；所述每个充放气阀门上均设置有气压表或密度计；以及所述1号气室的气压保持恒定，不用于试验，所述3号气室为试验单元段，通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的2号盆式绝缘子和支柱绝缘子以及金属导电微粒，在所述3号气室中进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。
-
-            2.依据权利要求1所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            所述3号气室的3号充放气阀门上设置有带温度补偿的气体密度计。
-
-            3.依据权利要求2所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            所述支柱绝缘子上设置有屏蔽均压罩，屏蔽高压导杆电极端部的电场。
-
-            4.依据权利要求3所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            所述3号气室安装不同规格尺寸的同轴外壳电极以配合高压导杆电极组成的电极对，所述高压导杆电极通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变所述高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。
-
-            5.依据权利要求4所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            所述3号气室端部设有可拆卸法兰结构。
-
-            6.依据权利要求5所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            所述2号气室安装有1个1号石英玻璃观察窗口，所述3号气室上安装有2号石英玻璃观察窗口、3号石英玻璃观察窗口和主试验石英玻璃观察窗口各1个，所述石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90％。
-
-            7.依据权利要求1-6任一项所述的用于直流气体绝缘金属封闭输电线路的试验研究装置，其特征在于
-
-            还具有不锈钢的装置支撑座和辅助支撑架支撑所述试验装置本体，使本体能够平稳放置和移动。'
-          description: Claims content
-        disclosure:
-          type: string
-          example: '技术领域
-
-            本发明涉及高电压输电线路与绝缘技术领域，具体涉及一种用于直流气体绝缘金属封闭输电线路(GIL)的气体绝缘试验装置。
-
-
-            背景技术
-
-            气体绝缘金属封闭输电线路(GIL)是一种采用SF6气体或SF6和N2混合气体绝缘、外壳与导体同轴布置的高电压、大电流电力传输设备。其具有传输容量大、损耗小、占地空间少、安全防护性好等优点，在大容量长距离输电方面具有显著优势。全球交流GIL的电压等级范围为73～1200kV，应用历史可追溯至20世纪70年代。
-
-
-            然而，长期以来，受直流输电技术发展缓慢的影响，国内外专门针对直流GIL的研究甚少，尚未形成直流GIL产品。绝缘设计是直流GIL的关键技术环节，包括同轴电极绝缘间隙尺寸的选择，盆式和支柱绝缘子外形结构的设计，以及金属导电微粒的抑制。
-
-
-            目前国内外现有的SF6气体绝缘试验装置存在以下不足：
-
-
-            现有大型试验容器(如德国慕尼黑大学设计的容器)体积庞大，每次试验需要充放大量气体，工作量大；
-
-            日本关西电力公司采用GIS母线段进行盆式绝缘子试验，不方便进行各种SF6气体间隙的绝缘特性试验；
-
-            美国麻省理工技术学院设计的试验装置可进行同轴圆柱SF6间隙绝缘试验，但无法安放盆式绝缘子；
-
-            国内西安交通大学设计的试验容器采用立式结构，不方便进行盆式绝缘子相关试验。
-
-            综上所述，目前国内外没有一种专门用于直流GIL绝缘试验的装置，能够同时满足SF6气体间隙绝缘试验、绝缘子沿面闪络特性试验及金属导电微粒试验的需要。
-
-
-            技术问题
-
-            现有SF6气体绝缘试验装置体积过大，气体消耗量大，充放气及净化工作量大；
-
-            单一结构布局限制了试验类型，无法满足多样化试验需求；
-
-            无法同时进行SF6气体间隙绝缘试验、绝缘子闪络特性试验及金属导电微粒试验；
-
-            电极更换不便，影响试验效率。
-
-            技术方案
-
-            本发明提供一种用于直流气体绝缘金属封闭输电线路的试验研究装置，其具有大致\"L\"型的外形，包括：
-
-
-            竖直方向上布置的高压引线端、高压均压环和硅橡胶复合绝缘子高压套管；
-
-            水平方向上同轴分布的位于中间的高压导杆电极和外围的试验装置外壳；
-
-            三个独立气室(1号、2号、3号气室)共同组成横向的试验装置外壳，各气室由盆式绝缘子隔离，且各气室均有独立充放气阀门和气压表或密度计；
-
-            3号气室为主试验单元，可进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验；
-
-            支柱绝缘子上设置有屏蔽均压罩，可屏蔽高压导杆电极端部的电场；
-
-            高压导杆电极可通过电极过渡连接件进行更换；
-
-            3号气室端部设有可拆卸法兰结构；
-
-            多个石英玻璃观察窗口，用于观察放电过程；
-
-            装置支撑座和辅助支撑架支撑试验装置本体。
-
-            技术功效
-
-            与现有技术相比，本发明具有以下优点：
-
-
-            采用三个气室形式的分段结构设计，减少了试验过程中气体的使用量，简化了充放气操作；
-
-            通过安装在盆式绝缘子与高压导杆电极之间的电极过渡连接件，可方便更换高压导杆电极，实现不同形状和不同粗糙度的气体间隙绝缘特性试验；
-
-            支柱绝缘子上设置屏蔽均压罩，可屏蔽高压导杆电极端部的电场，避免试验时出现电晕放电；
-
-            可拆卸法兰结构设计便于更换电极和维护；
-
-            多个石英玻璃观察窗口允许实时观察放电过程，提高试验的可视性；
-
-            结构紧凑，操作便捷，满足直流GIL绝缘试验的多种需求。
-
-
-            典型实施例
-
-            本发明的试验装置整体呈\"L\"型，包括竖直部分和水平部分。
-
-            竖直部分包括高压引线端、高压均压环和硅橡胶复合绝缘子高压套管。
-
-            水平部分由三个气室单元模块组成：1号气室、2号气室和3号气室，中间的高压导杆电极和试验装置外壳同轴分布。三个气室由1号盆式绝缘子和2号盆式绝缘子隔离，各气室均有独立的充放气阀门：1号充放气阀门、2号充放气阀门和3号充放气阀门。
-
-            1号气室的气压保持恒定，不用于试验。3号气室为主要试验单元段，可通过布置不同形式的棒板电极、同轴圆柱电极、不同规格的盆式绝缘子和支柱绝缘子以及金属导电微粒，进行SF6气体间隙绝缘特性试验、绝缘子闪络特性试验和金属导电微粒试验。
-
-            3号气室下部装有支柱绝缘子，支柱绝缘子上带有屏蔽均压罩，用于屏蔽高压导杆电极端部的电场，防止试验时出现电晕放电。
-
-            高压导杆电极可以通过2号盆式绝缘子右端的电极过渡连接件进行更换，从而通过改变高压导杆电极及其配套电极的尺寸和粗糙度，进行不同形状和不同粗糙度的气体间隙绝缘特性试验。
-
-            3号气室外端部设有可拆卸法兰结构，便于更换电极操作。2号气室和3号气室上安装有多个石英玻璃观察窗口，该石英玻璃为远紫外材料，对放电过程中发出的波长在200nm～800nm的光谱范围内光，其透过率大于90%，可通过高速摄像仪监视放电过程。
-
-            整个试验装置由不锈钢的装置支撑座和辅助支撑架支撑，使本体能够平稳放置，方便更换电极和移动。'
-          description: Disclosure content
-      required:
-      - claim
-      - disclosure
-    AI37-5SpecificationDownloadReportResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI37-5SpecificationDownloadReport_NoveltySearchDownloadResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+        reference_embodiment_number:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          format: int32
+          example: 1
+          description: Reference embodiment number
   securitySchemes:
     bearerAuth:
       type: http

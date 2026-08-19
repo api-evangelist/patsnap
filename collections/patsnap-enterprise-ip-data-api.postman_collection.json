@@ -1,0 +1,1856 @@
+{
+  "item": [
+    {
+      "id": "8386fb82-5d59-4bb8-9cb0-c57a570eb712",
+      "name": "Enterprise IP Data",
+      "description": {
+        "content": "Enterprise IP Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63013c1f-c60a-4310-b947-4142d489b601",
+          "name": "C034 Plant Variety Protection Application Info",
+          "request": {
+            "name": "C034 Plant Variety Protection Application Info",
+            "description": {
+              "content": "Receive plant variety protection application data by company_name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "special-ip-data",
+                "new-plant-variety",
+                "application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "085b3f0b-e439-44c6-b2f0-c330e111b894",
+              "name": "Successful c034 plant variety protection application info response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 679,\n  \"plant_variety_protection_application_data\": [\n    {\n      \"breeders\": [\n        \"苏东辉\",\n        \"唐清耀\"\n      ],\n      \"applicants\": [\n        \"楚雄彝族自治州农业科学研究推广所\"\n      ],\n      \"species_name\": \"水稻 Oryza sativa L.\",\n      \"application_date\": 20090101,\n      \"publication_date\": 20090101,\n      \"application_number\": \"string\",\n      \"publication_number\": \"CNA001867G\",\n      \"temporary_variety_name\": \"博优938\"\n    },\n    {\n      \"breeders\": [\n        \"苏东辉\",\n        \"唐清耀\"\n      ],\n      \"applicants\": [\n        \"楚雄彝族自治州农业科学研究推广所\"\n      ],\n      \"species_name\": \"水稻 Oryza sativa L.\",\n      \"application_date\": 20090101,\n      \"publication_date\": 20090101,\n      \"application_number\": \"string\",\n      \"publication_number\": \"CNA001867G\",\n      \"temporary_variety_name\": \"博优938\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2334d9e4-a041-4d5c-b653-d33b4c9f9c00",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "143602d3-c79b-44e9-a1d2-bc29367c7df8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d473b67b-a945-4b95-9787-af9cd628a700",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbdbecfb-c97d-4f20-8de5-37db43028bc3",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b0e91b8-45c7-401e-9594-caf81f7d988f",
+          "name": "C034 Plant Variety Protection Issue Info",
+          "request": {
+            "name": "C034 Plant Variety Protection Issue Info",
+            "description": {
+              "content": "Receive plant variety protection issue data by company_name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "special-ip-data",
+                "new-plant-variety",
+                "issue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b315890-5bff-404c-a014-f52f787b7ec1",
+              "name": "Successful c034 plant variety protection issue info response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 679,\n  \"plant_variety_protection_application_data\": [\n    {\n      \"breeders\": [\n        \"苏东辉\",\n        \"唐清耀\"\n      ],\n      \"applicants\": [\n        \"楚雄彝族自治州农业科学研究推广所\"\n      ],\n      \"species_name\": \"水稻 Oryza sativa L.\",\n      \"application_date\": 20090101,\n      \"publication_date\": 20090101,\n      \"application_number\": \"string\",\n      \"publication_number\": \"CNA001867G\",\n      \"temporary_variety_name\": \"博优938\"\n    },\n    {\n      \"breeders\": [\n        \"苏东辉\",\n        \"唐清耀\"\n      ],\n      \"applicants\": [\n        \"楚雄彝族自治州农业科学研究推广所\"\n      ],\n      \"species_name\": \"水稻 Oryza sativa L.\",\n      \"application_date\": 20090101,\n      \"publication_date\": 20090101,\n      \"application_number\": \"string\",\n      \"publication_number\": \"CNA001867G\",\n      \"temporary_variety_name\": \"博优938\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dac26190-d6db-4228-ba7f-1057c2a1866e",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b587316e-d0c1-4ef6-a8b7-256731e9b022",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5801331-b4c1-4701-9f86-75c9ecb329a8",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "574ce59f-ef9b-451f-86bf-7e72ab6e7039",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "new-plant-variety",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"楚雄彝族自治州农业科学研究推广所\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8dba5dc-2290-43d1-afdb-7e0b31c65d16",
+          "name": "C033 Science and Technology Innovation Enterprises Integrated Circuit Design",
+          "request": {
+            "name": "C033 Science and Technology Innovation Enterprises Integrated Circuit Design",
+            "description": {
+              "content": "This interface provides integrated circuit layout design data for science and technology innovation enterprises, including registration number, application date, design name, announcement number, and other information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "special-ip-data",
+                "ic-design"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f63a9957-d97f-4dec-b9d4-ede6294a3687",
+              "name": "Successful c033 science and technology innovation enterprises integrated circuit design response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "ic-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"杭州友旺电子有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9654,\n  \"data\": {\n    \"total\": 679,\n    \"ic_design_data\": [\n      {\n        \"app_date\": 20220218,\n        \"end_date\": 20220202,\n        \"reg_number\": \"BS225001322\",\n        \"design_name\": \"61LC4\",\n        \"publish_date\": 20220812,\n        \"assignee_name\": \"杭州友旺电子有限公司，华为技术有限公司\",\n        \"inventor_name\": \"杭州友旺电子有限公司\",\n        \"publish_number\": \"string\",\n        \"create_completion_date\": 20211228\n      },\n      {\n        \"app_date\": 20220218,\n        \"end_date\": 20220202,\n        \"reg_number\": \"BS225001322\",\n        \"design_name\": \"61LC4\",\n        \"publish_date\": 20220812,\n        \"assignee_name\": \"杭州友旺电子有限公司，华为技术有限公司\",\n        \"inventor_name\": \"杭州友旺电子有限公司\",\n        \"publish_number\": \"string\",\n        \"create_completion_date\": 20211228\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "676c079f-06cf-4bd8-a1dc-c6e73f2881fc",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "ic-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"杭州友旺电子有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6cbbfe4-2928-4e40-bedb-20416abb6a61",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "ic-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"杭州友旺电子有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c17aa716-b02b-4b2f-a7bd-e2b01dcbd6db",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "ic-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"杭州友旺电子有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7851d36e-cae0-4b14-94ea-32a8e8d72388",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "ic-design"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"杭州友旺电子有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "574367f8-8c48-4cb2-828a-acf44f2f9a41",
+          "name": "C031 Science and Technology Innovation Enterprises Trademark",
+          "request": {
+            "name": "C031 Science and Technology Innovation Enterprises Trademark",
+            "description": {
+              "content": "This interface provides trademark data for science and technology innovation enterprises, including registration number, international classification, trademark name, application date, trademark status, and other information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "special-ip-data",
+                "enterprise-trademark"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_year\": \"<string>\",\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_size\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"tm_class\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80a6a61e-aa1f-4586-a512-6dbb863baba4",
+              "name": "Successful c031 science and technology innovation enterprises trademark response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "enterprise-trademark"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_year\": \"2020\",\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20,\n  \"status\": \"1\",\n  \"tm_class\": \"29\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3148,\n  \"data\": {\n    \"total\": 679,\n    \"enterprise_trademark_data\": [\n      {\n        \"id\": \"string\",\n        \"reg_no\": \"string\",\n        \"status\": \"商标已注册\",\n        \"int_cls\": \"42-网站服务\",\n        \"tm_name\": \"工业矿鸿\",\n        \"app_date\": 20221023,\n        \"category\": \"商标注册申请---申请收文\",\n        \"tm_class\": \"string\",\n        \"applicant_cn\": \"华为技术有限公司\"\n      },\n      {\n        \"id\": \"string\",\n        \"reg_no\": \"string\",\n        \"status\": \"商标已注册\",\n        \"int_cls\": \"42-网站服务\",\n        \"tm_name\": \"工业矿鸿\",\n        \"app_date\": 20221023,\n        \"category\": \"商标注册申请---申请收文\",\n        \"tm_class\": \"string\",\n        \"applicant_cn\": \"华为技术有限公司\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc460785-61ff-4852-b1df-b2c583df47f4",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "enterprise-trademark"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_year\": \"2020\",\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20,\n  \"status\": \"1\",\n  \"tm_class\": \"29\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a7a6a84-4b17-457f-9736-7ef66480b012",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "enterprise-trademark"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_year\": \"2020\",\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20,\n  \"status\": \"1\",\n  \"tm_class\": \"29\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "775bc96d-86e9-44b0-ab25-62e70e1a0c77",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "enterprise-trademark"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_year\": \"2020\",\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20,\n  \"status\": \"1\",\n  \"tm_class\": \"29\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54370380-33e0-4a0a-834a-1e92883e6682",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "enterprise-trademark"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_year\": \"2020\",\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20,\n  \"status\": \"1\",\n  \"tm_class\": \"29\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c4c61ed-b2a2-4f61-aa07-1b4ad0890e1d",
+          "name": "C032 Science and Technology Innovation Enterprises Software Copyright",
+          "request": {
+            "name": "C032 Science and Technology Innovation Enterprises Software Copyright",
+            "description": {
+              "content": "This interface provides software copyright data for science and technology innovation enterprises, including registration number, full name of software copyright, copyright owner and other information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "special-ip-data",
+                "software-copyright"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_name\": \"<string>\",\n  \"credit_code\": \"<string>\",\n  \"org_number\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5b13476-a9f8-4150-aab1-8afd3d5fe473",
+              "name": "Successful c032 science and technology innovation enterprises software copyright response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "software-copyright"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 4103,\n  \"data\": {\n    \"total\": 679,\n    \"software_copyright_data\": [\n      {\n        \"cat_num\": \"66000-0000\",\n        \"reg_num\": \"2022SR0575595\",\n        \"version\": \"V1.0\",\n        \"reg_time\": 20221023,\n        \"full_name\": \"华为HiSecEngine Probe网络流量威胁检测探针软件\",\n        \"simple_name\": \"Probe探针\",\n        \"publish_time\": 20201023,\n        \"author_nationality\": \"华为技术有限公司\"\n      },\n      {\n        \"cat_num\": \"66000-0000\",\n        \"reg_num\": \"2022SR0575595\",\n        \"version\": \"V1.0\",\n        \"reg_time\": 20221023,\n        \"full_name\": \"华为HiSecEngine Probe网络流量威胁检测探针软件\",\n        \"simple_name\": \"Probe探针\",\n        \"publish_time\": 20201023,\n        \"author_nationality\": \"华为技术有限公司\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f003dd49-b620-4c56-9b79-feae1140e971",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "software-copyright"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "620fbfa6-f420-41b6-b514-17dace5431dc",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "software-copyright"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de131493-ffbf-4d2d-aa3c-84438e6f4b39",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "software-copyright"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e13b4af8-d088-4de4-97ac-60a2080d247e",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "special-ip-data",
+                    "software-copyright"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_name\": \"华为技术有限公司\",\n  \"credit_code\": \"914403001922038216\",\n  \"org_number\": \"192203821\",\n  \"page_number\": 1,\n  \"page_size\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d876826-01ab-4d9d-ab14-97e0d8b2e938",
+          "name": "C046 search patent potential buyer api",
+          "request": {
+            "name": "C046 search patent potential buyer api",
+            "description": {
+              "content": "Retrieve a recommended list of potential buyers for the specified patent by entering either the patent_id or patent_number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "potential-buyer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patent_id\": \"<string>\",\n  \"pn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49c06849-d1ec-45d5-a179-7f0f9b087fdd",
+              "name": "Successful c046 search patent potential buyer api response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "potential-buyer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_id\": \"7fbd16c6-d005-4689-85a7-4d5eacef01e1\",\n  \"pn\": \"CN104244439B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3093,\n  \"data\": [\n    {\n      \"company_id\": \"580dadaf4e8990e4937f6326dadefdac\",\n      \"patent_cnt\": \"string\",\n      \"buy_all_cnt\": \"string\",\n      \"buy_this_cnt\": \"string\",\n      \"company_name\": \"中国移动通信集团有限公司\",\n      \"sim_score_avg\": \"string\"\n    },\n    {\n      \"company_id\": \"580dadaf4e8990e4937f6326dadefdac\",\n      \"patent_cnt\": \"string\",\n      \"buy_all_cnt\": \"string\",\n      \"buy_this_cnt\": \"string\",\n      \"company_name\": \"中国移动通信集团有限公司\",\n      \"sim_score_avg\": \"string\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d94ed5c-8bc7-4e9d-9227-1de21b4bfd01",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "potential-buyer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_id\": \"7fbd16c6-d005-4689-85a7-4d5eacef01e1\",\n  \"pn\": \"CN104244439B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "156c68b1-c06e-469e-a6c0-08a086f97d5c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "potential-buyer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_id\": \"7fbd16c6-d005-4689-85a7-4d5eacef01e1\",\n  \"pn\": \"CN104244439B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10eb1344-5fa2-415f-a4d8-9bca5ff5ffb4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "potential-buyer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_id\": \"7fbd16c6-d005-4689-85a7-4d5eacef01e1\",\n  \"pn\": \"CN104244439B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62a52417-e83e-4e6b-8cba-1bc984db833a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "potential-buyer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patent_id\": \"7fbd16c6-d005-4689-85a7-4d5eacef01e1\",\n  \"pn\": \"CN104244439B\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "520a31b8-5da9-4742-b66f-08a08bd17f4c",
+    "name": "Patsnap Open Platform AI Translation Enterprise IP Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

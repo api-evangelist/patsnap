@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Drug Mining Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug Mining Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B031 Medical News",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/news",
+            "params": [
+              {
+                "name": "news_id",
+                "value": "",
+                "type": "query",
+                "description": "News ID, obtain this through the [B045] medical news search interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain news about title, content, publish date etc."
+        },
+        {
+          "info": {
+            "name": "B039 Drug deal information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/drug-deal",
+            "params": [
+              {
+                "name": "deal_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug Deal ID, obtain this through the [B045] drug deal search interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain drug deal information about partner, principle, deal time, drug etc."
+        },
+        {
+          "info": {
+            "name": "B028 Patented drug and patent type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/patent/detail",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "Patent ID, obtain this through drug core patent search interface or drug related patent search"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain patented drug and patent type through patent"
+        },
+        {
+          "info": {
+            "name": "B070 Translational medicine detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/translational/medicine/detail",
+            "params": [
+              {
+                "name": "translational_medicine_id",
+                "value": "",
+                "type": "query",
+                "description": "Translational medicine id, obtain this through translational medicine search interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain translational medicine details through translational medicine id"
+        },
+        {
+          "info": {
+            "name": "B030 Medical Literature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/paper/detail",
+            "params": [
+              {
+                "name": "paper_id",
+                "value": "",
+                "type": "query",
+                "description": "Drug ID, obtain this through the paper search interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain Literature about title, journal, publication date etc."
+        },
+        {
+          "info": {
+            "name": "B066 Affinity Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/bio/affinity/search",
+            "params": [
+              {
+                "name": "affinity_id",
+                "value": "",
+                "type": "query",
+                "description": "Affinity search ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (must be >=1)"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Rows per page (must be >=1 and <=10)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search affinity details between antibody and antigen through affinity ID, including antibody sequence, antigen information, detection method, test conditions, etc."
+        },
+        {
+          "info": {
+            "name": "B065 Antigen-Antibody Pairing Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/bio/antibody/search",
+            "params": [
+              {
+                "name": "antigen_name",
+                "value": "",
+                "type": "query",
+                "description": "Antigen name"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (must be >=1)"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Rows per page (must be >=1 and <=10)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search related antibody sequence information through antigen name, including antigen sequence, antibody heavy/light chain sequences, UniProt ID, source, etc."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

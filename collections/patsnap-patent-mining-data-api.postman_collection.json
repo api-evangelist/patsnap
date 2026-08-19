@@ -1,0 +1,3471 @@
+{
+  "item": [
+    {
+      "id": "e8854b06-7c68-4e4a-9ae8-d01d9105a3fe",
+      "name": "Patent Mining Data",
+      "description": {
+        "content": "Patent Mining Data APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e9f9c02-7e5f-4e00-ae72-f3967ccc2bef",
+          "name": "P023 Application Domain",
+          "request": {
+            "name": "P023 Application Domain",
+            "description": {
+              "content": "Receive application domain classification data by patent_id or patent_number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "high-value-data",
+                "application-domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Select the language , you can choose cn or en."
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c409513c-acbf-469f-b384-da9377de3b0a",
+              "name": "Successful p023 application domain response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "application-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1a47a70d-6b54-4709-a72a-ed552781fcac,ef7d1252-2e0e-40c3-a44f-1bc1c86b7990"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6381,\n  \"data\": [\n    {\n      \"pn\": \"CN102681224A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"ef7d1252-2e0e-40c3-a44f-1bc1c86b7990\",\n      \"application_domain_data\": [\n        {\n          \"name\": \"声波诊断\",\n          \"level\": 4\n        },\n        {\n          \"name\": \"声波诊断\",\n          \"level\": 4\n        }\n      ]\n    },\n    {\n      \"pn\": \"CN102681224A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"ef7d1252-2e0e-40c3-a44f-1bc1c86b7990\",\n      \"application_domain_data\": [\n        {\n          \"name\": \"声波诊断\",\n          \"level\": 4\n        },\n        {\n          \"name\": \"声波诊断\",\n          \"level\": 4\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a9cb0c-1305-414f-a7b1-c4a0f11451f9",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "application-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1a47a70d-6b54-4709-a72a-ed552781fcac,ef7d1252-2e0e-40c3-a44f-1bc1c86b7990"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "451eb021-924e-4b7f-9150-8d501f793182",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "application-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1a47a70d-6b54-4709-a72a-ed552781fcac,ef7d1252-2e0e-40c3-a44f-1bc1c86b7990"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9447f51c-9cbb-410e-9dea-1a16fff94b94",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "application-domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1a47a70d-6b54-4709-a72a-ed552781fcac,ef7d1252-2e0e-40c3-a44f-1bc1c86b7990"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9f585b4-c378-48d0-86aa-9aa93c678907",
+          "name": "P025 The Three Elements of Patent Technology",
+          "request": {
+            "name": "P025 The Three Elements of Patent Technology",
+            "description": {
+              "content": "Receive the classification data for the three elements of patent technology, namely technical problem summary, technical benefit summary and technical approach summary, by providing the patent_id or patent_number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "high-value-data",
+                "tech-problem-and-benefit-summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Select the language , you can choose cn or en."
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f98ece6-0311-4ea0-b282-b8752a8f0fa7",
+              "name": "Successful p025 the three elements of patent technology response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "tech-problem-and-benefit-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,767a81fb-8abb-45e4-b9fe-4bbc327dc586"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A,US20230139460A1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6130,\n  \"data\": [\n    {\n      \"pn\": \"<cn>CN102681224A</cn><us>US20230139460A1</us>\",\n      \"lang\": \"<cn>cn</cn><us>en</us>\",\n      \"patent_id\": \"<cn>ef7d1252-2e0e-40c3-a44f-1bc1c86b7990</cn><us>767a81fb-8abb-45e4-b9fe-4bbc327dc586</us>\",\n      \"patsnap_title\": \"<cn>通过将清洁构件的运动与喷嘴火焰和进料过程步骤同步,系统可以防止存款形成和开裂,从而解决了消除气体燃烧器系统中的效率低下和维护挑战,从而提高了组件寿命和过程效率。</cn><us>By synchronizing the movement of the cleaning member with the nozzle flame and feed process steps, the system prevents deposit formation and cracking, addressing the inefficiencies and maintenance challenges in gas abatement burner systems, thereby improving component lifespan and process efficiency.</us>\",\n      \"benefit_summary\": {},\n      \"tech_problem_summary\": {},\n      \"technical_approach_summary\": {}\n    },\n    {\n      \"pn\": \"<cn>CN102681224A</cn><us>US20230139460A1</us>\",\n      \"lang\": \"<cn>cn</cn><us>en</us>\",\n      \"patent_id\": \"<cn>ef7d1252-2e0e-40c3-a44f-1bc1c86b7990</cn><us>767a81fb-8abb-45e4-b9fe-4bbc327dc586</us>\",\n      \"patsnap_title\": \"<cn>通过将清洁构件的运动与喷嘴火焰和进料过程步骤同步,系统可以防止存款形成和开裂,从而解决了消除气体燃烧器系统中的效率低下和维护挑战,从而提高了组件寿命和过程效率。</cn><us>By synchronizing the movement of the cleaning member with the nozzle flame and feed process steps, the system prevents deposit formation and cracking, addressing the inefficiencies and maintenance challenges in gas abatement burner systems, thereby improving component lifespan and process efficiency.</us>\",\n      \"benefit_summary\": {},\n      \"tech_problem_summary\": {},\n      \"technical_approach_summary\": {}\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56af7e8f-d278-4338-bcfa-1a3dba7255bb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "tech-problem-and-benefit-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,767a81fb-8abb-45e4-b9fe-4bbc327dc586"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A,US20230139460A1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2526d500-fef7-4b2b-ab11-115605ec437b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "tech-problem-and-benefit-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,767a81fb-8abb-45e4-b9fe-4bbc327dc586"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A,US20230139460A1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef1ae44a-b811-4619-a7b6-4a751b14c96a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "tech-problem-and-benefit-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,767a81fb-8abb-45e4-b9fe-4bbc327dc586"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A,US20230139460A1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48bb08c3-63e5-4a14-8d98-8da21301a070",
+          "name": "P022 Strategic Emerging Industry Classification (SEIC)",
+          "request": {
+            "name": "P022 Strategic Emerging Industry Classification (SEIC)",
+            "description": {
+              "content": "Receive strategic emerging industry classification data by patent_id or patent_number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "high-value-data",
+                "seic-classification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Select the language , you can choose cn or en."
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "88bec846-0d50-430b-aada-2b89a6b4579f",
+              "name": "Successful p022 strategic emerging industry classification (seic) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "seic-classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1e099a74-4378-4b84-9d13-f1b4ed5cb59b,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN110650438A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1261,\n  \"data\": [\n    {\n      \"pn\": \"CN110650438A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"1e099a74-4378-4b84-9d13-f1b4ed5cb59b\",\n      \"seic_classification\": [\n        {\n          \"seic_lv1\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          },\n          \"seic_lv2\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          }\n        },\n        {\n          \"seic_lv1\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          },\n          \"seic_lv2\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          }\n        }\n      ]\n    },\n    {\n      \"pn\": \"CN110650438A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"1e099a74-4378-4b84-9d13-f1b4ed5cb59b\",\n      \"seic_classification\": [\n        {\n          \"seic_lv1\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          },\n          \"seic_lv2\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          }\n        },\n        {\n          \"seic_lv1\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          },\n          \"seic_lv2\": {\n            \"seic_no\": \"string\",\n            \"seic_desc\": \"下一代信息网络产业\"\n          }\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3f73b48-dee6-4c09-a485-d250528194b8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "seic-classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1e099a74-4378-4b84-9d13-f1b4ed5cb59b,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN110650438A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c47a30ae-ef52-40e9-b56a-17ca0f6bf0ff",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "seic-classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1e099a74-4378-4b84-9d13-f1b4ed5cb59b,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN110650438A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe574440-ed64-4094-95a7-1ccb9fffe2e6",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "seic-classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "1e099a74-4378-4b84-9d13-f1b4ed5cb59b,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN110650438A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dad2a4dc-2232-403c-856d-de4696ae2178",
+          "name": "P024 Technology Topic",
+          "request": {
+            "name": "P024 Technology Topic",
+            "description": {
+              "content": "<p>Receive technology topic classification data by patent_id or patent_number.</p><p>Technology topic is a classification developed by Patsnap that allows you to easily understand key elements of the technical solution. The algorithm leverages AI technology. Technology topic is not provided for design patents.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "high-value-data",
+                "technology-topic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Select the language , you can choose cn or en."
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6e93373-c45a-44e6-a733-4ddee58f7469",
+              "name": "Successful p024 technology topic response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "technology-topic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 9964,\n  \"data\": [\n    {\n      \"pn\": \"CN102681224A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"ef7d1252-2e0e-40c3-a44f-1bc1c86b7990\",\n      \"technology_topic_data\": [\n        \"液晶显示器\",\n        \"电压\",\n        \"生产线\"\n      ]\n    },\n    {\n      \"pn\": \"CN102681224A\",\n      \"lang\": \"en\",\n      \"patent_id\": \"ef7d1252-2e0e-40c3-a44f-1bc1c86b7990\",\n      \"technology_topic_data\": [\n        \"液晶显示器\",\n        \"电压\",\n        \"生产线\"\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dadaa3de-c6e6-40d9-b7d7-f886407afa49",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "technology-topic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0eb77e16-1934-4cc9-8f83-051729f444b6",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "technology-topic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "047026ec-2e84-49db-8d13-fc9f099cf392",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "technology-topic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "ef7d1252-2e0e-40c3-a44f-1bc1c86b7990,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN102681224A"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4533d6b2-09d2-4486-91bd-6abef7ef1fa0",
+          "name": "P066 Patent Classification Description",
+          "request": {
+            "name": "P066 Patent Classification Description",
+            "description": {
+              "content": "Receive patent classification description data by corresponding classification type and code.<p>Note: There must be all of the two request parameters of classification type and code. The API supports batch requests with a maximum of 10 classification codes of one type, and more classification codes are separated with English comma. Batch requests are deducted from traffic/costs, and will be deducted multiple times based on the number of successful results returned.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "high-value-data",
+                "patent-classification-description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"replace_by_merge\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2529084-0ed2-492c-970b-97e8d7f42e22",
+              "name": "Successful p066 patent classification description response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "patent-classification-description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"C08G69/32\",\n  \"type\": \"ipc\",\n  \"replace_by_merge\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 6625,\n  \"data\": [\n    {\n      \"code\": \"C08G69/32\",\n      \"desc\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]\"\n        }\n      ],\n      \"type\": \"ipc\",\n      \"parent\": [\n        {\n          \"desc\": [\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"parent_code\": \"EN\"\n        },\n        {\n          \"desc\": [\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"parent_code\": \"EN\"\n        }\n      ],\n      \"version\": \"string\"\n    },\n    {\n      \"code\": \"C08G69/32\",\n      \"desc\": [\n        {\n          \"lang\": \"EN\",\n          \"text\": \"... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]\"\n        },\n        {\n          \"lang\": \"EN\",\n          \"text\": \"... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]\"\n        }\n      ],\n      \"type\": \"ipc\",\n      \"parent\": [\n        {\n          \"desc\": [\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"parent_code\": \"EN\"\n        },\n        {\n          \"desc\": [\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"lang\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"text\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"parent_code\": \"EN\"\n        }\n      ],\n      \"version\": \"string\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "028f7c4f-2f50-4e1e-be26-3fcb7faf3921",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "patent-classification-description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"C08G69/32\",\n  \"type\": \"ipc\",\n  \"replace_by_merge\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fea73a7-69e0-46b2-a913-048cc59c9802",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "patent-classification-description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"C08G69/32\",\n  \"type\": \"ipc\",\n  \"replace_by_merge\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "36bf3a25-e6d6-4d21-9322-4ae574b6f89c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "patent-classification-description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"C08G69/32\",\n  \"type\": \"ipc\",\n  \"replace_by_merge\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c097a95-9c2c-4f57-99f2-8aa7a7d25259",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "high-value-data",
+                    "patent-classification-description"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"C08G69/32\",\n  \"type\": \"ipc\",\n  \"replace_by_merge\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35bd77b0-2bdd-49d4-8994-7bcffeae21a7",
+          "name": "P064 Patent Enhanced Data",
+          "request": {
+            "name": "P064 Patent Enhanced Data",
+            "description": {
+              "content": "Receive patent basic bibliography data by patent_id or patent_number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basic-patent-data",
+                "patent_enhanced_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "the fields you want received, multiple fields are separated by commas."
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91496f1c-93f4-4ffc-812e-0baef661d7b3",
+              "name": "Successful p064 patent enhanced data response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basic-patent-data",
+                    "patent_enhanced_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "first_publication,application_type,first_claim"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "718ead9c-4f3c-4674-8f5a-24e126827269"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "US11205304B2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 4242,\n  \"data\": [\n    {\n      \"pn\": \"CN101595528B\",\n      \"patent_id\": \"02515f4b-1506-4c99-8101-9242f916bd99\",\n      \"first_claim\": [\n        {\n          \"lang\": \"CN\",\n          \"claim_text\": \"<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个\\n以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>且</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"claim_text\": \"<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个\\n以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>且</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>\"\n        }\n      ],\n      \"application_type\": 1,\n      \"first_publication\": {\n        \"pn\": \"US11205304B2\",\n        \"pbdt\": 20230815\n      },\n      \"earliest_priority_date\": 20220112\n    },\n    {\n      \"pn\": \"CN101595528B\",\n      \"patent_id\": \"02515f4b-1506-4c99-8101-9242f916bd99\",\n      \"first_claim\": [\n        {\n          \"lang\": \"CN\",\n          \"claim_text\": \"<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个\\n以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>且</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>\"\n        },\n        {\n          \"lang\": \"CN\",\n          \"claim_text\": \"<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个\\n以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>且</seg-refi></div>\\\\n\\n<div class=\\\\\\\"indep-clm\\\\\\\" num=\\\\\\\"1\\\\\\\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>\"\n        }\n      ],\n      \"application_type\": 1,\n      \"first_publication\": {\n        \"pn\": \"US11205304B2\",\n        \"pbdt\": 20230815\n      },\n      \"earliest_priority_date\": 20220112\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "542db63d-17ae-43ad-a5cb-421050900d73",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basic-patent-data",
+                    "patent_enhanced_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "first_publication,application_type,first_claim"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "718ead9c-4f3c-4674-8f5a-24e126827269"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "US11205304B2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e6a3563-efa5-429c-899c-2de1d77e3d89",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basic-patent-data",
+                    "patent_enhanced_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "first_publication,application_type,first_claim"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "718ead9c-4f3c-4674-8f5a-24e126827269"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "US11205304B2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "038459ab-9257-420a-a7f2-1ff9706c2a35",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basic-patent-data",
+                    "patent_enhanced_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "first_publication,application_type,first_claim"
+                    },
+                    {
+                      "key": "patent_id",
+                      "value": "718ead9c-4f3c-4674-8f5a-24e126827269"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "US11205304B2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3963f564-bb7b-4a2b-80aa-1bef80285be8",
+          "name": "P101 material ontology",
+          "request": {
+            "name": "P101 material ontology",
+            "description": {
+              "content": "This interface provides all  material ontology lables in the patent text",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "material",
+                "material-ontology"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16155621-4bdd-4aa2-ba9e-a7dd1ffc0c54",
+              "name": "Successful p101 material ontology response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-ontology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 3366,\n  \"data\": [\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"ontology_lable\": [\n        {\n          \"ppi_id\": 17011850,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\"\n        },\n        {\n          \"ppi_id\": 17011850,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\"\n        }\n      ]\n    },\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"ontology_lable\": [\n        {\n          \"ppi_id\": 17011850,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\"\n        },\n        {\n          \"ppi_id\": 17011850,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\"\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "816bb344-05a0-4474-80fe-9e2de31d8515",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-ontology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "feef0a87-8f41-40ad-bcec-34b575a7f07b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-ontology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a74c337-69fd-4afb-936a-a85a6cf02f27",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-ontology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bac7b7fc-9aa5-488c-85db-59bec443690b",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-ontology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5222de3a-bc1d-42ad-8f66-8942bd3cbe7c",
+          "name": "P100 patent PUM",
+          "request": {
+            "name": "P100 patent PUM",
+            "description": {
+              "content": "This interface provides all PUM information (including Property, Unit, and Measurement) in the patent text",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "material",
+                "patent-pum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bea77d1c-e7b9-43b1-9415-fb14d520f5e0",
+              "name": "Successful p100 patent pum response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "patent-pum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 8413,\n  \"data\": [\n    {\n      \"pn\": \"CN113769175B\",\n      \"ppi_info\": [\n        {\n          \"ppi_id\": 17011850,\n          \"ppi_detail\": [\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lower_bound\": 0,\n          \"upper_bound\": 1000000000,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\",\n          \"print_friendly_units\": \"μm\"\n        },\n        {\n          \"ppi_id\": 17011850,\n          \"ppi_detail\": [\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lower_bound\": 0,\n          \"upper_bound\": 1000000000,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\",\n          \"print_friendly_units\": \"μm\"\n        }\n      ],\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\"\n    },\n    {\n      \"pn\": \"CN113769175B\",\n      \"ppi_info\": [\n        {\n          \"ppi_id\": 17011850,\n          \"ppi_detail\": [\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lower_bound\": 0,\n          \"upper_bound\": 1000000000,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\",\n          \"print_friendly_units\": \"μm\"\n        },\n        {\n          \"ppi_id\": 17011850,\n          \"ppi_detail\": [\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"section\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"raw_property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"measurement_min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lower_bound\": 0,\n          \"upper_bound\": 1000000000,\n          \"display_name_cn\": \"粒子直径\",\n          \"display_name_en\": \"particle diameter\",\n          \"print_friendly_units\": \"μm\"\n        }\n      ],\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\"\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d1ecd8f-7c90-4854-aae5-c7eb38314c9d",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "patent-pum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d60d3f3e-d619-406a-a375-e6def50d2f77",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "patent-pum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4fc51b1-1fdf-4c0a-9d71-91a5d8b3d978",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "patent-pum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3188c518-ca4e-44df-8e0c-37838b551b90",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "patent-pum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb657a47-96ac-4809-8b8a-0a1f611aa13b",
+          "name": "P103 patent SPUM",
+          "request": {
+            "name": "P103 patent SPUM",
+            "description": {
+              "content": "This interface provides all material and PUM (including Property, Unit and Measurement) in the patent text.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "material",
+                "material-spum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ce282b0-0770-442f-945f-e6d56e25b4f3",
+              "name": "Successful p103 patent spum response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-spum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7155,\n  \"data\": [\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"spum_detail\": [\n        {\n          \"ppi_id\": 17010571,\n          \"section\": \"claims\",\n          \"raw_unit\": \"min\",\n          \"unit_offset\": [\n            {\n              \"end\": 155,\n              \"text\": \"min\",\n              \"start\": 152\n            }\n          ],\n          \"raw_property\": \"时间\",\n          \"substance_id\": \"8eb8c62a-9d2f-4c1b-953d-dcf142a10a21\",\n          \"raw_substance\": \"聚乙烯醇\",\n          \"measurement_max\": 599.37,\n          \"measurement_min\": 59.937,\n          \"raw_measurement\": \"1.0~10.0\",\n          \"substance_offset\": [\n            {\n              \"end\": 95,\n              \"text\": \"聚乙烯醇\",\n              \"start\": 92\n            }\n          ],\n          \"measurement_offset\": [\n            {\n              \"end\": 152,\n              \"text\": \"1-10\",\n              \"start\": 148\n            }\n          ]\n        },\n        {\n          \"ppi_id\": 17010571,\n          \"section\": \"claims\",\n          \"raw_unit\": \"min\",\n          \"unit_offset\": [\n            {\n              \"end\": 155,\n              \"text\": \"min\",\n              \"start\": 152\n            }\n          ],\n          \"raw_property\": \"时间\",\n          \"substance_id\": \"8eb8c62a-9d2f-4c1b-953d-dcf142a10a21\",\n          \"raw_substance\": \"聚乙烯醇\",\n          \"measurement_max\": 599.37,\n          \"measurement_min\": 59.937,\n          \"raw_measurement\": \"1.0~10.0\",\n          \"substance_offset\": [\n            {\n              \"end\": 95,\n              \"text\": \"聚乙烯醇\",\n              \"start\": 92\n            }\n          ],\n          \"measurement_offset\": [\n            {\n              \"end\": 152,\n              \"text\": \"1-10\",\n              \"start\": 148\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"spum_detail\": [\n        {\n          \"ppi_id\": 17010571,\n          \"section\": \"claims\",\n          \"raw_unit\": \"min\",\n          \"unit_offset\": [\n            {\n              \"end\": 155,\n              \"text\": \"min\",\n              \"start\": 152\n            }\n          ],\n          \"raw_property\": \"时间\",\n          \"substance_id\": \"8eb8c62a-9d2f-4c1b-953d-dcf142a10a21\",\n          \"raw_substance\": \"聚乙烯醇\",\n          \"measurement_max\": 599.37,\n          \"measurement_min\": 59.937,\n          \"raw_measurement\": \"1.0~10.0\",\n          \"substance_offset\": [\n            {\n              \"end\": 95,\n              \"text\": \"聚乙烯醇\",\n              \"start\": 92\n            }\n          ],\n          \"measurement_offset\": [\n            {\n              \"end\": 152,\n              \"text\": \"1-10\",\n              \"start\": 148\n            }\n          ]\n        },\n        {\n          \"ppi_id\": 17010571,\n          \"section\": \"claims\",\n          \"raw_unit\": \"min\",\n          \"unit_offset\": [\n            {\n              \"end\": 155,\n              \"text\": \"min\",\n              \"start\": 152\n            }\n          ],\n          \"raw_property\": \"时间\",\n          \"substance_id\": \"8eb8c62a-9d2f-4c1b-953d-dcf142a10a21\",\n          \"raw_substance\": \"聚乙烯醇\",\n          \"measurement_max\": 599.37,\n          \"measurement_min\": 59.937,\n          \"raw_measurement\": \"1.0~10.0\",\n          \"substance_offset\": [\n            {\n              \"end\": 95,\n              \"text\": \"聚乙烯醇\",\n              \"start\": 92\n            }\n          ],\n          \"measurement_offset\": [\n            {\n              \"end\": 152,\n              \"text\": \"1-10\",\n              \"start\": 148\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8924d189-7c93-49f5-b69c-8a7d607ea717",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-spum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be935092-3e4a-41b8-bfa2-0963065b36c3",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-spum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2616c1ce-cd91-4813-942b-0b16d3b530d5",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-spum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "343081b7-4d6b-48e0-b987-731dc17ecfc0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-spum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c83bc936-fa2d-43f2-9564-c71c2c759cda",
+          "name": "P102 material substance",
+          "request": {
+            "name": "P102 material substance",
+            "description": {
+              "content": "This interface provides all material substance name in the patent text.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "material",
+                "material-substance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patent_id",
+                  "value": "<string>",
+                  "description": "patent_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "patent_number",
+                  "value": "<string>",
+                  "description": "patent_number"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "edf7c9bb-06b6-4869-9ad2-13bbca7197f3",
+              "name": "Successful p102 material substance response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-substance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7253,\n  \"data\": [\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"substance_lable\": [\n        {\n          \"substance_id\": \"4440b6da-82d9-4719-aeb9-6670b15a0a4e\",\n          \"substance_master_name_cn\": \"二氯甲烷\",\n          \"substance_master_name_en\": \"METHYLENE CHLORIDE\"\n        },\n        {\n          \"substance_id\": \"4440b6da-82d9-4719-aeb9-6670b15a0a4e\",\n          \"substance_master_name_cn\": \"二氯甲烷\",\n          \"substance_master_name_en\": \"METHYLENE CHLORIDE\"\n        }\n      ]\n    },\n    {\n      \"pn\": \"CN113769175B\",\n      \"patent_id\": \"05da3d4e-6f13-4005-9a2d-0645d2554cbf\",\n      \"substance_lable\": [\n        {\n          \"substance_id\": \"4440b6da-82d9-4719-aeb9-6670b15a0a4e\",\n          \"substance_master_name_cn\": \"二氯甲烷\",\n          \"substance_master_name_en\": \"METHYLENE CHLORIDE\"\n        },\n        {\n          \"substance_id\": \"4440b6da-82d9-4719-aeb9-6670b15a0a4e\",\n          \"substance_master_name_cn\": \"二氯甲烷\",\n          \"substance_master_name_en\": \"METHYLENE CHLORIDE\"\n        }\n      ]\n    }\n  ],\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c4552d6-c7cb-4e11-864c-4ed90c445944",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-substance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7877bdd-44da-4b7e-91e3-0f3968ba002e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-substance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa87cf40-4674-4275-ac2e-a9b0996b1214",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-substance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d77a9c2b-9ce4-412c-ae8a-0c844eb4eacc",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "material-substance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patent_id",
+                      "value": "9cf648f8-8283-4767-9a14-f90f68303f3e,7353c607-0594-4592-b99e-aea9f517de17"
+                    },
+                    {
+                      "key": "patent_number",
+                      "value": "CN108977442B"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1219d53-b392-48d4-8d17-9e041a6a6002",
+          "name": "P063 Patent intelligent attached image",
+          "request": {
+            "name": "P063 Patent intelligent attached image",
+            "description": {
+              "content": "Receive patent intelligent attached image data by patent_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "patent",
+                "intelligent-attached-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"patent_id\": \"<string>\",\n  \"pn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e603304c-5804-40fb-94d3-0de15a886c02",
+              "name": "Successful p063 patent intelligent attached image response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "intelligent-attached-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n  \"pn\": \"CN111719991A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5431,\n  \"data\": {\n    \"patent_id\": \"1a47a70d-6b54-4709-a72a-ed552781fcac\",\n    \"pdf_images\": [\n      {\n        \"parts\": [\n          {\n            \"x1\": 128,\n            \"x2\": 147,\n            \"y1\": 956,\n            \"y2\": 980,\n            \"code\": \"52\",\n            \"representive_label_txt\": \"person\"\n          }\n        ],\n        \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n        \"storage_path\": \"https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png\",\n        \"fig_title_code\": \"1\"\n      }\n    ],\n    \"patent_images\": [\n      {\n        \"parts\": [\n          {\n            \"x1\": 128,\n            \"x2\": 147,\n            \"y1\": 956,\n            \"y2\": 980,\n            \"code\": \"52\",\n            \"representive_label_txt\": \"person\"\n          }\n        ],\n        \"storage_path\": \"https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "311f1a4a-fa31-403c-8492-bb9db4ddb205",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "intelligent-attached-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n  \"pn\": \"CN111719991A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe3cac85-d4df-4731-9f11-234c110f6042",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "intelligent-attached-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n  \"pn\": \"CN111719991A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70ff11ff-44b9-4f19-8ae1-c9ba03d14031",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "intelligent-attached-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n  \"pn\": \"CN111719991A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37fe408f-75dc-4f67-a5d5-e61d28e97d20",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "patent",
+                    "intelligent-attached-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"cn\",\n  \"patent_id\": \"8d83d36c-02d4-411c-8912-21fa3272abff\",\n  \"pn\": \"CN111719991A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c8c4bd24-59c0-4562-8997-4bc56f3de17b",
+    "name": "Patsnap Open Platform AI Translation Patent Mining Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

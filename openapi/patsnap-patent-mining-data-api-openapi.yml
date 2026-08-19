@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Patent Mining Data API
   version: 1.0.0
@@ -528,6 +528,320 @@ paths:
               $ref: '#/components/schemas/P063PatentIntelligentAttachedImageRequest'
 components:
   schemas:
+    P025HighValueDataTechProblemAndBenefitSummary_TechnicalApproachSummary:
+      type: object
+      properties:
+        technical_approach_para:
+          type: array
+          example: "<cn>[\"[0042]如上所述，考虑到TFT玻璃基板尽量减小金属线负载的设计基本原则，一张母板玻璃可以设置一组或几组信号输入端口，这样可以根据TFT玻璃基板设计的实际情况，将一张母板玻璃的单元液晶屏分成几组，每组的单元液晶屏共用一组信号输入端口，尽量减小Cell Test检测用信号线负载的影响。按照信号线损耗尽量相等的原则，离Pad端较远的单元液晶屏的Cell Test检测用信号线比离Pad端较近的单元液晶屏的Cell Test检测用信号线宽，以使整张母板上所有单元液晶屏的Cell Test检测用信号线的电阻尽量相等，单元液晶屏之间的电压分布均匀。\"]</cn><us>[\"Vertical polarization antenna: the scheme provides a method to implement a vertical polarization antenna in an antenna module with a certain height. this feature addresses the challenge of integrating a vertical polarization antenna into a compact device.\",\n    \"Orthogonal polarization antennas: the scheme introduces an antenna module with antenna elements having different polarizations orthogonal to each other. this feature allows for multiple-input multiple-output (mimo) communication, enhancing the overall performance and data rate of the electronic device.\",\n    \"Disposing an array antenna in a millimeter wave band: the scheme overcomes the limitation of existing wireless communication systems by incorporating an array antenna into an electronic device. this allows for multifunctionality, enabling the device to capture still images or moving videos, play music or video files, provide data communication, and receive broadcast and television signals.\",\n    \"Height reduction and interference reduction: the scheme introduces various antenna structures and configurations to reduce the overall height of the antenna module and minimize interference between antennas with different polarizations. this includes offsetting the via pad and via by a certain distance, using a metal strip and a via, and arranging different polarization antennas vertically and horizontally.\"]</us>"
+          description: Technical Approach Paragraph
+    P103MaterialMaterialSpum_MaterialOffset:
+      type: object
+      properties:
+        end:
+          type: integer
+          format: int32
+          example: 95
+          description: end position
+        text:
+          type: string
+          example: 聚乙烯醇
+          description: text
+        start:
+          type: integer
+          format: int32
+          example: 92
+          description: start position
+    P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummary:
+      type: object
+      properties:
+        tech_problem_para:
+          type: array
+          example: <cn>["现有的TFT-LCD液晶屏生产过程中，针对单元液晶屏进行的检测通常只能比较直观地检测出不良现象，对于产生的不良的原因仍需要进一步分析判断。同时，不同尺寸液晶屏的Cell Test检测设备在产品开发阶段都需要定制购买价格不菲的点屏设备，不同尺寸液晶屏的Cell Test检测设备完全不能共用，且开发阶段针对不同尺寸液晶屏的Cell Test检测设备调试复杂，工作效率较低。"]</cn><us>["The technical problem addressed in this patent text is how to improve the function and performance of electronic devices, particularly mobile terminals, by enhancing their ability to capture and play high-quality video and music files, as well as to provide 5G wireless communication services in various frequency bands. This involves optimizing the design of antenna modules and ensuring signal reception stability, while addressing the challenge of providing multiple-input multiple-output (MIMO) capabilities with only one antenna module."]</us>
+          description: Technical Problem Paragraph
+        tech_problem_word:
+          type: array
+          example: <cn>["效率低"]</cn><us>["difficult to dispose"]</us>
+          description: Technical Problem Word
+    P022HighValueDataSeicClassification_SeicClassification:
+      type: object
+      properties:
+        seic_lv1:
+          $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationSub'
+        seic_lv2:
+          $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationSub'
+    P022HighValueDataSeicClassification_SeicClassificationResp:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN110650438A
+          description: Patent number
+        lang:
+          type: string
+          example: en
+          description: language
+        patent_id:
+          type: string
+          example: 1e099a74-4378-4b84-9d13-f1b4ed5cb59b
+          description: Patent id
+        seic_classification:
+          type: array
+          example: seic_classification
+          description: information of strategic emerging industries
+          items:
+            $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassification'
+    P064BasicPatentDataPatentEnhancedData_PatentEnhancedClaim:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: CN
+          description: language
+        claim_text:
+          type: string
+          example: '<div class=\"indep-clm\" num=\"1\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个
+
+            以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>且</seg-refi></div>\n
+
+            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>'
+          description: Claim text
+    P066HighValueDataPatentClassificationDescriptionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_PatentClassDescResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P023HighValueDataApplicationDomain_NameLevel:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 声波诊断
+          description: name
+        level:
+          type: integer
+          format: int32
+          example: 4
+          description: level
+    P101MaterialMaterialOntologyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P101MaterialMaterialOntology_MaterialOntologyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P063PatentIntelligentAttachedImage_PatentImageResponse:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
+          description: Patent ID
+        pdf_images:
+          type: array
+          example:
+          - parts:
+            - x1: 128
+              x2: 147
+              y1: 956
+              y2: 980
+              code: '52'
+              representive_label_txt: person
+            patent_id: 8d83d36c-02d4-411c-8912-21fa3272abff
+            storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
+            fig_title_code: '1'
+          description: PDF Image Information
+          items:
+            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PdfImage2'
+        patent_images:
+          type: array
+          example:
+          - parts:
+            - x1: 128
+              x2: 147
+              y1: 956
+              y2: 980
+              code: '52'
+              representive_label_txt: person
+            storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
+          description: Patent Image Information
+          items:
+            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PatentImage'
+    P022HighValueDataSeicClassification_SeicClassificationSub:
+      type: object
+      properties:
+        seic_no:
+          type: string
+          example: 1.1
+          description: Strategic emerging industry classification id
+        seic_desc:
+          type: string
+          example: 下一代信息网络产业
+          description: Strategic emerging industry classification
+    P100MaterialPatentPumRequest:
+      type: object
+    P022HighValueDataSeicClassificationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationResp'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P101MaterialMaterialOntology_MaterialOntologyResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN113769175B
+          description: patent publication number
+        patent_id:
+          type: string
+          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
+          description: patent id
+        ontology_lable:
+          type: array
+          example: 'Please check the form: OntologyLable'
+          description: Material workflow information
+          items:
+            $ref: '#/components/schemas/P101MaterialMaterialOntology_OntologyLable'
+    P101MaterialMaterialOntology_OntologyLable:
+      type: object
+      properties:
+        ppi_id:
+          type: integer
+          format: int32
+          example: 17011850
+          description: material property id
+        display_name_cn:
+          type: string
+          example: 粒子直径
+          description: property norm chinese name
+        display_name_en:
+          type: string
+          example: particle diameter
+          description: property norm english name
+    P025HighValueDataTechProblemAndBenefitSummary_BenefitSummary:
+      type: object
+      properties:
+        benefit_para:
+          type: array
+          example: <cn>["本发明提供了一种液晶屏检测装置及方法，可以针对母板玻璃进行检测，解决了现有技术中针对单元液晶屏进行的Cell Test检测设备效率不高的问题。该装置包括设置在整张母板玻璃上的至少一组信号端口，每组信号端口负责一列上的单元液晶屏，通过控制信号端口的电压驱动每个单元液晶屏的信号输入端，同时点亮整张母板玻璃上的所有单元液晶屏。该方法可以直观判断液晶屏不良现象的设备依存性，对产线上不良解析的效率有显著提高，同时也实现了不同尺寸液晶屏的共用，降低了设备成本。"]</cn><us>["This patent text describes an electronic device with an antenna module that operates in the millimeter wave band and can control its own operation. The antenna module contains multiple antenna elements with different polarizations, which can reduce interference between them. Additionally, the patent describes how to implement vertical polarization while keeping the antenna module's height low. The technical effect of this patent text is to enhance the performance of millimeter wave antennas in electronic devices."]</us>
+          description: Benefit Summary Paragraph
+        benefit_word:
+          type: array
+          example: <cn>[ "参数优化改善", "提高效率", "降低设备成本" ]</cn><us>["reduce noise level"]</us>
+          description: Technical Benefit Phrase
+    P023HighValueDataApplicationDomain_ApplicationDomainResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN102681224A
+          description: Patent number
+        lang:
+          type: string
+          example: en
+          description: language
+        patent_id:
+          type: string
+          example: ef7d1252-2e0e-40c3-a44f-1bc1c86b7990
+          description: Patent id
+        application_domain_data:
+          type: array
+          example: 'Please check the form: NameLevel'
+          description: Application domain data
+          items:
+            $ref: '#/components/schemas/P023HighValueDataApplicationDomain_NameLevel'
+    P066HighValueDataPatentClassificationDescription_PatentClassDescResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: C08G69/32
+          description: patent classification code
+        desc:
+          type: array
+          example: desc
+          description: patent classification description
+          items:
+            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationDesc'
+        type:
+          type: string
+          example: ipc
+          description: 'patent classification type,  character length <= 5<p>enumeration value: ipc, cpc, upc, gbc, loc, fi, fterm</p>'
+        parent:
+          type: array
+          example: parent
+          description: parent classification information
+          items:
+            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationParent'
+        version:
+          type: string
+          example: 2024.01
+          description: patent classification version
     P064BasicPatentDataPatentEnhancedData_PatentEnhancedResponse:
       type: object
       properties:
@@ -557,6 +871,138 @@ components:
           format: int32
           example: 20220112
           description: Earliest Priority Date
+    P025HighValueDataTechProblemAndBenefitSummaryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummaryResp'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P100MaterialPatentPum_MaterialPpiInfo:
+      type: object
+      properties:
+        ppi_id:
+          type: integer
+          format: int32
+          example: 17011850
+          description: material property id
+        ppi_detail:
+          type: array
+          example: 'Please check the form: MaterialPpiDetail'
+          description: material property hit detail information
+          items:
+            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPpiDetail'
+        lower_bound:
+          type: number
+          format: double
+          example: 0
+          description: property norm measurement min
+        upper_bound:
+          type: number
+          format: double
+          example: 1000000000
+          description: property norm measurement max
+        display_name_cn:
+          type: string
+          example: 粒子直径
+          description: property norm chinese name
+        display_name_en:
+          type: string
+          example: particle diameter
+          description: property norm english name
+        print_friendly_units:
+          type: string
+          example: μm
+          description: property norm unit
+    P102MaterialMaterialSubstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P102MaterialMaterialSubstance_MaterialSubstanceResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P103MaterialMaterialSpumRequest:
+      type: object
+    P064BasicPatentDataPatentEnhancedData_PatentEnhancedPublication:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: US11205304B2
+          description: patent number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20230815
+          description: Publication Date
+    P103MaterialMaterialSpum_MaterialSpumResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN113769175B
+          description: patent publication number
+        patent_id:
+          type: string
+          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
+          description: patent id
+        spum_detail:
+          type: array
+          example: substanceLable
+          description: material substance info
+          items:
+            $ref: '#/components/schemas/P103MaterialMaterialSpum_MaterialSpumDetail'
+    P100MaterialPatentPum_MaterialPatentPumResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN113769175B
+          description: patent publication number
+        ppi_info:
+          type: array
+          example: 'Please check the form: MaterialPpiInfo'
+          description: material property hit information
+          items:
+            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPpiInfo'
+        patent_id:
+          type: string
+          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
+          description: patent id
     P102MaterialMaterialSubstance_MaterialSubstanceLable:
       type: object
       properties:
@@ -572,7 +1018,32 @@ components:
           type: string
           example: METHYLENE CHLORIDE
           description: material substance english name
-    P022HighValueDataSeicClassificationResponse:
+    P100MaterialPatentPum_MaterialPpiDetail:
+      type: object
+      properties:
+        section:
+          type: string
+          example: claim
+          description: section
+        raw_unit:
+          type: string
+          example: μm
+          description: unit
+        raw_property:
+          type: string
+          example: 粒径
+          description: material property name
+        measurement_max:
+          type: number
+          format: double
+          example: 200
+          description: measurement max
+        measurement_min:
+          type: number
+          format: double
+          example: 5
+          description: measurement min
+    P100MaterialPatentPumResponse:
       type: object
       properties:
         data:
@@ -580,7 +1051,78 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationResp'
+            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPatentPumResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummaryResp:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: <cn>CN102681224A</cn><us>US20230139460A1</us>
+          description: Patent number
+        lang:
+          type: string
+          example: <cn>cn</cn><us>en</us>
+          description: language
+        patent_id:
+          type: string
+          example: <cn>ef7d1252-2e0e-40c3-a44f-1bc1c86b7990</cn><us>767a81fb-8abb-45e4-b9fe-4bbc327dc586</us>
+          description: Patent id
+        patsnap_title:
+          type: string
+          example: <cn>通过将清洁构件的运动与喷嘴火焰和进料过程步骤同步,系统可以防止存款形成和开裂,从而解决了消除气体燃烧器系统中的效率低下和维护挑战,从而提高了组件寿命和过程效率。</cn><us>By synchronizing the movement of the cleaning member with the nozzle flame and feed process steps, the system prevents deposit formation and cracking, addressing the inefficiencies and maintenance challenges in gas abatement burner systems, thereby improving component lifespan and process efficiency.</us>
+          description: Patsnap Patent title
+        benefit_summary:
+          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_BenefitSummary'
+        tech_problem_summary:
+          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummary'
+        technical_approach_summary:
+          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechnicalApproachSummary'
+    P101MaterialMaterialOntologyRequest:
+      type: object
+    P103MaterialMaterialSpumResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/P103MaterialMaterialSpum_MaterialSpumResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P063PatentIntelligentAttachedImageResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PatentImageResponse'
         status:
           type: boolean
           example: 'false'
@@ -620,138 +1162,6 @@ components:
       required:
       - status
       - error_code
-    P025HighValueDataTechProblemAndBenefitSummary_TechnicalApproachSummary:
-      type: object
-      properties:
-        technical_approach_para:
-          type: array
-          example: "<cn>[\"[0042]如上所述，考虑到TFT玻璃基板尽量减小金属线负载的设计基本原则，一张母板玻璃可以设置一组或几组信号输入端口，这样可以根据TFT玻璃基板设计的实际情况，将一张母板玻璃的单元液晶屏分成几组，每组的单元液晶屏共用一组信号输入端口，尽量减小Cell Test检测用信号线负载的影响。按照信号线损耗尽量相等的原则，离Pad端较远的单元液晶屏的Cell Test检测用信号线比离Pad端较近的单元液晶屏的Cell Test检测用信号线宽，以使整张母板上所有单元液晶屏的Cell Test检测用信号线的电阻尽量相等，单元液晶屏之间的电压分布均匀。\"]</cn><us>[\"Vertical polarization antenna: the scheme provides a method to implement a vertical polarization antenna in an antenna module with a certain height. this feature addresses the challenge of integrating a vertical polarization antenna into a compact device.\",\n    \"Orthogonal polarization antennas: the scheme introduces an antenna module with antenna elements having different polarizations orthogonal to each other. this feature allows for multiple-input multiple-output (mimo) communication, enhancing the overall performance and data rate of the electronic device.\",\n    \"Disposing an array antenna in a millimeter wave band: the scheme overcomes the limitation of existing wireless communication systems by incorporating an array antenna into an electronic device. this allows for multifunctionality, enabling the device to capture still images or moving videos, play music or video files, provide data communication, and receive broadcast and television signals.\",\n    \"Height reduction and interference reduction: the scheme introduces various antenna structures and configurations to reduce the overall height of the antenna module and minimize interference between antennas with different polarizations. this includes offsetting the via pad and via by a certain distance, using a metal strip and a via, and arranging different polarization antennas vertically and horizontally.\"]</us>"
-          description: Technical Approach Paragraph
-    P100MaterialPatentPumResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPatentPumResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P101MaterialMaterialOntologyRequest:
-      type: object
-    P066HighValueDataPatentClassificationDescriptionRequest:
-      type: object
-      properties:
-        code:
-          type: string
-          example: C08G69/32
-          description: patent classification code, character length <= 150. Batch requests needs to be <= 10 classification codes, and separated by English commas
-        replace_by_merge:
-          type: integer
-          format: int32
-          example: 1
-          description: 'When the current patent classification type is ipc or cpc, should historical data be used as a substitute? Default substitution: 1: Yes 0: No.'
-        type:
-          type: string
-          example: ipc
-          description: 'patent classification type,  character length <= 5<p>enumeration value: ipc, cpc, upc, gbc, loc, fi, fterm</p>'
-      required:
-      - code
-      - type
-    P063PatentIntelligentAttachedImage_PatentImage:
-      type: object
-      properties:
-        parts:
-          type: array
-          example:
-          - x1: 128
-            x2: 147
-            y1: 956
-            y2: 980
-            code: '52'
-            representive_label_txt: person
-          description: intelligent figure information
-          items:
-            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_Part'
-        storage_path:
-          type: string
-          example: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
-          description: storage path
-    P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummaryResp:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: <cn>CN102681224A</cn><us>US20230139460A1</us>
-          description: Patent number
-        lang:
-          type: string
-          example: <cn>cn</cn><us>en</us>
-          description: language
-        patent_id:
-          type: string
-          example: <cn>ef7d1252-2e0e-40c3-a44f-1bc1c86b7990</cn><us>767a81fb-8abb-45e4-b9fe-4bbc327dc586</us>
-          description: Patent id
-        patsnap_title:
-          type: string
-          example: <cn>通过将清洁构件的运动与喷嘴火焰和进料过程步骤同步,系统可以防止存款形成和开裂,从而解决了消除气体燃烧器系统中的效率低下和维护挑战,从而提高了组件寿命和过程效率。</cn><us>By synchronizing the movement of the cleaning member with the nozzle flame and feed process steps, the system prevents deposit formation and cracking, addressing the inefficiencies and maintenance challenges in gas abatement burner systems, thereby improving component lifespan and process efficiency.</us>
-          description: Patsnap Patent title
-        benefit_summary:
-          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_BenefitSummary'
-        tech_problem_summary:
-          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummary'
-        technical_approach_summary:
-          $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechnicalApproachSummary'
-    P022HighValueDataSeicClassification_SeicClassificationSub:
-      type: object
-      properties:
-        seic_no:
-          type: string
-          example: 1.1
-          description: Strategic emerging industry classification id
-        seic_desc:
-          type: string
-          example: 下一代信息网络产业
-          description: Strategic emerging industry classification
-    P100MaterialPatentPum_MaterialPpiDetail:
-      type: object
-      properties:
-        section:
-          type: string
-          example: claim
-          description: section
-        raw_unit:
-          type: string
-          example: μm
-          description: unit
-        raw_property:
-          type: string
-          example: 粒径
-          description: material property name
-        measurement_max:
-          type: number
-          format: double
-          example: 200
-          description: measurement max
-        measurement_min:
-          type: number
-          format: double
-          example: 5
-          description: measurement min
     P102MaterialMaterialSubstance_MaterialSubstanceResponse:
       type: object
       properties:
@@ -769,33 +1179,52 @@ components:
           description: material substance info
           items:
             $ref: '#/components/schemas/P102MaterialMaterialSubstance_MaterialSubstanceLable'
-    P063PatentIntelligentAttachedImage_PdfImage2:
+    P066HighValueDataPatentClassificationDescription_ClassificationDesc:
       type: object
       properties:
-        parts:
-          type: array
-          example:
-          - x1: 128
-            x2: 147
-            y1: 956
-            y2: 980
-            code: '52'
-            representive_label_txt: person
-          description: intelligent figure information
-          items:
-            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_Part'
+        lang:
+          type: string
+          example: EN
+          description: patent classification description language
+        text:
+          type: string
+          example: '... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]'
+          description: patent classification description text
+    P024HighValueDataTechnologyTopic_TechnologyTopicResponse:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN102681224A
+          description: Patent number
+        lang:
+          type: string
+          example: en
+          description: language
         patent_id:
           type: string
-          example: 8d83d36c-02d4-411c-8912-21fa3272abff
-          description: patent ID
-        storage_path:
+          example: ef7d1252-2e0e-40c3-a44f-1bc1c86b7990
+          description: Patent id
+        technology_topic_data:
+          type: array
+          example:
+          - 液晶显示器
+          - 电压
+          - 生产线
+          description: Technology topic data
+    P066HighValueDataPatentClassificationDescription_ClassificationParent:
+      type: object
+      properties:
+        desc:
+          type: array
+          example: desc
+          description: parent patent classification description
+          items:
+            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationDesc'
+        parent_code:
           type: string
-          example: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
-          description: storage path
-        fig_title_code:
-          type: string
-          example: 1
-          description: figure title code
+          example: EN
+          description: parent patent classification code
     P103MaterialMaterialSpum_MaterialSpumDetail:
       type: object
       properties:
@@ -865,159 +1294,6 @@ components:
           description: material property measurement offset range
           items:
             $ref: '#/components/schemas/P103MaterialMaterialSpum_MaterialOffset'
-    P064BasicPatentDataPatentEnhancedData_PatentEnhancedPublication:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: US11205304B2
-          description: patent number
-        pbdt:
-          type: integer
-          format: int32
-          example: 20230815
-          description: Publication Date
-    P064BasicPatentDataPatentEnhancedData_PatentEnhancedClaim:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: CN
-          description: language
-        claim_text:
-          type: string
-          example: '<div class=\"indep-clm\" num=\"1\"><seg-con>1.一种存储器装置(100、610)，其</seg-con><seg-trans>包括：</seg-trans></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>非易失性存储器单元(208、308)阵列(104、300)，其被组织为多个可擦除的物理块(340)；及</seg-refi></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>电路(108、110、116)，其用于控制和/或存取所述非易失性存储器单元(208、308)阵列(104、300)；</seg-refi></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述用于控制和/或存取的电路(108、110、116)适于界定具有预定数目的一个或一个
-
-            以上物理块(340)的第一逻辑擦除块和具有预定数目的两个或两个以上物理块(340)的第二逻辑擦除块；</seg-refi></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述第二逻辑擦除块具有与所述第一逻辑擦除块不同数目的物理块(340)；</seg-refi></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>且</seg-refi></div>\n
-
-            <div class=\"indep-clm\" num=\"1\"><seg-refi>其中所述电路适于在擦除操作期间同时选择一第二逻辑擦除块的所述两个或两个以上物理块。</seg-refi></div>'
-          description: Claim text
-    P103MaterialMaterialSpum_MaterialOffset:
-      type: object
-      properties:
-        end:
-          type: integer
-          format: int32
-          example: 95
-          description: end position
-        text:
-          type: string
-          example: 聚乙烯醇
-          description: text
-        start:
-          type: integer
-          format: int32
-          example: 92
-          description: start position
-    P103MaterialMaterialSpum_MaterialSpumResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN113769175B
-          description: patent publication number
-        patent_id:
-          type: string
-          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
-          description: patent id
-        spum_detail:
-          type: array
-          example: substanceLable
-          description: material substance info
-          items:
-            $ref: '#/components/schemas/P103MaterialMaterialSpum_MaterialSpumDetail'
-    P023HighValueDataApplicationDomain_NameLevel:
-      type: object
-      properties:
-        name:
-          type: string
-          example: 声波诊断
-          description: name
-        level:
-          type: integer
-          format: int32
-          example: 4
-          description: level
-    P100MaterialPatentPumRequest:
-      type: object
-    P022HighValueDataSeicClassification_SeicClassification:
-      type: object
-      properties:
-        seic_lv1:
-          $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationSub'
-        seic_lv2:
-          $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassificationSub'
-    P063PatentIntelligentAttachedImage_PatentImageResponse:
-      type: object
-      properties:
-        patent_id:
-          type: string
-          example: 1a47a70d-6b54-4709-a72a-ed552781fcac
-          description: Patent ID
-        pdf_images:
-          type: array
-          example:
-          - parts:
-            - x1: 128
-              x2: 147
-              y1: 956
-              y2: 980
-              code: '52'
-              representive_label_txt: person
-            patent_id: 8d83d36c-02d4-411c-8912-21fa3272abff
-            storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
-            fig_title_code: '1'
-          description: PDF Image Information
-          items:
-            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PdfImage2'
-        patent_images:
-          type: array
-          example:
-          - parts:
-            - x1: 128
-              x2: 147
-              y1: 956
-              y2: 980
-              code: '52'
-              representive_label_txt: person
-            storage_path: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
-          description: Patent Image Information
-          items:
-            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PatentImage'
-    P102MaterialMaterialSubstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P102MaterialMaterialSubstance_MaterialSubstanceResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     P064BasicPatentDataPatentEnhancedDataResponse:
       type: object
       properties:
@@ -1042,309 +1318,25 @@ components:
       required:
       - status
       - error_code
-    P103MaterialMaterialSpumRequest:
-      type: object
-    P066HighValueDataPatentClassificationDescription_ClassificationDesc:
+    P063PatentIntelligentAttachedImage_PatentImage:
       type: object
       properties:
-        lang:
-          type: string
-          example: EN
-          description: patent classification description language
-        text:
-          type: string
-          example: '... from aromatic diamines and aromatic dicarboxylic acids with both amino and carboxylic groups aromatically bound [2006.01]'
-          description: patent classification description text
-    P101MaterialMaterialOntologyResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P101MaterialMaterialOntology_MaterialOntologyResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P063PatentIntelligentAttachedImageResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_PatentImageResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P102MaterialMaterialSubstanceRequest:
-      type: object
-    P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummary:
-      type: object
-      properties:
-        tech_problem_para:
-          type: array
-          example: <cn>["现有的TFT-LCD液晶屏生产过程中，针对单元液晶屏进行的检测通常只能比较直观地检测出不良现象，对于产生的不良的原因仍需要进一步分析判断。同时，不同尺寸液晶屏的Cell Test检测设备在产品开发阶段都需要定制购买价格不菲的点屏设备，不同尺寸液晶屏的Cell Test检测设备完全不能共用，且开发阶段针对不同尺寸液晶屏的Cell Test检测设备调试复杂，工作效率较低。"]</cn><us>["The technical problem addressed in this patent text is how to improve the function and performance of electronic devices, particularly mobile terminals, by enhancing their ability to capture and play high-quality video and music files, as well as to provide 5G wireless communication services in various frequency bands. This involves optimizing the design of antenna modules and ensuring signal reception stability, while addressing the challenge of providing multiple-input multiple-output (MIMO) capabilities with only one antenna module."]</us>
-          description: Technical Problem Paragraph
-        tech_problem_word:
-          type: array
-          example: <cn>["效率低"]</cn><us>["difficult to dispose"]</us>
-          description: Technical Problem Word
-    P066HighValueDataPatentClassificationDescriptionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_PatentClassDescResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P023HighValueDataApplicationDomainResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P023HighValueDataApplicationDomain_ApplicationDomainResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P066HighValueDataPatentClassificationDescription_PatentClassDescResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: C08G69/32
-          description: patent classification code
-        desc:
-          type: array
-          example: desc
-          description: patent classification description
-          items:
-            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationDesc'
-        type:
-          type: string
-          example: ipc
-          description: 'patent classification type,  character length <= 5<p>enumeration value: ipc, cpc, upc, gbc, loc, fi, fterm</p>'
-        parent:
-          type: array
-          example: parent
-          description: parent classification information
-          items:
-            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationParent'
-        version:
-          type: string
-          example: 2024.01
-          description: patent classification version
-    P100MaterialPatentPum_MaterialPatentPumResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN113769175B
-          description: patent publication number
-        ppi_info:
-          type: array
-          example: 'Please check the form: MaterialPpiInfo'
-          description: material property hit information
-          items:
-            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPpiInfo'
-        patent_id:
-          type: string
-          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
-          description: patent id
-    P100MaterialPatentPum_MaterialPpiInfo:
-      type: object
-      properties:
-        ppi_id:
-          type: integer
-          format: int32
-          example: 17011850
-          description: material property id
-        ppi_detail:
-          type: array
-          example: 'Please check the form: MaterialPpiDetail'
-          description: material property hit detail information
-          items:
-            $ref: '#/components/schemas/P100MaterialPatentPum_MaterialPpiDetail'
-        lower_bound:
-          type: number
-          format: double
-          example: 0
-          description: property norm measurement min
-        upper_bound:
-          type: number
-          format: double
-          example: 1000000000
-          description: property norm measurement max
-        display_name_cn:
-          type: string
-          example: 粒子直径
-          description: property norm chinese name
-        display_name_en:
-          type: string
-          example: particle diameter
-          description: property norm english name
-        print_friendly_units:
-          type: string
-          example: μm
-          description: property norm unit
-    P024HighValueDataTechnologyTopic_TechnologyTopicResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN102681224A
-          description: Patent number
-        lang:
-          type: string
-          example: en
-          description: language
-        patent_id:
-          type: string
-          example: ef7d1252-2e0e-40c3-a44f-1bc1c86b7990
-          description: Patent id
-        technology_topic_data:
+        parts:
           type: array
           example:
-          - 液晶显示器
-          - 电压
-          - 生产线
-          description: Technology topic data
-    P023HighValueDataApplicationDomain_ApplicationDomainResponse:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN102681224A
-          description: Patent number
-        lang:
-          type: string
-          example: en
-          description: language
-        patent_id:
-          type: string
-          example: ef7d1252-2e0e-40c3-a44f-1bc1c86b7990
-          description: Patent id
-        application_domain_data:
-          type: array
-          example: 'Please check the form: NameLevel'
-          description: Application domain data
+          - x1: 128
+            x2: 147
+            y1: 956
+            y2: 980
+            code: '52'
+            representive_label_txt: person
+          description: intelligent figure information
           items:
-            $ref: '#/components/schemas/P023HighValueDataApplicationDomain_NameLevel'
-    P022HighValueDataSeicClassification_SeicClassificationResp:
-      type: object
-      properties:
-        pn:
+            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_Part'
+        storage_path:
           type: string
-          example: CN110650438A
-          description: Patent number
-        lang:
-          type: string
-          example: en
-          description: language
-        patent_id:
-          type: string
-          example: 1e099a74-4378-4b84-9d13-f1b4ed5cb59b
-          description: Patent id
-        seic_classification:
-          type: array
-          example: seic_classification
-          description: information of strategic emerging industries
-          items:
-            $ref: '#/components/schemas/P022HighValueDataSeicClassification_SeicClassification'
-    P063PatentIntelligentAttachedImageRequest:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: cn
-          description: language(cn/en)
-        patent_id:
-          type: string
-          example: 8d83d36c-02d4-411c-8912-21fa3272abff
-          description: Patent Id
-        pn:
-          type: string
-          example: CN111719991A
-          description: Patent Number
-      required:
-      - lang
-    P025HighValueDataTechProblemAndBenefitSummaryResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/P025HighValueDataTechProblemAndBenefitSummary_TechProblemSummaryResp'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
+          description: storage path
     P063PatentIntelligentAttachedImage_Part:
       type: object
       properties:
@@ -1376,20 +1368,36 @@ components:
           type: string
           example: β微管蛋白序列
           description: representative label text
-    P066HighValueDataPatentClassificationDescription_ClassificationParent:
+    P063PatentIntelligentAttachedImage_PdfImage2:
       type: object
       properties:
-        desc:
+        parts:
           type: array
-          example: desc
-          description: parent patent classification description
+          example:
+          - x1: 128
+            x2: 147
+            y1: 956
+            y2: 980
+            code: '52'
+            representive_label_txt: person
+          description: intelligent figure information
           items:
-            $ref: '#/components/schemas/P066HighValueDataPatentClassificationDescription_ClassificationDesc'
-        parent_code:
+            $ref: '#/components/schemas/P063PatentIntelligentAttachedImage_Part'
+        patent_id:
           type: string
-          example: EN
-          description: parent patent classification code
-    P103MaterialMaterialSpumResponse:
+          example: 8d83d36c-02d4-411c-8912-21fa3272abff
+          description: patent ID
+        storage_path:
+          type: string
+          example: https://data-fulltext-image.zhihuiya.com/CN/A/11/17/19/99/1/HDA0002418999840000011.png
+          description: storage path
+        fig_title_code:
+          type: string
+          example: 1
+          description: figure title code
+    P102MaterialMaterialSubstanceRequest:
+      type: object
+    P023HighValueDataApplicationDomainResponse:
       type: object
       properties:
         data:
@@ -1397,7 +1405,7 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/P103MaterialMaterialSpum_MaterialSpumResponse'
+            $ref: '#/components/schemas/P023HighValueDataApplicationDomain_ApplicationDomainResponse'
         status:
           type: boolean
           example: 'false'
@@ -1413,50 +1421,42 @@ components:
       required:
       - status
       - error_code
-    P025HighValueDataTechProblemAndBenefitSummary_BenefitSummary:
+    P063PatentIntelligentAttachedImageRequest:
       type: object
       properties:
-        benefit_para:
-          type: array
-          example: <cn>["本发明提供了一种液晶屏检测装置及方法，可以针对母板玻璃进行检测，解决了现有技术中针对单元液晶屏进行的Cell Test检测设备效率不高的问题。该装置包括设置在整张母板玻璃上的至少一组信号端口，每组信号端口负责一列上的单元液晶屏，通过控制信号端口的电压驱动每个单元液晶屏的信号输入端，同时点亮整张母板玻璃上的所有单元液晶屏。该方法可以直观判断液晶屏不良现象的设备依存性，对产线上不良解析的效率有显著提高，同时也实现了不同尺寸液晶屏的共用，降低了设备成本。"]</cn><us>["This patent text describes an electronic device with an antenna module that operates in the millimeter wave band and can control its own operation. The antenna module contains multiple antenna elements with different polarizations, which can reduce interference between them. Additionally, the patent describes how to implement vertical polarization while keeping the antenna module's height low. The technical effect of this patent text is to enhance the performance of millimeter wave antennas in electronic devices."]</us>
-          description: Benefit Summary Paragraph
-        benefit_word:
-          type: array
-          example: <cn>[ "参数优化改善", "提高效率", "降低设备成本" ]</cn><us>["reduce noise level"]</us>
-          description: Technical Benefit Phrase
-    P101MaterialMaterialOntology_MaterialOntologyResponse:
-      type: object
-      properties:
-        pn:
+        lang:
           type: string
-          example: CN113769175B
-          description: patent publication number
+          example: cn
+          description: language(cn/en)
         patent_id:
           type: string
-          example: 05da3d4e-6f13-4005-9a2d-0645d2554cbf
-          description: patent id
-        ontology_lable:
-          type: array
-          example: 'Please check the form: OntologyLable'
-          description: Material workflow information
-          items:
-            $ref: '#/components/schemas/P101MaterialMaterialOntology_OntologyLable'
-    P101MaterialMaterialOntology_OntologyLable:
+          example: 8d83d36c-02d4-411c-8912-21fa3272abff
+          description: Patent Id
+        pn:
+          type: string
+          example: CN111719991A
+          description: Patent Number
+      required:
+      - lang
+    P066HighValueDataPatentClassificationDescriptionRequest:
       type: object
       properties:
-        ppi_id:
+        code:
+          type: string
+          example: C08G69/32
+          description: patent classification code, character length <= 150. Batch requests needs to be <= 10 classification codes, and separated by English commas
+        replace_by_merge:
           type: integer
           format: int32
-          example: 17011850
-          description: material property id
-        display_name_cn:
+          example: 1
+          description: 'When the current patent classification type is ipc or cpc, should historical data be used as a substitute? Default substitution: 1: Yes 0: No.'
+        type:
           type: string
-          example: 粒子直径
-          description: property norm chinese name
-        display_name_en:
-          type: string
-          example: particle diameter
-          description: property norm english name
+          example: ipc
+          description: 'patent classification type,  character length <= 5<p>enumeration value: ipc, cpc, upc, gbc, loc, fi, fterm</p>'
+      required:
+      - code
+      - type
   securitySchemes:
     bearerAuth:
       type: http

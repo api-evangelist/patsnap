@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Drug Clinical Trial Data API
   version: 1.0.0
@@ -332,32 +332,11 @@ paths:
           description: 临床结果ID，通过临床结果检索接口获取
 components:
   schemas:
-    B024ClinicalTrialDescription_CommonCountry:
-      type: object
-      properties:
-        country_id:
-          type: string
-          example: 676de5ba-893a-36bb-8683-c93306aaf769
-          description: Country/Location ID
-        alpha2_code:
-          type: string
-          example: US
-          description: Alpha Code
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: United States
-          - lang: CN
-            name: 美国
-          description: Country/Location Name
-          items:
-            $ref: '#/components/schemas/B024ClinicalTrialDescription_CommonName'
-    B027ClinicalTrialContactResponse:
+    B023ClinicalTrialRelatedEntityResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B027ClinicalTrialContact_GetClinicalTrialContactResponseDto'
+          $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_GetClinicalTrialRelatedEntityResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -373,59 +352,69 @@ components:
       required:
       - status
       - error_code
-    B024ClinicalTrialDescription_CommonName:
+    B026ClinicalTrialDesign_DateItem:
       type: object
       properties:
-        lang:
+        time_ts:
+          type: integer
+          format: int64
+          example: 1785542400000
+          description: Timestamp
+        date_type:
           type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B032CtResultDetail_StudyDesignDto:
+          example: Anticipated
+          description: 'Date Type, enumeration values: Anticipated, Actual'
+    B032CtResultDetail_CommonEntity:
       type: object
       properties:
-        masking:
+        id:
           type: string
-          example: XXXX
-          description: Masking
-        allocation:
-          type: string
-          example: XXXX
-          description: Allocation
-        primary_purpose:
-          type: string
-          example: XXXX
-          description: Primary Purpose
-        intervention_model:
-          type: string
-          example: XXXX
-          description: Intervention Model
-        allocation_normalized:
-          $ref: '#/components/schemas/B032CtResultDetail_CommonDictionary'
-        intervention_model_normalized:
-          $ref: '#/components/schemas/B032CtResultDetail_CommonDictionary'
-    B026ClinicalTrialDesign_Outcome:
+          example: 11acf267a4fc42f392751e023482aac3
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: CTNNB1 Mutation
+          description: Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
+    B023ClinicalTrialRelatedEntity_CommonTarget:
       type: object
       properties:
-        title:
+        target_id:
           type: string
-          example: Recommended Phase II Dose (RP2D)
-          description: Measure
-        time_frame:
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Vascular endothelial growth factor
+          - lang: CN
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
+    B032CtResultDetail_RelatedId:
+      type: object
+      properties:
+        id_type:
           type: string
-          example: Up to approximately 24 months
-          description: Time Frame
-        description:
+          example: study_identifier
+          description: ID type, study_identifier:Trial Code
+        id_value:
           type: string
-          example: The RP2D is defined as the dose level chosen by the sponsor (in consultation with the investigators) for phase II study, based on safety, tolerability, efficacy, PK, and PD data collected during the dose escalation study of BL-B01D1.
-          description: Description
-        outcome_type:
-          type: string
-          example: Primary
-          description: Outcome Type
+          example: DESTINY-Breast04
+          description: value
     B022ClinicalTrialDetail_CommonDictionary:
       type: object
       properties:
@@ -443,6 +432,83 @@ components:
           type: string
           example: 2fbfdb3e92d942c48cbb0adb79f23526
           description: Dict ID
+    B048CtResultGroup_AppPhsCtGroupEntityDto:
+      type: object
+      properties:
+        group_id:
+          type: string
+          example: e2e088e8e8aeda8aa2a2924ee3a59828
+          description: Clinical trial result group id
+        group_type:
+          type: string
+          example: outcome_group
+          description: Clinical trial result group type
+        ct_result_id:
+          type: string
+          example: 5adee5585028aaa5da5982d22a808a99
+          description: Clinical trial result id
+        characteristic:
+          type: array
+          example:
+          - name: Tocilizumab
+            type: drug
+          description: Clinical trial result grouping characteristics and medication plan
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_CharacteristicDto'
+        participant_number:
+          type: string
+          example: 7
+          description: Clinical trial result group participant number
+    B048CtResultGroup_ResultDto:
+      type: object
+      properties:
+        pct:
+          type: string
+          example: 20
+          description: Evaluation result ratio
+        value:
+          type: string
+          example: 5080
+          description: Evaluation result value
+        spread:
+          type: string
+          example: 108.5
+          description: Evaluation result spread
+        group_id:
+          type: string
+          example: e2e088e8e8aeda8aa2a2924ee3a59828
+          description: Evaluation result group id
+        lower_value:
+          type: string
+          example: 0.1
+          description: Evaluation result lower Value
+        upper_value:
+          type: string
+          example: 0.5
+          description: Evaluation result upper Value
+        participant_analyzed:
+          type: string
+          example: 7
+          description: Evaluation result participants count
+        participant_analyzed_units:
+          type: string
+          example: Participants
+          description: Evaluation result participants count units
+    B027ClinicalTrialContact_CentralContact:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Xiao Ming, PHD
+          description: Name
+        email:
+          type: string
+          example: xxx@patsnap.com
+          description: Email
+        phone:
+          type: string
+          example: 15012341234
+          description: Phone
     B022ClinicalTrialDetailResponse:
       type: object
       properties:
@@ -463,142 +529,33 @@ components:
       required:
       - status
       - error_code
-    B023ClinicalTrialRelatedEntity_GetClinicalTrialRelatedEntityResponseDto:
+    B026ClinicalTrialDesign_ArmIntervention:
       type: object
       properties:
-        target:
+        intervention:
           type: array
           example:
-          - target_id: 928facc8122849baa0dc00759cff0380
-            short_name:
-            - lang: EN
-              name: KRAS G12C
-            display_name:
-            - lang: EN
-              name: GTPase KRas G12C
-            - lang: CN
-              name: KRAS G12C突变
-          description: Targets
+          - intervention_name: BL-B01D1
+            intervention_type: Drug
+            intervention_description: Administration by intravenous infusion for a cycle of 3 weeks.
+          - intervention_name: Osimertinib Mesylate Tablets
+            intervention_type: Drug
+            intervention_description: Oral administration, 80mg daily for a cycle of 3 weeks.
+          description: Intervention
           items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonTarget'
-        condition:
-          type: array
-          example:
-          - Non-small Cell Lung Cancer
-          description: Original indications
-        control_drug:
-          type: array
-          example:
-          - drug_id: 79c4211933534056b4a84db1766df362
-            display_name:
-            - lang: EN
-              name: Osimertinib mesylate
-            - lang: CN
-              name: 甲磺酸奥希替尼
-          description: Control Drug
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDrug'
-        organization:
-          type: array
-          example:
-          - display_name:
-            - lang: EN
-              name: Sichuan Baili Pharmaceuticals Co.,Ltd
-            - lang: CN
-              name: 四川百利药业有限责任公司
-            organization_id: 685e5cad5351555103932a4c484281c2
-          description: Sponsor/Collaborator
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonOrganization'
-        register_number:
+            $ref: '#/components/schemas/B026ClinicalTrialDesign_ArmInterventionIntervention'
+        design_group_type:
           type: string
-          example: NCT06498986
-          description: Trial Number
-        clinical_trial_id:
+          example: Experimental
+          description: Design Group Type
+        design_group_title:
           type: string
-          example: 202425a889e52ae802432a8295220e53
-          description: Clinical Trial ID
-        condition_disease:
-          type: array
-          example:
-          - disease_id: 6c9886cb25eb45faba70292cee1f5518
-            display_name:
-            - lang: EN
-              name: Locally Advanced Lung Non-Small Cell Carcinoma
-            - lang: CN
-              name: 局部晚期非小细胞肺癌
-          description: Indications
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDisease'
-        main_experimentation_drug:
-          type: array
-          example:
-          - drug_id: 79c4211933534056b4a84db1766df362
-            display_name:
-            - lang: EN
-              name: Osimertinib mesylate
-            - lang: CN
-              name: 甲磺酸奥希替尼
-          description: Experimental Drug
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDrug'
-    B022ClinicalTrialDetail_GetClinicalTrialBasicInformationResponseDto:
-      type: object
-      properties:
-        phase:
-          $ref: '#/components/schemas/B022ClinicalTrialDetail_CommonDictionary'
-        brief_title:
+          example: BL-B01D1+Osimertinib Mesylate Tablets
+          description: Design Group Title
+        design_group_description:
           type: string
-          example: A Study of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
-          description: Trial Title
-        data_source:
-          type: string
-          example: CTGOV
-          description: 'Registry, enumeration values: WHO, CTGOV, CTR'
-        official_title:
-          type: string
-          example: A Phase II Clinical Study to Evaluate the Efficacy and Safety of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
-          description: Official Title
-        register_number:
-          type: string
-          example: NCT06498986
-          description: Trial Number
-        clinical_trial_id:
-          type: string
-          example: 202425a889e52ae802432a8295220e53
-          description: Clinical Trial ID
-        recruitment_status:
-          type: string
-          example: Not yet recruiting
-          description: Recruitment Status
-    B023ClinicalTrialRelatedEntity_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B048CtResultGroup_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+          example: Participants receive BL-B01D1+Osimertinib Mesylate Tablets in the first cycle (3 weeks). Participants with clinical benefit could receive additional treatment for more cycles. The administration will be terminated because of disease progression or intolerable toxicity occurring or other reasons.
+          description: Design Group Description
     B032CtResultDetail_CommonDictionary:
       type: object
       properties:
@@ -616,6 +573,179 @@ components:
           type: string
           example: 2fbfdb3e92d942c48cbb0adb79f23526
           description: Dict ID
+    B048CtResultGroup_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B022ClinicalTrialDetail_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B024ClinicalTrialDescription_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B025ClinicalTrialEligibilityResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B025ClinicalTrialEligibility_GetClinicalTrialEligibilityResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B032CtResultDetail_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B048CtResultGroupResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtResultEndPointDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B048CtResultGroup_AppPhsCtResultEndPointDto:
+      type: object
+      properties:
+        groups:
+          type: array
+          example:
+          - group_id: 854d42290a95a38d05d90422e5392822
+            group_type: outcome_group
+            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
+            characteristic:
+            - name: Tocilizumab
+              type: drug
+          description: Group information
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtGroupEntityDto'
+        outcome_measures:
+          type: array
+          example:
+          - name: CRP levels
+            measure_id: M1
+            result_list:
+            - value: '4.6'
+              group_id: 854d42290a95a38d05d90422e5392822
+            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
+            display_name:
+            - lang: EN
+              name: CRP levels
+            - lang: CN
+              name: CRP levels
+            outcome_order: 1
+            unit_of_measure: mg/L
+          description: Outcome measure information
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
+        outcome_measure_safety:
+          type: array
+          example:
+          - name: CRP levels
+            measure_id: M1
+            result_list:
+            - value: '4.6'
+              group_id: 854d42290a95a38d05d90422e5392822
+            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
+            display_name:
+            - lang: EN
+              name: CRP levels
+            - lang: CN
+              name: CRP levels
+            outcome_order: 1
+            unit_of_measure: mg/L
+          description: Outcome measure information - safety
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
+        outcome_measure_efficacy:
+          type: array
+          example:
+          - name: CRP levels
+            measure_id: M1
+            result_list:
+            - value: '4.6'
+              group_id: 854d42290a95a38d05d90422e5392822
+            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
+            display_name:
+            - lang: EN
+              name: CRP levels
+            - lang: CN
+              name: CRP levels
+            outcome_order: 1
+            unit_of_measure: mg/L
+          description: Outcome measure information - efficacy
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
+    B023ClinicalTrialRelatedEntity_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
     B032CtResultDetail_CommonMechanismAction:
       type: object
       properties:
@@ -643,60 +773,230 @@ components:
           type: string
           example: 27c0848a265e4332836e10d0e8202b4c
           description: Mechanism Action ID
-    B032CtResultDetail_CommonDisease:
+    B032CtResultDetail_CommonTarget:
       type: object
       properties:
-        disease_id:
+        target_id:
           type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
+          example: 1c2067e5ab054a8995f73efcfcf56207
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: VEGF
+          description: Target Short Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
         display_name:
           type: array
           example:
           - lang: EN
-            name: Uveitic Macular Edema
+            name: Vascular endothelial growth factor
           - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
+            name: 血管内皮生长因子
+          description: Target Full Name, Referencing "CommonName"
           items:
             $ref: '#/components/schemas/B032CtResultDetail_CommonName'
-    B032CtResultDetail_CommonEntity:
+    B023ClinicalTrialRelatedEntity_CommonDrug:
       type: object
       properties:
-        id:
+        drug_id:
           type: string
-          example: 11acf267a4fc42f392751e023482aac3
-          description: ID
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: CTNNB1 Mutation
-          description: Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
-    B032CtResultDetail_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
+            name: Ranibizumab (Genentech)
           - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
-        organization_id:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
+    B026ClinicalTrialDesign_GetClinicalTrialDesignResponseDto:
+      type: object
+      properties:
+        masking:
           type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B025ClinicalTrialEligibilityResponse:
+          example: None (Open Label)
+          description: Masking
+        outcome:
+          type: array
+          example:
+          - title: Recommended Phase II Dose (RP2D)
+            time_frame: Up to approximately 24 months
+            description: The RP2D is defined as the dose level chosen by the sponsor (in consultation with the investigators) for phase II study, based on safety, tolerability, efficacy, PK, and PD data collected during the dose escalation study of BL-B01D1.
+            outcome_type: Primary
+          - title: Objective response rate (ORR)
+            time_frame: Up to approximately 24 months
+            description: ORR is defined as the percentage of participants, who has a CR (disappearance of all target lesions) or PR (at least a 30% decrease in the sum of diameters of target lesions). The percentage of participants who experiences a confirmed CR or PR is according to RECIST 1.1.
+            outcome_type: Primary
+          description: Outcome Measures
+          items:
+            $ref: '#/components/schemas/B026ClinicalTrialDesign_Outcome'
+        allocation:
+          type: string
+          example: N/A
+          description: Allocation
+        enrollment:
+          type: array
+          example:
+          - enrollment: '40'
+          description: Enrollment
+          items:
+            $ref: '#/components/schemas/B026ClinicalTrialDesign_Enrollment'
+        start_date:
+          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
+        study_type:
+          type: string
+          example: Interventional
+          description: 'Study Type, enumeration values: "Prevention", "Expanded Access", "Health Services Research", "Interventional", "Diagnosis", "Cause", "Observational", "Basic Science", "Unknown", "Others"'
+        completion_date:
+          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
+        primary_purpose:
+          type: string
+          example: Treatment
+          description: Primary Purpose
+        register_number:
+          type: string
+          example: NCT06498986
+          description: Trial Number
+        arm_intervention:
+          type: array
+          example:
+          - intervention:
+            - intervention_name: BL-B01D1
+              intervention_type: Drug
+              intervention_description: Administration by intravenous infusion for a cycle of 3 weeks.
+            - intervention_name: Osimertinib Mesylate Tablets
+              intervention_type: Drug
+              intervention_description: Oral administration, 80mg daily for a cycle of 3 weeks.
+            design_group_type: Experimental
+            design_group_title: BL-B01D1+Osimertinib Mesylate Tablets
+            design_group_description: Participants receive BL-B01D1+Osimertinib Mesylate Tablets in the first cycle (3 weeks). Participants with clinical benefit could receive additional treatment for more cycles. The administration will be terminated because of disease progression or intolerable toxicity occurring or other reasons.
+          description: Arms and Interventions
+          items:
+            $ref: '#/components/schemas/B026ClinicalTrialDesign_ArmIntervention'
+        clinical_trial_id:
+          type: string
+          example: 202425a889e52ae802432a8295220e53
+          description: Clinical Trial ID
+        first_posted_date:
+          type: integer
+          format: int64
+          example: 1720742400000
+          description: First Posted Date
+        intervention_model:
+          type: string
+          example: Single Group Assignment
+          description: Intervention Model
+        primary_completion_date:
+          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
+    B025ClinicalTrialEligibility_GetClinicalTrialEligibilityResponseDto:
+      type: object
+      properties:
+        gender:
+          type: string
+          example: All
+          description: Sexes
+        max_age:
+          $ref: '#/components/schemas/B025ClinicalTrialEligibility_Age'
+        min_age:
+          $ref: '#/components/schemas/B025ClinicalTrialEligibility_Age'
+        register_number:
+          type: string
+          example: NCT06498986
+          description: Trial Number
+        exclude_criteria:
+          type: string
+          example: <ul><li>1. Patients with prior systemic therapy;</li><li>2. Previous treatment with EGFR-TKI;</li><li>3. Participants who participated in any other clinical trial within 4 weeks before the trial dose;</li><li>4. Traditional Chinese medicine (TCM) which had received radiotherapy within 4 weeks before the first use of the study drug and had anti-tumor indications within 2 weeks before the first use of the study drug;</li><li>5. Had undergone major surgery within 4 weeks before the first dose;</li><li>6. History of severe heart disease or cerebrovascular disease;</li><li>7. Unstable thrombotic events requiring therapeutic intervention within 6 months before screening; Infusion-related thrombosis was excluded;</li><li>8. QT prolongation, complete left bundle branch block, III degree atrioventricular block, frequent and uncontrollable arrhythmia;</li><li>9. Previous history of interstitial lung disease requiring steroid therapy, or current ILD or grade ≥2 radiation pneumonitis;</li><li>10. Complicated pulmonary diseases leading to clinically severe respiratory function impairment;</li><li>11. Severe systemic infection within 4 weeks before screening;</li><li>12. Patients at risk for active autoimmune disease or with a history of autoimmune disease;</li><li>13. Other malignant tumors within 5 years before the first dose;</li><li>14. HIV antibody positive, active tuberculosis, active hepatitis B virus infection, or hepatitis C virus infection;</li><li>15. Hypertension poorly controlled by two antihypertensive drugs;</li><li>16. Patients with poor glycemic control;</li><li>17. Patients with massive effusions, or effusions with obvious symptoms, or poorly controlled effusions;</li><li>18. Patients with active central nervous system metastases;</li><li>19. Imaging examination showed that the tumor had invaded or enveloped the large blood vessels in the abdomen, chest, neck, and pharynx;</li><li>20. Severe unhealed wound, ulcer, or fracture within 4 weeks before consent signing;</li><li>21. Sign a four weeks before there were clinically significant bleeding or bleeding tendency obviously subjects;</li><li>22. Previous history of allogeneic stem cell, bone marrow or organ transplantation;</li><li>23. Patients with a history of allergy to recombinant humanized antibodies or to any of the excipients of BL-B01D1;</li><li>24. A history of severe neurological or psychiatric illness;</li><li>25. Pregnant or lactating women;</li><li>26. Subjects who were scheduled to receive live vaccine or received live vaccine within 28 days before study randomization;</li><li>27. Other conditions for participation in the trial were not considered appropriate by the investigator.</li>
+          description: Exclusion Criteria
+        include_criteria:
+          type: string
+          example: '<ul><li>1. Voluntarily sign the informed consent and follow the requirements of the protocol;</li><li>2. No gender limit;</li><li>3. Age ≥18 years old;</li><li>4. Expected survival time ≥3 months;</li><li>5. Patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer;</li><li>6. Documentation of EGFR sensitive mutations detected from tumor tissue or blood samples;</li><li>7. Consent to provide archived tumor tissue or fresh tissue samples from primary or metastatic sites within 2 years for biomarker testing;</li><li>8. At least one measurable lesion meeting the RECIST v1.1 definition was required;</li><li>9. ECOG ≤1;</li><li>10. Toxicity of previous antineoplastic therapy has returned to ≤ grade 1 defined by NCI-CTCAE v5.0;</li><li>11. No severe cardiac dysfunction, left ventricular ejection fraction ≥50%;</li><li>12. The level of organ function must meet the requirements on the premise that blood transfusion is not allowed within 14 days before the screening period and no cell growth factor drugs are allowed;</li><li>13. Blood coagulation function: international standardization ratio of 1.5 or less, and the part activated clotting time live enzymes acuities were 1.5 x ULN;</li><li>14. Urine protein ≤2+ or ≤1000mg/24h;</li><li>15. Fertile female subjects or male subjects with fertile partners must use highly effective contraception from 7 days before the first dose until 6 months after the dose. Female subjects of childbearing potential had to have a negative serum pregnancy test within 7 days before the first dose.</li>'
+          description: Inclusion Criteria
+        clinical_trial_id:
+          type: string
+          example: 202425a889e52ae802432a8295220e53
+          description: Clinical Trial ID
+        healthy_volunteers:
+          type: string
+          example: 'No'
+          description: 'Accepts Healthy Volunteers, enumeration values: Yes, No'
+    B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Maximum Observed Plasma Concentration (Cmax) of Sotorasib
+          description: Measure name
+        type:
+          type: string
+          example: Primary
+          description: Measure type
+        measure_id:
+          type: string
+          example: M1
+          description: Measure id
+        param_type:
+          type: string
+          example: Geometric Mean
+          description: Param  type
+        result_list:
+          type: array
+          example:
+          - value: '4.6'
+            group_id: 854d42290a95a38d05d90422e5392822
+          description: Measure value
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_ResultDto'
+        ct_result_id:
+          type: string
+          example: 5adee5585028aaa5da5982d22a808a99
+          description: Clinical trial result id
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: CRP levels
+          - lang: CN
+            name: CRP levels
+          description: Display Measure Name
+          items:
+            $ref: '#/components/schemas/B048CtResultGroup_CommonName'
+        normalized_id:
+          type: array
+          example:
+          - 9410c1945fa14130b1a205394e3c2361
+          description: Measure normalized id
+        outcome_order:
+          type: integer
+          format: int32
+          example: 1
+          description: Measure order
+        dispersion_type:
+          type: string
+          example: Geometric Coefficient of Variation
+          description: Dispersion type
+        display_section:
+          type: string
+          example: Adverse Event
+          description: Display section
+        unit_of_measure:
+          type: string
+          example: ng/mL
+          description: Unit of measure
+        parent_measure_id:
+          type: string
+          example: OE1
+          description: Parent measure id
+    B032CtResultDetailResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B025ClinicalTrialEligibility_GetClinicalTrialEligibilityResponseDto'
+          $ref: '#/components/schemas/B032CtResultDetail_GetClinicalTrialResultResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -732,97 +1032,23 @@ components:
           type: string
           example: 202425a889e52ae802432a8295220e53
           description: Clinical Trial ID
-    B026ClinicalTrialDesign_Enrollment:
+    B023ClinicalTrialRelatedEntity_CommonOrganization:
       type: object
       properties:
-        location:
-          type: string
-          example: Domestic
-          description: Location. 'Domestic' means China.
-        enrollment:
-          type: string
-          example: 98
-          description: Enrollment
-        enrollment_text:
-          type: string
-          example: 国内：150
-          description: Enrollment Original Value
-        enrollment_type:
-          type: string
-          example: Anticipated
-          description: Enrollment Type
-    B024ClinicalTrialDescription_GetClinicalTrialResearchDescriptionResponseDto:
-      type: object
-      properties:
-        country:
-          type: array
-          example:
-          - country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
-            alpha2_code: CN
-            display_name:
-            - lang: EN
-              name: China
-            - lang: CN
-              name: 中国
-          description: Country/Location
-          items:
-            $ref: '#/components/schemas/B024ClinicalTrialDescription_CommonCountry'
-        brief_summary:
-          type: string
-          example: This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.
-          description: Brief
-        register_number:
-          type: string
-          example: NCT06498986
-          description: Trial Number
-        clinical_trial_id:
-          type: string
-          example: 202425a889e52ae802432a8295220e53
-          description: Clinical Trial ID
-        detailed_description:
-          type: string
-          example: This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.
-          description: Detailed
-    B026ClinicalTrialDesign_DateItem:
-      type: object
-      properties:
-        time_ts:
-          type: integer
-          format: int64
-          example: 1785542400000
-          description: Timestamp
-        date_type:
-          type: string
-          example: Anticipated
-          description: 'Date Type, enumeration values: Anticipated, Actual'
-    B032CtResultDetail_CommonDrug:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: e82b83b42eba4e5ea3f26f8e06081a5a
-          description: Drug ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: Ranibizumab (Genentech)
+            name: Roche Holding AG
           - lang: CN
-            name: 雷珠单抗
-          description: Drug Name, Referencing "CommonName"
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
-    B032CtResultDetail_RelatedId:
-      type: object
-      properties:
-        id_type:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
+        organization_id:
           type: string
-          example: study_identifier
-          description: ID type, study_identifier:Trial Code
-        id_value:
-          type: string
-          example: DESTINY-Breast04
-          description: value
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
     B032CtResultDetail_GetClinicalTrialResultResponseDto:
       type: object
       properties:
@@ -1009,417 +1235,21 @@ components:
           description: Collaborator Organization
           items:
             $ref: '#/components/schemas/B032CtResultDetail_CommonOrganization'
-    B023ClinicalTrialRelatedEntity_CommonDrug:
+    B026ClinicalTrialDesign_ArmInterventionIntervention:
       type: object
       properties:
-        drug_id:
+        intervention_name:
           type: string
-          example: e82b83b42eba4e5ea3f26f8e06081a5a
-          description: Drug ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Ranibizumab (Genentech)
-          - lang: CN
-            name: 雷珠单抗
-          description: Drug Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
-    B023ClinicalTrialRelatedEntity_CommonTarget:
-      type: object
-      properties:
-        target_id:
+          example: BL-B01D1
+          description: Intervention Name
+        intervention_type:
           type: string
-          example: 1c2067e5ab054a8995f73efcfcf56207
-          description: Target ID
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: VEGF
-          description: Target Short Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Vascular endothelial growth factor
-          - lang: CN
-            name: 血管内皮生长因子
-          description: Target Full Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
-    B048CtResultGroup_AppPhsCtGroupEntityDto:
-      type: object
-      properties:
-        group_id:
+          example: Drug
+          description: Intervention Type
+        intervention_description:
           type: string
-          example: e2e088e8e8aeda8aa2a2924ee3a59828
-          description: Clinical trial result group id
-        group_type:
-          type: string
-          example: outcome_group
-          description: Clinical trial result group type
-        ct_result_id:
-          type: string
-          example: 5adee5585028aaa5da5982d22a808a99
-          description: Clinical trial result id
-        characteristic:
-          type: array
-          example:
-          - name: Tocilizumab
-            type: drug
-          description: Clinical trial result grouping characteristics and medication plan
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_CharacteristicDto'
-        participant_number:
-          type: string
-          example: 7
-          description: Clinical trial result group participant number
-    B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Maximum Observed Plasma Concentration (Cmax) of Sotorasib
-          description: Measure name
-        type:
-          type: string
-          example: Primary
-          description: Measure type
-        measure_id:
-          type: string
-          example: M1
-          description: Measure id
-        param_type:
-          type: string
-          example: Geometric Mean
-          description: Param  type
-        result_list:
-          type: array
-          example:
-          - value: '4.6'
-            group_id: 854d42290a95a38d05d90422e5392822
-          description: Measure value
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_ResultDto'
-        ct_result_id:
-          type: string
-          example: 5adee5585028aaa5da5982d22a808a99
-          description: Clinical trial result id
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: CRP levels
-          - lang: CN
-            name: CRP levels
-          description: Display Measure Name
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_CommonName'
-        normalized_id:
-          type: array
-          example:
-          - 9410c1945fa14130b1a205394e3c2361
-          description: Measure normalized id
-        outcome_order:
-          type: integer
-          format: int32
-          example: 1
-          description: Measure order
-        dispersion_type:
-          type: string
-          example: Geometric Coefficient of Variation
-          description: Dispersion type
-        display_section:
-          type: string
-          example: Adverse Event
-          description: Display section
-        unit_of_measure:
-          type: string
-          example: ng/mL
-          description: Unit of measure
-        parent_measure_id:
-          type: string
-          example: OE1
-          description: Parent measure id
-    B048CtResultGroup_AppPhsCtResultEndPointDto:
-      type: object
-      properties:
-        groups:
-          type: array
-          example:
-          - group_id: 854d42290a95a38d05d90422e5392822
-            group_type: outcome_group
-            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
-            characteristic:
-            - name: Tocilizumab
-              type: drug
-          description: Group information
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtGroupEntityDto'
-        outcome_measures:
-          type: array
-          example:
-          - name: CRP levels
-            measure_id: M1
-            result_list:
-            - value: '4.6'
-              group_id: 854d42290a95a38d05d90422e5392822
-            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
-            display_name:
-            - lang: EN
-              name: CRP levels
-            - lang: CN
-              name: CRP levels
-            outcome_order: 1
-            unit_of_measure: mg/L
-          description: Outcome measure information
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
-        outcome_measure_safety:
-          type: array
-          example:
-          - name: CRP levels
-            measure_id: M1
-            result_list:
-            - value: '4.6'
-              group_id: 854d42290a95a38d05d90422e5392822
-            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
-            display_name:
-            - lang: EN
-              name: CRP levels
-            - lang: CN
-              name: CRP levels
-            outcome_order: 1
-            unit_of_measure: mg/L
-          description: Outcome measure information - safety
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
-        outcome_measure_efficacy:
-          type: array
-          example:
-          - name: CRP levels
-            measure_id: M1
-            result_list:
-            - value: '4.6'
-              group_id: 854d42290a95a38d05d90422e5392822
-            ct_result_id: a452da8e32d890452d5ea82ee823d8e5
-            display_name:
-            - lang: EN
-              name: CRP levels
-            - lang: CN
-              name: CRP levels
-            outcome_order: 1
-            unit_of_measure: mg/L
-          description: Outcome measure information - efficacy
-          items:
-            $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtOutcomeMeasureEntityDto'
-    B026ClinicalTrialDesign_GetClinicalTrialDesignResponseDto:
-      type: object
-      properties:
-        masking:
-          type: string
-          example: None (Open Label)
-          description: Masking
-        outcome:
-          type: array
-          example:
-          - title: Recommended Phase II Dose (RP2D)
-            time_frame: Up to approximately 24 months
-            description: The RP2D is defined as the dose level chosen by the sponsor (in consultation with the investigators) for phase II study, based on safety, tolerability, efficacy, PK, and PD data collected during the dose escalation study of BL-B01D1.
-            outcome_type: Primary
-          - title: Objective response rate (ORR)
-            time_frame: Up to approximately 24 months
-            description: ORR is defined as the percentage of participants, who has a CR (disappearance of all target lesions) or PR (at least a 30% decrease in the sum of diameters of target lesions). The percentage of participants who experiences a confirmed CR or PR is according to RECIST 1.1.
-            outcome_type: Primary
-          description: Outcome Measures
-          items:
-            $ref: '#/components/schemas/B026ClinicalTrialDesign_Outcome'
-        allocation:
-          type: string
-          example: N/A
-          description: Allocation
-        enrollment:
-          type: array
-          example:
-          - enrollment: '40'
-          description: Enrollment
-          items:
-            $ref: '#/components/schemas/B026ClinicalTrialDesign_Enrollment'
-        start_date:
-          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
-        study_type:
-          type: string
-          example: Interventional
-          description: 'Study Type, enumeration values: "Prevention", "Expanded Access", "Health Services Research", "Interventional", "Diagnosis", "Cause", "Observational", "Basic Science", "Unknown", "Others"'
-        completion_date:
-          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
-        primary_purpose:
-          type: string
-          example: Treatment
-          description: Primary Purpose
-        register_number:
-          type: string
-          example: NCT06498986
-          description: Trial Number
-        arm_intervention:
-          type: array
-          example:
-          - intervention:
-            - intervention_name: BL-B01D1
-              intervention_type: Drug
-              intervention_description: Administration by intravenous infusion for a cycle of 3 weeks.
-            - intervention_name: Osimertinib Mesylate Tablets
-              intervention_type: Drug
-              intervention_description: Oral administration, 80mg daily for a cycle of 3 weeks.
-            design_group_type: Experimental
-            design_group_title: BL-B01D1+Osimertinib Mesylate Tablets
-            design_group_description: Participants receive BL-B01D1+Osimertinib Mesylate Tablets in the first cycle (3 weeks). Participants with clinical benefit could receive additional treatment for more cycles. The administration will be terminated because of disease progression or intolerable toxicity occurring or other reasons.
-          description: Arms and Interventions
-          items:
-            $ref: '#/components/schemas/B026ClinicalTrialDesign_ArmIntervention'
-        clinical_trial_id:
-          type: string
-          example: 202425a889e52ae802432a8295220e53
-          description: Clinical Trial ID
-        first_posted_date:
-          type: integer
-          format: int64
-          example: 1720742400000
-          description: First Posted Date
-        intervention_model:
-          type: string
-          example: Single Group Assignment
-          description: Intervention Model
-        primary_completion_date:
-          $ref: '#/components/schemas/B026ClinicalTrialDesign_DateItem'
-    B026ClinicalTrialDesignResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B026ClinicalTrialDesign_GetClinicalTrialDesignResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B026ClinicalTrialDesign_ArmIntervention:
-      type: object
-      properties:
-        intervention:
-          type: array
-          example:
-          - intervention_name: BL-B01D1
-            intervention_type: Drug
-            intervention_description: Administration by intravenous infusion for a cycle of 3 weeks.
-          - intervention_name: Osimertinib Mesylate Tablets
-            intervention_type: Drug
-            intervention_description: Oral administration, 80mg daily for a cycle of 3 weeks.
-          description: Intervention
-          items:
-            $ref: '#/components/schemas/B026ClinicalTrialDesign_ArmInterventionIntervention'
-        design_group_type:
-          type: string
-          example: Experimental
-          description: Design Group Type
-        design_group_title:
-          type: string
-          example: BL-B01D1+Osimertinib Mesylate Tablets
-          description: Design Group Title
-        design_group_description:
-          type: string
-          example: Participants receive BL-B01D1+Osimertinib Mesylate Tablets in the first cycle (3 weeks). Participants with clinical benefit could receive additional treatment for more cycles. The administration will be terminated because of disease progression or intolerable toxicity occurring or other reasons.
-          description: Design Group Description
-    B032CtResultDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B032CtResultDetail_GetClinicalTrialResultResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B048CtResultGroup_ResultDto:
-      type: object
-      properties:
-        pct:
-          type: string
-          example: 20
-          description: Evaluation result ratio
-        value:
-          type: string
-          example: 5080
-          description: Evaluation result value
-        spread:
-          type: string
-          example: 108.5
-          description: Evaluation result spread
-        group_id:
-          type: string
-          example: e2e088e8e8aeda8aa2a2924ee3a59828
-          description: Evaluation result group id
-        lower_value:
-          type: string
-          example: 0.1
-          description: Evaluation result lower Value
-        upper_value:
-          type: string
-          example: 0.5
-          description: Evaluation result upper Value
-        participant_analyzed:
-          type: string
-          example: 7
-          description: Evaluation result participants count
-        participant_analyzed_units:
-          type: string
-          example: Participants
-          description: Evaluation result participants count units
-    B022ClinicalTrialDetail_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B048CtResultGroup_CharacteristicDto:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Sotorasib
-          description: Group characteristics or medication plan name
-        type:
-          type: string
-          example: drug
-          description: Group characteristics or medication plan type
+          example: Administration by intravenous infusion for a cycle of 3 weeks.
+          description: Intervention Description
     B024ClinicalTrialDescriptionResponse:
       type: object
       properties:
@@ -1440,74 +1270,43 @@ components:
       required:
       - status
       - error_code
-    B025ClinicalTrialEligibility_Age:
+    B026ClinicalTrialDesignResponse:
       type: object
       properties:
-        age:
+        data:
+          $ref: '#/components/schemas/B026ClinicalTrialDesign_GetClinicalTrialDesignResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 18
-          description: Age
-        unit:
-          type: string
-          example: Years
-          description: Unit
-    B026ClinicalTrialDesign_ArmInterventionIntervention:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B032CtResultDetail_CommonDrug:
       type: object
       properties:
-        intervention_name:
+        drug_id:
           type: string
-          example: BL-B01D1
-          description: Intervention Name
-        intervention_type:
-          type: string
-          example: Drug
-          description: Intervention Type
-        intervention_description:
-          type: string
-          example: Administration by intravenous infusion for a cycle of 3 weeks.
-          description: Intervention Description
-    B023ClinicalTrialRelatedEntity_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B025ClinicalTrialEligibility_GetClinicalTrialEligibilityResponseDto:
-      type: object
-      properties:
-        gender:
-          type: string
-          example: All
-          description: Sexes
-        max_age:
-          $ref: '#/components/schemas/B025ClinicalTrialEligibility_Age'
-        min_age:
-          $ref: '#/components/schemas/B025ClinicalTrialEligibility_Age'
-        register_number:
-          type: string
-          example: NCT06498986
-          description: Trial Number
-        exclude_criteria:
-          type: string
-          example: <ul><li>1. Patients with prior systemic therapy;</li><li>2. Previous treatment with EGFR-TKI;</li><li>3. Participants who participated in any other clinical trial within 4 weeks before the trial dose;</li><li>4. Traditional Chinese medicine (TCM) which had received radiotherapy within 4 weeks before the first use of the study drug and had anti-tumor indications within 2 weeks before the first use of the study drug;</li><li>5. Had undergone major surgery within 4 weeks before the first dose;</li><li>6. History of severe heart disease or cerebrovascular disease;</li><li>7. Unstable thrombotic events requiring therapeutic intervention within 6 months before screening; Infusion-related thrombosis was excluded;</li><li>8. QT prolongation, complete left bundle branch block, III degree atrioventricular block, frequent and uncontrollable arrhythmia;</li><li>9. Previous history of interstitial lung disease requiring steroid therapy, or current ILD or grade ≥2 radiation pneumonitis;</li><li>10. Complicated pulmonary diseases leading to clinically severe respiratory function impairment;</li><li>11. Severe systemic infection within 4 weeks before screening;</li><li>12. Patients at risk for active autoimmune disease or with a history of autoimmune disease;</li><li>13. Other malignant tumors within 5 years before the first dose;</li><li>14. HIV antibody positive, active tuberculosis, active hepatitis B virus infection, or hepatitis C virus infection;</li><li>15. Hypertension poorly controlled by two antihypertensive drugs;</li><li>16. Patients with poor glycemic control;</li><li>17. Patients with massive effusions, or effusions with obvious symptoms, or poorly controlled effusions;</li><li>18. Patients with active central nervous system metastases;</li><li>19. Imaging examination showed that the tumor had invaded or enveloped the large blood vessels in the abdomen, chest, neck, and pharynx;</li><li>20. Severe unhealed wound, ulcer, or fracture within 4 weeks before consent signing;</li><li>21. Sign a four weeks before there were clinically significant bleeding or bleeding tendency obviously subjects;</li><li>22. Previous history of allogeneic stem cell, bone marrow or organ transplantation;</li><li>23. Patients with a history of allergy to recombinant humanized antibodies or to any of the excipients of BL-B01D1;</li><li>24. A history of severe neurological or psychiatric illness;</li><li>25. Pregnant or lactating women;</li><li>26. Subjects who were scheduled to receive live vaccine or received live vaccine within 28 days before study randomization;</li><li>27. Other conditions for participation in the trial were not considered appropriate by the investigator.</li>
-          description: Exclusion Criteria
-        include_criteria:
-          type: string
-          example: '<ul><li>1. Voluntarily sign the informed consent and follow the requirements of the protocol;</li><li>2. No gender limit;</li><li>3. Age ≥18 years old;</li><li>4. Expected survival time ≥3 months;</li><li>5. Patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer;</li><li>6. Documentation of EGFR sensitive mutations detected from tumor tissue or blood samples;</li><li>7. Consent to provide archived tumor tissue or fresh tissue samples from primary or metastatic sites within 2 years for biomarker testing;</li><li>8. At least one measurable lesion meeting the RECIST v1.1 definition was required;</li><li>9. ECOG ≤1;</li><li>10. Toxicity of previous antineoplastic therapy has returned to ≤ grade 1 defined by NCI-CTCAE v5.0;</li><li>11. No severe cardiac dysfunction, left ventricular ejection fraction ≥50%;</li><li>12. The level of organ function must meet the requirements on the premise that blood transfusion is not allowed within 14 days before the screening period and no cell growth factor drugs are allowed;</li><li>13. Blood coagulation function: international standardization ratio of 1.5 or less, and the part activated clotting time live enzymes acuities were 1.5 x ULN;</li><li>14. Urine protein ≤2+ or ≤1000mg/24h;</li><li>15. Fertile female subjects or male subjects with fertile partners must use highly effective contraception from 7 days before the first dose until 6 months after the dose. Female subjects of childbearing potential had to have a negative serum pregnancy test within 7 days before the first dose.</li>'
-          description: Inclusion Criteria
-        clinical_trial_id:
-          type: string
-          example: 202425a889e52ae802432a8295220e53
-          description: Clinical Trial ID
-        healthy_volunteers:
-          type: string
-          example: 'No'
-          description: 'Accepts Healthy Volunteers, enumeration values: Yes, No'
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
     B032CtResultDetail_CommonName:
       type: object
       properties:
@@ -1519,11 +1318,34 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B023ClinicalTrialRelatedEntityResponse:
+    B032CtResultDetail_StudyDesignDto:
+      type: object
+      properties:
+        masking:
+          type: string
+          example: XXXX
+          description: Masking
+        allocation:
+          type: string
+          example: XXXX
+          description: Allocation
+        primary_purpose:
+          type: string
+          example: XXXX
+          description: Primary Purpose
+        intervention_model:
+          type: string
+          example: XXXX
+          description: Intervention Model
+        allocation_normalized:
+          $ref: '#/components/schemas/B032CtResultDetail_CommonDictionary'
+        intervention_model_normalized:
+          $ref: '#/components/schemas/B032CtResultDetail_CommonDictionary'
+    B027ClinicalTrialContactResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_GetClinicalTrialRelatedEntityResponseDto'
+          $ref: '#/components/schemas/B027ClinicalTrialContact_GetClinicalTrialContactResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1539,41 +1361,86 @@ components:
       required:
       - status
       - error_code
-    B027ClinicalTrialContact_CentralContact:
+    B024ClinicalTrialDescription_CommonCountry:
       type: object
       properties:
-        name:
+        country_id:
           type: string
-          example: Xiao Ming, PHD
-          description: Name
-        email:
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
           type: string
-          example: xxx@patsnap.com
-          description: Email
-        phone:
-          type: string
-          example: 15012341234
-          description: Phone
-    B048CtResultGroupResponse:
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B024ClinicalTrialDescription_CommonName'
+    B022ClinicalTrialDetail_GetClinicalTrialBasicInformationResponseDto:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/B048CtResultGroup_AppPhsCtResultEndPointDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        phase:
+          $ref: '#/components/schemas/B022ClinicalTrialDetail_CommonDictionary'
+        brief_title:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: A Study of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
+          description: Trial Title
+        data_source:
+          type: string
+          example: CTGOV
+          description: 'Registry, enumeration values: WHO, CTGOV, CTR'
+        official_title:
+          type: string
+          example: A Phase II Clinical Study to Evaluate the Efficacy and Safety of BL-B01D1 in Combination With Osimertinib Mesylate Tablets in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
+          description: Official Title
+        register_number:
+          type: string
+          example: NCT06498986
+          description: Trial Number
+        clinical_trial_id:
+          type: string
+          example: 202425a889e52ae802432a8295220e53
+          description: Clinical Trial ID
+        recruitment_status:
+          type: string
+          example: Not yet recruiting
+          description: Recruitment Status
+    B026ClinicalTrialDesign_Outcome:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Recommended Phase II Dose (RP2D)
+          description: Measure
+        time_frame:
+          type: string
+          example: Up to approximately 24 months
+          description: Time Frame
+        description:
+          type: string
+          example: The RP2D is defined as the dose level chosen by the sponsor (in consultation with the investigators) for phase II study, based on safety, tolerability, efficacy, PK, and PD data collected during the dose escalation study of BL-B01D1.
+          description: Description
+        outcome_type:
+          type: string
+          example: Primary
+          description: Outcome Type
+    B025ClinicalTrialEligibility_Age:
+      type: object
+      properties:
+        age:
+          type: string
+          example: 18
+          description: Age
+        unit:
+          type: string
+          example: Years
+          description: Unit
     B023ClinicalTrialRelatedEntity_CommonDisease:
       type: object
       properties:
@@ -1591,31 +1458,164 @@ components:
           description: Disease Name, Referencing "CommonName"
           items:
             $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonName'
-    B032CtResultDetail_CommonTarget:
+    B026ClinicalTrialDesign_Enrollment:
       type: object
       properties:
-        target_id:
+        location:
           type: string
-          example: 1c2067e5ab054a8995f73efcfcf56207
-          description: Target ID
-        short_name:
+          example: Domestic
+          description: Location. 'Domestic' means China.
+        enrollment:
+          type: string
+          example: 98
+          description: Enrollment
+        enrollment_text:
+          type: string
+          example: 国内：150
+          description: Enrollment Original Value
+        enrollment_type:
+          type: string
+          example: Anticipated
+          description: Enrollment Type
+    B023ClinicalTrialRelatedEntity_GetClinicalTrialRelatedEntityResponseDto:
+      type: object
+      properties:
+        target:
           type: array
           example:
-          - lang: EN
-            name: VEGF
-          description: Target Short Name, Referencing "CommonName"
+          - target_id: 928facc8122849baa0dc00759cff0380
+            short_name:
+            - lang: EN
+              name: KRAS G12C
+            display_name:
+            - lang: EN
+              name: GTPase KRas G12C
+            - lang: CN
+              name: KRAS G12C突变
+          description: Targets
           items:
-            $ref: '#/components/schemas/B032CtResultDetail_CommonName'
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonTarget'
+        condition:
+          type: array
+          example:
+          - Non-small Cell Lung Cancer
+          description: Original indications
+        control_drug:
+          type: array
+          example:
+          - drug_id: 79c4211933534056b4a84db1766df362
+            display_name:
+            - lang: EN
+              name: Osimertinib mesylate
+            - lang: CN
+              name: 甲磺酸奥希替尼
+          description: Control Drug
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDrug'
+        organization:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Sichuan Baili Pharmaceuticals Co.,Ltd
+            - lang: CN
+              name: 四川百利药业有限责任公司
+            organization_id: 685e5cad5351555103932a4c484281c2
+          description: Sponsor/Collaborator
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonOrganization'
+        register_number:
+          type: string
+          example: NCT06498986
+          description: Trial Number
+        clinical_trial_id:
+          type: string
+          example: 202425a889e52ae802432a8295220e53
+          description: Clinical Trial ID
+        condition_disease:
+          type: array
+          example:
+          - disease_id: 6c9886cb25eb45faba70292cee1f5518
+            display_name:
+            - lang: EN
+              name: Locally Advanced Lung Non-Small Cell Carcinoma
+            - lang: CN
+              name: 局部晚期非小细胞肺癌
+          description: Indications
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDisease'
+        main_experimentation_drug:
+          type: array
+          example:
+          - drug_id: 79c4211933534056b4a84db1766df362
+            display_name:
+            - lang: EN
+              name: Osimertinib mesylate
+            - lang: CN
+              name: 甲磺酸奥希替尼
+          description: Experimental Drug
+          items:
+            $ref: '#/components/schemas/B023ClinicalTrialRelatedEntity_CommonDrug'
+    B032CtResultDetail_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: Vascular endothelial growth factor
+            name: Uveitic Macular Edema
           - lang: CN
-            name: 血管内皮生长因子
-          description: Target Full Name, Referencing "CommonName"
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
           items:
             $ref: '#/components/schemas/B032CtResultDetail_CommonName'
+    B024ClinicalTrialDescription_GetClinicalTrialResearchDescriptionResponseDto:
+      type: object
+      properties:
+        country:
+          type: array
+          example:
+          - country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+            alpha2_code: CN
+            display_name:
+            - lang: EN
+              name: China
+            - lang: CN
+              name: 中国
+          description: Country/Location
+          items:
+            $ref: '#/components/schemas/B024ClinicalTrialDescription_CommonCountry'
+        brief_summary:
+          type: string
+          example: This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.
+          description: Brief
+        register_number:
+          type: string
+          example: NCT06498986
+          description: Trial Number
+        clinical_trial_id:
+          type: string
+          example: 202425a889e52ae802432a8295220e53
+          description: Clinical Trial ID
+        detailed_description:
+          type: string
+          example: This phase II clinical study is a study to explore the efficacy and safety of BL-B01D1 in combination with Osimertinib Mesylate Tablets in patients with histologically and/or cytologically confirmed locally advanced or metastatic non-small cell lung cancer.
+          description: Detailed
+    B048CtResultGroup_CharacteristicDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Sotorasib
+          description: Group characteristics or medication plan name
+        type:
+          type: string
+          example: drug
+          description: Group characteristics or medication plan type
   securitySchemes:
     bearerAuth:
       type: http

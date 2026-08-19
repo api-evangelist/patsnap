@@ -1,0 +1,1579 @@
+{
+  "item": [
+    {
+      "id": "b99ba78b-ac53-4243-b3b2-1783439d0705",
+      "name": "Drug Visual Analysis ",
+      "description": {
+        "content": "Drug Visual Analysis  APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "519ee4e5-4189-4ff0-a722-8011145617df",
+          "name": "B057 Bull eyes plot",
+          "request": {
+            "name": "B057 Bull eyes plot",
+            "description": {
+              "content": "Obtain bull eyes plot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "bull-eyes-plot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": \"<long>\",\n  \"dimension\": \"<string>\",\n  \"roll_up\": \"<boolean>\",\n  \"drug\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"drug_type\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"target\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"disease\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"organization\": {\n    \"condition\": \"<string>\",\n    \"value\": \"<array>\"\n  },\n  \"global_highest_dev_status\": \"<array>\",\n  \"exist_deal\": \"<boolean>\",\n  \"dev_status\": \"<array>\",\n  \"country\": \"<array>\",\n  \"organization_type\": \"<array>\",\n  \"employee_number\": \"<array>\",\n  \"start_up\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "185375a2-1076-40da-aa84-e7e386d11ed2",
+              "name": "Successful b057 bull eyes plot response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bull-eyes-plot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 10,\n  \"dimension\": \"ORGANIZATION\",\n  \"roll_up\": true,\n  \"drug\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"2838b95ade834c96b17ac8bcd2b68c27\"\n    ]\n  },\n  \"drug_type\": {\n    \"condition\": \"OR\"\n  },\n  \"target\": {\n    \"condition\": \"OR\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"OR\"\n  },\n  \"disease\": {\n    \"condition\": \"OR\"\n  },\n  \"organization\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"11ef8a9e8bf5ca80213a1183511cded3\"\n    ]\n  },\n  \"exist_deal\": true,\n  \"country\": [\n    \"US\",\n    \"EU\"\n  ],\n  \"organization_type\": [\n    \"Company\"\n  ],\n  \"employee_number\": [\n    \"GREATER_THAN_500\"\n  ],\n  \"start_up\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 1793,\n  \"data\": {\n    \"items\": [\n      {\n        \"data\": [\n          {\n            \"drug\": [\n              {\n                \"drug_id\": \"07bf6b38be634718897783feeabef441\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"VRON-0200\"\n                  }\n                ]\n              },\n              {\n                \"drug_id\": \"e4cbc3790c5d4f299e8cd765585033ad\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"Anti-EGFR/IL-13R alpha 2 CAR-T cell therapy(Tmunity Therapeutics/University of Pennsylvania)\"\n                  }\n                ]\n              }\n            ],\n            \"un_know\": [\n              \"e4cbc3790c5d4f299e8cd765585033ad\"\n            ],\n            \"stat_info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dev_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"related_drug_id\": [\n              \"07bf6b38be634718897783feeabef441\"\n            ]\n          },\n          {\n            \"drug\": [\n              {\n                \"drug_id\": \"07bf6b38be634718897783feeabef441\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"VRON-0200\"\n                  }\n                ]\n              },\n              {\n                \"drug_id\": \"e4cbc3790c5d4f299e8cd765585033ad\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"Anti-EGFR/IL-13R alpha 2 CAR-T cell therapy(Tmunity Therapeutics/University of Pennsylvania)\"\n                  }\n                ]\n              }\n            ],\n            \"un_know\": [\n              \"e4cbc3790c5d4f299e8cd765585033ad\"\n            ],\n            \"stat_info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dev_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"related_drug_id\": [\n              \"07bf6b38be634718897783feeabef441\"\n            ]\n          }\n        ],\n        \"target\": {\n          \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n          \"short_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"VEGF\"\n            }\n          ],\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Vascular endothelial growth factor\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"血管内皮生长因子\"\n            }\n          ]\n        },\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"drug_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        }\n      },\n      {\n        \"data\": [\n          {\n            \"drug\": [\n              {\n                \"drug_id\": \"07bf6b38be634718897783feeabef441\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"VRON-0200\"\n                  }\n                ]\n              },\n              {\n                \"drug_id\": \"e4cbc3790c5d4f299e8cd765585033ad\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"Anti-EGFR/IL-13R alpha 2 CAR-T cell therapy(Tmunity Therapeutics/University of Pennsylvania)\"\n                  }\n                ]\n              }\n            ],\n            \"un_know\": [\n              \"e4cbc3790c5d4f299e8cd765585033ad\"\n            ],\n            \"stat_info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dev_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"related_drug_id\": [\n              \"07bf6b38be634718897783feeabef441\"\n            ]\n          },\n          {\n            \"drug\": [\n              {\n                \"drug_id\": \"07bf6b38be634718897783feeabef441\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"VRON-0200\"\n                  }\n                ]\n              },\n              {\n                \"drug_id\": \"e4cbc3790c5d4f299e8cd765585033ad\",\n                \"drug_type\": {\n                  \"display_name\": [\n                    {\n                      \"lang\": \"EN\",\n                      \"name\": \"Biological products\"\n                    },\n                    {\n                      \"lang\": \"CN\",\n                      \"name\": \"生物药\"\n                    }\n                  ],\n                  \"normalized_id\": \"06bc75afc2f44364a9663730fa37c37a\"\n                },\n                \"display_name\": [\n                  {\n                    \"lang\": \"EN\",\n                    \"name\": \"Anti-EGFR/IL-13R alpha 2 CAR-T cell therapy(Tmunity Therapeutics/University of Pennsylvania)\"\n                  }\n                ]\n              }\n            ],\n            \"un_know\": [\n              \"e4cbc3790c5d4f299e8cd765585033ad\"\n            ],\n            \"stat_info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dev_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"related_drug_id\": [\n              \"07bf6b38be634718897783feeabef441\"\n            ]\n          }\n        ],\n        \"target\": {\n          \"target_id\": \"1c2067e5ab054a8995f73efcfcf56207\",\n          \"short_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"VEGF\"\n            }\n          ],\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Vascular endothelial growth factor\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"血管内皮生长因子\"\n            }\n          ]\n        },\n        \"country\": {\n          \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n          \"alpha2_code\": \"US\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"United States\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"美国\"\n            }\n          ]\n        },\n        \"disease\": {\n          \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Uveitic Macular Edema\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"葡萄膜炎黄斑水肿\"\n            }\n          ]\n        },\n        \"drug_type\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Autologous CAR-T\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"自体CAR-T\"\n            }\n          ],\n          \"normalized_id\": \"2fbfdb3e92d942c48cbb0adb79f23526\"\n        },\n        \"organization\": {\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"Roche Holding AG\"\n            },\n            {\n              \"lang\": \"CN\",\n              \"name\": \"罗氏\"\n            }\n          ],\n          \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n        }\n      }\n    ],\n    \"dimension\": \"ORGANIZATION\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa7d27b8-b6b5-4e29-b77d-cde32d1280a9",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bull-eyes-plot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 10,\n  \"dimension\": \"ORGANIZATION\",\n  \"roll_up\": true,\n  \"drug\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"2838b95ade834c96b17ac8bcd2b68c27\"\n    ]\n  },\n  \"drug_type\": {\n    \"condition\": \"OR\"\n  },\n  \"target\": {\n    \"condition\": \"OR\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"OR\"\n  },\n  \"disease\": {\n    \"condition\": \"OR\"\n  },\n  \"organization\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"11ef8a9e8bf5ca80213a1183511cded3\"\n    ]\n  },\n  \"exist_deal\": true,\n  \"country\": [\n    \"US\",\n    \"EU\"\n  ],\n  \"organization_type\": [\n    \"Company\"\n  ],\n  \"employee_number\": [\n    \"GREATER_THAN_500\"\n  ],\n  \"start_up\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0979b1a-4c57-47a7-867c-b46e6bb23be8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bull-eyes-plot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 10,\n  \"dimension\": \"ORGANIZATION\",\n  \"roll_up\": true,\n  \"drug\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"2838b95ade834c96b17ac8bcd2b68c27\"\n    ]\n  },\n  \"drug_type\": {\n    \"condition\": \"OR\"\n  },\n  \"target\": {\n    \"condition\": \"OR\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"OR\"\n  },\n  \"disease\": {\n    \"condition\": \"OR\"\n  },\n  \"organization\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"11ef8a9e8bf5ca80213a1183511cded3\"\n    ]\n  },\n  \"exist_deal\": true,\n  \"country\": [\n    \"US\",\n    \"EU\"\n  ],\n  \"organization_type\": [\n    \"Company\"\n  ],\n  \"employee_number\": [\n    \"GREATER_THAN_500\"\n  ],\n  \"start_up\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e94c74c7-7906-4a5a-b589-2865e9137cad",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bull-eyes-plot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 10,\n  \"dimension\": \"ORGANIZATION\",\n  \"roll_up\": true,\n  \"drug\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"2838b95ade834c96b17ac8bcd2b68c27\"\n    ]\n  },\n  \"drug_type\": {\n    \"condition\": \"OR\"\n  },\n  \"target\": {\n    \"condition\": \"OR\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"OR\"\n  },\n  \"disease\": {\n    \"condition\": \"OR\"\n  },\n  \"organization\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"11ef8a9e8bf5ca80213a1183511cded3\"\n    ]\n  },\n  \"exist_deal\": true,\n  \"country\": [\n    \"US\",\n    \"EU\"\n  ],\n  \"organization_type\": [\n    \"Company\"\n  ],\n  \"employee_number\": [\n    \"GREATER_THAN_500\"\n  ],\n  \"start_up\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e3992f3-1316-4560-b43d-ab7b39924b5b",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "bull-eyes-plot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 10,\n  \"dimension\": \"ORGANIZATION\",\n  \"roll_up\": true,\n  \"drug\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"2838b95ade834c96b17ac8bcd2b68c27\"\n    ]\n  },\n  \"drug_type\": {\n    \"condition\": \"OR\"\n  },\n  \"target\": {\n    \"condition\": \"OR\"\n  },\n  \"mechanism_action\": {\n    \"condition\": \"OR\"\n  },\n  \"disease\": {\n    \"condition\": \"OR\"\n  },\n  \"organization\": {\n    \"condition\": \"OR\",\n    \"value\": [\n      \"11ef8a9e8bf5ca80213a1183511cded3\"\n    ]\n  },\n  \"exist_deal\": true,\n  \"country\": [\n    \"US\",\n    \"EU\"\n  ],\n  \"organization_type\": [\n    \"Company\"\n  ],\n  \"employee_number\": [\n    \"GREATER_THAN_500\"\n  ],\n  \"start_up\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83b1eec2-5693-45ef-9ab9-b0890a879f9c",
+          "name": "B064-1 Create drug monitoring",
+          "request": {
+            "name": "B064-1 Create drug monitoring",
+            "description": {
+              "content": "Drug monitoring",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "alert",
+                "drug_search",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"sub_event\": \"<array>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"sub_event\": \"<array>\"\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"<string>\",\n    \"date\": \"<integer>\"\n  },\n  \"lang\": \"<string>\",\n  \"query\": {\n    \"offset\": \"<long>\",\n    \"limit\": \"<long>\",\n    \"drug\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"target\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"disease\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"organization\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"mechanism_action\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"drug_type\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"global_highest_dev_status\": \"<array>\",\n    \"exist_deal\": \"<boolean>\",\n    \"dev_status\": \"<array>\",\n    \"country\": \"<array>\",\n    \"organization_type\": \"<array>\",\n    \"employee_number\": \"<array>\",\n    \"start_up\": \"<boolean>\",\n    \"sort\": [\n      {\n        \"sort_field\": \"<string>\",\n        \"sort_order\": \"<string>\"\n      },\n      {\n        \"sort_field\": \"<string>\",\n        \"sort_order\": \"<string>\"\n      }\n    ]\n  },\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3627aed6-37c6-44c6-a28e-dc105185167c",
+              "name": "Successful b064-1 create drug monitoring response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5917,\n  \"data\": {\n    \"alert_id\": \"561a206a-25c5-4883-be9a-b48eb55edba2\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "045f7e15-60cf-4595-8760-aec529bc967b",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf55134b-4b12-4397-b7c8-f7ebeea8a04f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e23c1b5c-75e8-4a3b-8185-486b5bcfbcee",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0b8a507-4964-4c3a-a484-a64850016e21",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ada56070-4593-4b39-87d3-5115733cf09a",
+          "name": "B064-2 Edit drug monitoring",
+          "request": {
+            "name": "B064-2 Edit drug monitoring",
+            "description": {
+              "content": "Edit drug monitoring",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "alert",
+                "drug_search",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alert_id\": \"<string>\",\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"sub_event\": \"<array>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"sub_event\": \"<array>\"\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"<string>\",\n    \"date\": \"<integer>\"\n  },\n  \"lang\": \"<string>\",\n  \"query\": {\n    \"offset\": \"<long>\",\n    \"limit\": \"<long>\",\n    \"drug\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"target\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"disease\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"organization\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"mechanism_action\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"drug_type\": {\n      \"condition\": \"<string>\",\n      \"value\": \"<array>\"\n    },\n    \"global_highest_dev_status\": \"<array>\",\n    \"exist_deal\": \"<boolean>\",\n    \"dev_status\": \"<array>\",\n    \"country\": \"<array>\",\n    \"organization_type\": \"<array>\",\n    \"employee_number\": \"<array>\",\n    \"start_up\": \"<boolean>\",\n    \"sort\": [\n      {\n        \"sort_field\": \"<string>\",\n        \"sort_order\": \"<string>\"\n      },\n      {\n        \"sort_field\": \"<string>\",\n        \"sort_order\": \"<string>\"\n      }\n    ]\n  },\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd226ede-ee14-4db2-b6ca-49a3826a256a",
+              "name": "Successful b064-2 edit drug monitoring response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\",\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 5917,\n  \"data\": {\n    \"alert_id\": \"561a206a-25c5-4883-be9a-b48eb55edba2\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e62d37a-6b82-4b2f-b90c-68fdf7324b76",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\",\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16e87ee1-200b-46a1-83b3-e5195b3adff7",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\",\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6bc024cd-94cb-4781-afe4-f4aa9b126719",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\",\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5351fa0c-8dd2-40b1-b42c-6ee801c2356a",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\",\n  \"events\": [\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    },\n    {\n      \"name\": \"drug_dev_status\",\n      \"sub_event\": [\n        \"DISCOVERY\",\n        \"PRECLINICAL\",\n        \"PHASE_1\"\n      ]\n    }\n  ],\n  \"frequency\": {\n    \"type\": \"WEEKLY\",\n    \"date\": 1\n  },\n  \"lang\": \"CN\",\n  \"query\": {\n    \"offset\": 0,\n    \"limit\": 10,\n    \"drug\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"945fa31ebe9e41ae912e493aa3324576\"\n      ]\n    },\n    \"target\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"9786d32e3d244a688ec6a60d2fe1b10b\"\n      ]\n    },\n    \"disease\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"3beea980d93a4cc0abc864e27514601c\"\n      ]\n    },\n    \"organization\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"6a8c172f1efc649035845f94c31a9c1e\"\n      ]\n    },\n    \"mechanism_action\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"4dd338b149b3ecd0ee860e1fb379b44f\"\n      ]\n    },\n    \"drug_type\": {\n      \"condition\": \"OR\",\n      \"value\": [\n        \"c38eb408d6b842f487d6a27484156633\"\n      ]\n    },\n    \"global_highest_dev_status\": [\n      \"Approved\"\n    ],\n    \"exist_deal\": true,\n    \"dev_status\": [\n      \"Approved\"\n    ],\n    \"country\": [\n      \"US\",\n      \"EU\"\n    ],\n    \"organization_type\": [\n      \"Company\"\n    ],\n    \"employee_number\": [\n      \"GREATER_THAN_500\"\n    ],\n    \"start_up\": false,\n    \"sort\": [\n      {\n        \"sort_field\": \"DRUG_TYPE_SORT\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"GLOBAL_HIGHEST_DEV_STATUS_RANK\",\n        \"sort_order\": \"desc\"\n      },\n      {\n        \"sort_field\": \"FIRST_APPROVED_DATE\",\n        \"sort_order\": \"desc\"\n      }\n    ]\n  },\n  \"title\": \"我的药物预警\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94e7040a-366a-42c9-bf90-f91ffaf75b45",
+          "name": "B074 Drug milestone",
+          "request": {
+            "name": "B074 Drug milestone",
+            "description": {
+              "content": "Obtain drug milestone, including milestone, event, disease, country, organization, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "drug",
+                "milestone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drug_id\": \"<string>\",\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\",\n  \"sort_order\": \"<string>\",\n  \"milestone\": \"<array>\",\n  \"event_id\": \"<array>\",\n  \"disease_id\": \"<array>\",\n  \"country_id\": \"<array>\",\n  \"organization_id\": \"<array>\",\n  \"event_start_time\": \"<long>\",\n  \"event_end_time\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "367b9697-9e44-4153-adbd-f0cab757e3e6",
+              "name": "Successful b074 drug milestone response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "milestone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"69fdd1486c554a3d86a8c38c60bf6e3b\",\n  \"offset\": 0,\n  \"limit\": 10,\n  \"sort_order\": \"desc\",\n  \"milestone\": [\n    \"773127276f7a4b229f3932d9487c57a9\",\n    \"273b0df9aad347fd8d36ebd8ae0c1cbd\",\n    \"8b32a9b6c03f4bafb8ee22dfcd589943\"\n  ],\n  \"event_id\": [\n    \"7b79728539354f189772a4eab9cc9fff\",\n    \"f835774c48404593b64ef05369eb8eba\",\n    \"78c45f1d523646808032edcff807ca59\"\n  ],\n  \"disease_id\": [\n    \"7af6661c23e8485d9f1dad6a94914fe3\"\n  ],\n  \"country_id\": [\n    \"0dc5d896-7408-3c87-84c0-22e3d9b784be\"\n  ],\n  \"organization_id\": [\n    \"16e33268b7ffba870d1f7a78de820ed5\"\n  ],\n  \"event_start_time\": 20150101,\n  \"event_end_time\": 20251231\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 8323,\n  \"data\": {\n    \"items\": [\n      {\n        \"date\": \"2025-09-09\",\n        \"event\": [\n          {\n            \"id\": \"11acf267a4fc42f392751e023482aac3\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CTNNB1 Mutation\"\n              }\n            ]\n          },\n          {\n            \"id\": \"11acf267a4fc42f392751e023482aac3\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CTNNB1 Mutation\"\n              }\n            ]\n          }\n        ],\n        \"country\": [\n          {\n            \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n            \"alpha2_code\": \"US\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"United States\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"美国\"\n              }\n            ]\n          },\n          {\n            \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n            \"alpha2_code\": \"US\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"United States\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"美国\"\n              }\n            ]\n          }\n        ],\n        \"disease\": [\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          },\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          }\n        ],\n        \"description\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          }\n        ],\n        \"event_status\": {\n          \"id\": \"11acf267a4fc42f392751e023482aac3\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"CTNNB1 Mutation\"\n            }\n          ]\n        },\n        \"organization\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Roche Holding AG\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"罗氏\"\n              }\n            ],\n            \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n          },\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Roche Holding AG\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"罗氏\"\n              }\n            ],\n            \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n          }\n        ],\n        \"milestone_tag\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          }\n        ]\n      },\n      {\n        \"date\": \"2025-09-09\",\n        \"event\": [\n          {\n            \"id\": \"11acf267a4fc42f392751e023482aac3\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CTNNB1 Mutation\"\n              }\n            ]\n          },\n          {\n            \"id\": \"11acf267a4fc42f392751e023482aac3\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"CTNNB1 Mutation\"\n              }\n            ]\n          }\n        ],\n        \"country\": [\n          {\n            \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n            \"alpha2_code\": \"US\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"United States\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"美国\"\n              }\n            ]\n          },\n          {\n            \"country_id\": \"676de5ba-893a-36bb-8683-c93306aaf769\",\n            \"alpha2_code\": \"US\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"United States\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"美国\"\n              }\n            ]\n          }\n        ],\n        \"disease\": [\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          },\n          {\n            \"disease_id\": \"06a9082fe1ec4c97bea31d888b9cfdce\",\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Uveitic Macular Edema\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"葡萄膜炎黄斑水肿\"\n              }\n            ]\n          }\n        ],\n        \"description\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          }\n        ],\n        \"event_status\": {\n          \"id\": \"11acf267a4fc42f392751e023482aac3\",\n          \"display_name\": [\n            {\n              \"lang\": \"EN\",\n              \"name\": \"CTNNB1 Mutation\"\n            }\n          ]\n        },\n        \"organization\": [\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Roche Holding AG\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"罗氏\"\n              }\n            ],\n            \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n          },\n          {\n            \"display_name\": [\n              {\n                \"lang\": \"EN\",\n                \"name\": \"Roche Holding AG\"\n              },\n              {\n                \"lang\": \"CN\",\n                \"name\": \"罗氏\"\n              }\n            ],\n            \"organization_id\": \"87bfaf037f8e60c9e25595cd98bb27e4\"\n          }\n        ],\n        \"milestone_tag\": [\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          },\n          {\n            \"lang\": \"EN\",\n            \"name\": \"Ranibizumab (Genentech)\"\n          }\n        ]\n      }\n    ],\n    \"limit\": 10,\n    \"total\": 1,\n    \"offset\": 0\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bf14063-87d0-4d20-b052-8dab7143ee09",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "milestone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"69fdd1486c554a3d86a8c38c60bf6e3b\",\n  \"offset\": 0,\n  \"limit\": 10,\n  \"sort_order\": \"desc\",\n  \"milestone\": [\n    \"773127276f7a4b229f3932d9487c57a9\",\n    \"273b0df9aad347fd8d36ebd8ae0c1cbd\",\n    \"8b32a9b6c03f4bafb8ee22dfcd589943\"\n  ],\n  \"event_id\": [\n    \"7b79728539354f189772a4eab9cc9fff\",\n    \"f835774c48404593b64ef05369eb8eba\",\n    \"78c45f1d523646808032edcff807ca59\"\n  ],\n  \"disease_id\": [\n    \"7af6661c23e8485d9f1dad6a94914fe3\"\n  ],\n  \"country_id\": [\n    \"0dc5d896-7408-3c87-84c0-22e3d9b784be\"\n  ],\n  \"organization_id\": [\n    \"16e33268b7ffba870d1f7a78de820ed5\"\n  ],\n  \"event_start_time\": 20150101,\n  \"event_end_time\": 20251231\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67e18773-3482-4db5-8ecb-ce04f284ce2a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "milestone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"69fdd1486c554a3d86a8c38c60bf6e3b\",\n  \"offset\": 0,\n  \"limit\": 10,\n  \"sort_order\": \"desc\",\n  \"milestone\": [\n    \"773127276f7a4b229f3932d9487c57a9\",\n    \"273b0df9aad347fd8d36ebd8ae0c1cbd\",\n    \"8b32a9b6c03f4bafb8ee22dfcd589943\"\n  ],\n  \"event_id\": [\n    \"7b79728539354f189772a4eab9cc9fff\",\n    \"f835774c48404593b64ef05369eb8eba\",\n    \"78c45f1d523646808032edcff807ca59\"\n  ],\n  \"disease_id\": [\n    \"7af6661c23e8485d9f1dad6a94914fe3\"\n  ],\n  \"country_id\": [\n    \"0dc5d896-7408-3c87-84c0-22e3d9b784be\"\n  ],\n  \"organization_id\": [\n    \"16e33268b7ffba870d1f7a78de820ed5\"\n  ],\n  \"event_start_time\": 20150101,\n  \"event_end_time\": 20251231\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e54a45b-bee8-41fa-ab6a-af726e042ee2",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "milestone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"69fdd1486c554a3d86a8c38c60bf6e3b\",\n  \"offset\": 0,\n  \"limit\": 10,\n  \"sort_order\": \"desc\",\n  \"milestone\": [\n    \"773127276f7a4b229f3932d9487c57a9\",\n    \"273b0df9aad347fd8d36ebd8ae0c1cbd\",\n    \"8b32a9b6c03f4bafb8ee22dfcd589943\"\n  ],\n  \"event_id\": [\n    \"7b79728539354f189772a4eab9cc9fff\",\n    \"f835774c48404593b64ef05369eb8eba\",\n    \"78c45f1d523646808032edcff807ca59\"\n  ],\n  \"disease_id\": [\n    \"7af6661c23e8485d9f1dad6a94914fe3\"\n  ],\n  \"country_id\": [\n    \"0dc5d896-7408-3c87-84c0-22e3d9b784be\"\n  ],\n  \"organization_id\": [\n    \"16e33268b7ffba870d1f7a78de820ed5\"\n  ],\n  \"event_start_time\": 20150101,\n  \"event_end_time\": 20251231\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f80903e6-5e02-44b4-ab44-7ce8afc3a6b0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "drug",
+                    "milestone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drug_id\": \"69fdd1486c554a3d86a8c38c60bf6e3b\",\n  \"offset\": 0,\n  \"limit\": 10,\n  \"sort_order\": \"desc\",\n  \"milestone\": [\n    \"773127276f7a4b229f3932d9487c57a9\",\n    \"273b0df9aad347fd8d36ebd8ae0c1cbd\",\n    \"8b32a9b6c03f4bafb8ee22dfcd589943\"\n  ],\n  \"event_id\": [\n    \"7b79728539354f189772a4eab9cc9fff\",\n    \"f835774c48404593b64ef05369eb8eba\",\n    \"78c45f1d523646808032edcff807ca59\"\n  ],\n  \"disease_id\": [\n    \"7af6661c23e8485d9f1dad6a94914fe3\"\n  ],\n  \"country_id\": [\n    \"0dc5d896-7408-3c87-84c0-22e3d9b784be\"\n  ],\n  \"organization_id\": [\n    \"16e33268b7ffba870d1f7a78de820ed5\"\n  ],\n  \"event_start_time\": 20150101,\n  \"event_end_time\": 20251231\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55c67289-c33e-4895-816f-c0a840c6a6e6",
+          "name": "B064-3 Query drug monitoring",
+          "request": {
+            "name": "B064-3 Query drug monitoring",
+            "description": {
+              "content": "Query drug monitoring",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synapse",
+                "alert",
+                "drug_search",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alert_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6439d072-7726-478d-b602-177ea2fae2c1",
+              "name": "Successful b064-3 query drug monitoring response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": true,\n  \"error_code\": 123,\n  \"data\": {\n    \"status\": 0,\n    \"alert_time\": \"string\",\n    \"alert_event_data\": {\n      \"news\": [\n        {\n          \"url\": \"https://www.fda.gov/news/123456\",\n          \"title\": \"FDA Approves New Cancer Drug\",\n          \"newsId\": \"news_123456\"\n        }\n      ],\n      \"paper\": [\n        {\n          \"title\": \"Efficacy of Novel Drug X in Phase II Clinical Trial\",\n          \"journal\": \"Nature Medicine\",\n          \"paperId\": \"paper_123456\"\n        }\n      ],\n      \"patent\": [\n        {\n          \"pn\": \"US10123456B2\",\n          \"titleCn\": \"一种新型抗癌药物化合物\",\n          \"titleEn\": \"Novel Anti-cancer Drug Compound\",\n          \"patentId\": \"patent_123456\"\n        }\n      ],\n      \"news_ids\": [\n        \"id1\",\n        \"id2\",\n        \"id3\"\n      ],\n      \"drug_deal\": [\n        {\n          \"url\": \"https://example.com/deal/123456\",\n          \"dealId\": \"deal_123456\",\n          \"dealTitle\": \"Pfizer Acquires Company X for $2B\"\n        }\n      ],\n      \"paper_ids\": [\n        \"id1\",\n        \"id2\"\n      ],\n      \"drug_added\": [\n        {\n          \"drugId\": \"drug_002\",\n          \"drugIdView\": {\n            \"drugId\": \"drug_002\",\n            \"displayNameCn\": \"伊马替尼\",\n            \"displayNameEn\": \"Imatinib\"\n          }\n        }\n      ],\n      \"event_size\": 25,\n      \"news_count\": 3,\n      \"patent_ids\": [\n        \"id1\",\n        \"id2\",\n        \"id3\",\n        \"id4\"\n      ],\n      \"paper_count\": 2,\n      \"drug_missing\": [\n        {\n          \"drugId\": \"drug_001\",\n          \"drugIdView\": {\n            \"drugId\": \"drug_001\",\n            \"displayNameCn\": \"阿司匹林\",\n            \"displayNameEn\": \"Aspirin\"\n          }\n        }\n      ],\n      \"patent_count\": 4,\n      \"result_count\": 10,\n      \"drug_deal_ids\": [\n        \"id1\"\n      ],\n      \"clinical_trial\": [\n        {\n          \"title\": \"Phase II Study of Drug X in Cancer Patients\",\n          \"registerNumber\": \"NCT12345678\",\n          \"clinicalTrialId\": \"ct_123456\"\n        }\n      ],\n      \"drug_added_ids\": [\n        \"id1\",\n        \"id2\"\n      ],\n      \"drug_deal_count\": 1,\n      \"drug_dev_status\": [\n        {\n          \"drugId\": \"drug_123456\",\n          \"devStatus\": \"phase_ii\",\n          \"eventTypeCn\": \"临床试验进展\",\n          \"eventTypeEn\": \"Clinical Trial Progress\"\n        }\n      ],\n      \"drug_missing_ids\": [\n        \"id1\"\n      ],\n      \"special_approval\": [\n        {\n          \"uuid\": \"uuid_123456789\",\n          \"drugId\": \"drug_123456\",\n          \"eventTypeCn\": \"特殊审批\",\n          \"eventTypeEn\": \"Special Approval\",\n          \"specialReview\": \"fast_track\"\n        }\n      ],\n      \"clinical_trial_ids\": [\n        \"id1\",\n        \"id2\"\n      ],\n      \"result_added_count\": 5,\n      \"drug_dev_status_ids\": [\n        \"id1\",\n        \"id2\",\n        \"id3\"\n      ],\n      \"clinical_trial_count\": 2,\n      \"result_missing_count\": 2,\n      \"special_approval_ids\": [\n        \"id1\"\n      ],\n      \"drug_dev_status_count\": 3,\n      \"special_approval_count\": 1,\n      \"translational_medicine\": [\n        {\n          \"title\": \"Novel Biomarker Discovery in Cancer Research\",\n          \"sourceUrl\": \"https://example.com/source/123456\",\n          \"translationalMedicineId\": \"tm_123456\"\n        }\n      ],\n      \"clinical_trial_result_ids\": [\n        \"id1\"\n      ],\n      \"translational_medicine_ids\": [\n        \"id1\"\n      ],\n      \"translational_medicine_count\": 1\n    },\n    \"total_update_event_count\": 5\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0aa25e56-1645-4c3c-97b0-137ad44daef2",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7352468a-b8b6-4ff9-a11c-658552e4b3f2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dae27e6-94e6-4260-9d5e-455cc8fc5436",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b5d7c30-0f96-4f00-8d8a-39c11b3b9940",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synapse",
+                    "alert",
+                    "drug_search",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alert_id\": \"7b594e7d-34e1-43e6-9674-6ef8c242b721\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20ae21a3-21c8-4954-9800-b391b734a2db",
+    "name": "Patsnap Open Platform AI Translation Drug Visual Analysis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

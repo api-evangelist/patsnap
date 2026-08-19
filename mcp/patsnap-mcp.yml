@@ -3,13 +3,12 @@ method: searched
 status: published
 source: https://open.patsnap.com/marketplace/mcp-servers
 docs: https://open.patsnap.com/devportal/guides/mcp-quickstart
-summary: >-
-  Patsnap operates a hosted (remote) MCP surface as part of the Eureka Open Platform. Each
-  MCP server is a domain-scoped bundle of Patsnap tools (patent search, life-sciences,
-  R&D intelligence) that agents connect to over streamable HTTP. A developer picks a server
-  in the MCP marketplace, generates a per-server connection link bound to their API key, and
-  wires it into an MCP client (Claude Desktop, Cursor, or a custom agent). 26 MCP servers are
-  published across Life Sciences, IP Intelligence and R&D Innovation categories.
+summary: Patsnap operates a hosted (remote) MCP surface as part of the Eureka Open Platform. Each MCP
+  server is a domain-scoped bundle of Patsnap tools (patent search, life-sciences, R&D intelligence) that
+  agents connect to over streamable HTTP. A developer picks a server in the MCP marketplace, generates
+  a per-server connection link bound to their API key, and wires it into an MCP client (Claude Desktop,
+  Cursor, or a custom agent). 26 MCP servers are published across Life Sciences, IP Intelligence and R&D
+  Innovation categories.
 server:
   name: patsnap-eureka
   transport: http
@@ -41,3 +40,10 @@ catalog:
   - name: R&D Innovation
 related:
   agent_skills: https://open.patsnap.com/marketplace/skill-hub
+deployment:
+  mode: remote
+  endpoint: https://connect.patsnap.com/{server_id}/mcp
+  verified: probed
+  probe: http-400
+  checked: '2026-08-12'
+  source: catalog MCP census

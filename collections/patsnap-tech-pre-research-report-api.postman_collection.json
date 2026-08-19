@@ -1,0 +1,892 @@
+{
+  "item": [
+    {
+      "id": "c5efec9d-ec56-4472-857b-4a7490b6b6bd",
+      "name": "Tech Pre-research Report",
+      "description": {
+        "content": "Tech Pre-research Report APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3e12950-a384-4553-a9d7-4696bcaf8b8d",
+          "name": "AI34-2 Quick-search report creation - custom directory(Beta)",
+          "request": {
+            "name": "AI34-2 Quick-search report creation - custom directory(Beta)",
+            "description": {
+              "content": "Based on the input directory related to a certain technology, generate the pre-research report of that technology.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "quick-search-report",
+                "creation",
+                "custom-dir"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"source_type\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"name\": \"<string>\",\n      \"source_type\": \"<string>\"\n    }\n  ],\n  \"report_id\": \"<string>\",\n  \"technical_issues\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8512f6a4-ba26-42e1-be17-2b1dc997f539",
+              "name": "Successful ai34-2 quick-search report creation - custom directory(beta) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation",
+                    "custom-dir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n      \"name\": \"锂电池能量密度背景与目标\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n      \"name\": \"锂电池市场需求分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n      \"name\": \"能量密度提升技术挑战\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n      \"name\": \"锂电池能量密度演进路径\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n      \"name\": \"高能量密度电池企业分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n      \"name\": \"提高能量密度技术方案\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n      \"name\": \"高能量密度电池核心技术\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n      \"name\": \"能量密度提升创新方向\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n      \"name\": \"能量密度与安全性平衡\",\n      \"source_type\": \"customize\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n      \"name\": \"高能量密度电池应用场景\",\n      \"source_type\": \"customize\"\n    }\n  ],\n  \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5215,\n  \"data\": {\n    \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n    \"analysis_directory\": [\n      {\n        \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n        \"name\": \"锂电池能量密度背景与目标\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n        \"name\": \"锂电池市场需求分析\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n        \"name\": \"能量密度提升技术挑战\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n        \"name\": \"锂电池能量密度演进路径\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n        \"name\": \"高能量密度电池企业分析\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n        \"name\": \"提高能量密度技术方案\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n        \"name\": \"高能量密度电池核心技术\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n        \"name\": \"能量密度提升创新方向\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n        \"name\": \"能量密度与安全性平衡\",\n        \"source_type\": \"customize\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n        \"name\": \"高能量密度电池应用场景\",\n        \"source_type\": \"customize\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c639c81-781d-46c6-83ac-7c86ab1f4219",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation",
+                    "custom-dir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n      \"name\": \"锂电池能量密度背景与目标\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n      \"name\": \"锂电池市场需求分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n      \"name\": \"能量密度提升技术挑战\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n      \"name\": \"锂电池能量密度演进路径\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n      \"name\": \"高能量密度电池企业分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n      \"name\": \"提高能量密度技术方案\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n      \"name\": \"高能量密度电池核心技术\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n      \"name\": \"能量密度提升创新方向\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n      \"name\": \"能量密度与安全性平衡\",\n      \"source_type\": \"customize\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n      \"name\": \"高能量密度电池应用场景\",\n      \"source_type\": \"customize\"\n    }\n  ],\n  \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b1fe944-5460-4317-a34f-4f4b5e11c492",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation",
+                    "custom-dir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n      \"name\": \"锂电池能量密度背景与目标\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n      \"name\": \"锂电池市场需求分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n      \"name\": \"能量密度提升技术挑战\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n      \"name\": \"锂电池能量密度演进路径\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n      \"name\": \"高能量密度电池企业分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n      \"name\": \"提高能量密度技术方案\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n      \"name\": \"高能量密度电池核心技术\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n      \"name\": \"能量密度提升创新方向\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n      \"name\": \"能量密度与安全性平衡\",\n      \"source_type\": \"customize\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n      \"name\": \"高能量密度电池应用场景\",\n      \"source_type\": \"customize\"\n    }\n  ],\n  \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c8ab5df-4356-466d-b88b-d7fdd856a29a",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation",
+                    "custom-dir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n      \"name\": \"锂电池能量密度背景与目标\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n      \"name\": \"锂电池市场需求分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n      \"name\": \"能量密度提升技术挑战\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n      \"name\": \"锂电池能量密度演进路径\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n      \"name\": \"高能量密度电池企业分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n      \"name\": \"提高能量密度技术方案\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n      \"name\": \"高能量密度电池核心技术\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n      \"name\": \"能量密度提升创新方向\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n      \"name\": \"能量密度与安全性平衡\",\n      \"source_type\": \"customize\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n      \"name\": \"高能量密度电池应用场景\",\n      \"source_type\": \"customize\"\n    }\n  ],\n  \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e013d19f-4c35-4b2e-9402-9222a3286d56",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation",
+                    "custom-dir"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysis_directory\": [\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n      \"name\": \"锂电池能量密度背景与目标\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n      \"name\": \"锂电池市场需求分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n      \"name\": \"能量密度提升技术挑战\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n      \"name\": \"锂电池能量密度演进路径\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n      \"name\": \"高能量密度电池企业分析\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n      \"name\": \"提高能量密度技术方案\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n      \"name\": \"高能量密度电池核心技术\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n      \"name\": \"能量密度提升创新方向\",\n      \"source_type\": \"model\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n      \"name\": \"能量密度与安全性平衡\",\n      \"source_type\": \"customize\"\n    },\n    {\n      \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n      \"name\": \"高能量密度电池应用场景\",\n      \"source_type\": \"customize\"\n    }\n  ],\n  \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1218625-b657-4c76-8a20-31fc6b565ee8",
+          "name": "AI34-3 Quick-search report Query(Beta)",
+          "request": {
+            "name": "AI34-3 Quick-search report Query(Beta)",
+            "description": {
+              "content": "Query the status of report generation by using the report ID generated through the creation of the pre-research report interface.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "quick-search-report",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "report_id",
+                  "value": "<string>",
+                  "description": "(Required) report_id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb863f2f-dc51-44b2-b68b-15c1cccec673",
+              "name": "Successful ai34-3 quick-search report query(beta) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "report_id",
+                      "value": "f70a279b-c000-4a6d-8319-61672debd623"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 7343,\n  \"data\": {\n    \"report_url\": \"https://cn-patsnap-export.cdn.zhihuiya.com/7/20250226/eureka/scvdd%3D804a58753458dae8017e32ddb27c5d5cc01d285f\",\n    \"report_status\": \"SUCCEED\",\n    \"head_player_analysis\": {\n      \"head_player_analysis\": {}\n    },\n    \"key_patent_interpretation\": {\n      \"key_patent_interpretation\": {}\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164ba677-d85a-4386-a9b3-95fbfeb9dcc3",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "report_id",
+                      "value": "f70a279b-c000-4a6d-8319-61672debd623"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de257fe4-281d-41a9-bc87-59696e1a3a40",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "report_id",
+                      "value": "f70a279b-c000-4a6d-8319-61672debd623"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c231f11-9a56-45d7-80b0-270c68637cd0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "report_id",
+                      "value": "f70a279b-c000-4a6d-8319-61672debd623"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc0205e9-6803-4529-a1c8-ddd8e3c18634",
+          "name": "AI34-1 Quick-search report creation(Beta)",
+          "request": {
+            "name": "AI34-1 Quick-search report creation(Beta)",
+            "description": {
+              "content": "Based on the input question related to a certain technology, generate the pre-research report of that technology.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "quick-search-report",
+                "creation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"technical_issues\": \"<string>\",\n  \"auto_directory\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f625f223-ea3d-4813-a7c4-e785db855dff",
+              "name": "Successful ai34-1 quick-search report creation(beta) response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\",\n  \"auto_directory\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 5841,\n  \"data\": {\n    \"report_id\": \"67bfdb99-fd1c-4a7e-819e-2218f976378c\",\n    \"analysis_directory\": [\n      {\n        \"key\": \"TECH_RESEARCH_TECHNICAL_BACKGROUND\",\n        \"name\": \"锂电池能量密度背景与目标\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_MARKET_ANALYSIS\",\n        \"name\": \"锂电池市场需求分析\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES\",\n        \"name\": \"能量密度提升技术挑战\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_EVOLUTION_PATH\",\n        \"name\": \"锂电池能量密度演进路径\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_HEAD_PLAYER_ANALYSIS\",\n        \"name\": \"高能量密度电池企业分析\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW\",\n        \"name\": \"提高能量密度技术方案\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_KEY_PATENT_INTERPRETATION\",\n        \"name\": \"高能量密度电池核心技术\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_IDEA_SUMMARY\",\n        \"name\": \"能量密度提升创新方向\",\n        \"source_type\": \"model\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_1\",\n        \"name\": \"能量密度与安全性平衡\",\n        \"source_type\": \"customize\"\n      },\n      {\n        \"key\": \"TECH_RESEARCH_CUSTOM_MODULE_2\",\n        \"name\": \"高能量密度电池应用场景\",\n        \"source_type\": \"customize\"\n      }\n    ]\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6ee714b-a95d-4631-8587-743ed53f38a5",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\",\n  \"auto_directory\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7950eb95-61a0-4fae-859f-8520f9ebf846",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\",\n  \"auto_directory\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43c7a2d8-7ef1-4f31-aa74-2fda192e4612",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\",\n  \"auto_directory\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fd7f3ff-e65a-46d4-9039-4986eb600d6c",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "quick-search-report",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"technical_issues\": \"关于提高锂电池能量密度的研究\",\n  \"auto_directory\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "738b777d-2b9a-44ef-863b-6f0a59b60b61",
+    "name": "Patsnap Open Platform AI Translation Tech Pre-research Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

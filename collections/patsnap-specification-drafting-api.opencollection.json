@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Specification Drafting API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Specification Drafting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI37-2 Patent Drafting (CNIPA) - Initialization Summary Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/specification/init-result/cnipa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the input task_id, get initialization result"
+        },
+        {
+          "info": {
+            "name": "AI37-3 Patent Specification Drafting (CNIPA) - Technical Feature Extraction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/specification/extract-feature/cnipa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the task_id and technology category returned by the specification initialization interface, extract the technical feature information of the specification, including feature tree (containing claim features and concept words) and term lists, providing basic data for subsequent report generation."
+        },
+        {
+          "info": {
+            "name": "AI37-1 Patent Drafting (CNIPA) - Initialization Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/specification/init/cnipa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the input disclosure content and claims content, perform specification initialization processing, including sensitive word detection, language detection, obtaining classification numbers, technology type recognition, technical problem/technical methods/technical benefits extraction, embodiment outline generation, etc., and return task_id for subsequent processes."
+        },
+        {
+          "info": {
+            "name": "AI37-4 Patent Specification Drafting (CNIPA) - Report Generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/specification/generate-report/cnipa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the technical features obtained from previous interfaces and complete information input by users (including invention title, classification numbers, technical problems/methods/benefits, feature tree, term lists, embodiments, images, etc.), generate a complete patent specification report, support asynchronous processing, and return task_id for querying generation status."
+        },
+        {
+          "info": {
+            "name": "AI37-5 Patent Specification Drafting (CNIPA) - Report Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/ai/specification/download-report",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Based on the task_id returned by the generate specification report interface, query the report generation status and obtain the download link. After the report generation is completed, the complete patent specification document can be obtained through the returned download link."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

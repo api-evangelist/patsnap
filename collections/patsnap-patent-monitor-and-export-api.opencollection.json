@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Monitor and Export API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Monitor and Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P055 Get Export Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-search/task",
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "query",
+                "description": "Task ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves patent export results based on the specified Task ID. Returns a list of URLs to download files containing search results in the specified file format. Supports up to 100,000 most relevant patents exported."
+        },
+        {
+          "info": {
+            "name": "P059 Delete Patent Monitor Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://connect.patsnap.com/patent-alert/delete",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "query",
+                "description": "monitor project ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete patent monitor project."
+        },
+        {
+          "info": {
+            "name": "P055 Create export task by query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-search/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Allows to search our global patent database using the standard PatSnap search query and retrieve the resulting data in bulk. To find more information about PatSnap search syntax, refer to https://analytics.patsnap.com/search_helper. Allows to select what patent fields should be returned in response to the query and, thus, allows control over the size of the response payload to help optimize performance, fields that are allowed to be exported, the fields and field levels that are allowed to be ex"
+        },
+        {
+          "info": {
+            "name": "P057 Check Monitor Project Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-alert/check",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "query",
+                "description": "monitor project ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check whether the patent monitoring project has patent updates. Return the name of the monitoring project, the type of the monitoring project, the number of patents, and the list of patent_ids."
+        },
+        {
+          "info": {
+            "name": "P056 Create Patent Monitor Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-alert/create",
+            "params": [
+              {
+                "name": "alert_name",
+                "value": "",
+                "type": "query",
+                "description": "monitor name or tag, up to 50 characters"
+              },
+              {
+                "name": "content",
+                "value": "",
+                "type": "query",
+                "description": "1.New patents(new):Alert when a new patent matching the search query is published\n2.New invention(invention):Alert when a new patent that does not belong to an existing family is published\n3.Legal status(legal):Alert when patent legal status changes\n4.Assignment(transfer):Alert if the current assignee of the patent changes\n5.Upcoming expiry date(expired):Alert when patents are within 30 days of the estimated expiry date\n6.Licensing(license):Alert when licensing information has been updated\n7.Litigation(litigation):Alert when litigation information has been updated\nPlease enter the parameter, multiple selections are allowed, and the multiple monitored items are separated by ,."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "query of the monitor project"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create patent monitor project by the standard PatSnap search query. Returns the monitor project ID, the name of the monitored project, and the number of patents initially included."
+        },
+        {
+          "info": {
+            "name": "P058 Edit Patent Monitor Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-alert/update",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "query",
+                "description": "monitor project ID"
+              },
+              {
+                "name": "alert_name",
+                "value": "",
+                "type": "query",
+                "description": "monitor name or tag, up to 50 characters"
+              },
+              {
+                "name": "content",
+                "value": "",
+                "type": "query",
+                "description": "1.New patents(new):Alert when a new patent matching the search query is published\n2.New invention(invention):Alert when a new patent that does not belong to an existing family is published\n3.Legal status(legal):Alert when patent legal status changes\n4.Assignment(transfer):Alert if the current assignee of the patent changes\n5.Upcoming expiry date(expired):Alert when patents are within 30 days of the estimated expiry date\n6.Licensing(license):Alert when licensing information has been updated\n7.Litigation(litigation):Alert when litigation information has been updated\nPlease enter the parameter, multiple selections are allowed, and the multiple monitored items are separated by ,."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "query of the monitor project"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Edit patent monitor project by query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

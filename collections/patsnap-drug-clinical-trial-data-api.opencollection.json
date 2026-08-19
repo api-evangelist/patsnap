@@ -1,0 +1,238 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Drug Clinical Trial Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug Clinical Trial Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "B027 Clinical trial contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/contact",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial contact through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B024 Clinical trial description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/description",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial description through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B022 Clinical trial basic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/detail",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "Register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial basic information through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B026 Clinical trial design",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/design",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial design through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B025 Clinical trial eligibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/eligibility",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial eligibility through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B023 Clinical trial related entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/clinical-trial/related-entity",
+            "params": [
+              {
+                "name": "clinical_trial_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial id, obtain this through clinical trial search interface"
+              },
+              {
+                "name": "register_number",
+                "value": "",
+                "type": "query",
+                "description": "register number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical trial related entity through clinical trial id or registry number"
+        },
+        {
+          "info": {
+            "name": "B032 Drug clinical result basic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/ct-result/detail",
+            "params": [
+              {
+                "name": "ct_result_id",
+                "value": "",
+                "type": "query",
+                "description": "Clinical trial result ID, obtain this through clinical result search interface"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical result data through clinical  result ID"
+        },
+        {
+          "info": {
+            "name": "B048 Drug clinical result group information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/synapse/ct-result/group",
+            "params": [
+              {
+                "name": "ct_result_id",
+                "value": "",
+                "type": "query",
+                "description": "临床结果ID，通过临床结果检索接口获取"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Obtain clinical result group data through clinical  result ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

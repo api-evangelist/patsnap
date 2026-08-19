@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Patsnap Open Platform AI Translation Patent Valuation Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Valuation Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "P040 Economic Indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/economic_indicators",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent economic valuation score data by patent_id or patent_number. This includes the patent increment ratio of IPC class and IPC main group in the last 5 years, and the family stability trend."
+        },
+        {
+          "info": {
+            "name": "P037 Legal Indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/legal_indicators",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent legal valuation score data by patent_id or patent_number. This includes litigation Authority, litigation count, re-examination or invalidation activity, legal status, patent age, remaining life of the patent, and pending time."
+        },
+        {
+          "info": {
+            "name": "P038 Market Indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/market_indicators",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent market valuation score data by patent_id or patent_number. This includes patent type, family size, family authority count, patent cites count, examiner cites count, and reference cites count."
+        },
+        {
+          "info": {
+            "name": "P035 Patent Valuation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/patent_valuation",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent valuation data by patent_id or patent_number. The coverage of patent valuation is global invention patents and utility model patents whose legal status is pending/active (except WO patents). Patent valuation are updated quarterly. This includes patent valuation (US dollar unit), technology value score, strategic value score, market value score, economic value score, and legal value score (scores are out of 100)."
+        },
+        {
+          "info": {
+            "name": "P051 Pre-patent Evaluation - Patentability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/patent_ability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive technology patentability indicators by similar patents list. there include the number of multi-claim patents, the number of patent with re-examination/invalidation, the average validity duration and the granted ratio"
+        },
+        {
+          "info": {
+            "name": "P039 Strategic Indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/strategic_indicators",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent strategic valuation score by patent_id or patent_number. This includes original applicant count, current assignee count, current company assignee ratio, assignee market sales, assignee market competition, assignee market share, inventor count, transfer count, pledge count, and license count."
+        },
+        {
+          "info": {
+            "name": "P036 Technology Indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://connect.patsnap.com/patent-valuation-data/technology_indicators",
+            "params": [
+              {
+                "name": "patent_id",
+                "value": "",
+                "type": "query",
+                "description": "patent_id"
+              },
+              {
+                "name": "patent_number",
+                "value": "",
+                "type": "query",
+                "description": "patent_number"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive patent technology valuation score data by patent_id or patent_number. This includes cited-by count, self citation count, examiner citation categories, claim count, independent claim count, PDF page count, IPC classification count, IPC section count, and IPC main group count."
+        },
+        {
+          "info": {
+            "name": "P053 Pre-patent Evaluation - Operation Situation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/operation_situation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive technology operation situation indicators by similar patents list. there include the number of operated patents, inactive patents and invalid patents and multiple country coverage."
+        },
+        {
+          "info": {
+            "name": "P050 Pre-patent Evaluation - Technological Innovation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/tech_innovation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive technical innovation indicators by similar patents list. there include the number of highly similar patents and the number of highly cited patents in the same family."
+        },
+        {
+          "info": {
+            "name": "P052 Pre-patent Evaluation - Market Prospect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://connect.patsnap.com/patent-valuation-data/market_prospect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Receive technology market prospect indicators by similar patents list. there include the highest patent value、industry development、tech application width and the number of original assignee."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

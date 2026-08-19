@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Tech Pre-research Report API
   version: 1.0.0
@@ -112,46 +112,6 @@ paths:
               $ref: '#/components/schemas/AI34-1QuickSearchReportCreationRequest'
 components:
   schemas:
-    AI34-2CreationCustomDirResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI34-2CreationCustomDir_QuickSearchReportResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI34-3QuickSearchReportQueryResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI34-3QuickSearchReportQuery_QueryQuickSearchReportResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     AI34-1QuickSearchReportCreation_QuickSearchReportResponse:
       type: object
       properties:
@@ -195,70 +155,25 @@ components:
           description: Create the directory of the quick-search report
           items:
             $ref: '#/components/schemas/AI34-1QuickSearchReportCreation_AnalysisDirectoryDTO'
-    AI34-2CreationCustomDir_QuickSearchReportResponse:
+    AI34-1QuickSearchReportCreation_AnalysisDirectoryDTO:
       type: object
       properties:
-        report_id:
+        key:
           type: string
-          example: 67bfdb99-fd1c-4a7e-819e-2218f976378c
-          description: Create the ID of the quick-search report
-        analysis_directory:
-          type: array
-          example:
-          - key: TECH_RESEARCH_TECHNICAL_BACKGROUND
-            name: 锂电池能量密度背景与目标
-            source_type: model
-          - key: TECH_RESEARCH_MARKET_ANALYSIS
-            name: 锂电池市场需求分析
-            source_type: model
-          - key: TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES
-            name: 能量密度提升技术挑战
-            source_type: model
-          - key: TECH_RESEARCH_EVOLUTION_PATH
-            name: 锂电池能量密度演进路径
-            source_type: model
-          - key: TECH_RESEARCH_HEAD_PLAYER_ANALYSIS
-            name: 高能量密度电池企业分析
-            source_type: model
-          - key: TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW
-            name: 提高能量密度技术方案
-            source_type: model
-          - key: TECH_RESEARCH_KEY_PATENT_INTERPRETATION
-            name: 高能量密度电池核心技术
-            source_type: model
-          - key: TECH_RESEARCH_IDEA_SUMMARY
-            name: 能量密度提升创新方向
-            source_type: model
-          - key: TECH_RESEARCH_CUSTOM_MODULE_1
-            name: 能量密度与安全性平衡
-            source_type: customize
-          - key: TECH_RESEARCH_CUSTOM_MODULE_2
-            name: 高能量密度电池应用场景
-            source_type: customize
-          description: Create the directory of the quick-search report
-          items:
-            $ref: '#/components/schemas/AI34-2CreationCustomDir_AnalysisDirectoryDTO'
-    AI34-3QuickSearchReportQuery_QueryQuickSearchReportResponse:
-      type: object
-      properties:
-        report_url:
+          example: TECH_RESEARCH_TECHNICAL_BACKGROUND
+          description: Catalog identifier  TECH_RESEARCH_TECHNICAL_BACKGROUND/TECH_RESEARCH_MARKET_ANALYSIS/TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES/TECH_RESEARCH_EVOLUTION_PATH/TECH_RESEARCH_HEAD_PLAYER_ANALYSIS/TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW/TECH_RESEARCH_KEY_PATENT_INTERPRETATION/TECH_RESEARCH_IDEA_SUMMARY/TECH_RESEARCH_CUSTOM_MODULE_1/TECH_RESEARCH_CUSTOM_MODULE_2 Only TECH_RESEARCH_CUSTOM_MODULE_1/TECH_RESEARCH_CUSTOM_MODULE_2 can be modified
+        name:
           type: string
-          example: https://cn-patsnap-export.cdn.zhihuiya.com/7/20250226/eureka/scvdd%3D804a58753458dae8017e32ddb27c5d5cc01d285f
-          description: URL of the quick-search report
-        report_status:
+          example: 关于提高锂电池能量密度的研究
+          description: Directory name
+        source_type:
           type: string
-          example: SUCCEED
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        head_player_analysis:
-          type: object
-          example:
-            head_player_analysis: {}
-          description: Head player analysis
-        key_patent_interpretation:
-          type: object
-          example:
-            key_patent_interpretation: {}
-          description: Key patent interpretation
+          example: model
+          description: Directory type
+      required:
+      - key
+      - name
+      - source_type
     AI34-2CreationCustomDirRequest:
       type: object
       properties:
@@ -310,38 +225,6 @@ components:
       - analysis_directory
       - report_id
       - technical_issues
-    AI34-1QuickSearchReportCreationRequest:
-      type: object
-      properties:
-        auto_directory:
-          type: boolean
-          example: true
-          description: Whether to automatically generate directories
-        technical_issues:
-          type: string
-          example: 关于提高锂电池能量密度的研究
-          description: Technical issues requiring the creation of quick-search reports
-      required:
-      - technical_issues
-    AI34-1QuickSearchReportCreation_AnalysisDirectoryDTO:
-      type: object
-      properties:
-        key:
-          type: string
-          example: TECH_RESEARCH_TECHNICAL_BACKGROUND
-          description: Catalog identifier  TECH_RESEARCH_TECHNICAL_BACKGROUND/TECH_RESEARCH_MARKET_ANALYSIS/TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES/TECH_RESEARCH_EVOLUTION_PATH/TECH_RESEARCH_HEAD_PLAYER_ANALYSIS/TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW/TECH_RESEARCH_KEY_PATENT_INTERPRETATION/TECH_RESEARCH_IDEA_SUMMARY/TECH_RESEARCH_CUSTOM_MODULE_1/TECH_RESEARCH_CUSTOM_MODULE_2 Only TECH_RESEARCH_CUSTOM_MODULE_1/TECH_RESEARCH_CUSTOM_MODULE_2 can be modified
-        name:
-          type: string
-          example: 关于提高锂电池能量密度的研究
-          description: Directory name
-        source_type:
-          type: string
-          example: model
-          description: Directory type
-      required:
-      - key
-      - name
-      - source_type
     AI34-2CreationCustomDir_AnalysisDirectoryDTO:
       type: object
       properties:
@@ -361,6 +244,102 @@ components:
       - key
       - name
       - source_type
+    AI34-1QuickSearchReportCreationRequest:
+      type: object
+      properties:
+        auto_directory:
+          type: boolean
+          example: true
+          description: Whether to automatically generate directories
+        technical_issues:
+          type: string
+          example: 关于提高锂电池能量密度的研究
+          description: Technical issues requiring the creation of quick-search reports
+      required:
+      - technical_issues
+    AI34-2CreationCustomDir_QuickSearchReportResponse:
+      type: object
+      properties:
+        report_id:
+          type: string
+          example: 67bfdb99-fd1c-4a7e-819e-2218f976378c
+          description: Create the ID of the quick-search report
+        analysis_directory:
+          type: array
+          example:
+          - key: TECH_RESEARCH_TECHNICAL_BACKGROUND
+            name: 锂电池能量密度背景与目标
+            source_type: model
+          - key: TECH_RESEARCH_MARKET_ANALYSIS
+            name: 锂电池市场需求分析
+            source_type: model
+          - key: TECH_RESEARCH_TECHNOLOGY_STATUS_CHALLENGES
+            name: 能量密度提升技术挑战
+            source_type: model
+          - key: TECH_RESEARCH_EVOLUTION_PATH
+            name: 锂电池能量密度演进路径
+            source_type: model
+          - key: TECH_RESEARCH_HEAD_PLAYER_ANALYSIS
+            name: 高能量密度电池企业分析
+            source_type: model
+          - key: TECH_RESEARCH_TECHNICAL_SCHEME_REVIEW
+            name: 提高能量密度技术方案
+            source_type: model
+          - key: TECH_RESEARCH_KEY_PATENT_INTERPRETATION
+            name: 高能量密度电池核心技术
+            source_type: model
+          - key: TECH_RESEARCH_IDEA_SUMMARY
+            name: 能量密度提升创新方向
+            source_type: model
+          - key: TECH_RESEARCH_CUSTOM_MODULE_1
+            name: 能量密度与安全性平衡
+            source_type: customize
+          - key: TECH_RESEARCH_CUSTOM_MODULE_2
+            name: 高能量密度电池应用场景
+            source_type: customize
+          description: Create the directory of the quick-search report
+          items:
+            $ref: '#/components/schemas/AI34-2CreationCustomDir_AnalysisDirectoryDTO'
+    AI34-2CreationCustomDirResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI34-2CreationCustomDir_QuickSearchReportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI34-3QuickSearchReportQueryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI34-3QuickSearchReportQuery_QueryQuickSearchReportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI34-1QuickSearchReportCreationResponse:
       type: object
       properties:
@@ -381,6 +360,27 @@ components:
       required:
       - status
       - error_code
+    AI34-3QuickSearchReportQuery_QueryQuickSearchReportResponse:
+      type: object
+      properties:
+        report_url:
+          type: string
+          example: https://cn-patsnap-export.cdn.zhihuiya.com/7/20250226/eureka/scvdd%3D804a58753458dae8017e32ddb27c5d5cc01d285f
+          description: URL of the quick-search report
+        report_status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        head_player_analysis:
+          type: object
+          example:
+            head_player_analysis: {}
+          description: Head player analysis
+        key_patent_interpretation:
+          type: object
+          example:
+            key_patent_interpretation: {}
+          description: Key patent interpretation
   securitySchemes:
     bearerAuth:
       type: http

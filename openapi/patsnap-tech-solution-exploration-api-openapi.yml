@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Tech Solution Exploration API
   version: 1.0.0
@@ -210,27 +210,7 @@ paths:
               $ref: '#/components/schemas/AI33-6Step5V3Request'
 components:
   schemas:
-    AI33-2Step2V3Response:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI33-2Step2V3_FindSolutionRecommendResponseV3'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI33-6Step5V3Request:
+    AI33-2Step2V3Request:
       type: object
       properties:
         task_id:
@@ -239,39 +219,29 @@ components:
           description: Task id
       required:
       - task_id
-    AI33-4Step3QueryV3Response:
+    AI33-2Step2V3_FindSolutionRecommendResponseV3:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI33-4Step3QueryV3_FindSolutionDirectionResponseV3'
         status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI33-6Step5V3_EurekaMindPosition:
+          example: RUNNING
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        recommend:
+          type: array
+          example:
+          - 成本增幅≤15%
+          - 安全性能不降低
+          - 产线兼容改造
+          description: Recommended item
+    AI33-6Step5V3_FindSolutionResultResponseV3:
       type: object
       properties:
-        x:
-          type: integer
-          format: int32
-          example: 370
-          description: X coordinate of the node on the canvas
-        y:
-          type: integer
-          format: int32
-          example: 132
-          description: Y coordinate of the node on the canvas
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        solution:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindData'
     AI33-6Step5V3_OrgInfo:
       type: object
       properties:
@@ -361,173 +331,26 @@ components:
           type: string
           example: Education
           description: Normalized entity type (English)
-    AI33-5Step4V3Request:
+    AI33-6Step5V3Response:
       type: object
       properties:
-        directions:
-          type: array
-          example:
-          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-            ticked: true
-            approaches:
-            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
-            source_type: model
-            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
-          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
-            ticked: true
-            approaches:
-            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
-            source_type: model
-            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
-          description: Technical direction
-          items:
-            $ref: '#/components/schemas/AI33-5Step4V3_Direction'
-        lang:
-          type: string
-          example: cn
-          description: text language, support cn and en
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of find solution
-      required:
-      - lang
-      - task_id
-    AI33-5Step4V3_Direction:
-      type: object
-      properties:
-        approaches:
-          type: array
-          example:
-          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
-          description: List of technical approaches or implementation paths
-        reason:
-          type: string
-          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-          description: Reason or rationale for the technical direction
-        source_type:
-          type: string
-          example: model
-          description: Data source type(model/customize)
-        ticked:
-          type: boolean
-          example: true
-          description: Whether it is selected or ticked
-        verification:
-          type: string
-          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
-          description: Verification description of the technical direction
-    AI33-2Step2V3Request:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    AI33-6Step5V3_EurekaMindCellData:
-      type: object
-      properties:
-        initd:
-          type: boolean
-          example: true
-          description: Whether it has been initialized
-        order:
-          type: string
-          example: 1
-          description: Node sorting number, used to identify the level of the node in the mind map
+        data:
+          $ref: '#/components/schemas/AI33-6Step5V3_FindSolutionResultResponseV3'
         status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: success
-          description: Node status, such as success indicating successful generation
-        node_id:
-          type: string
-          example: 4e2660fb9e04166b28b835c4d46c5bd1
-          description: Unique identifier of the node
-        route_id:
-          type: string
-          example: 4e2660fb9e04166b28b835c4d46c5bd1
-          description: Route identifier, associated with the parent node
-        reference:
-          type: array
-          example:
-          - PN: CN116026514A
-            APD: 29 Mar 2023
-            PBD: ''
-            TITLE: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
-            CONTENT: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
-            ORG_INFO:
-            - id: c2622ff840571e887a776e07b192ee06
-              logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
-              name: Wuhan University of Technology
-              site: www.whut.edu.cn
-              name_cn: 武汉理工大学
-              name_en: Wuhan University of Technology
-              website: http://www.whut.edu.cn
-              state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
-              entity_id: c2622ff840571e887a776e07b192ee06
-              country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
-              state_name: Hubei Sheng
-              description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
-              entity_type: Education
-              country_name: China
-              display_name: Wuhan University of Technology
-              founded_date: 19480101
-              headquarters:
-                state: 湖北省
-                country: 中国
-                location: 湖北省武汉市洪山区珞狮路122号
-              normalized_name: WUHAN UNIV OF TECH
-              original_address:
-                state: 湖北省
-                country: 中国
-                location: 湖北省武汉市洪山区珞狮路122号
-              normalized_entity_type_en: Education
-            SOLUTION_ID: 83d60b08-83e9-4d17-9b57-955290e53b1e
-            SOLUTION_TYPE: PATENT
-          - PN: ''
-            APD: ''
-            PBD: '2019-08-12'
-            TITLE: Ultraminiature and Flexible Sensor Based on Interior Corner Flow for Direct Pressure Sensing in Biofluids
-            CONTENT: <jats:title>Abstract</jats:title><jats:p>Conventional pressure sensing devices are well developed for either indirect evaluation or internal measuring of fluid pressure over millimeter scale. Whereas, specialized pressure sensors that can directly work in various liquid environments at micrometer scale remain challenging and rarely explored, but are of great importance in many biomedical applications. Here, pressure sensor technology that utilizes capillary action to self‐assemble the pressure‐sensitive element is introduced. Sophisticated control of capillary flow, tunable sensitivity to liquid pressure in various mediums, and multiple transduction modes are realized in a polymer device, which is also flexible (thickness of 8 µm), ultraminiature (effective volume of 18 × 100 × 580 µm<jats:sup>3</jats:sup>), and transparent, enabling the sensor to work in some extreme situations, such as in narrow inner spaces (e.g., a microchannel of 220 µm in width and 100 µm in height), or on the surface of small objects (e.g., a 380 µm diameter needle). Potential applications of this sensor include disposables for in vivo and short‐term measurements.</jats:p>
-            ORG_INFO: []
-            SOLUTION_ID: fcebd80d-19ce-3b6c-9bc7-f2ee3a0be021
-            SOLUTION_TYPE: PAPER
-          description: Reference list, including related patents, papers and other reference materials
-          items:
-            $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindDataReference'
-        sys_title:
-          type: string
-          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
-          description: System-generated title
-        innovation:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
           type: integer
-          format: int32
-          example: 1
-          description: Innovation level, the higher the value, the higher the degree of innovation
-        route_name:
-          type: string
-          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
-          description: Route name, the title of the parent node
-        sys_content:
-          type: string
-          example: 基于<strong>压电薄膜传感技术</strong>，设计一种集成于腹腔镜前端的力反馈系统。采用PVDF压电薄膜传感器（厚度仅8μm，有效体积18×100×580μm³），通过电荷放大器将微弱力信号转化为电压信号，实现0.01N级别高精度力检测。传感器采用柔性印刷电路(FPC)技术制造，确保在湿润环境中稳定工作。信号经四阶Butterworth低通滤波器处理后，通过16位模数转换器数字化，实现<10ms的响应时间。系统在腹腔镜前端形成一个不超过2mm厚的感应层，能够精确检测0.01-5N范围内的接触力，并通过无线传输模块将力信息实时反馈至操作手柄，帮助医生精确感知组织接触力度，提高手术安全性。
-          description: System-generated content, including detailed description of technical solutions
-        improvements:
-          type: array
-          example:
-          - 本发明的力反馈机构能够更加直观、精准地模拟手术过程，提高训练者的训练效果，同时结构简单、操作便利，生产成本低。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="81e454d3-c795-4c81-8dae-d4a509fb8618" >1</mind-ref-tip>
-          - 仿真练习器械通过力反馈装置获取旋转角度和直线位移参数，克服机械结构限制，提高手术训练效果。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="be9143a0-ae7c-40ce-90ca-4bebcb861d29" >2</mind-ref-tip>
-          description: List of improvement suggestions, including improvement suggestions for the solution
-        tech_version:
-          type: string
-          example: 2
-          description: Technology version number
-        sys_sub_content:
-          type: string
-          example: 【核心矛盾】在腹腔镜有限空间内集成高精度力反馈系统，既要保证力反馈精度和实时性，又不能显著增加器械重量和体积
-          description: System sub-content, supplementary description of core contradictions and other information
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI33-4Step3QueryV3_FindSolutionDirectionResponseV3:
       type: object
       properties:
@@ -553,66 +376,11 @@ components:
           description: Technical direction
           items:
             $ref: '#/components/schemas/AI33-4Step3QueryV3_Direction'
-    AI33-2Step2V3_FindSolutionRecommendResponseV3:
-      type: object
-      properties:
-        status:
-          type: string
-          example: RUNNING
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        recommend:
-          type: array
-          example:
-          - 成本增幅≤15%
-          - 安全性能不降低
-          - 产线兼容改造
-          description: Recommended item
-    AI33-6Step5V3_EurekaMindCellReference:
-      type: object
-      properties:
-        cell:
-          type: string
-          example: 0f26fa4e9305ef86db199ba4d116f233
-          description: Unique identifier of the referenced node
-      required:
-      - cell
-    AI33-4Step3QueryV3Request:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    AI33-6Step5V3_Address:
-      type: object
-      properties:
-        city:
-          type: string
-          example: 武汉市
-          description: City
-        state:
-          type: string
-          example: 湖北省
-          description: State/Province
-        country:
-          type: string
-          example: 中国
-          description: Country
-        district:
-          type: string
-          example: 洪山区
-          description: District/County
-        location:
-          type: string
-          example: 湖北省武汉市洪山区珞狮路122号
-          description: Detailed address location
-    AI33-3Step3SubmitV3Response:
+    AI33-4Step3QueryV3Response:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI33-3Step3SubmitV3_AsyncTaskIdResponse'
+          $ref: '#/components/schemas/AI33-4Step3QueryV3_FindSolutionDirectionResponseV3'
         status:
           type: boolean
           example: 'false'
@@ -628,112 +396,11 @@ components:
       required:
       - status
       - error_code
-    AI33-5Step4V3_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI33-1Step1V3Response:
+    AI33-5Step4V3Response:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI33-1Step1V3_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI33-6Step5V3_EurekaMindCell:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 0f26fa4e9305ef86db199ba4d116f233
-          description: Unique identifier of the node
-        data:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellData'
-        size:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindSize'
-        view:
-          type: string
-          example: vue-shape-view
-          description: View type, defining how the node is rendered
-        shape:
-          type: string
-          example: idea-node
-          description: Node shape type, such as idea-node, solution-node, default-edge, etc.
-        source:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellReference'
-        target:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellReference'
-        z_index:
-          type: integer
-          format: int32
-          example: 1000
-          description: Layer index of the node on the Z-axis
-        position:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindPosition'
-    AI33-1Step1V3_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI33-4Step3QueryV3_Direction:
-      type: object
-      properties:
-        reason:
-          type: string
-          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-          description: Reason or rationale for the technical direction
-        ticked:
-          type: boolean
-          example: true
-          description: Whether it is selected or ticked
-        approaches:
-          type: array
-          example:
-          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
-          description: List of technical approaches or implementation paths
-        source_type:
-          type: string
-          example: model
-          description: Data source type(model/customize)
-        verification:
-          type: string
-          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
-          description: Verification description of the technical direction
-    AI33-6Step5V3_EurekaMindSize:
-      type: object
-      properties:
-        width:
-          type: integer
-          format: int32
-          example: 300
-          description: Width of the node (pixels)
-        height:
-          type: integer
-          format: int32
-          example: 64
-          description: Height of the node (pixels)
-    AI33-6Step5V3Response:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI33-6Step5V3_FindSolutionResultResponseV3'
+          $ref: '#/components/schemas/AI33-5Step4V3_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -756,27 +423,6 @@ components:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
-    AI33-3Step3SubmitV3Request:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: cn
-          description: text language, support cn and en
-        recommend:
-          type: array
-          example:
-          - 成本增幅≤15%
-          - 安全性能不降低
-          - 产线兼容改造
-          description: Recommended item
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of find solution
-      required:
-      - lang
-      - task_id
     AI33-6Step5V3_EurekaMindData:
       type: object
       properties:
@@ -945,6 +591,171 @@ components:
       required:
       - cells
       - title
+    AI33-6Step5V3_Address:
+      type: object
+      properties:
+        city:
+          type: string
+          example: 武汉市
+          description: City
+        state:
+          type: string
+          example: 湖北省
+          description: State/Province
+        country:
+          type: string
+          example: 中国
+          description: Country
+        district:
+          type: string
+          example: 洪山区
+          description: District/County
+        location:
+          type: string
+          example: 湖北省武汉市洪山区珞狮路122号
+          description: Detailed address location
+    AI33-5Step4V3_Direction:
+      type: object
+      properties:
+        approaches:
+          type: array
+          example:
+          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
+          description: List of technical approaches or implementation paths
+        reason:
+          type: string
+          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+          description: Reason or rationale for the technical direction
+        source_type:
+          type: string
+          example: model
+          description: Data source type(model/customize)
+        ticked:
+          type: boolean
+          example: true
+          description: Whether it is selected or ticked
+        verification:
+          type: string
+          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
+          description: Verification description of the technical direction
+    AI33-3Step3SubmitV3Request:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        recommend:
+          type: array
+          example:
+          - 成本增幅≤15%
+          - 安全性能不降低
+          - 产线兼容改造
+          description: Recommended item
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of find solution
+      required:
+      - lang
+      - task_id
+    AI33-6Step5V3Request:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI33-6Step5V3_EurekaMindPosition:
+      type: object
+      properties:
+        x:
+          type: integer
+          format: int32
+          example: 370
+          description: X coordinate of the node on the canvas
+        y:
+          type: integer
+          format: int32
+          example: 132
+          description: Y coordinate of the node on the canvas
+    AI33-1Step1V3_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI33-6Step5V3_EurekaMindCellReference:
+      type: object
+      properties:
+        cell:
+          type: string
+          example: 0f26fa4e9305ef86db199ba4d116f233
+          description: Unique identifier of the referenced node
+      required:
+      - cell
+    AI33-5Step4V3Request:
+      type: object
+      properties:
+        directions:
+          type: array
+          example:
+          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+            ticked: true
+            approaches:
+            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
+            source_type: model
+            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
+          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
+            ticked: true
+            approaches:
+            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
+            source_type: model
+            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
+          description: Technical direction
+          items:
+            $ref: '#/components/schemas/AI33-5Step4V3_Direction'
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of find solution
+      required:
+      - lang
+      - task_id
+    AI33-5Step4V3_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI33-3Step3SubmitV3Response:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI33-3Step3SubmitV3_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI33-1Step1V3Request:
       type: object
       properties:
@@ -959,6 +770,184 @@ components:
       required:
       - lang
       - solution_issues
+    AI33-6Step5V3_EurekaMindSize:
+      type: object
+      properties:
+        width:
+          type: integer
+          format: int32
+          example: 300
+          description: Width of the node (pixels)
+        height:
+          type: integer
+          format: int32
+          example: 64
+          description: Height of the node (pixels)
+    AI33-6Step5V3_EurekaMindCell:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 0f26fa4e9305ef86db199ba4d116f233
+          description: Unique identifier of the node
+        data:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellData'
+        size:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindSize'
+        view:
+          type: string
+          example: vue-shape-view
+          description: View type, defining how the node is rendered
+        shape:
+          type: string
+          example: idea-node
+          description: Node shape type, such as idea-node, solution-node, default-edge, etc.
+        source:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellReference'
+        target:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindCellReference'
+        z_index:
+          type: integer
+          format: int32
+          example: 1000
+          description: Layer index of the node on the Z-axis
+        position:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindPosition'
+    AI33-6Step5V3_EurekaMindCellData:
+      type: object
+      properties:
+        initd:
+          type: boolean
+          example: true
+          description: Whether it has been initialized
+        order:
+          type: string
+          example: 1
+          description: Node sorting number, used to identify the level of the node in the mind map
+        status:
+          type: string
+          example: success
+          description: Node status, such as success indicating successful generation
+        node_id:
+          type: string
+          example: 4e2660fb9e04166b28b835c4d46c5bd1
+          description: Unique identifier of the node
+        route_id:
+          type: string
+          example: 4e2660fb9e04166b28b835c4d46c5bd1
+          description: Route identifier, associated with the parent node
+        reference:
+          type: array
+          example:
+          - PN: CN116026514A
+            APD: 29 Mar 2023
+            PBD: ''
+            TITLE: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
+            CONTENT: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
+            ORG_INFO:
+            - id: c2622ff840571e887a776e07b192ee06
+              logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
+              name: Wuhan University of Technology
+              site: www.whut.edu.cn
+              name_cn: 武汉理工大学
+              name_en: Wuhan University of Technology
+              website: http://www.whut.edu.cn
+              state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
+              entity_id: c2622ff840571e887a776e07b192ee06
+              country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+              state_name: Hubei Sheng
+              description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
+              entity_type: Education
+              country_name: China
+              display_name: Wuhan University of Technology
+              founded_date: 19480101
+              headquarters:
+                state: 湖北省
+                country: 中国
+                location: 湖北省武汉市洪山区珞狮路122号
+              normalized_name: WUHAN UNIV OF TECH
+              original_address:
+                state: 湖北省
+                country: 中国
+                location: 湖北省武汉市洪山区珞狮路122号
+              normalized_entity_type_en: Education
+            SOLUTION_ID: 83d60b08-83e9-4d17-9b57-955290e53b1e
+            SOLUTION_TYPE: PATENT
+          - PN: ''
+            APD: ''
+            PBD: '2019-08-12'
+            TITLE: Ultraminiature and Flexible Sensor Based on Interior Corner Flow for Direct Pressure Sensing in Biofluids
+            CONTENT: <jats:title>Abstract</jats:title><jats:p>Conventional pressure sensing devices are well developed for either indirect evaluation or internal measuring of fluid pressure over millimeter scale. Whereas, specialized pressure sensors that can directly work in various liquid environments at micrometer scale remain challenging and rarely explored, but are of great importance in many biomedical applications. Here, pressure sensor technology that utilizes capillary action to self‐assemble the pressure‐sensitive element is introduced. Sophisticated control of capillary flow, tunable sensitivity to liquid pressure in various mediums, and multiple transduction modes are realized in a polymer device, which is also flexible (thickness of 8 µm), ultraminiature (effective volume of 18 × 100 × 580 µm<jats:sup>3</jats:sup>), and transparent, enabling the sensor to work in some extreme situations, such as in narrow inner spaces (e.g., a microchannel of 220 µm in width and 100 µm in height), or on the surface of small objects (e.g., a 380 µm diameter needle). Potential applications of this sensor include disposables for in vivo and short‐term measurements.</jats:p>
+            ORG_INFO: []
+            SOLUTION_ID: fcebd80d-19ce-3b6c-9bc7-f2ee3a0be021
+            SOLUTION_TYPE: PAPER
+          description: Reference list, including related patents, papers and other reference materials
+          items:
+            $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindDataReference'
+        sys_title:
+          type: string
+          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
+          description: System-generated title
+        innovation:
+          type: integer
+          format: int32
+          example: 1
+          description: Innovation level, the higher the value, the higher the degree of innovation
+        route_name:
+          type: string
+          example: 通过传感器微型化与集成优化增强腹腔镜对细微力变化的感知能力
+          description: Route name, the title of the parent node
+        sys_content:
+          type: string
+          example: 基于<strong>压电薄膜传感技术</strong>，设计一种集成于腹腔镜前端的力反馈系统。采用PVDF压电薄膜传感器（厚度仅8μm，有效体积18×100×580μm³），通过电荷放大器将微弱力信号转化为电压信号，实现0.01N级别高精度力检测。传感器采用柔性印刷电路(FPC)技术制造，确保在湿润环境中稳定工作。信号经四阶Butterworth低通滤波器处理后，通过16位模数转换器数字化，实现<10ms的响应时间。系统在腹腔镜前端形成一个不超过2mm厚的感应层，能够精确检测0.01-5N范围内的接触力，并通过无线传输模块将力信息实时反馈至操作手柄，帮助医生精确感知组织接触力度，提高手术安全性。
+          description: System-generated content, including detailed description of technical solutions
+        improvements:
+          type: array
+          example:
+          - 本发明的力反馈机构能够更加直观、精准地模拟手术过程，提高训练者的训练效果，同时结构简单、操作便利，生产成本低。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="81e454d3-c795-4c81-8dae-d4a509fb8618" >1</mind-ref-tip>
+          - 仿真练习器械通过力反馈装置获取旋转角度和直线位移参数，克服机械结构限制，提高手术训练效果。<mind-ref-tip data-node-id="7a465947259619d0314c588fc93b87c1" data-ref-id="be9143a0-ae7c-40ce-90ca-4bebcb861d29" >2</mind-ref-tip>
+          description: List of improvement suggestions, including improvement suggestions for the solution
+        tech_version:
+          type: string
+          example: 2
+          description: Technology version number
+        sys_sub_content:
+          type: string
+          example: 【核心矛盾】在腹腔镜有限空间内集成高精度力反馈系统，既要保证力反馈精度和实时性，又不能显著增加器械重量和体积
+          description: System sub-content, supplementary description of core contradictions and other information
+    AI33-4Step3QueryV3_Direction:
+      type: object
+      properties:
+        reason:
+          type: string
+          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+          description: Reason or rationale for the technical direction
+        ticked:
+          type: boolean
+          example: true
+          description: Whether it is selected or ticked
+        approaches:
+          type: array
+          example:
+          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
+          description: List of technical approaches or implementation paths
+        source_type:
+          type: string
+          example: model
+          description: Data source type(model/customize)
+        verification:
+          type: string
+          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
+          description: Verification description of the technical direction
+    AI33-4Step3QueryV3Request:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
     AI33-6Step5V3_EurekaMindDataReference:
       type: object
       properties:
@@ -1022,11 +1011,11 @@ components:
           type: string
           example: PATENT
           description: Solution type, such as PATENT or PAPER
-    AI33-5Step4V3Response:
+    AI33-1Step1V3Response:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI33-5Step4V3_AsyncTaskIdResponse'
+          $ref: '#/components/schemas/AI33-1Step1V3_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -1042,15 +1031,26 @@ components:
       required:
       - status
       - error_code
-    AI33-6Step5V3_FindSolutionResultResponseV3:
+    AI33-2Step2V3Response:
       type: object
       properties:
+        data:
+          $ref: '#/components/schemas/AI33-2Step2V3_FindSolutionRecommendResponseV3'
         status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: SUCCEED
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        solution:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindData'
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http

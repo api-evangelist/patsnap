@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "9c88cc79-116f-406c-a616-bc12c1e21433",
+      "name": "Technical Q&A",
+      "description": {
+        "content": "Technical Q&A APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6409c4cc-db44-4da8-9726-6979332072e2",
+          "name": "AI36-1 Technical Q&A - Submit Task",
+          "request": {
+            "name": "AI36-1 Technical Q&A - Submit Task",
+            "description": {
+              "content": "Submit AI Q&A task based on technical question. The system will automatically perform question analysis, knowledge retrieval and answer generation. Task is executed asynchronously, returns task_id for subsequent polling to get results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "technical-qa",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"model\": \"<string>\",\n  \"rag_source\": \"<array>\",\n  \"summary_check\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b12b4079-4338-4928-9e6d-049392c67c09",
+              "name": "Successful ai36-1 technical q&a - submit task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何提升多语言专利文献的语义相似度计算准确率\",\n  \"lang\": \"cn\",\n  \"model\": \"seekgpt-thinking\",\n  \"rag_source\": [\n    \"patent\",\n    \"paper\",\n    \"website\"\n  ],\n  \"summary_check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 6342,\n  \"data\": {\n    \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2afc0f4c-cf6f-4f38-b624-41e14fb073fe",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何提升多语言专利文献的语义相似度计算准确率\",\n  \"lang\": \"cn\",\n  \"model\": \"seekgpt-thinking\",\n  \"rag_source\": [\n    \"patent\",\n    \"paper\",\n    \"website\"\n  ],\n  \"summary_check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a34b13a-d907-4b79-9027-95e8302574fc",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何提升多语言专利文献的语义相似度计算准确率\",\n  \"lang\": \"cn\",\n  \"model\": \"seekgpt-thinking\",\n  \"rag_source\": [\n    \"patent\",\n    \"paper\",\n    \"website\"\n  ],\n  \"summary_check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adb534b0-f1da-4b40-8060-464fe5b890d6",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何提升多语言专利文献的语义相似度计算准确率\",\n  \"lang\": \"cn\",\n  \"model\": \"seekgpt-thinking\",\n  \"rag_source\": [\n    \"patent\",\n    \"paper\",\n    \"website\"\n  ],\n  \"summary_check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7a125b5-5313-44e1-b0a0-6983c5e8bce0",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"如何提升多语言专利文献的语义相似度计算准确率\",\n  \"lang\": \"cn\",\n  \"model\": \"seekgpt-thinking\",\n  \"rag_source\": [\n    \"patent\",\n    \"paper\",\n    \"website\"\n  ],\n  \"summary_check\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a70988d5-1c14-423e-8264-ed9092e2f9d6",
+          "name": "AI36-2 Technical Q&A - Query Task",
+          "request": {
+            "name": "AI36-2 Technical Q&A - Query Task",
+            "description": {
+              "content": "Based on the task_id returned by [AI36-1] submit task API, poll to get the execution result of technical Q&A task. Returns: task status, question analysis results, references and complete answer content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai",
+                "technical-qa",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58cfe4f3-9bb6-4147-950e-9a8788384ae1",
+              "name": "Successful ai36-2 technical q&a - query task response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false,\n  \"error_code\": 9148,\n  \"data\": {\n    \"task_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"task_status\": 2,\n    \"split_query\": {\n      \"query\": [\n        \"BERT模型在专利文献命名实体识别中的应用\",\n        \"专利文献命名实体识别的特点和挑战\",\n        \"BERT模型用于命名实体识别的优化方法和改进策略\"\n      ],\n      \"concept\": [\n        \"专利文献\",\n        \"命名实体识别\",\n        \"BERT模型\",\n        \"优化方法\"\n      ]\n    },\n    \"message_response\": {\n      \"title\": \"专利文献中命名实体识别的BERT模型优化方法有哪些\",\n      \"modules\": [\n        \"SUMMARY\",\n        \"APPLICATION\",\n        \"RECOMMEND\"\n      ],\n      \"summary\": \"### 命名实体识别中BERT模型的优化方法\\\\n\\\\n命名实体识别（NER）是自然语言处理的核心任务，旨在从文本中识别并分类实体（如人名、地名、机构名）。BERT（Bidirectional Encoder Representations from Transformers）模型通过预训练和微调，在NER任务中展现了卓越性能...\",\n      \"recommend\": [\n        \"如何在专利文献中进一步优化BERT模型的位置注意力机制，以提高命名实体识别的效率和准确性？\",\n        \"在专利文献中，针对低资源环境，如何有效结合轻量级模型和知识图谱注入来提升命名实体识别的性能？\",\n        \"在专利文献中，如何评估和比较不同词典增强策略（如顺序词典增强）对BERT模型命名实体识别性能的影响？\",\n        \"在专利文献中，如何通过模型拆分与服务化架构优化BERT模型以适应移动端或低资源环境下的命名实体识别任务？\",\n        \"在专利文献中，如何结合多任务学习和对抗训练来增强BERT模型在命名实体识别任务中的鲁棒性和泛化能力？\"\n      ],\n      \"references\": [\n        {\n          \"APD\": \"\",\n          \"PBD\": \"2025-05-06\",\n          \"LINK\": \"https://eureka.zhihuiya.com/literature/#/?paperId=b2e8bd4d-a01b-48b5-b44e-83ff4eb544a1\",\n          \"TITLE\": \"高效基于BERT的命名实体识别的位置关注\",\n          \"CONTENT\": \"本文介绍了一个命名实体识别(NER)的框架,该框架利用自然语言处理(NLP)中变形金刚(BERT)模型的双向编码器表示...\",\n          \"SOLUTION_ID\": \"b2e8bd4d-a01b-48b5-b44e-83ff4eb544a1\",\n          \"SOLUTION_TYPE\": \"PAPER\",\n          \"PDF_IMAGE_COUNT\": 0\n        },\n        {\n          \"APD\": \"2020-11-09\",\n          \"PBD\": \"2024-03-01\",\n          \"LINK\": \"https://eureka.zhihuiya.com/view/#/fullText'figures/?patentId=a8935c31-bf83-461d-bc05-2fd7a110c80e\",\n          \"TITLE\": \"用于命名实体识别的改进BERT训练模型及命名实体识别方法\",\n          \"CONTENT\": \"通过在BERT模型中增加强化位置编码层和分类层，增强位置编码信息，解决了BERT模型中位置编码信息弱化导致的实体标签预测错误问题，提高了命名实体识别的准确性和召回率。\",\n          \"SOLUTION_ID\": \"a8935c31-bf83-461d-bc05-2fd7a110c80e\",\n          \"SOLUTION_TYPE\": \"PATENT\",\n          \"PDF_IMAGE_COUNT\": 6\n        }\n      ],\n      \"application\": [\n        [\n          \"产品/项目\",\n          \"技术成效\",\n          \"适用场景\"\n        ],\n        [\n          \"改进BERT命名实体识别模型<br/><span class='org-hit' org-id='37e3e5a882bc2bfd36fbc3754171e311'>武汉数博科技有限责任公司</span>\",\n          \"通过增加强化位置编码层和分类层，增强位置编码信息，提高了命名实体识别的准确性和召回率 <seek-ref-tip data-ref-id='9' >9</seek-ref-tip>\",\n          \"专利文献中的命名实体识别任务，需要精确识别实体标签的场景\"\n        ],\n        [\n          \"命名实体识别系统<br/><span class='org-hit' org-id='05fce7c74b3cf9f248fe5997053139a0'>北京沃东天骏信息技术有限公司</span>\",\n          \"通过拆分BERT子模型为BERT词向量生成服务和下游机器学习子模型，解决了BERT模型复杂性导致的高性能设备依赖问题，实现了在常规性能设备上高效准确的命名实体识别 <seek-ref-tip data-ref-id='10' >10</seek-ref-tip>\",\n          \"资源受限的常规性能设备环境，需要高效部署命名实体识别服务的场景\"\n        ]\n      ],\n      \"check_summary\": \"### 命名实体识别中BERT模型的优化方法\\\\n\\\\n命名实体识别（NER）是自然语言处理的核心任务，旨在从文本中识别并分类实体（如人名、地名、机构名）。<seek-check-reject-tip data-ref-id='2dc0d0c9-251c-4eba-9d9c-01a99eec0226'>BERT模型通过预训练和微调，在NER任务中展现了卓越性能...</seek-check-reject-tip>\",\n      \"summary_think\": \"首先，用户的问题是：\\\"专利文献中命名实体识别的BERT模型优化方法有哪些\\\"。用户是研发专家，所以我需要提供专业、深入的内容，参考我们平台的数据处理专业标签体系，比如从解决的问题、使用的手段、达到的效果（性能+数值）、应用领域等角度来组织。\",\n      \"agent_suggestion\": \"如何在保持BERT模型NER识别精度(F1>95%)的前提下,将计算资源消耗降低70%以上,同时实现跨领域迁移时无需大规模标注数据即可快速适配新场景?\",\n      \"tech_mind_suggestion\": \"如何在保持BERT模型NER识别精度(F1>95%)的前提下,将计算资源消耗降低70%以上,同时实现跨领域迁移时无需大规模标注数据即可快速适配新场景?\",\n      \"agent_suggestion_scene\": \"TECH_MIND\"\n    }\n  },\n  \"error_msg\": \"The request parameter format is incorrect！\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4c73762-fab6-4e92-acdd-9edf61981a53",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5fb44ea8-4e4a-4dd9-ab10-22824eae542f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10bc32b8-1462-44fa-9a93-23c553981c23",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d173f57-5bbc-49bd-8961-60857b62a461",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai",
+                    "technical-qa",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_id\": \"80d440b7-80a5-4233-a75f-ab72b0885c88\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://connect.patsnap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fb9f6542-9f57-4c45-9d70-3d3688cfeb17",
+    "name": "Patsnap Open Platform AI Translation Technical Q&A API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.",
+      "type": "text/plain"
+    }
+  }
+}

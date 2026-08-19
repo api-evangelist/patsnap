@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Patsnap Open Platform AI Translation Design Infringement 1v1 API
   version: 1.0.0
@@ -78,7 +78,7 @@ paths:
               $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1QueryRequest'
 components:
   schemas:
-    AI67-2AiInfringementDetection1v1Query_图像特征对比响应:
+    AI67-2AiInfringementDetection1v1Query_2:
       type: object
       properties:
         loc:
@@ -116,7 +116,7 @@ components:
             suggestion: 1. 改变独角兽头部的造型和角度，如设计成更加卡通或夸张的形象；2. 使用完全不同的色彩方案，如将主体改为粉色、蓝色等非白色；3. 调整彩虹色部分的位置和形状，如将彩虹色设计成星星或其他图案；4. 改变游泳圈的整体形状，如设计成更不规则或创新的形状；5. 添加独特的装饰元素，如在独角兽身体上增加图案或标志。
           description: comparisons list
           items:
-            $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1Query_图像对比项'
+            $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1Query'
         task_status:
           type: integer
           format: int32
@@ -142,11 +142,18 @@ components:
           example:
           - US
           description: suspected infringement country list
+    AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     AI67-2AiInfringementDetection1v1QueryResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1Query_图像特征对比响应'
+          $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1Query_2'
         status:
           type: boolean
           example: 'false'
@@ -162,25 +169,16 @@ components:
       required:
       - status
       - error_code
-    AI67-1AiInfringementDetection1v1CreationRequest:
+    AI67-2AiInfringementDetection1v1QueryRequest:
       type: object
       properties:
-        patent_number:
+        task_id:
           type: string
-          example: EU0065350760001S
-          description: patent number
-        report_lang:
-          type: string
-          example: cn
-          description: The language for generating reports(cn/en)
-        url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: image url
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
       required:
-      - patent_number
-      - url
-    AI67-2AiInfringementDetection1v1Query_图像对比项:
+      - task_id
+    AI67-2AiInfringementDetection1v1Query:
       type: object
       properties:
         score:
@@ -237,13 +235,24 @@ components:
           type: string
           example: https://data-abstract-image.zhihuiya.com/EU/S/00/40/35/62/40/00/3/00000001_0001.png
           description: patent image url
-    AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse:
+    AI67-1AiInfringementDetection1v1CreationRequest:
       type: object
       properties:
-        task_id:
+        patent_number:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
+          example: EU0065350760001S
+          description: patent number
+        report_lang:
+          type: string
+          example: cn
+          description: The language for generating reports(cn/en)
+        url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: image url
+      required:
+      - patent_number
+      - url
     AI67-1AiInfringementDetection1v1CreationResponse:
       type: object
       properties:
@@ -264,15 +273,6 @@ components:
       required:
       - status
       - error_code
-    AI67-2AiInfringementDetection1v1QueryRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
   securitySchemes:
     bearerAuth:
       type: http
