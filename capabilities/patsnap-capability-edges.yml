@@ -1,0 +1,171 @@
+slug: patsnap
+provider: Patsnap
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Pharmaceuticals & Life Sciences
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 15
+edges:
+- tag: Design Infringement 1v1
+  spec_file: patsnap-design-infringement-1v1-api-openapi.yml
+  capability_id: BC-840.50
+  capability_id_l1: BC-840
+  capability_name: IP Defence & Enforcement
+  confidence: 0.85
+  evidence: POST /ai/infringement-detection-1v1-creation 'AI67-1 Infringement Detection 1V1 - Search Creation'
+  reason: Operations explicitly perform patent/design infringement detection between a subject and a reference,
+    which is infringement detection and enforcement support within IP management.
+- tag: Design Infringement Search
+  spec_file: patsnap-design-infringement-search-api-openapi.yml
+  capability_id: BC-840.50
+  capability_id_l1: BC-840
+  capability_name: IP Defence & Enforcement
+  confidence: 0.85
+  evidence: POST /ai/image-search/submit 'AI39-1 Appearance Anti-Infringement Search - Submit Task'; schema
+    AI39-2ImageSearchReport_AppearanceAntiInfringementResponse
+  reason: Image-based appearance anti-infringement searching against design rights is IP infringement
+    detection, mapping to IP Defence & Enforcement.
+- tag: Specification Drafting
+  spec_file: patsnap-specification-drafting-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.85
+  evidence: AI37-4 Patent Specification Drafting (CNIPA) - Report Generation; AI37-3 ... Technical Feature
+    Extraction; schema AI37-3ExtractFeatureCnipa_ClaimFeature
+  reason: Operations draft patent specifications and claims for filing with CNIPA, which is squarely patent
+    filing/portfolio management within Intellectual Property Management.
+- tag: Technical Disclosure
+  spec_file: patsnap-technical-disclosure-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.8
+  evidence: AI32-2 Generate technical disclosure task; AI32-3 Download technical disclosure document;
+    path /search/patent/patent-disclosure/generate
+  reason: Generates invention/technical disclosure documents on the patent-disclosure path — the input
+    artefact to patent filing, part of patent portfolio and filing management.
+- tag: Technology Key Report
+  spec_file: patsnap-technology-key-report-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.8
+  evidence: A105 Company Patent Portfolio Overview; A010 Portfolio Value Distribution; A009 Most Litigated
+    Patents; A109 Company Patent Simple Legal Status
+  reason: Analytics over patent portfolios — portfolio overview and value distribution, legal status,
+    top assignees, litigation — which is patent portfolio strategy and review within IP Management.
+- tag: Trademark Data
+  spec_file: patsnap-trademark-data-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.8
+  evidence: POST /trademark/search 'T002 Trademark Field Search', 'T002 Trademark Image Search', 'T010
+    Trademark Detail'; schemas T010DataDetail_ApplicantResponse, T010DataDetail_ClassificationResponse,
+    T010DataDetail_AgentResponse
+  reason: Operations search and retrieve trademark records including applicant, assignee, agent and Nice
+    classification — the data surface underpinning trademark filing, watch and defence activities.
+- tag: Chemical SAR Extract
+  spec_file: patsnap-chemical-sar-extract-api-openapi.yml
+  capability_id: BC-1500.30
+  capability_id_l1: BC-1500
+  capability_name: Lead Optimisation Management
+  confidence: 0.75
+  evidence: POST /eurekals/open/sar/file/extract fileExtract 'Submit SAR Extraction Task'; schemas FileDetail_SarStructure,
+    FileDetail_SarDosingRegimen, FileDetail_BasicTargetName
+  reason: SAR (structure-activity relationship) extraction with chemical structures, target names and
+    dosing regimens is squarely medicinal-chemistry lead optimisation data, matching 'Medicinal chemistry,
+    SAR, lead optimisation'. Slight discount because the API only extracts/serves the data rather than
+    running the optimisation.
+- tag: FTO Search
+  spec_file: patsnap-fto-search-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.75
+  evidence: POST /ai/fto/submit  AI66-1 FTO Search - Create Task; AI66-2 FTO Search - Extract Technical
+    Features; AI66-8 FTO Search - Add Comparison Document or Patent
+  reason: 'Freedom-to-operate search: extract technical features of a solution, run a patent search agent,
+    compare claims and produce a report. This is patent clearance / infringement-risk analysis, squarely
+    intellectual-property management. Which L2 (defence & enforcement vs patent portfolio) is genuinely
+    ambiguous, so only L1 is asserted.'
+- tag: Novelty Search
+  spec_file: patsnap-novelty-search-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.75
+  evidence: '''AI35-8 Novelty Check - Obtain Search Strategy and Reference List and Feature Comparison'';
+    ''AI35-10 Novelty Check - Create Report'''
+  reason: Full prior-art novelty search workflow with feature comparison and report generation — patentability/prior-art
+    work within patent portfolio strategy and filing.
+- tag: Patent Legal Data
+  spec_file: patsnap-patent-legal-data-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.75
+  evidence: '''P028 License'', ''P029 Transfer'', ''P034 Litigation'', ''P047 Receive Patent Fee Data'',
+    ''P046 Status of Unified Patent Court'''
+  reason: Patent legal events — licensing, transfers, pledges, litigation, maintenance fees. Plainly Intellectual
+    Property Management, but spans licensing, enforcement and maintenance, so no single L2 is named.
+- tag: Enterprise IP Data
+  spec_file: patsnap-enterprise-ip-data-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.7
+  evidence: C031 Science and Technology Innovation Enterprises Trademark; C032 ... Software Copyright;
+    C034 Plant Variety Protection Application Info; C046 search patent potential buyer api
+  reason: The operations expose intellectual-property rights records — trademarks, software copyrights,
+    IC layout designs, plant variety protection — plus patent buyer identification, which touches licensing/transaction.
+    Clearly the IP domain, but spread across trademark, copyright and licensing sub-capabilities, so only
+    the L1 is asserted.
+- tag: Novelty Check Assistant
+  spec_file: patsnap-novelty-check-assistant-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.7
+  evidence: '''M002-1 Novelty Check Agent Creation''; schemas ''M002-2AiNoveltyCheckAgentQuery_PriorArtItem'',
+    ''NoveltyAssessment'''
+  reason: AI agent performing prior-art / novelty assessment, i.e. patentability analysis feeding patent
+    filing strategy — Patent Portfolio Management.
+- tag: Patent Basic Data
+  spec_file: patsnap-patent-basic-data-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.7
+  evidence: '''P012 Biblio'', ''P013 Patent Legal Status'', ''P018 Claim'', ''P014 Patent Family'''
+  reason: Retrieval of core patent record data (bibliography, claims, legal status, family, citations)
+    — the information backbone of patent portfolio management.
+- tag: Patent Valuation Data
+  spec_file: patsnap-patent-valuation-data-api-openapi.yml
+  capability_id: BC-840.10
+  capability_id_l1: BC-840
+  capability_name: Patent Portfolio Management
+  confidence: 0.7
+  evidence: '''P035 Patent Valuation'', ''P037 Legal Indicators'', ''P051 Pre-patent Evaluation - Patentability'''
+  reason: Patent value scoring and pre-filing patentability/innovation evaluation — decision support for
+    patent filing, maintenance and portfolio review.
+- tag: Telecom
+  spec_file: patsnap-telecom-api-openapi.yml
+  capability_id: BC-840
+  capability_id_l1: BC-840
+  capability_name: Intellectual Property Management
+  confidence: 0.7
+  evidence: POST /open_api/task/aicc — 'T001 AI-powered Standard Essential Patent (SEP) Analysis'; schemas
+    T001TaskAicc_ClaimFeatureMapping, T001TaskAicc_CcResult
+  reason: Despite the 'Telecom' tag, the single operation performs Standard Essential Patent analysis
+    with claim-to-standard feature mapping — i.e. patent analytics supporting IP portfolio/licensing decisions.
+    Mapped to Intellectual Property Management at L1; evidence does not clearly separate portfolio review
+    from licensing, so no L2.
