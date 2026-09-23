@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Feasibility Analysis Assistant API
+  title: Patsnap Open Platform Feasibility Analysis Assistant API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -78,6 +78,24 @@ paths:
               $ref: '#/components/schemas/AI40-2AiFeasibilityAnalysisQueryRequest'
 components:
   schemas:
+    AI40-2AiFeasibilityAnalysisQueryRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
     AI40-2AiFeasibilityAnalysisQueryResponse:
       type: object
       properties:
@@ -98,15 +116,6 @@ components:
       required:
       - status
       - error_code
-    AI40-2AiFeasibilityAnalysisQueryRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
     AI40-1AiFeasibilityAnalysisCreationResponse:
       type: object
       properties:
@@ -145,15 +154,6 @@ components:
       required:
       - lang
       - text
-    AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier for subsequent polling to get task results
-      required:
-      - task_id
     AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse:
       type: object
       properties:

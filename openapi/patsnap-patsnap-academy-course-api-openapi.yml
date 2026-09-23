@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Patsnap Academy Course API
+  title: Patsnap Open Platform Patsnap Academy Course API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -150,21 +150,6 @@ paths:
           description: courseware ID
 components:
   schemas:
-    AC01AcademyCourseList_CourseListInfo:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 1
-          description: course ID
-        thumb:
-          type: string
-          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
-          description: course picture
-        title:
-          type: string
-          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
-          description: course name
     AC02AcademyCourseDetails_CourseDetailsResponse:
       type: object
       properties:
@@ -182,6 +167,43 @@ components:
           description: class hour information
           items:
             $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
+    AC03AcademyAttachDownloadResponse:
+      type: object
+    AC01AcademyCourseList_CourseListInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+          description: course ID
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
+    AC01AcademyCourseListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AC02AcademyCourseDetails_Courseware:
       type: object
       properties:
@@ -193,11 +215,11 @@ components:
           type: string
           example: 2018年考试贴士及相关法边缘知识点考前串讲
           description: courseware name
-    AC01AcademyCourseListResponse:
+    AC02AcademyCourseDetailsResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
+          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsResponse'
         status:
           type: boolean
           example: 'false'
@@ -224,8 +246,20 @@ components:
           type: string
           example: 考前你必须知道的那些事
           description: lesson title
-    AC03AcademyAttachDownloadResponse:
+    AC01AcademyCourseList_CourseListResponse:
       type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Total number of courses purchased by the company
+        course_list_info:
+          type: array
+          example: 'Please check the form: CourseListInfo'
+          description: course information
+          items:
+            $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
     AC02AcademyCourseDetails_CourseDetailsInfo:
       type: object
       properties:
@@ -252,40 +286,6 @@ components:
           format: int32
           example: 5
           description: lesson
-    AC02AcademyCourseDetailsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AC01AcademyCourseList_CourseListResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-          example: 24
-          description: Total number of courses purchased by the company
-        course_list_info:
-          type: array
-          example: 'Please check the form: CourseListInfo'
-          description: course information
-          items:
-            $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
   securitySchemes:
     bearerAuth:
       type: http

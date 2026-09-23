@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Drug Basic Data API
+  title: Patsnap Open Platform Drug Basic Data API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -317,79 +317,43 @@ paths:
               $ref: '#/components/schemas/B059ApprovalFileRequest'
 components:
   schemas:
-    B021DrugSpecialApproval_CommonCountry:
+    B020DrugDevStatus_CommonDisease:
       type: object
       properties:
-        country_id:
+        disease_id:
           type: string
-          example: 676de5ba-893a-36bb-8683-c93306aaf769
-          description: Country/Location ID
-        alpha2_code:
-          type: string
-          example: US
-          description: Alpha Code
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: United States
+            name: Uveitic Macular Edema
           - lang: CN
-            name: 美国
-          description: Country/Location Name
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
-    B047DrugXdc_GetDrugXdcResponseDto:
+            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
+    B041TargetAnalysisResponse:
       type: object
       properties:
-        dar:
+        data:
+          $ref: '#/components/schemas/B041TargetAnalysis_TargetAnalysisResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 3-4
-          description: DAR
-        linker:
-          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
-        payload:
-          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
-        antibody_type:
-          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
-        conjugation_site:
-          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
-        targeting_moiety:
-          $ref: '#/components/schemas/B047DrugXdc_CommonDrug'
-    B019DrugApproval_DrugApprovalEmaDto:
-      type: object
-      properties:
-        products:
-          type: array
-          example: Please check the form:ApprovalProductDto
-          description: Product Basic Info
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
-        submissions:
-          type: array
-          example: Please check the form:ApprovalSubmissionDto
-          description: Submission Basic Info
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_ApprovalSubmissionDto'
-    B020DrugDevStatus_DrugDevStatus:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 05f69ae72aeccf5a92c9f417efaa3b02
-          description: ID
-        country:
-          $ref: '#/components/schemas/B020DrugDevStatus_CommonCountry'
-        disease:
-          $ref: '#/components/schemas/B020DrugDevStatus_CommonDisease'
-        dev_status:
-          $ref: '#/components/schemas/B020DrugDevStatus_CommonDictionary'
-        organization:
-          $ref: '#/components/schemas/B020DrugDevStatus_CommonOrganization'
-        dev_status_time:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
           type: integer
-          format: int64
-          example: 1644105600000
-          description: Date
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     B018DrugDetail_CommonCountry:
       type: object
       properties:
@@ -411,315 +375,32 @@ components:
           description: Country/Location Name
           items:
             $ref: '#/components/schemas/B018DrugDetail_CommonName'
-    B019DrugApproval_DrugApprovalPmdaDto:
+    B021DrugSpecialApproval_CommonCountry:
       type: object
       properties:
-        products:
-          type: array
-          example: Please check the form:ApprovalProductDto
-          description: Product Basic Info
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
-    B018DrugDetail_DrugResponseMilestoneTag:
-      type: object
-      properties:
-        date:
-          type: integer
-          format: int64
-          example: 1409788800000
-          description: milestone date
-        name:
-          type: array
-          example:
-          - lang: EN
-            name: FDA Approval
-          - lang: CN
-            name: FDA批准
-          description: milestone name
-          items:
-            $ref: '#/components/schemas/B018DrugDetail_CommonName'
-    B041TargetAnalysis_CommonDictionary:
-      type: object
-      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
         display_name:
           type: array
           example:
           - lang: EN
-            name: Autologous CAR-T
+            name: United States
           - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B041TargetAnalysis_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B019DrugApproval_DosageFormAndRouteDto:
-      type: object
-      properties:
-        route:
-          type: array
-          example:
-          - display_name:
-            - lang: EN
-              name: Subcutaneous
-            - lang: CN
-              name: 皮下注射
-            normalized_id: 6e0ca63bc1734b7aa1ad7a4c846fb4ac
-          description: Route
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_CommonDictionary'
-        dosage_from:
-          type: array
-          example:
-          - display_name:
-            - lang: EN
-              name: Injection
-            - lang: CN
-              name: 注射剂
-            normalized_id: 699243160d8d4fd8aa67da7ff18f90a9
-          description: Dosage Form
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_CommonDictionary'
-        original_name:
-          type: string
-          example: Injection; Subcutaneous
-          description: Original Name
-    B019DrugApproval_GetDrugApprovalResponseDto:
-      type: object
-      properties:
-        ema:
-          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalEmaDto'
-        fda:
-          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalFdaDto'
-        nmpa:
-          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalNmpaDto'
-        pmda:
-          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalPmdaDto'
-    B021DrugSpecialApproval_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
+            name: 美国
+          description: Country/Location Name
           items:
             $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B040TargetDetail_GetTargetResponseDto:
-      type: object
-      properties:
-        alias:
-          type: array
-          example:
-          - lang: EN
-            name: CD279
-          description: Target Alias
-          items:
-            $ref: '#/components/schemas/B040TargetDetail_CommonName'
-        profile:
-          type: array
-          example:
-          - lang: EN
-            name: 'Inhibitory receptor on antigen activated T-cells '
-          description: Profile
-          items:
-            $ref: '#/components/schemas/B040TargetDetail_CommonName'
-        target_id:
-          type: string
-          example: 3cbd7b503dd84de6b6d150c6143989fb
-          description: Target ID
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: PD-1
-          description: Target Short Name
-          items:
-            $ref: '#/components/schemas/B040TargetDetail_CommonName'
-        uniprot_id:
-          type: array
-          example:
-          - Q15116
-          description: UniProt ID
-        target_name:
-          type: array
-          example:
-          - lang: EN
-            name: Programmed cell death protein 1
-          description: Target Name
-          items:
-            $ref: '#/components/schemas/B040TargetDetail_CommonName'
-    B019DrugApproval_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B021DrugSpecialApproval_DrugSpecialApprovalDto:
-      type: object
-      properties:
-        id:
-          type: string
-          example: c2df2c0cf4f64d5c86d61caa8edb7905
-          description: ID
-        country:
-          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonCountry'
-        disease:
-          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonDisease'
-        organization:
-          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonOrganization'
-        approval_time:
-          type: integer
-          format: int64
-          example: 1559088000000
-          description: Date
-        special_review:
-          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonDictionary'
-    B020DrugDevStatus_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B019DrugApprovalResponse:
+    B059ApprovalFileResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B019DrugApproval_GetDrugApprovalResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B040TargetDetail_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B059ApprovalFileRequest:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: 68431d4745744d9e9e17a3073edd3920
-          description: DRUG ID, MUST NOT be used with the 'approvalId' and 'approvalSource' field.
-        approval_id:
-          type: array
-          example:
-          - 25854e08d0e9858e89ad4438028589d2
-          description: Drug Approval ID, MUST be used with the 'approvalSource' field. Obtain this through the [B019] Drug approval information interface
-        approval_source:
-          type: string
-          example: FDA
-          description: 'Approval Source, MUST be used with the ''approvalId'' field.The value is an enum with the following values: FDA,EMA,PMDA,NMPA'
-    B018DrugDetail_SequenceDto:
-      type: object
-      properties:
-        chain_type:
-          type: array
-          example:
-          - L
-          description: Chain type
-        sequence_text:
-          type: string
-          example: DILLTQSPVILSVSPGERVSFSCRASQSIGTNIHWYQQRTNGSPRLLIKYASESISGIPSRFSGSGSGTDFTLSINSVESEDIADYYCQQNNNWPTTFGAGTKLELKRTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC
-          description: Sequence Text
-        sequence_number:
-          type: integer
-          format: int64
-          example: 43254
-          description: Sequence number
-    B041TargetAnalysis_AnalysisDto:
-      type: object
-      properties:
-        id:
-          type: string
-          example: b4c624212749f84e83429c5a8673c692
-          description: ID
-        phase:
-          type: array
-          example:
-          - dev_status:
-              display_name:
-              - lang: EN
-                name: Pending
-              - lang: CN
-                name: 无进展
-              normalized_id: 4d95bf5fb0c340fbb38cda626c1c9c60
-            drug_count: 10
-          description: Phase, Referencing "PhaseDto"
-          items:
-            $ref: '#/components/schemas/B041TargetAnalysis_PhaseDto'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B041TargetAnalysis_CommonName'
-    B040TargetDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B040TargetDetail_GetTargetResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B047DrugXdcResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B047DrugXdc_GetDrugXdcResponseDto'
+          $ref: '#/components/schemas/B059ApprovalFile_GetDrugApprovalFileResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -746,48 +427,6 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B047DrugXdc_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B021DrugSpecialApproval_GetDrugSpecialApprovalResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:DrugSpecialApprovalDto
-          description: Results
-          items:
-            $ref: '#/components/schemas/B021DrugSpecialApproval_DrugSpecialApprovalDto'
-        total:
-          type: integer
-          format: int64
-          example: 0
-          description: total
-    B021DrugSpecialApproval_CommonDictionary:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
     B019DrugApproval_ApprovalProductDto:
       type: object
       properties:
@@ -896,6 +535,113 @@ components:
           description: Volume
         dosage_form_and_route:
           $ref: '#/components/schemas/B019DrugApproval_DosageFormAndRouteDto'
+    B018DrugDetail_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B018DrugDetail_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B059ApprovalFile_GetDrugApprovalFileResponseDto:
+      type: object
+      properties:
+        ema:
+          type: array
+          example:
+          - type: 'Lumykras : EPAR - Product Information'
+            source_url: https://www.ema.europa.eu/documents/product-information/lumykras-epar-product-information_en.pdf
+          description: EMA
+          items:
+            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+        fda:
+          type: array
+          example:
+          - type: Letter
+            source_url: http://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/214665Orig1s000ltr.pdf
+          description: FDA
+          items:
+            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+        nmpa:
+          type: array
+          example:
+          - type: HTML
+            source_url: https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02
+          description: NMPA
+          items:
+            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+        pmda:
+          type: array
+          example:
+          - type: HTML
+            source_url: https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02
+          description: PMDA
+          items:
+            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+    B019DrugApproval_DrugApprovalFdaDto:
+      type: object
+      properties:
+        products:
+          type: array
+          example: Please check the form:ApprovalProductDto
+          description: Product Basic Info
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
+        submissions:
+          type: array
+          example: Please check the form:ApprovalSubmissionDto
+          description: Submission Basic Info
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_ApprovalSubmissionDto'
+    B021DrugSpecialApproval_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
+    B018DrugDetail_DrugResponseDisease:
+      type: object
+      properties:
+        umls:
+          type: array
+          example:
+          - C0021368
+          - C0021364
+          description: List of UMLS IDs
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B018DrugDetail_CommonName'
     B019DrugApproval_ApprovalSubmissionDto:
       type: object
       properties:
@@ -954,6 +700,129 @@ components:
           type: string
           example: Labeling
           description: Registration Category
+    B041TargetAnalysis_PhaseDto:
+      type: object
+      properties:
+        dev_status:
+          $ref: '#/components/schemas/B041TargetAnalysis_CommonDictionary'
+        drug_count:
+          type: integer
+          format: int64
+          example: 10
+          description: Drug Count
+    B018DrugDetail_DrugResponseMilestoneTag:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int64
+          example: 1409788800000
+          description: milestone date
+        name:
+          type: array
+          example:
+          - lang: EN
+            name: FDA Approval
+          - lang: CN
+            name: FDA批准
+          description: milestone name
+          items:
+            $ref: '#/components/schemas/B018DrugDetail_CommonName'
+    B040TargetDetail_GetTargetResponseDto:
+      type: object
+      properties:
+        alias:
+          type: array
+          example:
+          - lang: EN
+            name: CD279
+          description: Target Alias
+          items:
+            $ref: '#/components/schemas/B040TargetDetail_CommonName'
+        profile:
+          type: array
+          example:
+          - lang: EN
+            name: 'Inhibitory receptor on antigen activated T-cells '
+          description: Profile
+          items:
+            $ref: '#/components/schemas/B040TargetDetail_CommonName'
+        target_id:
+          type: string
+          example: 3cbd7b503dd84de6b6d150c6143989fb
+          description: Target ID
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: PD-1
+          description: Target Short Name
+          items:
+            $ref: '#/components/schemas/B040TargetDetail_CommonName'
+        uniprot_id:
+          type: array
+          example:
+          - Q15116
+          description: UniProt ID
+        target_name:
+          type: array
+          example:
+          - lang: EN
+            name: Programmed cell death protein 1
+          description: Target Name
+          items:
+            $ref: '#/components/schemas/B040TargetDetail_CommonName'
+    B047DrugXdc_CommonDrug:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: e82b83b42eba4e5ea3f26f8e06081a5a
+          description: Drug ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Ranibizumab (Genentech)
+          - lang: CN
+            name: 雷珠单抗
+          description: Drug Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B047DrugXdc_CommonName'
+    B020DrugDevStatus_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B019DrugApproval_CommonDisease:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 06a9082fe1ec4c97bea31d888b9cfdce
+          description: Disease ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Uveitic Macular Edema
+          - lang: CN
+            name: 葡萄膜炎黄斑水肿
+          description: Disease Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_CommonName'
     B018DrugDetail_CommonDictionary:
       type: object
       properties:
@@ -971,6 +840,71 @@ components:
           type: string
           example: 2fbfdb3e92d942c48cbb0adb79f23526
           description: Dict ID
+    B018DrugDetail_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B019DrugApproval_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B018DrugDetail_StructureDto:
+      type: object
+      properties:
+        base64:
+          type: string
+          example: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAEZ0FNQQ
+          description: Image Base64
+        formula:
+          type: string
+          example: C30H30F2N6O3
+          description: Molecular formula
+        inchi_key:
+          type: string
+          example: NXQKSXLFSAEQCZ-SFHVURJKSA-N
+          description: inChiKey
+        canonical_smiles:
+          type: string
+          example: CNC(=O)CNC(=O)C(CC1=CC=CC=C1)NC(=O)CNC(=O)CNC(=O)CCCCCN2C(=O)C=CC2=O
+          description: canonicalSmiles
+        isometric_smiles:
+          type: string
+          example: CNC(=O)CNC(=O)[C@H](CC1=CC=CC=C1)NC(=O)CNC(=O)CNC(=O)CCCCCN2C(=O)C=CC2=O
+          description: isometricSmiles
+    B020DrugDevStatus_DrugDevStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 05f69ae72aeccf5a92c9f417efaa3b02
+          description: ID
+        country:
+          $ref: '#/components/schemas/B020DrugDevStatus_CommonCountry'
+        disease:
+          $ref: '#/components/schemas/B020DrugDevStatus_CommonDisease'
+        dev_status:
+          $ref: '#/components/schemas/B020DrugDevStatus_CommonDictionary'
+        organization:
+          $ref: '#/components/schemas/B020DrugDevStatus_CommonOrganization'
+        dev_status_time:
+          type: integer
+          format: int64
+          example: 1644105600000
+          description: Date
     B018DrugDetail_DrugResponseTarget:
       type: object
       properties:
@@ -1014,29 +948,237 @@ components:
           description: Target Full Name, Referencing "CommonName"
           items:
             $ref: '#/components/schemas/B018DrugDetail_CommonName'
-    B018DrugDetail_DrugResponseDisease:
+    B047DrugXdc_CommonDictionary:
       type: object
       properties:
-        umls:
-          type: array
-          example:
-          - C0021368
-          - C0021364
-          description: List of UMLS IDs
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
         display_name:
           type: array
           example:
           - lang: EN
-            name: Uveitic Macular Edema
+            name: Autologous CAR-T
           - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B047DrugXdc_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B021DrugSpecialApproval_DrugSpecialApprovalDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: c2df2c0cf4f64d5c86d61caa8edb7905
+          description: ID
+        country:
+          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonCountry'
+        disease:
+          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonDisease'
+        organization:
+          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonOrganization'
+        approval_time:
+          type: integer
+          format: int64
+          example: 1559088000000
+          description: Date
+        special_review:
+          $ref: '#/components/schemas/B021DrugSpecialApproval_CommonDictionary'
+    B021DrugSpecialApprovalResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B021DrugSpecialApproval_GetDrugSpecialApprovalResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B020DrugDevStatus_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B020DrugDevStatus_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B020DrugDevStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B020DrugDevStatus_GetDrugDevStatusResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B018DrugDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B018DrugDetail_GetDrugResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B047DrugXdc_GetDrugXdcResponseDto:
+      type: object
+      properties:
+        dar:
+          type: string
+          example: 3-4
+          description: DAR
+        linker:
+          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
+        payload:
+          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
+        antibody_type:
+          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
+        conjugation_site:
+          $ref: '#/components/schemas/B047DrugXdc_CommonDictionary'
+        targeting_moiety:
+          $ref: '#/components/schemas/B047DrugXdc_CommonDrug'
+    B018DrugDetail_SequenceDto:
+      type: object
+      properties:
+        chain_type:
+          type: array
+          example:
+          - L
+          description: Chain type
+        sequence_text:
+          type: string
+          example: DILLTQSPVILSVSPGERVSFSCRASQSIGTNIHWYQQRTNGSPRLLIKYASESISGIPSRFSGSGSGTDFTLSINSVESEDIADYYCQQNNNWPTTFGAGTKLELKRTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC
+          description: Sequence Text
+        sequence_number:
+          type: integer
+          format: int64
+          example: 43254
+          description: Sequence number
+    B047DrugXdc_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B021DrugSpecialApproval_GetDrugSpecialApprovalResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:DrugSpecialApprovalDto
+          description: Results
+          items:
+            $ref: '#/components/schemas/B021DrugSpecialApproval_DrugSpecialApprovalDto'
+        total:
+          type: integer
+          format: int64
+          example: 0
+          description: total
+    B018DrugDetail_CommonMechanismAction:
+      type: object
+      properties:
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: KRAS G12C inhibitors
+          - lang: CN
+            name: KRAS G12C抑制剂
+          description: Mechanism Action Short Name
           items:
             $ref: '#/components/schemas/B018DrugDetail_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: GTPase KRas G12C inhibitors
+          - lang: CN
+            name: KRAS G12C突变抑制剂
+          description: Mechanism Action Name
+          items:
+            $ref: '#/components/schemas/B018DrugDetail_CommonName'
+        mechanism_id:
+          type: string
+          example: 27c0848a265e4332836e10d0e8202b4c
+          description: Mechanism Action ID
+    B059ApprovalFile_ApprovalFile:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Letter
+          description: Type
+        source_url:
+          type: string
+          example: http://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/214665Orig1s000ltr.pdf
+          description: Source Url
+        approval_date:
+          type: integer
+          format: int64
+          example: 1041292800000
+          description: Approval Date
+        drug_approval_id:
+          type: string
+          example: 25854e08d0e9858e89ad4438028589d2
+          description: Approval ID
     B041TargetAnalysis_TargetAnalysisResponseDto:
       type: object
       properties:
@@ -1103,11 +1245,102 @@ components:
           description: Organization, Referencing "AnalysisDto"
           items:
             $ref: '#/components/schemas/B041TargetAnalysis_AnalysisDto'
-    B059ApprovalFileResponse:
+    B021DrugSpecialApproval_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B019DrugApproval_DrugApprovalEmaDto:
+      type: object
+      properties:
+        products:
+          type: array
+          example: Please check the form:ApprovalProductDto
+          description: Product Basic Info
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
+        submissions:
+          type: array
+          example: Please check the form:ApprovalSubmissionDto
+          description: Submission Basic Info
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_ApprovalSubmissionDto'
+    B019DrugApproval_CommonOrganization:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Organization Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_CommonName'
+        organization_id:
+          type: string
+          example: 87bfaf037f8e60c9e25595cd98bb27e4
+          description: Organization ID
+    B020DrugDevStatus_GetDrugDevStatusResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example: Please check the form:DrugDevStatus
+          description: Results
+          items:
+            $ref: '#/components/schemas/B020DrugDevStatus_DrugDevStatus'
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limit
+        total:
+          type: integer
+          format: int64
+          example: 0
+          description: total
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+    B041TargetAnalysis_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B041TargetAnalysis_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B018DrugDetail_SpecialApprovalDto:
+      type: object
+      properties:
+        country:
+          $ref: '#/components/schemas/B018DrugDetail_CommonCountry'
+        special_view:
+          $ref: '#/components/schemas/B018DrugDetail_CommonDictionary'
+    B019DrugApprovalResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B059ApprovalFile_GetDrugApprovalFileResponseDto'
+          $ref: '#/components/schemas/B019DrugApproval_GetDrugApprovalResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1123,7 +1356,28 @@ components:
       required:
       - status
       - error_code
-    B019DrugApproval_DrugApprovalFdaDto:
+    B020DrugDevStatus_CommonCountry:
+      type: object
+      properties:
+        country_id:
+          type: string
+          example: 676de5ba-893a-36bb-8683-c93306aaf769
+          description: Country/Location ID
+        alpha2_code:
+          type: string
+          example: US
+          description: Alpha Code
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: United States
+          - lang: CN
+            name: 美国
+          description: Country/Location Name
+          items:
+            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
+    B019DrugApproval_DrugApprovalPmdaDto:
       type: object
       properties:
         products:
@@ -1132,22 +1386,71 @@ components:
           description: Product Basic Info
           items:
             $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
-        submissions:
-          type: array
-          example: Please check the form:ApprovalSubmissionDto
-          description: Submission Basic Info
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_ApprovalSubmissionDto'
-    B041TargetAnalysis_PhaseDto:
+    B019DrugApproval_CommonDictionary:
       type: object
       properties:
-        dev_status:
-          $ref: '#/components/schemas/B041TargetAnalysis_CommonDictionary'
-        drug_count:
-          type: integer
-          format: int64
-          example: 10
-          description: Drug Count
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B021DrugSpecialApproval_CommonDictionary:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Autologous CAR-T
+          - lang: CN
+            name: 自体CAR-T
+          description: Dict Name
+          items:
+            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
+        normalized_id:
+          type: string
+          example: 2fbfdb3e92d942c48cbb0adb79f23526
+          description: Dict ID
+    B041TargetAnalysis_AnalysisDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: b4c624212749f84e83429c5a8673c692
+          description: ID
+        phase:
+          type: array
+          example:
+          - dev_status:
+              display_name:
+              - lang: EN
+                name: Pending
+              - lang: CN
+                name: 无进展
+              normalized_id: 4d95bf5fb0c340fbb38cda626c1c9c60
+            drug_count: 10
+          description: Phase, Referencing "PhaseDto"
+          items:
+            $ref: '#/components/schemas/B041TargetAnalysis_PhaseDto'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Roche Holding AG
+          - lang: CN
+            name: 罗氏
+          description: Name, Referencing "CommonName"
+          items:
+            $ref: '#/components/schemas/B041TargetAnalysis_CommonName'
     B018DrugDetail_GetDrugResponseDto:
       type: object
       properties:
@@ -1459,237 +1762,33 @@ components:
             $ref: '#/components/schemas/B018DrugDetail_CommonOrganization'
         global_highest_dev_status:
           $ref: '#/components/schemas/B018DrugDetail_CommonDictionary'
-    B020DrugDevStatus_CommonDisease:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Uveitic Macular Edema
-          - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
-    B059ApprovalFile_ApprovalFile:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Letter
-          description: Type
-        source_url:
-          type: string
-          example: http://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/214665Orig1s000ltr.pdf
-          description: Source Url
-        approval_date:
-          type: integer
-          format: int64
-          example: 1041292800000
-          description: Approval Date
-        drug_approval_id:
-          type: string
-          example: 25854e08d0e9858e89ad4438028589d2
-          description: Approval ID
-    B018DrugDetail_SpecialApprovalDto:
-      type: object
-      properties:
-        country:
-          $ref: '#/components/schemas/B018DrugDetail_CommonCountry'
-        special_view:
-          $ref: '#/components/schemas/B018DrugDetail_CommonDictionary'
-    B019DrugApproval_DrugApprovalNmpaDto:
-      type: object
-      properties:
-        products:
-          type: array
-          example: Please check the form:ApprovalProductDto
-          description: Product Basic Info
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
-    B059ApprovalFile_GetDrugApprovalFileResponseDto:
+    B019DrugApproval_GetDrugApprovalResponseDto:
       type: object
       properties:
         ema:
-          type: array
-          example:
-          - type: 'Lumykras : EPAR - Product Information'
-            source_url: https://www.ema.europa.eu/documents/product-information/lumykras-epar-product-information_en.pdf
-          description: EMA
-          items:
-            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalEmaDto'
         fda:
-          type: array
-          example:
-          - type: Letter
-            source_url: http://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/214665Orig1s000ltr.pdf
-          description: FDA
-          items:
-            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalFdaDto'
         nmpa:
-          type: array
-          example:
-          - type: HTML
-            source_url: https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02
-          description: NMPA
-          items:
-            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
+          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalNmpaDto'
         pmda:
-          type: array
-          example:
-          - type: HTML
-            source_url: https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112292_4291076F1022_1_02
-          description: PMDA
-          items:
-            $ref: '#/components/schemas/B059ApprovalFile_ApprovalFile'
-    B020DrugDevStatusResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B020DrugDevStatus_GetDrugDevStatusResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B019DrugApproval_CommonDisease:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Uveitic Macular Edema
-          - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_CommonName'
-    B020DrugDevStatus_CommonCountry:
-      type: object
-      properties:
-        country_id:
-          type: string
-          example: 676de5ba-893a-36bb-8683-c93306aaf769
-          description: Country/Location ID
-        alpha2_code:
-          type: string
-          example: US
-          description: Alpha Code
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: United States
-          - lang: CN
-            name: 美国
-          description: Country/Location Name
-          items:
-            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
-    B018DrugDetail_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B018DrugDetail_StructureDto:
-      type: object
-      properties:
-        base64:
-          type: string
-          example: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAEZ0FNQQ
-          description: Image Base64
-        formula:
-          type: string
-          example: C30H30F2N6O3
-          description: Molecular formula
-        inchi_key:
-          type: string
-          example: NXQKSXLFSAEQCZ-SFHVURJKSA-N
-          description: inChiKey
-        canonical_smiles:
-          type: string
-          example: CNC(=O)CNC(=O)C(CC1=CC=CC=C1)NC(=O)CNC(=O)CNC(=O)CCCCCN2C(=O)C=CC2=O
-          description: canonicalSmiles
-        isometric_smiles:
-          type: string
-          example: CNC(=O)CNC(=O)[C@H](CC1=CC=CC=C1)NC(=O)CNC(=O)CNC(=O)CCCCCN2C(=O)C=CC2=O
-          description: isometricSmiles
-    B047DrugXdc_CommonDictionary:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B047DrugXdc_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B019DrugApproval_CommonDictionary:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B019DrugApproval_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B047DrugXdc_CommonDrug:
+          $ref: '#/components/schemas/B019DrugApproval_DrugApprovalPmdaDto'
+    B059ApprovalFileRequest:
       type: object
       properties:
         drug_id:
           type: string
-          example: e82b83b42eba4e5ea3f26f8e06081a5a
-          description: Drug ID
-        display_name:
+          example: 68431d4745744d9e9e17a3073edd3920
+          description: DRUG ID, MUST NOT be used with the 'approvalId' and 'approvalSource' field.
+        approval_id:
           type: array
           example:
-          - lang: EN
-            name: Ranibizumab (Genentech)
-          - lang: CN
-            name: 雷珠单抗
-          description: Drug Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B047DrugXdc_CommonName'
+          - 25854e08d0e9858e89ad4438028589d2
+          description: Drug Approval ID, MUST be used with the 'approvalSource' field. Obtain this through the [B019] Drug approval information interface
+        approval_source:
+          type: string
+          example: FDA
+          description: 'Approval Source, MUST be used with the ''approvalId'' field.The value is an enum with the following values: FDA,EMA,PMDA,NMPA'
     B018DrugDetail_DrugDevCodeResponseDto:
       type: object
       properties:
@@ -1705,11 +1804,11 @@ components:
           type: string
           example: ACTIVE
           description: Status
-    B041TargetAnalysisResponse:
+    B040TargetDetailResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B041TargetAnalysis_TargetAnalysisResponseDto'
+          $ref: '#/components/schemas/B040TargetDetail_GetTargetResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1725,7 +1824,67 @@ components:
       required:
       - status
       - error_code
-    B019DrugApproval_CommonOrganization:
+    B019DrugApproval_DosageFormAndRouteDto:
+      type: object
+      properties:
+        route:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Subcutaneous
+            - lang: CN
+              name: 皮下注射
+            normalized_id: 6e0ca63bc1734b7aa1ad7a4c846fb4ac
+          description: Route
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_CommonDictionary'
+        dosage_from:
+          type: array
+          example:
+          - display_name:
+            - lang: EN
+              name: Injection
+            - lang: CN
+              name: 注射剂
+            normalized_id: 699243160d8d4fd8aa67da7ff18f90a9
+          description: Dosage Form
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_CommonDictionary'
+        original_name:
+          type: string
+          example: Injection; Subcutaneous
+          description: Original Name
+    B019DrugApproval_DrugApprovalNmpaDto:
+      type: object
+      properties:
+        products:
+          type: array
+          example: Please check the form:ApprovalProductDto
+          description: Product Basic Info
+          items:
+            $ref: '#/components/schemas/B019DrugApproval_ApprovalProductDto'
+    B047DrugXdcResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B047DrugXdc_GetDrugXdcResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B021DrugSpecialApproval_CommonOrganization:
       type: object
       properties:
         display_name:
@@ -1737,137 +1896,12 @@ components:
             name: 罗氏
           description: Organization Name, Referencing "CommonName"
           items:
-            $ref: '#/components/schemas/B019DrugApproval_CommonName'
+            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
         organization_id:
           type: string
           example: 87bfaf037f8e60c9e25595cd98bb27e4
           description: Organization ID
-    B018DrugDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B018DrugDetail_GetDrugResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B020DrugDevStatus_GetDrugDevStatusResponseDto:
-      type: object
-      properties:
-        items:
-          type: array
-          example: Please check the form:DrugDevStatus
-          description: Results
-          items:
-            $ref: '#/components/schemas/B020DrugDevStatus_DrugDevStatus'
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limit
-        total:
-          type: integer
-          format: int64
-          example: 0
-          description: total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B020DrugDevStatus_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
-    B018DrugDetail_CommonMechanismAction:
-      type: object
-      properties:
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: KRAS G12C inhibitors
-          - lang: CN
-            name: KRAS G12C抑制剂
-          description: Mechanism Action Short Name
-          items:
-            $ref: '#/components/schemas/B018DrugDetail_CommonName'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: GTPase KRas G12C inhibitors
-          - lang: CN
-            name: KRAS G12C突变抑制剂
-          description: Mechanism Action Name
-          items:
-            $ref: '#/components/schemas/B018DrugDetail_CommonName'
-        mechanism_id:
-          type: string
-          example: 27c0848a265e4332836e10d0e8202b4c
-          description: Mechanism Action ID
-    B021DrugSpecialApprovalResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B021DrugSpecialApproval_GetDrugSpecialApprovalResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B020DrugDevStatus_CommonDictionary:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Autologous CAR-T
-          - lang: CN
-            name: 自体CAR-T
-          description: Dict Name
-          items:
-            $ref: '#/components/schemas/B020DrugDevStatus_CommonName'
-        normalized_id:
-          type: string
-          example: 2fbfdb3e92d942c48cbb0adb79f23526
-          description: Dict ID
-    B021DrugSpecialApproval_CommonName:
+    B040TargetDetail_CommonName:
       type: object
       properties:
         lang:
@@ -1878,40 +1912,6 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B021DrugSpecialApproval_CommonDisease:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 06a9082fe1ec4c97bea31d888b9cfdce
-          description: Disease ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Uveitic Macular Edema
-          - lang: CN
-            name: 葡萄膜炎黄斑水肿
-          description: Disease Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B021DrugSpecialApproval_CommonName'
-    B018DrugDetail_CommonOrganization:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Roche Holding AG
-          - lang: CN
-            name: 罗氏
-          description: Organization Name, Referencing "CommonName"
-          items:
-            $ref: '#/components/schemas/B018DrugDetail_CommonName'
-        organization_id:
-          type: string
-          example: 87bfaf037f8e60c9e25595cd98bb27e4
-          description: Organization ID
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation R&D solution search API
+  title: Patsnap Open Platform R&D solution search API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -50,26 +50,6 @@ components:
           description: Max number of cases returned, default 20, max 100
       required:
       - user_question
-    MethodServicesSolutionSearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/MethodServicesSolutionSearch_SolutionSearchResult'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     MethodServicesSolutionSearch_SolutionCaseModel:
       type: object
       properties:
@@ -103,6 +83,26 @@ components:
           description: Triz Technical Contradiction
       required:
       - case_id
+    MethodServicesSolutionSearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MethodServicesSolutionSearch_SolutionSearchResult'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     MethodServicesSolutionSearch_SolutionSearchResult:
       type: object
       properties:

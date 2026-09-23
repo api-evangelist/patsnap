@@ -78,61 +78,26 @@ paths:
               $ref: '#/components/schemas/AI61AiTranslationRequest'
 components:
   schemas:
-    AI61AiTranslation_AiTranslationResponse:
+    T010HiroTranslationTranslate_HiroTranslateResponse:
       type: object
       properties:
-        source_lang:
+        state:
           type: string
-          example: CN
-          description: Source language.
-        target_lang:
+          example: success
+          description: Execution status, always success
+        textTranslated:
           type: string
-          example: EN
-          description: Target language.
-        translate_result:
-          type: string
-          example: Hello, world!
-          description: Translation result.
-    AI61AiTranslationRequest:
-      type: object
-      properties:
-        source_lang:
-          type: string
-          example: CN
-          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
-        target_lang:
-          type: string
-          example: EN
-          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
-        text:
-          type: string
-          example: 你好，世界！
-          description: The original text that needs to be translated.Cannot exceed 2000 characters
+          example: The invention discloses a classified marking device for archive management file storage.
+          description: Full translated text
+        translatedCharacterCount:
+          type: integer
+          format: int32
+          example: 82
+          description: Character count of translated text
       required:
-      - text
-    T010HiroTranslationTranslateRequest:
-      type: object
-      properties:
-        content:
-          type: string
-          example: 本发明公开了一种档案管理文件储存用分类标识装置。
-          description: Source text to translate. Must not be blank. Default max 65536 characters.
-        mode:
-          type: string
-          example: fast
-          description: 'Translation mode. Supports fast and stream, defaulting to fast. fast: concurrent segment-based translation that returns the complete JSON result in a single response, offering higher throughput but weaker cross-segment context consistency. stream: sliding-window sequential translation, returned segment by segment via SSE; later segments can leverage already-translated context within the window, maximizing consistency across the whole text.'
-        sourceLanguageCode:
-          type: string
-          example: zh
-          description: 'Source language code. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
-        targetLanguageCode:
-          type: string
-          example: en
-          description: 'Target language code; must differ from source. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
-      required:
-      - content
-      - sourceLanguageCode
-      - targetLanguageCode
+      - state
+      - textTranslated
+      - translatedCharacterCount
     AI61AiTranslationResponse:
       type: object
       properties:
@@ -173,26 +138,61 @@ components:
       required:
       - status
       - error_code
-    T010HiroTranslationTranslate_HiroTranslateResponse:
+    T010HiroTranslationTranslateRequest:
       type: object
       properties:
-        state:
+        content:
           type: string
-          example: success
-          description: Execution status, always success
-        textTranslated:
+          example: 本发明公开了一种档案管理文件储存用分类标识装置。
+          description: Source text to translate. Must not be blank. Default max 65536 characters.
+        mode:
           type: string
-          example: The invention discloses a classified marking device for archive management file storage.
-          description: Full translated text
-        translatedCharacterCount:
-          type: integer
-          format: int32
-          example: 82
-          description: Character count of translated text
+          example: fast
+          description: 'Translation mode. Supports fast and stream, defaulting to fast. fast: concurrent segment-based translation that returns the complete JSON result in a single response, offering higher throughput but weaker cross-segment context consistency. stream: sliding-window sequential translation, returned segment by segment via SSE; later segments can leverage already-translated context within the window, maximizing consistency across the whole text.'
+        sourceLanguageCode:
+          type: string
+          example: zh
+          description: 'Source language code. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
+        targetLanguageCode:
+          type: string
+          example: en
+          description: 'Target language code; must differ from source. Supported: zh, en, ja, ko, de, fr, ru, es, pt, it, nl, ar, hi, th, vi, id, tr, pl.'
       required:
-      - state
-      - textTranslated
-      - translatedCharacterCount
+      - content
+      - sourceLanguageCode
+      - targetLanguageCode
+    AI61AiTranslation_AiTranslationResponse:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.
+        target_lang:
+          type: string
+          example: EN
+          description: Target language.
+        translate_result:
+          type: string
+          example: Hello, world!
+          description: Translation result.
+    AI61AiTranslationRequest:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
+        target_lang:
+          type: string
+          example: EN
+          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
+        text:
+          type: string
+          example: 你好，世界！
+          description: The original text that needs to be translated.Cannot exceed 2000 characters
+      required:
+      - text
   securitySchemes:
     bearerAuth:
       type: http

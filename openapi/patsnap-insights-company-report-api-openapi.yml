@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Insights Company Report API
+  title: Patsnap Open Platform Insights Company Report API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -288,17 +288,47 @@ paths:
           description: Patent offset used for paging
 components:
   schemas:
-    JobIdResultResponse:
+    LandscapeApiJobsResponse:
       type: object
       properties:
         data:
-          type: object
+          type: string
           example: 123
           description: response data
         status:
           type: boolean
           example: true
           description: response status
+    FacetsFacetType_Facet:
+      type: object
+      properties:
+        name:
+          type: string
+          example: IBM
+          description: Name, short name of the facet
+        count:
+          type: integer
+          format: int32
+          example: 120
+          description: Count, number of documents matching this facet
+        group:
+          type: integer
+          format: int32
+          example: 1
+          description: Group, group number to which this facet belongs
+        full_name:
+          type: string
+          example: International Business Machines Corporation
+          description: Full name, complete name of the facet
+        cf_field_id:
+          type: string
+          example: custom_field_123
+          description: Custom field ID, identifier associated with a custom field
+        expired_count:
+          type: integer
+          format: int32
+          example: 25
+          description: Expired count, number of expired documents matching this facet
     FacetTypeDetail_FacetDetailBo:
       type: object
       properties:
@@ -395,68 +425,6 @@ components:
           type: boolean
           example: false
           description: Has litigation, indicates whether the patent has litigation information
-    FacetsFacetType_Facet:
-      type: object
-      properties:
-        name:
-          type: string
-          example: IBM
-          description: Name, short name of the facet
-        count:
-          type: integer
-          format: int32
-          example: 120
-          description: Count, number of documents matching this facet
-        group:
-          type: integer
-          format: int32
-          example: 1
-          description: Group, group number to which this facet belongs
-        full_name:
-          type: string
-          example: International Business Machines Corporation
-          description: Full name, complete name of the facet
-        cf_field_id:
-          type: string
-          example: custom_field_123
-          description: Custom field ID, identifier associated with a custom field
-        expired_count:
-          type: integer
-          format: int32
-          example: 25
-          description: Expired count, number of expired documents matching this facet
-    FacetTypeDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FacetTypeDetail_FacetDetailBo'
-        status:
-          type: boolean
-          example: true
-          description: response status
-    JobIdStatusResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-          example: true
-          description: Operation status, indicates whether the request is successful
-        error_code:
-          type: integer
-          format: int32
-          example: 400
-          description: Error code, error code when processing fails
-        job_status:
-          type: string
-          example: COMPLETED
-          description: Job status, indicates the processing status of the current job
-        error_message:
-          type: string
-          example: Invalid query parameters
-          description: Error message, detailed error description when processing fails
-      required:
-      - status
-      - job_status
     FacetTypeDetail_FacetDetail:
       type: object
       properties:
@@ -475,6 +443,15 @@ components:
           type: string
           example: IBM
           description: Facet name, represents the name of the facet
+    JobIdPatentsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobIdPatents_PatentListBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
     JobIdPatents_Patent:
       type: object
       properties:
@@ -540,6 +517,61 @@ components:
           type: boolean
           example: false
           description: Has litigation, indicates whether the patent has litigation information
+    LandscapeApiJobs_MatchItem:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Advanced technologies for electric vehicle batteries
+          description: Description, detailed description of match item
+        digest_text:
+          type: string
+          example: Electric vehicle battery technology
+          description: Digest text, text digest of match item
+        title:
+          type: string
+          example: Electric vehicle battery technology
+          description: Title, title information of match item
+      required:
+      - title
+    JobIdPatents_PatentListBo:
+      type: object
+      properties:
+        patents:
+          type: array
+          example:
+          - pn: US7654321B2
+            patent_id: '12345678'
+          - pn: US7123456B2
+            patent_id: '87654321'
+          description: Patents, list containing detailed patent information
+          items:
+            $ref: '#/components/schemas/JobIdPatents_Patent'
+        total_count:
+          type: integer
+          format: int32
+          example: 1250
+          description: Total count, the total number of patents
+    FacetsFacetTypeResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FacetsFacetType_FacetListBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    JobIdResultResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          example: 123
+          description: response data
+        status:
+          type: boolean
+          example: true
+          description: response status
     FacetsFacetType_FacetListBo:
       type: object
       properties:
@@ -573,24 +605,38 @@ components:
           type: string
           example: applicant
           description: Facet type, specifies the type of facet
-    JobIdPatents_PatentListBo:
+    FacetTypeDetailResponse:
       type: object
       properties:
-        patents:
-          type: array
-          example:
-          - pn: US7654321B2
-            patent_id: '12345678'
-          - pn: US7123456B2
-            patent_id: '87654321'
-          description: Patents, list containing detailed patent information
-          items:
-            $ref: '#/components/schemas/JobIdPatents_Patent'
-        total_count:
+        data:
+          $ref: '#/components/schemas/FacetTypeDetail_FacetDetailBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    JobIdStatusResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+          description: Operation status, indicates whether the request is successful
+        error_code:
           type: integer
           format: int32
-          example: 1250
-          description: Total count, the total number of patents
+          example: 400
+          description: Error code, error code when processing fails
+        job_status:
+          type: string
+          example: COMPLETED
+          description: Job status, indicates the processing status of the current job
+        error_message:
+          type: string
+          example: Invalid query parameters
+          description: Error message, detailed error description when processing fails
+      required:
+      - status
+      - job_status
     LandscapeApiJobsRequest:
       type: object
       properties:
@@ -695,52 +741,6 @@ components:
       - q
       - request_type
       - uid
-    FacetsFacetTypeResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FacetsFacetType_FacetListBo'
-        status:
-          type: boolean
-          example: true
-          description: response status
-    LandscapeApiJobs_MatchItem:
-      type: object
-      properties:
-        description:
-          type: string
-          example: Advanced technologies for electric vehicle batteries
-          description: Description, detailed description of match item
-        digest_text:
-          type: string
-          example: Electric vehicle battery technology
-          description: Digest text, text digest of match item
-        title:
-          type: string
-          example: Electric vehicle battery technology
-          description: Title, title information of match item
-      required:
-      - title
-    JobIdPatentsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JobIdPatents_PatentListBo'
-        status:
-          type: boolean
-          example: true
-          description: response status
-    LandscapeApiJobsResponse:
-      type: object
-      properties:
-        data:
-          type: string
-          example: 123
-          description: response data
-        status:
-          type: boolean
-          example: true
-          description: response status
   securitySchemes:
     bearerAuth:
       type: http

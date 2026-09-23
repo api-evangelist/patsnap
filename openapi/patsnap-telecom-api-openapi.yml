@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Telecom API
+  title: Patsnap Open Platform Telecom API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -14,7 +14,22 @@ paths:
     post:
       operationId: t001TaskAicc
       summary: T001 AI-powered Standard Essential Patent (SEP) Analysis
-      description: '<p>Input a patent number to automatically complete TS recommendation, section recall, and Claim Chart (CC) comparison, receiving SEP determination results via Server-Sent Events.</p><p>Each SSE event is a <code>data:</code> line containing a JSON object. Events fall into two categories:</p><ul><li><b>PROCESSING</b> — heartbeat/progress update, no business payload</li><li><b>FINISH</b> — final result with <code>content</code> populated (SEP determination conclusion)</li></ul><p><b>Flow when ts is provided</b> (skip TS recommendation): <code>INIT</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p><p><b>Flow when ts is omitted</b> (auto-recommend TS): <code>INIT</code> → <code>RECOMMEND_TS</code> → <code>FIND_SECTIONS</code> → <code>CC_COMPARE</code></p>'
+      description: 'Input a patent number to automatically complete TS recommendation, section recall, and Claim Chart (CC) comparison, receiving SEP determination results via Server-Sent Events.
+
+
+        Each SSE event is a data: line containing a JSON object. Events fall into two categories:
+
+
+        PROCESSING — heartbeat/progress update, no business payload
+
+
+        FINISH — final result with content populated (SEP determination conclusion)
+
+
+        Flow when ts is provided (skip TS recommendation): INIT → FIND_SECTIONS → CC_COMPARE
+
+
+        Flow when ts is omitted (auto-recommend TS): INIT → RECOMMEND_TS → FIND_SECTIONS → CC_COMPARE'
       tags:
       - Telecom
       security:
@@ -77,6 +92,75 @@ components:
           description: Whether CC comparison succeeded for this TS
         cc_result:
           $ref: '#/components/schemas/T001TaskAicc_CcResult'
+    T001TaskAicc_SseData:
+      type: object
+      properties:
+        step:
+          type: string
+          example: CC_COMPARE
+          description: Current pipeline step. RECOMMEND_TS only appears when ts is not provided in the request. Present on step-transition events; absent on heartbeat events.
+        status:
+          type: string
+          example: PROCESSING
+          description: PROCESSING = in progress (no content); FINISH = final result (content populated)
+        content:
+          $ref: '#/components/schemas/T001TaskAicc_CcCompareContent'
+        task_id:
+          type: string
+          example: e0a90f0b-461e-4d51-abd9-e62ad65310e1
+          description: Task ID, consistent across all events in the stream
+      required:
+      - status
+      - task_id
+    T001TaskAicc_CcCompareContent:
+      type: object
+      properties:
+        compare_results:
+          type: array
+          example:
+          - pid: be561264-14b0-4978-ad3b-e2c961d1d687
+            claim: '1. A method comprising: transmitting, by a requesting device, at least one resource request...'
+            success: true
+            cc_result:
+              is_sep: 部分必要
+              explanation: 该权利要求与3GPP标准中IUC功能存在对应关系，判定为部分必要。
+              all_mappings: []
+          description: List of comparison results per TS
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_CompareResult'
+    T001TaskAiccResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T001TaskAicc_SseData'
+        status:
+          type: boolean
+          example: true
+          description: true = success, false = error
+        error_code:
+          type: integer
+          example: 0
+          description: Error code, 0 = no error
+      required:
+      - data
+      - status
+      - error_code
+    T001TaskAiccRequest:
+      type: object
+      properties:
+        patent_number:
+          type: string
+          example: US8767570B2
+          description: Patent publication number
+        ts:
+          type: array
+          example:
+          - ts_number: '38.300'
+          description: Optional TS list. If provided, skips the auto-recommend step.
+          items:
+            $ref: '#/components/schemas/T001TaskAicc_TsInput'
+      required:
+      - patent_number
     T001TaskAicc_ClaimFeatureMapping:
       type: object
       properties:
@@ -101,39 +185,6 @@ components:
           type: string
           example: transmitting, by a requesting device, at least one resource request to a responding device,
           description: A single feature/element extracted from the claim
-    T001TaskAiccResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/T001TaskAicc_SseData'
-        status:
-          type: boolean
-          example: true
-          description: true = success, false = error
-        error_code:
-          type: integer
-          example: 0
-          description: Error code, 0 = no error
-      required:
-      - data
-      - status
-      - error_code
-    T001TaskAicc_CcCompareContent:
-      type: object
-      properties:
-        compare_results:
-          type: array
-          example:
-          - pid: be561264-14b0-4978-ad3b-e2c961d1d687
-            claim: '1. A method comprising: transmitting, by a requesting device, at least one resource request...'
-            success: true
-            cc_result:
-              is_sep: 部分必要
-              explanation: 该权利要求与3GPP标准中IUC功能存在对应关系，判定为部分必要。
-              all_mappings: []
-          description: List of comparison results per TS
-          items:
-            $ref: '#/components/schemas/T001TaskAicc_CompareResult'
     T001TaskAicc_CcResult:
       type: object
       properties:
@@ -212,42 +263,6 @@ components:
           description: Optional specific version. If omitted, the latest version is used.
       required:
       - ts_number
-    T001TaskAiccRequest:
-      type: object
-      properties:
-        patent_number:
-          type: string
-          example: US8767570B2
-          description: Patent publication number
-        ts:
-          type: array
-          example:
-          - ts_number: '38.300'
-          description: Optional TS list. If provided, skips the auto-recommend step.
-          items:
-            $ref: '#/components/schemas/T001TaskAicc_TsInput'
-      required:
-      - patent_number
-    T001TaskAicc_SseData:
-      type: object
-      properties:
-        step:
-          type: string
-          example: CC_COMPARE
-          description: Current pipeline step. RECOMMEND_TS only appears when ts is not provided in the request. Present on step-transition events; absent on heartbeat events.
-        status:
-          type: string
-          example: PROCESSING
-          description: PROCESSING = in progress (no content); FINISH = final result (content populated)
-        content:
-          $ref: '#/components/schemas/T001TaskAicc_CcCompareContent'
-        task_id:
-          type: string
-          example: e0a90f0b-461e-4d51-abd9-e62ad65310e1
-          description: Task ID, consistent across all events in the stream
-      required:
-      - status
-      - task_id
   securitySchemes:
     bearerAuth:
       type: http

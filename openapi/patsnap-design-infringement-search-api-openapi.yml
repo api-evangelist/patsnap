@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Patsnap Open Platform AI Translation Design Infringement Search API
+  title: Patsnap Open Platform Design Infringement Search API
   version: 1.0.0
   description: OpenAPI specification for Patsnap Open Platform APIs, including patent search, analytics, and Eureka AI capabilities.
 servers:
@@ -191,11 +191,114 @@ components:
       - rerank_score
       - traditional_rank
       - traditional_score
-    AI39-2ImageSearchReportResponse:
+    AI39-2ImageSearchReport_ImageSimilarSearchData:
+      type: object
+      properties:
+        patent_messages:
+          type: array
+          example:
+          - loc:
+            - 21-01
+            apno: US29/961259
+            score: 0.875770605053453
+            title: Inflatable Santa
+            img_id: USD1055174-D00000_ABST
+            authority: US
+            loc_match: 1
+            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
+            patent_pn: USD1055174S1
+            risk_level: High
+          description: List of patent information, containing detailed information of patents similar to user image
+          items:
+            $ref: '#/components/schemas/AI39-2ImageSearchReport'
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 156
+          description: Total number of search results, including all similar patents
+      required:
+      - patent_messages
+      - total_search_result_count
+    AI39-2ImageSearchReport_ImageSimilarReportResponseV2:
+      type: object
+      properties:
+        loc:
+          type: array
+          example:
+          - 02 服装、服饰用品和缝纫用品
+          - 03 其他类未列入的旅行用品、箱包、阳伞和个人用品
+          - 10 钟、表及其他测量仪器，检测仪器，信号仪器
+          - 11 装饰品
+          - 19 文具、办公用品、美术用品和教学用品
+          - 21 游戏器具、玩具、帐篷和体育用品
+          - 32 图形符号、标识、表面图案、纹饰
+          description: LOC classification number list, identifying the design classification of the product
+        country:
+          type: array
+          example:
+          - US
+          - CN
+          - JP
+          - KR
+          - AU
+          - EU
+          description: Target export country list, represented by country codes
+        comparisons:
+          type: array
+          example:
+          - score: 0.45
+            title: 人形
+            img_id: 0001747893000002
+            status: 1
+            country: JP
+            similar: 主体均为圆柱形结构
+            confusion: 基础形状相似但设计元素差异足以区分
+            patent_id: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
+            patent_pn: JP1747893S
+            risk_desc: JP标准关注核心要部
+            difference: 专利图顶部为复杂的结状结构
+            risk_level: Low
+            suggestion: 保持当前帽子与垂耳的独特组合
+          description: List of comparison items with existing patents, including similarity analysis, risk assessment and suggestions
+          items:
+            $ref: '#/components/schemas/AI39-2ImageSearchReport______V2'
+        operate_date:
+          type: integer
+          format: int64
+          example: 1768195176553
+          description: Operation timestamp in milliseconds
+        apply_start_time:
+          type: string
+          example: 20200101
+          description: Patent application start time in yyyyMMdd format
+        high_risk_country:
+          type: array
+          example:
+          - KR
+          description: List of high-risk export countries where highly similar patents exist
+        middle_risk_country:
+          type: array
+          example:
+          - KR
+          description: List of medium-risk export countries where moderately similar patents exist
+        suspected_infringement_count:
+          type: integer
+          format: int32
+          example: 0
+          description: Count of suspected infringing patents
+        suspected_infringement_country:
+          type: array
+          example:
+          - KR
+          description: List of suspected infringement countries where potentially infringing patents exist
+      required:
+      - country
+      - comparisons
+    AI39-1ImageSearchSubmitResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI39-2ImageSearchReport_AppearanceAntiInfringementResponse'
+          $ref: '#/components/schemas/AI39-1ImageSearchSubmit_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -211,77 +314,6 @@ components:
       required:
       - status
       - error_code
-    AI39-2ImageSearchReport______V2:
-      type: object
-      properties:
-        score:
-          type: number
-          format: double
-          example: 0.45
-          description: Similarity score ranging from 0 to 1, higher score indicates higher similarity
-        title:
-          type: string
-          example: 人形
-          description: Patent title
-        img_id:
-          type: string
-          example: 0001747893000002
-          description: Patent image identifier
-        status:
-          type: integer
-          format: int32
-          example: 1
-          description: 'Patent legal status: 1-Valid, 2-Invalid, 3-Pending'
-        country:
-          type: string
-          example: JP
-          description: Patent grant country code
-        similar:
-          type: string
-          example: 主体均为圆柱形结构，且在圆柱面上分布有面部特征。
-          description: Description of similarities between user product and patent
-        confusion:
-          type: string
-          example: 虽然基础形状相似，但具体设计元素差异足以区分。
-          description: Analysis of reasons why consumers might be confused
-        patent_id:
-          type: string
-          example: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
-          description: Unique patent identifier
-        patent_pn:
-          type: string
-          example: JP1747893S
-          description: Patent publication number
-        risk_desc:
-          type: string
-          example: JP标准关注核心要部。尽管基础几何体（圆柱）相似，但头部装饰（帽子 vs 结）和附属件（垂耳 vs 线臂）的差异属于实质性区别。
-          description: Risk description, detailing the potential risk this patent poses to product export
-        difference:
-          type: string
-          example: 专利图顶部为复杂的结状/把手结构，两侧为线状手臂，面部特征为传统风格；用户图顶部为圆锥形帽子，两侧为宽扁垂耳，面部有突出的吻部造型。
-          description: Description of differences between user product and patent
-        risk_level:
-          type: string
-          example: Low
-          description: 'Risk level: High, Medium, or Low'
-        suggestion:
-          type: string
-          example: 保持当前帽子与垂耳的独特组合，以区别于通用的圆柱形玩偶。
-          description: Suggested measures to avoid infringement
-      required:
-      - score
-      - title
-      - img_id
-      - status
-      - country
-      - similar
-      - confusion
-      - patent_id
-      - patent_pn
-      - risk_desc
-      - difference
-      - risk_level
-      - suggestion
     AI39-2ImageSearchReport:
       type: object
       properties:
@@ -365,6 +397,35 @@ components:
       - authority
       - patent_id
       - patent_pn
+    AI39-2ImageSearchReportRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier, returned by submit task API
+      required:
+      - task_id
+    AI39-2ImageSearchReportResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI39-2ImageSearchReport_AppearanceAntiInfringementResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI39-2ImageSearchReport_AppearanceAntiInfringementResponse:
       type: object
       properties:
@@ -390,49 +451,84 @@ components:
       required:
       - task_id
       - task_status
-    AI39-1ImageSearchSubmit_AsyncTaskIdResponse:
+    AI39-2ImageSearchReport______V2:
       type: object
       properties:
-        task_id:
+        score:
+          type: number
+          format: double
+          example: 0.45
+          description: Similarity score ranging from 0 to 1, higher score indicates higher similarity
+        title:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier for subsequent polling to get task results
-      required:
-      - task_id
-    AI39-1ImageSearchSubmitResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI39-1ImageSearchSubmit_AsyncTaskIdResponse'
+          example: 人形
+          description: Patent title
+        img_id:
+          type: string
+          example: 0001747893000002
+          description: Patent image identifier
         status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
           type: integer
-          example: '0'
-          description: Error Code
+          format: int32
+          example: 1
+          description: 'Patent legal status: 1-Valid, 2-Invalid, 3-Pending'
+        country:
+          type: string
+          example: JP
+          description: Patent grant country code
+        similar:
+          type: string
+          example: 主体均为圆柱形结构，且在圆柱面上分布有面部特征。
+          description: Description of similarities between user product and patent
+        confusion:
+          type: string
+          example: 虽然基础形状相似，但具体设计元素差异足以区分。
+          description: Analysis of reasons why consumers might be confused
+        patent_id:
+          type: string
+          example: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
+          description: Unique patent identifier
+        patent_pn:
+          type: string
+          example: JP1747893S
+          description: Patent publication number
+        risk_desc:
+          type: string
+          example: JP标准关注核心要部。尽管基础几何体（圆柱）相似，但头部装饰（帽子 vs 结）和附属件（垂耳 vs 线臂）的差异属于实质性区别。
+          description: Risk description, detailing the potential risk this patent poses to product export
+        difference:
+          type: string
+          example: 专利图顶部为复杂的结状/把手结构，两侧为线状手臂，面部特征为传统风格；用户图顶部为圆锥形帽子，两侧为宽扁垂耳，面部有突出的吻部造型。
+          description: Description of differences between user product and patent
+        risk_level:
+          type: string
+          example: Low
+          description: 'Risk level: High, Medium, or Low'
+        suggestion:
+          type: string
+          example: 保持当前帽子与垂耳的独特组合，以区别于通用的圆柱形玩偶。
+          description: Suggested measures to avoid infringement
       required:
+      - score
+      - title
+      - img_id
       - status
-      - error_code
-    AI39-2ImageSearchReport_ImageSimilarReportResponseV2:
+      - country
+      - similar
+      - confusion
+      - patent_id
+      - patent_pn
+      - risk_desc
+      - difference
+      - risk_level
+      - suggestion
+    AI39-1ImageSearchSubmitRequest:
       type: object
       properties:
-        loc:
-          type: array
-          example:
-          - 02 服装、服饰用品和缝纫用品
-          - 03 其他类未列入的旅行用品、箱包、阳伞和个人用品
-          - 10 钟、表及其他测量仪器，检测仪器，信号仪器
-          - 11 装饰品
-          - 19 文具、办公用品、美术用品和教学用品
-          - 21 游戏器具、玩具、帐篷和体育用品
-          - 32 图形符号、标识、表面图案、纹饰
-          description: LOC classification number list, identifying the design classification of the product
+        apply_start_time:
+          type: string
+          example: '20200101'
+          description: Patent application start time in yyyyMMdd format, used to filter patents filed after this date
         country:
           type: array
           example:
@@ -441,87 +537,29 @@ components:
           - JP
           - KR
           - AU
-          - EU
-          description: Target export country list, represented by country codes
-        comparisons:
-          type: array
-          example:
-          - score: 0.45
-            title: 人形
-            img_id: 0001747893000002
-            status: 1
-            country: JP
-            similar: 主体均为圆柱形结构
-            confusion: 基础形状相似但设计元素差异足以区分
-            patent_id: 09115a22-cf5a-41e1-8e77-11a8fbb3a5b6
-            patent_pn: JP1747893S
-            risk_desc: JP标准关注核心要部
-            difference: 专利图顶部为复杂的结状结构
-            risk_level: Low
-            suggestion: 保持当前帽子与垂耳的独特组合
-          description: List of comparison items with existing patents, including similarity analysis, risk assessment and suggestions
-          items:
-            $ref: '#/components/schemas/AI39-2ImageSearchReport______V2'
-        operate_date:
-          type: integer
-          format: int64
-          example: 1768195176553
-          description: Operation timestamp in milliseconds
-        apply_start_time:
+          description: Target country/region code list, supports US, CN, JP, KR, AU, EU, etc.
+        lang:
           type: string
-          example: 20200101
-          description: Patent application start time in yyyyMMdd format
-        high_risk_country:
+          example: cn
+          description: Report language, cn for Chinese, en for English
+        loc_items:
           type: array
           example:
-          - KR
-          description: List of high-risk export countries where highly similar patents exist
-        middle_risk_country:
-          type: array
-          example:
-          - KR
-          description: List of medium-risk export countries where moderately similar patents exist
-        suspected_infringement_count:
-          type: integer
-          format: int32
-          example: 0
-          description: Count of suspected infringing patents
-        suspected_infringement_country:
-          type: array
-          example:
-          - KR
-          description: List of suspected infringement countries where potentially infringing patents exist
+          - 14-02
+          - 14-03
+          - 14-04
+          description: Locarno classification list
+        main_field:
+          type: string
+          example: 智能手机
+          description: Main field/keyword for auxiliary search
+        url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: Image URL
       required:
       - country
-      - comparisons
-    AI39-2ImageSearchReport_ImageSimilarSearchData:
-      type: object
-      properties:
-        patent_messages:
-          type: array
-          example:
-          - loc:
-            - 21-01
-            apno: US29/961259
-            score: 0.875770605053453
-            title: Inflatable Santa
-            img_id: USD1055174-D00000_ABST
-            authority: US
-            loc_match: 1
-            patent_id: 3fad2c19-8d3d-4f72-b5ae-f2de96787bc0
-            patent_pn: USD1055174S1
-            risk_level: High
-          description: List of patent information, containing detailed information of patents similar to user image
-          items:
-            $ref: '#/components/schemas/AI39-2ImageSearchReport'
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 156
-          description: Total number of search results, including all similar patents
-      required:
-      - patent_messages
-      - total_search_result_count
+      - lang
     AI39-2ImageSearchReport_ImageRRFFusionResponse:
       type: object
       properties:
@@ -566,51 +604,13 @@ components:
       - rerank_count
       - patent_messages
       - traditional_count
-    AI39-1ImageSearchSubmitRequest:
-      type: object
-      properties:
-        apply_start_time:
-          type: string
-          example: '20200101'
-          description: Patent application start time in yyyyMMdd format, used to filter patents filed after this date
-        country:
-          type: array
-          example:
-          - US
-          - CN
-          - JP
-          - KR
-          - AU
-          description: Target country/region code list, supports US, CN, JP, KR, AU, EU, etc.
-        lang:
-          type: string
-          example: cn
-          description: Report language, cn for Chinese, en for English
-        loc_items:
-          type: array
-          example:
-          - 14-02
-          - 14-03
-          - 14-04
-          description: Locarno classification list
-        main_field:
-          type: string
-          example: 智能手机
-          description: Main field/keyword for auxiliary search
-        url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: Image URL
-      required:
-      - country
-      - lang
-    AI39-2ImageSearchReportRequest:
+    AI39-1ImageSearchSubmit_AsyncTaskIdResponse:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier, returned by submit task API
+          description: Unique task identifier for subsequent polling to get task results
       required:
       - task_id
   securitySchemes:
