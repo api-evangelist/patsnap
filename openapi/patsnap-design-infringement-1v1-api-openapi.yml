@@ -78,6 +78,13 @@ paths:
               $ref: '#/components/schemas/AI67-2AiInfringementDetection1v1QueryRequest'
 components:
   schemas:
+    AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     AI67-2AiInfringementDetection1v1Query_2:
       type: object
       properties:
@@ -142,6 +149,53 @@ components:
           example:
           - US
           description: suspected infringement country list
+    AI67-2AiInfringementDetection1v1QueryRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI67-1AiInfringementDetection1v1CreationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI67-1AiInfringementDetection1v1CreationRequest:
+      type: object
+      properties:
+        patent_number:
+          type: string
+          example: EU0065350760001S
+          description: patent number
+        report_lang:
+          type: string
+          example: cn
+          description: The language for generating reports(cn/en)
+        url:
+          type: string
+          example: https://static-open.zhihuiya.com/sample/common_demo.png
+          description: image url
+      required:
+      - patent_number
+      - url
     AI67-2AiInfringementDetection1v1Query:
       type: object
       properties:
@@ -199,35 +253,6 @@ components:
           type: string
           example: https://data-abstract-image.zhihuiya.com/EU/S/00/40/35/62/40/00/3/00000001_0001.png
           description: patent image url
-    AI67-1AiInfringementDetection1v1CreationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI67-2AiInfringementDetection1v1QueryRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
     AI67-2AiInfringementDetection1v1QueryResponse:
       type: object
       properties:
@@ -248,31 +273,6 @@ components:
       required:
       - status
       - error_code
-    AI67-1AiInfringementDetection1v1CreationRequest:
-      type: object
-      properties:
-        patent_number:
-          type: string
-          example: EU0065350760001S
-          description: patent number
-        report_lang:
-          type: string
-          example: cn
-          description: The language for generating reports(cn/en)
-        url:
-          type: string
-          example: https://static-open.zhihuiya.com/sample/common_demo.png
-          description: image url
-      required:
-      - patent_number
-      - url
-    AI67-1AiInfringementDetection1v1Creation_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
   securitySchemes:
     bearerAuth:
       type: http

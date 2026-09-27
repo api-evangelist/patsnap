@@ -98,46 +98,6 @@ components:
       - state
       - textTranslated
       - translatedCharacterCount
-    AI61AiTranslationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI61AiTranslation_AiTranslationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    T010HiroTranslationTranslateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/T010HiroTranslationTranslate_HiroTranslateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     T010HiroTranslationTranslateRequest:
       type: object
       properties:
@@ -193,6 +153,46 @@ components:
           description: The original text that needs to be translated.Cannot exceed 2000 characters
       required:
       - text
+    AI61AiTranslationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI61AiTranslation_AiTranslationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    T010HiroTranslationTranslateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T010HiroTranslationTranslate_HiroTranslateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http

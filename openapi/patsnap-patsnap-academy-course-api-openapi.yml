@@ -167,8 +167,6 @@ components:
           description: class hour information
           items:
             $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
-    AC03AcademyAttachDownloadResponse:
-      type: object
     AC01AcademyCourseList_CourseListInfo:
       type: object
       properties:
@@ -184,26 +182,6 @@ components:
           type: string
           example: 2018年专代考试贴士及相关法边缘知识点考前串讲
           description: course name
-    AC01AcademyCourseListResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     AC02AcademyCourseDetails_Courseware:
       type: object
       properties:
@@ -235,17 +213,6 @@ components:
       required:
       - status
       - error_code
-    AC02AcademyCourseDetails_ClassParts:
-      type: object
-      properties:
-        video_url:
-          type: string
-          example: https://video.x.zhihuiya.com/v1-m3u8-aq0/m3u8谈柏轩10.30课程_1540985469058978d8cf26be00697cab6921962c41c85.m3u8
-          description: lesson video URL
-        part_title:
-          type: string
-          example: 考前你必须知道的那些事
-          description: lesson title
     AC01AcademyCourseList_CourseListResponse:
       type: object
       properties:
@@ -260,6 +227,39 @@ components:
           description: course information
           items:
             $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
+    AC02AcademyCourseDetails_ClassParts:
+      type: object
+      properties:
+        video_url:
+          type: string
+          example: https://video.x.zhihuiya.com/v1-m3u8-aq0/m3u8谈柏轩10.30课程_1540985469058978d8cf26be00697cab6921962c41c85.m3u8
+          description: lesson video URL
+        part_title:
+          type: string
+          example: 考前你必须知道的那些事
+          description: lesson title
+    AC03AcademyAttachDownloadResponse:
+      type: object
+    AC01AcademyCourseListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AC02AcademyCourseDetails_CourseDetailsInfo:
       type: object
       properties:

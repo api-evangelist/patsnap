@@ -78,23 +78,6 @@ paths:
               $ref: '#/components/schemas/M001-2AiFormulationAgentQueryRequest'
 components:
   schemas:
-    M001-2AiFormulationAgentQuery_Ingredient:
-      type: object
-      properties:
-        content:
-          type: array
-          example:
-          - 6
-          - 40
-          description: Content range
-        function:
-          type: string
-          example: Reinforcing filler
-          description: Function
-        ingredient:
-          type: string
-          example: Carbon black
-          description: Ingredient name
     M001-1AiFormulationAgentCreationRequest:
       type: object
       properties:
@@ -109,22 +92,84 @@ components:
       required:
       - lang
       - text
-    M001-2AiFormulationAgentQuery_Formulation:
+    M001-2AiFormulationAgentQuery_FormulationDetail:
       type: object
       properties:
-        dimension:
+        source:
           type: string
-          example: Mechanical Reinforcement and Energy Dissipation
-          description: Dimension
-        formulation_1:
-          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
-        formulation_2:
-          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
-        strategy_index:
-          type: integer
-          format: int32
-          example: 0
-          description: Strategy index
+          example: https://patents.google.com/patent/CN101792545B/zh
+          description: Source
+        status:
+          type: string
+          example: success
+          description: Status
+        name_cn:
+          type: string
+          example: name
+          description: Chinese name
+        solution_id:
+          type: string
+          example: d739436a-6ff9-458a-b7c4-8e6518862a11
+          description: Solution ID
+        country_name:
+          type: string
+          example: 中国
+          description: Country name
+        solution_type:
+          type: string
+          example: WEBSITE
+          description: Solution type
+        ingredient_list:
+          type: array
+          example:
+          - content:
+            - 6
+            - 40
+            function: Reinforcing filler
+            ingredient: Carbon black
+          - content:
+            - 45
+            - 80
+            function: Reinforcing filler
+            ingredient: Silica (white carbon black)
+          - content:
+            - 3
+            - 6
+            function: Filler dispersion/compatibilizer
+            ingredient: Silane coupling agent
+          - content:
+            - 20
+            - 45
+            function: Plasticizer
+            ingredient: Aromatic oil
+          - content:
+            - 1
+            - 5
+            function: Tackifier
+            ingredient: Tackifying resin
+          - content:
+            - 1
+            - 4.5
+            function: Activator
+            ingredient: Zinc oxide
+          - content:
+            - 0.5
+            - 2.5
+            function: Activator
+            ingredient: Stearic acid
+          - content:
+            - 1.5
+            - 3.5
+            function: Crosslinker (vulcanizing agent)
+            ingredient: Sulfur
+          - content:
+            - 2
+            - 5
+            function: Vulcanization accelerator
+            ingredient: Accelerator
+          description: Ingredient list
+          items:
+            $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_Ingredient'
     M001-2AiFormulationAgentQuery_FormulationAgentQueryResponse:
       type: object
       properties:
@@ -248,13 +293,15 @@ components:
           description: Formulation list
           items:
             $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_Formulation'
-    M001-1AiFormulationAgentCreation_AsyncTaskIdResponse:
+    M001-2AiFormulationAgentQueryRequest:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
+      required:
+      - task_id
     M001-2AiFormulationAgentQueryResponse:
       type: object
       properties:
@@ -295,93 +342,46 @@ components:
       required:
       - status
       - error_code
-    M001-2AiFormulationAgentQueryRequest:
+    M001-1AiFormulationAgentCreation_AsyncTaskIdResponse:
       type: object
       properties:
         task_id:
           type: string
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
-      required:
-      - task_id
-    M001-2AiFormulationAgentQuery_FormulationDetail:
+    M001-2AiFormulationAgentQuery_Formulation:
       type: object
       properties:
-        source:
+        dimension:
           type: string
-          example: https://patents.google.com/patent/CN101792545B/zh
-          description: Source
-        status:
-          type: string
-          example: success
-          description: Status
-        name_cn:
-          type: string
-          example: name
-          description: Chinese name
-        solution_id:
-          type: string
-          example: d739436a-6ff9-458a-b7c4-8e6518862a11
-          description: Solution ID
-        country_name:
-          type: string
-          example: 中国
-          description: Country name
-        solution_type:
-          type: string
-          example: WEBSITE
-          description: Solution type
-        ingredient_list:
+          example: Mechanical Reinforcement and Energy Dissipation
+          description: Dimension
+        formulation_1:
+          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
+        formulation_2:
+          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
+        strategy_index:
+          type: integer
+          format: int32
+          example: 0
+          description: Strategy index
+    M001-2AiFormulationAgentQuery_Ingredient:
+      type: object
+      properties:
+        content:
           type: array
           example:
-          - content:
-            - 6
-            - 40
-            function: Reinforcing filler
-            ingredient: Carbon black
-          - content:
-            - 45
-            - 80
-            function: Reinforcing filler
-            ingredient: Silica (white carbon black)
-          - content:
-            - 3
-            - 6
-            function: Filler dispersion/compatibilizer
-            ingredient: Silane coupling agent
-          - content:
-            - 20
-            - 45
-            function: Plasticizer
-            ingredient: Aromatic oil
-          - content:
-            - 1
-            - 5
-            function: Tackifier
-            ingredient: Tackifying resin
-          - content:
-            - 1
-            - 4.5
-            function: Activator
-            ingredient: Zinc oxide
-          - content:
-            - 0.5
-            - 2.5
-            function: Activator
-            ingredient: Stearic acid
-          - content:
-            - 1.5
-            - 3.5
-            function: Crosslinker (vulcanizing agent)
-            ingredient: Sulfur
-          - content:
-            - 2
-            - 5
-            function: Vulcanization accelerator
-            ingredient: Accelerator
-          description: Ingredient list
-          items:
-            $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_Ingredient'
+          - 6
+          - 40
+          description: Content range
+        function:
+          type: string
+          example: Reinforcing filler
+          description: Function
+        ingredient:
+          type: string
+          example: Carbon black
+          description: Ingredient name
   securitySchemes:
     bearerAuth:
       type: http

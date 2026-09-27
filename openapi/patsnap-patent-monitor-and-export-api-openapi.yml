@@ -317,8 +317,42 @@ paths:
           description: query of the monitor project
 components:
   schemas:
-    P059PatentAlertDeleteRequest:
+    P055PatentSearchTaskResponse:
       type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P055PatentSearchTask_TaskResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P056PatentAlertCreate_EmailAlertResponse:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+          example: 4800
+          description: original patent counts in monitor project
+        alert_id:
+          type: string
+          example: 7f22ee78764149b481314b1fa60dca0c
+          description: monitor project ID
+        alert_name:
+          type: string
+          example: <cn>智慧芽公司监控</cn><us>Intelligent bud company monitoring</us>
+          description: Name of Monitoring Project
     P055PatentSearchTask_TaskResponse:
       type: object
       properties:
@@ -335,6 +369,62 @@ components:
           type: string
           example: SUCCESS
           description: Export task current status<P>SUCCESS:Exporting  task succeeded</P><P>FAIL:The export task failed. Create the export task again</P><P>PENDING:The export task is in progress. Please try to obtain the download address later</P>
+    P059PatentAlertDeleteRequest:
+      type: object
+    P055PatentSearchExport_ExportTaskResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Export number of patents
+        task_id:
+          type: string
+          example: b4bdae6b4a65432d91f25b5c52bdfd80
+          description: Task ID is valid for 24 hours
+    P056PatentAlertCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P056PatentAlertCreate_EmailAlertResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    P059PatentAlertDeleteResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          example: no sample
+          description: response data
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     P057PatentAlertCheckResponse:
       type: object
       properties:
@@ -359,38 +449,6 @@ components:
       required:
       - status
       - error_code
-    P055PatentSearchTaskResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P055PatentSearchTask_TaskResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P055PatentSearchExport_ExportTaskResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-          example: 24
-          description: Export number of patents
-        task_id:
-          type: string
-          example: b4bdae6b4a65432d91f25b5c52bdfd80
-          description: Task ID is valid for 24 hours
     P057PatentAlertCheck_MonitoringResponse:
       type: object
       properties:
@@ -432,27 +490,13 @@ components:
       required:
       - status
       - error_code
-    P056PatentAlertCreate_EmailAlertResponse:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int64
-          example: 4800
-          description: original patent counts in monitor project
-        alert_id:
-          type: string
-          example: 7f22ee78764149b481314b1fa60dca0c
-          description: monitor project ID
-        alert_name:
-          type: string
-          example: <cn>智慧芽公司监控</cn><us>Intelligent bud company monitoring</us>
-          description: Name of Monitoring Project
-    P056PatentAlertCreateResponse:
+    P058PatentAlertUpdateResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/P056PatentAlertCreate_EmailAlertResponse'
+          type: object
+          example: no sample
+          description: response data
         status:
           type: boolean
           example: 'false'
@@ -541,50 +585,6 @@ components:
       - fields
       - export_type
       - rows
-    P059PatentAlertDeleteResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          example: no sample
-          description: response data
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P058PatentAlertUpdateResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          example: no sample
-          description: response data
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
   securitySchemes:
     bearerAuth:
       type: http
