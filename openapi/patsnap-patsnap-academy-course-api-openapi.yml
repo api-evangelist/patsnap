@@ -150,6 +150,20 @@ paths:
           description: courseware ID
 components:
   schemas:
+    AC01AcademyCourseList_CourseListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Total number of courses purchased by the company
+        course_list_info:
+          type: array
+          example: 'Please check the form: CourseListInfo'
+          description: course information
+          items:
+            $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
     AC02AcademyCourseDetails_CourseDetailsResponse:
       type: object
       properties:
@@ -167,79 +181,6 @@ components:
           description: class hour information
           items:
             $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
-    AC01AcademyCourseList_CourseListInfo:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 1
-          description: course ID
-        thumb:
-          type: string
-          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
-          description: course picture
-        title:
-          type: string
-          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
-          description: course name
-    AC02AcademyCourseDetails_Courseware:
-      type: object
-      properties:
-        attach_id:
-          type: string
-          example: 1726
-          description: courseware ID
-        attach_name:
-          type: string
-          example: 2018年考试贴士及相关法边缘知识点考前串讲
-          description: courseware name
-    AC02AcademyCourseDetailsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AC01AcademyCourseList_CourseListResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-          example: 24
-          description: Total number of courses purchased by the company
-        course_list_info:
-          type: array
-          example: 'Please check the form: CourseListInfo'
-          description: course information
-          items:
-            $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
-    AC02AcademyCourseDetails_ClassParts:
-      type: object
-      properties:
-        video_url:
-          type: string
-          example: https://video.x.zhihuiya.com/v1-m3u8-aq0/m3u8谈柏轩10.30课程_1540985469058978d8cf26be00697cab6921962c41c85.m3u8
-          description: lesson video URL
-        part_title:
-          type: string
-          example: 考前你必须知道的那些事
-          description: lesson title
-    AC03AcademyAttachDownloadResponse:
-      type: object
     AC01AcademyCourseListResponse:
       type: object
       properties:
@@ -260,6 +201,54 @@ components:
       required:
       - status
       - error_code
+    AC03AcademyAttachDownloadResponse:
+      type: object
+    AC02AcademyCourseDetailsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AC02AcademyCourseDetails_Courseware:
+      type: object
+      properties:
+        attach_id:
+          type: string
+          example: 1726
+          description: courseware ID
+        attach_name:
+          type: string
+          example: 2018年考试贴士及相关法边缘知识点考前串讲
+          description: courseware name
+    AC01AcademyCourseList_CourseListInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+          description: course ID
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
     AC02AcademyCourseDetails_CourseDetailsInfo:
       type: object
       properties:
@@ -286,6 +275,17 @@ components:
           format: int32
           example: 5
           description: lesson
+    AC02AcademyCourseDetails_ClassParts:
+      type: object
+      properties:
+        video_url:
+          type: string
+          example: https://video.x.zhihuiya.com/v1-m3u8-aq0/m3u8谈柏轩10.30课程_1540985469058978d8cf26be00697cab6921962c41c85.m3u8
+          description: lesson video URL
+        part_title:
+          type: string
+          example: 考前你必须知道的那些事
+          description: lesson title
   securitySchemes:
     bearerAuth:
       type: http

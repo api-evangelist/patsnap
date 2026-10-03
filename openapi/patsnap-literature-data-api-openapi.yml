@@ -177,54 +177,6 @@ paths:
               $ref: '#/components/schemas/L001LiteratureQuerySearchRequest'
 components:
   schemas:
-    L012LiteratureCitationResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/L012LiteratureCitation_CitationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    L011LiteratureAuthorAffiliationResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_AuthorAffiliationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     L014LiteratureJournalResponse:
       type: object
       properties:
@@ -249,6 +201,23 @@ components:
       required:
       - status
       - error_code
+    L011LiteratureAuthorAffiliation_AuthorAffiliationResponse:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1039/d3nr04740g
+          description: DOI
+        paper_id:
+          type: string
+          example: 8be86941-0455-4ca4-921b-61e1c01d6393
+          description: Paper ID
+        author_data:
+          type: array
+          example: 'Please check the form: LiteratureAuthor'
+          description: Author Data
+          items:
+            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_LiteratureAuthor'
     L014LiteratureJournal_JournalResponse:
       type: object
       properties:
@@ -320,305 +289,6 @@ components:
           type: string
           example: 中国兵器工业集团公司
           description: Competent Authority
-    L010LiteratureBibliography_LiteratureTitle:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        text:
-          type: string
-          example: Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device
-          description: Text
-    L001LiteratureQuerySearchRequest:
-      type: object
-      properties:
-        date_time:
-          type: string
-          example: '[1714521600000 TO 1748011043000]'
-          description: Publication timestamp range
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit of returned response; must be <= 1,00
-        offset:
-          type: integer
-          format: int32
-          example: 0
-          description: offset value; limit + offset <= 10000
-        query_text:
-          type: string
-          example: title:(car) and author:("haiyang") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]
-          description: 'You can search and query our global literature repository by entering document titles, abstracts, authors, and other metadata.
-
-            Maximum Search Text Length: 800 characters.
-
-
-            Support logic connector AND/OR
-
-
-            Supported Search Fields:
-
-
-            title: Document title
-
-            abstract: Document abstract
-
-            author: Author name
-
-            date_time: Publication timestamp range
-
-            publication: Journal name
-
-            author Parameters need to be enclosed in double quotation marks'
-        text:
-          type: string
-          example: Journal of Personalized Medicine
-          description: The text input for literature search.
-        type:
-          type: string
-          example: publication
-          description: 'Supported text types for literature include：
-
-
-            title: (literature title)
-
-            abstract：(literature abstract)
-
-            author：(literature author)
-
-            publication：(literature publication)
-
-            title/abstract：(literature title or abstract)
-
-            all：(the above fields)'
-    L011LiteratureAuthorAffiliationRequest:
-      type: object
-      properties:
-        doi:
-          type: string
-          example: 10.1016/j.bpj.2024.07.030
-          description: DOI (only a single doi issupported)
-        paper_id:
-          type: string
-          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
-          description: paper id
-    L001LiteratureQuerySearch_SearchLiteratureResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          example: LiteratureBaseResponse
-          description: result
-          items:
-            $ref: '#/components/schemas/L001LiteratureQuerySearch_LiteratureSearch'
-        result_count:
-          type: integer
-          format: int32
-          example: 10
-          description: Received result count
-        total_search_result_count:
-          type: integer
-          format: int32
-          example: 7113
-          description: Total search result count
-    L001LiteratureQuerySearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/L001LiteratureQuerySearch_SearchLiteratureResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    L012LiteratureCitation_LiteratureNPCitation:
-      type: object
-      properties:
-        paper_id:
-          type: string
-          example: 4b656503-a352-4815-93ba-76a7cb967d25
-          description: Paper ID
-        citation_text:
-          type: string
-          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
-          description: Citation Text
-    L011LiteratureAuthorAffiliation_AuthorAffiliationResponse:
-      type: object
-      properties:
-        doi:
-          type: string
-          example: 10.1039/d3nr04740g
-          description: DOI
-        paper_id:
-          type: string
-          example: 8be86941-0455-4ca4-921b-61e1c01d6393
-          description: Paper ID
-        author_data:
-          type: array
-          example: 'Please check the form: LiteratureAuthor'
-          description: Author Data
-          items:
-            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_LiteratureAuthor'
-    L012LiteratureCitationRequest:
-      type: object
-      properties:
-        doi:
-          type: string
-          example: 10.1016/j.bpj.2024.07.030
-          description: DOI (only a single doi issupported)
-        page_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Current page number
-        paper_id:
-          type: string
-          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
-          description: paper id
-    L001LiteratureQuerySearch_LiteratureSearch:
-      type: object
-      properties:
-        doi:
-          type: string
-          example: 10.3390/jpm13121685
-          description: DOI
-        title:
-          type: array
-          example:
-          - Variability in Provider Assessment of Sepsis and Potential of Host Response Technology to Address this Dilemma—Results of an Online Delphi Study
-          description: Title
-        author:
-          type: array
-          example:
-          - Kraus, Chadd K
-          - O'Neal, Hollis R
-          - Ledeboer, Nathan A
-          - Rice, Todd W
-          - Self, Wesley H
-          description: Author
-        paper_id:
-          type: string
-          example: 938ad823-46f7-485b-959d-610a767e5a6e
-          description: Paper ID
-    L012LiteratureCitation_CitationResponse:
-      type: object
-      properties:
-        doi:
-          type: string
-          example: 10.3390/s20030734
-          description: DOI
-        paper_id:
-          type: string
-          example: 1f0f61d1-0d76-3a29-a677-7f0cf7a332f7,00001b6d-2cfa-411a-ab41-8a05fd675d46
-          description: Paper ID
-        reference_no:
-          type: integer
-          format: int32
-          example: 20
-          description: Number of References
-        np_citation_no:
-          type: integer
-          format: int32
-          example: 2
-          description: Number of Non-patent Citations
-        reference_data:
-          type: array
-          example: 'Please check the form: LiteratureReference'
-          description: Reference Data
-          items:
-            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureReference'
-        np_citation_data:
-          type: array
-          example: 'Please check the form: LiteratureNPCitation'
-          description: Non-patent Citation data
-          items:
-            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureNPCitation'
-        patent_citation_no:
-          type: integer
-          format: int32
-          example: 1
-          description: Number of Patent Citations
-        patent_citation_data:
-          type: array
-          example: 'Please check the form: LiteraturePatentCitation'
-          description: Patent Citation Data
-          items:
-            $ref: '#/components/schemas/L012LiteratureCitation_LiteraturePatentCitation'
-    L012LiteratureCitation_LiteratureReference:
-      type: object
-      properties:
-        paper_id:
-          type: string
-          example: 4590883d-3d89-35ef-b662-cd820dc1427c
-          description: Paper ID
-        sequence:
-          type: integer
-          format: int32
-          example: 1
-          description: Sequence
-        citation_text:
-          type: string
-          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
-          description: Citation Text
-    L012LiteratureCitation_LiteraturePatentCitation:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN112833870A
-          description: Patent Number
-        apdt:
-          type: integer
-          format: int32
-          example: 20201230
-          description: Application Date
-        apno:
-          type: string
-          example: CN202011610975.8
-          description: Application Number
-        pbdt:
-          type: integer
-          format: int32
-          example: 20201230
-          description: Publication Date
-        title:
-          type: string
-          example: 核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法
-          description: Title
-        inventor:
-          type: array
-          example:
-          - 张燚
-          - 汪之国
-          - 李佳佳
-          description: Inventor
-        patent_id:
-          type: string
-          example: fd509ad5-7da1-464f-9b32-2858be00f2e9
-          description: Patent ID
-        current_assignee:
-          type: array
-          example:
-          - 中国人民解放军国防科技大学
-          description: Current Assignee
-        original_assignee:
-          type: array
-          example:
-          - 中国人民解放军国防科技大学
-          description: Original Assignee
     L010LiteratureBibliography_LiteratureAbstract:
       type: object
       properties:
@@ -641,15 +311,11 @@ components:
           type: string
           example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
           description: paper id
-    L010LiteratureBibliographyResponse:
+    L001LiteratureQuerySearchResponse:
       type: object
       properties:
         data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/L010LiteratureBibliography_BibliographyResponse'
+          $ref: '#/components/schemas/L001LiteratureQuerySearch_SearchLiteratureResponse'
         status:
           type: boolean
           example: 'false'
@@ -729,7 +395,31 @@ components:
           type: string
           example: Elsevier BV
           description: Publish Institution
-    L014LiteratureJournalRequest:
+    L010LiteratureBibliographyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L010LiteratureBibliography_BibliographyResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L011LiteratureAuthorAffiliationRequest:
       type: object
       properties:
         doi:
@@ -740,6 +430,286 @@ components:
           type: string
           example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
           description: paper id
+    L012LiteratureCitation_CitationResponse:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.3390/s20030734
+          description: DOI
+        paper_id:
+          type: string
+          example: 1f0f61d1-0d76-3a29-a677-7f0cf7a332f7,00001b6d-2cfa-411a-ab41-8a05fd675d46
+          description: Paper ID
+        reference_no:
+          type: integer
+          format: int32
+          example: 20
+          description: Number of References
+        np_citation_no:
+          type: integer
+          format: int32
+          example: 2
+          description: Number of Non-patent Citations
+        reference_data:
+          type: array
+          example: 'Please check the form: LiteratureReference'
+          description: Reference Data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureReference'
+        np_citation_data:
+          type: array
+          example: 'Please check the form: LiteratureNPCitation'
+          description: Non-patent Citation data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteratureNPCitation'
+        patent_citation_no:
+          type: integer
+          format: int32
+          example: 1
+          description: Number of Patent Citations
+        patent_citation_data:
+          type: array
+          example: 'Please check the form: LiteraturePatentCitation'
+          description: Patent Citation Data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_LiteraturePatentCitation'
+    L001LiteratureQuerySearchRequest:
+      type: object
+      properties:
+        date_time:
+          type: string
+          example: '[1714521600000 TO 1748011043000]'
+          description: Publication timestamp range
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit of returned response; must be <= 1,00
+        offset:
+          type: integer
+          format: int32
+          example: 0
+          description: offset value; limit + offset <= 10000
+        query_text:
+          type: string
+          example: title:(car) and author:("haiyang") and abstract:(car) and publication:(car) and date_time:[1714521600000 TO 1748011043000]
+          description: 'You can search and query our global literature repository by entering document titles, abstracts, authors, and other metadata.
+
+            Maximum Search Text Length: 800 characters.
+
+
+            Support logic connector AND/OR
+
+
+            Supported Search Fields:
+
+
+            title: Document title
+
+            abstract: Document abstract
+
+            author: Author name
+
+            date_time: Publication timestamp range
+
+            publication: Journal name
+
+            author Parameters need to be enclosed in double quotation marks'
+        text:
+          type: string
+          example: Journal of Personalized Medicine
+          description: The text input for literature search.
+        type:
+          type: string
+          example: publication
+          description: 'Supported text types for literature include：
+
+
+            title: (literature title)
+
+            abstract：(literature abstract)
+
+            author：(literature author)
+
+            publication：(literature publication)
+
+            title/abstract：(literature title or abstract)
+
+            all：(the above fields)'
+    L001LiteratureQuerySearch_LiteratureSearch:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.3390/jpm13121685
+          description: DOI
+        title:
+          type: array
+          example:
+          - Variability in Provider Assessment of Sepsis and Potential of Host Response Technology to Address this Dilemma—Results of an Online Delphi Study
+          description: Title
+        author:
+          type: array
+          example:
+          - Kraus, Chadd K
+          - O'Neal, Hollis R
+          - Ledeboer, Nathan A
+          - Rice, Todd W
+          - Self, Wesley H
+          description: Author
+        paper_id:
+          type: string
+          example: 938ad823-46f7-485b-959d-610a767e5a6e
+          description: Paper ID
+    L012LiteratureCitationRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Current page number
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
+    L010LiteratureBibliography_LiteratureTitle:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        text:
+          type: string
+          example: Assessing the mechanism of facilitated proton transport across GUVs trapped in a microfluidic device
+          description: Text
+    L012LiteratureCitation_LiteratureNPCitation:
+      type: object
+      properties:
+        paper_id:
+          type: string
+          example: 4b656503-a352-4815-93ba-76a7cb967d25
+          description: Paper ID
+        citation_text:
+          type: string
+          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
+          description: Citation Text
+    L012LiteratureCitation_LiteratureReference:
+      type: object
+      properties:
+        paper_id:
+          type: string
+          example: 4590883d-3d89-35ef-b662-cd820dc1427c
+          description: Paper ID
+        sequence:
+          type: integer
+          format: int32
+          example: 1
+          description: Sequence
+        citation_text:
+          type: string
+          example: A review of infectious bovine rhinotracheitis, shipping fever pneumonia and viral-bacterial synergism in respiratory disease of cattle.W D Yates.Can J Comp Med.1982 Jul;46(3):225-63.
+          description: Citation Text
+    L012LiteratureCitationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L012LiteratureCitation_CitationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L011LiteratureAuthorAffiliationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/L011LiteratureAuthorAffiliation_AuthorAffiliationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    L012LiteratureCitation_LiteraturePatentCitation:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN112833870A
+          description: Patent Number
+        apdt:
+          type: integer
+          format: int32
+          example: 20201230
+          description: Application Date
+        apno:
+          type: string
+          example: CN202011610975.8
+          description: Application Number
+        pbdt:
+          type: integer
+          format: int32
+          example: 20201230
+          description: Publication Date
+        title:
+          type: string
+          example: 核磁共振陀螺中抑制碱金属原子极化磁场影响的有效方法
+          description: Title
+        inventor:
+          type: array
+          example:
+          - 张燚
+          - 汪之国
+          - 李佳佳
+          description: Inventor
+        patent_id:
+          type: string
+          example: fd509ad5-7da1-464f-9b32-2858be00f2e9
+          description: Patent ID
+        current_assignee:
+          type: array
+          example:
+          - 中国人民解放军国防科技大学
+          description: Current Assignee
+        original_assignee:
+          type: array
+          example:
+          - 中国人民解放军国防科技大学
+          description: Original Assignee
     L011LiteratureAuthorAffiliation_LiteratureAuthor:
       type: object
       properties:
@@ -793,6 +763,36 @@ components:
           type: string
           example: France
           description: Affiliation Country
+    L001LiteratureQuerySearch_SearchLiteratureResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          example: LiteratureBaseResponse
+          description: result
+          items:
+            $ref: '#/components/schemas/L001LiteratureQuerySearch_LiteratureSearch'
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: Received result count
+        total_search_result_count:
+          type: integer
+          format: int32
+          example: 7113
+          description: Total search result count
+    L014LiteratureJournalRequest:
+      type: object
+      properties:
+        doi:
+          type: string
+          example: 10.1016/j.bpj.2024.07.030
+          description: DOI (only a single doi issupported)
+        paper_id:
+          type: string
+          example: 00001b6d-2cfa-411a-ab41-8a05fd675d46,00001756-243f-4738-a288-282987105915
+          description: paper id
   securitySchemes:
     bearerAuth:
       type: http

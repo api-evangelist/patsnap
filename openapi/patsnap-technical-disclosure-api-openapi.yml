@@ -111,15 +111,100 @@ paths:
               $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeansRequest'
 components:
   schemas:
-    AI32-1PatentDisclosureTechMeansRequest:
+    AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse:
       type: object
       properties:
-        tech_solution:
+        job_id:
           type: string
-          example: 一种车辆系统，包含以下组件：车辆的车门；电动致动马达，该马达被设计用于打开车门；检测器，该检测器用于检测无线设备，该无线设备用于与车辆进行通信；车门控制器，该控制器的功能如下：当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制电动致动马达将车门打开至第一角度；如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制电动致动马达关闭车门；其中，第一预定义区域不包括第二预定义区域，而第二预定义区域是靠近驾驶员侧的，驾驶员必须经过该区域才能进入驾驶员座椅的区域。
-          description: Please enter your technical ideas or solutions. It’s recommended to input more than 200 words, supporting both Chinese and English, with a maximum of 5000 words.
+          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
+          description: Job ID
+        status:
+          type: integer
+          format: int32
+          example: 1
+          description: 'job state
+
+            1:running
+
+            2:success
+
+            3:fail'
+    AI32-3PatentDisclosureDownload_DisclosureDownloadResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
+          description: Export Task ID
+        job_status:
+          type: integer
+          format: int32
+          example: 1
+          description: 'Export Status (0: Pending export, 1: Exporting, 2: Export successful, 3: Report generation exception)'
+        download_url:
+          type: string
+          example: http://downloadurl
+          description: File download link (returned when export status is successful)
+    AI32-1PatentDisclosureTechMeansResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeans_DisclosureTechMeansResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
       required:
-      - tech_solution
+      - status
+      - error_code
+    AI32-3PatentDisclosureDownloadResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-3PatentDisclosureDownload_DisclosureDownloadResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI32-2PatentDisclosureGenerateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI32-2PatentDisclosureGenerateRequest:
       type: object
       properties:
@@ -175,42 +260,15 @@ components:
       - language
       - mechanism
       - tech_solution
-    AI32-3PatentDisclosureDownload_DisclosureDownloadResponse:
+    AI32-1PatentDisclosureTechMeansRequest:
       type: object
       properties:
-        job_id:
+        tech_solution:
           type: string
-          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
-          description: Export Task ID
-        job_status:
-          type: integer
-          format: int32
-          example: 1
-          description: 'Export Status (0: Pending export, 1: Exporting, 2: Export successful, 3: Report generation exception)'
-        download_url:
-          type: string
-          example: http://downloadurl
-          description: File download link (returned when export status is successful)
-    AI32-3PatentDisclosureDownloadResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI32-3PatentDisclosureDownload_DisclosureDownloadResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
+          example: 一种车辆系统，包含以下组件：车辆的车门；电动致动马达，该马达被设计用于打开车门；检测器，该检测器用于检测无线设备，该无线设备用于与车辆进行通信；车门控制器，该控制器的功能如下：当检测器确定无线设备位于车辆驾驶员侧的第一预定义区域内时，控制电动致动马达将车门打开至第一角度；如果检测器确定无线设备在预定的超时时间内未进入第二预定义区域，则控制电动致动马达关闭车门；其中，第一预定义区域不包括第二预定义区域，而第二预定义区域是靠近驾驶员侧的，驾驶员必须经过该区域才能进入驾驶员座椅的区域。
+          description: Please enter your technical ideas or solutions. It’s recommended to input more than 200 words, supporting both Chinese and English, with a maximum of 5000 words.
       required:
-      - status
-      - error_code
+      - tech_solution
     AI32-3PatentDisclosureDownloadRequest:
       type: object
       properties:
@@ -222,44 +280,6 @@ components:
             You can obtain the corresponding ID through the [AI32-2] interface.'
       required:
       - job_id
-    AI32-1PatentDisclosureTechMeansResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI32-1PatentDisclosureTechMeans_DisclosureTechMeansResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: fc3fede2-af3d-4df2-bcf0-e4125178d379
-          description: Job ID
-        status:
-          type: integer
-          format: int32
-          example: 1
-          description: 'job state
-
-            1:running
-
-            2:success
-
-            3:fail'
     AI32-1PatentDisclosureTechMeans_DisclosureTechMeansResponse:
       type: object
       properties:
@@ -307,26 +327,6 @@ components:
           example:
           - 一种车辆系统
           description: Subject of improvement
-    AI32-2PatentDisclosureGenerateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI32-2PatentDisclosureGenerate_DisclosureGenerateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
   securitySchemes:
     bearerAuth:
       type: http

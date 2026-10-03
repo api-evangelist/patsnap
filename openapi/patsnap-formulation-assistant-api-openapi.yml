@@ -78,20 +78,43 @@ paths:
               $ref: '#/components/schemas/M001-2AiFormulationAgentQueryRequest'
 components:
   schemas:
-    M001-1AiFormulationAgentCreationRequest:
+    M001-2AiFormulationAgentQuery_Ingredient:
       type: object
       properties:
-        lang:
+        content:
+          type: array
+          example:
+          - 6
+          - 40
+          description: Content range
+        function:
           type: string
-          example: cn
-          description: text language, support cn and en
-        text:
+          example: Reinforcing filler
+          description: Function
+        ingredient:
           type: string
-          example: 我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。
-          description: Input
+          example: Carbon black
+          description: Ingredient name
+    M001-2AiFormulationAgentQueryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationAgentQueryResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
       required:
-      - lang
-      - text
+      - status
+      - error_code
     M001-2AiFormulationAgentQuery_FormulationDetail:
       type: object
       properties:
@@ -170,6 +193,72 @@ components:
           description: Ingredient list
           items:
             $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_Ingredient'
+    M001-1AiFormulationAgentCreationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/M001-1AiFormulationAgentCreation_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    M001-2AiFormulationAgentQuery_Formulation:
+      type: object
+      properties:
+        dimension:
+          type: string
+          example: Mechanical Reinforcement and Energy Dissipation
+          description: Dimension
+        formulation_1:
+          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
+        formulation_2:
+          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
+        strategy_index:
+          type: integer
+          format: int32
+          example: 0
+          description: Strategy index
+    M001-1AiFormulationAgentCreationRequest:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        text:
+          type: string
+          example: 我想开发一款防晒系数SPF 50且具有防水性能的防晒霜。我希望在其中添加氧化锌和甘油。
+          description: Input
+      required:
+      - lang
+      - text
+    M001-2AiFormulationAgentQueryRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    M001-1AiFormulationAgentCreation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     M001-2AiFormulationAgentQuery_FormulationAgentQueryResponse:
       type: object
       properties:
@@ -293,95 +382,6 @@ components:
           description: Formulation list
           items:
             $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_Formulation'
-    M001-2AiFormulationAgentQueryRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    M001-2AiFormulationAgentQueryResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationAgentQueryResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    M001-1AiFormulationAgentCreationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/M001-1AiFormulationAgentCreation_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    M001-1AiFormulationAgentCreation_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    M001-2AiFormulationAgentQuery_Formulation:
-      type: object
-      properties:
-        dimension:
-          type: string
-          example: Mechanical Reinforcement and Energy Dissipation
-          description: Dimension
-        formulation_1:
-          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
-        formulation_2:
-          $ref: '#/components/schemas/M001-2AiFormulationAgentQuery_FormulationDetail'
-        strategy_index:
-          type: integer
-          format: int32
-          example: 0
-          description: Strategy index
-    M001-2AiFormulationAgentQuery_Ingredient:
-      type: object
-      properties:
-        content:
-          type: array
-          example:
-          - 6
-          - 40
-          description: Content range
-        function:
-          type: string
-          example: Reinforcing filler
-          description: Function
-        ingredient:
-          type: string
-          example: Carbon black
-          description: Ingredient name
   securitySchemes:
     bearerAuth:
       type: http

@@ -95,6 +95,13 @@ paths:
               $ref: '#/components/schemas/FileDetailRequest'
 components:
   schemas:
+    FileExtractRequest:
+      type: object
+      properties:
+        file:
+          type: file
+          example: document.pdf
+          description: PDF file to upload
     FileDetail_ResultItem:
       type: object
       properties:
@@ -180,37 +187,21 @@ components:
           type: string
           example: Cell line
           description: Experimental subject
-    FileExtract_SarExtractBatchResponse:
+    FileDetail_BasicTargetName:
       type: object
       properties:
-        status:
+        target_id:
           type: string
-          example: PENDING
-          description: 'Task status: PENDING (processing) / FAILED (failed)'
-        task_id:
+          example: T001
+          description: Target ID
+        display_name_cn:
           type: string
-          example: abc123xyz
-          description: Task ID , used to poll the extraction status
-    FileExtractResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FileExtract_SarExtractBatchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+          example: 表皮生长因子受体
+          description: Display name (CN)
+        display_name_en:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: EGFR
+          description: Display name (EN)
     FileDetail_OpenFileDetailResponse:
       type: object
       properties:
@@ -227,76 +218,17 @@ components:
           type: string
           example: PROCESSING
           description: 'Overall task status: PENDING / PROCESSING / SUCCESS / FAILED / NOT_FOUND'
-    FileExtractRequest:
+    FileExtract_SarExtractBatchResponse:
       type: object
       properties:
-        file:
-          type: file
-          example: document.pdf
-          description: PDF file to upload
-    FileDetailRequest:
-      type: object
-      properties:
+        status:
+          type: string
+          example: PENDING
+          description: 'Task status: PENDING (processing) / FAILED (failed)'
         task_id:
           type: string
           example: abc123xyz
-          description: Task ID returned by the /file/extract API
-      required:
-      - task_id
-    FileDetail_SarStructure:
-      type: object
-      properties:
-        mol:
-          type: string
-          example: "CC(=O)Oc1ccccc1C(=O)O\n  MJ201900                      \n\n  7  7  0  0  0  0  0  0  0  0999 V2000"
-          description: MOL format
-        smiles:
-          type: string
-          example: CC(=O)Oc1ccccc1C(=O)O
-          description: SMILES expression
-        inchy_key:
-          type: string
-          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
-          description: InChI Key
-    FileDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FileDetail_OpenFileDetailResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    FileDetail_SarDosingRegimen:
-      type: object
-      properties:
-        route:
-          type: string
-          example: Oral
-          description: Route of administration
-        dosage:
-          type: string
-          example: 10 mg/kg
-          description: Dosage
-        duration:
-          type: string
-          example: 7 days
-          description: Duration
-        frequency:
-          type: string
-          example: Once daily
-          description: Frequency
+          description: Task ID , used to poll the extraction status
     FileDetail_FileInfo:
       type: object
       properties:
@@ -327,21 +259,89 @@ components:
           type: string
           example: patent.pdf
           description: File name
-    FileDetail_BasicTargetName:
+    FileDetailResponse:
       type: object
       properties:
-        target_id:
+        data:
+          $ref: '#/components/schemas/FileDetail_OpenFileDetailResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: T001
-          description: Target ID
-        display_name_cn:
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    FileDetail_SarStructure:
+      type: object
+      properties:
+        mol:
           type: string
-          example: 表皮生长因子受体
-          description: Display name (CN)
-        display_name_en:
+          example: "CC(=O)Oc1ccccc1C(=O)O\n  MJ201900                      \n\n  7  7  0  0  0  0  0  0  0  0999 V2000"
+          description: MOL format
+        smiles:
           type: string
-          example: EGFR
-          description: Display name (EN)
+          example: CC(=O)Oc1ccccc1C(=O)O
+          description: SMILES expression
+        inchy_key:
+          type: string
+          example: BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+          description: InChI Key
+    FileDetailRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: abc123xyz
+          description: Task ID returned by the /file/extract API
+      required:
+      - task_id
+    FileDetail_SarDosingRegimen:
+      type: object
+      properties:
+        route:
+          type: string
+          example: Oral
+          description: Route of administration
+        dosage:
+          type: string
+          example: 10 mg/kg
+          description: Dosage
+        duration:
+          type: string
+          example: 7 days
+          description: Duration
+        frequency:
+          type: string
+          example: Once daily
+          description: Frequency
+    FileExtractResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FileExtract_SarExtractBatchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
   securitySchemes:
     bearerAuth:
       type: http
