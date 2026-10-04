@@ -78,41 +78,6 @@ paths:
               $ref: '#/components/schemas/AI61AiTranslationRequest'
 components:
   schemas:
-    T010HiroTranslationTranslateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/T010HiroTranslationTranslate_HiroTranslateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI61AiTranslation_AiTranslationResponse:
-      type: object
-      properties:
-        source_lang:
-          type: string
-          example: CN
-          description: Source language.
-        target_lang:
-          type: string
-          example: EN
-          description: Target language.
-        translate_result:
-          type: string
-          example: Hello, world!
-          description: Translation result.
     AI61AiTranslationResponse:
       type: object
       properties:
@@ -153,6 +118,58 @@ components:
       - state
       - textTranslated
       - translatedCharacterCount
+    AI61AiTranslationRequest:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
+        target_lang:
+          type: string
+          example: EN
+          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
+        text:
+          type: string
+          example: 你好，世界！
+          description: The original text that needs to be translated.Cannot exceed 2000 characters
+      required:
+      - text
+    AI61AiTranslation_AiTranslationResponse:
+      type: object
+      properties:
+        source_lang:
+          type: string
+          example: CN
+          description: Source language.
+        target_lang:
+          type: string
+          example: EN
+          description: Target language.
+        translate_result:
+          type: string
+          example: Hello, world!
+          description: Translation result.
+    T010HiroTranslationTranslateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/T010HiroTranslationTranslate_HiroTranslateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     T010HiroTranslationTranslateRequest:
       type: object
       properties:
@@ -176,23 +193,6 @@ components:
       - content
       - sourceLanguageCode
       - targetLanguageCode
-    AI61AiTranslationRequest:
-      type: object
-      properties:
-        source_lang:
-          type: string
-          example: CN
-          description: Source language.<p>Note：</p><p>1.Support direct input of the source language, e.g., CN；</p><p>2.Support automatic detection of the input text's language when the source language is not specified.</p>
-        target_lang:
-          type: string
-          example: EN
-          description: Target language. Only supports CN, EN, and JP. If not specified, the default is EN.
-        text:
-          type: string
-          example: 你好，世界！
-          description: The original text that needs to be translated.Cannot exceed 2000 characters
-      required:
-      - text
   securitySchemes:
     bearerAuth:
       type: http

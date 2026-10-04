@@ -210,281 +210,6 @@ paths:
               $ref: '#/components/schemas/AI33-6Step5V3Request'
 components:
   schemas:
-    AI33-2Step2V3_FindSolutionRecommendResponseV3:
-      type: object
-      properties:
-        status:
-          type: string
-          example: RUNNING
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        recommend:
-          type: array
-          example:
-          - 成本增幅≤15%
-          - 安全性能不降低
-          - 产线兼容改造
-          description: Recommended item
-    AI33-1Step1V3_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI33-6Step5V3_EurekaMindSize:
-      type: object
-      properties:
-        width:
-          type: integer
-          format: int32
-          example: 300
-          description: Width of the node (pixels)
-        height:
-          type: integer
-          format: int32
-          example: 64
-          description: Height of the node (pixels)
-    AI33-6Step5V3_OrgInfo:
-      type: object
-      properties:
-        id:
-          type: string
-          example: c2622ff840571e887a776e07b192ee06
-          description: ID of the organization (same as entity_id)
-        logo:
-          type: string
-          example: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
-          description: Logo image URL of the organization
-        name:
-          type: string
-          example: Wuhan University of Technology
-          description: Primary name of the organization
-        site:
-          type: string
-          example: www.whut.edu.cn
-          description: Site domain of the organization
-        name_cn:
-          type: string
-          example: 武汉理工大学
-          description: Chinese name of the organization
-        name_en:
-          type: string
-          example: Wuhan University of Technology
-          description: English name of the organization
-        website:
-          type: string
-          example: http://www.whut.edu.cn
-          description: Official website URL of the organization
-        state_id:
-          type: string
-          example: 80cd8682-4344-3436-88b9-cfba03d34b78
-          description: Unique identifier of the state/province where the organization is located
-        entity_id:
-          type: string
-          example: c2622ff840571e887a776e07b192ee06
-          description: Unique entity identifier of the organization
-        country_id:
-          type: string
-          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
-          description: Unique identifier of the country where the organization is located
-        state_name:
-          type: string
-          example: Hubei Sheng
-          description: Name of the state/province where the organization is located
-        description:
-          type: string
-          example: Wuhan University of Technology (WUT or WHUT) is one of the leading Chinese universities...
-          description: Detailed description of the organization
-        entity_type:
-          type: string
-          example: Education
-          description: Entity type of the organization
-        country_name:
-          type: string
-          example: China
-          description: Name of the country where the organization is located
-        display_name:
-          type: string
-          example: Wuhan University of Technology
-          description: Display name of the organization
-        founded_date:
-          type: integer
-          format: int64
-          example: 19480101
-          description: Founded date of the organization (timestamp format)
-        headquarters:
-          $ref: '#/components/schemas/AI33-6Step5V3_Address'
-        employee_number:
-          type: integer
-          format: int32
-          example: 1000
-          description: Number of employees in the organization
-        normalized_name:
-          type: string
-          example: WUHAN UNIV OF TECH
-          description: Normalized name of the organization
-        original_address:
-          $ref: '#/components/schemas/AI33-6Step5V3_Address'
-        employee_number_interval:
-          type: string
-          example: 1000-5000
-          description: Employee number interval of the organization
-        normalized_entity_type_en:
-          type: string
-          example: Education
-          description: Normalized entity type (English)
-    AI33-5Step4V3Response:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI33-5Step4V3_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI33-6Step5V3_FindSolutionResultResponseV3:
-      type: object
-      properties:
-        status:
-          type: string
-          example: SUCCEED
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        solution:
-          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindData'
-    AI33-4Step3QueryV3_Direction:
-      type: object
-      properties:
-        reason:
-          type: string
-          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-          description: Reason or rationale for the technical direction
-        ticked:
-          type: boolean
-          example: true
-          description: Whether it is selected or ticked
-        approaches:
-          type: array
-          example:
-          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
-          description: List of technical approaches or implementation paths
-        source_type:
-          type: string
-          example: model
-          description: Data source type(model/customize)
-        verification:
-          type: string
-          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
-          description: Verification description of the technical direction
-    AI33-4Step3QueryV3_FindSolutionDirectionResponseV3:
-      type: object
-      properties:
-        status:
-          type: string
-          example: SUCCEED
-          description: Return status value（SUCCEED,RUNNING,FAILED）
-        directions:
-          type: array
-          example:
-          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-            ticked: true
-            approaches:
-            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
-            source_type: model
-            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
-          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
-            ticked: true
-            approaches:
-            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
-            source_type: model
-            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
-          description: Technical direction
-          items:
-            $ref: '#/components/schemas/AI33-4Step3QueryV3_Direction'
-    AI33-5Step4V3_Direction:
-      type: object
-      properties:
-        approaches:
-          type: array
-          example:
-          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
-          description: List of technical approaches or implementation paths
-        reason:
-          type: string
-          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-          description: Reason or rationale for the technical direction
-        source_type:
-          type: string
-          example: model
-          description: Data source type(model/customize)
-        ticked:
-          type: boolean
-          example: true
-          description: Whether it is selected or ticked
-        verification:
-          type: string
-          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
-          description: Verification description of the technical direction
-    AI33-1Step1V3Response:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI33-1Step1V3_AsyncTaskIdResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI33-2Step2V3Request:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    AI33-3Step3SubmitV3Request:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: cn
-          description: text language, support cn and en
-        recommend:
-          type: array
-          example:
-          - 成本增幅≤15%
-          - 安全性能不降低
-          - 产线兼容改造
-          description: Recommended item
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of find solution
-      required:
-      - lang
-      - task_id
     AI33-6Step5V3_EurekaMindData:
       type: object
       properties:
@@ -653,89 +378,13 @@ components:
       required:
       - cells
       - title
-    AI33-6Step5V3_EurekaMindDataReference:
+    AI33-5Step4V3_AsyncTaskIdResponse:
       type: object
       properties:
-        pn:
+        task_id:
           type: string
-          example: CN116026514A
-          description: Patent number or publication number
-        apd:
-          type: string
-          example: 29 Mar 2023
-          description: Application date or applied date
-        pbd:
-          type: string
-          example: '2019-08-12'
-          description: Publication date or published date
-        title:
-          type: string
-          example: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
-          description: Solution title
-        content:
-          type: string
-          example: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
-          description: Detailed content description of the solution
-        org_info:
-          type: array
-          example:
-          - id: c2622ff840571e887a776e07b192ee06
-            logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
-            name: Wuhan University of Technology
-            site: www.whut.edu.cn
-            name_cn: 武汉理工大学
-            name_en: Wuhan University of Technology
-            website: http://www.whut.edu.cn
-            state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
-            entity_id: c2622ff840571e887a776e07b192ee06
-            country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
-            state_name: Hubei Sheng
-            description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
-            entity_type: Education
-            country_name: China
-            display_name: Wuhan University of Technology
-            founded_date: 19480101
-            headquarters:
-              state: 湖北省
-              country: 中国
-              location: 湖北省武汉市洪山区珞狮路122号
-            normalized_name: WUHAN UNIV OF TECH
-            original_address:
-              state: 湖北省
-              country: 中国
-              location: 湖北省武汉市洪山区珞狮路122号
-            normalized_entity_type_en: Education
-          description: List of related organization information
-          items:
-            $ref: '#/components/schemas/AI33-6Step5V3_OrgInfo'
-        solution_id:
-          type: string
-          example: 83d60b08-83e9-4d17-9b57-955290e53b1e
-          description: Unique identifier of the solution
-        solution_type:
-          type: string
-          example: PATENT
-          description: Solution type, such as PATENT or PAPER
-    AI33-4Step3QueryV3Response:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI33-4Step3QueryV3_FindSolutionDirectionResponseV3'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
     AI33-6Step5V3_EurekaMindCell:
       type: object
       properties:
@@ -766,6 +415,27 @@ components:
           description: Layer index of the node on the Z-axis
         position:
           $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindPosition'
+    AI33-3Step3SubmitV3Request:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        recommend:
+          type: array
+          example:
+          - 成本增幅≤15%
+          - 安全性能不降低
+          - 产线兼容改造
+          description: Recommended item
+        task_id:
+          type: string
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of find solution
+      required:
+      - lang
+      - task_id
     AI33-6Step5V3_EurekaMindPosition:
       type: object
       properties:
@@ -779,7 +449,7 @@ components:
           format: int32
           example: 132
           description: Y coordinate of the node on the canvas
-    AI33-4Step3QueryV3Request:
+    AI33-2Step2V3Request:
       type: object
       properties:
         task_id:
@@ -787,45 +457,6 @@ components:
           example: 80d440b7-80a5-4233-a75f-ab72b0885c88
           description: Task id
       required:
-      - task_id
-    AI33-5Step4V3_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI33-5Step4V3Request:
-      type: object
-      properties:
-        directions:
-          type: array
-          example:
-          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
-            ticked: true
-            approaches:
-            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
-            source_type: model
-            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
-          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
-            ticked: true
-            approaches:
-            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
-            source_type: model
-            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
-          description: Technical direction
-          items:
-            $ref: '#/components/schemas/AI33-5Step4V3_Direction'
-        lang:
-          type: string
-          example: cn
-          description: text language, support cn and en
-        task_id:
-          type: string
-          example: d12fcd63d27028b88a73168d5bca44d5
-          description: task_id of find solution
-      required:
-      - lang
       - task_id
     AI33-6Step5V3_EurekaMindCellData:
       type: object
@@ -929,18 +560,106 @@ components:
           type: string
           example: 【核心矛盾】在腹腔镜有限空间内集成高精度力反馈系统，既要保证力反馈精度和实时性，又不能显著增加器械重量和体积
           description: System sub-content, supplementary description of core contradictions and other information
-    AI33-3Step3SubmitV3_AsyncTaskIdResponse:
+    AI33-5Step4V3Request:
       type: object
       properties:
+        directions:
+          type: array
+          example:
+          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+            ticked: true
+            approaches:
+            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
+            source_type: model
+            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
+          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
+            ticked: true
+            approaches:
+            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
+            source_type: model
+            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
+          description: Technical direction
+          items:
+            $ref: '#/components/schemas/AI33-5Step4V3_Direction'
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
         task_id:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-    AI33-6Step5V3Response:
+          example: d12fcd63d27028b88a73168d5bca44d5
+          description: task_id of find solution
+      required:
+      - lang
+      - task_id
+    AI33-6Step5V3_EurekaMindDataReference:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN116026514A
+          description: Patent number or publication number
+        apd:
+          type: string
+          example: 29 Mar 2023
+          description: Application date or applied date
+        pbd:
+          type: string
+          example: '2019-08-12'
+          description: Publication date or published date
+        title:
+          type: string
+          example: Surgical clamp-oriented six-dimensional force sensor and nonlinear decoupling and fault-tolerant method
+          description: Solution title
+        content:
+          type: string
+          example: By combining the elastic deformation module and fiber grating in the laparoscopic surgical clamp, and using the extreme learning machine model and the seagull algorithm, high-precision six-dimensional force and torque detection is achieved, which solves the problem of poor biocompatibility and vulnerability of sensors in the existing technology. The problem of electromagnetic interference improves the success rate and safety of surgery.
+          description: Detailed content description of the solution
+        org_info:
+          type: array
+          example:
+          - id: c2622ff840571e887a776e07b192ee06
+            logo: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
+            name: Wuhan University of Technology
+            site: www.whut.edu.cn
+            name_cn: 武汉理工大学
+            name_en: Wuhan University of Technology
+            website: http://www.whut.edu.cn
+            state_id: 80cd8682-4344-3436-88b9-cfba03d34b78
+            entity_id: c2622ff840571e887a776e07b192ee06
+            country_id: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+            state_name: Hubei Sheng
+            description: 'Wuhan University of Technology (WUT or WHUT), located in Wuchang District and Luonan Subdistrict, Hongshan District in Wuhan, Hubei, China, was merged on May 27, 2000, from three universities: Wuhan University of Technology (established in 1948), Wuhan Transportation University (established in 1946) and Wuhan Automotive Polytechnic University (established in 1958). WUT is one of the leading Chinese universities accredited by the Ministry of Education and one of the universities constructed in priority by the "State Project 211" for Chinese higher education institutions. It is also a Chinese Ministry of Education Double First Class Discipline University, with Double First Class status in certain disciplines.'
+            entity_type: Education
+            country_name: China
+            display_name: Wuhan University of Technology
+            founded_date: 19480101
+            headquarters:
+              state: 湖北省
+              country: 中国
+              location: 湖北省武汉市洪山区珞狮路122号
+            normalized_name: WUHAN UNIV OF TECH
+            original_address:
+              state: 湖北省
+              country: 中国
+              location: 湖北省武汉市洪山区珞狮路122号
+            normalized_entity_type_en: Education
+          description: List of related organization information
+          items:
+            $ref: '#/components/schemas/AI33-6Step5V3_OrgInfo'
+        solution_id:
+          type: string
+          example: 83d60b08-83e9-4d17-9b57-955290e53b1e
+          description: Unique identifier of the solution
+        solution_type:
+          type: string
+          example: PATENT
+          description: Solution type, such as PATENT or PAPER
+    AI33-5Step4V3Response:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/AI33-6Step5V3_FindSolutionResultResponseV3'
+          $ref: '#/components/schemas/AI33-5Step4V3_AsyncTaskIdResponse'
         status:
           type: boolean
           example: 'false'
@@ -956,29 +675,173 @@ components:
       required:
       - status
       - error_code
-    AI33-6Step5V3Request:
+    AI33-6Step5V3_OrgInfo:
       type: object
       properties:
-        task_id:
+        id:
           type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
-    AI33-1Step1V3Request:
+          example: c2622ff840571e887a776e07b192ee06
+          description: ID of the organization (same as entity_id)
+        logo:
+          type: string
+          example: https://filecdn.shuidi.cn/img/upload/images_logo/29/ea/39/29ea39ecfa47783e58f4e2bf86451aef.png/0x0.png
+          description: Logo image URL of the organization
+        name:
+          type: string
+          example: Wuhan University of Technology
+          description: Primary name of the organization
+        site:
+          type: string
+          example: www.whut.edu.cn
+          description: Site domain of the organization
+        name_cn:
+          type: string
+          example: 武汉理工大学
+          description: Chinese name of the organization
+        name_en:
+          type: string
+          example: Wuhan University of Technology
+          description: English name of the organization
+        website:
+          type: string
+          example: http://www.whut.edu.cn
+          description: Official website URL of the organization
+        state_id:
+          type: string
+          example: 80cd8682-4344-3436-88b9-cfba03d34b78
+          description: Unique identifier of the state/province where the organization is located
+        entity_id:
+          type: string
+          example: c2622ff840571e887a776e07b192ee06
+          description: Unique entity identifier of the organization
+        country_id:
+          type: string
+          example: 5a365096-b2a6-31cb-acdf-1de1f5ab3abe
+          description: Unique identifier of the country where the organization is located
+        state_name:
+          type: string
+          example: Hubei Sheng
+          description: Name of the state/province where the organization is located
+        description:
+          type: string
+          example: Wuhan University of Technology (WUT or WHUT) is one of the leading Chinese universities...
+          description: Detailed description of the organization
+        entity_type:
+          type: string
+          example: Education
+          description: Entity type of the organization
+        country_name:
+          type: string
+          example: China
+          description: Name of the country where the organization is located
+        display_name:
+          type: string
+          example: Wuhan University of Technology
+          description: Display name of the organization
+        founded_date:
+          type: integer
+          format: int64
+          example: 19480101
+          description: Founded date of the organization (timestamp format)
+        headquarters:
+          $ref: '#/components/schemas/AI33-6Step5V3_Address'
+        employee_number:
+          type: integer
+          format: int32
+          example: 1000
+          description: Number of employees in the organization
+        normalized_name:
+          type: string
+          example: WUHAN UNIV OF TECH
+          description: Normalized name of the organization
+        original_address:
+          $ref: '#/components/schemas/AI33-6Step5V3_Address'
+        employee_number_interval:
+          type: string
+          example: 1000-5000
+          description: Employee number interval of the organization
+        normalized_entity_type_en:
+          type: string
+          example: Education
+          description: Normalized entity type (English)
+    AI33-4Step3QueryV3Response:
       type: object
       properties:
-        lang:
+        data:
+          $ref: '#/components/schemas/AI33-4Step3QueryV3_FindSolutionDirectionResponseV3'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: cn
-          description: text language, support cn and en
-        solution_issues:
-          type: string
-          example: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大
-          description: Technical issues requiring the creation of find-solution,length limit 500 characters
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
       required:
-      - lang
-      - solution_issues
+      - status
+      - error_code
+    AI33-6Step5V3_FindSolutionResultResponseV3:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        solution:
+          $ref: '#/components/schemas/AI33-6Step5V3_EurekaMindData'
+    AI33-4Step3QueryV3_FindSolutionDirectionResponseV3:
+      type: object
+      properties:
+        status:
+          type: string
+          example: SUCCEED
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        directions:
+          type: array
+          example:
+          - reason: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+            ticked: true
+            approaches:
+            - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液，在电池体积不变情况下提升能量密度。
+            source_type: model
+            verification: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能。
+          - reason: 通过结构优化与轻量化设计减少非活性材料质量占比
+            ticked: true
+            approaches:
+            - 优化锂电池极片结构设计，采用双面不等厚度涂布工艺和梯度密实度电极，配合超薄铜箔（6μm）和铝箔（12μm）集流体，减少非活性材料占比。
+            source_type: model
+            verification: 在保持电池体积不变的情况下，提高活性材料占比，实现能量密度提升至260Wh/kg，且与现有产线兼容。
+          description: Technical direction
+          items:
+            $ref: '#/components/schemas/AI33-4Step3QueryV3_Direction'
+    AI33-5Step4V3_Direction:
+      type: object
+      properties:
+        approaches:
+          type: array
+          example:
+          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
+          description: List of technical approaches or implementation paths
+        reason:
+          type: string
+          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+          description: Reason or rationale for the technical direction
+        source_type:
+          type: string
+          example: model
+          description: Data source type(model/customize)
+        ticked:
+          type: boolean
+          example: true
+          description: Whether it is selected or ticked
+        verification:
+          type: string
+          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
+          description: Verification description of the technical direction
     AI33-3Step3SubmitV3Response:
       type: object
       properties:
@@ -999,15 +862,26 @@ components:
       required:
       - status
       - error_code
-    AI33-6Step5V3_EurekaMindCellReference:
+    AI33-6Step5V3Response:
       type: object
       properties:
-        cell:
+        data:
+          $ref: '#/components/schemas/AI33-6Step5V3_FindSolutionResultResponseV3'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: 0f26fa4e9305ef86db199ba4d116f233
-          description: Unique identifier of the referenced node
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
       required:
-      - cell
+      - status
+      - error_code
     AI33-6Step5V3_Address:
       type: object
       properties:
@@ -1031,6 +905,56 @@ components:
           type: string
           example: 湖北省武汉市洪山区珞狮路122号
           description: Detailed address location
+    AI33-1Step1V3Response:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI33-1Step1V3_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI33-1Step1V3Request:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        solution_issues:
+          type: string
+          example: 如何提高锂电池能量密度到260瓦时/千克（Wh/kg）且体积没有变大
+          description: Technical issues requiring the creation of find-solution,length limit 500 characters
+      required:
+      - lang
+      - solution_issues
+    AI33-1Step1V3_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI33-6Step5V3Request:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
     AI33-2Step2V3Response:
       type: object
       properties:
@@ -1051,6 +975,82 @@ components:
       required:
       - status
       - error_code
+    AI33-2Step2V3_FindSolutionRecommendResponseV3:
+      type: object
+      properties:
+        status:
+          type: string
+          example: RUNNING
+          description: Return status value（SUCCEED,RUNNING,FAILED）
+        recommend:
+          type: array
+          example:
+          - 成本增幅≤15%
+          - 安全性能不降低
+          - 产线兼容改造
+          description: Recommended item
+    AI33-6Step5V3_EurekaMindCellReference:
+      type: object
+      properties:
+        cell:
+          type: string
+          example: 0f26fa4e9305ef86db199ba4d116f233
+          description: Unique identifier of the referenced node
+      required:
+      - cell
+    AI33-6Step5V3_EurekaMindSize:
+      type: object
+      properties:
+        width:
+          type: integer
+          format: int32
+          example: 300
+          description: Width of the node (pixels)
+        height:
+          type: integer
+          format: int32
+          example: 64
+          description: Height of the node (pixels)
+    AI33-4Step3QueryV3_Direction:
+      type: object
+      properties:
+        reason:
+          type: string
+          example: 通过高能量密度电极材料升级与电解液优化提升电池能量密度
+          description: Reason or rationale for the technical direction
+        ticked:
+          type: boolean
+          example: true
+          description: Whether it is selected or ticked
+        approaches:
+          type: array
+          example:
+          - 采用单晶高镍NCM811/NCA正极材料配合硅碳复合负极（5-10%硅含量），同时使用高电压添加剂改性电解液
+          description: List of technical approaches or implementation paths
+        source_type:
+          type: string
+          example: model
+          description: Data source type(model/customize)
+        verification:
+          type: string
+          example: 实现260Wh/kg能量密度目标，同时控制成本增幅在15%以内，保持电池安全性能
+          description: Verification description of the technical direction
+    AI33-3Step3SubmitV3_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+    AI33-4Step3QueryV3Request:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
   securitySchemes:
     bearerAuth:
       type: http

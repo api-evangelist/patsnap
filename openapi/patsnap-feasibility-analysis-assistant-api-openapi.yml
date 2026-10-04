@@ -78,15 +78,6 @@ paths:
               $ref: '#/components/schemas/AI40-2AiFeasibilityAnalysisQueryRequest'
 components:
   schemas:
-    AI40-2AiFeasibilityAnalysisQueryRequest:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Task id
-      required:
-      - task_id
     AI40-2AiFeasibilityAnalysisQueryResponse:
       type: object
       properties:
@@ -107,6 +98,54 @@ components:
       required:
       - status
       - error_code
+    AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Unique task identifier for subsequent polling to get task results
+      required:
+      - task_id
+    AI40-2AiFeasibilityAnalysisQueryRequest:
+      type: object
+      properties:
+        task_id:
+          type: string
+          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
+          description: Task id
+      required:
+      - task_id
+    AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://stage-patsnap-export.cdn.zhihuiya.com/7/20250603/eureka/3da39850de1f5fbd366795d62d05fcd7/content_20250603015019.pdf
+          description: Report download link (returned when export status is successful).
+        status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Task status (1: running, 2: successful, 3: generation exception).'
+    AI40-1AiFeasibilityAnalysisCreationRequest:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: cn
+          description: text language, support cn and en
+        need_logo:
+          type: boolean
+          example: true
+          description: Does PDF need to have a logo generated?
+        text:
+          type: string
+          example: 在鸡蛋外面包裹一层柔软的保护材料，来吸收冲击力。材料可以是： • 泡沫塑料（比如保丽龙） • 海绵 • 棉花 • 塑料气泡袋（气泡膜） • 毛巾或布料
+          description: Input
+      required:
+      - lang
+      - text
     AI40-1AiFeasibilityAnalysisCreationResponse:
       type: object
       properties:
@@ -127,45 +166,6 @@ components:
       required:
       - status
       - error_code
-    AI40-1AiFeasibilityAnalysisCreationRequest:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: cn
-          description: text language, support cn and en
-        need_logo:
-          type: boolean
-          example: true
-          description: Does PDF need to have a logo generated?
-        text:
-          type: string
-          example: 在鸡蛋外面包裹一层柔软的保护材料，来吸收冲击力。材料可以是： • 泡沫塑料（比如保丽龙） • 海绵 • 棉花 • 塑料气泡袋（气泡膜） • 毛巾或布料
-          description: Input
-      required:
-      - lang
-      - text
-    AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          example: https://stage-patsnap-export.cdn.zhihuiya.com/7/20250603/eureka/3da39850de1f5fbd366795d62d05fcd7/content_20250603015019.pdf
-          description: Report download link (returned when export status is successful).
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task status (1: running, 2: successful, 3: generation exception).'
-    AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse:
-      type: object
-      properties:
-        task_id:
-          type: string
-          example: 80d440b7-80a5-4233-a75f-ab72b0885c88
-          description: Unique task identifier for subsequent polling to get task results
-      required:
-      - task_id
   securitySchemes:
     bearerAuth:
       type: http

@@ -288,6 +288,59 @@ paths:
           description: Patent offset used for paging
 components:
   schemas:
+    JobIdPatentsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobIdPatents_PatentListBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    LandscapeApiJobs_MatchItem:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Advanced technologies for electric vehicle batteries
+          description: Description, detailed description of match item
+        digest_text:
+          type: string
+          example: Electric vehicle battery technology
+          description: Digest text, text digest of match item
+        title:
+          type: string
+          example: Electric vehicle battery technology
+          description: Title, title information of match item
+      required:
+      - title
+    FacetTypeDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FacetTypeDetail_FacetDetailBo'
+        status:
+          type: boolean
+          example: true
+          description: response status
+    JobIdPatents_PatentListBo:
+      type: object
+      properties:
+        patents:
+          type: array
+          example:
+          - pn: US7654321B2
+            patent_id: '12345678'
+          - pn: US7123456B2
+            patent_id: '87654321'
+          description: Patents, list containing detailed patent information
+          items:
+            $ref: '#/components/schemas/JobIdPatents_Patent'
+        total_count:
+          type: integer
+          format: int32
+          example: 1250
+          description: Total count, the total number of patents
     JobIdPatents_Patent:
       type: object
       properties:
@@ -371,6 +424,59 @@ components:
           type: string
           example: IBM
           description: Facet name, represents the name of the facet
+    JobIdResultResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          example: 123
+          description: response data
+        status:
+          type: boolean
+          example: true
+          description: response status
+    FacetTypeDetail_FacetDetailBo:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start position for pagination
+        length:
+          type: integer
+          format: int32
+          example: 10
+          description: Length, the number of records for pagination
+        details:
+          type: array
+          example:
+          - pn_map:
+            - pn: US7654321B2
+              patent_id: '12345678'
+            res_value: IBM
+          - pn_map:
+            - pn: US8765432B2
+              patent_id: '87654321'
+            res_value: Google
+          description: Facet details list, contains specific facet detailed data
+          items:
+            $ref: '#/components/schemas/FacetTypeDetail_FacetDetail'
+        facet_type:
+          type: string
+          example: applicant
+          description: Facet type, specifies the type of facet
+    LandscapeApiJobsResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          example: 123
+          description: response data
+        status:
+          type: boolean
+          example: true
+          description: response status
     FacetTypeDetail_Patent:
       type: object
       properties:
@@ -436,41 +542,39 @@ components:
           type: boolean
           example: false
           description: Has litigation, indicates whether the patent has litigation information
-    LandscapeApiJobs_MatchItem:
+    FacetsFacetType_FacetListBo:
       type: object
       properties:
-        description:
+        start:
+          type: integer
+          format: int32
+          example: 0
+          description: Start position for pagination
+        length:
+          type: integer
+          format: int32
+          example: 10
+          description: Length, the number of records for pagination
+        facet_list:
+          type: array
+          example:
+          - name: IBM
+            count: 120
+            group: 1
+            full_name: International Business Machines Corporation
+            expired_count: 25
+          - name: Google
+            count: 85
+            group: 1
+            full_name: Google LLC
+            expired_count: 15
+          description: Facet list, contains specific facet data
+          items:
+            $ref: '#/components/schemas/FacetsFacetType_Facet'
+        facet_type:
           type: string
-          example: Advanced technologies for electric vehicle batteries
-          description: Description, detailed description of match item
-        digest_text:
-          type: string
-          example: Electric vehicle battery technology
-          description: Digest text, text digest of match item
-        title:
-          type: string
-          example: Electric vehicle battery technology
-          description: Title, title information of match item
-      required:
-      - title
-    JobIdPatentsResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JobIdPatents_PatentListBo'
-        status:
-          type: boolean
-          example: true
-          description: response status
-    FacetsFacetTypeResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FacetsFacetType_FacetListBo'
-        status:
-          type: boolean
-          example: true
-          description: response status
+          example: applicant
+          description: Facet type, specifies the type of facet
     FacetsFacetType_Facet:
       type: object
       properties:
@@ -524,51 +628,11 @@ components:
       required:
       - status
       - job_status
-    LandscapeApiJobsResponse:
+    FacetsFacetTypeResponse:
       type: object
       properties:
         data:
-          type: string
-          example: 123
-          description: response data
-        status:
-          type: boolean
-          example: true
-          description: response status
-    JobIdPatents_PatentListBo:
-      type: object
-      properties:
-        patents:
-          type: array
-          example:
-          - pn: US7654321B2
-            patent_id: '12345678'
-          - pn: US7123456B2
-            patent_id: '87654321'
-          description: Patents, list containing detailed patent information
-          items:
-            $ref: '#/components/schemas/JobIdPatents_Patent'
-        total_count:
-          type: integer
-          format: int32
-          example: 1250
-          description: Total count, the total number of patents
-    JobIdResultResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          example: 123
-          description: response data
-        status:
-          type: boolean
-          example: true
-          description: response status
-    FacetTypeDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FacetTypeDetail_FacetDetailBo'
+          $ref: '#/components/schemas/FacetsFacetType_FacetListBo'
         status:
           type: boolean
           example: true
@@ -677,70 +741,6 @@ components:
       - q
       - request_type
       - uid
-    FacetsFacetType_FacetListBo:
-      type: object
-      properties:
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start position for pagination
-        length:
-          type: integer
-          format: int32
-          example: 10
-          description: Length, the number of records for pagination
-        facet_list:
-          type: array
-          example:
-          - name: IBM
-            count: 120
-            group: 1
-            full_name: International Business Machines Corporation
-            expired_count: 25
-          - name: Google
-            count: 85
-            group: 1
-            full_name: Google LLC
-            expired_count: 15
-          description: Facet list, contains specific facet data
-          items:
-            $ref: '#/components/schemas/FacetsFacetType_Facet'
-        facet_type:
-          type: string
-          example: applicant
-          description: Facet type, specifies the type of facet
-    FacetTypeDetail_FacetDetailBo:
-      type: object
-      properties:
-        start:
-          type: integer
-          format: int32
-          example: 0
-          description: Start position for pagination
-        length:
-          type: integer
-          format: int32
-          example: 10
-          description: Length, the number of records for pagination
-        details:
-          type: array
-          example:
-          - pn_map:
-            - pn: US7654321B2
-              patent_id: '12345678'
-            res_value: IBM
-          - pn_map:
-            - pn: US8765432B2
-              patent_id: '87654321'
-            res_value: Google
-          description: Facet details list, contains specific facet detailed data
-          items:
-            $ref: '#/components/schemas/FacetTypeDetail_FacetDetail'
-        facet_type:
-          type: string
-          example: applicant
-          description: Facet type, specifies the type of facet
   securitySchemes:
     bearerAuth:
       type: http

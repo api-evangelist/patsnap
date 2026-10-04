@@ -342,43 +342,6 @@ paths:
               $ref: '#/components/schemas/B056-1TechnologyAutocompleteRequest'
 components:
   schemas:
-    B058DiseaseTherapeuticAreaRequest:
-      type: object
-      properties:
-        disease_id:
-          type: string
-          example: 5577c2a48212423c8a3185fa02bdb045
-          description: Disease ID
-      required:
-      - disease_id
-    B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 3beea980d93a4cc0abc864e27514601c
-          description: ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Non-squamous non-small cell lung cancer
-          - lang: CN
-            name: 非鳞状非小细胞肺癌
-          description: Name
-          items:
-            $ref: '#/components/schemas/B050DiseaseAutocomplete_CommonName'
-    B052OrganizationAutocomplete_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
     B049DrugTypeAutocomplete_CommonName:
       type: object
       properties:
@@ -390,55 +353,7 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B055OutcomeAutocompleteRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int64
-          example: 10
-          description: limits
-        prefix:
-          type: string
-          example: OS
-          description: keywords
-      required:
-      - limit
-      - prefix
-    B056DictionarySearch_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B054MechanismActionAutocomplete_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B056-1TechnologyAutocomplete_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B049DrugTypeAutocompleteResponse:
+    B052OrganizationAutocompleteResponse:
       type: object
       properties:
         data:
@@ -446,7 +361,7 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto'
+            $ref: '#/components/schemas/B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -462,150 +377,6 @@ components:
       required:
       - status
       - error_code
-    B058DiseaseTherapeuticAreaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/B058DiseaseTherapeuticArea_TreeSearchSimplifiedResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B051TargetAutocomplete_TargetAutocompleteResponseDto:
-      type: object
-      properties:
-        target_id:
-          type: string
-          example: 928facc8122849baa0dc00759cff0380
-          description: ID
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: PD-1
-          description: Short Name
-          items:
-            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Programmed cell death protein 1
-          - lang: CN
-            name: 细胞程序性死亡-1
-          description: Target Name
-          items:
-            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
-    B052OrganizationAutocompleteRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit
-        prefix:
-          type: string
-          example: 安进
-          description: keywords
-      required:
-      - limit
-      - prefix
-    B049DrugTypeAutocompleteRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limits
-        prefix:
-          type: string
-          example: 双特异性抗体
-          description: keywords
-      required:
-      - limit
-      - prefix
-    B051TargetAutocomplete_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B056-1TechnologyAutocompleteRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limits
-        prefix:
-          type: string
-          example: 生长因子
-          description: keywords
-      required:
-      - limit
-      - prefix
-    B050DiseaseAutocompleteRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit
-        prefix:
-          type: string
-          example: 非小细胞肺癌
-          description: keywords
-      required:
-      - limit
-      - prefix
-    B050DiseaseAutocomplete_CommonName:
-      type: object
-      properties:
-        lang:
-          type: string
-          example: EN
-          description: Language
-        name:
-          type: string
-          example: Ranibizumab (Genentech)
-          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B053DrugAutocomplete_DrugAutocompleteResponseDto:
-      type: object
-      properties:
-        drug_id:
-          type: string
-          example: 2838b95ade834c96b17ac8bcd2b68c27
-          description: ID
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Adalimumab
-          - lang: CN
-            name: 阿达木单抗
-          description: Name
-          items:
-            $ref: '#/components/schemas/B053DrugAutocomplete_CommonName'
     B058DiseaseTherapeuticArea_AutocompleteSimplifiedResponse:
       type: object
       properties:
@@ -779,191 +550,6 @@ components:
           type: string
           example: Digestive System Disorders
           description: English display name
-    B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto:
-      type: object
-      properties:
-        short_name:
-          type: array
-          example:
-          - lang: EN
-            name: PD-1 inhibitors
-          - lang: CN
-            name: PD-1抑制剂
-          description: Mechanism Action Short Name
-          items:
-            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Programmed cell death protein 1 inhibitors
-          - lang: CN
-            name: 细胞程序性死亡-1抑制剂
-          description: Mechanism Action Name
-          items:
-            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
-        mechanism_action_id:
-          type: string
-          example: 4dd338b149b3ecd0ee860e1fb379b44f
-          description: ID
-    B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Bispecific antibody
-          - lang: CN
-            name: 双特异性抗体
-          description: name
-          items:
-            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_CommonName'
-        drug_type_id:
-          type: string
-          example: 9a847883d786485489d0ee1d75ae90ba
-          description: ID
-    B053DrugAutocompleteRequest:
-      type: object
-      properties:
-        prefix:
-          type: string
-          example: 索托拉西布
-          description: keywords
-        limit:
-          type: integer
-          format: int32
-          example: 10
-          description: limit
-      required:
-      - prefix
-      - limit
-    B056DictionarySearch_DictionaryAutocompleteResponseDto:
-      type: object
-      properties:
-        dict_id:
-          type: string
-          example: 9a847883d786485489d0ee1d75ae90ba
-          description: Dictionary ID
-        display_name:
-          type: array
-          example: 双特异性抗体
-          description: Dictionary Name
-          items:
-            $ref: '#/components/schemas/B056DictionarySearch_CommonName'
-    B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Bispecific antibody
-          - lang: CN
-            name: 双特异性抗体
-          description: name
-          items:
-            $ref: '#/components/schemas/B049DrugTypeAutocomplete_CommonName'
-        drug_type_id:
-          type: string
-          example: 9a847883d786485489d0ee1d75ae90ba
-          description: ID
-    B053DrugAutocompleteResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B053DrugAutocomplete_DrugAutocompleteResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B050DiseaseAutocompleteResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B054MechanismActionAutocompleteResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    B056-1TechnologyAutocompleteResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          example: no sample
-          description: response data
-          items:
-            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
     B058DiseaseTherapeuticArea_TreeSearchSimplifiedResponse:
       type: object
       properties:
@@ -1135,47 +721,112 @@ components:
           format: int64
           example: 0
           description: Data offset
-    B056DictionarySearchRequest:
+    B051TargetAutocompleteRequest:
       type: object
       properties:
-        dict_type:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
           type: string
-          example: PATENT_TECHNOLOGY
-          description: Dictionary type, fields support:PATENT_TECHNOLOGY：patent_technology; AUTHORITY_COUNTRY：patent_country; HOT_CONFERENCE：ct_result_meeting.
-        id:
-          type: string
-          example: acb92aec02da415d9b5b593529add328
-          description: Dictionary ID
-        keyword:
-          type: string
-          example: CAR-X细胞疗法
+          example: KRAS G12C
           description: keywords
+      required:
+      - limit
+      - prefix
+    B056DictionarySearch_DictionaryTreeSearchResponseDto:
+      type: object
+      properties:
+        items:
+          type: array
+          example:
+          - id: 8666aad5477e4272b56b94ca1183781d
+            name: 药物发现
+          description: Dictionary List
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_DictionaryAutocompleteResponseDto'
         limit:
           type: integer
           format: int64
           example: 10
           description: limits
+        total:
+          type: integer
+          format: int64
+          example: 100
+          description: Dictionary total
         offset:
           type: integer
           format: int64
           example: 0
           description: offset
-        parent_id:
+    B053DrugAutocompleteRequest:
+      type: object
+      properties:
+        prefix:
           type: string
-          example: 57fb4219e73247fcb69dec21b582a716
-          description: Parent Dictionary ID
-        search_tree:
-          type: boolean
-          example: false
-          description: Is Tree Search
-        sort:
+          example: 索托拉西布
+          description: keywords
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+      required:
+      - prefix
+      - limit
+    B056-1TechnologyAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limits
+        prefix:
+          type: string
+          example: 生长因子
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B056-1TechnologyAutocompleteResponse:
+      type: object
+      properties:
+        data:
           type: array
-          example:
-          - sort_field: NAME_EN_SORT
-            sort_order: desc
-          description: Sort
+          example: no sample
+          description: response data
           items:
-            $ref: '#/components/schemas/B056DictionarySearch_SortItemDto'
+            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056-1TechnologyAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
     B051TargetAutocompleteResponse:
       type: object
       properties:
@@ -1200,47 +851,103 @@ components:
       required:
       - status
       - error_code
-    B051TargetAutocompleteRequest:
+    B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Pfizer Inc.
+          - lang: CN
+            name: 辉瑞大药厂股份有限公司
+          description: Name
+          items:
+            $ref: '#/components/schemas/B052OrganizationAutocomplete_CommonName'
+        organization_id:
+          type: string
+          example: 11ef8a9e8bf5ca80213a1183511cded3
+          description: ID
+    B055OutcomeAutocompleteRequest:
       type: object
       properties:
         limit:
           type: integer
-          format: int32
+          format: int64
           example: 10
-          description: limit
+          description: limits
         prefix:
           type: string
-          example: KRAS G12C
+          example: OS
           description: keywords
       required:
       - limit
       - prefix
-    B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto:
+    B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto:
       type: object
       properties:
-        outcome_id:
+        id:
           type: string
-          example: b5929508886148bd899ab4def0451571
+          example: 3beea980d93a4cc0abc864e27514601c
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Non-squamous non-small cell lung cancer
+          - lang: CN
+            name: 非鳞状非小细胞肺癌
+          description: Name
+          items:
+            $ref: '#/components/schemas/B050DiseaseAutocomplete_CommonName'
+    B050DiseaseAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B051TargetAutocomplete_TargetAutocompleteResponseDto:
+      type: object
+      properties:
+        target_id:
+          type: string
+          example: 928facc8122849baa0dc00759cff0380
           description: ID
         short_name:
           type: array
           example:
           - lang: EN
-            name: OS
+            name: PD-1
           description: Short Name
           items:
-            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
+            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
         display_name:
           type: array
           example:
           - lang: EN
-            name: Overall survival
+            name: Programmed cell death protein 1
           - lang: CN
-            name: 总生存期
-          description: name
+            name: 细胞程序性死亡-1
+          description: Target Name
           items:
-            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
-    B052OrganizationAutocompleteResponse:
+            $ref: '#/components/schemas/B051TargetAutocomplete_CommonName'
+    B056DictionarySearch_SortItemDto:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: NAME_EN_SORT
+          description: sort field
+        sort_order:
+          type: string
+          example: desc
+          description: ASC、DESC
+    B054MechanismActionAutocompleteResponse:
       type: object
       properties:
         data:
@@ -1248,7 +955,7 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto'
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1264,18 +971,40 @@ components:
       required:
       - status
       - error_code
-    B056DictionarySearch_SortItemDto:
+    B056DictionarySearch_CommonName:
       type: object
       properties:
-        sort_field:
+        lang:
           type: string
-          example: NAME_EN_SORT
-          description: sort field
-        sort_order:
+          example: EN
+          description: Language
+        name:
           type: string
-          example: desc
-          description: ASC、DESC
-    B055OutcomeAutocompleteResponse:
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B051TargetAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B052OrganizationAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B053DrugAutocompleteResponse:
       type: object
       properties:
         data:
@@ -1283,7 +1012,99 @@ components:
           example: no sample
           description: response data
           items:
-            $ref: '#/components/schemas/B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto'
+            $ref: '#/components/schemas/B053DrugAutocomplete_DrugAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B058DiseaseTherapeuticAreaRequest:
+      type: object
+      properties:
+        disease_id:
+          type: string
+          example: 5577c2a48212423c8a3185fa02bdb045
+          description: Disease ID
+      required:
+      - disease_id
+    B056DictionarySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B056DictionarySearch_DictionaryTreeSearchResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056DictionarySearch_DictionaryAutocompleteResponseDto:
+      type: object
+      properties:
+        dict_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: Dictionary ID
+        display_name:
+          type: array
+          example: 双特异性抗体
+          description: Dictionary Name
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_CommonName'
+    B053DrugAutocomplete_CommonName:
+      type: object
+      properties:
+        lang:
+          type: string
+          example: EN
+          description: Language
+        name:
+          type: string
+          example: Ranibizumab (Genentech)
+          description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
+    B050DiseaseAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: 非小细胞肺癌
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B049DrugTypeAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1325,24 +1146,7 @@ components:
       required:
       - limit
       - prefix
-    B052OrganizationAutocomplete_OrganizationAutocompleteResponseDto:
-      type: object
-      properties:
-        display_name:
-          type: array
-          example:
-          - lang: EN
-            name: Pfizer Inc.
-          - lang: CN
-            name: 辉瑞大药厂股份有限公司
-          description: Name
-          items:
-            $ref: '#/components/schemas/B052OrganizationAutocomplete_CommonName'
-        organization_id:
-          type: string
-          example: 11ef8a9e8bf5ca80213a1183511cded3
-          description: ID
-    B053DrugAutocomplete_CommonName:
+    B054MechanismActionAutocomplete_CommonName:
       type: object
       properties:
         lang:
@@ -1353,37 +1157,99 @@ components:
           type: string
           example: Ranibizumab (Genentech)
           description: Drug,Target,Organization,Disease,Country/Location,DICT,Mechanism Action Name
-    B056DictionarySearch_DictionaryTreeSearchResponseDto:
+    B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto:
       type: object
       properties:
-        items:
+        outcome_id:
+          type: string
+          example: b5929508886148bd899ab4def0451571
+          description: ID
+        short_name:
           type: array
           example:
-          - id: 8666aad5477e4272b56b94ca1183781d
-            name: 药物发现
-          description: Dictionary List
+          - lang: EN
+            name: OS
+          description: Short Name
           items:
-            $ref: '#/components/schemas/B056DictionarySearch_DictionaryAutocompleteResponseDto'
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Overall survival
+          - lang: CN
+            name: 总生存期
+          description: name
+          items:
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_CommonName'
+    B054MechanismActionAutocomplete_DrugMechanismActionAutocompleteResponseDto:
+      type: object
+      properties:
+        short_name:
+          type: array
+          example:
+          - lang: EN
+            name: PD-1 inhibitors
+          - lang: CN
+            name: PD-1抑制剂
+          description: Mechanism Action Short Name
+          items:
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Programmed cell death protein 1 inhibitors
+          - lang: CN
+            name: 细胞程序性死亡-1抑制剂
+          description: Mechanism Action Name
+          items:
+            $ref: '#/components/schemas/B054MechanismActionAutocomplete_CommonName'
+        mechanism_action_id:
+          type: string
+          example: 4dd338b149b3ecd0ee860e1fb379b44f
+          description: ID
+    B053DrugAutocomplete_DrugAutocompleteResponseDto:
+      type: object
+      properties:
+        drug_id:
+          type: string
+          example: 2838b95ade834c96b17ac8bcd2b68c27
+          description: ID
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Adalimumab
+          - lang: CN
+            name: 阿达木单抗
+          description: Name
+          items:
+            $ref: '#/components/schemas/B053DrugAutocomplete_CommonName'
+    B049DrugTypeAutocompleteRequest:
+      type: object
+      properties:
         limit:
           type: integer
-          format: int64
+          format: int32
           example: 10
           description: limits
-        total:
-          type: integer
-          format: int64
-          example: 100
-          description: Dictionary total
-        offset:
-          type: integer
-          format: int64
-          example: 0
-          description: offset
-    B056DictionarySearchResponse:
+        prefix:
+          type: string
+          example: 双特异性抗体
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B055OutcomeAutocompleteResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/B056DictionarySearch_DictionaryTreeSearchResponseDto'
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B055OutcomeAutocomplete_OutcomeAutocompleteResponseDto'
         status:
           type: boolean
           example: 'false'
@@ -1399,6 +1265,140 @@ components:
       required:
       - status
       - error_code
+    B056-1TechnologyAutocomplete_DrugTypeAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Bispecific antibody
+          - lang: CN
+            name: 双特异性抗体
+          description: name
+          items:
+            $ref: '#/components/schemas/B056-1TechnologyAutocomplete_CommonName'
+        drug_type_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: ID
+    B050DiseaseAutocompleteResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          example: no sample
+          description: response data
+          items:
+            $ref: '#/components/schemas/B050DiseaseAutocomplete_DiseaseAutocompleteResponseDto'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B052OrganizationAutocompleteRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          example: 10
+          description: limit
+        prefix:
+          type: string
+          example: 安进
+          description: keywords
+      required:
+      - limit
+      - prefix
+    B049DrugTypeAutocomplete_DrugTypeAutocompleteResponseDto:
+      type: object
+      properties:
+        display_name:
+          type: array
+          example:
+          - lang: EN
+            name: Bispecific antibody
+          - lang: CN
+            name: 双特异性抗体
+          description: name
+          items:
+            $ref: '#/components/schemas/B049DrugTypeAutocomplete_CommonName'
+        drug_type_id:
+          type: string
+          example: 9a847883d786485489d0ee1d75ae90ba
+          description: ID
+    B058DiseaseTherapeuticAreaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/B058DiseaseTherapeuticArea_TreeSearchSimplifiedResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    B056DictionarySearchRequest:
+      type: object
+      properties:
+        dict_type:
+          type: string
+          example: PATENT_TECHNOLOGY
+          description: Dictionary type, fields support:PATENT_TECHNOLOGY：patent_technology; AUTHORITY_COUNTRY：patent_country; HOT_CONFERENCE：ct_result_meeting.
+        id:
+          type: string
+          example: acb92aec02da415d9b5b593529add328
+          description: Dictionary ID
+        keyword:
+          type: string
+          example: CAR-X细胞疗法
+          description: keywords
+        limit:
+          type: integer
+          format: int64
+          example: 10
+          description: limits
+        offset:
+          type: integer
+          format: int64
+          example: 0
+          description: offset
+        parent_id:
+          type: string
+          example: 57fb4219e73247fcb69dec21b582a716
+          description: Parent Dictionary ID
+        search_tree:
+          type: boolean
+          example: false
+          description: Is Tree Search
+        sort:
+          type: array
+          example:
+          - sort_field: NAME_EN_SORT
+            sort_order: desc
+          description: Sort
+          items:
+            $ref: '#/components/schemas/B056DictionarySearch_SortItemDto'
   securitySchemes:
     bearerAuth:
       type: http

@@ -62,63 +62,6 @@ paths:
               $ref: '#/components/schemas/AI68-2ChatAiLsStreamRequest'
 components:
   schemas:
-    AI68-1ChatAiLsChatResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatFlagResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AI68-2ChatAiLsStream_EurekalsChatResponse:
-      type: object
-      properties:
-        usage:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatUsage'
-        chat_id:
-          type: string
-          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
-          description: Chat ID
-        choices:
-          type: array
-          example: 'Please check the form: EurekalsChatChoice'
-          description: Choices list
-          items:
-            $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatChoice'
-        chat_item_id:
-          type: string
-          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
-          description: Chat item ID
-        system_fingerprint:
-          type: string
-          example: <cn></cn><us></us>
-          description: System fingerprint
-    AI68-2ChatAiLsStreamRequest:
-      type: object
-      properties:
-        chat_id:
-          type: string
-          example: a4a14dcbc26849b3a5bb338acb4ceccc
-          description: Chat ID
-        chat_item_id:
-          type: string
-          example: 52347f9d260a48438a1fb122f593c12f
-          description: Chat item ID
-      required:
-      - chat_id
-      - chat_item_id
     AI68-1ChatAiLsChatRequest:
       type: object
       properties:
@@ -148,6 +91,111 @@ components:
       - long_think
       - query
       - search_website
+    AI68-2ChatAiLsStream_EurekalsChatDelta:
+      type: object
+      properties:
+        role:
+          type: string
+          example: <cn>assistant</cn><us>assistant</us>
+          description: Role
+        content:
+          type: string
+          example: <cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>
+          description: Content
+    AI68-2ChatAiLsStream_EurekalsChatResponse:
+      type: object
+      properties:
+        usage:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatUsage'
+        chat_id:
+          type: string
+          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
+          description: Chat ID
+        choices:
+          type: array
+          example: 'Please check the form: EurekalsChatChoice'
+          description: Choices list
+          items:
+            $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatChoice'
+        chat_item_id:
+          type: string
+          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
+          description: Chat item ID
+        system_fingerprint:
+          type: string
+          example: <cn></cn><us></us>
+          description: System fingerprint
+    AI68-2ChatAiLsStream_EurekalsChatFilterResult:
+      type: object
+      properties:
+        detected:
+          type: boolean
+          example: false
+          description: Whether detected
+        filtered:
+          type: boolean
+          example: false
+          description: Whether filtered
+    AI68-1ChatAiLsChatResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatFlagResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI68-1ChatAiLsChat_EurekalsChatFlagResponse:
+      type: object
+      properties:
+        chat_id:
+          type: string
+          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
+          description: Chat ID
+        ref_doc:
+          type: array
+          example: 'Please check the form: EurekalsChatRefDoc'
+          description: Reference document list, containing related document reference information
+          items:
+            $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatRefDoc'
+        chat_item_id:
+          type: string
+          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
+          description: Chat item ID
+    AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails:
+      type: object
+      properties:
+        audio_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Audio tokens
+        reasoning_tokens:
+          type: integer
+          format: int32
+          example: <cn>2338</cn><us>2338</us>
+          description: Reasoning tokens
+        accepted_prediction_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Accepted prediction tokens
+        rejected_prediction_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Rejected prediction tokens
     AI68-1ChatAiLsChat_EurekalsChatRefDoc:
       type: object
       properties:
@@ -179,72 +227,20 @@ components:
           type: string
           example: <cn>zhihu</cn><us>zhihu</us>
           description: Document type detail
-    AI68-2ChatAiLsStreamResponse:
+    AI68-2ChatAiLsStreamRequest:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        chat_id:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
+          example: a4a14dcbc26849b3a5bb338acb4ceccc
+          description: Chat ID
+        chat_item_id:
+          type: string
+          example: 52347f9d260a48438a1fb122f593c12f
+          description: Chat item ID
       required:
-      - status
-      - error_code
-    AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails:
-      type: object
-      properties:
-        audio_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Audio tokens
-        reasoning_tokens:
-          type: integer
-          format: int32
-          example: <cn>2338</cn><us>2338</us>
-          description: Reasoning tokens
-        accepted_prediction_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Accepted prediction tokens
-        rejected_prediction_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Rejected prediction tokens
-    AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails:
-      type: object
-      properties:
-        audio_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Audio tokens
-        cached_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Cached tokens
-        cache_read_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Cache read tokens
-        cached_creation_tokens:
-          type: integer
-          format: int32
-          example: <cn>0</cn><us>0</us>
-          description: Cached creation tokens
+      - chat_id
+      - chat_item_id
     AI68-2ChatAiLsStream_EurekalsChatUsage:
       type: object
       properties:
@@ -277,17 +273,26 @@ components:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails'
         completion_tokens_details:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatCompletionTokensDetails'
-    AI68-2ChatAiLsStream_EurekalsChatDelta:
+    AI68-2ChatAiLsStreamResponse:
       type: object
       properties:
-        role:
+        data:
+          $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: <cn>assistant</cn><us>assistant</us>
-          description: Role
-        content:
-          type: string
-          example: <cn>EGFR已经成为非小细胞肺癌治疗的主要靶点之一。全球非小细胞肺癌患者的EGFR基因平均突变率约为35%,中国非小细胞肺癌患者的EGFR基因突变率约为40%。</cn><us>EGFR has become one of the main targets for non-small cell lung cancer treatment. The average EGFR gene mutation rate in global non-small cell lung cancer patients is about 35%, and the EGFR gene mutation rate in Chinese non-small cell lung cancer patients is about 40%.</us>
-          description: Content
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AI68-2ChatAiLsStream_EurekalsChatChoice:
       type: object
       properties:
@@ -304,6 +309,29 @@ components:
           description: Finish reason
         content_filter_results:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatContentFilterResults'
+    AI68-2ChatAiLsStream_EurekalsChatPromptTokensDetails:
+      type: object
+      properties:
+        audio_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Audio tokens
+        cached_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Cached tokens
+        cache_read_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Cache read tokens
+        cached_creation_tokens:
+          type: integer
+          format: int32
+          example: <cn>0</cn><us>0</us>
+          description: Cached creation tokens
     AI68-2ChatAiLsStream_EurekalsChatContentFilterResults:
       type: object
       properties:
@@ -319,34 +347,6 @@ components:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatFilterResult'
         self_harm:
           $ref: '#/components/schemas/AI68-2ChatAiLsStream_EurekalsChatFilterResult'
-    AI68-1ChatAiLsChat_EurekalsChatFlagResponse:
-      type: object
-      properties:
-        chat_id:
-          type: string
-          example: <cn>019ae7682af371d991f228fc8eac9ada</cn><us>019ae7682af371d991f228fc8eac9ada</us>
-          description: Chat ID
-        ref_doc:
-          type: array
-          example: 'Please check the form: EurekalsChatRefDoc'
-          description: Reference document list, containing related document reference information
-          items:
-            $ref: '#/components/schemas/AI68-1ChatAiLsChat_EurekalsChatRefDoc'
-        chat_item_id:
-          type: string
-          example: <cn>322d39265d444c53b8ad6d1b3a70974a</cn><us>322d39265d444c53b8ad6d1b3a70974a</us>
-          description: Chat item ID
-    AI68-2ChatAiLsStream_EurekalsChatFilterResult:
-      type: object
-      properties:
-        detected:
-          type: boolean
-          example: false
-          description: Whether detected
-        filtered:
-          type: boolean
-          example: false
-          description: Whether filtered
   securitySchemes:
     bearerAuth:
       type: http

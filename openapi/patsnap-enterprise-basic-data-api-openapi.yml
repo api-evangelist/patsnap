@@ -474,38 +474,7 @@ paths:
               $ref: '#/components/schemas/C037CompanySearchRequest'
 components:
   schemas:
-    C021CompanyQualificationCertificate_CertificateDetail:
-      type: object
-      properties:
-        title:
-          type: string
-          example: 认证项目
-          description: field name
-        content:
-          type: string
-          example: 汽车行业质量管理体系认证
-          description: field content
-    C037CompanySearch_InnovationCompanyResponse:
-      type: object
-      properties:
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        company_name_en:
-          type: string
-          example: XXXXXXXXXXXXXXXXXXX
-          description: english name
-        is_patsnap_company:
-          type: integer
-          format: int32
-          example: 1
-          description: whether or not patsnap science and technology innovation enterprise
-    C018CompanyListingInformation_CompanyListingInformationResponse:
+    C020CompanyStandardInformation_CompanyStandardInformationResponse:
       type: object
       properties:
         org_number:
@@ -520,154 +489,20 @@ components:
           type: string
           example: 中航工业机电系统股份有限公司
           description: company name
-        listing_information:
-          type: array
-          example: 'Please check the form: ListingInformation'
-          description: listing information details
-          items:
-            $ref: '#/components/schemas/C018CompanyListingInformation_ListingInformation'
-    C014CompanyTechnologyQualification_TechQualification:
-      type: object
-      properties:
-        year:
-          type: string
-          example: 2021
-          description: evaluation year
-        level:
-          type: string
-          example: 国家级
-          description: level
-        end_date:
-          type: string
-          example: 20241118
-          description: end date
-        tag_type:
-          type: string
-          example: 高新技术企业
-          description: technical qualification
-        publish_date:
-          type: string
-          example: 20211217
-          description: publish date
-        issuing_agency:
-          type: string
-          example: 科技部火炬中心
-          description: issuing agency
-    C019CompanyIpoProcessResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C019CompanyIpoProcess_CompanyIPOProcessResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C013CompanyFinancingInformation_FinancingInfoDetail:
-      type: object
-      properties:
-        money:
-          type: string
-          example: 超1亿美元
-          description: financing money
-        round:
-          type: string
-          example: E+轮
-          description: financing rounds
-        share:
-          type: string
-          example: 10%
-          description: proportion of investors
-        value:
-          type: string
-          example: 15亿美元
-          description: Company valuation
-        news_url:
-          type: string
-          example: https://36kr.com/p/892489171660039
-          description: News URL
-        pub_time:
-          type: string
-          example: 20220531
-          description: financing date
-        news_title:
-          type: string
-          example: 爱回收完成超1亿美元E+轮融资，集团品牌升级为“万物新生”
-          description: News title
-        investor_name:
-          type: string
-          example: 京东集团，国泰君安国际，国和投资，清新资本，汇禾资本，毅峰资本
-          description: Investor
-    C015CompanyAwardsInformation_CompanyAwardsInformationResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 05669441-9
-          description: organization code
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        awards_qualification:
-          type: array
-          example: 'Please check the form: AwardsQualification'
-          description: awards qualification
-          items:
-            $ref: '#/components/schemas/C015CompanyAwardsInformation_AwardsQualification'
-    C015CompanyAwardsInformation_AwardsQualification:
-      type: object
-      properties:
-        year:
-          type: string
-          example: 2010
-          description: evaluation year
-        award:
-          type: string
-          example: 国家科学技术进步奖
-          description: award
-        level:
-          type: string
-          example: 国家级
-          description: level
-        awards_level:
-          type: string
-          example: 二等奖
-          description: awards  level
-        publish_date:
-          type: string
-          example: 20110114
-          description: publish date
-        issuing_agency:
-          type: string
-          example: 科技部
-          description: issuing agency
-    C020CompanyStandardInformationRequest:
-      type: object
-      properties:
-        standard_type:
-          type: string
-          example: 国家标准
-          description: Default All (can query All, country standards, industry standards, local standards, and team standards)
-        page_number:
+        standard_count:
           type: integer
           format: int32
-          example: 1
-          description: Default page 1 (up to 20 items per page, returned in descending order by publication date, all items less than 20 will be returned)
+          example: 7
+          description: standard count
+        standard_information:
+          type: array
+          example: ListingInformation
+          description: standard information details
+          items:
+            $ref: '#/components/schemas/C020CompanyStandardInformation_StandardInformation'
+    C016CompanyMainMemberRequest:
+      type: object
+      properties:
         company_name:
           type: string
           example: 小米科技有限责任公司
@@ -680,63 +515,47 @@ components:
           type: string
           example: 5513850T82
           description: Query the organization code of a single enterprise
-      required:
-      - page_number
-    C016CompanyMainMember_MainMember:
+    C018CompanyListingInformationRequest:
       type: object
       properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C017CompanyCoreMember_CoreMember:
+      type: object
+      properties:
+        desc:
+          type: string
+          example: '曹韻丽女士,1963年出生,中国国籍,无永久境外居留权。财务会计专业专科学历,会计师。
+
+            2002年起任职于上海飞凯光电材料股份有限公司,历任财务会计、财务部经理。现任上海飞凯光电材料股份有限公司董事、副总经理。'
+          description: personal profiles
         name:
           type: string
-          example: 李虹
+          example: 曹韻丽
           description: person name
         title:
           type: string
-          example: 董事长
+          example: 副总经理&副董事长&董事
           description: position
         is_dimission:
           type: string
-          example: 0
+          example: 1
           description: 'whether or not  resignation (1: Resignation 0: Active)'
-    C014CompanyTechnologyQualificationResponse:
+    C001CompanyRegistrationInformationResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/C014CompanyTechnologyQualification_CompanyTechQualificationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C002CompanyOutboundInvestmentRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C018CompanyListingInformationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C018CompanyListingInformation_CompanyListingInformationResponse'
+          $ref: '#/components/schemas/C001CompanyRegistrationInformation_CompanyRegistrationInfoResponse'
         status:
           type: boolean
           example: 'false'
@@ -773,81 +592,11 @@ components:
           type: string
           example: 华润微电子控股有限公司
           description: company name
-    C019CompanyIpoProcess_IPOProcess:
-      type: object
-      properties:
-        lawyers:
-          type: string
-          example: 李源,张露文,刘璐,王金波
-          description: lawyer
-        sponsor:
-          type: string
-          example: 张建,彭浩
-          description: sponsor representative
-        exchange:
-          type: string
-          example: 上海交易所
-          description: exchange
-        law_firm:
-          type: string
-          example: 北京德恒律师事务所
-          description: law firm
-        bond_name:
-          type: string
-          example: 微导纳米
-          description: stock abbreviation
-        bond_type:
-          type: string
-          example: 科创板
-          description: listing sector
-        evaluators:
-          type: string
-          example: 姜海成,尚银波
-          description: evaluators
-        accept_date:
-          type: string
-          example: 20220303
-          description: acceptance date
-        accountants:
-          type: string
-          example: 李雯敏,周一惠,郭海龙
-          description: senior accountant
-        update_date:
-          type: string
-          example: 20220801
-          description: update date
-        audit_status:
-          type: string
-          example: 上市委会议通过
-          description: audit status
-        accept_process:
-          type: array
-          example: 'Please check the form: AcceptProcessResponse'
-          description: acceptance stage
-          items:
-            $ref: '#/components/schemas/C019CompanyIpoProcess_AcceptProcessResponse'
-        accounting_firm:
-          type: string
-          example: 天职国际会计师事务所（特殊普通合伙）
-          description: accounting firm
-        financing_money:
-          type: number
-          format: double
-          example: 10
-          description: financing amount (100 million RMB)
-        sponsor_institution:
-          type: string
-          example: 浙商证券股份有限公司
-          description: sponsor institution
-        evaluation_organization:
-          type: string
-          example: 沃克森（北京）国际资产评估有限公司
-          description: evaluation organization
-    C020CompanyStandardInformationResponse:
+    C003CompanyShareholderInformationResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/C020CompanyStandardInformation_CompanyStandardInformationResponse'
+          $ref: '#/components/schemas/C003CompanyShareholderInformation_CompanyShareholderInfoResponse'
         status:
           type: boolean
           example: 'false'
@@ -863,258 +612,6 @@ components:
       required:
       - status
       - error_code
-    C038CompanyInvestmentInformationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C038CompanyInvestmentInformationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C038CompanyInvestmentInformation_CompanyInvestmentInformationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C003CompanyShareholderInformation_Shareholder:
-      type: object
-      properties:
-        stock_name:
-          type: string
-          example: 苏州瀚川投资管理有限公司
-          description: Name of shareholder
-        credit_code:
-          type: string
-          example: 91320594313721239Q
-          description: unified social credit code
-        is_personal:
-          type: string
-          example: 0
-          description: 'Whether it is a natural person (1: natural person, 0: non natural person)'
-        stock_proportion:
-          type: number
-          format: double
-          example: 33.62
-          description: Shareholding ratio (%)
-    C037CompanySearch_TiffyCompanyData:
-      type: object
-      properties:
-        sort_field:
-          type: string
-          example: credit_code
-          description: sort field
-        page_number:
-          type: string
-          example: 1
-          description: search page number
-        company_list:
-          type: array
-          example:
-          - credit_code: '913205940566944194'
-            company_name: 苏州瀚川智能科技股份有限公司
-            company_name_en: Suzhou Harmontronics Automation Technology Co., Ltd.
-            is_patsnap_company: 1
-          description: company info list
-          items:
-            $ref: '#/components/schemas/C037CompanySearch_InnovationCompanyResponse'
-        company_count:
-          type: integer
-          format: int32
-          example: 1345
-          description: search company count
-    C021CompanyQualificationCertificate_QualificationCertificate:
-      type: object
-      properties:
-        detail:
-          type: array
-          example: 'Please check the form: CertificateDetail'
-          description: original certificate details
-          items:
-            $ref: '#/components/schemas/C021CompanyQualificationCertificate_CertificateDetail'
-        cert_no:
-          type: string
-          example: 0380558
-          description: certificate number
-        end_date:
-          type: string
-          example: 20240111
-          description: closing date
-        start_date:
-          type: string
-          example: 20210112
-          description: date of issuance
-        certificate_name:
-          type: string
-          example: 汽车行业质量管理体系认证
-          description: certificate type
-    C017CompanyCoreMember_CompanyCoreMemberResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 73814112-5
-          description: organization code
-        core_member:
-          type: array
-          example: 'Please check the form: CoreMember'
-          description: core members details
-          items:
-            $ref: '#/components/schemas/C017CompanyCoreMember_CoreMember'
-        credit_code:
-          type: string
-          example: 913100007381411200
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 上海飞凯材料科技股份有限公司
-          description: company name
-    C037CompanySearchRequest:
-      type: object
-      properties:
-        city:
-          type: string
-          example: 苏州市
-          description: Province
-        country:
-          type: string
-          example: 中国
-          description: Country
-        district:
-          type: string
-          example: 吴中区
-          description: Province
-        entity_status:
-          type: string
-          example: ACTIVE
-          description: Business status
-        fin_process:
-          type: string
-          example: 2
-          description: Financing process
-        founded_date_lower:
-          type: string
-          example: 20220101
-          description: Establishment time (lower limit)
-        founded_date_upper:
-          type: string
-          example: 20221231
-          description: Establishment time (upper limit)
-        gbc_lv1:
-          type: string
-          example: 制造业
-          description: Primary category of national economy
-        gbc_lv2:
-          type: string
-          example: 纺织业
-          description: Secondary category of national economy
-        is_patent:
-          type: string
-          example: 1
-          description: Patent information
-        is_patsnap_company:
-          type: string
-          example: 1
-          description: whether or not patsnap science and technology innovation enterprise
-        key_word:
-          type: string
-          example: 中国科学院苏州纳米技术与纳米仿生研究所
-          description: Keyword search
-        level:
-          type: string
-          example: 国家级|省级|市级
-          description: level
-        list_status:
-          type: string
-          example: 1
-          description: Listing status
-        page_number:
-          type: string
-          example: 1
-          description: search page number
-        province:
-          type: string
-          example: 江苏省
-          description: Province
-        rating:
-          type: string
-          example: AAA|AA|A|BBB|BB|B
-          description: China's domestic science and technology innovation rating
-        rating_global:
-          type: string
-          example: AAA|AA
-          description: Global Science and Technology Innovation Rating
-        reg_capital_lower:
-          type: string
-          example: 100
-          description: Registered capital (lower limit)
-        reg_capital_upper:
-          type: string
-          example: 1000
-          description: Registered capital (upper limit)
-        seic_lv1:
-          type: string
-          example: 新一代信息技术企业
-          description: Strategic emerging primary industry
-        seic_lv2:
-          type: string
-          example: 电子核心产业
-          description: Strategic emerging secondary industry
-        social_staff_num_lower:
-          type: string
-          example: 10
-          description: Number of insured persons (lower limit)
-        social_staff_num_upper:
-          type: string
-          example: 500
-          description: Number of insured persons (upper limit)
-        sort_field:
-          type: string
-          example: credit_code
-          description: sort field
-        tech_tags:
-          type: string
-          example: 高新技术企业
-          description: Technology tags
-      required:
-      - page_number
-      - sort_field
-    C003CompanyShareholderInformationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
     C019CompanyIpoProcessRequest:
       type: object
       properties:
@@ -1130,68 +627,6 @@ components:
           type: string
           example: 5513850T82
           description: Query the organization code of a single enterprise
-    C037CompanySearchResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C037CompanySearch_TiffyCompanyData'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C002CompanyOutboundInvestment_Investment:
-      type: object
-      properties:
-        credit_code:
-          type: string
-          example: 91120116MA06WGQC4X
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 天津瀚川智能科技有限公司
-          description: company name
-        investment_proportion:
-          type: number
-          format: double
-          example: 60
-          description: stock proportion
-    C021CompanyQualificationCertificate_CompanyQualificationCertificateResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 572927506/57292750-6
-          description: organization code
-        credit_code:
-          type: string
-          example: 91330424572927506D
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 浙江新东方汽车零部件有限公司
-          description: company name
-        certificate_count:
-          type: integer
-          format: int32
-          example: 1
-          description: certificate count
-        qualification_certificate:
-          type: array
-          example: 'Please check the form: QualificationCertificate'
-          description: qualification certificate details
-          items:
-            $ref: '#/components/schemas/C021CompanyQualificationCertificate_QualificationCertificate'
     C001CompanyRegistrationInformation_CompanyRegistrationInfoResponse:
       type: object
       properties:
@@ -1298,49 +733,177 @@ components:
           type: string
           example: 有限责任公司
           description: company type
-    C038CompanyInvestmentInformation_FoundedInfo:
-      type: object
-      properties:
-        investee:
-          type: string
-          example: 北京金匙基因科技有限公司
-          description: name of the organizations that received the funding
-        news_url:
-          type: string
-          example: http://sc.stock.cnfol.com/ggzixun/20200203/27933892.shtml
-          description: news url
-        news_title:
-          type: string
-          example: 金匙基因获得5000万元B+轮投资
-          description: news title
-        funding_date:
-          type: string
-          example: 20200203
-          description: funding date
-    C019CompanyIpoProcess_CompanyIPOProcessResponse:
+    C013CompanyFinancingInformation_CompanyFinancingInfoResponse:
       type: object
       properties:
         org_number:
           type: string
-          example: MA1MDBFY3/MA1MDBFY-3
-          description: organization code
+          example: 5513850T8-2
+          description: organization number
         credit_code:
           type: string
-          example: 91320213MA1MDBFY36
+          example: 91110108551385082Q
           description: unified social credit code
-        ipo_process:
-          type: array
-          example: 'Please check the form: IPOProcess'
-          description: IPO process details
-          items:
-            $ref: '#/components/schemas/C019CompanyIpoProcess_IPOProcess'
         company_name:
           type: string
-          example: 江苏微导纳米科技股份有限公司
+          example: 小米科技有限责任公司
           description: company name
-    C003CompanyShareholderInformation_CompanyShareholderInfoResponse:
+        financing_detail:
+          type: array
+          example: 'Please check the form: FinancingInfoDetail'
+          description: financing info detail
+          items:
+            $ref: '#/components/schemas/C013CompanyFinancingInformation_FinancingInfoDetail'
+    C013CompanyFinancingInformationRequest:
       type: object
       properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C003CompanyShareholderInformationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C014CompanyTechnologyQualificationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C037CompanySearch_TiffyCompanyData:
+      type: object
+      properties:
+        sort_field:
+          type: string
+          example: credit_code
+          description: sort field
+        page_number:
+          type: string
+          example: 1
+          description: search page number
+        company_list:
+          type: array
+          example:
+          - credit_code: '913205940566944194'
+            company_name: 苏州瀚川智能科技股份有限公司
+            company_name_en: Suzhou Harmontronics Automation Technology Co., Ltd.
+            is_patsnap_company: 1
+          description: company info list
+          items:
+            $ref: '#/components/schemas/C037CompanySearch_InnovationCompanyResponse'
+        company_count:
+          type: integer
+          format: int32
+          example: 1345
+          description: search company count
+    C038CompanyInvestmentInformationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C013CompanyFinancingInformation_FinancingInfoDetail:
+      type: object
+      properties:
+        money:
+          type: string
+          example: 超1亿美元
+          description: financing money
+        round:
+          type: string
+          example: E+轮
+          description: financing rounds
+        share:
+          type: string
+          example: 10%
+          description: proportion of investors
+        value:
+          type: string
+          example: 15亿美元
+          description: Company valuation
+        news_url:
+          type: string
+          example: https://36kr.com/p/892489171660039
+          description: News URL
+        pub_time:
+          type: string
+          example: 20220531
+          description: financing date
+        news_title:
+          type: string
+          example: 爱回收完成超1亿美元E+轮融资，集团品牌升级为“万物新生”
+          description: News title
+        investor_name:
+          type: string
+          example: 京东集团，国泰君安国际，国和投资，清新资本，汇禾资本，毅峰资本
+          description: Investor
+    C020CompanyStandardInformationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C020CompanyStandardInformation_CompanyStandardInformationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C002CompanyOutboundInvestment_CompanyOutboundInvestmentResponse:
+      type: object
+      properties:
+        investment:
+          type: array
+          example: 'Please check the form: Investment'
+          description: investment information
+          items:
+            $ref: '#/components/schemas/C002CompanyOutboundInvestment_Investment'
         org_number:
           type: string
           example: 58234321-3
@@ -1349,16 +912,21 @@ components:
           type: string
           example: 91320509582343220
           description: unified social credit code
-        shareholder:
-          type: array
-          example: 'Please check the form: Shareholder'
-          description: shareholder information
-          items:
-            $ref: '#/components/schemas/C003CompanyShareholderInformation_Shareholder'
         company_name:
           type: string
           example: 苏州博众智能机器人有限公司
           description: company name
+    C019CompanyIpoProcess_AcceptProcessResponse:
+      type: object
+      properties:
+        date:
+          type: string
+          example: 20220303
+          description: acceptance date
+        audit_status:
+          type: string
+          example: 已受理
+          description: audit status
     C038CompanyInvestmentInformation_CompanyInvestmentInformationResponse:
       type: object
       properties:
@@ -1396,79 +964,34 @@ components:
           type: string
           example: 8
           description: num funding rounds
-    C002CompanyOutboundInvestment_CompanyOutboundInvestmentResponse:
+    C015CompanyAwardsInformation_AwardsQualification:
       type: object
       properties:
-        investment:
-          type: array
-          example: 'Please check the form: Investment'
-          description: investment information
-          items:
-            $ref: '#/components/schemas/C002CompanyOutboundInvestment_Investment'
-        org_number:
+        year:
           type: string
-          example: 58234321-3
-          description: organization code
-        credit_code:
+          example: 2010
+          description: evaluation year
+        award:
           type: string
-          example: 91320509582343220
-          description: unified social credit code
-        company_name:
+          example: 国家科学技术进步奖
+          description: award
+        level:
           type: string
-          example: 苏州博众智能机器人有限公司
-          description: company name
-    C018CompanyListingInformationRequest:
-      type: object
-      properties:
-        company_name:
+          example: 国家级
+          description: level
+        awards_level:
           type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
+          example: 二等奖
+          description: awards  level
+        publish_date:
           type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
+          example: 20110114
+          description: publish date
+        issuing_agency:
           type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C017CompanyCoreMember_CoreMember:
-      type: object
-      properties:
-        desc:
-          type: string
-          example: '曹韻丽女士,1963年出生,中国国籍,无永久境外居留权。财务会计专业专科学历,会计师。
-
-            2002年起任职于上海飞凯光电材料股份有限公司,历任财务会计、财务部经理。现任上海飞凯光电材料股份有限公司董事、副总经理。'
-          description: personal profiles
-        name:
-          type: string
-          example: 曹韻丽
-          description: person name
-        title:
-          type: string
-          example: 副总经理&副董事长&董事
-          description: position
-        is_dimission:
-          type: string
-          example: 1
-          description: 'whether or not  resignation (1: Resignation 0: Active)'
-    C017CompanyCoreMemberRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C020CompanyStandardInformation_CompanyStandardInformationResponse:
+          example: 科技部
+          description: issuing agency
+    C018CompanyListingInformation_CompanyListingInformationResponse:
       type: object
       properties:
         org_number:
@@ -1483,262 +1006,17 @@ components:
           type: string
           example: 中航工业机电系统股份有限公司
           description: company name
-        standard_count:
-          type: integer
-          format: int32
-          example: 7
-          description: standard count
-        standard_information:
+        listing_information:
           type: array
-          example: ListingInformation
-          description: standard information details
+          example: 'Please check the form: ListingInformation'
+          description: listing information details
           items:
-            $ref: '#/components/schemas/C020CompanyStandardInformation_StandardInformation'
-    C019CompanyIpoProcess_AcceptProcessResponse:
-      type: object
-      properties:
-        date:
-          type: string
-          example: 20220303
-          description: acceptance date
-        audit_status:
-          type: string
-          example: 已受理
-          description: audit status
-    C001CompanyRegistrationInformationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C014CompanyTechnologyQualificationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C021CompanyQualificationCertificateRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-        page_number:
-          type: integer
-          format: int32
-          example: 1
-          description: Default page 1 (up to 20 items per page, returned in descending order by publication date, all items less than 20 will be returned)
-      required:
-      - page_number
-    C016CompanyMainMemberRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C018CompanyListingInformation_ListingInformation:
-      type: object
-      properties:
-        exchange:
-          type: string
-          example: 深圳交易所
-          description: exchange
-        bond_code:
-          type: string
-          example: '002013'
-          description: stock code
-        bond_name:
-          type: string
-          example: 中航机电
-          description: stock abbreviation
-        bond_type:
-          type: string
-          example: 主板
-          description: listing sector
-        bond_label:
-          type: string
-          example: A股
-          description: stock tags
-        english_name:
-          type: string
-          example: AVIC Electromechanical Systems Co., Ltd.
-          description: english name
-        listing_date:
-          type: string
-          example: 20040705
-          description: listing date
-        delisting_date:
-          type: string
-          example: 20230317
-          description: delisting date
-    C014CompanyTechnologyQualification_CompanyTechQualificationResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 05669441-9
-          description: organization code
-        credit_code:
-          type: string
-          example: 913205940566944300
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 苏州瀚川智能科技股份有限公司
-          description: company name
-        tech_qualification:
-          type: array
-          example: 'Please check the form: TechQualification'
-          description: tech qualification details
-          items:
-            $ref: '#/components/schemas/C014CompanyTechnologyQualification_TechQualification'
-    C001CompanyRegistrationInformationResponse:
+            $ref: '#/components/schemas/C018CompanyListingInformation_ListingInformation'
+    C014CompanyTechnologyQualificationResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/C001CompanyRegistrationInformation_CompanyRegistrationInfoResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C015CompanyAwardsInformationRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-    C020CompanyStandardInformation_SimilarStandard:
-      type: object
-      properties:
-        standard_id:
-          type: string
-          example: GB/T5267.2-2002
-          description: standard number
-        standard_name:
-          type: string
-          example: 紧固件非电解锌片涂层
-          description: standard chinese name
-    C013CompanyFinancingInformationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C013CompanyFinancingInformation_CompanyFinancingInfoResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C015CompanyAwardsInformationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C015CompanyAwardsInformation_CompanyAwardsInformationResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C016CompanyMainMemberResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C016CompanyMainMember_CompanyMainMemberResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C002CompanyOutboundInvestmentResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C002CompanyOutboundInvestment_CompanyOutboundInvestmentResponse'
+          $ref: '#/components/schemas/C014CompanyTechnologyQualification_CompanyTechQualificationResponse'
         status:
           type: boolean
           example: 'false'
@@ -1759,6 +1037,58 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/C017CompanyCoreMember_CompanyCoreMemberResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C020CompanyStandardInformation_SimilarStandard:
+      type: object
+      properties:
+        standard_id:
+          type: string
+          example: GB/T5267.2-2002
+          description: standard number
+        standard_name:
+          type: string
+          example: 紧固件非电解锌片涂层
+          description: standard chinese name
+    C003CompanyShareholderInformation_CompanyShareholderInfoResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 58234321-3
+          description: organization code
+        credit_code:
+          type: string
+          example: 91320509582343220
+          description: unified social credit code
+        shareholder:
+          type: array
+          example: 'Please check the form: Shareholder'
+          description: shareholder information
+          items:
+            $ref: '#/components/schemas/C003CompanyShareholderInformation_Shareholder'
+        company_name:
+          type: string
+          example: 苏州博众智能机器人有限公司
+          description: company name
+    C021CompanyQualificationCertificateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C021CompanyQualificationCertificate_CompanyQualificationCertificateResponse'
         status:
           type: boolean
           example: 'false'
@@ -1876,68 +1206,7 @@ components:
           example:
           - GB/T 5267.2-2002
           description: all substitute standardsall substitute standards
-    C013CompanyFinancingInformation_CompanyFinancingInfoResponse:
-      type: object
-      properties:
-        org_number:
-          type: string
-          example: 5513850T8-2
-          description: organization number
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: unified social credit code
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: company name
-        financing_detail:
-          type: array
-          example: 'Please check the form: FinancingInfoDetail'
-          description: financing info detail
-          items:
-            $ref: '#/components/schemas/C013CompanyFinancingInformation_FinancingInfoDetail'
-    C021CompanyQualificationCertificateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C021CompanyQualificationCertificate_CompanyQualificationCertificateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C003CompanyShareholderInformationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/C003CompanyShareholderInformation_CompanyShareholderInfoResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    C013CompanyFinancingInformationRequest:
+    C021CompanyQualificationCertificateRequest:
       type: object
       properties:
         company_name:
@@ -1952,6 +1221,737 @@ components:
           type: string
           example: 5513850T82
           description: Query the organization code of a single enterprise
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Default page 1 (up to 20 items per page, returned in descending order by publication date, all items less than 20 will be returned)
+      required:
+      - page_number
+    C019CompanyIpoProcessResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C019CompanyIpoProcess_CompanyIPOProcessResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C002CompanyOutboundInvestment_Investment:
+      type: object
+      properties:
+        credit_code:
+          type: string
+          example: 91120116MA06WGQC4X
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 天津瀚川智能科技有限公司
+          description: company name
+        investment_proportion:
+          type: number
+          format: double
+          example: 60
+          description: stock proportion
+    C019CompanyIpoProcess_IPOProcess:
+      type: object
+      properties:
+        lawyers:
+          type: string
+          example: 李源,张露文,刘璐,王金波
+          description: lawyer
+        sponsor:
+          type: string
+          example: 张建,彭浩
+          description: sponsor representative
+        exchange:
+          type: string
+          example: 上海交易所
+          description: exchange
+        law_firm:
+          type: string
+          example: 北京德恒律师事务所
+          description: law firm
+        bond_name:
+          type: string
+          example: 微导纳米
+          description: stock abbreviation
+        bond_type:
+          type: string
+          example: 科创板
+          description: listing sector
+        evaluators:
+          type: string
+          example: 姜海成,尚银波
+          description: evaluators
+        accept_date:
+          type: string
+          example: 20220303
+          description: acceptance date
+        accountants:
+          type: string
+          example: 李雯敏,周一惠,郭海龙
+          description: senior accountant
+        update_date:
+          type: string
+          example: 20220801
+          description: update date
+        audit_status:
+          type: string
+          example: 上市委会议通过
+          description: audit status
+        accept_process:
+          type: array
+          example: 'Please check the form: AcceptProcessResponse'
+          description: acceptance stage
+          items:
+            $ref: '#/components/schemas/C019CompanyIpoProcess_AcceptProcessResponse'
+        accounting_firm:
+          type: string
+          example: 天职国际会计师事务所（特殊普通合伙）
+          description: accounting firm
+        financing_money:
+          type: number
+          format: double
+          example: 10
+          description: financing amount (100 million RMB)
+        sponsor_institution:
+          type: string
+          example: 浙商证券股份有限公司
+          description: sponsor institution
+        evaluation_organization:
+          type: string
+          example: 沃克森（北京）国际资产评估有限公司
+          description: evaluation organization
+    C021CompanyQualificationCertificate_QualificationCertificate:
+      type: object
+      properties:
+        detail:
+          type: array
+          example: 'Please check the form: CertificateDetail'
+          description: original certificate details
+          items:
+            $ref: '#/components/schemas/C021CompanyQualificationCertificate_CertificateDetail'
+        cert_no:
+          type: string
+          example: 0380558
+          description: certificate number
+        end_date:
+          type: string
+          example: 20240111
+          description: closing date
+        start_date:
+          type: string
+          example: 20210112
+          description: date of issuance
+        certificate_name:
+          type: string
+          example: 汽车行业质量管理体系认证
+          description: certificate type
+    C019CompanyIpoProcess_CompanyIPOProcessResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: MA1MDBFY3/MA1MDBFY-3
+          description: organization code
+        credit_code:
+          type: string
+          example: 91320213MA1MDBFY36
+          description: unified social credit code
+        ipo_process:
+          type: array
+          example: 'Please check the form: IPOProcess'
+          description: IPO process details
+          items:
+            $ref: '#/components/schemas/C019CompanyIpoProcess_IPOProcess'
+        company_name:
+          type: string
+          example: 江苏微导纳米科技股份有限公司
+          description: company name
+    C037CompanySearch_InnovationCompanyResponse:
+      type: object
+      properties:
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        company_name_en:
+          type: string
+          example: XXXXXXXXXXXXXXXXXXX
+          description: english name
+        is_patsnap_company:
+          type: integer
+          format: int32
+          example: 1
+          description: whether or not patsnap science and technology innovation enterprise
+    C018CompanyListingInformationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C018CompanyListingInformation_CompanyListingInformationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C038CompanyInvestmentInformation_FoundedInfo:
+      type: object
+      properties:
+        investee:
+          type: string
+          example: 北京金匙基因科技有限公司
+          description: name of the organizations that received the funding
+        news_url:
+          type: string
+          example: http://sc.stock.cnfol.com/ggzixun/20200203/27933892.shtml
+          description: news url
+        news_title:
+          type: string
+          example: 金匙基因获得5000万元B+轮投资
+          description: news title
+        funding_date:
+          type: string
+          example: 20200203
+          description: funding date
+    C014CompanyTechnologyQualification_CompanyTechQualificationResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        tech_qualification:
+          type: array
+          example: 'Please check the form: TechQualification'
+          description: tech qualification details
+          items:
+            $ref: '#/components/schemas/C014CompanyTechnologyQualification_TechQualification'
+    C013CompanyFinancingInformationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C013CompanyFinancingInformation_CompanyFinancingInfoResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C021CompanyQualificationCertificate_CertificateDetail:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 认证项目
+          description: field name
+        content:
+          type: string
+          example: 汽车行业质量管理体系认证
+          description: field content
+    C015CompanyAwardsInformationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C015CompanyAwardsInformation_CompanyAwardsInformationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C037CompanySearchRequest:
+      type: object
+      properties:
+        city:
+          type: string
+          example: 苏州市
+          description: Province
+        country:
+          type: string
+          example: 中国
+          description: Country
+        district:
+          type: string
+          example: 吴中区
+          description: Province
+        entity_status:
+          type: string
+          example: ACTIVE
+          description: Business status
+        fin_process:
+          type: string
+          example: 2
+          description: Financing process
+        founded_date_lower:
+          type: string
+          example: 20220101
+          description: Establishment time (lower limit)
+        founded_date_upper:
+          type: string
+          example: 20221231
+          description: Establishment time (upper limit)
+        gbc_lv1:
+          type: string
+          example: 制造业
+          description: Primary category of national economy
+        gbc_lv2:
+          type: string
+          example: 纺织业
+          description: Secondary category of national economy
+        is_patent:
+          type: string
+          example: 1
+          description: Patent information
+        is_patsnap_company:
+          type: string
+          example: 1
+          description: whether or not patsnap science and technology innovation enterprise
+        key_word:
+          type: string
+          example: 中国科学院苏州纳米技术与纳米仿生研究所
+          description: Keyword search
+        level:
+          type: string
+          example: 国家级|省级|市级
+          description: level
+        list_status:
+          type: string
+          example: 1
+          description: Listing status
+        page_number:
+          type: string
+          example: 1
+          description: search page number
+        province:
+          type: string
+          example: 江苏省
+          description: Province
+        rating:
+          type: string
+          example: AAA|AA|A|BBB|BB|B
+          description: China's domestic science and technology innovation rating
+        rating_global:
+          type: string
+          example: AAA|AA
+          description: Global Science and Technology Innovation Rating
+        reg_capital_lower:
+          type: string
+          example: 100
+          description: Registered capital (lower limit)
+        reg_capital_upper:
+          type: string
+          example: 1000
+          description: Registered capital (upper limit)
+        seic_lv1:
+          type: string
+          example: 新一代信息技术企业
+          description: Strategic emerging primary industry
+        seic_lv2:
+          type: string
+          example: 电子核心产业
+          description: Strategic emerging secondary industry
+        social_staff_num_lower:
+          type: string
+          example: 10
+          description: Number of insured persons (lower limit)
+        social_staff_num_upper:
+          type: string
+          example: 500
+          description: Number of insured persons (upper limit)
+        sort_field:
+          type: string
+          example: credit_code
+          description: sort field
+        tech_tags:
+          type: string
+          example: 高新技术企业
+          description: Technology tags
+      required:
+      - page_number
+      - sort_field
+    C020CompanyStandardInformationRequest:
+      type: object
+      properties:
+        standard_type:
+          type: string
+          example: 国家标准
+          description: Default All (can query All, country standards, industry standards, local standards, and team standards)
+        page_number:
+          type: integer
+          format: int32
+          example: 1
+          description: Default page 1 (up to 20 items per page, returned in descending order by publication date, all items less than 20 will be returned)
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+      required:
+      - page_number
+    C016CompanyMainMember_MainMember:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 李虹
+          description: person name
+        title:
+          type: string
+          example: 董事长
+          description: position
+        is_dimission:
+          type: string
+          example: 0
+          description: 'whether or not  resignation (1: Resignation 0: Active)'
+    C018CompanyListingInformation_ListingInformation:
+      type: object
+      properties:
+        exchange:
+          type: string
+          example: 深圳交易所
+          description: exchange
+        bond_code:
+          type: string
+          example: '002013'
+          description: stock code
+        bond_name:
+          type: string
+          example: 中航机电
+          description: stock abbreviation
+        bond_type:
+          type: string
+          example: 主板
+          description: listing sector
+        bond_label:
+          type: string
+          example: A股
+          description: stock tags
+        english_name:
+          type: string
+          example: AVIC Electromechanical Systems Co., Ltd.
+          description: english name
+        listing_date:
+          type: string
+          example: 20040705
+          description: listing date
+        delisting_date:
+          type: string
+          example: 20230317
+          description: delisting date
+    C002CompanyOutboundInvestmentRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C017CompanyCoreMember_CompanyCoreMemberResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 73814112-5
+          description: organization code
+        core_member:
+          type: array
+          example: 'Please check the form: CoreMember'
+          description: core members details
+          items:
+            $ref: '#/components/schemas/C017CompanyCoreMember_CoreMember'
+        credit_code:
+          type: string
+          example: 913100007381411200
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 上海飞凯材料科技股份有限公司
+          description: company name
+    C016CompanyMainMemberResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C016CompanyMainMember_CompanyMainMemberResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C015CompanyAwardsInformationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C017CompanyCoreMemberRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C037CompanySearchResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C037CompanySearch_TiffyCompanyData'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C001CompanyRegistrationInformationRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+    C014CompanyTechnologyQualification_TechQualification:
+      type: object
+      properties:
+        year:
+          type: string
+          example: 2021
+          description: evaluation year
+        level:
+          type: string
+          example: 国家级
+          description: level
+        end_date:
+          type: string
+          example: 20241118
+          description: end date
+        tag_type:
+          type: string
+          example: 高新技术企业
+          description: technical qualification
+        publish_date:
+          type: string
+          example: 20211217
+          description: publish date
+        issuing_agency:
+          type: string
+          example: 科技部火炬中心
+          description: issuing agency
+    C015CompanyAwardsInformation_CompanyAwardsInformationResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 05669441-9
+          description: organization code
+        credit_code:
+          type: string
+          example: 913205940566944300
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 苏州瀚川智能科技股份有限公司
+          description: company name
+        awards_qualification:
+          type: array
+          example: 'Please check the form: AwardsQualification'
+          description: awards qualification
+          items:
+            $ref: '#/components/schemas/C015CompanyAwardsInformation_AwardsQualification'
+    C038CompanyInvestmentInformationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C038CompanyInvestmentInformation_CompanyInvestmentInformationResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C003CompanyShareholderInformation_Shareholder:
+      type: object
+      properties:
+        stock_name:
+          type: string
+          example: 苏州瀚川投资管理有限公司
+          description: Name of shareholder
+        credit_code:
+          type: string
+          example: 91320594313721239Q
+          description: unified social credit code
+        is_personal:
+          type: string
+          example: 0
+          description: 'Whether it is a natural person (1: natural person, 0: non natural person)'
+        stock_proportion:
+          type: number
+          format: double
+          example: 33.62
+          description: Shareholding ratio (%)
+    C002CompanyOutboundInvestmentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C002CompanyOutboundInvestment_CompanyOutboundInvestmentResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    C021CompanyQualificationCertificate_CompanyQualificationCertificateResponse:
+      type: object
+      properties:
+        org_number:
+          type: string
+          example: 572927506/57292750-6
+          description: organization code
+        credit_code:
+          type: string
+          example: 91330424572927506D
+          description: unified social credit code
+        company_name:
+          type: string
+          example: 浙江新东方汽车零部件有限公司
+          description: company name
+        certificate_count:
+          type: integer
+          format: int32
+          example: 1
+          description: certificate count
+        qualification_certificate:
+          type: array
+          example: 'Please check the form: QualificationCertificate'
+          description: qualification certificate details
+          items:
+            $ref: '#/components/schemas/C021CompanyQualificationCertificate_QualificationCertificate'
   securitySchemes:
     bearerAuth:
       type: http

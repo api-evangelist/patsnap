@@ -317,8 +317,38 @@ paths:
           description: query of the monitor project
 components:
   schemas:
-    P059PatentAlertDeleteRequest:
+    P056PatentAlertCreate_EmailAlertResponse:
       type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+          example: 4800
+          description: original patent counts in monitor project
+        alert_id:
+          type: string
+          example: 7f22ee78764149b481314b1fa60dca0c
+          description: monitor project ID
+        alert_name:
+          type: string
+          example: <cn>智慧芽公司监控</cn><us>Intelligent bud company monitoring</us>
+          description: Name of Monitoring Project
+    P055PatentSearchTask_TaskResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://exportapi.cdn.zhihuiya.com/20180607/1a9649e44d5dac74d5ff95d0455e31b7/20180607020732886.JSON?response-content-disposition=attachment%3B%20filename%3D%2220180607020732886.JSON%22%3B&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20180607T020740Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20180607%2Fcn-north-1%2Fs3%2Faws4_request&X-Amz-Signature=6983e29dbc4a273742fc6714dc15916957257c1425678e90b7f5f3cd2e8d249e
+          description: Download address
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Export number of patents
+        export_status:
+          type: string
+          example: SUCCESS
+          description: Export task current status<P>SUCCESS:Exporting  task succeeded</P><P>FAIL:The export task failed. Create the export task again</P><P>PENDING:The export task is in progress. Please try to obtain the download address later</P>
     P057PatentAlertCheckResponse:
       type: object
       properties:
@@ -365,6 +395,40 @@ components:
       required:
       - status
       - error_code
+    P059PatentAlertDeleteRequest:
+      type: object
+    P055PatentSearchExport_ExportTaskResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          example: 24
+          description: Export number of patents
+        task_id:
+          type: string
+          example: b4bdae6b4a65432d91f25b5c52bdfd80
+          description: Task ID is valid for 24 hours
+    P055PatentSearchTaskResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/P055PatentSearchTask_TaskResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     P057PatentAlertCheck_MonitoringResponse:
       type: object
       properties:
@@ -386,18 +450,26 @@ components:
           example:
           - f052da16-1d93-46a6-9174-b653c69fd884
           description: patent ID
-    P055PatentSearchExport_ExportTaskResponse:
+    P055PatentSearchExportResponse:
       type: object
       properties:
-        count:
-          type: integer
-          format: int32
-          example: 24
-          description: Export number of patents
-        task_id:
+        data:
+          $ref: '#/components/schemas/P055PatentSearchExport_ExportTaskResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
           type: string
-          example: b4bdae6b4a65432d91f25b5c52bdfd80
-          description: Task ID is valid for 24 hours
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     P059PatentAlertDeleteResponse:
       type: object
       properties:
@@ -498,78 +570,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/P056PatentAlertCreate_EmailAlertResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P055PatentSearchTask_TaskResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          example: http://exportapi.cdn.zhihuiya.com/20180607/1a9649e44d5dac74d5ff95d0455e31b7/20180607020732886.JSON?response-content-disposition=attachment%3B%20filename%3D%2220180607020732886.JSON%22%3B&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20180607T020740Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20180607%2Fcn-north-1%2Fs3%2Faws4_request&X-Amz-Signature=6983e29dbc4a273742fc6714dc15916957257c1425678e90b7f5f3cd2e8d249e
-          description: Download address
-        count:
-          type: integer
-          format: int32
-          example: 24
-          description: Export number of patents
-        export_status:
-          type: string
-          example: SUCCESS
-          description: Export task current status<P>SUCCESS:Exporting  task succeeded</P><P>FAIL:The export task failed. Create the export task again</P><P>PENDING:The export task is in progress. Please try to obtain the download address later</P>
-    P055PatentSearchTaskResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P055PatentSearchTask_TaskResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    P056PatentAlertCreate_EmailAlertResponse:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int64
-          example: 4800
-          description: original patent counts in monitor project
-        alert_id:
-          type: string
-          example: 7f22ee78764149b481314b1fa60dca0c
-          description: monitor project ID
-        alert_name:
-          type: string
-          example: <cn>智慧芽公司监控</cn><us>Intelligent bud company monitoring</us>
-          description: Name of Monitoring Project
-    P055PatentSearchExportResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/P055PatentSearchExport_ExportTaskResponse'
         status:
           type: boolean
           example: 'false'

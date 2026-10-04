@@ -389,95 +389,6 @@ paths:
               $ref: '#/components/schemas/R002TaskCreateNoLogoRequest'
 components:
   schemas:
-    R001JobIdStatus_CompanyReportExportResponse:
-      type: object
-      properties:
-        job_id:
-          type: integer
-          format: int64
-          example: 1579434053399036000
-          description: export job id
-        queue_num:
-          type: integer
-          format: int32
-          example: 10
-          description: Number of jobs in the queue
-        job_status:
-          type: integer
-          format: int32
-          example: 1
-          description: Export status (0:To be exported 1:Exporting. 2:Exporting successfully. 3:Report generation fails.)
-        download_url:
-          type: string
-          example: https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx
-          description: File download link (return if export status is successful)
-        abnormal_cause:
-          type: string
-          example: 由于服务器异常，正在修复中
-          description: Causes of Exceptions
-    R004-2IdeaValidationSimilarPatentComparison_SimilarPatent:
-      type: object
-      properties:
-        pn:
-          type: string
-          example: CN108001293B
-          description: Patent publication number
-        means:
-          type: array
-          example:
-          - sn: 39
-            passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
-            section: description
-            sentence:
-            - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
-          description: List of similar technical means
-          items:
-            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
-        score:
-          type: number
-          format: float
-          example: 0.94976854
-          description: Similarity score
-        efficacy:
-          type: array
-          example:
-          - sn: 43
-            passage: 本发明所述的有益效果:本发明可以实现车辆的常规行驶、四轮转向、斜行、驻车行驶以及原地中心转向,转向模式丰富,实用性强
-            section: description
-            sentence:
-            - 这是常规车辆所无法实现的;通过车辆的原地中心转向和大转角四轮转向,
-            - 可以实现车辆更为灵活的变道超车、
-          description: List of similar technical efficacy
-          items:
-            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
-        patent_id:
-          type: string
-          example: e7b3df69-0f30-4ad3-a753-538e362fd524
-          description: Patent ID
-    R002TaskCreateRequest:
-      type: object
-      properties:
-        patent_id:
-          type: string
-          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
-          description: Query patent ID, single query
-        patent_number:
-          type: string
-          example: CN108977442B
-          description: Query patent publication number, single query
-        report_type:
-          type: string
-          example: word
-          description: Search for the type of patent value report, word or pdf
-      required:
-      - report_type
-    R002TaskCreate_PatentValueReportCreateResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 1579434053399036000
-          description: export job id
     R003PatentValuationDataPrePatentEvaluationExport_PatentPdfDownloadResponse:
       type: object
       properties:
@@ -495,11 +406,41 @@ components:
             FAIL:The export task failed. Create the export task again
 
             PENDING:The export task is in progress. Please try to obtain the download address later'
-    R003PatentValuationDataPrePatentEvaluationExportResponse:
+    R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse:
+      type: object
+      properties:
+        docs:
+          type: array
+          example:
+          - similar_patent:
+              pn: CN108001293B
+              means:
+              - sn: 39
+                passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+                section: description
+                sentence:
+                - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+              score: 0.94976854
+              efficacy: []
+              patent_id: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: List of similar patents
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Docs'
+        count:
+          type: integer
+          format: int32
+          example: 20
+          description: Return the total number of similar patents
+        job_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'status (1: running, 2: success, 3: failed).'
+    R002TaskCreateResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationExport_PatentPdfDownloadResponse'
+          $ref: '#/components/schemas/R002TaskCreate_PatentValueReportCreateResponse'
         status:
           type: boolean
           example: 'false'
@@ -515,21 +456,53 @@ components:
       required:
       - status
       - error_code
-    R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse:
+    R003PatentValuationDataPrePatentEvaluationCreate_BasicInfo:
       type: object
       properties:
-        job_id:
+        key:
           type: string
-          example: b4bdae6b4a65432d91f25b5c52bdfd80
-          description: Job ID
-    R001TaskCreate_CompanyReportCreateResponse:
+          example: 检索报告编号
+          description: Index
+        value:
+          type: string
+          example: Report-20240527-1
+          description: value
+      required:
+      - key
+      - value
+    R002TaskCreate_PatentValueReportCreateResponse:
       type: object
       properties:
         job_id:
           type: string
           example: 1579434053399036000
           description: export job id
-    R001TaskCreateRequest:
+    R004-2IdeaValidationSimilarPatentComparison_Docs:
+      type: object
+      properties:
+        similar_patent:
+          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_SimilarPatent'
+    R003PatentValuationDataPrePatentEvaluationCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R001TaskCreateNoLogoRequest:
       type: object
       properties:
         company_name:
@@ -550,6 +523,42 @@ components:
           description: Query the type of report returned by the enterprise, either word or pdf
       required:
       - report_type
+    R001TaskCreateNoLogoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R001TaskCreateNoLogo_CompanyReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-3JobIdStatus_ReportJobStatusResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: export technical idea validation report task id
+        job_status:
+          type: integer
+          format: int32
+          example: 2
+          description: 'Export status (1: exporting, 2: export successful, 3: technical idea validation report generation exception).'
+        download_url:
+          type: string
+          example: https://stage-openapi-import.cdn.zhihuiya.com/disclosure_ppt/tech_idea_20241106164047.pptx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDRksnVzITRBhpjUAg2B6oQr56vb8VFtPj%26q-sign-time%3D1730882451%3B1731487251%26q-key-time%3D1730882451%3B1731487251%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D255706ccef17490c2f89da9090e1db796513dbe0
+          description: Technical idea validation report download link (returned when export status is successful).
     R003PatentValuationDataPrePatentEvaluationCreateRequest:
       type: object
       properties:
@@ -609,6 +618,63 @@ components:
       - text
       - tech_maturity_index
       - report_name
+    R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: b4bdae6b4a65432d91f25b5c52bdfd80
+          description: Job ID
+    R002TaskCreateNoLogoResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R002TaskCreateNoLogo_PatentValueReportCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R001TaskCreateRequest:
+      type: object
+      properties:
+        company_name:
+          type: string
+          example: 小米科技有限责任公司
+          description: Query the name of a single enterprise
+        credit_code:
+          type: string
+          example: 91110108551385082Q
+          description: Query the unified social credit code of a single enterprise
+        org_number:
+          type: string
+          example: 5513850T82
+          description: Query the organization code of a single enterprise
+        report_type:
+          type: string
+          example: word
+          description: Query the type of report returned by the enterprise, either word or pdf
+      required:
+      - report_type
+    R004-2IdeaValidationSimilarPatentComparisonRequest:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: Query job_id, download technical idea validation report, single query.
+      required:
+      - job_id
     R004-3JobIdStatusResponse:
       type: object
       properties:
@@ -629,27 +695,53 @@ components:
       required:
       - status
       - error_code
-    R004-3JobIdStatus_ReportJobStatusResponse:
+    R001TaskCreateNoLogo_CompanyReportCreateResponse:
       type: object
       properties:
         job_id:
           type: string
-          example: 15362c5fae034dfc8943df299afc18b5
-          description: export technical idea validation report task id
-        job_status:
+          example: 1579434053399036000
+          description: export job id
+    R004-1TaskCreateRequest:
+      type: object
+      properties:
+        country:
+          type: array
+          example:
+          - CN
+          - US
+          - KR
+          description: Select the authority of the patent, the default query all databases, eg CN, US, KR.
+        legal_status:
+          type: array
+          example:
+          - 失效
+          - 有效
+          - 审中
+          - PCT指定期满
+          - PCT指定期内
+          - 未确认
+          description: Simple legal status, default select all, enumerated as follows:Inactive, Active, Pending, PCTdesignated stage, PCTdesignated stage expired, Undetermined
+        limit:
           type: integer
           format: int32
-          example: 2
-          description: 'Export status (1: exporting, 2: export successful, 3: technical idea validation report generation exception).'
-        download_url:
+          example: 5
+          description: Based on the novelty of the current technical solution, return up to 20 potentially similar patents to generate a search report, with the top 5 patents sorted by similarity selected by default.
+        tech_effect:
           type: string
-          example: https://stage-openapi-import.cdn.zhihuiya.com/disclosure_ppt/tech_idea_20241106164047.pptx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDRksnVzITRBhpjUAg2B6oQr56vb8VFtPj%26q-sign-time%3D1730882451%3B1731487251%26q-key-time%3D1730882451%3B1731487251%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D255706ccef17490c2f89da9090e1db796513dbe0
-          description: Technical idea validation report download link (returned when export status is successful).
-    R001TaskCreateNoLogoResponse:
+          example: 实现了车辆的原地掉头
+          description: technical effects
+        tech_means:
+          type: string
+          example: 原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。
+          description: technical means
+      required:
+      - tech_means
+    R001TaskCreateResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/R001TaskCreateNoLogo_CompanyReportCreateResponse'
+          $ref: '#/components/schemas/R001TaskCreate_CompanyReportCreateResponse'
         status:
           type: boolean
           example: 'false'
@@ -665,6 +757,85 @@ components:
       required:
       - status
       - error_code
+    R004-1TaskCreateResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R004-1TaskCreate_ReportJobCreateResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R001JobIdStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R001JobIdStatus_CompanyReportExportResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-2IdeaValidationSimilarPatentComparison_SimilarPatent:
+      type: object
+      properties:
+        pn:
+          type: string
+          example: CN108001293B
+          description: Patent publication number
+        means:
+          type: array
+          example:
+          - sn: 39
+            passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+            section: description
+            sentence:
+            - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
+          description: List of similar technical means
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
+        score:
+          type: number
+          format: float
+          example: 0.94976854
+          description: Similarity score
+        efficacy:
+          type: array
+          example:
+          - sn: 43
+            passage: 本发明所述的有益效果:本发明可以实现车辆的常规行驶、四轮转向、斜行、驻车行驶以及原地中心转向,转向模式丰富,实用性强
+            section: description
+            sentence:
+            - 这是常规车辆所无法实现的;通过车辆的原地中心转向和大转角四轮转向,
+            - 可以实现车辆更为灵活的变道超车、
+          description: List of similar technical efficacy
+          items:
+            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Label'
+        patent_id:
+          type: string
+          example: e7b3df69-0f30-4ad3-a753-538e362fd524
+          description: Patent ID
     R002TaskCreateNoLogo_PatentValueReportCreateResponse:
       type: object
       properties:
@@ -672,11 +843,11 @@ components:
           type: string
           example: 1579434053399036000
           description: export job id
-    R002TaskCreateResponse:
+    R003PatentValuationDataPrePatentEvaluationExportResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/R002TaskCreate_PatentValueReportCreateResponse'
+          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationExport_PatentPdfDownloadResponse'
         status:
           type: boolean
           example: 'false'
@@ -692,6 +863,93 @@ components:
       required:
       - status
       - error_code
+    R002TaskCreateNoLogoRequest:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
+          description: Query patent ID, single query
+        patent_number:
+          type: string
+          example: CN108977442B
+          description: Query patent publication number, single query
+        report_type:
+          type: string
+          example: word
+          description: Search for the type of patent value report, word or pdf
+      required:
+      - report_type
+    R004-2IdeaValidationSimilarPatentComparisonResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    R004-1TaskCreate_ReportJobCreateResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: 15362c5fae034dfc8943df299afc18b5
+          description: export technical idea validation report task id
+    R002TaskCreateRequest:
+      type: object
+      properties:
+        patent_id:
+          type: string
+          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
+          description: Query patent ID, single query
+        patent_number:
+          type: string
+          example: CN108977442B
+          description: Query patent publication number, single query
+        report_type:
+          type: string
+          example: word
+          description: Search for the type of patent value report, word or pdf
+      required:
+      - report_type
+    R001JobIdStatus_CompanyReportExportResponse:
+      type: object
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: 1579434053399036000
+          description: export job id
+        queue_num:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of jobs in the queue
+        job_status:
+          type: integer
+          format: int32
+          example: 1
+          description: Export status (0:To be exported 1:Exporting. 2:Exporting successfully. 3:Report generation fails.)
+        download_url:
+          type: string
+          example: https://open.patsnap.com/tffi-export/20241126074833/9cf648f8-8283-4767-9a14-f90f68303f3e/CN108977442B_2024_11_26.docx?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDV4ZwCNYgUAwepmojSxCD0c6PXN8mDiBS%26q-sign-time%3D1732607317%3B1733212117%26q-key-time%3D1732607317%3B1733212117%26q-header-list%3Dhost%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D878962504778cd5fc1228f9dcb76cc735c4dc2c7&response-content-disposition=attachment%3Bfilename%2A%3DUTF-8%27%27CN108977442B_2024_11_26.docx
+          description: File download link (return if export status is successful)
+        abnormal_cause:
+          type: string
+          example: 由于服务器异常，正在修复中
+          description: Causes of Exceptions
     R004-2IdeaValidationSimilarPatentComparison_Label:
       type: object
       properties:
@@ -738,156 +996,6 @@ components:
           type: string
           example: 由于服务器异常，正在修复中
           description: Causes of Exceptions
-    R001TaskCreateNoLogo_CompanyReportCreateResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 1579434053399036000
-          description: export job id
-    R003PatentValuationDataPrePatentEvaluationCreate_BasicInfo:
-      type: object
-      properties:
-        key:
-          type: string
-          example: 检索报告编号
-          description: Index
-        value:
-          type: string
-          example: Report-20240527-1
-          description: value
-      required:
-      - key
-      - value
-    R001TaskCreateNoLogoRequest:
-      type: object
-      properties:
-        company_name:
-          type: string
-          example: 小米科技有限责任公司
-          description: Query the name of a single enterprise
-        credit_code:
-          type: string
-          example: 91110108551385082Q
-          description: Query the unified social credit code of a single enterprise
-        org_number:
-          type: string
-          example: 5513850T82
-          description: Query the organization code of a single enterprise
-        report_type:
-          type: string
-          example: word
-          description: Query the type of report returned by the enterprise, either word or pdf
-      required:
-      - report_type
-    R004-2IdeaValidationSimilarPatentComparisonRequest:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 15362c5fae034dfc8943df299afc18b5
-          description: Query job_id, download technical idea validation report, single query.
-      required:
-      - job_id
-    R001JobIdStatusResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/R001JobIdStatus_CompanyReportExportResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    R004-1TaskCreateRequest:
-      type: object
-      properties:
-        country:
-          type: array
-          example:
-          - CN
-          - US
-          - KR
-          description: Select the authority of the patent, the default query all databases, eg CN, US, KR.
-        legal_status:
-          type: array
-          example:
-          - 失效
-          - 有效
-          - 审中
-          - PCT指定期满
-          - PCT指定期内
-          - 未确认
-          description: Simple legal status, default select all, enumerated as follows:Inactive, Active, Pending, PCTdesignated stage, PCTdesignated stage expired, Undetermined
-        limit:
-          type: integer
-          format: int32
-          example: 5
-          description: Based on the novelty of the current technical solution, return up to 20 potentially similar patents to generate a search report, with the top 5 patents sorted by similarity selected by default.
-        tech_effect:
-          type: string
-          example: 实现了车辆的原地掉头
-          description: technical effects
-        tech_means:
-          type: string
-          example: 原地转向控制系统利用车辆控制器根据接收到的原地转向指令控制左转向电机控制器和所述右转向电机控制器，左转向电机控制器根据接收到的原地转向指令控制左前轮转向，右转向电机控制器根据接收到的原地转向控制指令控制右前轮转向，且左前轮和右前轮的转动方向相反使得左前轮和右前轮之间形成预设角度的“内八字”，由转动电机控制向车辆控制器发送转向完成指令。
-          description: technical means
-      required:
-      - tech_means
-    R004-1TaskCreate_ReportJobCreateResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
-          example: 15362c5fae034dfc8943df299afc18b5
-          description: export technical idea validation report task id
-    R004-2IdeaValidationSimilarPatentComparisonResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    R002TaskCreateNoLogoRequest:
-      type: object
-      properties:
-        patent_id:
-          type: string
-          example: 9cf648f8-8283-4767-9a14-f90f68303f3e
-          description: Query patent ID, single query
-        patent_number:
-          type: string
-          example: CN108977442B
-          description: Query patent publication number, single query
-        report_type:
-          type: string
-          example: word
-          description: Search for the type of patent value report, word or pdf
-      required:
-      - report_type
     R004-3JobIdStatusRequest:
       type: object
       properties:
@@ -901,126 +1009,18 @@ components:
           description: Query job_id, download technical idea validation report, single query.
       required:
       - job_id
-    R003PatentValuationDataPrePatentEvaluationCreateResponse:
+    R001TaskCreate_CompanyReportCreateResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/R003PatentValuationDataPrePatentEvaluationCreate_PatentPdfJobResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        job_id:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          example: 1579434053399036000
+          description: export job id
     R002JobIdStatusResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/R002JobIdStatus_PatentValueReportExportResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    R001TaskCreateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/R001TaskCreate_CompanyReportCreateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    R004-2IdeaValidationSimilarPatentComparison_Docs:
-      type: object
-      properties:
-        similar_patent:
-          $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_SimilarPatent'
-    R002TaskCreateNoLogoResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/R002TaskCreateNoLogo_PatentValueReportCreateResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    R004-2IdeaValidationSimilarPatentComparison_TechSolutionResearchResponse:
-      type: object
-      properties:
-        docs:
-          type: array
-          example:
-          - similar_patent:
-              pn: CN108001293B
-              means:
-              - sn: 39
-                passage: 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
-                section: description
-                sentence:
-                - 本发明相对于现有技术的技术效果是:电动车辆的原地转向控制系统利用所述车辆控制器根据接收到的原地转向指令控制所述左转向电机控制器和所述右转向电机控制器
-              score: 0.94976854
-              efficacy: []
-              patent_id: e7b3df69-0f30-4ad3-a753-538e362fd524
-          description: List of similar patents
-          items:
-            $ref: '#/components/schemas/R004-2IdeaValidationSimilarPatentComparison_Docs'
-        count:
-          type: integer
-          format: int32
-          example: 20
-          description: Return the total number of similar patents
-        job_status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'status (1: running, 2: success, 3: failed).'
-    R004-1TaskCreateResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/R004-1TaskCreate_ReportJobCreateResponse'
         status:
           type: boolean
           example: 'false'
