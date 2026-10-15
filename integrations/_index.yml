@@ -22,3 +22,33 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: patsnap-edugain
+  label: eduGAIN
+  partner_name: eduGAIN
+  category: research and education identity federation
+  type: register
+  channel: standard-directory
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
+  source: edge
+  relationship: network-participant
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - service-provider
+    role: service-provider
+    federations:
+    - CARSI
+    matched_by: domain:patsnap.com
+    entities:
+    - entity_id: https://sp.passport.patsnap.com
+      role: service-provider
+      federation: CARSI
+      display_name: Patsnap
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
