@@ -150,6 +150,64 @@ paths:
           description: courseware ID
 components:
   schemas:
+    AC02AcademyCourseDetails_CourseDetailsInfo:
+      type: object
+      properties:
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
+        summary:
+          type: string
+          example: '有了专利思路之后，学习如何快速的撰
+
+
+            写技术交底书，建立和专利代理人沟通
+
+
+            的桥梁'
+          description: course description
+        class_hour:
+          type: integer
+          format: int32
+          example: 5
+          description: lesson
+    AC01AcademyCourseList_CourseListInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+          description: course ID
+        thumb:
+          type: string
+          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
+          description: course picture
+        title:
+          type: string
+          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
+          description: course name
+    AC02AcademyCourseDetails_CourseDetailsResponse:
+      type: object
+      properties:
+        attach:
+          type: array
+          example: 'Please check the form: Courseware'
+          description: course ware information
+          items:
+            $ref: '#/components/schemas/AC02AcademyCourseDetails_Courseware'
+        course_info:
+          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsInfo'
+        video_parts:
+          type: array
+          example: 'Please check the form: ClassParts'
+          description: class hour information
+          items:
+            $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
     AC01AcademyCourseList_CourseListResponse:
       type: object
       properties:
@@ -164,6 +222,28 @@ components:
           description: course information
           items:
             $ref: '#/components/schemas/AC01AcademyCourseList_CourseListInfo'
+    AC03AcademyAttachDownloadResponse:
+      type: object
+    AC01AcademyCourseListResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
     AC02AcademyCourseDetails_Courseware:
       type: object
       properties:
@@ -195,38 +275,6 @@ components:
       required:
       - status
       - error_code
-    AC02AcademyCourseDetails_CourseDetailsResponse:
-      type: object
-      properties:
-        attach:
-          type: array
-          example: 'Please check the form: Courseware'
-          description: course ware information
-          items:
-            $ref: '#/components/schemas/AC02AcademyCourseDetails_Courseware'
-        course_info:
-          $ref: '#/components/schemas/AC02AcademyCourseDetails_CourseDetailsInfo'
-        video_parts:
-          type: array
-          example: 'Please check the form: ClassParts'
-          description: class hour information
-          items:
-            $ref: '#/components/schemas/AC02AcademyCourseDetails_ClassParts'
-    AC01AcademyCourseList_CourseListInfo:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 1
-          description: course ID
-        thumb:
-          type: string
-          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
-          description: course picture
-        title:
-          type: string
-          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
-          description: course name
     AC02AcademyCourseDetails_ClassParts:
       type: object
       properties:
@@ -238,54 +286,6 @@ components:
           type: string
           example: 考前你必须知道的那些事
           description: lesson title
-    AC01AcademyCourseListResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AC01AcademyCourseList_CourseListResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
-          type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
-          type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
-    AC03AcademyAttachDownloadResponse:
-      type: object
-    AC02AcademyCourseDetails_CourseDetailsInfo:
-      type: object
-      properties:
-        thumb:
-          type: string
-          example: https://x-static.cdn.zhihuiya.com/WX20200313-184724.png
-          description: course picture
-        title:
-          type: string
-          example: 2018年专代考试贴士及相关法边缘知识点考前串讲
-          description: course name
-        summary:
-          type: string
-          example: '有了专利思路之后，学习如何快速的撰
-
-
-            写技术交底书，建立和专利代理人沟通
-
-
-            的桥梁'
-          description: course description
-        class_hour:
-          type: integer
-          format: int32
-          example: 5
-          description: lesson
   securitySchemes:
     bearerAuth:
       type: http

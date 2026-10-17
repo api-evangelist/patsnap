@@ -78,26 +78,18 @@ paths:
               $ref: '#/components/schemas/AI40-2AiFeasibilityAnalysisQueryRequest'
 components:
   schemas:
-    AI40-2AiFeasibilityAnalysisQueryResponse:
+    AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse'
-        status:
-          type: boolean
-          example: 'false'
-          description: Status
-        error_msg:
+        url:
           type: string
-          example: The request parameter format is incorrect！
-          description: Error Message
-        error_code:
+          example: https://stage-patsnap-export.cdn.zhihuiya.com/7/20250603/eureka/3da39850de1f5fbd366795d62d05fcd7/content_20250603015019.pdf
+          description: Report download link (returned when export status is successful).
+        status:
           type: integer
-          example: '0'
-          description: Error Code
-      required:
-      - status
-      - error_code
+          format: int32
+          example: 2
+          description: 'Task status (1: running, 2: successful, 3: generation exception).'
     AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse:
       type: object
       properties:
@@ -116,18 +108,6 @@ components:
           description: Task id
       required:
       - task_id
-    AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          example: https://stage-patsnap-export.cdn.zhihuiya.com/7/20250603/eureka/3da39850de1f5fbd366795d62d05fcd7/content_20250603015019.pdf
-          description: Report download link (returned when export status is successful).
-        status:
-          type: integer
-          format: int32
-          example: 2
-          description: 'Task status (1: running, 2: successful, 3: generation exception).'
     AI40-1AiFeasibilityAnalysisCreationRequest:
       type: object
       properties:
@@ -151,6 +131,26 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AI40-1AiFeasibilityAnalysisCreation_AsyncTaskIdResponse'
+        status:
+          type: boolean
+          example: 'false'
+          description: Status
+        error_msg:
+          type: string
+          example: The request parameter format is incorrect！
+          description: Error Message
+        error_code:
+          type: integer
+          example: '0'
+          description: Error Code
+      required:
+      - status
+      - error_code
+    AI40-2AiFeasibilityAnalysisQueryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AI40-2AiFeasibilityAnalysisQuery_FeasibilityAnalysisQueryResponse'
         status:
           type: boolean
           example: 'false'
